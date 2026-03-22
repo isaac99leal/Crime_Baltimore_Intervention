@@ -1,0 +1,355 @@
+{
+  "pairing_rules": {
+    "description": "Wine and food pairing rules based on classical sommelier training. Each rule maps food attributes to ideal wine attributes.",
+    "principles": [
+      "Match weight: light food with light wine, heavy food with full-bodied wine",
+      "Acidity in wine cuts through fat and richness",
+      "Tannin pairs with protein and fat, clashes with spice and fish",
+      "Sweetness in wine should match or exceed sweetness in food",
+      "Salt in food softens tannin and enhances fruit",
+      "Umami makes wine seem more tannic and bitter — choose fruity, low-tannin wines",
+      "Mirror or contrast: either echo flavors or create complementary contrast",
+      "Regional pairings: what grows together goes together"
+    ]
+  },
+  "protein_pairings": {
+    "beef": {
+      "ideal_wine_attributes": {"body": [3.5, 5.0], "tannin": [3.0, 5.0]},
+      "ideal_grapes": ["Cabernet Sauvignon", "Malbec", "Syrah", "Nebbiolo", "Tempranillo"],
+      "avoid_grapes": ["Riesling", "Pinot Grigio", "Moscato"],
+      "notes": "Rich beef dishes need structured, tannic wines. Leaner cuts can work with Pinot Noir."
+    },
+    "lamb": {
+      "ideal_wine_attributes": {"body": [3.0, 5.0], "tannin": [2.5, 4.5], "earth_intensity": [2.0, 5.0]},
+      "ideal_grapes": ["Cabernet Sauvignon", "Syrah", "Mourvèdre", "Tempranillo", "Sangiovese", "Nebbiolo"],
+      "avoid_grapes": ["Moscato", "Pinot Grigio"],
+      "notes": "Lamb's richness and slight gaminess pairs beautifully with earthy, herbal reds."
+    },
+    "pork": {
+      "ideal_wine_attributes": {"body": [2.5, 4.0], "acidity": [2.5, 4.0]},
+      "ideal_grapes": ["Pinot Noir", "Grenache", "Riesling", "Chenin Blanc", "Barbera", "Gamay"],
+      "avoid_grapes": [],
+      "notes": "Pork is versatile — lighter preparations suit whites, richer ones suit medium reds."
+    },
+    "poultry": {
+      "ideal_wine_attributes": {"body": [2.0, 4.0], "acidity": [2.5, 4.5]},
+      "ideal_grapes": ["Chardonnay", "Pinot Noir", "Viognier", "Chenin Blanc", "Grenache", "Gamay"],
+      "avoid_grapes": ["Cabernet Sauvignon", "Malbec"],
+      "notes": "Chicken and turkey are neutral canvases — the sauce determines the pairing."
+    },
+    "duck": {
+      "ideal_wine_attributes": {"body": [3.0, 4.5], "fruit_intensity": [3.0, 5.0]},
+      "ideal_grapes": ["Pinot Noir", "Syrah", "Grenache", "Merlot", "Gamay"],
+      "avoid_grapes": ["Sauvignon Blanc", "Pinot Grigio"],
+      "notes": "Duck's richness and fat pairs with fruity, medium-to-full reds. Classic Burgundy pairing."
+    },
+    "fish_white": {
+      "ideal_wine_attributes": {"body": [1.5, 3.0], "acidity": [3.0, 5.0], "tannin": [1.0, 2.0]},
+      "ideal_grapes": ["Sauvignon Blanc", "Chablis", "Albariño", "Vermentino", "Muscadet", "Pinot Grigio"],
+      "avoid_grapes": ["Cabernet Sauvignon", "Malbec", "Syrah"],
+      "notes": "Delicate white fish needs crisp, mineral whites. Tannin creates a metallic clash."
+    },
+    "fish_rich": {
+      "ideal_wine_attributes": {"body": [2.5, 4.0], "acidity": [2.5, 4.0]},
+      "ideal_grapes": ["Chardonnay", "Pinot Noir", "Viognier", "Marsanne", "Grenache Blanc"],
+      "avoid_grapes": ["Cabernet Sauvignon", "Nebbiolo"],
+      "notes": "Salmon, tuna, and swordfish have enough weight for richer whites or light reds."
+    },
+    "shellfish": {
+      "ideal_wine_attributes": {"body": [1.5, 3.0], "acidity": [3.5, 5.0], "sweetness": [1.0, 1.5]},
+      "ideal_grapes": ["Muscadet", "Chablis", "Albariño", "Champagne", "Sauvignon Blanc", "Assyrtiko"],
+      "avoid_grapes": ["Cabernet Sauvignon", "Malbec", "Syrah"],
+      "notes": "Oysters, lobster, crab — crisp acidity and minerality are essential. Champagne is classic."
+    },
+    "vegetable": {
+      "ideal_wine_attributes": {"body": [1.5, 3.5], "acidity": [3.0, 5.0]},
+      "ideal_grapes": ["Sauvignon Blanc", "Grüner Veltliner", "Vermentino", "Gamay", "Pinot Noir"],
+      "avoid_grapes": ["Cabernet Sauvignon"],
+      "notes": "Green vegetables can make tannic wines taste vegetal. Stick to herbal, crisp wines."
+    },
+    "mushroom": {
+      "ideal_wine_attributes": {"earth_intensity": [3.0, 5.0], "body": [2.5, 4.5]},
+      "ideal_grapes": ["Pinot Noir", "Nebbiolo", "Sangiovese", "Syrah", "Chardonnay"],
+      "avoid_grapes": ["Moscato", "Riesling"],
+      "notes": "Mushrooms' earthiness mirrors the tertiary notes of aged Pinot Noir and Nebbiolo."
+    },
+    "truffle": {
+      "ideal_wine_attributes": {"earth_intensity": [3.5, 5.0], "body": [3.0, 5.0]},
+      "ideal_grapes": ["Nebbiolo", "Pinot Noir", "Sangiovese"],
+      "avoid_grapes": ["Sauvignon Blanc", "Moscato"],
+      "notes": "The ultimate pairing: aged Barolo or Burgundy with fresh truffle."
+    },
+    "cheese_soft": {
+      "ideal_wine_attributes": {"acidity": [3.0, 5.0], "body": [2.0, 3.5]},
+      "ideal_grapes": ["Champagne", "Chardonnay", "Chenin Blanc", "Pinot Noir"],
+      "avoid_grapes": [],
+      "notes": "Brie, Camembert, goat cheese — sparkling wine is a revelation with soft cheeses."
+    },
+    "cheese_hard": {
+      "ideal_wine_attributes": {"tannin": [2.5, 5.0], "body": [3.0, 5.0]},
+      "ideal_grapes": ["Cabernet Sauvignon", "Tempranillo", "Sangiovese", "Nebbiolo"],
+      "avoid_grapes": [],
+      "notes": "Aged Comté, Manchego, Parmigiano — tannic reds find perfect balance with hard cheeses."
+    },
+    "cheese_blue": {
+      "ideal_wine_attributes": {"sweetness": [3.0, 5.0]},
+      "ideal_grapes": ["Sauternes", "Port", "Riesling", "Tokaji"],
+      "avoid_grapes": ["Cabernet Sauvignon", "Sauvignon Blanc"],
+      "notes": "Classic: Roquefort with Sauternes. The sweetness-salt contrast is extraordinary."
+    },
+    "chocolate": {
+      "ideal_wine_attributes": {"sweetness": [2.0, 4.0], "body": [3.5, 5.0]},
+      "ideal_grapes": ["Zinfandel", "Port", "Banyuls", "Maury"],
+      "avoid_grapes": ["Sauvignon Blanc", "Chablis", "Riesling"],
+      "notes": "Dark chocolate needs a wine with sweetness and weight. Fortified wines excel here."
+    },
+    "foie_gras": {
+      "ideal_wine_attributes": {"sweetness": [3.0, 5.0], "acidity": [3.5, 5.0]},
+      "ideal_grapes": ["Sauternes", "Gewürztraminer", "Riesling", "Tokaji", "Champagne"],
+      "avoid_grapes": ["Cabernet Sauvignon", "Malbec"],
+      "notes": "The richness of foie gras demands either sweet wine (classic) or high-acid sparkling."
+    }
+  },
+  "cooking_method_modifiers": {
+    "grilled": {"body_bonus": 0.5, "tannin_bonus": 0.3, "notes": "Char and smoke flavors pair with oak-aged, fuller wines"},
+    "braised": {"body_bonus": 0.3, "earth_bonus": 0.5, "notes": "Long-cooked dishes develop umami and depth — match with earthy wines"},
+    "roasted": {"body_bonus": 0.3, "fruit_bonus": 0.2, "notes": "Roasting concentrates flavors — medium to full-bodied wines"},
+    "poached": {"body_bonus": -0.3, "acidity_bonus": 0.3, "notes": "Delicate technique needs delicate wine"},
+    "raw": {"body_bonus": -0.5, "acidity_bonus": 0.5, "notes": "Crudo, tartare, sashimi — crisp, clean whites or rosé"},
+    "fried": {"acidity_bonus": 0.5, "notes": "Acidity cuts through oil and fat — sparkling wine is ideal"},
+    "smoked": {"body_bonus": 0.3, "earth_bonus": 0.3, "notes": "Smoky flavors pair with oaked wines or earthy reds"},
+    "sauteed": {"notes": "Versatile — match based on the primary ingredient and sauce"}
+  },
+  "sauce_modifiers": {
+    "cream": {"body_bonus": 0.5, "acidity_need": 0.5, "notes": "Rich cream sauces need wine with acidity to cut through"},
+    "red_wine_reduction": {"tannin_bonus": 0.3, "body_bonus": 0.3, "notes": "Mirror the sauce — serve a similar style red"},
+    "beurre_blanc": {"acidity_need": 0.3, "notes": "Butter + acid sauce pairs with rich Chardonnay or Chenin Blanc"},
+    "tomato": {"acidity_need": 0.5, "tannin_penalty": -0.3, "notes": "High acid in tomato needs high acid in wine — Italian reds shine"},
+    "asian_spice": {"sweetness_bonus": 0.5, "tannin_penalty": -0.5, "notes": "Spicy food clashes with tannin — off-dry Riesling or Gewürztraminer"},
+    "herb_butter": {"notes": "Herbal wines like Sauvignon Blanc or Vermentino complement herb flavors"},
+    "mushroom_jus": {"earth_bonus": 0.5, "notes": "Earthy sauce demands earthy wine — Burgundy, Barolo"},
+    "citrus": {"acidity_need": 0.3, "notes": "Match citrus brightness with crisp whites — Sauvignon Blanc, Albariño"}
+  },
+  "menu_items": [
+    {
+      "name": "Oysters on the Half Shell",
+      "course": "appetizer",
+      "primary_protein": "shellfish",
+      "cooking_method": "raw",
+      "sauce": "",
+      "flavor_profile": "bright",
+      "weight": "light",
+      "pairing_keywords": ["mineral", "crisp", "saline", "citrus"]
+    },
+    {
+      "name": "Foie Gras Terrine with Brioche",
+      "course": "appetizer",
+      "primary_protein": "foie_gras",
+      "cooking_method": "poached",
+      "sauce": "",
+      "flavor_profile": "rich",
+      "weight": "heavy",
+      "pairing_keywords": ["sweet", "unctuous", "honeyed", "acidity"]
+    },
+    {
+      "name": "Tuna Tartare with Avocado and Sesame",
+      "course": "appetizer",
+      "primary_protein": "fish_rich",
+      "cooking_method": "raw",
+      "sauce": "asian_spice",
+      "flavor_profile": "bright",
+      "weight": "light",
+      "pairing_keywords": ["crisp", "aromatic", "citrus", "mineral"]
+    },
+    {
+      "name": "Burrata with Heirloom Tomatoes and Basil",
+      "course": "appetizer",
+      "primary_protein": "cheese_soft",
+      "cooking_method": "raw",
+      "sauce": "",
+      "flavor_profile": "bright",
+      "weight": "light",
+      "pairing_keywords": ["fresh", "herbal", "acidity", "fruit"]
+    },
+    {
+      "name": "Wild Mushroom Velouté",
+      "course": "appetizer",
+      "primary_protein": "mushroom",
+      "cooking_method": "sauteed",
+      "sauce": "cream",
+      "flavor_profile": "earthy",
+      "weight": "medium",
+      "pairing_keywords": ["earthy", "rich", "umami", "cream"]
+    },
+    {
+      "name": "Lobster Bisque",
+      "course": "appetizer",
+      "primary_protein": "shellfish",
+      "cooking_method": "braised",
+      "sauce": "cream",
+      "flavor_profile": "rich",
+      "weight": "medium",
+      "pairing_keywords": ["rich", "buttery", "shellfish", "cream"]
+    },
+    {
+      "name": "Dover Sole Meunière",
+      "course": "fish",
+      "primary_protein": "fish_white",
+      "cooking_method": "sauteed",
+      "sauce": "beurre_blanc",
+      "flavor_profile": "delicate",
+      "weight": "light",
+      "pairing_keywords": ["butter", "lemon", "delicate", "mineral"]
+    },
+    {
+      "name": "Pan-Seared Halibut with Beurre Blanc",
+      "course": "fish",
+      "primary_protein": "fish_white",
+      "cooking_method": "sauteed",
+      "sauce": "beurre_blanc",
+      "flavor_profile": "delicate",
+      "weight": "medium",
+      "pairing_keywords": ["butter", "citrus", "mineral", "elegant"]
+    },
+    {
+      "name": "Grilled Salmon with Herb Butter",
+      "course": "fish",
+      "primary_protein": "fish_rich",
+      "cooking_method": "grilled",
+      "sauce": "herb_butter",
+      "flavor_profile": "rich",
+      "weight": "medium",
+      "pairing_keywords": ["herbal", "smoky", "rich", "versatile"]
+    },
+    {
+      "name": "Seared Scallops with Cauliflower Purée",
+      "course": "fish",
+      "primary_protein": "shellfish",
+      "cooking_method": "sauteed",
+      "sauce": "beurre_blanc",
+      "flavor_profile": "delicate",
+      "weight": "medium",
+      "pairing_keywords": ["sweet", "delicate", "butter", "caramelized"]
+    },
+    {
+      "name": "Beef Tenderloin with Red Wine Reduction",
+      "course": "main",
+      "primary_protein": "beef",
+      "cooking_method": "roasted",
+      "sauce": "red_wine_reduction",
+      "flavor_profile": "rich",
+      "weight": "heavy",
+      "pairing_keywords": ["structured", "tannic", "dark fruit", "powerful"]
+    },
+    {
+      "name": "Rack of Lamb with Herbs de Provence",
+      "course": "main",
+      "primary_protein": "lamb",
+      "cooking_method": "roasted",
+      "sauce": "herb_butter",
+      "flavor_profile": "rich",
+      "weight": "heavy",
+      "pairing_keywords": ["herbal", "earthy", "gamey", "structured"]
+    },
+    {
+      "name": "Duck Breast with Cherry Gastrique",
+      "course": "main",
+      "primary_protein": "duck",
+      "cooking_method": "roasted",
+      "sauce": "",
+      "flavor_profile": "rich",
+      "weight": "heavy",
+      "pairing_keywords": ["dark fruit", "rich", "gamey", "sweet-savory"]
+    },
+    {
+      "name": "Braised Short Ribs with Root Vegetables",
+      "course": "main",
+      "primary_protein": "beef",
+      "cooking_method": "braised",
+      "sauce": "red_wine_reduction",
+      "flavor_profile": "rich",
+      "weight": "heavy",
+      "pairing_keywords": ["earthy", "umami", "structured", "warming"]
+    },
+    {
+      "name": "Roasted Chicken with Morel Mushrooms",
+      "course": "main",
+      "primary_protein": "poultry",
+      "cooking_method": "roasted",
+      "sauce": "mushroom_jus",
+      "flavor_profile": "earthy",
+      "weight": "medium",
+      "pairing_keywords": ["earthy", "herbal", "mushroom", "comfort"]
+    },
+    {
+      "name": "Venison Loin with Juniper Berry Sauce",
+      "course": "main",
+      "primary_protein": "beef",
+      "cooking_method": "roasted",
+      "sauce": "red_wine_reduction",
+      "flavor_profile": "rich",
+      "weight": "heavy",
+      "pairing_keywords": ["gamey", "dark fruit", "spice", "forest"]
+    },
+    {
+      "name": "Risotto with White Truffle",
+      "course": "main",
+      "primary_protein": "truffle",
+      "cooking_method": "sauteed",
+      "sauce": "",
+      "flavor_profile": "earthy",
+      "weight": "medium",
+      "pairing_keywords": ["truffle", "earthy", "umami", "luxurious"]
+    },
+    {
+      "name": "Cheese Selection",
+      "course": "cheese",
+      "primary_protein": "cheese_hard",
+      "cooking_method": "raw",
+      "sauce": "",
+      "flavor_profile": "rich",
+      "weight": "medium",
+      "pairing_keywords": ["nutty", "aged", "complex", "savory"]
+    },
+    {
+      "name": "Roquefort with Honey and Walnuts",
+      "course": "cheese",
+      "primary_protein": "cheese_blue",
+      "cooking_method": "raw",
+      "sauce": "",
+      "flavor_profile": "rich",
+      "weight": "heavy",
+      "pairing_keywords": ["pungent", "sweet-savory", "salty", "intense"]
+    },
+    {
+      "name": "Chocolate Soufflé",
+      "course": "dessert",
+      "primary_protein": "chocolate",
+      "cooking_method": "roasted",
+      "sauce": "",
+      "flavor_profile": "rich",
+      "weight": "heavy",
+      "pairing_keywords": ["chocolate", "rich", "bitter-sweet", "warm"]
+    },
+    {
+      "name": "Tarte Tatin",
+      "course": "dessert",
+      "primary_protein": "vegetable",
+      "cooking_method": "roasted",
+      "sauce": "cream",
+      "flavor_profile": "rich",
+      "weight": "medium",
+      "pairing_keywords": ["caramel", "apple", "butter", "sweet"]
+    },
+    {
+      "name": "Crème Brûlée",
+      "course": "dessert",
+      "primary_protein": "vegetable",
+      "cooking_method": "poached",
+      "sauce": "cream",
+      "flavor_profile": "rich",
+      "weight": "medium",
+      "pairing_keywords": ["vanilla", "caramel", "custard", "sweet"]
+    }
+  ]
+}
