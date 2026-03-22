@@ -3128,6 +3128,67 @@
                   "style_notes": "Exciting Pecorino white and robust reds"
                 }
               ]
+            },
+            {
+              "name": "Castelli di Jesi",
+              "primary_grapes": [
+                "Verdicchio"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Matelica",
+                  "primary_grapes": [
+                    "Verdicchio"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Higher-altitude, more structured Verdicchio than Jesi",
+                  "price_tier": "premium",
+                  "elevation_m": [
+                    300,
+                    500
+                  ]
+                },
+                {
+                  "name": "Cupramontana",
+                  "primary_grapes": [
+                    "Verdicchio"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Classical Verdicchio dei Castelli di Jesi heartland",
+                  "climate": "Mediterranean"
+                }
+              ]
+            },
+            {
+              "name": "Offida",
+              "primary_grapes": [
+                "Pecorino",
+                "Passerina"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Offida",
+                  "primary_grapes": [
+                    "Pecorino",
+                    "Passerina"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "sand",
+                    "limestone"
+                  ],
+                  "style_notes": "DOCG for Pecorino and Passerina — mineral-driven whites",
+                  "climate": "Mediterranean"
+                }
+              ]
             }
           ]
         },
@@ -3226,6 +3287,124 @@
                   "ungrafted_vines_common": true
                 }
               ]
+            },
+            {
+              "name": "Gallura",
+              "primary_grapes": [
+                "Vermentino"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Tempio Pausania",
+                  "primary_grapes": [
+                    "Vermentino di Gallura"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "decomposed granite"
+                  ],
+                  "style_notes": "Sardinia's only DOCG — mineral, intense Vermentino",
+                  "price_tier": "premium",
+                  "climate": "Mediterranean",
+                  "elevation_m": [
+                    300,
+                    500
+                  ],
+                  "annual_rainfall_mm": 700
+                },
+                {
+                  "name": "Luogosanto",
+                  "primary_grapes": [
+                    "Vermentino"
+                  ],
+                  "soil_types": [
+                    "granite"
+                  ],
+                  "style_notes": "Wind-swept Gallura Vermentino",
+                  "climate": "Mediterranean"
+                }
+              ]
+            },
+            {
+              "name": "Sulcis",
+              "primary_grapes": [
+                "Carignano",
+                "Monica"
+              ],
+              "climate": "hot Mediterranean",
+              "communes": [
+                {
+                  "name": "Santadi",
+                  "primary_grapes": [
+                    "Carignano"
+                  ],
+                  "soil_types": [
+                    "sandy",
+                    "alluvial"
+                  ],
+                  "style_notes": "Carignano del Sulcis from ungrafted old vines on sand",
+                  "price_tier": "premium",
+                  "climate": "hot Mediterranean",
+                  "ungrafted_vines_common": true
+                },
+                {
+                  "name": "Sant'Antioco",
+                  "primary_grapes": [
+                    "Carignano"
+                  ],
+                  "soil_types": [
+                    "sandy"
+                  ],
+                  "style_notes": "Island Carignano — phylloxera-free sandy soils",
+                  "climate": "hot Mediterranean",
+                  "ungrafted_vines_common": true
+                }
+              ]
+            },
+            {
+              "name": "Barbagia",
+              "primary_grapes": [
+                "Cannonau"
+              ],
+              "climate": "Mediterranean continental",
+              "communes": [
+                {
+                  "name": "Mamoiada",
+                  "primary_grapes": [
+                    "Cannonau"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "schist"
+                  ],
+                  "style_notes": "Wild, high-altitude Cannonau from centenarian vines",
+                  "price_tier": "premium",
+                  "climate": "Mediterranean continental",
+                  "elevation_m": [
+                    500,
+                    700
+                  ],
+                  "organic_percentage": 20.0,
+                  "natural_wine_hub": true
+                },
+                {
+                  "name": "Jerzu",
+                  "primary_grapes": [
+                    "Cannonau"
+                  ],
+                  "soil_types": [
+                    "schist",
+                    "limestone"
+                  ],
+                  "style_notes": "Cannonau di Sardegna heartland",
+                  "climate": "Mediterranean continental",
+                  "elevation_m": [
+                    400,
+                    600
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -3258,6 +3437,180 @@
                   ],
                   "style_notes": "Ancient Calabrian red — the wine of Olympic victors",
                   "price_tier": "value"
+                }
+              ]
+            },
+            {
+              "name": "Cirò",
+              "primary_grapes": [
+                "Gaglioppo"
+              ],
+              "climate": "hot Mediterranean",
+              "communes": [
+                {
+                  "name": "Cirò Marina",
+                  "primary_grapes": [
+                    "Gaglioppo"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Heart of Calabria's oldest DOC — ancient Greek tradition",
+                  "climate": "hot Mediterranean",
+                  "natural_wine_hub": true
+                },
+                {
+                  "name": "Melissa",
+                  "primary_grapes": [
+                    "Gaglioppo",
+                    "Greco Bianco"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "sand"
+                  ],
+                  "style_notes": "Lighter, more accessible Gaglioppo",
+                  "climate": "hot Mediterranean"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Liguria",
+          "primary_grapes": [
+            "Vermentino",
+            "Pigato",
+            "Rossese"
+          ],
+          "climate": "Mediterranean",
+          "style_notes": "Steep terraced vineyards along the Italian Riviera",
+          "sub_regions": [
+            {
+              "name": "Cinque Terre",
+              "primary_grapes": [
+                "Bosco",
+                "Albarola",
+                "Vermentino"
+              ],
+              "climate": "maritime Mediterranean",
+              "communes": [
+                {
+                  "name": "Riomaggiore",
+                  "primary_grapes": [
+                    "Bosco",
+                    "Albarola",
+                    "Vermentino"
+                  ],
+                  "soil_types": [
+                    "sandstone",
+                    "clay"
+                  ],
+                  "style_notes": "Heroic viticulture on dramatic terraced cliffs",
+                  "price_tier": "premium",
+                  "climate": "maritime Mediterranean"
+                }
+              ]
+            },
+            {
+              "name": "Riviera di Ponente",
+              "primary_grapes": [
+                "Pigato",
+                "Vermentino",
+                "Rossese"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Albenga",
+                  "primary_grapes": [
+                    "Pigato"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "alluvial"
+                  ],
+                  "style_notes": "Heart of Pigato production",
+                  "climate": "Mediterranean"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Emilia-Romagna",
+          "primary_grapes": [
+            "Sangiovese",
+            "Lambrusco",
+            "Trebbiano",
+            "Albana"
+          ],
+          "climate": "continental",
+          "style_notes": "Land of Lambrusco and Sangiovese di Romagna",
+          "sub_regions": [
+            {
+              "name": "Modena",
+              "primary_grapes": [
+                "Lambrusco"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Sorbara",
+                  "primary_grapes": [
+                    "Lambrusco di Sorbara"
+                  ],
+                  "soil_types": [
+                    "alluvial",
+                    "sand"
+                  ],
+                  "style_notes": "Finest, most elegant Lambrusco — dry and delicate"
+                },
+                {
+                  "name": "Castelvetro",
+                  "primary_grapes": [
+                    "Lambrusco Grasparossa"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Fuller-bodied Lambrusco from hillside vineyards"
+                }
+              ]
+            },
+            {
+              "name": "Romagna",
+              "primary_grapes": [
+                "Sangiovese",
+                "Albana"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Bertinoro",
+                  "primary_grapes": [
+                    "Albana",
+                    "Sangiovese"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Italy's first white DOCG — Romagna Albana"
+                },
+                {
+                  "name": "Predappio",
+                  "primary_grapes": [
+                    "Sangiovese di Romagna"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Top single-vineyard Sangiovese di Romagna",
+                  "price_tier": "premium"
                 }
               ]
             }
@@ -3705,6 +4058,64 @@
                   ],
                   "phylloxera_free": true,
                   "ungrafted_vines_common": true
+                },
+                {
+                  "name": "Tacoronte-Acentejo",
+                  "primary_grapes": [
+                    "Listán Negro",
+                    "Negramoll"
+                  ],
+                  "soil_types": [
+                    "volcanic",
+                    "basalt"
+                  ],
+                  "style_notes": "North Tenerife — lush, humid volcanic terroir",
+                  "climate": "subtropical",
+                  "phylloxera_free": true,
+                  "ungrafted_vines_common": true
+                },
+                {
+                  "name": "Abona",
+                  "primary_grapes": [
+                    "Listán Blanco"
+                  ],
+                  "soil_types": [
+                    "volcanic"
+                  ],
+                  "style_notes": "South Tenerife — highest vineyards in Spain",
+                  "climate": "subtropical",
+                  "elevation_m": [
+                    400,
+                    1700
+                  ],
+                  "phylloxera_free": true,
+                  "ungrafted_vines_common": true
+                }
+              ]
+            },
+            {
+              "name": "Lanzarote",
+              "primary_grapes": [
+                "Malvasía Volcánica",
+                "Listán Negro"
+              ],
+              "climate": "arid volcanic",
+              "communes": [
+                {
+                  "name": "La Geria",
+                  "primary_grapes": [
+                    "Malvasía Volcánica"
+                  ],
+                  "soil_types": [
+                    "volcanic lapilli",
+                    "basalt"
+                  ],
+                  "style_notes": "Lunar landscape — vines in pits protected by semicircular stone walls",
+                  "price_tier": "premium",
+                  "climate": "arid volcanic",
+                  "annual_rainfall_mm": 150,
+                  "phylloxera_free": true,
+                  "ungrafted_vines_common": true
                 }
               ]
             }
@@ -3745,6 +4156,135 @@
                   ],
                   "style_notes": "Cava sparkling wine capital",
                   "price_tier": "value"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Galicia",
+          "primary_grapes": [
+            "Albariño",
+            "Godello",
+            "Mencía"
+          ],
+          "climate": "Atlantic",
+          "style_notes": "Spain's green northwest — Atlantic-influenced whites and reds",
+          "sub_regions": [
+            {
+              "name": "Rías Baixas",
+              "primary_grapes": [
+                "Albariño"
+              ],
+              "climate": "Atlantic",
+              "communes": [
+                {
+                  "name": "Val do Salnés",
+                  "primary_grapes": [
+                    "Albariño"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "sand"
+                  ],
+                  "style_notes": "Albariño heartland — saline, mineral whites",
+                  "price_tier": "premium",
+                  "climate": "cool maritime",
+                  "annual_rainfall_mm": 1500
+                },
+                {
+                  "name": "Condado do Tea",
+                  "primary_grapes": [
+                    "Albariño",
+                    "Treixadura"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "alluvial"
+                  ],
+                  "style_notes": "Warmer inland Rías Baixas — fuller-bodied",
+                  "climate": "Atlantic"
+                }
+              ]
+            },
+            {
+              "name": "Ribeira Sacra",
+              "primary_grapes": [
+                "Mencía",
+                "Godello"
+              ],
+              "climate": "Atlantic continental",
+              "communes": [
+                {
+                  "name": "Amandi",
+                  "primary_grapes": [
+                    "Mencía"
+                  ],
+                  "soil_types": [
+                    "slate",
+                    "granite"
+                  ],
+                  "style_notes": "Steepest vineyards in Spain — terraced gorge viticulture",
+                  "price_tier": "premium",
+                  "climate": "Atlantic continental",
+                  "elevation_m": [
+                    200,
+                    500
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Valdeorras",
+              "primary_grapes": [
+                "Godello",
+                "Mencía"
+              ],
+              "climate": "Atlantic continental",
+              "communes": [
+                {
+                  "name": "O Barco",
+                  "primary_grapes": [
+                    "Godello"
+                  ],
+                  "soil_types": [
+                    "slate"
+                  ],
+                  "style_notes": "Godello on slate — Spain's most exciting white grape revival",
+                  "price_tier": "premium"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Basque Country",
+          "primary_grapes": [
+            "Hondarrabi Zuri",
+            "Hondarrabi Beltza"
+          ],
+          "climate": "cool maritime",
+          "style_notes": "Txakoli — crisp, slightly sparkling wines for pintxos",
+          "sub_regions": [
+            {
+              "name": "Getaria",
+              "primary_grapes": [
+                "Hondarrabi Zuri"
+              ],
+              "climate": "cool maritime",
+              "communes": [
+                {
+                  "name": "Getaria",
+                  "primary_grapes": [
+                    "Hondarrabi Zuri"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "sandstone"
+                  ],
+                  "style_notes": "Classic Txakoli — bone-dry, saline, slight pétillance",
+                  "climate": "cool maritime",
+                  "annual_rainfall_mm": 1600
                 }
               ]
             }
@@ -3947,6 +4487,58 @@
                   ]
                 }
               ]
+            },
+            {
+              "name": "Borba-Reguengos",
+              "primary_grapes": [
+                "Aragonez",
+                "Trincadeira"
+              ],
+              "climate": "hot Mediterranean",
+              "communes": [
+                {
+                  "name": "Reguengos de Monsaraz",
+                  "primary_grapes": [
+                    "Aragonez",
+                    "Trincadeira"
+                  ],
+                  "soil_types": [
+                    "schist",
+                    "granite"
+                  ],
+                  "style_notes": "Premium Alentejo reds near Spanish border",
+                  "price_tier": "premium",
+                  "climate": "hot Mediterranean"
+                },
+                {
+                  "name": "Borba",
+                  "primary_grapes": [
+                    "Aragonez",
+                    "Castelão"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Marble country — age-worthy reds from limestone soils",
+                  "climate": "hot Mediterranean"
+                },
+                {
+                  "name": "Portalegre",
+                  "primary_grapes": [
+                    "Aragonez",
+                    "Grand Noir"
+                  ],
+                  "soil_types": [
+                    "granite"
+                  ],
+                  "style_notes": "High altitude Alentejo — cooler, more elegant",
+                  "elevation_m": [
+                    400,
+                    800
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -4039,6 +4631,42 @@
                     "limestone"
                   ],
                   "style_notes": "Age-worthy tannic Baga — Portugal's Barolo"
+                }
+              ]
+            },
+            {
+              "name": "Central Bairrada",
+              "primary_grapes": [
+                "Baga"
+              ],
+              "climate": "Atlantic",
+              "communes": [
+                {
+                  "name": "Anadia",
+                  "primary_grapes": [
+                    "Baga"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Heart of Baga country — powerful, age-worthy reds",
+                  "price_tier": "premium",
+                  "climate": "Atlantic",
+                  "annual_rainfall_mm": 1000
+                },
+                {
+                  "name": "Cantanhede",
+                  "primary_grapes": [
+                    "Baga",
+                    "Maria Gomes"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "sand"
+                  ],
+                  "style_notes": "Limestone-rich — more elegant style of Baga",
+                  "climate": "Atlantic"
                 }
               ]
             }
@@ -4385,6 +5013,52 @@
                   "style_notes": "Earthy dry Silvaner in Bocksbeutel"
                 }
               ]
+            },
+            {
+              "name": "Maindreieck",
+              "primary_grapes": [
+                "Silvaner"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Würzburg",
+                  "primary_grapes": [
+                    "Silvaner",
+                    "Riesling"
+                  ],
+                  "soil_types": [
+                    "Muschelkalk limestone"
+                  ],
+                  "style_notes": "Franconia's capital — Silvaner from shell limestone",
+                  "price_tier": "premium"
+                },
+                {
+                  "name": "Randersacker",
+                  "primary_grapes": [
+                    "Silvaner"
+                  ],
+                  "soil_types": [
+                    "Muschelkalk",
+                    "marl"
+                  ],
+                  "style_notes": "Top cru Silvaner from steep Main valley sites",
+                  "price_tier": "premium"
+                },
+                {
+                  "name": "Iphofen",
+                  "primary_grapes": [
+                    "Silvaner",
+                    "Riesling"
+                  ],
+                  "soil_types": [
+                    "Keuper",
+                    "gypsum"
+                  ],
+                  "style_notes": "East Franken — Julius Echter Berg is grand cru quality",
+                  "price_tier": "premium"
+                }
+              ]
             }
           ]
         },
@@ -4422,6 +5096,53 @@
                   ],
                   "style_notes": "Germany's warmest vineyards — rich Pinot Noir",
                   "price_tier": "premium"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Ahr",
+          "primary_grapes": [
+            "Pinot Noir",
+            "Frühburgunder"
+          ],
+          "climate": "cool continental",
+          "style_notes": "Germany's premier Pinot Noir region — steep slate-terraced vineyards",
+          "sub_regions": [
+            {
+              "name": "Ahr Valley",
+              "primary_grapes": [
+                "Pinot Noir"
+              ],
+              "climate": "cool continental",
+              "communes": [
+                {
+                  "name": "Dernau",
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "slate",
+                    "greywacke"
+                  ],
+                  "style_notes": "Steep terraces, top Spätburgunder from slate",
+                  "price_tier": "premium",
+                  "climate": "cool continental"
+                },
+                {
+                  "name": "Walporzheim",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Frühburgunder"
+                  ],
+                  "soil_types": [
+                    "slate",
+                    "greywacke"
+                  ],
+                  "style_notes": "Powerful, concentrated Ahr reds",
+                  "price_tier": "premium",
+                  "climate": "cool continental"
                 }
               ]
             }
@@ -4722,6 +5443,57 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Südsteiermark",
+          "primary_grapes": [
+            "Sauvignon Blanc",
+            "Morillon",
+            "Muskateller"
+          ],
+          "climate": "cool continental",
+          "style_notes": "Austria's answer to Sancerre — steep slopes, expressive whites",
+          "sub_regions": [
+            {
+              "name": "Gamlitz-Ehrenhausen",
+              "primary_grapes": [
+                "Sauvignon Blanc",
+                "Morillon"
+              ],
+              "climate": "cool continental",
+              "communes": [
+                {
+                  "name": "Gamlitz",
+                  "primary_grapes": [
+                    "Sauvignon Blanc",
+                    "Muskateller"
+                  ],
+                  "soil_types": [
+                    "opok (sandy marl)",
+                    "limestone"
+                  ],
+                  "style_notes": "Premier Sauvignon Blanc on opok soils",
+                  "price_tier": "premium"
+                },
+                {
+                  "name": "Kitzeck",
+                  "primary_grapes": [
+                    "Sauvignon Blanc"
+                  ],
+                  "soil_types": [
+                    "sandstone",
+                    "marl"
+                  ],
+                  "style_notes": "Highest wine village in Styria — extreme slope viticulture",
+                  "price_tier": "premium",
+                  "elevation_m": [
+                    400,
+                    564
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -4921,6 +5693,51 @@
                   "price_tier": "value"
                 }
               ]
+            },
+            {
+              "name": "Heraklion",
+              "primary_grapes": [
+                "Kotsifali",
+                "Mandilaria",
+                "Vilana"
+              ],
+              "climate": "hot Mediterranean",
+              "communes": [
+                {
+                  "name": "Peza",
+                  "primary_grapes": [
+                    "Kotsifali",
+                    "Mandilaria"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Cretan highland vineyards — PGI reds from Kotsifali-Mandilaria blends",
+                  "climate": "hot Mediterranean",
+                  "elevation_m": [
+                    300,
+                    600
+                  ]
+                },
+                {
+                  "name": "Archanes",
+                  "primary_grapes": [
+                    "Kotsifali",
+                    "Mandilaria",
+                    "Vilana"
+                  ],
+                  "soil_types": [
+                    "limestone"
+                  ],
+                  "style_notes": "Minoan wine heritage — altitude provides freshness",
+                  "climate": "hot Mediterranean",
+                  "elevation_m": [
+                    400,
+                    700
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -5011,6 +5828,61 @@
                   "style_notes": "Balanced reds and amber wines"
                 }
               ]
+            },
+            {
+              "name": "Kvareli",
+              "primary_grapes": [
+                "Saperavi",
+                "Rkatsiteli"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Kvareli",
+                  "primary_grapes": [
+                    "Saperavi"
+                  ],
+                  "soil_types": [
+                    "alluvial",
+                    "clay"
+                  ],
+                  "style_notes": "Premium Saperavi single-vineyard wines",
+                  "price_tier": "premium"
+                },
+                {
+                  "name": "Napareuli",
+                  "primary_grapes": [
+                    "Saperavi"
+                  ],
+                  "soil_types": [
+                    "alluvial"
+                  ],
+                  "style_notes": "Elegant Saperavi from protected microclimate",
+                  "price_tier": "premium"
+                }
+              ]
+            },
+            {
+              "name": "Tsinandali",
+              "primary_grapes": [
+                "Rkatsiteli",
+                "Mtsvane"
+              ],
+              "communes": [
+                {
+                  "name": "Tsinandali",
+                  "primary_grapes": [
+                    "Rkatsiteli",
+                    "Mtsvane"
+                  ],
+                  "soil_types": [
+                    "alluvial",
+                    "limestone"
+                  ],
+                  "style_notes": "Georgia's most famous white wine appellation — European-style and qvevri",
+                  "price_tier": "premium"
+                }
+              ]
             }
           ]
         },
@@ -5046,6 +5918,29 @@
                   ],
                   "style_notes": "Western Georgia — lighter qvevri style",
                   "price_tier": "value",
+                  "natural_wine_hub": true
+                }
+              ]
+            },
+            {
+              "name": "Imereti Central",
+              "primary_grapes": [
+                "Tsolikouri",
+                "Tsitska"
+              ],
+              "climate": "subtropical",
+              "communes": [
+                {
+                  "name": "Baghdati",
+                  "primary_grapes": [
+                    "Tsolikouri",
+                    "Tsitska"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Lighter, more elegant qvevri wines than Kakheti",
                   "natural_wine_hub": true
                 }
               ]
@@ -5329,6 +6224,33 @@
                     "basalt"
                   ],
                   "style_notes": "Structured age-worthy Pinot Noir"
+                },
+                {
+                  "name": "Ribbon Ridge",
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "marine sedimentary"
+                  ],
+                  "style_notes": "Tiny, prestigious AVA — silky, perfumed Pinot Noir",
+                  "price_tier": "luxury",
+                  "climate": "cool maritime"
+                },
+                {
+                  "name": "Chehalem Mountains",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Riesling"
+                  ],
+                  "soil_types": [
+                    "volcanic",
+                    "loess",
+                    "marine sedimentary"
+                  ],
+                  "style_notes": "Three distinct soil types — great diversity of Pinot styles",
+                  "price_tier": "premium",
+                  "climate": "cool maritime"
                 }
               ]
             }
@@ -5402,6 +6324,20 @@
                     "basalt"
                   ],
                   "style_notes": "Diverse — great Riesling and reds"
+                },
+                {
+                  "name": "Horse Heaven Hills",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Riesling",
+                    "Sauvignon Blanc"
+                  ],
+                  "soil_types": [
+                    "loess",
+                    "silt"
+                  ],
+                  "style_notes": "Windy, high-elevation — balances power with freshness",
+                  "climate": "arid continental"
                 }
               ]
             }
@@ -5540,6 +6476,45 @@
                     "limestone"
                   ],
                   "style_notes": "Maritime-influenced Shiraz and GSM blends"
+                }
+              ]
+            },
+            {
+              "name": "McLaren Vale Central",
+              "primary_grapes": [
+                "Shiraz",
+                "Grenache"
+              ],
+              "climate": "warm Mediterranean",
+              "communes": [
+                {
+                  "name": "McLaren Vale",
+                  "primary_grapes": [
+                    "Shiraz",
+                    "Grenache",
+                    "Cabernet Sauvignon"
+                  ],
+                  "soil_types": [
+                    "red-brown earth",
+                    "sand over limestone"
+                  ],
+                  "style_notes": "Old-vine Grenache and Shiraz with Gulf St Vincent maritime influence",
+                  "price_tier": "premium",
+                  "climate": "warm Mediterranean",
+                  "annual_rainfall_mm": 550
+                },
+                {
+                  "name": "Blewitt Springs",
+                  "primary_grapes": [
+                    "Grenache",
+                    "Shiraz"
+                  ],
+                  "soil_types": [
+                    "sand over clay"
+                  ],
+                  "style_notes": "Old bush vine Grenache — sandy soils, low yields",
+                  "price_tier": "premium",
+                  "climate": "warm Mediterranean"
                 }
               ]
             }
@@ -5683,6 +6658,96 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Yarra Valley",
+          "primary_grapes": [
+            "Pinot Noir",
+            "Chardonnay",
+            "Shiraz"
+          ],
+          "climate": "cool maritime",
+          "style_notes": "Victoria's premier cool-climate region",
+          "sub_regions": [
+            {
+              "name": "Upper Yarra",
+              "primary_grapes": [
+                "Pinot Noir",
+                "Chardonnay"
+              ],
+              "climate": "cool maritime",
+              "communes": [
+                {
+                  "name": "Yarra Glen",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "red volcanic",
+                    "grey clay"
+                  ],
+                  "style_notes": "Cool-climate Pinot and Chardonnay — Burgundian aspirations",
+                  "price_tier": "premium",
+                  "climate": "cool maritime"
+                },
+                {
+                  "name": "Healesville",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "deep red volcanic"
+                  ],
+                  "style_notes": "Upper Yarra — cooler, more elegant styles",
+                  "price_tier": "premium",
+                  "climate": "cool maritime",
+                  "elevation_m": [
+                    200,
+                    400
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tasmania",
+          "primary_grapes": [
+            "Pinot Noir",
+            "Chardonnay",
+            "Riesling"
+          ],
+          "climate": "cool maritime",
+          "style_notes": "Australia's coolest region — outstanding sparkling wine",
+          "sub_regions": [
+            {
+              "name": "Tamar Valley",
+              "primary_grapes": [
+                "Pinot Noir",
+                "Chardonnay",
+                "Riesling"
+              ],
+              "climate": "cool maritime",
+              "communes": [
+                {
+                  "name": "Tamar Valley",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "dolerite",
+                    "basalt"
+                  ],
+                  "style_notes": "Premium sparkling and still Pinot from cool-climate Tasmania",
+                  "price_tier": "premium",
+                  "climate": "cool maritime"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -5753,6 +6818,49 @@
                   ],
                   "style_notes": "World's southernmost Pinot Noir — intense and pure",
                   "price_tier": "premium"
+                }
+              ]
+            },
+            {
+              "name": "Bannockburn",
+              "primary_grapes": [
+                "Pinot Noir"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Bannockburn",
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "schist",
+                    "loess",
+                    "gravel"
+                  ],
+                  "style_notes": "Concentrated, complex Pinot from hot, dry sub-region",
+                  "price_tier": "premium",
+                  "elevation_m": [
+                    200,
+                    350
+                  ]
+                },
+                {
+                  "name": "Gibbston",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Riesling"
+                  ],
+                  "soil_types": [
+                    "schist",
+                    "gravel"
+                  ],
+                  "style_notes": "Cool sheltered valley — elegant, aromatic Pinot",
+                  "price_tier": "premium",
+                  "elevation_m": [
+                    300,
+                    450
+                  ]
                 }
               ]
             }
@@ -5915,6 +7023,73 @@
                   "phylloxera_free": true,
                   "ungrafted_vines_common": true,
                   "natural_wine_hub": true
+                },
+                {
+                  "name": "Portezuelo",
+                  "primary_grapes": [
+                    "País",
+                    "Cinsault"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "volcanic"
+                  ],
+                  "style_notes": "Old-vine País from 100+ year old dry-farmed vines",
+                  "climate": "Mediterranean",
+                  "phylloxera_free": true,
+                  "ungrafted_vines_common": true,
+                  "natural_wine_hub": true
+                },
+                {
+                  "name": "Guarilihue",
+                  "primary_grapes": [
+                    "País",
+                    "Muscat of Alexandria"
+                  ],
+                  "soil_types": [
+                    "granite"
+                  ],
+                  "style_notes": "Remote mountain vineyards — traditional Chilean winemaking",
+                  "climate": "Mediterranean",
+                  "phylloxera_free": true,
+                  "ungrafted_vines_common": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bío Bío Valley",
+          "primary_grapes": [
+            "Pinot Noir",
+            "Riesling",
+            "Gewürztraminer",
+            "País"
+          ],
+          "climate": "cool maritime",
+          "style_notes": "Southern frontier — cool-climate aromatic whites",
+          "sub_regions": [
+            {
+              "name": "Bío Bío",
+              "primary_grapes": [
+                "Riesling",
+                "Gewürztraminer",
+                "Pinot Noir"
+              ],
+              "climate": "cool maritime",
+              "communes": [
+                {
+                  "name": "Mulchén",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Riesling"
+                  ],
+                  "soil_types": [
+                    "volcanic",
+                    "clay"
+                  ],
+                  "style_notes": "Southern Chile's cool-climate frontier",
+                  "climate": "cool maritime"
                 }
               ]
             }
@@ -6053,6 +7228,64 @@
                     1500,
                     2000
                   ]
+                },
+                {
+                  "name": "Colomé",
+                  "primary_grapes": [
+                    "Malbec"
+                  ],
+                  "soil_types": [
+                    "sand",
+                    "calcareous"
+                  ],
+                  "style_notes": "Among the world's highest vineyards at 2,300m+",
+                  "price_tier": "luxury",
+                  "climate": "extreme altitude",
+                  "elevation_m": [
+                    2300,
+                    3100
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Patagonia",
+          "primary_grapes": [
+            "Pinot Noir",
+            "Malbec",
+            "Chardonnay"
+          ],
+          "climate": "cool continental",
+          "style_notes": "Argentina's cool-climate frontier — wind, latitude, and elegance",
+          "sub_regions": [
+            {
+              "name": "Río Negro",
+              "primary_grapes": [
+                "Pinot Noir",
+                "Malbec",
+                "Chardonnay"
+              ],
+              "climate": "cool continental",
+              "communes": [
+                {
+                  "name": "Alto Valle",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Merlot"
+                  ],
+                  "soil_types": [
+                    "alluvial",
+                    "calcareous"
+                  ],
+                  "style_notes": "Argentina's southernmost vineyards — elegant, cool-climate wines",
+                  "price_tier": "premium",
+                  "climate": "cool continental",
+                  "elevation_m": [
+                    200,
+                    400
+                  ]
                 }
               ]
             }
@@ -6156,6 +7389,45 @@
                   "natural_wine_hub": true
                 }
               ]
+            },
+            {
+              "name": "Paardeberg",
+              "primary_grapes": [
+                "Chenin Blanc",
+                "Grenache"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Paardeberg",
+                  "primary_grapes": [
+                    "Chenin Blanc",
+                    "Grenache"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "schist"
+                  ],
+                  "style_notes": "Old bush vine Chenin epicenter — South Africa's most exciting terroir",
+                  "price_tier": "premium",
+                  "climate": "Mediterranean",
+                  "organic_percentage": 30.0,
+                  "natural_wine_hub": true
+                },
+                {
+                  "name": "Malmesbury",
+                  "primary_grapes": [
+                    "Syrah",
+                    "Chenin Blanc"
+                  ],
+                  "soil_types": [
+                    "shale",
+                    "granite"
+                  ],
+                  "style_notes": "Swartland heartland — spicy Syrah and textural Chenin",
+                  "climate": "Mediterranean"
+                }
+              ]
             }
           ]
         },
@@ -6190,6 +7462,47 @@
                   ],
                   "style_notes": "Historic Cape vineyard — legendary sweet Vin de Constance",
                   "price_tier": "premium"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Elgin",
+          "primary_grapes": [
+            "Pinot Noir",
+            "Chardonnay",
+            "Sauvignon Blanc"
+          ],
+          "climate": "cool maritime",
+          "style_notes": "High-altitude, cool-climate region — South Africa's Burgundy",
+          "sub_regions": [
+            {
+              "name": "Elgin Valley",
+              "primary_grapes": [
+                "Pinot Noir",
+                "Chardonnay"
+              ],
+              "climate": "cool maritime",
+              "communes": [
+                {
+                  "name": "Elgin",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay",
+                    "Sauvignon Blanc"
+                  ],
+                  "soil_types": [
+                    "shale",
+                    "sandstone"
+                  ],
+                  "style_notes": "Cool apple-growing region turned wine frontier",
+                  "price_tier": "premium",
+                  "climate": "cool maritime",
+                  "elevation_m": [
+                    200,
+                    400
+                  ]
                 }
               ]
             }
@@ -6455,6 +7768,1403 @@
                   ],
                   "style_notes": "Slovenia's Collio — orange wine epicenter",
                   "natural_wine_hub": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "England",
+      "wine_regions": [
+        {
+          "name": "Sussex",
+          "classification_system": "PDO",
+          "primary_grapes": [
+            "Chardonnay",
+            "Pinot Noir",
+            "Pinot Meunier"
+          ],
+          "climate": "cool maritime",
+          "style_notes": "England's premier sparkling wine region on chalk downlands",
+          "sub_regions": [
+            {
+              "name": "South Downs",
+              "primary_grapes": [
+                "Chardonnay",
+                "Pinot Noir",
+                "Pinot Meunier"
+              ],
+              "climate": "cool maritime",
+              "communes": [
+                {
+                  "name": "Ditchling",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "chalk",
+                    "greensand"
+                  ],
+                  "style_notes": "Classic sparkling on South Downs chalk",
+                  "price_tier": "premium",
+                  "climate": "cool maritime",
+                  "elevation_m": [
+                    50,
+                    200
+                  ],
+                  "annual_rainfall_mm": 800,
+                  "growing_degree_days": 900
+                },
+                {
+                  "name": "Alfriston",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir",
+                    "Pinot Meunier"
+                  ],
+                  "soil_types": [
+                    "chalk",
+                    "clay-over-chalk"
+                  ],
+                  "style_notes": "Elegant sparkling wines",
+                  "price_tier": "premium",
+                  "climate": "cool maritime",
+                  "elevation_m": [
+                    10,
+                    150
+                  ]
+                },
+                {
+                  "name": "Wiston",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "chalk"
+                  ],
+                  "style_notes": "High-quality blanc de blancs",
+                  "price_tier": "premium",
+                  "climate": "cool maritime"
+                }
+              ]
+            },
+            {
+              "name": "Weald",
+              "primary_grapes": [
+                "Chardonnay",
+                "Pinot Noir",
+                "Bacchus"
+              ],
+              "climate": "cool maritime",
+              "communes": [
+                {
+                  "name": "Bolney",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Pinot Meunier",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "sandstone"
+                  ],
+                  "style_notes": "Both sparkling and still wines",
+                  "climate": "cool maritime"
+                },
+                {
+                  "name": "Plumpton",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Bacchus"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "greensand"
+                  ],
+                  "style_notes": "Home of Plumpton wine college",
+                  "climate": "cool maritime"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Kent",
+          "primary_grapes": [
+            "Chardonnay",
+            "Pinot Noir",
+            "Bacchus"
+          ],
+          "climate": "cool maritime",
+          "style_notes": "Garden of England — sparkling and aromatic whites",
+          "sub_regions": [
+            {
+              "name": "North Downs",
+              "primary_grapes": [
+                "Chardonnay",
+                "Pinot Noir"
+              ],
+              "climate": "cool maritime",
+              "communes": [
+                {
+                  "name": "Canterbury",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "chalk",
+                    "clay"
+                  ],
+                  "style_notes": "Historic winemaking area",
+                  "climate": "cool maritime"
+                },
+                {
+                  "name": "Biddenden",
+                  "primary_grapes": [
+                    "Bacchus",
+                    "Ortega"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "sandstone"
+                  ],
+                  "style_notes": "Still whites, especially Bacchus",
+                  "climate": "cool maritime"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hampshire",
+          "primary_grapes": [
+            "Chardonnay",
+            "Pinot Noir",
+            "Pinot Meunier"
+          ],
+          "climate": "cool maritime",
+          "style_notes": "Top sparkling producers on chalk",
+          "sub_regions": [
+            {
+              "name": "Hampshire Downs",
+              "primary_grapes": [
+                "Chardonnay",
+                "Pinot Noir"
+              ],
+              "climate": "cool maritime",
+              "communes": [
+                {
+                  "name": "Hambledon",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir",
+                    "Pinot Meunier"
+                  ],
+                  "soil_types": [
+                    "chalk"
+                  ],
+                  "style_notes": "Site of first commercial English vineyard",
+                  "price_tier": "premium",
+                  "climate": "cool maritime"
+                },
+                {
+                  "name": "Exton Park",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "chalk"
+                  ],
+                  "style_notes": "Premium traditional method sparkling",
+                  "price_tier": "premium",
+                  "climate": "cool maritime"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Canada",
+      "wine_regions": [
+        {
+          "name": "Niagara Peninsula",
+          "classification_system": "VQA",
+          "primary_grapes": [
+            "Riesling",
+            "Chardonnay",
+            "Pinot Noir",
+            "Cabernet Franc",
+            "Vidal"
+          ],
+          "climate": "cold continental",
+          "style_notes": "World-famous icewine; increasingly fine still wines",
+          "sub_regions": [
+            {
+              "name": "Niagara-on-the-Lake",
+              "primary_grapes": [
+                "Chardonnay",
+                "Riesling",
+                "Vidal"
+              ],
+              "climate": "cold continental",
+              "communes": [
+                {
+                  "name": "Niagara Lakeshore",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Riesling",
+                    "Vidal"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "glacial till"
+                  ],
+                  "style_notes": "Lake-moderated climate, icewine heartland",
+                  "climate": "cold continental",
+                  "annual_rainfall_mm": 800
+                },
+                {
+                  "name": "St. David's Bench",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir",
+                    "Cabernet Franc"
+                  ],
+                  "soil_types": [
+                    "red clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Warm bench site for premium reds",
+                  "price_tier": "premium",
+                  "climate": "cold continental",
+                  "elevation_m": [
+                    75,
+                    100
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Beamsville Bench",
+              "primary_grapes": [
+                "Riesling",
+                "Chardonnay",
+                "Pinot Noir"
+              ],
+              "climate": "cold continental",
+              "communes": [
+                {
+                  "name": "Beamsville Bench",
+                  "primary_grapes": [
+                    "Riesling",
+                    "Chardonnay",
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "clay-loam",
+                    "glacial till",
+                    "limestone"
+                  ],
+                  "style_notes": "Elevated bench with excellent drainage and air circulation",
+                  "price_tier": "premium",
+                  "climate": "cold continental",
+                  "elevation_m": [
+                    90,
+                    150
+                  ]
+                },
+                {
+                  "name": "Twenty Mile Bench",
+                  "primary_grapes": [
+                    "Riesling",
+                    "Cabernet Franc"
+                  ],
+                  "soil_types": [
+                    "clay-loam",
+                    "shale"
+                  ],
+                  "style_notes": "Sheltered bench with long growing season",
+                  "climate": "cold continental",
+                  "elevation_m": [
+                    75,
+                    120
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Okanagan Valley",
+          "classification_system": "VQA",
+          "primary_grapes": [
+            "Pinot Noir",
+            "Merlot",
+            "Pinot Gris",
+            "Chardonnay",
+            "Riesling",
+            "Syrah"
+          ],
+          "climate": "continental",
+          "style_notes": "BC's premier wine region — desert-like south, cool-climate north",
+          "sub_regions": [
+            {
+              "name": "South Okanagan",
+              "primary_grapes": [
+                "Merlot",
+                "Cabernet Sauvignon",
+                "Syrah"
+              ],
+              "climate": "arid continental",
+              "communes": [
+                {
+                  "name": "Osoyoos",
+                  "primary_grapes": [
+                    "Merlot",
+                    "Cabernet Sauvignon",
+                    "Syrah"
+                  ],
+                  "soil_types": [
+                    "sandy loam",
+                    "gravel"
+                  ],
+                  "style_notes": "Canada's only desert — warmest site, bold reds",
+                  "price_tier": "premium",
+                  "climate": "arid continental",
+                  "annual_rainfall_mm": 250,
+                  "growing_degree_days": 1500
+                },
+                {
+                  "name": "Oliver",
+                  "primary_grapes": [
+                    "Merlot",
+                    "Cabernet Franc",
+                    "Pinot Gris"
+                  ],
+                  "soil_types": [
+                    "sandy",
+                    "glacial"
+                  ],
+                  "style_notes": "'Wine Capital of Canada' — diverse styles",
+                  "climate": "arid continental",
+                  "growing_degree_days": 1400
+                }
+              ]
+            },
+            {
+              "name": "Central Okanagan",
+              "primary_grapes": [
+                "Pinot Noir",
+                "Pinot Gris",
+                "Chardonnay"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Kelowna",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay",
+                    "Riesling"
+                  ],
+                  "soil_types": [
+                    "volcanic",
+                    "glacial"
+                  ],
+                  "style_notes": "Cooler climate, elegant wines"
+                },
+                {
+                  "name": "Naramata Bench",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Riesling",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "sandy loam",
+                    "gravel"
+                  ],
+                  "style_notes": "Premium bench with lake influence",
+                  "price_tier": "premium"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Prince Edward County",
+          "classification_system": "VQA",
+          "primary_grapes": [
+            "Pinot Noir",
+            "Chardonnay"
+          ],
+          "climate": "cold continental",
+          "style_notes": "Cool-climate region on limestone — Burgundian ambitions",
+          "sub_regions": [
+            {
+              "name": "Hillier",
+              "primary_grapes": [
+                "Pinot Noir",
+                "Chardonnay"
+              ],
+              "climate": "cold continental",
+              "communes": [
+                {
+                  "name": "Hillier",
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Lean, mineral-driven Pinot and Chardonnay",
+                  "price_tier": "premium",
+                  "climate": "cold continental"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Turkey",
+      "wine_regions": [
+        {
+          "name": "Eastern Anatolia",
+          "primary_grapes": [
+            "Öküzgözü",
+            "Boğazkere"
+          ],
+          "climate": "continental",
+          "style_notes": "Turkey's noblest reds from ancient vineyards at high altitude",
+          "sub_regions": [
+            {
+              "name": "Elazığ",
+              "primary_grapes": [
+                "Öküzgözü",
+                "Boğazkere"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Elazığ",
+                  "primary_grapes": [
+                    "Öküzgözü",
+                    "Boğazkere"
+                  ],
+                  "soil_types": [
+                    "volcanic",
+                    "limestone"
+                  ],
+                  "style_notes": "Iconic Öküzgözü-Boğazkere blends at altitude",
+                  "price_tier": "premium",
+                  "elevation_m": [
+                    850,
+                    1200
+                  ],
+                  "growing_degree_days": 1400
+                },
+                {
+                  "name": "Diyarbakır",
+                  "primary_grapes": [
+                    "Boğazkere",
+                    "Öküzgözü"
+                  ],
+                  "soil_types": [
+                    "basalt",
+                    "clay"
+                  ],
+                  "style_notes": "Bold reds from Turkey's southeast",
+                  "elevation_m": [
+                    600,
+                    900
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Central Anatolia",
+          "primary_grapes": [
+            "Kalecik Karası",
+            "Narince",
+            "Emir"
+          ],
+          "climate": "continental",
+          "style_notes": "High-altitude vineyards with dramatic day-night temperature swings",
+          "sub_regions": [
+            {
+              "name": "Cappadocia",
+              "primary_grapes": [
+                "Emir",
+                "Kalecik Karası"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Ürgüp",
+                  "primary_grapes": [
+                    "Emir",
+                    "Kalecik Karası"
+                  ],
+                  "soil_types": [
+                    "volcanic tuff",
+                    "pumice"
+                  ],
+                  "style_notes": "Volcanic terroir among fairy chimneys",
+                  "elevation_m": [
+                    900,
+                    1200
+                  ]
+                },
+                {
+                  "name": "Nevşehir",
+                  "primary_grapes": [
+                    "Emir"
+                  ],
+                  "soil_types": [
+                    "volcanic",
+                    "tuff"
+                  ],
+                  "style_notes": "Crisp high-altitude whites",
+                  "elevation_m": [
+                    1000,
+                    1300
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Ankara",
+              "primary_grapes": [
+                "Kalecik Karası"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Kalecik",
+                  "primary_grapes": [
+                    "Kalecik Karası"
+                  ],
+                  "soil_types": [
+                    "alluvial",
+                    "limestone"
+                  ],
+                  "style_notes": "Birthplace of Kalecik Karası — elegant, Pinot-like reds",
+                  "price_tier": "premium",
+                  "elevation_m": [
+                    600,
+                    800
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Thrace",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Merlot",
+            "Sauvignon Blanc"
+          ],
+          "climate": "Mediterranean",
+          "style_notes": "Turkey's largest producing region — international varieties thrive",
+          "sub_regions": [
+            {
+              "name": "Tekirdağ",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Merlot",
+                "Sauvignon Blanc"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Şarköy",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Merlot"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Maritime-influenced international reds",
+                  "climate": "Mediterranean"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Aegean",
+          "primary_grapes": [
+            "Narince",
+            "Sultaniye",
+            "Cabernet Sauvignon"
+          ],
+          "climate": "Mediterranean",
+          "style_notes": "Coastal vineyards with ancient grape varieties",
+          "sub_regions": [
+            {
+              "name": "Tokat",
+              "primary_grapes": [
+                "Narince"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Tokat",
+                  "primary_grapes": [
+                    "Narince"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Home of Narince — Turkey's best indigenous white",
+                  "elevation_m": [
+                    400,
+                    700
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Israel",
+      "wine_regions": [
+        {
+          "name": "Galilee",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Merlot",
+            "Sauvignon Blanc",
+            "Chardonnay"
+          ],
+          "climate": "Mediterranean",
+          "style_notes": "Israel's premier quality region — cool-climate sites at altitude",
+          "sub_regions": [
+            {
+              "name": "Upper Galilee",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Merlot",
+                "Sauvignon Blanc"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Upper Galilee",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Merlot",
+                    "Sauvignon Blanc"
+                  ],
+                  "soil_types": [
+                    "terra rossa",
+                    "limestone",
+                    "basalt"
+                  ],
+                  "style_notes": "Israel's finest reds from high-altitude vineyards",
+                  "price_tier": "premium",
+                  "climate": "Mediterranean",
+                  "elevation_m": [
+                    500,
+                    900
+                  ],
+                  "annual_rainfall_mm": 700
+                }
+              ]
+            },
+            {
+              "name": "Golan Heights",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Merlot",
+                "Chardonnay"
+              ],
+              "climate": "continental",
+              "communes": [
+                {
+                  "name": "Golan Heights",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Merlot",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "volcanic basalt",
+                    "tuff"
+                  ],
+                  "style_notes": "Volcanic plateau — Israel's highest vineyards, elegant wines",
+                  "price_tier": "premium",
+                  "elevation_m": [
+                    400,
+                    1200
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Judean Hills",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Merlot",
+            "Syrah",
+            "Chardonnay"
+          ],
+          "climate": "Mediterranean",
+          "style_notes": "Ancient wine region reborn — altitude provides cool nights",
+          "sub_regions": [
+            {
+              "name": "Jerusalem Hills",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Syrah"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Jerusalem Hills",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Syrah",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "terra rossa",
+                    "limestone"
+                  ],
+                  "style_notes": "Elegant wines from vineyards surrounding Jerusalem",
+                  "price_tier": "premium",
+                  "climate": "Mediterranean",
+                  "elevation_m": [
+                    600,
+                    850
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Negev",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Merlot",
+            "Chenin Blanc"
+          ],
+          "climate": "arid",
+          "style_notes": "Desert viticulture — extreme heat, irrigation essential",
+          "sub_regions": [
+            {
+              "name": "Ramat Arad",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Chenin Blanc"
+              ],
+              "climate": "arid",
+              "communes": [
+                {
+                  "name": "Ramat Arad",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Chenin Blanc"
+                  ],
+                  "soil_types": [
+                    "loess",
+                    "sand"
+                  ],
+                  "style_notes": "High desert wines with intense concentration",
+                  "climate": "arid",
+                  "elevation_m": [
+                    400,
+                    600
+                  ],
+                  "annual_rainfall_mm": 150
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "China",
+      "wine_regions": [
+        {
+          "name": "Ningxia",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Merlot",
+            "Cabernet Gernischt"
+          ],
+          "climate": "continental",
+          "style_notes": "China's Napa Valley — arid, high-altitude, vines buried in winter",
+          "sub_regions": [
+            {
+              "name": "Helan Mountain East",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Merlot"
+              ],
+              "climate": "arid continental",
+              "communes": [
+                {
+                  "name": "Helan Mountain",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Merlot"
+                  ],
+                  "soil_types": [
+                    "gravel",
+                    "sandy loam",
+                    "alluvial"
+                  ],
+                  "style_notes": "China's most prestigious wine zone — Bordeaux-style reds",
+                  "price_tier": "premium",
+                  "climate": "arid continental",
+                  "elevation_m": [
+                    1050,
+                    1200
+                  ],
+                  "annual_rainfall_mm": 200,
+                  "growing_degree_days": 1500
+                },
+                {
+                  "name": "Yinchuan",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Cabernet Gernischt"
+                  ],
+                  "soil_types": [
+                    "gravel",
+                    "sand"
+                  ],
+                  "style_notes": "Emerging zone with desert-edge terroir",
+                  "climate": "arid continental",
+                  "elevation_m": [
+                    1100,
+                    1200
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Xinjiang",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Merlot"
+          ],
+          "climate": "extreme continental",
+          "style_notes": "Vast desert region — extreme temperature swings, irrigation essential",
+          "sub_regions": [
+            {
+              "name": "Turpan",
+              "primary_grapes": [
+                "Cabernet Sauvignon"
+              ],
+              "climate": "extreme continental",
+              "communes": [
+                {
+                  "name": "Turpan",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Longyan"
+                  ],
+                  "soil_types": [
+                    "sand",
+                    "gravel",
+                    "loess"
+                  ],
+                  "style_notes": "One of hottest places on earth — ancient grape growing area",
+                  "climate": "extreme continental",
+                  "elevation_m": [
+                    -100,
+                    200
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Shandong",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Riesling",
+            "Chardonnay"
+          ],
+          "climate": "maritime continental",
+          "style_notes": "China's oldest modern wine region — coastal monsoon climate",
+          "sub_regions": [
+            {
+              "name": "Yantai",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Riesling"
+              ],
+              "climate": "maritime continental",
+              "communes": [
+                {
+                  "name": "Penglai",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Cabernet Gernischt"
+                  ],
+                  "soil_types": [
+                    "sandy loam",
+                    "granite"
+                  ],
+                  "style_notes": "Coastal terroir, maritime influence",
+                  "climate": "maritime continental",
+                  "annual_rainfall_mm": 650
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "India",
+      "wine_regions": [
+        {
+          "name": "Nashik",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Shiraz",
+            "Chenin Blanc",
+            "Sauvignon Blanc"
+          ],
+          "climate": "tropical monsoon",
+          "style_notes": "India's wine capital — altitude compensates for tropical latitude",
+          "sub_regions": [
+            {
+              "name": "Nashik Valley",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Shiraz",
+                "Chenin Blanc"
+              ],
+              "climate": "tropical monsoon",
+              "communes": [
+                {
+                  "name": "Nashik",
+                  "primary_grapes": [
+                    "Chenin Blanc",
+                    "Sauvignon Blanc",
+                    "Shiraz"
+                  ],
+                  "soil_types": [
+                    "red laterite",
+                    "basalt"
+                  ],
+                  "style_notes": "India's largest wine region — monsoonal with dry winters for harvest",
+                  "climate": "tropical monsoon",
+                  "elevation_m": [
+                    500,
+                    700
+                  ],
+                  "annual_rainfall_mm": 1500
+                },
+                {
+                  "name": "Dindori",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Shiraz"
+                  ],
+                  "soil_types": [
+                    "red soil",
+                    "basalt"
+                  ],
+                  "style_notes": "Higher-altitude subzone with better temperature variation",
+                  "climate": "tropical monsoon",
+                  "elevation_m": [
+                    600,
+                    800
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Karnataka",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Shiraz",
+            "Chenin Blanc"
+          ],
+          "climate": "tropical",
+          "style_notes": "Southern plateau vineyards at altitude",
+          "sub_regions": [
+            {
+              "name": "Nandi Hills",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Shiraz"
+              ],
+              "climate": "tropical",
+              "communes": [
+                {
+                  "name": "Nandi Hills",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Shiraz",
+                    "Chenin Blanc"
+                  ],
+                  "soil_types": [
+                    "red laterite",
+                    "granite"
+                  ],
+                  "style_notes": "Bangalore's wine country — tropical viticulture at altitude",
+                  "climate": "tropical",
+                  "elevation_m": [
+                    800,
+                    1000
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Mexico",
+      "wine_regions": [
+        {
+          "name": "Baja California",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Tempranillo",
+            "Nebbiolo",
+            "Grenache"
+          ],
+          "climate": "Mediterranean",
+          "style_notes": "Mexico's premier wine region — Mediterranean climate, diverse styles",
+          "sub_regions": [
+            {
+              "name": "Valle de Guadalupe",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Tempranillo",
+                "Nebbiolo"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Valle de Guadalupe",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Tempranillo",
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "clay",
+                    "alluvial"
+                  ],
+                  "style_notes": "Mexico's Napa — over 200 wineries in a single valley",
+                  "price_tier": "premium",
+                  "climate": "Mediterranean",
+                  "elevation_m": [
+                    300,
+                    400
+                  ],
+                  "annual_rainfall_mm": 250
+                },
+                {
+                  "name": "San Antonio de las Minas",
+                  "primary_grapes": [
+                    "Grenache",
+                    "Mourvèdre",
+                    "Tempranillo"
+                  ],
+                  "soil_types": [
+                    "decomposed granite",
+                    "rocky"
+                  ],
+                  "style_notes": "Higher altitude, cooler microclimate for elegant reds",
+                  "price_tier": "premium",
+                  "climate": "Mediterranean",
+                  "elevation_m": [
+                    400,
+                    500
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Santo Tomás",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Misión",
+                "Barbera"
+              ],
+              "climate": "Mediterranean",
+              "communes": [
+                {
+                  "name": "Santo Tomás",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Misión"
+                  ],
+                  "soil_types": [
+                    "alluvial",
+                    "clay"
+                  ],
+                  "style_notes": "Historic wine valley — Mexico's oldest continuous winemaking",
+                  "climate": "Mediterranean"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Coahuila",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Shiraz",
+            "Chenin Blanc"
+          ],
+          "climate": "arid continental",
+          "style_notes": "Mexico's oldest wine region — high desert at 1,500m+",
+          "sub_regions": [
+            {
+              "name": "Parras Valley",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Shiraz"
+              ],
+              "climate": "arid continental",
+              "communes": [
+                {
+                  "name": "Parras",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Shiraz",
+                    "Chenin Blanc"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "alluvial"
+                  ],
+                  "style_notes": "Casa Madero (1597) — oldest winery in the Americas",
+                  "climate": "arid continental",
+                  "elevation_m": [
+                    1500,
+                    1600
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Querétaro",
+          "primary_grapes": [
+            "Cabernet Sauvignon",
+            "Malbec",
+            "Syrah"
+          ],
+          "climate": "semi-arid",
+          "style_notes": "Central Mexico highlands — emerging sparkling wine region",
+          "sub_regions": [
+            {
+              "name": "Ezequiel Montes",
+              "primary_grapes": [
+                "Cabernet Sauvignon",
+                "Syrah"
+              ],
+              "climate": "semi-arid",
+              "communes": [
+                {
+                  "name": "Ezequiel Montes",
+                  "primary_grapes": [
+                    "Cabernet Sauvignon",
+                    "Malbec",
+                    "Macabeo"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "volcanic"
+                  ],
+                  "style_notes": "High-altitude sparkling and red wine production",
+                  "climate": "semi-arid",
+                  "elevation_m": [
+                    1800,
+                    2000
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Brazil",
+      "wine_regions": [
+        {
+          "name": "Serra Gaúcha",
+          "primary_grapes": [
+            "Merlot",
+            "Cabernet Sauvignon",
+            "Chardonnay",
+            "Riesling Itálico"
+          ],
+          "climate": "humid subtropical",
+          "style_notes": "Brazil's largest wine region — Italian immigrant heritage",
+          "sub_regions": [
+            {
+              "name": "Vale dos Vinhedos",
+              "primary_grapes": [
+                "Merlot",
+                "Cabernet Sauvignon",
+                "Chardonnay"
+              ],
+              "climate": "humid subtropical",
+              "communes": [
+                {
+                  "name": "Vale dos Vinhedos",
+                  "classification_system": "DO",
+                  "primary_grapes": [
+                    "Merlot",
+                    "Cabernet Sauvignon",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "basalt",
+                    "clay"
+                  ],
+                  "style_notes": "Brazil's first and only DO — premium Merlot-based reds",
+                  "price_tier": "premium",
+                  "climate": "humid subtropical",
+                  "elevation_m": [
+                    400,
+                    600
+                  ],
+                  "annual_rainfall_mm": 1700
+                },
+                {
+                  "name": "Pinto Bandeira",
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir",
+                    "Riesling"
+                  ],
+                  "soil_types": [
+                    "basalt",
+                    "clay"
+                  ],
+                  "style_notes": "Sparkling wine specialty — Brazil's answer to Champagne",
+                  "climate": "humid subtropical",
+                  "elevation_m": [
+                    500,
+                    700
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Campanha Gaúcha",
+          "primary_grapes": [
+            "Tannat",
+            "Cabernet Sauvignon",
+            "Merlot"
+          ],
+          "climate": "subtropical",
+          "style_notes": "Flat pampa grasslands — drier climate than Serra Gaúcha",
+          "sub_regions": [
+            {
+              "name": "Campanha",
+              "primary_grapes": [
+                "Tannat",
+                "Cabernet Sauvignon"
+              ],
+              "climate": "subtropical",
+              "communes": [
+                {
+                  "name": "Santana do Livramento",
+                  "primary_grapes": [
+                    "Tannat",
+                    "Cabernet Sauvignon",
+                    "Merlot"
+                  ],
+                  "soil_types": [
+                    "sandy",
+                    "clay"
+                  ],
+                  "style_notes": "Border with Uruguay — Tannat thrives in pampa terroir",
+                  "climate": "subtropical",
+                  "annual_rainfall_mm": 1300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Planalto Catarinense",
+          "primary_grapes": [
+            "Sauvignon Blanc",
+            "Pinot Noir",
+            "Chardonnay"
+          ],
+          "climate": "cool subtropical",
+          "style_notes": "Brazil's highest vineyards — cool-climate frontier",
+          "sub_regions": [
+            {
+              "name": "São Joaquim",
+              "primary_grapes": [
+                "Sauvignon Blanc",
+                "Pinot Noir",
+                "Cabernet Sauvignon"
+              ],
+              "climate": "cool subtropical",
+              "communes": [
+                {
+                  "name": "São Joaquim",
+                  "primary_grapes": [
+                    "Sauvignon Blanc",
+                    "Pinot Noir",
+                    "Cabernet Sauvignon"
+                  ],
+                  "soil_types": [
+                    "volcanic basalt",
+                    "clay"
+                  ],
+                  "style_notes": "1,400m altitude — Brazil's most exciting cool-climate region",
+                  "price_tier": "premium",
+                  "climate": "cool subtropical",
+                  "elevation_m": [
+                    1200,
+                    1400
+                  ]
                 }
               ]
             }

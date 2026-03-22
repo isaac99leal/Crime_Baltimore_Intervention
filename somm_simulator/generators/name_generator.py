@@ -159,6 +159,82 @@ SOUTH_AFRICAN_PLACE_WORDS = [
     "Drakensberg", "Stellenberg", "Tafelberg", "Helderberg",
 ]
 
+ENGLISH_FAMILY_NAMES = [
+    "Gusbourne", "Ridgeview", "Nyetimber", "Hattingley", "Digby",
+    "Exton", "Wiston", "Rathfinny", "Balfour", "Henners",
+    "Coates", "Langham", "Camel Valley", "Breaky Bottom", "Bolney",
+]
+ENGLISH_PLACE_WORDS = [
+    "Downs", "Chalk", "Flint", "Weald", "Hill", "Vale",
+    "Ridge", "Hundred", "Green", "Manor",
+]
+
+CANADIAN_FAMILY_NAMES = [
+    "Tawse", "Le Clos", "Stoneboat", "Burrowing Owl", "Painted Rock",
+    "Moon Curser", "Blue Mountain", "Culmina", "Quails Gate", "Clos du Soleil",
+    "Hidden Bench", "Malivoire", "Featherstone", "Stratus", "Pearl Morissette",
+    "Domaine Queylus", "Flat Rock", "Norman Hardie", "Trail Estate", "Rosehall Run",
+]
+
+TURKISH_PREFIXES = ["Şarapevi", "Bağları"]
+TURKISH_FAMILY_NAMES = [
+    "Kayra", "Urla", "Pamukkale", "Sevilen", "Doluca",
+    "Kavaklidere", "Kocabağ", "Likya", "Vinkara", "Chamlija",
+    "Gülor", "Selendi", "Prodom", "Barel", "Arcadia",
+]
+
+ISRAELI_PREFIXES = ["Yekev", "Kerem"]
+ISRAELI_FAMILY_NAMES = [
+    "Margalit", "Castel", "Flam", "Yarden", "Recanati",
+    "Tzora", "Vitkin", "Pelter", "Clos de Gat", "Domaine du Castel",
+    "Sphera", "Galil Mountain", "Agur", "Barkan", "Ella Valley",
+]
+
+CHINESE_FAMILY_NAMES = [
+    "Helan", "Kanaan", "Silver Heights", "Jade", "Dragon",
+    "Phoenix", "Tiansai", "Puchang", "Legacy Peak", "Xige",
+    "Zhangyu", "Greatwall", "Changyu", "Leirenshou", "Hansen",
+]
+CHINESE_PLACE_WORDS = [
+    "Mountain", "Dragon", "Phoenix", "Jade", "Cloud", "Moon",
+    "Sand", "Star", "Pearl", "Golden",
+]
+
+INDIAN_FAMILY_NAMES = [
+    "Sula", "Grover", "Fratelli", "Charosa", "Vallonné",
+    "York", "Four Seasons", "Myra", "Krsma", "Alchemy",
+    "Good Earth", "Reveilo", "Zampa", "Soma", "Chandon India",
+]
+
+MEXICAN_FAMILY_NAMES = [
+    "Monte Xanic", "Adobe", "Barón Balché", "Bichi", "Bruma",
+    "Decantos", "Encuentro", "Lechuza", "Magoni", "Mogor Badán",
+    "Parvada", "Solar Fortun", "Tres Valles", "Vena Cava", "Viñas de Garza",
+]
+MEXICAN_PREFIXES = ["Bodega", "Viñedos", "Casa", "Hacienda"]
+
+BRAZILIAN_FAMILY_NAMES = [
+    "Miolo", "Lidio Carraro", "Pizzato", "Salton", "Guaspari",
+    "Casa Perini", "Don Laurindo", "Boscato", "Lídio", "Aurora",
+    "Cave Geisse", "Villa Francioni", "Vinícola Thera", "Luiz Argenta", "Dal Pizzol",
+]
+BRAZILIAN_PREFIXES = ["Vinícola", "Casa", "Fazenda"]
+
+BOSNIAN_FAMILY_NAMES = [
+    "Brkić", "Čitluk", "Tvrdoš", "Andrija", "Nuić",
+    "Buntić", "Škegro", "Ljubuški", "Vukoje", "Begić",
+]
+
+ROMANIAN_FAMILY_NAMES = [
+    "Liliac", "Bauer", "Davino", "Nachbil", "Crama Oprișor",
+    "Budureasca", "Cramele Recaș", "Serve", "Avincis", "Domeniul Bogdan",
+]
+
+BULGARIAN_FAMILY_NAMES = [
+    "Bessa Valley", "Bratanov", "Karabunar", "Midalidare", "Rossidi",
+    "Castra Rubra", "Enira", "Orbelus", "Terra Tangra", "Zagreus",
+]
+
 GENERIC_FAMILY_NAMES = [
     "Berg", "Stein", "Kowalski", "Novak", "Popov", "Ivanov", "Petrov",
     "Radović", "Stanković", "Jovanović",
@@ -311,6 +387,76 @@ def _generate_south_african_name() -> tuple[str, str]:
         return family, family
 
 
+def _generate_english_name() -> tuple[str, str]:
+    family = _pick(ENGLISH_FAMILY_NAMES)
+    style = random.randint(1, 3)
+    if style == 1:
+        place = _pick(ENGLISH_PLACE_WORDS)
+        return family, f"{place} {_pick(['Estate', 'Vineyard', 'Wine Estate'])}"
+    elif style == 2:
+        return family, f"{family} {_pick(['Estate', 'Vineyard', 'Wines'])}"
+    else:
+        return family, family
+
+
+def _generate_canadian_name() -> tuple[str, str]:
+    family = _pick(CANADIAN_FAMILY_NAMES)
+    if random.random() < 0.5:
+        suffix = _pick(["Cellars", "Vineyards", "Wines", "Estate Winery"])
+        return family, f"{family} {suffix}"
+    return family, family
+
+
+def _generate_turkish_name() -> tuple[str, str]:
+    family = _pick(TURKISH_FAMILY_NAMES)
+    if random.random() < 0.5:
+        prefix = _pick(TURKISH_PREFIXES)
+        return family, f"{family} {prefix}"
+    return family, family
+
+
+def _generate_israeli_name() -> tuple[str, str]:
+    family = _pick(ISRAELI_FAMILY_NAMES)
+    if random.random() < 0.5:
+        prefix = _pick(ISRAELI_PREFIXES)
+        return family, f"{prefix} {family}"
+    return family, family
+
+
+def _generate_chinese_name() -> tuple[str, str]:
+    family = _pick(CHINESE_FAMILY_NAMES)
+    style = random.randint(1, 3)
+    if style == 1:
+        place = _pick(CHINESE_PLACE_WORDS)
+        return family, f"{place} {_pick(['Vineyard', 'Winery', 'Estate'])}"
+    elif style == 2:
+        return family, f"{family} {_pick(['Winery', 'Vineyards', 'Wine'])}"
+    else:
+        return family, family
+
+
+def _generate_indian_name() -> tuple[str, str]:
+    family = _pick(INDIAN_FAMILY_NAMES)
+    suffix = _pick(["Vineyards", "Wines", "Winery"])
+    return family, f"{family} {suffix}"
+
+
+def _generate_mexican_name() -> tuple[str, str]:
+    family = _pick(MEXICAN_FAMILY_NAMES)
+    if random.random() < 0.4:
+        prefix = _pick(MEXICAN_PREFIXES)
+        return family, f"{prefix} {family}"
+    return family, family
+
+
+def _generate_brazilian_name() -> tuple[str, str]:
+    family = _pick(BRAZILIAN_FAMILY_NAMES)
+    if random.random() < 0.5:
+        prefix = _pick(BRAZILIAN_PREFIXES)
+        return family, f"{prefix} {family}"
+    return family, family
+
+
 def _generate_generic_name(country: str) -> tuple[str, str]:
     family = _pick(GENERIC_FAMILY_NAMES + FRENCH_FAMILY_NAMES)
     return family, f"{family} Estate"
@@ -344,6 +490,16 @@ _GENERATORS = {
     "Switzerland": _generate_german_name,
     "Uruguay": _generate_spanish_name,
     "Egypt": _generate_generic_name,
+    "England": _generate_english_name,
+    "Canada": _generate_canadian_name,
+    "Turkey": _generate_turkish_name,
+    "Israel": _generate_israeli_name,
+    "China": _generate_chinese_name,
+    "India": _generate_indian_name,
+    "Mexico": _generate_mexican_name,
+    "Brazil": _generate_brazilian_name,
+    "Bosnia": _generate_generic_name,
+    "Peru": _generate_spanish_name,
 }
 
 # Track used names to avoid duplicates

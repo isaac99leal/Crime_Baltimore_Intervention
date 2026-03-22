@@ -143,6 +143,36 @@ VINTAGE_QUALITY = {
         2008: 0.88, 2007: 0.82, 2006: 0.78, 2005: 0.80, 2003: 0.85,
         2000: 0.90, 1999: 0.92, 1993: 0.88,
     },
+    # Ningxia (China)
+    ("China", "Ningxia"): {
+        2023: 0.80, 2022: 0.82, 2021: 0.78, 2020: 0.85, 2019: 0.88,
+        2018: 0.82, 2017: 0.85, 2016: 0.90, 2015: 0.78, 2014: 0.82,
+    },
+    # Sussex (England)
+    ("England", "Sussex"): {
+        2023: 0.78, 2022: 0.90, 2021: 0.72, 2020: 0.75, 2019: 0.80,
+        2018: 0.88, 2017: 0.78, 2016: 0.72, 2015: 0.82, 2014: 0.85,
+    },
+    # Niagara Peninsula (Canada)
+    ("Canada", "Niagara Peninsula"): {
+        2023: 0.78, 2022: 0.82, 2021: 0.80, 2020: 0.78, 2019: 0.85,
+        2018: 0.82, 2017: 0.88, 2016: 0.80, 2015: 0.85, 2014: 0.90,
+    },
+    # Okanagan Valley (Canada)
+    ("Canada", "Okanagan Valley"): {
+        2023: 0.82, 2022: 0.85, 2021: 0.78, 2020: 0.88, 2019: 0.90,
+        2018: 0.85, 2017: 0.82, 2016: 0.88, 2015: 0.92, 2014: 0.85,
+    },
+    # Baja California (Mexico)
+    ("Mexico", "Baja California"): {
+        2023: 0.80, 2022: 0.82, 2021: 0.78, 2020: 0.85, 2019: 0.88,
+        2018: 0.82, 2017: 0.80, 2016: 0.85, 2015: 0.82, 2014: 0.78,
+    },
+    # Galilee (Israel)
+    ("Israel", "Galilee"): {
+        2023: 0.80, 2022: 0.85, 2021: 0.78, 2020: 0.82, 2019: 0.90,
+        2018: 0.88, 2017: 0.82, 2016: 0.85, 2015: 0.82, 2014: 0.88,
+    },
 }
 
 # Price tier base costs (wholesale per bottle)
@@ -225,6 +255,14 @@ SPECIAL_DESIGNATIONS = {
     "Croatia": ["", "", "", "Premium"],
     "Slovenia": ["", "", ""],
     "Lebanon": ["", "", "", "Réserve", "Grand Vin"],
+    "England": ["", "", "", "Classic Cuvée", "Blanc de Blancs", "Rosé"],
+    "Canada": ["", "", "", "Reserve", "Single Vineyard", "Icewine"],
+    "Turkey": ["", "", "", "Reserve", "Grand Reserve"],
+    "Israel": ["", "", "", "Reserve", "Single Vineyard", "Grand Vin"],
+    "China": ["", "", "", "Reserve", "Grand Reserve"],
+    "India": ["", "", "", "Reserve", "Limited Edition"],
+    "Mexico": ["", "", "", "Reserva", "Gran Reserva"],
+    "Brazil": ["", "", "", "Reserva", "Gran Reserva"],
 }
 
 # Winemaking notes templates
