@@ -263,6 +263,12 @@ SPECIAL_DESIGNATIONS = {
     "India": ["", "", "", "Reserve", "Limited Edition"],
     "Mexico": ["", "", "", "Reserva", "Gran Reserva"],
     "Brazil": ["", "", "", "Reserva", "Gran Reserva"],
+    "Cyprus": ["", "", "", "Reserve", "Commandaria"],
+    "Montenegro": ["", "", "", "Premium", "Reserve"],
+    "Serbia": ["", "", "", "Premium", "Barrique"],
+    "Romania": ["", "", "", "Rezervă", "DOC-CMD"],
+    "Bulgaria": ["", "", "", "Reserve", "Special Reserve"],
+    "Switzerland": ["", "", "", "Grand Cru", "Réserve"],
 }
 
 # Winemaking notes templates

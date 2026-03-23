@@ -25316,6 +25316,3249 @@
       "is_hybrid": false,
       "is_table_grape": false,
       "endangered": false
+    },
+    {
+      "name": "Blauer Wildbacher",
+      "color": "red",
+      "origin_country": "Austria",
+      "origin_region": "Styria",
+      "aliases": [
+        "Schilcher"
+      ],
+      "typical_profile": {
+        "acidity": 4.5,
+        "tannin": 2.5,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 12.5
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 2.5,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "wild strawberry",
+        "redcurrant",
+        "herbs",
+        "pepper"
+      ],
+      "secondary_aromas": [
+        "rose hip",
+        "minerals"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "bright pink",
+        "pale rose"
+      ],
+      "key_regions": [
+        "Weststeiermark",
+        "Schilcherland"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "Styrian pumpkin seed oil dishes",
+        "cold cuts",
+        "Brettljause"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Almost exclusively made as Schilcher rosé — a bracingly acidic, bone-dry Styrian specialty.",
+      "viticulture": {
+        "climate_preferences": [
+          "cool continental",
+          "alpine"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "low",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Madeleine Angevine",
+      "color": "white",
+      "origin_country": "France",
+      "origin_region": "Loire Valley",
+      "aliases": [
+        "Madeleine"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 0.0,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 10.5,
+          "high": 12.5
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 1.5,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "elderflower",
+        "green apple",
+        "grapefruit",
+        "white flowers"
+      ],
+      "secondary_aromas": [
+        "herbs",
+        "grass"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale straw",
+        "greenish"
+      ],
+      "key_regions": [
+        "England",
+        "Washington State"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Bacchus",
+        "Seyval Blanc"
+      ],
+      "food_affinities": [
+        "salads",
+        "light fish",
+        "English cheese"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "A French crossing that found its spiritual home in English vineyards — thrives in cool, marginal climates.",
+      "viticulture": {
+        "climate_preferences": [
+          "cool maritime",
+          "marginal"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "low",
+        "frost_resistance": "good"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Blauburgunder",
+      "color": "red",
+      "origin_country": "Switzerland",
+      "origin_region": "Graubünden",
+      "aliases": [
+        "Pinot Noir",
+        "Spätburgunder"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 2.5,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.0,
+          "high": 13.5
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 3.0,
+        "oak_affinity": 2.0
+      },
+      "primary_aromas": [
+        "red cherry",
+        "raspberry",
+        "violet",
+        "earth"
+      ],
+      "secondary_aromas": [
+        "spice",
+        "smoke",
+        "mineral"
+      ],
+      "tertiary_aromas": [
+        "leather",
+        "dried rose",
+        "truffle"
+      ],
+      "color_descriptors": [
+        "medium ruby",
+        "garnet"
+      ],
+      "key_regions": [
+        "Graubünden",
+        "Bündner Herrschaft",
+        "Maienfeld"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [],
+      "food_affinities": [
+        "Bündnerfleisch",
+        "alpine cheese",
+        "game"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "Swiss Pinot Noir from Graubünden is considered among the world's finest — rivaling top Burgundy.",
+      "viticulture": {
+        "climate_preferences": [
+          "alpine",
+          "Föhn wind"
+        ],
+        "vigor": "low",
+        "yield_potential": "low",
+        "disease_resistance": "low",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Pais",
+      "color": "red",
+      "origin_country": "Chile",
+      "origin_region": "Maule",
+      "aliases": [
+        "Listán Prieto",
+        "Mission",
+        "Criolla Chica"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 1.5,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.5,
+          "high": 13.5
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 2.5,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "red cherry",
+        "strawberry",
+        "herbs",
+        "earth"
+      ],
+      "secondary_aromas": [
+        "dried herbs",
+        "dust"
+      ],
+      "tertiary_aromas": [
+        "leather"
+      ],
+      "color_descriptors": [
+        "pale ruby",
+        "light garnet"
+      ],
+      "key_regions": [
+        "Itata",
+        "Maule",
+        "Bío Bío"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Cinsault",
+        "Carignan"
+      ],
+      "food_affinities": [
+        "empanadas",
+        "cazuela",
+        "grilled meats"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Chile's oldest grape — brought by missionaries in the 1500s. Old ungrafted vines on volcanic soil.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean",
+          "warm"
+        ],
+        "vigor": "high",
+        "yield_potential": "very high",
+        "disease_resistance": "good",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate",
+        "can_grow_ungrafted": true
+      },
+      "winemaking": {
+        "carbonic_maceration": true,
+        "natural_wine_suitable": true
+      },
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Côt",
+      "color": "red",
+      "origin_country": "France",
+      "origin_region": "Loire Valley",
+      "aliases": [
+        "Malbec",
+        "Auxerrois"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 3.0,
+        "body": 3.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.0,
+          "high": 13.5
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.5,
+        "oak_affinity": 2.0
+      },
+      "primary_aromas": [
+        "black plum",
+        "violet",
+        "black cherry",
+        "iron"
+      ],
+      "secondary_aromas": [
+        "leather",
+        "spice"
+      ],
+      "tertiary_aromas": [
+        "tobacco",
+        "earth"
+      ],
+      "color_descriptors": [
+        "deep purple",
+        "inky"
+      ],
+      "key_regions": [
+        "Cahors",
+        "Touraine"
+      ],
+      "aging_potential": "long",
+      "blending_partners": [
+        "Tannat",
+        "Merlot"
+      ],
+      "food_affinities": [
+        "cassoulet",
+        "duck confit",
+        "Cahors black truffle"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "The original French name for Malbec — Cahors' 'black wine' was famous centuries before Argentine Malbec.",
+      "viticulture": {
+        "climate_preferences": [
+          "oceanic",
+          "continental"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "low",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Trepat",
+      "color": "red",
+      "origin_country": "Spain",
+      "origin_region": "Catalonia",
+      "aliases": [
+        "Trepat Negro"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 1.5,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 13.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.0,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "strawberry",
+        "cherry",
+        "rose",
+        "herbs"
+      ],
+      "secondary_aromas": [
+        "white pepper"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale ruby",
+        "bright pink"
+      ],
+      "key_regions": [
+        "Conca de Barberà",
+        "Cava"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Garnacha",
+        "Monastrell"
+      ],
+      "food_affinities": [
+        "pa amb tomàquet",
+        "escalivada",
+        "seafood"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Almost exclusively used for rosé Cava — one of Spain's most delicate and underrated red grapes.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean",
+          "continental"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "sparkling_suitable": true
+      },
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Sumoll",
+      "color": "red",
+      "origin_country": "Spain",
+      "origin_region": "Catalonia",
+      "aliases": [
+        "Sumoi"
+      ],
+      "typical_profile": {
+        "acidity": 4.0,
+        "tannin": 2.0,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 10.5,
+          "high": 12.5
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 2.5,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "wild strawberry",
+        "herbs",
+        "garrigue",
+        "cherry"
+      ],
+      "secondary_aromas": [
+        "earth",
+        "minerals"
+      ],
+      "tertiary_aromas": [
+        "dried flowers"
+      ],
+      "color_descriptors": [
+        "pale ruby",
+        "light garnet"
+      ],
+      "key_regions": [
+        "Penedès"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Garnacha"
+      ],
+      "food_affinities": [
+        "grilled vegetables",
+        "calçots",
+        "seafood rice"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "Nearly extinct — now championed by Catalan natural wine producers for its low alcohol and bright acidity.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "carbonic_maceration": true,
+        "natural_wine_suitable": true
+      },
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": true
+    },
+    {
+      "name": "Xynisteri",
+      "color": "white",
+      "origin_country": "Cyprus",
+      "origin_region": "Troodos Mountains",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.0,
+          "high": 14.0
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 2.5,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "citrus",
+        "green apple",
+        "white flowers",
+        "herbs"
+      ],
+      "secondary_aromas": [
+        "almond",
+        "saline"
+      ],
+      "tertiary_aromas": [
+        "honey"
+      ],
+      "color_descriptors": [
+        "pale straw",
+        "greenish"
+      ],
+      "key_regions": [
+        "Commandaria",
+        "Limassol",
+        "Paphos"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "halloumi",
+        "grilled fish",
+        "meze"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Cyprus's most planted grape — grows at altitude on ungrafted vines. Phylloxera never reached Cyprus.",
+      "viticulture": {
+        "climate_preferences": [
+          "hot Mediterranean",
+          "altitude"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "very high",
+        "frost_resistance": "moderate",
+        "can_grow_ungrafted": true
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Maratheftiko",
+      "color": "red",
+      "origin_country": "Cyprus",
+      "origin_region": "Troodos Mountains",
+      "aliases": [
+        "Vamvakada"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 3.5,
+        "body": 3.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 13.0,
+          "high": 15.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.5,
+        "oak_affinity": 2.5
+      },
+      "primary_aromas": [
+        "black cherry",
+        "plum",
+        "violet",
+        "herbs"
+      ],
+      "secondary_aromas": [
+        "leather",
+        "spice",
+        "chocolate"
+      ],
+      "tertiary_aromas": [
+        "dried fruit",
+        "earth"
+      ],
+      "color_descriptors": [
+        "deep ruby",
+        "purple-black"
+      ],
+      "key_regions": [
+        "Commandaria",
+        "Krasochoria"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Lefkada",
+        "Mavro"
+      ],
+      "food_affinities": [
+        "kleftiko",
+        "souvlaki",
+        "halloumi"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Cyprus's finest indigenous red — functionally female flowers require interplanting for pollination.",
+      "viticulture": {
+        "climate_preferences": [
+          "hot Mediterranean",
+          "altitude"
+        ],
+        "vigor": "low",
+        "yield_potential": "very low",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate",
+        "can_grow_ungrafted": true
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": true
+    },
+    {
+      "name": "Mavro",
+      "color": "red",
+      "origin_country": "Cyprus",
+      "origin_region": "Limassol",
+      "aliases": [
+        "Mavro Ambelisimo"
+      ],
+      "typical_profile": {
+        "acidity": 2.5,
+        "tannin": 2.0,
+        "body": 2.5,
+        "sweetness": 2.0,
+        "alcohol_range": {
+          "low": 12.0,
+          "high": 15.0
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 2.0,
+        "oak_affinity": 1.5
+      },
+      "primary_aromas": [
+        "dried fig",
+        "raisin",
+        "plum",
+        "carob"
+      ],
+      "secondary_aromas": [
+        "caramel",
+        "spice"
+      ],
+      "tertiary_aromas": [
+        "dried fruit",
+        "toffee"
+      ],
+      "color_descriptors": [
+        "deep garnet",
+        "mahogany"
+      ],
+      "key_regions": [
+        "Commandaria"
+      ],
+      "aging_potential": "long",
+      "blending_partners": [
+        "Xynisteri"
+      ],
+      "food_affinities": [
+        "baklava",
+        "dried fruit",
+        "dark chocolate"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "Key grape in Commandaria — possibly the world's oldest named wine, first made by Crusaders in 1191.",
+      "viticulture": {
+        "climate_preferences": [
+          "hot Mediterranean"
+        ],
+        "vigor": "high",
+        "yield_potential": "high",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "very high",
+        "frost_resistance": "moderate",
+        "can_grow_ungrafted": true
+      },
+      "winemaking": {
+        "fortified_suitable": true,
+        "late_harvest_suitable": true
+      },
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Kratošija",
+      "color": "red",
+      "origin_country": "Montenegro",
+      "origin_region": "Crmnica",
+      "aliases": [
+        "Kratosija",
+        "Primitivo"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 2.5,
+        "body": 3.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 13.0,
+          "high": 15.0
+        },
+        "fruit_intensity": 4.0,
+        "earth_intensity": 2.0,
+        "oak_affinity": 2.5
+      },
+      "primary_aromas": [
+        "blackberry",
+        "dark cherry",
+        "plum",
+        "spice"
+      ],
+      "secondary_aromas": [
+        "chocolate",
+        "vanilla"
+      ],
+      "tertiary_aromas": [
+        "dried fruit",
+        "leather"
+      ],
+      "color_descriptors": [
+        "deep ruby",
+        "purple"
+      ],
+      "key_regions": [
+        "Lake Skadar",
+        "Crmnica"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Vranac"
+      ],
+      "food_affinities": [
+        "grilled lamb",
+        "njeguški steak",
+        "cheese"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "DNA studies link it to Zinfandel/Primitivo — Montenegro may have been a stepping stone on the variety's journey.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean",
+          "lakeside"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Vranac",
+      "color": "red",
+      "origin_country": "Montenegro",
+      "origin_region": "Podgorica",
+      "aliases": [
+        "Vranec"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 3.5,
+        "body": 4.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 13.0,
+          "high": 15.0
+        },
+        "fruit_intensity": 4.0,
+        "earth_intensity": 2.5,
+        "oak_affinity": 3.0
+      },
+      "primary_aromas": [
+        "blackberry",
+        "dark plum",
+        "violet",
+        "black pepper"
+      ],
+      "secondary_aromas": [
+        "chocolate",
+        "tobacco",
+        "coffee"
+      ],
+      "tertiary_aromas": [
+        "leather",
+        "earth",
+        "tar"
+      ],
+      "color_descriptors": [
+        "opaque purple-black",
+        "inky"
+      ],
+      "key_regions": [
+        "Podgorica",
+        "Lake Skadar",
+        "North Macedonia"
+      ],
+      "aging_potential": "long",
+      "blending_partners": [
+        "Kratošija",
+        "Cabernet Sauvignon"
+      ],
+      "food_affinities": [
+        "grilled meats",
+        "hard cheese",
+        "lamb"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "Montenegro's national grape — name means 'black stallion'. Makes powerful, deeply colored wines.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean",
+          "continental"
+        ],
+        "vigor": "high",
+        "yield_potential": "high",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Žilavka",
+      "color": "white",
+      "origin_country": "Bosnia",
+      "origin_region": "Herzegovina",
+      "aliases": [
+        "Zilavka"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 0.0,
+        "body": 3.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.5,
+          "high": 14.0
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 2.5,
+        "oak_affinity": 1.5
+      },
+      "primary_aromas": [
+        "green apple",
+        "citrus",
+        "white peach",
+        "herbs"
+      ],
+      "secondary_aromas": [
+        "almond",
+        "honey"
+      ],
+      "tertiary_aromas": [
+        "dried herbs"
+      ],
+      "color_descriptors": [
+        "golden straw",
+        "deep yellow"
+      ],
+      "key_regions": [
+        "Mostar",
+        "Herzegovina"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [],
+      "food_affinities": [
+        "ćevapi",
+        "burek",
+        "grilled fish"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "Bosnia's most famous wine grape — survives extreme heat and drought.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean",
+          "continental"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "very high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Tamjanika",
+      "color": "white",
+      "origin_country": "Serbia",
+      "origin_region": "Župa",
+      "aliases": [
+        "Muscat Blanc à Petits Grains",
+        "Tamjanika Bela"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 2.0,
+        "alcohol_range": {
+          "low": 11.5,
+          "high": 13.5
+        },
+        "fruit_intensity": 4.0,
+        "earth_intensity": 1.5,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "rose",
+        "lychee",
+        "muscat grape",
+        "orange blossom"
+      ],
+      "secondary_aromas": [
+        "honey",
+        "ginger"
+      ],
+      "tertiary_aromas": [
+        "dried flowers"
+      ],
+      "color_descriptors": [
+        "pale gold",
+        "bright yellow"
+      ],
+      "key_regions": [
+        "Župa",
+        "Fruška Gora"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "baklava",
+        "fruit desserts",
+        "aperitif"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "Serbia's beloved Muscat clone — the name comes from 'tamjan' (incense) for its intoxicating perfume.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "low",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "late_harvest_suitable": true
+      },
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Smederevka",
+      "color": "white",
+      "origin_country": "Serbia",
+      "origin_region": "Smederevo",
+      "aliases": [
+        "Dimiat"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 0.0,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 12.5
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 1.5,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "green apple",
+        "pear",
+        "white flowers"
+      ],
+      "secondary_aromas": [
+        "herbs",
+        "almond"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale straw",
+        "greenish"
+      ],
+      "key_regions": [
+        "Smederevo",
+        "Central Serbia"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "salads",
+        "light fish",
+        "fresh cheese"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "Named after the fortress city of Smederevo — Serbia's most planted white, mostly used for everyday wine.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental"
+        ],
+        "vigor": "high",
+        "yield_potential": "very high",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Kadarka Kékfrankos",
+      "color": "red",
+      "origin_country": "Hungary",
+      "origin_region": "Szekszárd",
+      "aliases": [
+        "Kékfrankos",
+        "Blaufränkisch"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 3.0,
+        "body": 3.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.5,
+          "high": 14.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.5,
+        "oak_affinity": 2.5
+      },
+      "primary_aromas": [
+        "dark cherry",
+        "blackberry",
+        "spice",
+        "violet"
+      ],
+      "secondary_aromas": [
+        "pepper",
+        "mineral",
+        "smoke"
+      ],
+      "tertiary_aromas": [
+        "leather",
+        "earth",
+        "dried herbs"
+      ],
+      "color_descriptors": [
+        "deep ruby",
+        "purple-black"
+      ],
+      "key_regions": [
+        "Szekszárd",
+        "Villány",
+        "Eger"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Kadarka",
+        "Merlot",
+        "Cabernet Franc"
+      ],
+      "food_affinities": [
+        "goulash",
+        "paprikás",
+        "game"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "The backbone of modern Bikavér (Bull's Blood) — Hungary's answer to Blaufränkisch with spicy complexity.",
+      "viticulture": {
+        "climate_preferences": [
+          "Pannonian",
+          "continental"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Irsai Olivér",
+      "color": "white",
+      "origin_country": "Hungary",
+      "origin_region": "Kunság",
+      "aliases": [
+        "Irsai Oliver"
+      ],
+      "typical_profile": {
+        "acidity": 2.5,
+        "tannin": 0.0,
+        "body": 2.0,
+        "sweetness": 1.5,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 12.5
+        },
+        "fruit_intensity": 4.0,
+        "earth_intensity": 1.0,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "muscat grape",
+        "elderflower",
+        "lychee",
+        "peach"
+      ],
+      "secondary_aromas": [
+        "rose",
+        "honey"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale straw",
+        "greenish gold"
+      ],
+      "key_regions": [
+        "Kunság",
+        "Etyek-Buda",
+        "Mátra"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "lángos",
+        "light salads",
+        "aperitif"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "A crossing of Pozsony and Pearl of Csaba — Hungary's most aromatic early-ripening table/wine grape.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental"
+        ],
+        "vigor": "high",
+        "yield_potential": "high",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Cserszegi Fűszeres",
+      "color": "white",
+      "origin_country": "Hungary",
+      "origin_region": "Balaton",
+      "aliases": [
+        "Cserszegi Fuszeres"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 1.5,
+        "alcohol_range": {
+          "low": 11.5,
+          "high": 13.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 1.5,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "muscat",
+        "lime",
+        "herbs",
+        "white flowers"
+      ],
+      "secondary_aromas": [
+        "ginger",
+        "spice"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale gold",
+        "bright straw"
+      ],
+      "key_regions": [
+        "Balaton",
+        "Cserszegtomaj"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "Balaton fish",
+        "langos",
+        "poultry"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "A Gewürztraminer × Irsai Olivér crossing — combining spice with Muscat aromatics. Uniquely Hungarian.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "lakeside"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Debit",
+      "color": "white",
+      "origin_country": "Croatia",
+      "origin_region": "Dalmatia",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 0.0,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 12.5
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 2.0,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "citrus",
+        "green apple",
+        "herbs",
+        "white flowers"
+      ],
+      "secondary_aromas": [
+        "almond",
+        "saline"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale straw",
+        "almost clear"
+      ],
+      "key_regions": [
+        "North Dalmatia",
+        "Ravni Kotari"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Maraština"
+      ],
+      "food_affinities": [
+        "grilled fish",
+        "oysters",
+        "Dalmatian pršut"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "Name means 'thick' in Croatian — a high-yielding grape that reliably pays the bills (like 'Pagadebit').",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean"
+        ],
+        "vigor": "high",
+        "yield_potential": "very high",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Pošip",
+      "color": "white",
+      "origin_country": "Croatia",
+      "origin_region": "Dalmatia",
+      "aliases": [
+        "Posip"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 0.0,
+        "body": 3.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 13.0,
+          "high": 14.5
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.5,
+        "oak_affinity": 2.0
+      },
+      "primary_aromas": [
+        "ripe apple",
+        "apricot",
+        "almond",
+        "white flowers"
+      ],
+      "secondary_aromas": [
+        "honey",
+        "herbs",
+        "saline"
+      ],
+      "tertiary_aromas": [
+        "dried fruit",
+        "beeswax"
+      ],
+      "color_descriptors": [
+        "golden straw",
+        "deep yellow"
+      ],
+      "key_regions": [
+        "Korčula",
+        "Pelješac",
+        "Dalmatia"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [],
+      "food_affinities": [
+        "oysters from Ston",
+        "grilled fish",
+        "risotto"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "Croatia's finest white — from the island of Korčula, said to be Marco Polo's birthplace.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean",
+          "island"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Muscat Hamburg",
+      "color": "red",
+      "origin_country": "Germany",
+      "origin_region": "Various",
+      "aliases": [
+        "Black Muscat",
+        "Muscat de Hambourg"
+      ],
+      "typical_profile": {
+        "acidity": 2.5,
+        "tannin": 1.5,
+        "body": 2.5,
+        "sweetness": 2.5,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 13.0
+        },
+        "fruit_intensity": 4.0,
+        "earth_intensity": 1.0,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "muscat grape",
+        "rose",
+        "lychee",
+        "strawberry"
+      ],
+      "secondary_aromas": [
+        "honey",
+        "spice"
+      ],
+      "tertiary_aromas": [
+        "dried fruit"
+      ],
+      "color_descriptors": [
+        "light ruby",
+        "pale garnet"
+      ],
+      "key_regions": [
+        "Greece",
+        "Portugal",
+        "China"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "fruit desserts",
+        "cheese",
+        "aperitif"
+      ],
+      "difficulty_to_identify": 2,
+      "fun_fact": "One of the few red Muscat varieties — makes deeply aromatic rosé and sweet wines worldwide.",
+      "viticulture": {
+        "climate_preferences": [
+          "warm",
+          "Mediterranean"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "late_harvest_suitable": true
+      },
+      "is_indigenous": false,
+      "is_international": true,
+      "is_hybrid": false,
+      "is_table_grape": true,
+      "endangered": false
+    },
+    {
+      "name": "Aleatico",
+      "color": "red",
+      "origin_country": "Italy",
+      "origin_region": "Lazio",
+      "aliases": [
+        "Aleatico di Gradoli"
+      ],
+      "typical_profile": {
+        "acidity": 2.5,
+        "tannin": 2.0,
+        "body": 3.0,
+        "sweetness": 3.0,
+        "alcohol_range": {
+          "low": 12.0,
+          "high": 15.0
+        },
+        "fruit_intensity": 4.0,
+        "earth_intensity": 1.5,
+        "oak_affinity": 2.0
+      },
+      "primary_aromas": [
+        "rose",
+        "red cherry",
+        "muscat",
+        "strawberry"
+      ],
+      "secondary_aromas": [
+        "spice",
+        "chocolate"
+      ],
+      "tertiary_aromas": [
+        "dried fruit",
+        "caramel"
+      ],
+      "color_descriptors": [
+        "deep ruby",
+        "garnet"
+      ],
+      "key_regions": [
+        "Gradoli",
+        "Elba",
+        "Puglia"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [],
+      "food_affinities": [
+        "chocolate desserts",
+        "almond biscotti",
+        "blue cheese"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "A red Muscat relative — makes gloriously aromatic sweet reds on the volcanic shores of Lake Bolsena.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean",
+          "volcanic"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "low",
+        "disease_resistance": "low",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "fortified_suitable": true,
+        "late_harvest_suitable": true
+      },
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Moscato Rosa",
+      "color": "red",
+      "origin_country": "Italy",
+      "origin_region": "Alto Adige",
+      "aliases": [
+        "Rosenmuskateller"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 1.0,
+        "body": 2.5,
+        "sweetness": 3.5,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 14.0
+        },
+        "fruit_intensity": 4.5,
+        "earth_intensity": 1.0,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "rose",
+        "Turkish delight",
+        "strawberry",
+        "cinnamon"
+      ],
+      "secondary_aromas": [
+        "potpourri",
+        "lychee"
+      ],
+      "tertiary_aromas": [
+        "dried rose petals"
+      ],
+      "color_descriptors": [
+        "pale ruby",
+        "salmon pink"
+      ],
+      "key_regions": [
+        "Alto Adige",
+        "Trentino"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [],
+      "food_affinities": [
+        "chocolate mousse",
+        "fruit tart",
+        "Strudel"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "One of the rarest and most perfumed wines in the world — smells literally like a bouquet of roses.",
+      "viticulture": {
+        "climate_preferences": [
+          "alpine",
+          "cool continental"
+        ],
+        "vigor": "low",
+        "yield_potential": "very low",
+        "disease_resistance": "low",
+        "drought_tolerance": "low",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "late_harvest_suitable": true
+      },
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": true
+    },
+    {
+      "name": "Brachetto",
+      "color": "red",
+      "origin_country": "Italy",
+      "origin_region": "Piedmont",
+      "aliases": [
+        "Brachetto d'Acqui"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 1.0,
+        "body": 2.0,
+        "sweetness": 3.0,
+        "alcohol_range": {
+          "low": 5.5,
+          "high": 12.0
+        },
+        "fruit_intensity": 4.0,
+        "earth_intensity": 1.0,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "strawberry",
+        "rose",
+        "raspberry",
+        "muscat"
+      ],
+      "secondary_aromas": [
+        "cherry candy"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "bright ruby",
+        "cherry red"
+      ],
+      "key_regions": [
+        "Acqui",
+        "Brachetto d'Acqui DOCG"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "chocolate",
+        "strawberries",
+        "hazelnut cake"
+      ],
+      "difficulty_to_identify": 2,
+      "fun_fact": "Italy's answer to Champagne rosé — a sweet, gently sparkling red often served with chocolate desserts.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "sparkling_suitable": true
+      },
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Lambrusco di Sorbara",
+      "color": "red",
+      "origin_country": "Italy",
+      "origin_region": "Emilia-Romagna",
+      "aliases": [
+        "Lambrusco"
+      ],
+      "typical_profile": {
+        "acidity": 4.0,
+        "tannin": 1.5,
+        "body": 2.0,
+        "sweetness": 1.5,
+        "alcohol_range": {
+          "low": 10.5,
+          "high": 12.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 1.5,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "violet",
+        "wild strawberry",
+        "cherry",
+        "rose"
+      ],
+      "secondary_aromas": [
+        "lees"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "bright pink-ruby",
+        "frothy rose"
+      ],
+      "key_regions": [
+        "Sorbara",
+        "Modena"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Lambrusco Salamino"
+      ],
+      "food_affinities": [
+        "prosciutto di Parma",
+        "tortellini",
+        "Parmigiano"
+      ],
+      "difficulty_to_identify": 2,
+      "fun_fact": "The 'noble' Lambrusco — pale, delicate, bone-dry frizzante. Nothing like the sweet export version.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "Po Valley"
+        ],
+        "vigor": "high",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "sparkling_suitable": true,
+        "natural_wine_suitable": true
+      },
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Verdiso",
+      "color": "white",
+      "origin_country": "Italy",
+      "origin_region": "Veneto",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 4.0,
+        "tannin": 0.0,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 10.5,
+          "high": 12.0
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 2.0,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "green apple",
+        "lemon",
+        "white flowers"
+      ],
+      "secondary_aromas": [
+        "almond",
+        "herbs"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "very pale straw"
+      ],
+      "key_regions": [
+        "Colli Trevigiani"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Glera",
+        "Bianchetta"
+      ],
+      "food_affinities": [
+        "risotto",
+        "light seafood",
+        "asparagus"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "A traditional blending partner for Prosecco — adds acidity and structure. Nearly forgotten but being revived.",
+      "viticulture": {
+        "climate_preferences": [
+          "temperate"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "sparkling_suitable": true
+      },
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": true
+    },
+    {
+      "name": "Zibibbo",
+      "color": "white",
+      "origin_country": "Italy",
+      "origin_region": "Sicily",
+      "aliases": [
+        "Muscat of Alexandria",
+        "Moscato di Pantelleria"
+      ],
+      "typical_profile": {
+        "acidity": 2.5,
+        "tannin": 0.0,
+        "body": 3.0,
+        "sweetness": 4.0,
+        "alcohol_range": {
+          "low": 11.5,
+          "high": 15.0
+        },
+        "fruit_intensity": 4.5,
+        "earth_intensity": 2.0,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "apricot",
+        "orange blossom",
+        "honey",
+        "muscat"
+      ],
+      "secondary_aromas": [
+        "candied citrus",
+        "dates",
+        "dried fig"
+      ],
+      "tertiary_aromas": [
+        "caramel",
+        "toffee"
+      ],
+      "color_descriptors": [
+        "deep amber",
+        "golden"
+      ],
+      "key_regions": [
+        "Pantelleria",
+        "Passito di Pantelleria"
+      ],
+      "aging_potential": "long",
+      "blending_partners": [],
+      "food_affinities": [
+        "cassata",
+        "cannoli",
+        "almond pastries"
+      ],
+      "difficulty_to_identify": 2,
+      "fun_fact": "On Pantelleria island, the alberello (bush vine) training of Zibibbo is a UNESCO Intangible Cultural Heritage.",
+      "viticulture": {
+        "climate_preferences": [
+          "hot Mediterranean",
+          "volcanic",
+          "windy"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "very high",
+        "frost_resistance": "moderate",
+        "can_grow_ungrafted": true
+      },
+      "winemaking": {
+        "late_harvest_suitable": true
+      },
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Traminette",
+      "color": "white",
+      "origin_country": "United States",
+      "origin_region": "New York",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 1.5,
+        "alcohol_range": {
+          "low": 11.5,
+          "high": 13.5
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 1.5,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "rose",
+        "lychee",
+        "grapefruit",
+        "honey"
+      ],
+      "secondary_aromas": [
+        "spice",
+        "ginger"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale gold",
+        "greenish"
+      ],
+      "key_regions": [
+        "Finger Lakes",
+        "Virginia",
+        "Midwest"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "Thai food",
+        "spicy cuisine",
+        "soft cheese"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "A cold-hardy Gewürztraminer hybrid bred at Cornell — floral and spicy but survives brutal Eastern winters.",
+      "viticulture": {
+        "climate_preferences": [
+          "cold continental"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "good",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "excellent"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": true,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Cayuga White",
+      "color": "white",
+      "origin_country": "United States",
+      "origin_region": "New York",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 1.5,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 13.0
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 1.5,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "grapefruit",
+        "pineapple",
+        "melon",
+        "citrus"
+      ],
+      "secondary_aromas": [
+        "herbs"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale straw",
+        "bright yellow"
+      ],
+      "key_regions": [
+        "Finger Lakes",
+        "Lake Erie"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Seyval Blanc"
+      ],
+      "food_affinities": [
+        "chicken",
+        "salads",
+        "mild cheese"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Named after Cayuga Lake in the Finger Lakes — a versatile hybrid used for everything from dry to dessert wines.",
+      "viticulture": {
+        "climate_preferences": [
+          "cold continental",
+          "lakeside"
+        ],
+        "vigor": "high",
+        "yield_potential": "high",
+        "disease_resistance": "excellent",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "excellent"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": true,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Brianna",
+      "color": "white",
+      "origin_country": "United States",
+      "origin_region": "Iowa",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 0.0,
+        "body": 2.0,
+        "sweetness": 1.5,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 13.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 1.0,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "pineapple",
+        "tropical fruit",
+        "peach",
+        "melon"
+      ],
+      "secondary_aromas": [
+        "honey"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale straw",
+        "greenish"
+      ],
+      "key_regions": [
+        "Iowa",
+        "Minnesota",
+        "Wisconsin"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "picnic fare",
+        "light fish",
+        "fruit salad"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "Bred by Elmer Swenson in Wisconsin — survives -35°F. Key to the Midwest US wine revolution.",
+      "viticulture": {
+        "climate_preferences": [
+          "extreme cold continental"
+        ],
+        "vigor": "high",
+        "yield_potential": "high",
+        "disease_resistance": "excellent",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "exceptional"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": true,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Jaen",
+      "color": "red",
+      "origin_country": "Portugal",
+      "origin_region": "Dão",
+      "aliases": [
+        "Mencía"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 2.5,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.0,
+          "high": 13.5
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.5,
+        "oak_affinity": 2.0
+      },
+      "primary_aromas": [
+        "red cherry",
+        "blackberry",
+        "violet",
+        "herbs"
+      ],
+      "secondary_aromas": [
+        "slate",
+        "mineral"
+      ],
+      "tertiary_aromas": [
+        "leather",
+        "earth"
+      ],
+      "color_descriptors": [
+        "medium ruby",
+        "bright purple"
+      ],
+      "key_regions": [
+        "Dão",
+        "Beiras"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Touriga Nacional",
+        "Alfrocheiro"
+      ],
+      "food_affinities": [
+        "chanfana",
+        "bacalhau",
+        "Serra da Estrela cheese"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "Same grape as Spanish Mencía — Portugal calls it Jaen. Key blending grape in Dão reds.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "granitic"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Alfrocheiro",
+      "color": "red",
+      "origin_country": "Portugal",
+      "origin_region": "Dão",
+      "aliases": [
+        "Alfrocheiro Preto"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 2.5,
+        "body": 3.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.5,
+          "high": 14.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.5,
+        "oak_affinity": 2.0
+      },
+      "primary_aromas": [
+        "black cherry",
+        "plum",
+        "violet",
+        "wild herbs"
+      ],
+      "secondary_aromas": [
+        "pepper",
+        "spice"
+      ],
+      "tertiary_aromas": [
+        "leather",
+        "tobacco"
+      ],
+      "color_descriptors": [
+        "deep ruby",
+        "purple"
+      ],
+      "key_regions": [
+        "Dão"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Touriga Nacional",
+        "Jaen",
+        "Tinta Roriz"
+      ],
+      "food_affinities": [
+        "leitão",
+        "cozido",
+        "aged cheese"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "A DNA parent of several Portuguese varieties — gaining recognition as a standalone wine in top Dão producers.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "granitic"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Rabigato",
+      "color": "white",
+      "origin_country": "Portugal",
+      "origin_region": "Douro",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 4.0,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.5,
+          "high": 13.0
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 3.0,
+        "oak_affinity": 1.5
+      },
+      "primary_aromas": [
+        "lemon",
+        "grapefruit",
+        "white flowers",
+        "mineral"
+      ],
+      "secondary_aromas": [
+        "flint",
+        "herbs"
+      ],
+      "tertiary_aromas": [
+        "honey"
+      ],
+      "color_descriptors": [
+        "pale straw",
+        "greenish"
+      ],
+      "key_regions": [
+        "Douro"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Viosinho",
+        "Gouveio"
+      ],
+      "food_affinities": [
+        "grilled sardines",
+        "bacalhau",
+        "fresh seafood"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Douro's most acidic white grape — provides essential freshness to the region's powerful white blends.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "hot",
+          "schist"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Viosinho",
+      "color": "white",
+      "origin_country": "Portugal",
+      "origin_region": "Douro",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 0.0,
+        "body": 3.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.5,
+          "high": 14.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.5,
+        "oak_affinity": 2.0
+      },
+      "primary_aromas": [
+        "peach",
+        "apricot",
+        "citrus blossom",
+        "mineral"
+      ],
+      "secondary_aromas": [
+        "honey",
+        "almonds"
+      ],
+      "tertiary_aromas": [
+        "dried fruit"
+      ],
+      "color_descriptors": [
+        "golden straw",
+        "bright yellow"
+      ],
+      "key_regions": [
+        "Douro"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Rabigato",
+        "Gouveio",
+        "Códega do Larinho"
+      ],
+      "food_affinities": [
+        "grilled fish",
+        "rice dishes",
+        "white port"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "Rising star of Douro whites — adds weight and aromatic complexity. One of Portugal's most exciting grapes.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "hot"
+        ],
+        "vigor": "low",
+        "yield_potential": "low",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Rufete",
+      "color": "red",
+      "origin_country": "Portugal",
+      "origin_region": "Dão",
+      "aliases": [
+        "Tinta Pinheira"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 2.0,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.5,
+          "high": 13.0
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 2.5,
+        "oak_affinity": 1.5
+      },
+      "primary_aromas": [
+        "red cherry",
+        "raspberry",
+        "herbs",
+        "earth"
+      ],
+      "secondary_aromas": [
+        "pepper",
+        "mineral"
+      ],
+      "tertiary_aromas": [
+        "dried flowers"
+      ],
+      "color_descriptors": [
+        "light ruby",
+        "garnet"
+      ],
+      "key_regions": [
+        "Dão",
+        "Serra da Estrela"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Touriga Nacional",
+        "Jaen"
+      ],
+      "food_affinities": [
+        "Serra da Estrela cheese",
+        "kid goat",
+        "chouriço"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "A high-altitude grape thriving in mountain vineyards — light-bodied like Pinot Noir but distinctly Iberian.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "mountain"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "low",
+        "disease_resistance": "low",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {
+        "natural_wine_suitable": true
+      },
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": true
+    },
+    {
+      "name": "Sideritis",
+      "color": "white",
+      "origin_country": "Greece",
+      "origin_region": "Peloponnese",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 4.0,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.0,
+          "high": 13.5
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 3.0,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "lemon",
+        "flint",
+        "herbs",
+        "white flowers"
+      ],
+      "secondary_aromas": [
+        "saline",
+        "almond"
+      ],
+      "tertiary_aromas": [
+        "honey"
+      ],
+      "color_descriptors": [
+        "pale straw",
+        "greenish gold"
+      ],
+      "key_regions": [
+        "Patras",
+        "Achaia"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [],
+      "food_affinities": [
+        "grilled fish",
+        "Greek salad",
+        "feta"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "One of Greece's rarest whites — named after the mountain tea herb. Under 10 hectares exist worldwide.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean"
+        ],
+        "vigor": "low",
+        "yield_potential": "very low",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": true
+    },
+    {
+      "name": "Limnio",
+      "color": "red",
+      "origin_country": "Greece",
+      "origin_region": "Macedonia",
+      "aliases": [
+        "Lemnio"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 3.0,
+        "body": 3.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.5,
+          "high": 14.0
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 3.0,
+        "oak_affinity": 2.5
+      },
+      "primary_aromas": [
+        "bay leaf",
+        "oregano",
+        "dark cherry",
+        "plum"
+      ],
+      "secondary_aromas": [
+        "tobacco",
+        "leather",
+        "spice"
+      ],
+      "tertiary_aromas": [
+        "earth",
+        "dried herbs"
+      ],
+      "color_descriptors": [
+        "deep ruby",
+        "dark garnet"
+      ],
+      "key_regions": [
+        "Lemnos",
+        "Mount Athos",
+        "Halkidiki"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Cabernet Sauvignon"
+      ],
+      "food_affinities": [
+        "moussaka",
+        "lamb kleftiko",
+        "aged graviera"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Mentioned by Aristotle as 'Limnia' — may be the oldest named grape variety still in cultivation.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Kotsifali",
+      "color": "red",
+      "origin_country": "Greece",
+      "origin_region": "Crete",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 2.5,
+        "tannin": 1.5,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.5,
+          "high": 14.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.0,
+        "oak_affinity": 1.5
+      },
+      "primary_aromas": [
+        "red cherry",
+        "strawberry",
+        "herbs",
+        "spice"
+      ],
+      "secondary_aromas": [
+        "leather"
+      ],
+      "tertiary_aromas": [
+        "dried fruit"
+      ],
+      "color_descriptors": [
+        "light ruby",
+        "pale garnet"
+      ],
+      "key_regions": [
+        "Heraklion",
+        "Crete"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Mandilaria",
+        "Syrah"
+      ],
+      "food_affinities": [
+        "dakos",
+        "lamb",
+        "mizithra cheese"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Always blended with Mandilaria — Kotsifali brings aroma and fruit, Mandilaria adds color and tannin.",
+      "viticulture": {
+        "climate_preferences": [
+          "hot Mediterranean"
+        ],
+        "vigor": "high",
+        "yield_potential": "high",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Tsaoussi",
+      "color": "white",
+      "origin_country": "Greece",
+      "origin_region": "Thessaly",
+      "aliases": [
+        "Batiki"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 0.0,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 12.5
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 1.5,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "green apple",
+        "pear",
+        "white flowers"
+      ],
+      "secondary_aromas": [
+        "herbs"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale straw"
+      ],
+      "key_regions": [
+        "Rapsani",
+        "Thessaly"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Roditis"
+      ],
+      "food_affinities": [
+        "seafood",
+        "village salads",
+        "feta"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "One of Greece's most endangered grapes — fewer than 5 hectares remain in Thessaly.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean",
+          "continental"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": true
+    },
+    {
+      "name": "Roditis",
+      "color": "white",
+      "origin_country": "Greece",
+      "origin_region": "Peloponnese",
+      "aliases": [
+        "Rhoditis"
+      ],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.5,
+          "high": 13.0
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 2.0,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "peach",
+        "citrus",
+        "white flowers",
+        "herbs"
+      ],
+      "secondary_aromas": [
+        "almond"
+      ],
+      "tertiary_aromas": [
+        "honey"
+      ],
+      "color_descriptors": [
+        "pale gold",
+        "pinkish straw"
+      ],
+      "key_regions": [
+        "Patras",
+        "Attica",
+        "Macedonia"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Savatiano"
+      ],
+      "food_affinities": [
+        "Greek salad",
+        "grilled fish",
+        "souvlaki"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Pink-skinned grape — Greece's second most planted white. The 'rod' in its name means rose/pink.",
+      "viticulture": {
+        "climate_preferences": [
+          "Mediterranean"
+        ],
+        "vigor": "high",
+        "yield_potential": "high",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Savatiano",
+      "color": "white",
+      "origin_country": "Greece",
+      "origin_region": "Attica",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 2.5,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.0,
+          "high": 14.0
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 2.0,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "lemon",
+        "apple",
+        "herbs",
+        "honey"
+      ],
+      "secondary_aromas": [
+        "resin",
+        "almond"
+      ],
+      "tertiary_aromas": [
+        "dried herbs"
+      ],
+      "color_descriptors": [
+        "pale straw",
+        "golden"
+      ],
+      "key_regions": [
+        "Attica",
+        "Retsina"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Roditis",
+        "Assyrtiko"
+      ],
+      "food_affinities": [
+        "meze",
+        "fried calamari",
+        "Greek salad"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Greece's most planted grape — traditionally the base for Retsina but increasingly made as a quality dry white.",
+      "viticulture": {
+        "climate_preferences": [
+          "hot Mediterranean"
+        ],
+        "vigor": "very high",
+        "yield_potential": "very high",
+        "disease_resistance": "good",
+        "drought_tolerance": "very high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Athiri",
+      "color": "white",
+      "origin_country": "Greece",
+      "origin_region": "Aegean Islands",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 2.5,
+        "tannin": 0.0,
+        "body": 2.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.0,
+          "high": 13.5
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 2.0,
+        "oak_affinity": 1.0
+      },
+      "primary_aromas": [
+        "citrus",
+        "peach",
+        "pear",
+        "white flowers"
+      ],
+      "secondary_aromas": [
+        "herbs",
+        "honey"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale straw",
+        "golden"
+      ],
+      "key_regions": [
+        "Rhodes",
+        "Santorini",
+        "Crete"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Assyrtiko",
+        "Aidani"
+      ],
+      "food_affinities": [
+        "grilled fish",
+        "meze",
+        "feta"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Often blended with Assyrtiko to add body and fruit — the yin to Assyrtiko's mineral yang on Santorini.",
+      "viticulture": {
+        "climate_preferences": [
+          "hot Mediterranean",
+          "island"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "high",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Kékfrankos",
+      "color": "red",
+      "origin_country": "Hungary",
+      "origin_region": "Sopron",
+      "aliases": [
+        "Blaufränkisch",
+        "Lemberger"
+      ],
+      "typical_profile": {
+        "acidity": 3.5,
+        "tannin": 3.5,
+        "body": 3.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 12.5,
+          "high": 14.0
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 3.0,
+        "oak_affinity": 2.5
+      },
+      "primary_aromas": [
+        "dark cherry",
+        "blackberry",
+        "spice",
+        "violet"
+      ],
+      "secondary_aromas": [
+        "black pepper",
+        "mineral"
+      ],
+      "tertiary_aromas": [
+        "leather",
+        "earth"
+      ],
+      "color_descriptors": [
+        "deep ruby",
+        "purple-black"
+      ],
+      "key_regions": [
+        "Sopron",
+        "Villány",
+        "Szekszárd"
+      ],
+      "aging_potential": "long",
+      "blending_partners": [
+        "Kadarka",
+        "Merlot"
+      ],
+      "food_affinities": [
+        "goulash",
+        "game stew",
+        "smoked meats"
+      ],
+      "difficulty_to_identify": 3,
+      "fun_fact": "Hungary's name for Blaufränkisch — makes some of Central Europe's most complex, age-worthy reds.",
+      "viticulture": {
+        "climate_preferences": [
+          "Pannonian",
+          "continental"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Rubin",
+      "color": "red",
+      "origin_country": "Bulgaria",
+      "origin_region": "Thracian Valley",
+      "aliases": [],
+      "typical_profile": {
+        "acidity": 3.0,
+        "tannin": 3.0,
+        "body": 3.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 13.0,
+          "high": 14.5
+        },
+        "fruit_intensity": 3.5,
+        "earth_intensity": 2.0,
+        "oak_affinity": 2.5
+      },
+      "primary_aromas": [
+        "blackberry",
+        "plum",
+        "dark cherry",
+        "spice"
+      ],
+      "secondary_aromas": [
+        "chocolate",
+        "vanilla"
+      ],
+      "tertiary_aromas": [
+        "leather",
+        "tobacco"
+      ],
+      "color_descriptors": [
+        "deep ruby",
+        "purple"
+      ],
+      "key_regions": [
+        "Plovdiv",
+        "Thracian Valley"
+      ],
+      "aging_potential": "moderate",
+      "blending_partners": [
+        "Mavrud",
+        "Cabernet Sauvignon"
+      ],
+      "food_affinities": [
+        "grilled meats",
+        "kavarma",
+        "sirene cheese"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "A Bulgarian crossing of Nebbiolo × Syrah — combining Italian elegance with Rhône power.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "warm"
+        ],
+        "vigor": "moderate",
+        "yield_potential": "moderate",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": false,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Dimiat",
+      "color": "white",
+      "origin_country": "Bulgaria",
+      "origin_region": "Black Sea",
+      "aliases": [
+        "Smederevka"
+      ],
+      "typical_profile": {
+        "acidity": 2.5,
+        "tannin": 0.0,
+        "body": 2.0,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 11.0,
+          "high": 13.0
+        },
+        "fruit_intensity": 3.0,
+        "earth_intensity": 1.5,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "muscat",
+        "honey",
+        "white flowers",
+        "pear"
+      ],
+      "secondary_aromas": [
+        "herbs"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale straw",
+        "golden"
+      ],
+      "key_regions": [
+        "Black Sea Coast",
+        "Shumen",
+        "Varna"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [
+        "Misket"
+      ],
+      "food_affinities": [
+        "shopska salad",
+        "white cheese",
+        "seafood"
+      ],
+      "difficulty_to_identify": 4,
+      "fun_fact": "Bulgaria's oldest and most characteristic white — same grape as Serbian Smederevka.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "Black Sea maritime"
+        ],
+        "vigor": "high",
+        "yield_potential": "very high",
+        "disease_resistance": "moderate",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
+    },
+    {
+      "name": "Pamid",
+      "color": "red",
+      "origin_country": "Bulgaria",
+      "origin_region": "Thracian Valley",
+      "aliases": [
+        "Plovdina"
+      ],
+      "typical_profile": {
+        "acidity": 2.0,
+        "tannin": 1.0,
+        "body": 1.5,
+        "sweetness": 1.0,
+        "alcohol_range": {
+          "low": 10.5,
+          "high": 12.0
+        },
+        "fruit_intensity": 2.5,
+        "earth_intensity": 1.5,
+        "oak_affinity": 0.5
+      },
+      "primary_aromas": [
+        "red cherry",
+        "strawberry",
+        "herbs"
+      ],
+      "secondary_aromas": [
+        "earth"
+      ],
+      "tertiary_aromas": [],
+      "color_descriptors": [
+        "pale ruby",
+        "light garnet"
+      ],
+      "key_regions": [
+        "Thrace",
+        "Southern Bulgaria"
+      ],
+      "aging_potential": "short",
+      "blending_partners": [],
+      "food_affinities": [
+        "shopska salad",
+        "kebapche",
+        "light meals"
+      ],
+      "difficulty_to_identify": 5,
+      "fun_fact": "Bulgaria's everyday red — light, easy-drinking, and among the oldest cultivated grapes in the Balkans.",
+      "viticulture": {
+        "climate_preferences": [
+          "continental",
+          "warm"
+        ],
+        "vigor": "very high",
+        "yield_potential": "very high",
+        "disease_resistance": "good",
+        "drought_tolerance": "moderate",
+        "frost_resistance": "moderate"
+      },
+      "winemaking": {},
+      "is_indigenous": true,
+      "is_international": false,
+      "is_hybrid": false,
+      "is_table_grape": false,
+      "endangered": false
     }
   ]
 }

@@ -225,6 +225,26 @@ BOSNIAN_FAMILY_NAMES = [
     "Buntić", "Škegro", "Ljubuški", "Vukoje", "Begić",
 ]
 
+CYPRIOT_FAMILY_NAMES = [
+    "Zambartas", "Tsiakkas", "Vouni Panayia", "Vlassides", "Kyperounda",
+    "Ezousa", "Vasilikon", "Kamanterena", "Nelion", "Kolios",
+    "Fikardos", "Aes Ambelis", "Constantinou", "Lambouri", "Anama",
+]
+CYPRIOT_PREFIXES = ["Ktima", "Oinopoieio"]
+
+MONTENEGRIN_FAMILY_NAMES = [
+    "Plantaže", "Savina", "Sjekloća", "Milović", "Buk",
+    "Lipovac", "Đurišić", "Kopitović", "Durmitor", "Crnogorka",
+]
+MONTENEGRIN_PREFIXES = ["Vinarija", "Podrum"]
+
+SERBIAN_FAMILY_NAMES = [
+    "Aleksandrović", "Budimir", "Despotika", "Erdevik", "Doja",
+    "Ivanović", "Jelić", "Kovačević", "Matalj", "Rajković",
+    "Temet", "Vino Župa", "Zvonko Bogdan", "Čoka", "Toplički Vinogradi",
+]
+SERBIAN_PREFIXES = ["Vinarija", "Podrum", "Vinski Dvor"]
+
 ROMANIAN_FAMILY_NAMES = [
     "Liliac", "Bauer", "Davino", "Nachbil", "Crama Oprișor",
     "Budureasca", "Cramele Recaș", "Serve", "Avincis", "Domeniul Bogdan",
@@ -457,6 +477,58 @@ def _generate_brazilian_name() -> tuple[str, str]:
     return family, family
 
 
+def _generate_cypriot_name() -> tuple[str, str]:
+    family = _pick(CYPRIOT_FAMILY_NAMES)
+    if random.random() < 0.5:
+        prefix = _pick(CYPRIOT_PREFIXES)
+        return family, f"{prefix} {family}"
+    return family, f"{family} Winery"
+
+
+def _generate_montenegrin_name() -> tuple[str, str]:
+    family = _pick(MONTENEGRIN_FAMILY_NAMES)
+    if random.random() < 0.5:
+        prefix = _pick(MONTENEGRIN_PREFIXES)
+        return family, f"{prefix} {family}"
+    return family, family
+
+
+def _generate_serbian_name() -> tuple[str, str]:
+    family = _pick(SERBIAN_FAMILY_NAMES)
+    if random.random() < 0.5:
+        prefix = _pick(SERBIAN_PREFIXES)
+        return family, f"{prefix} {family}"
+    return family, family
+
+
+def _generate_romanian_name() -> tuple[str, str]:
+    family = _pick(ROMANIAN_FAMILY_NAMES)
+    suffix = _pick(["", " Winery", " Estate"])
+    return family, f"{family}{suffix}" if suffix else family
+
+
+def _generate_bulgarian_name() -> tuple[str, str]:
+    family = _pick(BULGARIAN_FAMILY_NAMES)
+    suffix = _pick(["", " Estate", " Winery"])
+    return family, f"{family}{suffix}" if suffix else family
+
+
+def _generate_swiss_name() -> tuple[str, str]:
+    style = random.randint(1, 3)
+    if style == 1:
+        family = _pick(FRENCH_FAMILY_NAMES)
+        prefix = _pick(["Domaine", "Cave", "Château"])
+        return family, f"{prefix} {family}"
+    elif style == 2:
+        family = _pick(GERMAN_FAMILY_NAMES)
+        prefix = _pick(GERMAN_PREFIXES)
+        return family, f"{prefix} {family}"
+    else:
+        family = _pick(ITALIAN_FAMILY_NAMES)
+        prefix = _pick(["Cantina", "Tenuta"])
+        return family, f"{prefix} {family}"
+
+
 def _generate_generic_name(country: str) -> tuple[str, str]:
     family = _pick(GENERIC_FAMILY_NAMES + FRENCH_FAMILY_NAMES)
     return family, f"{family} Estate"
@@ -484,10 +556,12 @@ _GENERATORS = {
     "Lebanon": _generate_lebanese_name,
     "Japan": _generate_japanese_name,
     "North Macedonia": _generate_generic_name,
-    "Romania": _generate_generic_name,
-    "Bulgaria": _generate_generic_name,
-    "Serbia": _generate_generic_name,
-    "Switzerland": _generate_german_name,
+    "Romania": _generate_romanian_name,
+    "Bulgaria": _generate_bulgarian_name,
+    "Serbia": _generate_serbian_name,
+    "Switzerland": _generate_swiss_name,
+    "Cyprus": _generate_cypriot_name,
+    "Montenegro": _generate_montenegrin_name,
     "Uruguay": _generate_spanish_name,
     "Egypt": _generate_generic_name,
     "England": _generate_english_name,
