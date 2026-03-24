@@ -4312,7 +4312,7 @@
               "climate": "continental",
               "communes": [
                 {
-                  "name": "Barolo",
+                  "name": "Barolo (commune)",
                   "classification_tiers": [
                     "DOCG",
                     "Riserva"
@@ -4321,34 +4321,898 @@
                     "Nebbiolo"
                   ],
                   "soil_types": [
+                    "Tortonian blue-grey marl",
                     "clay",
-                    "limestone",
-                    "marl",
-                    "sand"
-                  ],
-                  "style_notes": "Italy's greatest red wine",
-                  "price_tier": "luxury",
-                  "min_alcohol": 13.0,
-                  "required_aging_months": 38,
-                  "biodynamic_percentage": 10
-                },
-                {
-                  "name": "Barbaresco",
-                  "classification_tiers": [
-                    "DOCG",
-                    "Riserva"
-                  ],
-                  "primary_grapes": [
-                    "Nebbiolo"
-                  ],
-                  "soil_types": [
-                    "clay",
-                    "marl",
                     "limestone"
                   ],
-                  "style_notes": "Elegant complex Nebbiolo",
+                  "style_notes": "The village itself — classic, balanced Barolo with aromatic complexity",
                   "price_tier": "luxury",
-                  "required_aging_months": 26
+                  "climate": "continental",
+                  "min_alcohol": 13.0,
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Cannubi",
+                      "classification": "MGA",
+                      "size_ha": 15.6,
+                      "style_notes": "The most famous Barolo vineyard — perfect amphitheater. Elegant, perfumed, balanced. Mixed soils give complexity"
+                    },
+                    {
+                      "name": "Cannubi Boschis",
+                      "classification": "MGA",
+                      "size_ha": 4.5,
+                      "style_notes": "Adjacent to Cannubi — more structured, deeper soils. Sandrone made it famous"
+                    },
+                    {
+                      "name": "Cannubi Muscatel",
+                      "classification": "MGA",
+                      "size_ha": 3.0,
+                      "style_notes": "Northwest section of Cannubi hill — lighter, more floral"
+                    },
+                    {
+                      "name": "Cannubi San Lorenzo",
+                      "classification": "MGA",
+                      "size_ha": 2.0,
+                      "style_notes": "Higher section — taut, mineral, needs time"
+                    },
+                    {
+                      "name": "Cannubi Valletta",
+                      "classification": "MGA",
+                      "size_ha": 2.5,
+                      "style_notes": "Southern portion — warmer, riper fruit"
+                    },
+                    {
+                      "name": "Sarmassa",
+                      "classification": "MGA",
+                      "size_ha": 17.0,
+                      "style_notes": "Large, south-facing — powerful, deep, tannic. Great potential"
+                    },
+                    {
+                      "name": "Brunate (Barolo portion)",
+                      "classification": "MGA",
+                      "size_ha": 6.0,
+                      "style_notes": "Shared with La Morra — Barolo side is firmer, more structured"
+                    },
+                    {
+                      "name": "Cerequio (Barolo portion)",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Shared with La Morra — elegant, perfumed, balanced"
+                    },
+                    {
+                      "name": "San Lorenzo",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Well-exposed — floral, aromatic, medium-bodied"
+                    },
+                    {
+                      "name": "Rue",
+                      "classification": "MGA",
+                      "size_ha": 6.5,
+                      "style_notes": "East-facing — cooler, more austere, structured"
+                    },
+                    {
+                      "name": "Liste",
+                      "classification": "MGA",
+                      "size_ha": 8.0,
+                      "style_notes": "South-facing below Cannubi — rich, concentrated"
+                    },
+                    {
+                      "name": "Coste di Rose",
+                      "classification": "MGA",
+                      "size_ha": 3.5,
+                      "style_notes": "Floral and elegant — true to its name"
+                    },
+                    {
+                      "name": "Paiagallo",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Above Cannubi — higher altitude, lighter, aromatic"
+                    }
+                  ]
+                },
+                {
+                  "name": "La Morra",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Tortonian blue-grey marl",
+                    "calcareous clay",
+                    "sand"
+                  ],
+                  "style_notes": "Most perfumed Barolo commune — aromatic, approachable, 'feminine'. Largest production",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Brunate (La Morra portion)",
+                      "classification": "MGA",
+                      "size_ha": 14.0,
+                      "style_notes": "Grand cru of La Morra — rich, powerful, complex. Ceretto and Marcarini benchmarks"
+                    },
+                    {
+                      "name": "Cerequio",
+                      "classification": "MGA",
+                      "size_ha": 16.0,
+                      "style_notes": "Adjacent to Brunate — more elegant, perfumed, silky. Michele Chiarlo and Roberto Voerzio"
+                    },
+                    {
+                      "name": "Rocche dell'Annunziata",
+                      "classification": "MGA",
+                      "size_ha": 30.0,
+                      "style_notes": "Iconic amphitheater — the quintessential La Morra expression. Renato Ratti's home cru"
+                    },
+                    {
+                      "name": "Arborina",
+                      "classification": "MGA",
+                      "size_ha": 12.0,
+                      "style_notes": "Sandy soils — soft, perfumed, early-drinking for Barolo. Elio Altare's flagship"
+                    },
+                    {
+                      "name": "Conca",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Cool concave site — slow-ripening, mineral, refined"
+                    },
+                    {
+                      "name": "Gattera",
+                      "classification": "MGA",
+                      "size_ha": 7.0,
+                      "style_notes": "High elevation — taut, mineral, elegant. Underrated"
+                    },
+                    {
+                      "name": "Giachini",
+                      "classification": "MGA",
+                      "size_ha": 8.0,
+                      "style_notes": "Near Brunate — similar richness, slightly lighter"
+                    },
+                    {
+                      "name": "La Serra",
+                      "classification": "MGA",
+                      "size_ha": 10.0,
+                      "style_notes": "West-facing — afternoon sun gives generous fruit. Roberto Voerzio produces here"
+                    },
+                    {
+                      "name": "Roggeri",
+                      "classification": "MGA",
+                      "size_ha": 6.0,
+                      "style_notes": "Sandy, lighter soils — perfumed, delicate, floral"
+                    },
+                    {
+                      "name": "Bricco Luciani",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Hilltop site — concentrated, mineral, excellent exposure"
+                    },
+                    {
+                      "name": "Fossati",
+                      "classification": "MGA",
+                      "size_ha": 6.5,
+                      "style_notes": "South-facing — warm, ripe, generous"
+                    },
+                    {
+                      "name": "Rive",
+                      "classification": "MGA",
+                      "size_ha": 3.0,
+                      "style_notes": "Between Annunziata and Brunate — combines their qualities"
+                    }
+                  ]
+                },
+                {
+                  "name": "Castiglione Falletto",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "mix of Tortonian and Helvetian",
+                    "limestone",
+                    "iron-rich marl"
+                  ],
+                  "style_notes": "Balance of power and elegance — the 'complete' Barolo commune. Central position, mixed soils",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Monprivato",
+                      "classification": "MGA",
+                      "size_ha": 7.0,
+                      "style_notes": "Giuseppe Mascarello monopole — among the greatest Barolos. Pure, complex, endlessly refined"
+                    },
+                    {
+                      "name": "Bricco Rocche",
+                      "classification": "MGA",
+                      "size_ha": 2.0,
+                      "style_notes": "Ceretto's hilltop crown jewel — concentrated, powerful, rare"
+                    },
+                    {
+                      "name": "Rocche di Castiglione",
+                      "classification": "MGA",
+                      "size_ha": 15.0,
+                      "style_notes": "Grand amphitheater — structured, age-worthy, complex. Oddero and Vietti excel here"
+                    },
+                    {
+                      "name": "Villero",
+                      "classification": "MGA",
+                      "size_ha": 15.0,
+                      "style_notes": "Iron-rich soils — tannic, powerful, long-lived. Giacomo Conterno and Bruno Giacosa"
+                    },
+                    {
+                      "name": "Fiasco",
+                      "classification": "MGA",
+                      "size_ha": 7.0,
+                      "style_notes": "West of the village — round, balanced, aromatic"
+                    },
+                    {
+                      "name": "Pernanno",
+                      "classification": "MGA",
+                      "size_ha": 4.5,
+                      "style_notes": "Cooler site — elegant, fine-grained tannins"
+                    },
+                    {
+                      "name": "Bricco Boschis",
+                      "classification": "MGA",
+                      "size_ha": 6.0,
+                      "style_notes": "Cavallotto monopole effectively — structured, classic, traditional style"
+                    },
+                    {
+                      "name": "Mariondino",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "South-facing — warm, generous, approachable"
+                    }
+                  ]
+                },
+                {
+                  "name": "Serralunga d'Alba",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Helvetian sandstone-marl",
+                    "iron-rich clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Most powerful Barolo commune — iron-fisted wines needing decades. Oldest soils in the zone",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Francia",
+                      "classification": "MGA",
+                      "size_ha": 5.5,
+                      "style_notes": "Giacomo Conterno's Monfortino comes from here — the most legendary Barolo vineyard. Immense structure"
+                    },
+                    {
+                      "name": "Lazzarito",
+                      "classification": "MGA",
+                      "size_ha": 12.0,
+                      "style_notes": "Adjacent to Francia — similarly powerful, tannic, iron-rich. Fontanafredda's top cru"
+                    },
+                    {
+                      "name": "Vigna Rionda",
+                      "classification": "MGA",
+                      "size_ha": 10.0,
+                      "style_notes": "Mythical south-facing amphitheater — massive structure, extraordinary complexity. Oddero and Massolino"
+                    },
+                    {
+                      "name": "Falletto",
+                      "classification": "MGA",
+                      "size_ha": 14.0,
+                      "style_notes": "Bruno Giacosa's legendary cru — aristocratic, complex, ages for decades. South-facing"
+                    },
+                    {
+                      "name": "Prapo",
+                      "classification": "MGA",
+                      "size_ha": 8.0,
+                      "style_notes": "Adjacent to Vigna Rionda — powerful, tannic, mineral. Slower to open"
+                    },
+                    {
+                      "name": "Ornato",
+                      "classification": "MGA",
+                      "size_ha": 8.0,
+                      "style_notes": "Pio Cesare's top cru — structured but with more approachable fruit than most Serralunga"
+                    },
+                    {
+                      "name": "Cerretta",
+                      "classification": "MGA",
+                      "size_ha": 9.0,
+                      "style_notes": "East-facing — cooler, more aromatic, less brutal than Francia. Elio Grasso excels"
+                    },
+                    {
+                      "name": "Margheria",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Massolino cru — south-facing, rich and concentrated"
+                    },
+                    {
+                      "name": "Gabutti",
+                      "classification": "MGA",
+                      "size_ha": 6.0,
+                      "style_notes": "Southern Serralunga — slightly lighter style, more aromatic"
+                    },
+                    {
+                      "name": "Parafada",
+                      "classification": "MGA",
+                      "size_ha": 3.5,
+                      "style_notes": "Massolino cru — deep color, firm tannins, masculine"
+                    },
+                    {
+                      "name": "Colombaro",
+                      "classification": "MGA",
+                      "size_ha": 3.0,
+                      "style_notes": "High site — mineral, taut, slow to evolve"
+                    },
+                    {
+                      "name": "Baudana",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Southern tip — G.D. Vajra makes outstanding wine here. Elegant for Serralunga"
+                    }
+                  ]
+                },
+                {
+                  "name": "Monforte d'Alba",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Helvetian marl",
+                    "sandstone",
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Powerful, concentrated Barolo — between Serralunga's muscle and La Morra's perfume. Outstanding value",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Bussia",
+                      "classification": "MGA",
+                      "size_ha": 65.0,
+                      "style_notes": "Largest single MGA — many sub-zones. Prunotto, Aldo Conterno (Cicala, Colonnello). Classic, structured"
+                    },
+                    {
+                      "name": "Ginestra",
+                      "classification": "MGA",
+                      "size_ha": 18.0,
+                      "style_notes": "South-facing — warm, rich, generous. Paolo Conterno and Elio Grasso. Superb ripeness"
+                    },
+                    {
+                      "name": "Mosconi",
+                      "classification": "MGA",
+                      "size_ha": 12.0,
+                      "style_notes": "Adjacent to Ginestra — similar warmth, Aldo Conterno's top site. Rich and powerful"
+                    },
+                    {
+                      "name": "Gramolere",
+                      "classification": "MGA",
+                      "size_ha": 10.0,
+                      "style_notes": "Higher elevation — cooler, more austere, mineral. Manages complexity"
+                    },
+                    {
+                      "name": "Castelletto",
+                      "classification": "MGA",
+                      "size_ha": 8.0,
+                      "style_notes": "Western Monforte — limestone-rich, aromatic, structured"
+                    },
+                    {
+                      "name": "Perno",
+                      "classification": "MGA",
+                      "size_ha": 6.0,
+                      "style_notes": "Cooler microclimate — elegant, perfumed, lighter for Monforte"
+                    },
+                    {
+                      "name": "Le Coste",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Steep slopes — concentrated, mineral, tannic"
+                    },
+                    {
+                      "name": "Ravera (Monforte portion)",
+                      "classification": "MGA",
+                      "size_ha": 7.0,
+                      "style_notes": "Shared with Novello — sandy soils, elegant, gaining cult status. Elvio Cogno"
+                    },
+                    {
+                      "name": "San Giovanni",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Southern exposure — warm and generous"
+                    },
+                    {
+                      "name": "Santo Stefano di Perno",
+                      "classification": "MGA",
+                      "size_ha": 3.5,
+                      "style_notes": "Cool site — refined, mineral, Giacomo Fenocchio"
+                    }
+                  ]
+                },
+                {
+                  "name": "Novello",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Helvetian marl",
+                    "sand",
+                    "clay"
+                  ],
+                  "style_notes": "Smallest Barolo commune — lighter style, floral, sandy soils. Gaining recognition",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Ravera (Novello portion)",
+                      "classification": "MGA",
+                      "size_ha": 10.0,
+                      "style_notes": "Rising star MGA — sandy limestone, elegant, complex. Elvio Cogno's flagship"
+                    },
+                    {
+                      "name": "Bergera-Pezzole",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Fresh, aromatic — lighter style Barolo"
+                    },
+                    {
+                      "name": "Sottocastello di Novello",
+                      "classification": "MGA",
+                      "size_ha": 3.0,
+                      "style_notes": "Below the village — protected site, good ripeness"
+                    }
+                  ]
+                },
+                {
+                  "name": "Verduno",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Tortonian marl",
+                    "chalk",
+                    "clay"
+                  ],
+                  "style_notes": "Northernmost Barolo commune — lightest, most elegant, early-drinking. Also produces Verduno Pelaverga",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Monvigliero",
+                      "classification": "MGA",
+                      "size_ha": 12.0,
+                      "style_notes": "Potentially the greatest single vineyard in all of Barolo — southwest amphitheater. Ethereal, profound, perfumed. Fratelli Alessandria and Comm. G.B. Burlotto"
+                    },
+                    {
+                      "name": "Campasso",
+                      "classification": "MGA",
+                      "size_ha": 3.5,
+                      "style_notes": "Adjacent to Monvigliero — similar elegance, slightly lighter"
+                    },
+                    {
+                      "name": "Massara",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Good exposure — charming, aromatic Barolo"
+                    },
+                    {
+                      "name": "Breri",
+                      "classification": "MGA",
+                      "size_ha": 2.5,
+                      "style_notes": "Small site — fine-grained, delicate"
+                    }
+                  ]
+                },
+                {
+                  "name": "Grinzane Cavour",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Tortonian marl",
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Tiny commune — home to the famous castle. Few vineyards but distinctive terroir",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Gustava",
+                      "classification": "MGA",
+                      "size_ha": 3.0,
+                      "style_notes": "Below the castle — aromatic, medium-bodied, charming"
+                    },
+                    {
+                      "name": "Canova",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "South-facing — rounder, more accessible style"
+                    }
+                  ]
+                },
+                {
+                  "name": "Diano d'Alba",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Tortonian marl",
+                    "clay"
+                  ],
+                  "style_notes": "Eastern commune — tiny Barolo production, better known for Dolcetto di Diano d'Alba DOCG",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Sorano",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Main Barolo site — medium-bodied, aromatic"
+                    }
+                  ]
+                },
+                {
+                  "name": "Cherasco",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "sand",
+                    "clay"
+                  ],
+                  "style_notes": "Westernmost Barolo commune — very limited production, lighter sandy soils",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Mantoetto",
+                      "classification": "MGA",
+                      "size_ha": 2.0,
+                      "style_notes": "Only notable site — sandy, light, early-drinking Barolo"
+                    }
+                  ]
+                },
+                {
+                  "name": "Roddi",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Tortonian marl",
+                    "clay"
+                  ],
+                  "style_notes": "Small eastern commune — limited production, wines recall Verduno in their elegance",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "required_aging_months": 38,
+                  "vineyards": [
+                    {
+                      "name": "Bricco Ambrogio",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Best site — structured for Roddi, good exposure"
+                    }
+                  ]
+                },
+                {
+                  "name": "Barbaresco (commune)",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Tortonian marl",
+                    "clay",
+                    "limestone",
+                    "sand"
+                  ],
+                  "style_notes": "The village itself — elegant, perfumed Nebbiolo. Home to Gaja and Produttori del Barbaresco",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "required_aging_months": 26,
+                  "vineyards": [
+                    {
+                      "name": "Asili",
+                      "classification": "MGA",
+                      "size_ha": 16.0,
+                      "style_notes": "Arguably the greatest Barbaresco cru — south-facing, chalky soils. Ethereal perfume, silky tannins, extraordinary finesse. Bruno Giacosa's legendary Riserva"
+                    },
+                    {
+                      "name": "Rabajà",
+                      "classification": "MGA",
+                      "size_ha": 14.0,
+                      "style_notes": "Adjacent to Asili — more structured, deeper. Bruno Giacosa and Produttori del Barbaresco benchmarks. Power with elegance"
+                    },
+                    {
+                      "name": "Martinenga",
+                      "classification": "MGA",
+                      "size_ha": 8.0,
+                      "style_notes": "Marchesi di Grésy monopole effectively — south-facing amphitheater. Complex, balanced, age-worthy"
+                    },
+                    {
+                      "name": "Pora",
+                      "classification": "MGA",
+                      "size_ha": 12.0,
+                      "style_notes": "Adjacent to Asili — similar elegance with slightly more structure. Excellent south exposure"
+                    },
+                    {
+                      "name": "Montefico",
+                      "classification": "MGA",
+                      "size_ha": 6.5,
+                      "style_notes": "Steep, south-facing — concentrated, structured. Produttori del Barbaresco Riserva is outstanding"
+                    },
+                    {
+                      "name": "Muncagota (Moccagatta)",
+                      "classification": "MGA",
+                      "size_ha": 10.0,
+                      "style_notes": "North-facing — cooler, more aromatic, lighter body. Elegant style"
+                    },
+                    {
+                      "name": "Ovello",
+                      "classification": "MGA",
+                      "size_ha": 18.0,
+                      "style_notes": "Large and varied — southwest-facing. Bold, generous, sometimes powerful. Produttori is excellent"
+                    },
+                    {
+                      "name": "Roncaglie",
+                      "classification": "MGA",
+                      "size_ha": 6.0,
+                      "style_notes": "High altitude — taut, mineral, aromatic. Poderi Colla produces fine wine here"
+                    },
+                    {
+                      "name": "Pajé",
+                      "classification": "MGA",
+                      "size_ha": 7.0,
+                      "style_notes": "West-facing — structured, firm tannins, needs cellaring. Roagna's old-vine bottling is legendary"
+                    },
+                    {
+                      "name": "Rio Sordo",
+                      "classification": "MGA",
+                      "size_ha": 20.0,
+                      "style_notes": "Cooler northeast exposure — lighter, aromatic, early-drinking. Good value Barbaresco"
+                    },
+                    {
+                      "name": "Secondine",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Southeast-facing — warm, round, approachable"
+                    },
+                    {
+                      "name": "Faset",
+                      "classification": "MGA",
+                      "size_ha": 8.0,
+                      "style_notes": "South-facing — generous, ripe fruit, medium structure"
+                    },
+                    {
+                      "name": "Ronchi",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Sandy soils — perfumed, delicate, charming"
+                    }
+                  ]
+                },
+                {
+                  "name": "Neive",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Tortonian marl",
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Most structured Barbaresco commune — firmer tannins, darker fruit. The 'Serralunga' of Barbaresco",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "required_aging_months": 26,
+                  "vineyards": [
+                    {
+                      "name": "Santo Stefano",
+                      "classification": "MGA",
+                      "size_ha": 14.0,
+                      "style_notes": "Greatest cru of Neive — Bruno Giacosa's legendary wines. Deep, powerful, immensely long-lived. South-facing amphitheater"
+                    },
+                    {
+                      "name": "Gallina",
+                      "classification": "MGA",
+                      "size_ha": 12.0,
+                      "style_notes": "Adjacent to Santo Stefano — slightly more elegant but still structured. La Spinetta's top cru"
+                    },
+                    {
+                      "name": "Albesani",
+                      "classification": "MGA",
+                      "size_ha": 10.0,
+                      "style_notes": "South-facing — warm, ripe, generous fruit. Prunotto produces well here"
+                    },
+                    {
+                      "name": "Serraboella",
+                      "classification": "MGA",
+                      "size_ha": 8.0,
+                      "style_notes": "Firm and mineral — the most tannic Neive cru. Cigliuti is the benchmark"
+                    },
+                    {
+                      "name": "Starderi",
+                      "classification": "MGA",
+                      "size_ha": 7.0,
+                      "style_notes": "East of the village — structured, concentrated, needs time"
+                    },
+                    {
+                      "name": "Cotta",
+                      "classification": "MGA",
+                      "size_ha": 5.5,
+                      "style_notes": "Higher elevation — cooler, more aromatic, lighter frame"
+                    },
+                    {
+                      "name": "Currà",
+                      "classification": "MGA",
+                      "size_ha": 6.0,
+                      "style_notes": "Southwest-facing — warm site, rich and generous"
+                    },
+                    {
+                      "name": "Basarin",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Sandy soils — perfumed, approachable, charming"
+                    }
+                  ]
+                },
+                {
+                  "name": "Treiso",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "Tortonian marl",
+                    "clay",
+                    "sand"
+                  ],
+                  "style_notes": "Highest altitude Barbaresco commune — cooler microclimate gives aromatic, elegant wines. Growing reputation",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "required_aging_months": 26,
+                  "vineyards": [
+                    {
+                      "name": "Pajorè",
+                      "classification": "MGA",
+                      "size_ha": 12.0,
+                      "style_notes": "Best cru of Treiso — south-facing, concentrated, complex. Pelissero and Produttori are excellent"
+                    },
+                    {
+                      "name": "Rombone",
+                      "classification": "MGA",
+                      "size_ha": 8.0,
+                      "style_notes": "Structured for Treiso — firm tannins, good aging potential"
+                    },
+                    {
+                      "name": "Marcarini",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Elegant and aromatic — fine-grained, floral"
+                    },
+                    {
+                      "name": "Nervo",
+                      "classification": "MGA",
+                      "size_ha": 6.0,
+                      "style_notes": "Cool site — austere in youth, mineral, slow to reveal itself"
+                    },
+                    {
+                      "name": "Valeirano",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "High altitude — lean, taut, mineral driven. La Spinetta's Vigneto Valeirano"
+                    },
+                    {
+                      "name": "Giacosa",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Sandy soils — lighter, perfumed, early-drinking"
+                    },
+                    {
+                      "name": "Bernadot",
+                      "classification": "MGA",
+                      "size_ha": 3.5,
+                      "style_notes": "Ceretto's Bricco Asili estate — delicate, aromatic"
+                    }
+                  ]
+                },
+                {
+                  "name": "San Rocco Seno d'Elvio",
+                  "classification_tiers": [
+                    "DOCG",
+                    "Riserva"
+                  ],
+                  "primary_grapes": [
+                    "Nebbiolo"
+                  ],
+                  "soil_types": [
+                    "sand",
+                    "clay",
+                    "Tortonian marl"
+                  ],
+                  "style_notes": "Smallest and least-known Barbaresco commune — actually a fraction of Alba. Sandy soils give light, perfumed wines",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "required_aging_months": 26,
+                  "vineyards": [
+                    {
+                      "name": "Meruzzano",
+                      "classification": "MGA",
+                      "size_ha": 5.0,
+                      "style_notes": "Best site — sandy soils, perfumed, light but complex"
+                    },
+                    {
+                      "name": "Rizzi",
+                      "classification": "MGA",
+                      "size_ha": 4.0,
+                      "style_notes": "Good exposure — round, approachable, charming"
+                    },
+                    {
+                      "name": "Currà (San Rocco portion)",
+                      "classification": "MGA",
+                      "size_ha": 3.0,
+                      "style_notes": "Sandy — lightest style of Barbaresco, drink younger"
+                    }
+                  ]
                 },
                 {
                   "name": "Roero",
@@ -4588,50 +5452,6 @@
                   ],
                   "style_notes": "DOCG — Barbera's finest expression, the 'grand cru' of Barbera",
                   "price_tier": "premium"
-                }
-              ]
-            },
-            {
-              "name": "Barolo Crus",
-              "primary_grapes": [
-                "Nebbiolo"
-              ],
-              "communes": [
-                {
-                  "name": "Serralunga d'Alba",
-                  "primary_grapes": [
-                    "Nebbiolo"
-                  ],
-                  "soil_types": [
-                    "Helvetian sandstone-marl"
-                  ],
-                  "style_notes": "Most powerful Barolo commune — iron-fisted wines needing decades",
-                  "price_tier": "luxury",
-                  "required_aging_months": 38
-                },
-                {
-                  "name": "La Morra",
-                  "primary_grapes": [
-                    "Nebbiolo"
-                  ],
-                  "soil_types": [
-                    "Tortonian blue-grey marl"
-                  ],
-                  "style_notes": "Most perfumed Barolo commune — aromatic, approachable, 'feminine'",
-                  "price_tier": "luxury",
-                  "required_aging_months": 38
-                },
-                {
-                  "name": "Castiglione Falletto",
-                  "primary_grapes": [
-                    "Nebbiolo"
-                  ],
-                  "soil_types": [
-                    "mix of Tortonian and Helvetian"
-                  ],
-                  "style_notes": "Balance of power and elegance — the 'complete' Barolo commune",
-                  "price_tier": "luxury",
-                  "required_aging_months": 38
                 }
               ]
             }
