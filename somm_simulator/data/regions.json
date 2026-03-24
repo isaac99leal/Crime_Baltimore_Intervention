@@ -12984,9 +12984,161 @@
                     "clay",
                     "limestone"
                   ],
-                  "style_notes": "Italy's most age-worthy Sangiovese",
+                  "style_notes": "Italy's most age-worthy Sangiovese — 100% Brunello clone. Minimum 4 years aging (5 for Riserva). Sub-zones range from warmer south slopes to cooler north",
                   "price_tier": "luxury",
-                  "required_aging_months": 48
+                  "required_aging_months": 48,
+                  "authorized_grapes": [
+                    "Sangiovese"
+                  ],
+                  "min_alcohol": 12.5,
+                  "climate": "mediterranean with continental influence",
+                  "vineyards": [
+                    {
+                      "name": "Montosoli",
+                      "classification": "UGA",
+                      "size_ha": 45.0,
+                      "soil_types": [
+                        "galestro",
+                        "limestone",
+                        "clay"
+                      ],
+                      "altitude_m": "350-400",
+                      "exposure": "north/northeast",
+                      "style_notes": "One of the most prized crus of Montalcino — cool northern exposure at high altitude produces incredibly elegant, perfumed Brunello with great acidity and aging potential. Floral, red fruit, mineral"
+                    },
+                    {
+                      "name": "Canalicchio",
+                      "classification": "UGA",
+                      "size_ha": 30.0,
+                      "soil_types": [
+                        "galestro",
+                        "clay",
+                        "sandstone"
+                      ],
+                      "altitude_m": "280-350",
+                      "exposure": "north/northwest",
+                      "style_notes": "Just below Montosoli — aromatic, structured, excellent freshness. Classic northern Montalcino character with dried herb and cherry notes"
+                    },
+                    {
+                      "name": "Baricci",
+                      "classification": "UGA",
+                      "size_ha": 20.0,
+                      "soil_types": [
+                        "limestone",
+                        "clay",
+                        "marl"
+                      ],
+                      "altitude_m": "300-370",
+                      "exposure": "north",
+                      "style_notes": "Northern slope near Montosoli — elegant, aromatic, firm tannins. Traditional style, long aging required"
+                    },
+                    {
+                      "name": "Castelnuovo dell'Abate",
+                      "classification": "UGA",
+                      "size_ha": 180.0,
+                      "soil_types": [
+                        "clay",
+                        "limestone",
+                        "volcanic deposits",
+                        "sandstone"
+                      ],
+                      "altitude_m": "200-350",
+                      "exposure": "east/southeast",
+                      "style_notes": "Large zone in the southeast dominated by Monte Amiata's influence — warmer but with cooling winds. Rich, powerful, ripe fruit. Home to many top estates. Excellent consistency"
+                    },
+                    {
+                      "name": "Torrenieri",
+                      "classification": "UGA",
+                      "size_ha": 120.0,
+                      "soil_types": [
+                        "clay",
+                        "sandstone",
+                        "alluvial deposits"
+                      ],
+                      "altitude_m": "200-300",
+                      "exposure": "east/northeast",
+                      "style_notes": "Northeast zone — cooler valley influence, lighter soils. Approachable, fruit-forward Brunello with softer tannins. Good value zone"
+                    },
+                    {
+                      "name": "Sant'Angelo in Colle",
+                      "classification": "UGA",
+                      "size_ha": 150.0,
+                      "soil_types": [
+                        "clay",
+                        "galestro",
+                        "limestone"
+                      ],
+                      "altitude_m": "250-400",
+                      "exposure": "south/southwest",
+                      "style_notes": "Warm southern slopes — rich, concentrated, opulent Brunello. Dark fruit, spice, power. Can be hedonistic in warm vintages. Excellent Riserva territory"
+                    },
+                    {
+                      "name": "Camigliano",
+                      "classification": "UGA",
+                      "size_ha": 90.0,
+                      "soil_types": [
+                        "clay",
+                        "sandstone",
+                        "gravel"
+                      ],
+                      "altitude_m": "180-280",
+                      "exposure": "south/southwest",
+                      "style_notes": "Lower altitude southwestern zone — warm, generous wines with ripe tannins. Round and approachable"
+                    },
+                    {
+                      "name": "Sant'Angelo Scalo",
+                      "classification": "UGA",
+                      "size_ha": 80.0,
+                      "soil_types": [
+                        "clay",
+                        "sand",
+                        "alluvial"
+                      ],
+                      "altitude_m": "150-250",
+                      "exposure": "south",
+                      "style_notes": "Low-lying southern zone — warmest area of Montalcino. Full-bodied, dark-fruited, early-drinking style"
+                    },
+                    {
+                      "name": "Montalcino (town)",
+                      "classification": "UGA",
+                      "size_ha": 60.0,
+                      "soil_types": [
+                        "galestro",
+                        "alberese",
+                        "clay",
+                        "limestone"
+                      ],
+                      "altitude_m": "400-500",
+                      "exposure": "various",
+                      "style_notes": "Highest vineyards around the hilltop town itself — excellent diurnal range. Complex, structured, mineral. Classic benchmark Brunello character"
+                    },
+                    {
+                      "name": "Tavernelle",
+                      "classification": "UGA",
+                      "size_ha": 70.0,
+                      "soil_types": [
+                        "galestro",
+                        "limestone",
+                        "clay"
+                      ],
+                      "altitude_m": "300-400",
+                      "exposure": "west/northwest",
+                      "style_notes": "Western slopes — Mediterranean breezes moderate temperature. Aromatic, balanced, with notable freshness and floral character"
+                    },
+                    {
+                      "name": "Sesta",
+                      "classification": "UGA",
+                      "size_ha": 55.0,
+                      "soil_types": [
+                        "limestone",
+                        "clay",
+                        "rocky"
+                      ],
+                      "altitude_m": "250-350",
+                      "exposure": "west/southwest",
+                      "style_notes": "Western Montalcino — balanced between warmth and freshness. Structured wines with good aging curve"
+                    }
+                  ]
                 },
                 {
                   "name": "Chianti Classico",
@@ -13005,8 +13157,172 @@
                     "alberese",
                     "clay"
                   ],
-                  "style_notes": "Classic Tuscan Sangiovese blend",
-                  "price_tier": "premium"
+                  "style_notes": "The historic heart of Chianti — minimum 80% Sangiovese (100% for Gran Selezione). Three tiers: Annata, Riserva, Gran Selezione. 11 official UGAs (villages) defined in 2022 reform",
+                  "price_tier": "premium",
+                  "authorized_grapes": [
+                    "Sangiovese",
+                    "Canaiolo",
+                    "Colorino",
+                    "Ciliegiolo",
+                    "Cabernet Sauvignon",
+                    "Merlot",
+                    "Syrah"
+                  ],
+                  "min_alcohol": 12.0,
+                  "climate": "mediterranean-continental",
+                  "vineyards": [
+                    {
+                      "name": "Greve in Chianti",
+                      "classification": "UGA",
+                      "size_ha": 1400.0,
+                      "soil_types": [
+                        "galestro",
+                        "alberese",
+                        "sandstone",
+                        "clay"
+                      ],
+                      "altitude_m": "250-550",
+                      "exposure": "various",
+                      "style_notes": "The largest and most central UGA — includes the legendary Panzano 'Conca d'Oro' (golden shell) amphitheater. Wide range of styles from elegant to powerful. Home to many iconic estates. Warm Panzano sub-zone produces rich, concentrated wines; higher Lamole produces aromatic, ethereal ones"
+                    },
+                    {
+                      "name": "Radda in Chianti",
+                      "classification": "UGA",
+                      "size_ha": 700.0,
+                      "soil_types": [
+                        "galestro",
+                        "limestone",
+                        "sandstone",
+                        "rocky"
+                      ],
+                      "altitude_m": "400-600",
+                      "exposure": "various",
+                      "style_notes": "Highest altitude UGA in Chianti Classico — cool, austere, mineral-driven wines. Excellent acidity, firm tannins, great aging potential. The 'Burgundy of Chianti' — finesse over power. Stony galestro soils dominate"
+                    },
+                    {
+                      "name": "Gaiole in Chianti",
+                      "classification": "UGA",
+                      "size_ha": 950.0,
+                      "soil_types": [
+                        "galestro",
+                        "alberese",
+                        "limestone",
+                        "marl"
+                      ],
+                      "altitude_m": "350-550",
+                      "exposure": "east/southeast",
+                      "style_notes": "Eastern zone bordering the Chianti mountains — structured, age-worthy, complex. Famous vineyards at high altitude. Firm backbone with dark cherry and iron mineral notes. More austere when young, rewards patience"
+                    },
+                    {
+                      "name": "Castellina in Chianti",
+                      "classification": "UGA",
+                      "size_ha": 850.0,
+                      "soil_types": [
+                        "alberese",
+                        "clay",
+                        "limestone",
+                        "galestro"
+                      ],
+                      "altitude_m": "300-500",
+                      "exposure": "west/southwest",
+                      "style_notes": "Western ridge with excellent sun exposure — balanced, generous, aromatic. More open and inviting than Gaiole. Mediterranean influence brings warmth. Ripe red fruit, herbs, moderate tannins. Consistently high quality"
+                    },
+                    {
+                      "name": "Castelnuovo Berardenga",
+                      "classification": "UGA",
+                      "size_ha": 800.0,
+                      "soil_types": [
+                        "clay",
+                        "sand",
+                        "alberese",
+                        "marine sediment"
+                      ],
+                      "altitude_m": "250-400",
+                      "exposure": "south/southeast",
+                      "style_notes": "Southernmost and warmest UGA — closest to Siena. Rich, ripe, full-bodied wines. Clay soils give roundness and depth. Earlier drinking than northern zones. Generous, plush, with dark fruit and spice"
+                    },
+                    {
+                      "name": "San Casciano in Val di Pesa",
+                      "classification": "UGA",
+                      "size_ha": 600.0,
+                      "soil_types": [
+                        "clay",
+                        "limestone",
+                        "sand",
+                        "gravel"
+                      ],
+                      "altitude_m": "200-400",
+                      "exposure": "various",
+                      "style_notes": "Northwestern zone closest to Florence — gentler terrain, mixed soils. Approachable, fruit-forward, elegant wines. Good freshness from Arno valley breezes. More immediately appealing, softer tannins"
+                    },
+                    {
+                      "name": "Barberino Tavarnelle",
+                      "classification": "UGA",
+                      "size_ha": 550.0,
+                      "soil_types": [
+                        "galestro",
+                        "sandstone",
+                        "clay",
+                        "alberese"
+                      ],
+                      "altitude_m": "300-500",
+                      "exposure": "various",
+                      "style_notes": "Between San Casciano and Greve — transitional zone with good altitude. Balanced, aromatic, medium-bodied. Good value. The Tavarnelle portion at higher altitude produces more structured wines"
+                    },
+                    {
+                      "name": "Poggibonsi",
+                      "classification": "UGA",
+                      "size_ha": 350.0,
+                      "soil_types": [
+                        "clay",
+                        "sand",
+                        "limestone"
+                      ],
+                      "altitude_m": "200-350",
+                      "exposure": "various",
+                      "style_notes": "Western zone in the Elsa valley — lower altitude, warmer. Softer, more accessible wines. Good for everyday Chianti Classico. Lighter style with fresh fruit character"
+                    },
+                    {
+                      "name": "San Donato in Poggio",
+                      "classification": "UGA",
+                      "size_ha": 400.0,
+                      "soil_types": [
+                        "galestro",
+                        "alberese",
+                        "limestone"
+                      ],
+                      "altitude_m": "350-500",
+                      "exposure": "south/southwest",
+                      "style_notes": "Between Barberino Tavarnelle and Castellina — well-exposed hillside vineyards. Aromatic, structured, with notable elegance. An emerging UGA gaining recognition for quality"
+                    },
+                    {
+                      "name": "Vagliagli",
+                      "classification": "UGA",
+                      "size_ha": 300.0,
+                      "soil_types": [
+                        "clay",
+                        "limestone",
+                        "galestro",
+                        "tufa"
+                      ],
+                      "altitude_m": "300-450",
+                      "exposure": "south/southeast",
+                      "style_notes": "Eastern zone between Radda and Castelnuovo — warm southern exposure tempered by altitude. Ripe, generous wines with good structure. Tufa soils add mineral complexity"
+                    },
+                    {
+                      "name": "Montefioralle",
+                      "classification": "UGA",
+                      "size_ha": 200.0,
+                      "soil_types": [
+                        "galestro",
+                        "sandstone",
+                        "rocky"
+                      ],
+                      "altitude_m": "350-500",
+                      "exposure": "west/southwest",
+                      "style_notes": "Historic hamlet above Greve — steep, rocky slopes. Intense, concentrated wines with great minerality. Small production, high quality. Traditional heart of Chianti"
+                    }
+                  ]
                 },
                 {
                   "name": "Vino Nobile di Montepulciano",
@@ -13022,7 +13338,152 @@
                     "sand",
                     "tufa"
                   ],
-                  "style_notes": "Noble Sangiovese from Montepulciano"
+                  "style_notes": "Prugnolo Gentile (Sangiovese clone) minimum 70%. Aged minimum 2 years (3 for Riserva). Sits between two valleys — Val di Chiana (east) and Val d'Orcia (west) — creating diverse micro-climates",
+                  "authorized_grapes": [
+                    "Sangiovese",
+                    "Canaiolo",
+                    "Colorino",
+                    "Mammolo",
+                    "Cabernet Sauvignon",
+                    "Merlot"
+                  ],
+                  "min_alcohol": 12.5,
+                  "required_aging_months": 24,
+                  "climate": "continental with mediterranean influence",
+                  "price_tier": "premium",
+                  "vineyards": [
+                    {
+                      "name": "Argiano",
+                      "classification": "sub-zone",
+                      "size_ha": 80.0,
+                      "soil_types": [
+                        "clay",
+                        "sand",
+                        "limestone"
+                      ],
+                      "altitude_m": "350-450",
+                      "exposure": "south/southeast",
+                      "style_notes": "Southeast of town toward Val di Chiana — warm, well-drained. Rich, full-bodied wines with ripe tannins and dark cherry character. One of the historically prized areas"
+                    },
+                    {
+                      "name": "Cervognano",
+                      "classification": "sub-zone",
+                      "size_ha": 65.0,
+                      "soil_types": [
+                        "clay",
+                        "limestone",
+                        "sand",
+                        "marine fossils"
+                      ],
+                      "altitude_m": "300-400",
+                      "exposure": "east/southeast",
+                      "style_notes": "Eastern slopes facing Val di Chiana — considered the finest zone. Excellent ventilation, complex soils with marine fossil deposits. Elegant, structured, age-worthy. Many top estates located here"
+                    },
+                    {
+                      "name": "Caggiole",
+                      "classification": "sub-zone",
+                      "size_ha": 45.0,
+                      "soil_types": [
+                        "galestro",
+                        "clay",
+                        "limestone"
+                      ],
+                      "altitude_m": "350-450",
+                      "exposure": "south/southwest",
+                      "style_notes": "South-southwest of town — well-exposed, warm. Concentrated, powerful wines with firm structure. Good aging potential"
+                    },
+                    {
+                      "name": "Gracciano",
+                      "classification": "sub-zone",
+                      "size_ha": 90.0,
+                      "soil_types": [
+                        "clay",
+                        "sand",
+                        "alluvial deposits"
+                      ],
+                      "altitude_m": "250-350",
+                      "exposure": "east",
+                      "style_notes": "Lower eastern slopes toward Val di Chiana — deeper clay soils. Round, fruit-forward, approachable. Good value wines, earlier drinking"
+                    },
+                    {
+                      "name": "Abbadia",
+                      "classification": "sub-zone",
+                      "size_ha": 55.0,
+                      "soil_types": [
+                        "clay",
+                        "tufa",
+                        "volcanic"
+                      ],
+                      "altitude_m": "300-400",
+                      "exposure": "west/northwest",
+                      "style_notes": "Western zone facing Val d'Orcia — tufa and volcanic soils give distinct minerality. Cooler, more aromatic wines. Fresh acidity, herbal notes"
+                    },
+                    {
+                      "name": "Paterno",
+                      "classification": "sub-zone",
+                      "size_ha": 50.0,
+                      "soil_types": [
+                        "sandstone",
+                        "clay",
+                        "limestone"
+                      ],
+                      "altitude_m": "280-380",
+                      "exposure": "northeast",
+                      "style_notes": "Northern zone — cooler, more restrained style. Firm tannins, bright acidity, red fruit focus. Needs time to open"
+                    },
+                    {
+                      "name": "Totona",
+                      "classification": "sub-zone",
+                      "size_ha": 40.0,
+                      "soil_types": [
+                        "clay",
+                        "sand",
+                        "marl"
+                      ],
+                      "altitude_m": "300-400",
+                      "exposure": "south",
+                      "style_notes": "South of town — warm, full sun. Ripe, generous wines with soft tannins. Mediterranean character"
+                    },
+                    {
+                      "name": "Sanguineto",
+                      "classification": "sub-zone",
+                      "size_ha": 35.0,
+                      "soil_types": [
+                        "clay",
+                        "limestone",
+                        "gravel"
+                      ],
+                      "altitude_m": "350-420",
+                      "exposure": "southwest",
+                      "style_notes": "High southwest slopes — excellent sun and drainage. Complex, structured wines with notable depth. An underrated zone gaining recognition"
+                    },
+                    {
+                      "name": "Valiano",
+                      "classification": "sub-zone",
+                      "size_ha": 70.0,
+                      "soil_types": [
+                        "clay",
+                        "alluvial",
+                        "sand"
+                      ],
+                      "altitude_m": "250-320",
+                      "exposure": "east",
+                      "style_notes": "Eastern lowlands near Val di Chiana — flat to gently rolling. Lighter, more accessible style. Everyday drinking, softer wines"
+                    },
+                    {
+                      "name": "Pietroso",
+                      "classification": "sub-zone",
+                      "size_ha": 30.0,
+                      "soil_types": [
+                        "rocky limestone",
+                        "galestro",
+                        "clay"
+                      ],
+                      "altitude_m": "400-480",
+                      "exposure": "south",
+                      "style_notes": "Highest vineyards of Montepulciano — stony soils, great diurnal range. Intense, mineral, firm structure. Small production, high quality"
+                    }
+                  ]
                 },
                 {
                   "name": "Rosso di Montalcino",
