@@ -391,6 +391,100 @@
               "style_notes": "Greatest Pinot Noir in the world",
               "communes": [
                 {
+                  "name": "Marsannay",
+                  "classification_tiers": [
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "marl",
+                    "clay"
+                  ],
+                  "style_notes": "Northernmost Côte de Nuits — known for rosé and increasingly fine reds",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Longeroies",
+                      "classification": "Village",
+                      "size_ha": 8.3,
+                      "style_notes": "Best site in Marsannay — rich, structured reds"
+                    },
+                    {
+                      "name": "Clos du Roy",
+                      "classification": "Village",
+                      "size_ha": 4.7,
+                      "style_notes": "Proposed Premier Cru — powerful and age-worthy"
+                    },
+                    {
+                      "name": "Les Saint-Jacques",
+                      "classification": "Village",
+                      "size_ha": 3.2,
+                      "style_notes": "Proposed Premier Cru — elegant, fine-grained tannins"
+                    },
+                    {
+                      "name": "En Montchenevoy",
+                      "classification": "Village",
+                      "size_ha": 2.1,
+                      "style_notes": "Proposed Premier Cru — complex and mineral"
+                    }
+                  ]
+                },
+                {
+                  "name": "Fixin",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "marl",
+                    "clay"
+                  ],
+                  "style_notes": "Undervalued — firm, structured Pinot Noir reminiscent of Gevrey",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Clos de la Perrière",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.3,
+                      "style_notes": "Best Premier Cru — deep, muscular, ages beautifully"
+                    },
+                    {
+                      "name": "Clos du Chapitre",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.8,
+                      "style_notes": "Structured, slightly lighter than Perrière"
+                    },
+                    {
+                      "name": "Les Hervelets",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.8,
+                      "style_notes": "Finesse and elegance for Fixin"
+                    },
+                    {
+                      "name": "Les Arvelets",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.4,
+                      "style_notes": "Round, approachable Premier Cru"
+                    },
+                    {
+                      "name": "Clos Napoléon",
+                      "classification": "Premier Cru",
+                      "size_ha": 1.8,
+                      "style_notes": "Monopole — named for Napoleon's devotion to Fixin"
+                    }
+                  ]
+                },
+                {
                   "name": "Gevrey-Chambertin",
                   "classification_tiers": [
                     "Grand Cru",
@@ -405,66 +499,97 @@
                     "marl",
                     "clay"
                   ],
-                  "style_notes": "Powerful structured Pinot Noir",
+                  "style_notes": "Powerful structured Pinot Noir — largest Grand Cru commune",
                   "price_tier": "luxury",
                   "climate": "continental",
                   "max_yield_hl_ha": 35,
-                  "biodynamic_percentage": 15
-                },
-                {
-                  "name": "Chambolle-Musigny",
-                  "classification_tiers": [
-                    "Grand Cru",
-                    "Premier Cru",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Pinot Noir"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "clay"
-                  ],
-                  "style_notes": "Elegant perfumed Pinot Noir",
-                  "price_tier": "luxury",
-                  "climate": "continental"
-                },
-                {
-                  "name": "Vosne-Romanée",
-                  "classification_tiers": [
-                    "Grand Cru",
-                    "Premier Cru",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Pinot Noir"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "marl"
-                  ],
-                  "style_notes": "Silky complex Pinot Noir",
-                  "price_tier": "ultra_luxury",
-                  "climate": "continental",
-                  "biodynamic_percentage": 20
-                },
-                {
-                  "name": "Nuits-Saint-Georges",
-                  "classification_tiers": [
-                    "Premier Cru",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Pinot Noir"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "clay",
-                    "marl"
-                  ],
-                  "style_notes": "Firm structured Pinot Noir",
-                  "price_tier": "premium",
-                  "climate": "continental"
+                  "biodynamic_percentage": 15,
+                  "vineyards": [
+                    {
+                      "name": "Chambertin",
+                      "classification": "Grand Cru",
+                      "size_ha": 12.9,
+                      "style_notes": "King of Burgundy — immense depth, power, and longevity. Napoleon's favorite wine"
+                    },
+                    {
+                      "name": "Chambertin-Clos de Bèze",
+                      "classification": "Grand Cru",
+                      "size_ha": 15.4,
+                      "style_notes": "Equal to Chambertin — possibly more elegant. Can legally be sold as Chambertin"
+                    },
+                    {
+                      "name": "Charmes-Chambertin",
+                      "classification": "Grand Cru",
+                      "size_ha": 30.8,
+                      "style_notes": "Largest Grand Cru — seductive, approachable, sometimes includes Mazoyères"
+                    },
+                    {
+                      "name": "Mazoyères-Chambertin",
+                      "classification": "Grand Cru",
+                      "size_ha": 18.6,
+                      "style_notes": "Can be sold as Charmes-Chambertin. Slightly firmer structure"
+                    },
+                    {
+                      "name": "Latricières-Chambertin",
+                      "classification": "Grand Cru",
+                      "size_ha": 7.4,
+                      "style_notes": "Austere and mineral — needs long aging, rewards patience"
+                    },
+                    {
+                      "name": "Mazis-Chambertin",
+                      "classification": "Grand Cru",
+                      "size_ha": 9.1,
+                      "style_notes": "Powerful and tannic — closest in style to Chambertin itself"
+                    },
+                    {
+                      "name": "Ruchottes-Chambertin",
+                      "classification": "Grand Cru",
+                      "size_ha": 3.3,
+                      "style_notes": "Smallest Gevrey Grand Cru — lifted, mineral, rocky terroir"
+                    },
+                    {
+                      "name": "Chapelle-Chambertin",
+                      "classification": "Grand Cru",
+                      "size_ha": 5.5,
+                      "style_notes": "Lighter style Grand Cru — fragrant and fine-boned"
+                    },
+                    {
+                      "name": "Griotte-Chambertin",
+                      "classification": "Grand Cru",
+                      "size_ha": 2.7,
+                      "style_notes": "Tiny and rare — cherry-scented, intense, vibrant"
+                    },
+                    {
+                      "name": "Clos Saint-Jacques",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.7,
+                      "style_notes": "Legendary Premier Cru — Grand Cru quality. Five top producers share it"
+                    },
+                    {
+                      "name": "Lavaux Saint-Jacques",
+                      "classification": "Premier Cru",
+                      "size_ha": 9.4,
+                      "style_notes": "Above the Grand Crus — firm, structured, excellent value"
+                    },
+                    {
+                      "name": "Les Cazetiers",
+                      "classification": "Premier Cru",
+                      "size_ha": 8.5,
+                      "style_notes": "Elegant and aromatic — one of the finest Premier Crus"
+                    },
+                    {
+                      "name": "Combe au Moine",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.8,
+                      "style_notes": "Cool microclimate in a combe — tense, mineral"
+                    },
+                    {
+                      "name": "Les Corbeaux",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.2,
+                      "style_notes": "Adjacent to Mazis — power and depth"
+                    }
+                  ]
                 },
                 {
                   "name": "Morey-Saint-Denis",
@@ -480,13 +605,83 @@
                     "limestone",
                     "clay"
                   ],
-                  "style_notes": "Between Gevrey power and Chambolle elegance",
-                  "price_tier": "luxury"
+                  "style_notes": "Between Gevrey power and Chambolle elegance — undervalued",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Clos de la Roche",
+                      "classification": "Grand Cru",
+                      "size_ha": 16.9,
+                      "style_notes": "Largest and arguably finest — powerful, complex, truffle-scented with age"
+                    },
+                    {
+                      "name": "Clos Saint-Denis",
+                      "classification": "Grand Cru",
+                      "size_ha": 6.6,
+                      "style_notes": "Gave the village its name — elegant, perfumed, silky"
+                    },
+                    {
+                      "name": "Clos de Tart",
+                      "classification": "Grand Cru",
+                      "size_ha": 7.5,
+                      "style_notes": "Monopole of François Pinault — sumptuous, exotic, unique terroir"
+                    },
+                    {
+                      "name": "Clos des Lambrays",
+                      "classification": "Grand Cru",
+                      "size_ha": 8.8,
+                      "style_notes": "Promoted to Grand Cru in 1981 — ethereal, perfumed, gaining recognition"
+                    },
+                    {
+                      "name": "Bonnes-Mares (Morey portion)",
+                      "classification": "Grand Cru",
+                      "size_ha": 1.5,
+                      "style_notes": "Small portion of Bonnes-Mares — earthier than the Chambolle side"
+                    },
+                    {
+                      "name": "Clos de la Bussière",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.6,
+                      "style_notes": "Monopole of Domaine Roumier — pure, elegant"
+                    },
+                    {
+                      "name": "Les Ruchots",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.6,
+                      "style_notes": "Near Chambolle border — fine and aromatic"
+                    },
+                    {
+                      "name": "Les Millandes",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.3,
+                      "style_notes": "Below Clos de Tart — structured, age-worthy"
+                    },
+                    {
+                      "name": "La Riotte",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.5,
+                      "style_notes": "Lighter style — charming, ready earlier"
+                    },
+                    {
+                      "name": "Les Blanchards",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.0,
+                      "style_notes": "Above the Grand Crus — mineral and taut"
+                    },
+                    {
+                      "name": "Clos Sorbé",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.5,
+                      "style_notes": "South-facing — ripe, generous fruit"
+                    }
+                  ]
                 },
                 {
-                  "name": "Vougeot",
+                  "name": "Chambolle-Musigny",
                   "classification_tiers": [
                     "Grand Cru",
+                    "Premier Cru",
                     "Village"
                   ],
                   "primary_grapes": [
@@ -496,8 +691,109 @@
                     "limestone",
                     "clay"
                   ],
-                  "style_notes": "Famous for Clos de Vougeot",
-                  "price_tier": "luxury"
+                  "style_notes": "Elegant perfumed Pinot Noir — the most feminine commune",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Musigny",
+                      "classification": "Grand Cru",
+                      "size_ha": 10.9,
+                      "style_notes": "Silk and iron — the most ethereal Grand Cru. Tiny amount of white permitted"
+                    },
+                    {
+                      "name": "Bonnes-Mares",
+                      "classification": "Grand Cru",
+                      "size_ha": 13.5,
+                      "style_notes": "Powerful counterpart to Musigny — broader, more muscular, complex soil layers"
+                    },
+                    {
+                      "name": "Les Amoureuses",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.4,
+                      "style_notes": "De facto Grand Cru — prices rival Grand Crus. Seductive, perfumed, sublime"
+                    },
+                    {
+                      "name": "Les Charmes",
+                      "classification": "Premier Cru",
+                      "size_ha": 9.5,
+                      "style_notes": "True to its name — charming, supple, accessible"
+                    },
+                    {
+                      "name": "Les Cras",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.4,
+                      "style_notes": "Chalky soils — mineral tension, linear and precise"
+                    },
+                    {
+                      "name": "Les Fuées",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.1,
+                      "style_notes": "Adjacent to Bonnes-Mares — some of its power with Chambolle grace"
+                    },
+                    {
+                      "name": "Les Sentiers",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.9,
+                      "style_notes": "Between the Grand Crus — combines elements of both"
+                    },
+                    {
+                      "name": "Les Gruenchers",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.3,
+                      "style_notes": "Near Musigny — fine-grained, floral"
+                    },
+                    {
+                      "name": "Les Baudes",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.5,
+                      "style_notes": "Firm structure for Chambolle — needs time"
+                    }
+                  ]
+                },
+                {
+                  "name": "Vougeot",
+                  "classification_tiers": [
+                    "Grand Cru",
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Famous for Clos de Vougeot — quality varies by position within the clos",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Clos de Vougeot",
+                      "classification": "Grand Cru",
+                      "size_ha": 50.6,
+                      "style_notes": "80+ owners — quality depends on producer and position. Top = near château, bottom = near road"
+                    },
+                    {
+                      "name": "Le Clos Blanc de Vougeot",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.3,
+                      "style_notes": "Rare white from a red commune — mineral Chardonnay"
+                    },
+                    {
+                      "name": "Les Cras",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.6,
+                      "style_notes": "Above the Grand Cru — can rival it in quality"
+                    },
+                    {
+                      "name": "Les Petits Vougeots",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.8,
+                      "style_notes": "Lighter style — charming, earlier-drinking"
+                    }
+                  ]
                 },
                 {
                   "name": "Flagey-Echézeaux",
@@ -512,8 +808,196 @@
                     "limestone",
                     "clay"
                   ],
-                  "style_notes": "Rich complex Pinot Noir",
-                  "price_tier": "luxury"
+                  "style_notes": "Rich complex Pinot Noir — village wine sold as Vosne-Romanée",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Échézeaux",
+                      "classification": "Grand Cru",
+                      "size_ha": 37.7,
+                      "style_notes": "Large Grand Cru with varied quality — 11 lieux-dits. Best: Les Treux, Clos St-Denis"
+                    },
+                    {
+                      "name": "Grands-Échézeaux",
+                      "classification": "Grand Cru",
+                      "size_ha": 9.1,
+                      "style_notes": "Superior to Échézeaux — adjacent to Clos de Vougeot's best part. Rich, silky, profound"
+                    }
+                  ]
+                },
+                {
+                  "name": "Vosne-Romanée",
+                  "classification_tiers": [
+                    "Grand Cru",
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "marl"
+                  ],
+                  "style_notes": "Silky complex Pinot Noir — home to the world's most expensive vineyards",
+                  "price_tier": "ultra_luxury",
+                  "climate": "continental",
+                  "biodynamic_percentage": 20,
+                  "vineyards": [
+                    {
+                      "name": "Romanée-Conti",
+                      "classification": "Grand Cru",
+                      "size_ha": 1.8,
+                      "style_notes": "The most famous vineyard on Earth — monopole of DRC. Transcendent, otherworldly"
+                    },
+                    {
+                      "name": "La Tâche",
+                      "classification": "Grand Cru",
+                      "size_ha": 6.1,
+                      "style_notes": "DRC monopole — more powerful and spicy than Romanée-Conti. Extraordinary depth"
+                    },
+                    {
+                      "name": "Richebourg",
+                      "classification": "Grand Cru",
+                      "size_ha": 8.0,
+                      "style_notes": "Opulent, voluptuous — the most hedonistic Grand Cru. Leroy and DRC are benchmarks"
+                    },
+                    {
+                      "name": "La Romanée",
+                      "classification": "Grand Cru",
+                      "size_ha": 0.85,
+                      "style_notes": "Smallest AOC in France — monopole of Comte Liger-Belair. Perfumed, ethereal"
+                    },
+                    {
+                      "name": "Romanée-Saint-Vivant",
+                      "classification": "Grand Cru",
+                      "size_ha": 9.4,
+                      "style_notes": "Most elegant of Vosne Grand Crus — lacy, perfumed, deceptively light in youth"
+                    },
+                    {
+                      "name": "La Grande Rue",
+                      "classification": "Grand Cru",
+                      "size_ha": 1.65,
+                      "style_notes": "Between Romanée-Conti and La Tâche — monopole of Domaine François Lamarche"
+                    },
+                    {
+                      "name": "Les Malconsorts",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.9,
+                      "style_notes": "Adjacent to La Tâche — Grand Cru quality. Rich, deep, structured"
+                    },
+                    {
+                      "name": "Les Suchots",
+                      "classification": "Premier Cru",
+                      "size_ha": 13.1,
+                      "style_notes": "Between Romanée-Saint-Vivant and Échézeaux — silky and generous"
+                    },
+                    {
+                      "name": "Cros Parantoux",
+                      "classification": "Premier Cru",
+                      "size_ha": 1.0,
+                      "style_notes": "Made famous by Henri Jayer — cult vineyard. Intense, mineral, electric"
+                    },
+                    {
+                      "name": "Les Beaux Monts",
+                      "classification": "Premier Cru",
+                      "size_ha": 11.4,
+                      "style_notes": "Above Échézeaux — aromatic, fine-grained, reliable quality"
+                    },
+                    {
+                      "name": "Aux Brûlées",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.5,
+                      "style_notes": "Warm south-facing site — ripe, generous, spicy"
+                    },
+                    {
+                      "name": "Aux Reignots",
+                      "classification": "Premier Cru",
+                      "size_ha": 1.6,
+                      "style_notes": "Above La Romanée — taut, mineral, underrated"
+                    }
+                  ]
+                },
+                {
+                  "name": "Nuits-Saint-Georges",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
+                    "marl"
+                  ],
+                  "style_notes": "Firm structured Pinot Noir — no Grand Crus but many outstanding Premier Crus",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Saint-Georges",
+                      "classification": "Premier Cru",
+                      "size_ha": 7.5,
+                      "style_notes": "Gave the village its name — campaigning for Grand Cru. Powerful, deep, complex"
+                    },
+                    {
+                      "name": "Les Vaucrains",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.2,
+                      "style_notes": "Massive structure — tannic in youth, magnificent with age. Grand Cru quality"
+                    },
+                    {
+                      "name": "Les Cailles",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.8,
+                      "style_notes": "Chalky soil — mineral, refined, ages gracefully"
+                    },
+                    {
+                      "name": "Les Pruliers",
+                      "classification": "Premier Cru",
+                      "size_ha": 7.1,
+                      "style_notes": "Rich and round — generous fruit with firm backbone"
+                    },
+                    {
+                      "name": "Aux Boudots",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.3,
+                      "style_notes": "Adjacent to Vosne-Romanée — shows that commune's silky elegance"
+                    },
+                    {
+                      "name": "Les Damodes",
+                      "classification": "Premier Cru",
+                      "size_ha": 8.5,
+                      "style_notes": "Northern section near Vosne — delicate and perfumed for NSG"
+                    },
+                    {
+                      "name": "Les Chaignots",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.8,
+                      "style_notes": "Near Vosne border — fine-grained, aromatic"
+                    },
+                    {
+                      "name": "Les Porêts-Saint-Georges",
+                      "classification": "Premier Cru",
+                      "size_ha": 7.3,
+                      "style_notes": "Reliable — firm structure, good value"
+                    },
+                    {
+                      "name": "Clos de la Maréchale",
+                      "classification": "Premier Cru",
+                      "size_ha": 9.6,
+                      "style_notes": "Monopole of Jacques-Frédéric Mugnier — southern NSG, elegant"
+                    },
+                    {
+                      "name": "Clos des Corvées",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.2,
+                      "style_notes": "Southern section — structured and mineral"
+                    }
+                  ]
                 }
               ]
             },
@@ -527,60 +1011,238 @@
               "style_notes": "Greatest white Burgundy, plus excellent reds",
               "communes": [
                 {
-                  "name": "Puligny-Montrachet",
+                  "name": "Ladoix-Serrigny",
                   "classification_tiers": [
                     "Grand Cru",
                     "Premier Cru",
                     "Village"
                   ],
                   "primary_grapes": [
+                    "Pinot Noir",
                     "Chardonnay"
                   ],
                   "soil_types": [
                     "limestone",
-                    "clay"
+                    "marl",
+                    "iron-rich clay"
                   ],
-                  "style_notes": "Finest white Burgundy — mineral precision",
-                  "price_tier": "ultra_luxury"
+                  "style_notes": "Northern gateway to Côte de Beaune — shares Corton hill. Excellent value",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Corton (Ladoix portion)",
+                      "classification": "Grand Cru",
+                      "size_ha": 5.0,
+                      "style_notes": "Red Grand Cru from Corton hill — firm, earthy, needs cellaring"
+                    },
+                    {
+                      "name": "Corton-Charlemagne (Ladoix portion)",
+                      "classification": "Grand Cru",
+                      "size_ha": 3.0,
+                      "style_notes": "White Grand Cru — steely, mineral Chardonnay"
+                    },
+                    {
+                      "name": "La Corvée",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.2,
+                      "style_notes": "Best village Premier Cru — rich reds with good structure"
+                    }
+                  ]
                 },
                 {
-                  "name": "Chassagne-Montrachet",
+                  "name": "Aloxe-Corton",
                   "classification_tiers": [
                     "Grand Cru",
                     "Premier Cru",
                     "Village"
                   ],
                   "primary_grapes": [
-                    "Chardonnay",
-                    "Pinot Noir"
+                    "Pinot Noir",
+                    "Chardonnay"
                   ],
                   "soil_types": [
                     "limestone",
-                    "clay"
+                    "marl",
+                    "iron-rich clay"
                   ],
-                  "style_notes": "Rich white Burgundy and underrated reds",
-                  "price_tier": "luxury"
+                  "style_notes": "Home to the only red Grand Cru of Côte de Beaune — the Corton hill",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Corton",
+                      "classification": "Grand Cru",
+                      "size_ha": 95.0,
+                      "style_notes": "Largest Grand Cru in Burgundy — many climats. Le Corton, Les Bressandes, Clos du Roi are finest"
+                    },
+                    {
+                      "name": "Corton-Charlemagne",
+                      "classification": "Grand Cru",
+                      "size_ha": 47.0,
+                      "style_notes": "Majestic white Grand Cru — named for Charlemagne. Steel, power, longevity. Top of the hill"
+                    },
+                    {
+                      "name": "Charlemagne",
+                      "classification": "Grand Cru",
+                      "size_ha": 0.3,
+                      "style_notes": "Rarely used appellation — subsumed into Corton-Charlemagne"
+                    },
+                    {
+                      "name": "Corton Les Bressandes",
+                      "classification": "Grand Cru",
+                      "size_ha": 17.4,
+                      "style_notes": "Finest Corton climat — elegant, velvety, most Chambolle-like"
+                    },
+                    {
+                      "name": "Corton Clos du Roi",
+                      "classification": "Grand Cru",
+                      "size_ha": 10.7,
+                      "style_notes": "The King's vineyard — powerful, structured, the most serious Corton"
+                    },
+                    {
+                      "name": "Corton Les Renardes",
+                      "classification": "Grand Cru",
+                      "size_ha": 14.4,
+                      "style_notes": "Wild, feral character — spicy, animal notes, robust"
+                    },
+                    {
+                      "name": "Corton Le Corton",
+                      "classification": "Grand Cru",
+                      "size_ha": 8.0,
+                      "style_notes": "Heart of the hill — pure expression of Corton terroir"
+                    },
+                    {
+                      "name": "Corton Les Perrières",
+                      "classification": "Grand Cru",
+                      "size_ha": 10.5,
+                      "style_notes": "Rocky soils — mineral, taut, needs time"
+                    },
+                    {
+                      "name": "Corton Les Pougets",
+                      "classification": "Grand Cru",
+                      "size_ha": 3.3,
+                      "style_notes": "Jadot monopole portion — rich and concentrated"
+                    },
+                    {
+                      "name": "Corton Les Grèves",
+                      "classification": "Grand Cru",
+                      "size_ha": 4.6,
+                      "style_notes": "Gravelly soils — lighter, more aromatic style"
+                    },
+                    {
+                      "name": "Les Valozières",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.3,
+                      "style_notes": "Best Premier Cru — adjacent to Corton, similar weight"
+                    },
+                    {
+                      "name": "Les Chaillots",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.5,
+                      "style_notes": "Good value — round, approachable reds"
+                    }
+                  ]
                 },
                 {
-                  "name": "Meursault",
+                  "name": "Pernand-Vergelesses",
+                  "classification_tiers": [
+                    "Grand Cru",
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "marl"
+                  ],
+                  "style_notes": "Hidden gem — shares Corton hill but far less expensive",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Corton-Charlemagne (Pernand portion)",
+                      "classification": "Grand Cru",
+                      "size_ha": 17.0,
+                      "style_notes": "Significant portion of this Grand Cru — excellent value entry to Corton-Charlemagne"
+                    },
+                    {
+                      "name": "Île des Vergelesses",
+                      "classification": "Premier Cru",
+                      "size_ha": 9.4,
+                      "style_notes": "Best site — structured, complex reds and whites"
+                    },
+                    {
+                      "name": "En Caradeux",
+                      "classification": "Premier Cru",
+                      "size_ha": 11.3,
+                      "style_notes": "Fine whites — mineral Chardonnay with good tension"
+                    },
+                    {
+                      "name": "Les Fichots",
+                      "classification": "Premier Cru",
+                      "size_ha": 11.1,
+                      "style_notes": "Reliable reds — firm but fruity"
+                    }
+                  ]
+                },
+                {
+                  "name": "Savigny-lès-Beaune",
                   "classification_tiers": [
                     "Premier Cru",
                     "Village"
                   ],
                   "primary_grapes": [
+                    "Pinot Noir",
                     "Chardonnay"
                   ],
                   "soil_types": [
                     "limestone",
-                    "clay"
+                    "clay",
+                    "gravel"
                   ],
-                  "style_notes": "Rich buttery white Burgundy",
-                  "price_tier": "luxury"
+                  "style_notes": "Excellent value village — charming reds, some fine whites. Two valleys create distinct styles",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Lavières",
+                      "classification": "Premier Cru",
+                      "size_ha": 18.0,
+                      "style_notes": "North-facing — elegant, fine, silky. Best Premier Cru"
+                    },
+                    {
+                      "name": "Aux Vergelesses",
+                      "classification": "Premier Cru",
+                      "size_ha": 17.6,
+                      "style_notes": "Adjacent to Pernand — firmer structure, ages well"
+                    },
+                    {
+                      "name": "Les Marconnets",
+                      "classification": "Premier Cru",
+                      "size_ha": 9.2,
+                      "style_notes": "Adjacent to Beaune — structured, slightly austere"
+                    },
+                    {
+                      "name": "Les Narbantons",
+                      "classification": "Premier Cru",
+                      "size_ha": 9.8,
+                      "style_notes": "Southern exposure — ripe, generous fruit"
+                    },
+                    {
+                      "name": "Les Dominodes",
+                      "classification": "Premier Cru",
+                      "size_ha": 8.2,
+                      "style_notes": "Charming, aromatic — approachable young"
+                    }
+                  ]
                 },
                 {
-                  "name": "Pommard",
+                  "name": "Chorey-lès-Beaune",
                   "classification_tiers": [
-                    "Premier Cru",
                     "Village"
                   ],
                   "primary_grapes": [
@@ -588,27 +1250,12 @@
                   ],
                   "soil_types": [
                     "clay",
-                    "limestone",
-                    "iron-rich"
+                    "gravel",
+                    "alluvial"
                   ],
-                  "style_notes": "Powerful structured red Burgundy",
-                  "price_tier": "premium"
-                },
-                {
-                  "name": "Volnay",
-                  "classification_tiers": [
-                    "Premier Cru",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Pinot Noir"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "clay"
-                  ],
-                  "style_notes": "Elegant perfumed red Burgundy",
-                  "price_tier": "premium"
+                  "style_notes": "Flat plain vineyards — easy-drinking, fruit-forward Pinot. Great value",
+                  "price_tier": "budget",
+                  "climate": "continental"
                 },
                 {
                   "name": "Beaune",
@@ -625,13 +1272,205 @@
                     "clay",
                     "marl"
                   ],
-                  "style_notes": "Classic Burgundy reds and whites",
-                  "price_tier": "premium"
+                  "style_notes": "Capital of Burgundy wine — outstanding Premier Crus, mostly reds. Hospices de Beaune auction",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Grèves",
+                      "classification": "Premier Cru",
+                      "size_ha": 31.3,
+                      "style_notes": "Jewel of Beaune — Vigne de l'Enfant Jésus (Bouchard) is legendary. Silky, complex"
+                    },
+                    {
+                      "name": "Les Teurons",
+                      "classification": "Premier Cru",
+                      "size_ha": 16.0,
+                      "style_notes": "Structured and age-worthy — firm backbone with Beaune's characteristic charm"
+                    },
+                    {
+                      "name": "Clos des Mouches",
+                      "classification": "Premier Cru",
+                      "size_ha": 25.1,
+                      "style_notes": "Famous for both red and white (Drouhin). The white rivals Meursault Premier Cru"
+                    },
+                    {
+                      "name": "Les Bressandes",
+                      "classification": "Premier Cru",
+                      "size_ha": 16.2,
+                      "style_notes": "Elegant and aromatic — one of the most popular Beaune Premier Crus"
+                    },
+                    {
+                      "name": "Les Marconnets",
+                      "classification": "Premier Cru",
+                      "size_ha": 9.8,
+                      "style_notes": "Adjacent to Savigny — firm, structured, tannic in youth"
+                    },
+                    {
+                      "name": "Les Cras",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.0,
+                      "style_notes": "High on the slope — mineral and taut"
+                    },
+                    {
+                      "name": "Les Cent Vignes",
+                      "classification": "Premier Cru",
+                      "size_ha": 23.7,
+                      "style_notes": "Large — variable quality but can be superb. Fragrant, medium-bodied"
+                    },
+                    {
+                      "name": "Clos du Roi",
+                      "classification": "Premier Cru",
+                      "size_ha": 13.4,
+                      "style_notes": "Royal vineyard — powerful for Beaune, structured and serious"
+                    },
+                    {
+                      "name": "Les Avaux",
+                      "classification": "Premier Cru",
+                      "size_ha": 13.4,
+                      "style_notes": "Lower slope — round, approachable, fruit-forward"
+                    }
+                  ]
                 },
                 {
-                  "name": "Aloxe-Corton",
+                  "name": "Pommard",
                   "classification_tiers": [
-                    "Grand Cru",
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
+                    "iron-rich marl"
+                  ],
+                  "style_notes": "Most tannic commune of Côte de Beaune — powerful, dense, masculine reds",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Rugiens-Bas",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.8,
+                      "style_notes": "Campaigning for Grand Cru — iron-rich red soils. Dense, powerful, long-lived"
+                    },
+                    {
+                      "name": "Les Rugiens-Hauts",
+                      "classification": "Premier Cru",
+                      "size_ha": 7.6,
+                      "style_notes": "Above Les Rugiens-Bas — slightly lighter but still impressive"
+                    },
+                    {
+                      "name": "Les Épenots",
+                      "classification": "Premier Cru",
+                      "size_ha": 10.1,
+                      "style_notes": "More elegant than Rugiens — silky with firm backbone"
+                    },
+                    {
+                      "name": "Les Grands Épenots",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.4,
+                      "style_notes": "Best part of Épenots — concentrated, complex"
+                    },
+                    {
+                      "name": "Les Pézerolles",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.2,
+                      "style_notes": "Adjacent to Beaune — more finesse than typical Pommard"
+                    },
+                    {
+                      "name": "Clos des Epeneaux",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.2,
+                      "style_notes": "Monopole of Comte Armand — within Les Épenots. Structured, mineral"
+                    },
+                    {
+                      "name": "Les Arvelets",
+                      "classification": "Premier Cru",
+                      "size_ha": 8.4,
+                      "style_notes": "Higher elevation — lighter but persistent"
+                    },
+                    {
+                      "name": "Les Jarollières",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.2,
+                      "style_notes": "Near Volnay border — shows more elegance"
+                    }
+                  ]
+                },
+                {
+                  "name": "Volnay",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
+                    "marl"
+                  ],
+                  "style_notes": "Most elegant reds of Côte de Beaune — counterpart to Chambolle-Musigny in the south",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Clos des Ducs",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.4,
+                      "style_notes": "Monopole of Marquis d'Angerville — quintessential Volnay. Perfumed, silky, precise"
+                    },
+                    {
+                      "name": "Taillepieds",
+                      "classification": "Premier Cru",
+                      "size_ha": 7.1,
+                      "style_notes": "Structure and elegance — one of the top 3 Premier Crus. Ages magnificently"
+                    },
+                    {
+                      "name": "Les Caillerets",
+                      "classification": "Premier Cru",
+                      "size_ha": 14.3,
+                      "style_notes": "Stony soils — mineral, tense, complex. Clos des 60 Ouvrées is the jewel within"
+                    },
+                    {
+                      "name": "Santenots",
+                      "classification": "Premier Cru",
+                      "size_ha": 7.5,
+                      "style_notes": "Actually in Meursault but sold as Volnay — rich, full-bodied for the commune"
+                    },
+                    {
+                      "name": "Champans",
+                      "classification": "Premier Cru",
+                      "size_ha": 11.2,
+                      "style_notes": "Full-bodied for Volnay — structured, earthy, serious"
+                    },
+                    {
+                      "name": "Clos de la Bousse-d'Or",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.1,
+                      "style_notes": "Monopole of Domaine de la Pousse d'Or — charming, fragrant"
+                    },
+                    {
+                      "name": "Les Chevrets",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.1,
+                      "style_notes": "Lower slope — approachable, fruity, ready earlier"
+                    },
+                    {
+                      "name": "Frémiets",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.4,
+                      "style_notes": "Adjacent to Pommard — firmer structure than typical Volnay"
+                    }
+                  ]
+                },
+                {
+                  "name": "Monthélie",
+                  "classification_tiers": [
                     "Premier Cru",
                     "Village"
                   ],
@@ -641,10 +1480,350 @@
                   ],
                   "soil_types": [
                     "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Hidden behind Volnay — similar style at much lower prices. Insider's Burgundy",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Sur la Velle",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.0,
+                      "style_notes": "Adjacent to Volnay — shows that commune's elegance"
+                    },
+                    {
+                      "name": "Les Duresses",
+                      "classification": "Premier Cru",
+                      "size_ha": 8.5,
+                      "style_notes": "Shared with Auxey — firm, structured reds"
+                    }
+                  ]
+                },
+                {
+                  "name": "Auxey-Duresses",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
                     "marl"
                   ],
-                  "style_notes": "Red and white Grand Cru (Corton)",
-                  "price_tier": "luxury"
+                  "style_notes": "Value commune — good reds and increasingly fine whites. Side valley microclimate",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Duresses",
+                      "classification": "Premier Cru",
+                      "size_ha": 8.7,
+                      "style_notes": "Best site — structured reds with aging potential"
+                    },
+                    {
+                      "name": "Climat du Val",
+                      "classification": "Premier Cru",
+                      "size_ha": 9.3,
+                      "style_notes": "Good whites — mineral and fresh"
+                    },
+                    {
+                      "name": "Les Grands Champs",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.5,
+                      "style_notes": "Charming reds — lighter style"
+                    }
+                  ]
+                },
+                {
+                  "name": "Saint-Romain",
+                  "classification_tiers": [
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone"
+                  ],
+                  "style_notes": "High altitude village — crisp, mineral whites. Home to Burgundy's best cooperage (François Frères)",
+                  "price_tier": "budget",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Meursault",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
+                    "marl"
+                  ],
+                  "style_notes": "Golden, rich white Burgundy — buttery, nutty, opulent. No Grand Crus but three Premier Crus deserve it",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Perrières",
+                      "classification": "Premier Cru",
+                      "size_ha": 13.7,
+                      "style_notes": "Deserves Grand Cru — steely, mineral, the finest Meursault. Flinty limestone soils"
+                    },
+                    {
+                      "name": "Les Charmes",
+                      "classification": "Premier Cru",
+                      "size_ha": 31.1,
+                      "style_notes": "Largest Premier Cru — generous, opulent, the classic Meursault style. Divided into Charmes-Dessus and Dessous"
+                    },
+                    {
+                      "name": "Les Genevrières",
+                      "classification": "Premier Cru",
+                      "size_ha": 16.5,
+                      "style_notes": "Between Perrières and Charmes in style — floral, mineral, complex"
+                    },
+                    {
+                      "name": "Les Gouttes d'Or",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.3,
+                      "style_notes": "Golden drops — rich, honeyed, exotic for Meursault"
+                    },
+                    {
+                      "name": "Le Porusot",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.5,
+                      "style_notes": "Adjacent to Perrières — similar mineral precision"
+                    },
+                    {
+                      "name": "Blagny",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.4,
+                      "style_notes": "Higher elevation — taut, mineral, needs time"
+                    },
+                    {
+                      "name": "Clos des Perrières",
+                      "classification": "Premier Cru",
+                      "size_ha": 0.9,
+                      "style_notes": "Monopole of Albert Grivault — within Perrières, walled vineyard. Exceptional"
+                    },
+                    {
+                      "name": "Les Cras",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.5,
+                      "style_notes": "Steely and precise — lean style, ages beautifully"
+                    },
+                    {
+                      "name": "Sous le Dos d'Âne",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.4,
+                      "style_notes": "Near Blagny — mineral, taut, excellent value"
+                    }
+                  ]
+                },
+                {
+                  "name": "Blagny",
+                  "classification_tiers": [
+                    "Premier Cru"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone"
+                  ],
+                  "style_notes": "Tiny hamlet between Meursault and Puligny — reds sold as Blagny, whites as Meursault or Puligny Premier Cru",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "La Pièce sous le Bois",
+                      "classification": "Premier Cru",
+                      "size_ha": 11.1,
+                      "style_notes": "Largest Blagny climat — firm, rustic reds"
+                    }
+                  ]
+                },
+                {
+                  "name": "Puligny-Montrachet",
+                  "classification_tiers": [
+                    "Grand Cru",
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Finest white Burgundy — mineral precision, elegance, crystalline purity",
+                  "price_tier": "ultra_luxury",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Montrachet (Puligny portion)",
+                      "classification": "Grand Cru",
+                      "size_ha": 4.0,
+                      "style_notes": "The greatest white wine vineyard on Earth — shared with Chassagne. Power, complexity, immortality"
+                    },
+                    {
+                      "name": "Chevalier-Montrachet",
+                      "classification": "Grand Cru",
+                      "size_ha": 7.4,
+                      "style_notes": "Above Montrachet — more mineral and taut. Some prefer it for its purity and tension"
+                    },
+                    {
+                      "name": "Bâtard-Montrachet (Puligny portion)",
+                      "classification": "Grand Cru",
+                      "size_ha": 6.0,
+                      "style_notes": "Below Montrachet — richer, more opulent, powerful. Shared with Chassagne"
+                    },
+                    {
+                      "name": "Bienvenues-Bâtard-Montrachet",
+                      "classification": "Grand Cru",
+                      "size_ha": 3.7,
+                      "style_notes": "Within Bâtard on the Puligny side — floral, delicate, sometimes the most charming"
+                    },
+                    {
+                      "name": "Les Pucelles",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.8,
+                      "style_notes": "Adjacent to Bâtard — Grand Cru quality. Leflaive's is benchmark. Pure, mineral, crystalline"
+                    },
+                    {
+                      "name": "Les Folatières",
+                      "classification": "Premier Cru",
+                      "size_ha": 17.6,
+                      "style_notes": "Large, excellent — above the Grand Crus. Mineral, taut, age-worthy"
+                    },
+                    {
+                      "name": "Les Combettes",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.7,
+                      "style_notes": "Adjacent to Meursault Charmes — richer, more opulent style for Puligny"
+                    },
+                    {
+                      "name": "Clavoillon",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.6,
+                      "style_notes": "Leflaive monopole — pure, fine-boned, mineral"
+                    },
+                    {
+                      "name": "Les Perrières",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.8,
+                      "style_notes": "High on the slope — taut, mineral, austere in youth"
+                    },
+                    {
+                      "name": "Champ Canet",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.6,
+                      "style_notes": "Above Combettes — generous, round, accessible"
+                    },
+                    {
+                      "name": "Les Referts",
+                      "classification": "Premier Cru",
+                      "size_ha": 10.5,
+                      "style_notes": "South of the village — charming, ready earlier"
+                    },
+                    {
+                      "name": "Clos de la Garenne",
+                      "classification": "Premier Cru",
+                      "size_ha": 1.0,
+                      "style_notes": "Within Les Folatières — Duc de Magenta monopole. Concentrated"
+                    }
+                  ]
+                },
+                {
+                  "name": "Chassagne-Montrachet",
+                  "classification_tiers": [
+                    "Grand Cru",
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Rich white Burgundy and underrated reds — more generous than Puligny",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Montrachet (Chassagne portion)",
+                      "classification": "Grand Cru",
+                      "size_ha": 4.0,
+                      "style_notes": "Southern half of the greatest white vineyard — slightly richer than Puligny side"
+                    },
+                    {
+                      "name": "Bâtard-Montrachet (Chassagne portion)",
+                      "classification": "Grand Cru",
+                      "size_ha": 5.8,
+                      "style_notes": "Opulent, powerful — the richest of the Montrachet Grand Crus"
+                    },
+                    {
+                      "name": "Criots-Bâtard-Montrachet",
+                      "classification": "Grand Cru",
+                      "size_ha": 1.6,
+                      "style_notes": "Smallest of the Montrachet family — entirely in Chassagne. Rare, rich, concentrated"
+                    },
+                    {
+                      "name": "Les Caillerets",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.0,
+                      "style_notes": "Best Premier Cru — mineral whites and excellent reds. Stony terroir"
+                    },
+                    {
+                      "name": "Morgeot",
+                      "classification": "Premier Cru",
+                      "size_ha": 53.7,
+                      "style_notes": "Vast — many climats within. Clos de la Chapelle and Abbaye de Morgeot are finest"
+                    },
+                    {
+                      "name": "Les Grandes Ruchottes",
+                      "classification": "Premier Cru",
+                      "size_ha": 0.6,
+                      "style_notes": "Tiny and rare — intense, concentrated white"
+                    },
+                    {
+                      "name": "Les Embrazées",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.9,
+                      "style_notes": "Generous whites — round and approachable"
+                    },
+                    {
+                      "name": "Les Chenevottes",
+                      "classification": "Premier Cru",
+                      "size_ha": 10.2,
+                      "style_notes": "Reliable — good value white Burgundy"
+                    },
+                    {
+                      "name": "La Romanée",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.2,
+                      "style_notes": "Not to be confused with Vosne — rich reds and whites"
+                    },
+                    {
+                      "name": "Clos Saint-Jean",
+                      "classification": "Premier Cru",
+                      "size_ha": 14.4,
+                      "style_notes": "Good reds and whites — generous, round"
+                    }
+                  ]
                 },
                 {
                   "name": "Saint-Aubin",
@@ -660,7 +1839,346 @@
                     "limestone",
                     "clay"
                   ],
-                  "style_notes": "Value white Burgundy alternative"
+                  "style_notes": "Best value in white Burgundy — behind Puligny/Chassagne, similar soils, fraction of the price",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "En Remilly",
+                      "classification": "Premier Cru",
+                      "size_ha": 1.5,
+                      "style_notes": "Adjacent to Chevalier-Montrachet — genuinely Grand Cru quality at Premier Cru prices"
+                    },
+                    {
+                      "name": "Les Murgers des Dents de Chien",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.2,
+                      "style_notes": "Stony soils — mineral, taut, excellent white"
+                    },
+                    {
+                      "name": "La Chatenière",
+                      "classification": "Premier Cru",
+                      "size_ha": 10.6,
+                      "style_notes": "Reliable — generous, fruity whites"
+                    },
+                    {
+                      "name": "Les Combes au Sud",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.5,
+                      "style_notes": "Charming whites — good value"
+                    }
+                  ]
+                },
+                {
+                  "name": "Santenay",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
+                    "marl"
+                  ],
+                  "style_notes": "Southern Côte de Beaune — structured, earthy reds. Undervalued and improving",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Gravières",
+                      "classification": "Premier Cru",
+                      "size_ha": 23.8,
+                      "style_notes": "Best site — gravelly soils, both fine reds and whites"
+                    },
+                    {
+                      "name": "Clos de Tavannes",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.4,
+                      "style_notes": "Rich reds — firm structure, good aging potential"
+                    },
+                    {
+                      "name": "La Comme",
+                      "classification": "Premier Cru",
+                      "size_ha": 22.1,
+                      "style_notes": "Large — variable quality but best sites are excellent"
+                    },
+                    {
+                      "name": "Beauregard",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.6,
+                      "style_notes": "Well-named — attractive, approachable"
+                    }
+                  ]
+                },
+                {
+                  "name": "Maranges",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Southernmost commune of Côte de Beaune — rustic, value-driven reds",
+                  "price_tier": "budget",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Clos de la Boutière",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.1,
+                      "style_notes": "Best site — concentrated, mineral reds"
+                    },
+                    {
+                      "name": "Le Clos des Rois",
+                      "classification": "Premier Cru",
+                      "size_ha": 1.3,
+                      "style_notes": "Structured and firm — good aging potential"
+                    },
+                    {
+                      "name": "La Fussière",
+                      "classification": "Premier Cru",
+                      "size_ha": 10.4,
+                      "style_notes": "Largest Premier Cru — reliable, good value"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Côte Chalonnaise",
+              "primary_grapes": [
+                "Pinot Noir",
+                "Chardonnay",
+                "Aligoté"
+              ],
+              "climate": "continental",
+              "style_notes": "South of Côte d'Or — excellent value Burgundy. Less consistent but best rival the Côte de Beaune",
+              "communes": [
+                {
+                  "name": "Bouzeron",
+                  "classification_tiers": [
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Aligoté"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Only village AOC for Aligoté in Burgundy — de Villaine (of DRC) put it on the map",
+                  "price_tier": "budget",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Rully",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Pinot Noir"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
+                    "marl"
+                  ],
+                  "style_notes": "Fine whites and increasingly good reds — also a Crémant de Bourgogne hub",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Clos Saint-Jacques",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.8,
+                      "style_notes": "Best white — mineral, precise, ages well"
+                    },
+                    {
+                      "name": "Les Cloux",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.2,
+                      "style_notes": "Fine whites — generous and balanced"
+                    },
+                    {
+                      "name": "La Pucelle",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.5,
+                      "style_notes": "Charming whites — floral and fresh"
+                    },
+                    {
+                      "name": "Grésigny",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.0,
+                      "style_notes": "Good reds — firm structure"
+                    },
+                    {
+                      "name": "Rabourcé",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.8,
+                      "style_notes": "Red Premier Cru — earthy and structured"
+                    }
+                  ]
+                },
+                {
+                  "name": "Mercurey",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
+                    "marl"
+                  ],
+                  "style_notes": "Largest and most important Chalonnaise commune — structured reds, some excellent Premier Crus",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Clos des Barraults",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.1,
+                      "style_notes": "Consistently fine — rich, structured reds"
+                    },
+                    {
+                      "name": "Les Velley",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.2,
+                      "style_notes": "Elegant and aromatic — lighter style for Mercurey"
+                    },
+                    {
+                      "name": "Clos Voyens",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.0,
+                      "style_notes": "Well-sited — firm, mineral reds"
+                    },
+                    {
+                      "name": "Les Byots",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.3,
+                      "style_notes": "Southern exposure — ripe and generous"
+                    },
+                    {
+                      "name": "Les Croichots",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.5,
+                      "style_notes": "Structured — good aging potential"
+                    },
+                    {
+                      "name": "Clos du Roi",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.0,
+                      "style_notes": "Historic site — powerful, concentrated"
+                    }
+                  ]
+                },
+                {
+                  "name": "Givry",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Pinot Noir",
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Historically favored by Henry IV — charming, fruit-forward reds",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Clos Jus",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.7,
+                      "style_notes": "Best site — structured, complex, ages beautifully"
+                    },
+                    {
+                      "name": "Cellier aux Moines",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.5,
+                      "style_notes": "Historic monastic vineyard — elegant, fine-grained"
+                    },
+                    {
+                      "name": "Clos Salomon",
+                      "classification": "Premier Cru",
+                      "size_ha": 7.0,
+                      "style_notes": "Monopole — rich, concentrated reds. Ancient terroir"
+                    },
+                    {
+                      "name": "Les Grandes Vignes",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.8,
+                      "style_notes": "Charming — approachable young"
+                    },
+                    {
+                      "name": "Crausot",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.5,
+                      "style_notes": "Good whites — mineral and fresh"
+                    }
+                  ]
+                },
+                {
+                  "name": "Montagny",
+                  "classification_tiers": [
+                    "Premier Cru",
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "White wine only — generous, round Chardonnay. Many Premier Crus",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Coères",
+                      "classification": "Premier Cru",
+                      "size_ha": 14.2,
+                      "style_notes": "Best site — mineral, precise whites"
+                    },
+                    {
+                      "name": "Les Burnins",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.0,
+                      "style_notes": "Rich and round — generous style"
+                    },
+                    {
+                      "name": "Montcuchot",
+                      "classification": "Premier Cru",
+                      "size_ha": 8.5,
+                      "style_notes": "Reliable — good value Chardonnay"
+                    },
+                    {
+                      "name": "Les Jardins",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.8,
+                      "style_notes": "Floral and fresh — lighter style"
+                    }
+                  ]
                 }
               ]
             },
@@ -682,10 +2200,61 @@
                   ],
                   "soil_types": [
                     "Kimmeridgian limestone",
-                    "marl"
+                    "clay"
                   ],
-                  "style_notes": "Intense mineral Chardonnay",
-                  "price_tier": "luxury"
+                  "style_notes": "Seven Grand Cru climats on one southwest-facing hillside — steely, powerful, age-worthy",
+                  "price_tier": "luxury",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Clos",
+                      "classification": "Grand Cru",
+                      "size_ha": 26.1,
+                      "style_notes": "Largest and greatest — austere in youth, monumental with age. The most powerful Grand Cru"
+                    },
+                    {
+                      "name": "Vaudésir",
+                      "classification": "Grand Cru",
+                      "size_ha": 14.7,
+                      "style_notes": "Most complete Grand Cru — combines power and elegance. Some consider it the finest"
+                    },
+                    {
+                      "name": "Valmur",
+                      "classification": "Grand Cru",
+                      "size_ha": 13.2,
+                      "style_notes": "Between Les Clos and Grenouilles — rich and full with mineral backbone"
+                    },
+                    {
+                      "name": "Blanchot",
+                      "classification": "Grand Cru",
+                      "size_ha": 12.7,
+                      "style_notes": "Most elegant Grand Cru — eastern exposure, floral, lighter body, fine-boned"
+                    },
+                    {
+                      "name": "Bougros",
+                      "classification": "Grand Cru",
+                      "size_ha": 15.1,
+                      "style_notes": "Westernmost — round, generous, the most approachable Grand Cru in youth"
+                    },
+                    {
+                      "name": "Les Preuses",
+                      "classification": "Grand Cru",
+                      "size_ha": 11.4,
+                      "style_notes": "Ample and generous — rich but with characteristic Chablis acidity"
+                    },
+                    {
+                      "name": "Grenouilles",
+                      "classification": "Grand Cru",
+                      "size_ha": 9.4,
+                      "style_notes": "Smallest Grand Cru — warmest microclimate. Rich, exotic, sometimes honeyed"
+                    },
+                    {
+                      "name": "La Moutonne",
+                      "classification": "Grand Cru (unofficial)",
+                      "size_ha": 2.4,
+                      "style_notes": "Straddles Vaudésir and Les Preuses — monopole of Long-Depaquit. Not official but labeled Grand Cru"
+                    }
+                  ]
                 },
                 {
                   "name": "Chablis Premier Cru",
@@ -696,10 +2265,87 @@
                     "Chardonnay"
                   ],
                   "soil_types": [
-                    "Kimmeridgian limestone"
+                    "Kimmeridgian limestone",
+                    "clay",
+                    "marl"
                   ],
-                  "style_notes": "Complex mineral Chardonnay",
-                  "price_tier": "premium"
+                  "style_notes": "40 climats grouped under principal names — both banks of the Serein river",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Montée de Tonnerre",
+                      "classification": "Premier Cru",
+                      "size_ha": 53.0,
+                      "style_notes": "Greatest Premier Cru — adjacent to Grand Crus. Rivals them in quality. Mineral, taut, long-lived"
+                    },
+                    {
+                      "name": "Mont de Milieu",
+                      "classification": "Premier Cru",
+                      "size_ha": 29.0,
+                      "style_notes": "Between Grand Crus and Montée de Tonnerre — mineral, precise, excellent"
+                    },
+                    {
+                      "name": "Fourchaume",
+                      "classification": "Premier Cru",
+                      "size_ha": 132.0,
+                      "style_notes": "Largest and most popular — round, generous, accessible. Includes L'Homme Mort and Vaulorent"
+                    },
+                    {
+                      "name": "Vaillons",
+                      "classification": "Premier Cru",
+                      "size_ha": 106.0,
+                      "style_notes": "Left bank — floral, generous, slightly softer. Very popular"
+                    },
+                    {
+                      "name": "Montmains",
+                      "classification": "Premier Cru",
+                      "size_ha": 71.0,
+                      "style_notes": "Left bank — mineral, steely, classic Chablis character"
+                    },
+                    {
+                      "name": "Côte de Léchet",
+                      "classification": "Premier Cru",
+                      "size_ha": 49.0,
+                      "style_notes": "Steep slope — lean, mineral, austere. Ages beautifully"
+                    },
+                    {
+                      "name": "Beauroy",
+                      "classification": "Premier Cru",
+                      "size_ha": 67.0,
+                      "style_notes": "Right bank — rounder, fruitier style"
+                    },
+                    {
+                      "name": "Les Fourneaux",
+                      "classification": "Premier Cru",
+                      "size_ha": 15.0,
+                      "style_notes": "Near Grand Cru slope — taut, mineral, underrated"
+                    },
+                    {
+                      "name": "Vau de Vey",
+                      "classification": "Premier Cru",
+                      "size_ha": 41.0,
+                      "style_notes": "Left bank — fresh, crisp, good value"
+                    },
+                    {
+                      "name": "Vaucoupin",
+                      "classification": "Premier Cru",
+                      "size_ha": 21.0,
+                      "style_notes": "Isolated from other Premiers Crus — distinctive microclimate, aromatic"
+                    },
+                    {
+                      "name": "Vosgros",
+                      "classification": "Premier Cru",
+                      "size_ha": 62.0,
+                      "style_notes": "Left bank — round, accessible, crowd-pleasing"
+                    },
+                    {
+                      "name": "Vau-Ligneau",
+                      "classification": "Premier Cru",
+                      "size_ha": 28.0,
+                      "style_notes": "Left bank — fresh and mineral"
+                    }
+                  ]
                 },
                 {
                   "name": "Chablis",
@@ -710,9 +2356,12 @@
                     "Chardonnay"
                   ],
                   "soil_types": [
-                    "Kimmeridgian limestone"
+                    "Kimmeridgian limestone",
+                    "Portlandian limestone"
                   ],
-                  "style_notes": "Crisp mineral Chardonnay"
+                  "style_notes": "Village appellation — crisp, mineral, unoaked Chardonnay. Benchmark for the style",
+                  "price_tier": "moderate",
+                  "climate": "continental"
                 },
                 {
                   "name": "Petit Chablis",
@@ -725,8 +2374,9 @@
                   "soil_types": [
                     "Portlandian limestone"
                   ],
-                  "style_notes": "Light fresh Chardonnay",
-                  "price_tier": "value"
+                  "style_notes": "Entry level — lighter, simpler, for early drinking. Plateau vineyards above the slopes",
+                  "price_tier": "budget",
+                  "climate": "continental"
                 }
               ]
             },
@@ -739,37 +2389,9 @@
               "style_notes": "Light fruity reds from granite soils",
               "communes": [
                 {
-                  "name": "Morgon",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Gamay"
-                  ],
-                  "soil_types": [
-                    "granite",
-                    "schist"
-                  ],
-                  "style_notes": "Structured age-worthy Beaujolais cru",
-                  "natural_wine_hub": true
-                },
-                {
-                  "name": "Fleurie",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Gamay"
-                  ],
-                  "soil_types": [
-                    "granite"
-                  ],
-                  "style_notes": "Elegant floral Beaujolais cru"
-                },
-                {
                   "name": "Moulin-à-Vent",
                   "classification_tiers": [
-                    "Village"
+                    "Cru"
                   ],
                   "primary_grapes": [
                     "Gamay"
@@ -778,26 +2400,145 @@
                     "granite",
                     "manganese"
                   ],
-                  "style_notes": "Most powerful Beaujolais cru"
+                  "style_notes": "King of Beaujolais — most structured and age-worthy. Manganese-rich pink granite gives power and depth",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Thorins",
+                      "classification": "Lieu-dit",
+                      "size_ha": 20.0,
+                      "style_notes": "Iconic site — deep, powerful, often compared to Burgundy"
+                    },
+                    {
+                      "name": "Champ de Cour",
+                      "classification": "Lieu-dit",
+                      "size_ha": 8.5,
+                      "style_notes": "Rich and concentrated — top cuvée site for many producers"
+                    },
+                    {
+                      "name": "La Rochelle",
+                      "classification": "Lieu-dit",
+                      "size_ha": 6.0,
+                      "style_notes": "Elegant — more finesse than power"
+                    }
+                  ]
                 },
                 {
-                  "name": "Côte de Brouilly",
+                  "name": "Morgon",
                   "classification_tiers": [
-                    "Village"
+                    "Cru"
                   ],
                   "primary_grapes": [
                     "Gamay"
                   ],
                   "soil_types": [
-                    "blue granite",
-                    "volcanic"
+                    "schist",
+                    "volcanic",
+                    "decomposed granite"
                   ],
-                  "style_notes": "Mineral-driven Beaujolais"
+                  "style_notes": "Second most prestigious cru — fleshy, rich, wines that 'Morgon' (develop Burgundian character with age)",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Côte du Py",
+                      "classification": "Lieu-dit",
+                      "size_ha": 120.0,
+                      "style_notes": "The heart of Morgon — volcanic schist hill. Wines of structure, minerality, and longevity"
+                    },
+                    {
+                      "name": "Les Charmes",
+                      "classification": "Lieu-dit",
+                      "size_ha": 60.0,
+                      "style_notes": "Lighter, more charming — true to its name"
+                    },
+                    {
+                      "name": "Corcelette",
+                      "classification": "Lieu-dit",
+                      "size_ha": 25.0,
+                      "style_notes": "Granitic — aromatic, fine-grained"
+                    },
+                    {
+                      "name": "Les Grands Cras",
+                      "classification": "Lieu-dit",
+                      "size_ha": 15.0,
+                      "style_notes": "Rich soils — generous, fruity"
+                    }
+                  ]
                 },
                 {
-                  "name": "Beaujolais-Villages",
+                  "name": "Fleurie",
                   "classification_tiers": [
-                    "Regional"
+                    "Cru"
+                  ],
+                  "primary_grapes": [
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "granite"
+                  ],
+                  "style_notes": "Queen of Beaujolais — perfumed, floral, seductive. The most Chambolle-like of the crus",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "La Madone",
+                      "classification": "Lieu-dit",
+                      "size_ha": 35.0,
+                      "style_notes": "Most famous site — chapel on the hilltop. Rich, concentrated"
+                    },
+                    {
+                      "name": "Les Garants",
+                      "classification": "Lieu-dit",
+                      "size_ha": 12.0,
+                      "style_notes": "Elegant — floral and delicate"
+                    },
+                    {
+                      "name": "Grille-Midi",
+                      "classification": "Lieu-dit",
+                      "size_ha": 8.0,
+                      "style_notes": "South-facing — ripe, warm, generous"
+                    }
+                  ]
+                },
+                {
+                  "name": "Chénas",
+                  "classification_tiers": [
+                    "Cru"
+                  ],
+                  "primary_grapes": [
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "sand"
+                  ],
+                  "style_notes": "Smallest cru — between Moulin-à-Vent and Juliénas. Structured yet elegant, often overlooked",
+                  "price_tier": "moderate",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Juliénas",
+                  "classification_tiers": [
+                    "Cru"
+                  ],
+                  "primary_grapes": [
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "schist",
+                    "volcanic"
+                  ],
+                  "style_notes": "Named for Julius Caesar — robust, spicy, well-structured reds. Ages well for Beaujolais",
+                  "price_tier": "moderate",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Saint-Amour",
+                  "classification_tiers": [
+                    "Cru"
                   ],
                   "primary_grapes": [
                     "Gamay"
@@ -806,8 +2547,113 @@
                     "granite",
                     "clay"
                   ],
-                  "style_notes": "Fruit-forward Gamay",
-                  "price_tier": "value"
+                  "style_notes": "Northernmost cru — light, charming, romantic name makes it popular for Valentine's Day",
+                  "price_tier": "moderate",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Chiroubles",
+                  "classification_tiers": [
+                    "Cru"
+                  ],
+                  "primary_grapes": [
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "granite"
+                  ],
+                  "style_notes": "Highest elevation cru — lightest, most fragrant. Violet-scented, drink young",
+                  "price_tier": "moderate",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Régnié",
+                  "classification_tiers": [
+                    "Cru"
+                  ],
+                  "primary_grapes": [
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "sand"
+                  ],
+                  "style_notes": "Newest cru (1988) — fruity, supple, sometimes overlooked. Between Morgon and Brouilly styles",
+                  "price_tier": "budget",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Brouilly",
+                  "classification_tiers": [
+                    "Cru"
+                  ],
+                  "primary_grapes": [
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "volcanic",
+                    "blue stone"
+                  ],
+                  "style_notes": "Largest cru — generous, fruity, accessible. Surrounds Mont Brouilly",
+                  "price_tier": "budget",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Côte de Brouilly",
+                  "classification_tiers": [
+                    "Cru"
+                  ],
+                  "primary_grapes": [
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "volcanic diorite",
+                    "blue granite"
+                  ],
+                  "style_notes": "Slopes of Mont Brouilly — more concentrated and mineral than Brouilly. Volcanic 'pierre bleue' soils",
+                  "price_tier": "moderate",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Mont Brouilly (slopes)",
+                      "classification": "Lieu-dit",
+                      "size_ha": 50.0,
+                      "style_notes": "Volcanic slopes — mineral, concentrated, the best of the appellation"
+                    }
+                  ]
+                },
+                {
+                  "name": "Beaujolais-Villages",
+                  "classification_tiers": [
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "granite",
+                    "clay"
+                  ],
+                  "style_notes": "38 villages in the north — step up from basic Beaujolais. Fresh, fruity, good value",
+                  "price_tier": "budget",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Beaujolais",
+                  "classification_tiers": [
+                    "Regional"
+                  ],
+                  "primary_grapes": [
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "clay",
+                    "limestone"
+                  ],
+                  "style_notes": "Base level — southern flat plains. Light, fruity, includes Beaujolais Nouveau",
+                  "price_tier": "budget",
+                  "climate": "continental"
                 }
               ]
             },
@@ -830,9 +2676,94 @@
                   ],
                   "soil_types": [
                     "limestone",
+                    "clay",
+                    "volcanic"
+                  ],
+                  "style_notes": "Finest Mâconnais wine — rich, concentrated Chardonnay. Premier Crus added in 2020",
+                  "price_tier": "premium",
+                  "climate": "continental",
+                  "vineyards": [
+                    {
+                      "name": "Les Ménétrières",
+                      "classification": "Premier Cru",
+                      "size_ha": 6.5,
+                      "style_notes": "Rich, concentrated — one of the first designated Premier Crus"
+                    },
+                    {
+                      "name": "Le Clos",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.0,
+                      "style_notes": "Walled vineyard — mineral, precise, taut"
+                    },
+                    {
+                      "name": "Aux Quarts",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.2,
+                      "style_notes": "Château de Fuissé monopole portion — powerful, long-lived"
+                    },
+                    {
+                      "name": "En Vignerais",
+                      "classification": "Premier Cru",
+                      "size_ha": 2.5,
+                      "style_notes": "Elegant — floral, fine-boned"
+                    },
+                    {
+                      "name": "Les Reisses",
+                      "classification": "Premier Cru",
+                      "size_ha": 3.8,
+                      "style_notes": "Generous and round — accessible style"
+                    },
+                    {
+                      "name": "Au Vignerais",
+                      "classification": "Premier Cru",
+                      "size_ha": 5.0,
+                      "style_notes": "Well-exposed — balanced and harmonious"
+                    },
+                    {
+                      "name": "Les Crays",
+                      "classification": "Premier Cru",
+                      "size_ha": 7.2,
+                      "style_notes": "Rocky limestone — mineral backbone, age-worthy"
+                    },
+                    {
+                      "name": "Vers Cras",
+                      "classification": "Premier Cru",
+                      "size_ha": 4.5,
+                      "style_notes": "Southern Fuissé — warm, generous, ripe fruit"
+                    }
+                  ]
+                },
+                {
+                  "name": "Pouilly-Loché",
+                  "classification_tiers": [
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
                     "clay"
                   ],
-                  "style_notes": "Best of southern Burgundy whites"
+                  "style_notes": "Smaller sibling of Pouilly-Fuissé — similar style, lighter body, good value",
+                  "price_tier": "moderate",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Pouilly-Vinzelles",
+                  "classification_tiers": [
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Tiny appellation — round, generous Chardonnay. Often overlooked",
+                  "price_tier": "moderate",
+                  "climate": "continental"
                 },
                 {
                   "name": "Saint-Véran",
@@ -843,9 +2774,63 @@
                     "Chardonnay"
                   ],
                   "soil_types": [
-                    "limestone"
+                    "limestone",
+                    "clay"
                   ],
-                  "style_notes": "Fresh mineral whites"
+                  "style_notes": "Surrounds Pouilly-Fuissé — floral, fresh, excellent value. Can rival Pouilly-Fuissé",
+                  "price_tier": "moderate",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Viré-Clessé",
+                  "classification_tiers": [
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay"
+                  ],
+                  "style_notes": "Created 1999 — rich, sometimes slightly off-dry. Known for ripe, generous style",
+                  "price_tier": "moderate",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Mâcon-Villages",
+                  "classification_tiers": [
+                    "Village"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
+                    "granite"
+                  ],
+                  "style_notes": "Regional white — fresh, fruit-forward, unoaked. 27 villages can append their name",
+                  "price_tier": "budget",
+                  "climate": "continental"
+                },
+                {
+                  "name": "Mâcon",
+                  "classification_tiers": [
+                    "Regional"
+                  ],
+                  "primary_grapes": [
+                    "Chardonnay",
+                    "Gamay"
+                  ],
+                  "soil_types": [
+                    "limestone",
+                    "clay",
+                    "granite"
+                  ],
+                  "style_notes": "Base level — simple reds (Gamay) and whites (Chardonnay) for easy drinking",
+                  "price_tier": "budget",
+                  "climate": "continental"
                 }
               ]
             }
