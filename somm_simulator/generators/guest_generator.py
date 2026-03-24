@@ -199,7 +199,7 @@ def _default_archetypes() -> list[dict]:
                 "orders a breadth of wines across the list",
                 "seems to be evaluating everything"
             ],
-            "is_critic": true,
+            "is_critic": True,
             "frequency": 0.02
         }
     ]

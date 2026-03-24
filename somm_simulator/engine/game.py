@@ -7,6 +7,16 @@ from somm_simulator.config import (
 from somm_simulator.engine.scene_manager import SceneManager
 from somm_simulator.engine.save_system import SaveSystem
 
+# Import all scenes
+from somm_simulator.scenes.main_menu import MainMenuScene
+from somm_simulator.scenes.new_game import NewGameScene
+from somm_simulator.scenes.hub import HubScene
+from somm_simulator.scenes.wine_market import WineMarketScene
+from somm_simulator.scenes.cellar import CellarScene
+from somm_simulator.scenes.service import ServiceScene
+from somm_simulator.scenes.blind_tasting import BlindTastingScene
+from somm_simulator.scenes.week_summary import WeekSummaryScene
+
 
 class Game:
     """Top-level game controller."""
@@ -19,6 +29,7 @@ class Game:
         self.running = True
         self.save_system = SaveSystem()
         self.scene_manager = SceneManager(self)
+        self._register_scenes()
 
     def run(self):
         """Main game loop."""
@@ -45,6 +56,19 @@ class Game:
         self.screen.fill(COLOR_BG)
         self.scene_manager.draw(self.screen)
         pygame.display.flip()
+
+    def _register_scenes(self):
+        """Register all game scenes."""
+        sm = self.scene_manager
+        sm.register("main_menu", MainMenuScene(self))
+        sm.register("new_game", NewGameScene(self))
+        sm.register("hub", HubScene(self))
+        sm.register("market", WineMarketScene(self))
+        sm.register("cellar", CellarScene(self))
+        sm.register("service", ServiceScene(self))
+        sm.register("tasting", BlindTastingScene(self))
+        sm.register("week_summary", WeekSummaryScene(self))
+        sm.switch_to("main_menu")
 
     def quit(self):
         self.running = False
