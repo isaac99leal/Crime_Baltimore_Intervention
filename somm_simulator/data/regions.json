@@ -25419,720 +25419,208 @@
       "wine_regions": [
         {
           "name": "Rioja",
-          "classification_system": "DOCa — Joven/Crianza/Reserva/Gran Reserva",
-          "primary_grapes": [
-            "Tempranillo",
-            "Garnacha",
-            "Graciano",
-            "Mazuelo",
-            "Viura"
-          ],
-          "climate": "continental",
-          "style_notes": "Spain's most famous wine region — oak-aged Tempranillo",
+          "classification": "DOCa",
           "sub_regions": [
             {
               "name": "Rioja Alta",
-              "primary_grapes": [
-                "Tempranillo",
-                "Garnacha"
-              ],
-              "climate": "continental",
               "communes": [
                 {
-                  "name": "Haro",
-                  "classification_tiers": [
-                    "Gran Reserva",
-                    "Reserva",
-                    "Crianza",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Tempranillo",
-                    "Garnacha",
-                    "Graciano"
-                  ],
-                  "soil_types": [
-                    "clay",
-                    "limestone"
-                  ],
-                  "style_notes": "Classic traditional Rioja",
-                  "price_tier": "premium"
+                  "name": "Haro"
                 },
                 {
-                  "name": "San Vicente de la Sonsierra",
-                  "classification_tiers": [
-                    "Gran Reserva",
-                    "Reserva",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Tempranillo"
-                  ],
-                  "soil_types": [
-                    "clay",
-                    "limestone"
-                  ],
-                  "style_notes": "Elegant complex Rioja"
+                  "name": "San Vicente de la Sonsierra"
+                },
+                {
+                  "name": "Briones"
+                },
+                {
+                  "name": "San Asensio"
                 }
               ]
             },
             {
               "name": "Rioja Alavesa",
-              "primary_grapes": [
-                "Tempranillo"
-              ],
-              "climate": "continental",
               "communes": [
                 {
-                  "name": "Laguardia",
-                  "classification_tiers": [
-                    "Gran Reserva",
-                    "Reserva",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Tempranillo"
-                  ],
-                  "soil_types": [
-                    "clay",
-                    "limestone",
-                    "chalk"
-                  ],
-                  "style_notes": "Structured elegant Tempranillo",
-                  "price_tier": "premium"
+                  "name": "Laguardia"
+                },
+                {
+                  "name": "Elciego"
+                },
+                {
+                  "name": "Labastida"
+                },
+                {
+                  "name": "Samaniego"
                 }
               ]
             },
             {
               "name": "Rioja Oriental",
-              "primary_grapes": [
-                "Garnacha",
-                "Tempranillo"
-              ],
-              "climate": "warm continental",
               "communes": [
                 {
-                  "name": "Alfaro",
-                  "classification_tiers": [
-                    "Reserva",
-                    "Crianza",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Garnacha",
-                    "Tempranillo"
-                  ],
-                  "soil_types": [
-                    "alluvial",
-                    "clay"
-                  ],
-                  "style_notes": "Warm fruit-forward Rioja"
+                  "name": "Alfaro"
+                },
+                {
+                  "name": "Calahorra"
+                },
+                {
+                  "name": "Arnedo"
                 }
               ]
             }
           ]
         },
         {
-          "name": "Ribera del Duero",
-          "classification_system": "DO",
-          "primary_grapes": [
-            "Tempranillo"
-          ],
-          "climate": "continental",
-          "style_notes": "High-altitude powerful Tempranillo",
+          "name": "Castilla y León",
           "sub_regions": [
             {
               "name": "Ribera del Duero",
-              "primary_grapes": [
-                "Tempranillo"
-              ],
-              "climate": "continental",
+              "classification": "DO",
               "communes": [
                 {
-                  "name": "Pesquera de Duero",
-                  "classification_tiers": [
-                    "Gran Reserva",
-                    "Reserva",
-                    "Crianza"
-                  ],
-                  "primary_grapes": [
-                    "Tempranillo"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "clay"
-                  ],
-                  "style_notes": "Concentrated powerful Tempranillo",
-                  "price_tier": "premium",
-                  "elevation_m": [
-                    700,
-                    900
-                  ]
+                  "name": "Pesquera de Duero"
                 },
                 {
-                  "name": "Roa",
-                  "classification_tiers": [
-                    "Reserva",
-                    "Crianza",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Tempranillo"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "clay"
-                  ],
-                  "style_notes": "Classic Ribera del Duero"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Priorat",
-          "classification_system": "DOCa",
-          "primary_grapes": [
-            "Garnacha",
-            "Cariñena",
-            "Cabernet Sauvignon",
-            "Syrah"
-          ],
-          "climate": "mediterranean",
-          "style_notes": "Intense wines from llicorella (slate) soils",
-          "sub_regions": [
-            {
-              "name": "Priorat",
-              "primary_grapes": [
-                "Garnacha",
-                "Cariñena"
-              ],
-              "climate": "mediterranean",
-              "communes": [
-                {
-                  "name": "Gratallops",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Garnacha",
-                    "Cariñena",
-                    "Cabernet Sauvignon"
-                  ],
-                  "soil_types": [
-                    "slate",
-                    "quartz"
-                  ],
-                  "style_notes": "Intense mineral Garnacha",
-                  "price_tier": "luxury"
+                  "name": "Roa"
                 },
                 {
-                  "name": "Porrera",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Garnacha",
-                    "Cariñena"
-                  ],
-                  "soil_types": [
-                    "slate"
-                  ],
-                  "style_notes": "Old-vine Garnacha and Cariñena",
-                  "price_tier": "premium"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Rías Baixas",
-          "classification_system": "DO",
-          "primary_grapes": [
-            "Albariño"
-          ],
-          "climate": "cool maritime",
-          "style_notes": "Spain's finest white wine region — Atlantic Albariño",
-          "sub_regions": [
-            {
-              "name": "Val do Salnés",
-              "primary_grapes": [
-                "Albariño"
-              ],
-              "climate": "cool maritime",
-              "communes": [
-                {
-                  "name": "Cambados",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Albariño"
-                  ],
-                  "soil_types": [
-                    "granite",
-                    "sand"
-                  ],
-                  "style_notes": "Benchmark Albariño — saline mineral"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Jerez",
-          "classification_system": "DO Jerez-Xérès-Sherry",
-          "primary_grapes": [
-            "Palomino Fino",
-            "Pedro Ximénez",
-            "Muscat of Alexandria"
-          ],
-          "climate": "hot mediterranean",
-          "style_notes": "World's greatest fortified wine tradition",
-          "sub_regions": [
-            {
-              "name": "Sherry Triangle",
-              "primary_grapes": [
-                "Palomino Fino"
-              ],
-              "climate": "hot mediterranean",
-              "communes": [
-                {
-                  "name": "Jerez de la Frontera",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Palomino Fino",
-                    "Pedro Ximénez"
-                  ],
-                  "soil_types": [
-                    "albariza",
-                    "chalk"
-                  ],
-                  "style_notes": "Fino, Amontillado, Oloroso, PX Sherry"
+                  "name": "Aranda de Duero"
                 },
                 {
-                  "name": "Sanlúcar de Barrameda",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Palomino Fino"
-                  ],
-                  "soil_types": [
-                    "albariza"
-                  ],
-                  "style_notes": "Manzanilla — sea-influenced fino Sherry"
+                  "name": "Peñafiel"
+                },
+                {
+                  "name": "La Horra"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "name": "Rueda",
-          "classification_system": "DO",
-          "primary_grapes": [
-            "Verdejo",
-            "Sauvignon Blanc"
-          ],
-          "climate": "continental",
-          "sub_regions": [
+            },
             {
               "name": "Rueda",
-              "primary_grapes": [
-                "Verdejo"
-              ],
-              "climate": "continental",
+              "classification": "DO",
               "communes": [
                 {
-                  "name": "Rueda",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Verdejo",
-                    "Sauvignon Blanc"
-                  ],
-                  "soil_types": [
-                    "gravel",
-                    "limestone"
-                  ],
-                  "style_notes": "Crisp aromatic Verdejo",
-                  "price_tier": "value"
+                  "name": "Rueda"
+                },
+                {
+                  "name": "La Seca"
+                },
+                {
+                  "name": "Serrada"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "name": "Bierzo",
-          "classification_system": "DO",
-          "primary_grapes": [
-            "Mencía",
-            "Godello"
-          ],
-          "climate": "continental",
-          "sub_regions": [
+            },
+            {
+              "name": "Toro",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Toro"
+                },
+                {
+                  "name": "Morales de Toro"
+                }
+              ]
+            },
             {
               "name": "Bierzo",
-              "primary_grapes": [
-                "Mencía",
-                "Godello"
-              ],
-              "climate": "continental",
+              "classification": "DO",
               "communes": [
                 {
-                  "name": "Corullón",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Mencía"
-                  ],
-                  "soil_types": [
-                    "slate",
-                    "schist"
-                  ],
-                  "style_notes": "Spain's Pinot Noir — elegant slate-grown Mencía",
-                  "price_tier": "premium"
+                  "name": "Corullón"
                 },
                 {
-                  "name": "Valtuille de Abajo",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Mencía",
-                    "Godello"
-                  ],
-                  "soil_types": [
-                    "slate",
-                    "clay"
-                  ],
-                  "style_notes": "Old-vine Mencía"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Canary Islands",
-          "classification_system": "DO",
-          "primary_grapes": [
-            "Listán Negro",
-            "Listán Blanco",
-            "Malvasia"
-          ],
-          "climate": "warm maritime",
-          "sub_regions": [
-            {
-              "name": "Tenerife",
-              "primary_grapes": [
-                "Listán Negro",
-                "Listán Blanco"
-              ],
-              "climate": "warm maritime",
-              "communes": [
-                {
-                  "name": "Valle de la Orotava",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Listán Negro",
-                    "Listán Blanco"
-                  ],
-                  "soil_types": [
-                    "volcanic",
-                    "basalt"
-                  ],
-                  "style_notes": "Volcanic wines from ungrafted vines",
-                  "elevation_m": [
-                    400,
-                    800
-                  ],
-                  "phylloxera_free": true,
-                  "ungrafted_vines_common": true
+                  "name": "Valtuille de Abajo"
                 },
                 {
-                  "name": "Tacoronte-Acentejo",
-                  "primary_grapes": [
-                    "Listán Negro",
-                    "Negramoll"
-                  ],
-                  "soil_types": [
-                    "volcanic",
-                    "basalt"
-                  ],
-                  "style_notes": "North Tenerife — lush, humid volcanic terroir",
-                  "climate": "subtropical",
-                  "phylloxera_free": true,
-                  "ungrafted_vines_common": true
+                  "name": "Cacabelos"
                 },
                 {
-                  "name": "Abona",
-                  "primary_grapes": [
-                    "Listán Blanco"
-                  ],
-                  "soil_types": [
-                    "volcanic"
-                  ],
-                  "style_notes": "South Tenerife — highest vineyards in Spain",
-                  "climate": "subtropical",
-                  "elevation_m": [
-                    400,
-                    1700
-                  ],
-                  "phylloxera_free": true,
-                  "ungrafted_vines_common": true
+                  "name": "Ponferrada"
                 }
               ]
             },
             {
-              "name": "Lanzarote",
-              "primary_grapes": [
-                "Malvasía Volcánica",
-                "Listán Negro"
-              ],
-              "climate": "arid volcanic",
+              "name": "Cigales",
+              "classification": "DO",
               "communes": [
                 {
-                  "name": "La Geria",
-                  "primary_grapes": [
-                    "Malvasía Volcánica"
-                  ],
-                  "soil_types": [
-                    "volcanic lapilli",
-                    "basalt"
-                  ],
-                  "style_notes": "Lunar landscape — vines in pits protected by semicircular stone walls",
-                  "price_tier": "premium",
-                  "climate": "arid volcanic",
-                  "annual_rainfall_mm": 150,
-                  "phylloxera_free": true,
-                  "ungrafted_vines_common": true
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Penedès",
-          "classification_system": "DO / DO Cava",
-          "primary_grapes": [
-            "Macabeo",
-            "Xarel·lo",
-            "Parellada"
-          ],
-          "climate": "mediterranean",
-          "sub_regions": [
-            {
-              "name": "Penedès",
-              "primary_grapes": [
-                "Macabeo",
-                "Xarel·lo",
-                "Parellada"
-              ],
-              "climate": "mediterranean",
-              "communes": [
-                {
-                  "name": "Sant Sadurní d'Anoia",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Macabeo",
-                    "Xarel·lo",
-                    "Parellada"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "clay"
-                  ],
-                  "style_notes": "Cava sparkling wine capital",
-                  "price_tier": "value"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Galicia",
-          "primary_grapes": [
-            "Albariño",
-            "Godello",
-            "Mencía"
-          ],
-          "climate": "Atlantic",
-          "style_notes": "Spain's green northwest — Atlantic-influenced whites and reds",
-          "sub_regions": [
-            {
-              "name": "Rías Baixas",
-              "primary_grapes": [
-                "Albariño"
-              ],
-              "climate": "Atlantic",
-              "communes": [
-                {
-                  "name": "Val do Salnés",
-                  "primary_grapes": [
-                    "Albariño"
-                  ],
-                  "soil_types": [
-                    "granite",
-                    "sand"
-                  ],
-                  "style_notes": "Albariño heartland — saline, mineral whites",
-                  "price_tier": "premium",
-                  "climate": "cool maritime",
-                  "annual_rainfall_mm": 1500
+                  "name": "Cigales"
                 },
                 {
-                  "name": "Condado do Tea",
-                  "primary_grapes": [
-                    "Albariño",
-                    "Treixadura"
-                  ],
-                  "soil_types": [
-                    "granite",
-                    "alluvial"
-                  ],
-                  "style_notes": "Warmer inland Rías Baixas — fuller-bodied",
-                  "climate": "Atlantic"
+                  "name": "Corcos del Valle"
                 }
               ]
             },
             {
-              "name": "Ribeira Sacra",
-              "primary_grapes": [
-                "Mencía",
-                "Godello"
-              ],
-              "climate": "Atlantic continental",
+              "name": "Arribes",
+              "classification": "DO",
               "communes": [
                 {
-                  "name": "Amandi",
-                  "primary_grapes": [
-                    "Mencía"
-                  ],
-                  "soil_types": [
-                    "slate",
-                    "granite"
-                  ],
-                  "style_notes": "Steepest vineyards in Spain — terraced gorge viticulture",
-                  "price_tier": "premium",
-                  "climate": "Atlantic continental",
-                  "elevation_m": [
-                    200,
-                    500
-                  ]
+                  "name": "Fermoselle"
+                },
+                {
+                  "name": "Villarino de los Aires"
                 }
               ]
             },
             {
-              "name": "Valdeorras",
-              "primary_grapes": [
-                "Godello",
-                "Mencía"
-              ],
-              "climate": "Atlantic continental",
+              "name": "Tierra de León",
+              "classification": "DO",
               "communes": [
                 {
-                  "name": "O Barco",
-                  "primary_grapes": [
-                    "Godello"
-                  ],
-                  "soil_types": [
-                    "slate"
-                  ],
-                  "style_notes": "Godello on slate — Spain's most exciting white grape revival",
-                  "price_tier": "premium"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Basque Country",
-          "primary_grapes": [
-            "Hondarrabi Zuri",
-            "Hondarrabi Beltza"
-          ],
-          "climate": "cool maritime",
-          "style_notes": "Txakoli — crisp, slightly sparkling wines for pintxos",
-          "sub_regions": [
-            {
-              "name": "Getaria",
-              "primary_grapes": [
-                "Hondarrabi Zuri"
-              ],
-              "climate": "cool maritime",
-              "communes": [
-                {
-                  "name": "Getaria",
-                  "primary_grapes": [
-                    "Hondarrabi Zuri"
-                  ],
-                  "soil_types": [
-                    "clay",
-                    "sandstone"
-                  ],
-                  "style_notes": "Classic Txakoli — bone-dry, saline, slight pétillance",
-                  "climate": "cool maritime",
-                  "annual_rainfall_mm": 1600
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Jerez-Sherry",
-          "sub_regions": [
-            {
-              "name": "Marco de Jerez",
-              "primary_grapes": [
-                "Palomino Fino",
-                "Pedro Ximénez",
-                "Muscatel"
-              ],
-              "climate": "hot Mediterranean",
-              "communes": [
-                {
-                  "name": "Jerez de la Frontera",
-                  "primary_grapes": [
-                    "Palomino Fino"
-                  ],
-                  "soil_types": [
-                    "albariza chalk"
-                  ],
-                  "style_notes": "Sherry capital — Fino, Amontillado, Oloroso, Palo Cortado",
-                  "climate": "hot Mediterranean",
-                  "annual_rainfall_mm": 600
+                  "name": "Valencia de Don Juan"
                 },
                 {
-                  "name": "Sanlúcar de Barrameda",
-                  "primary_grapes": [
-                    "Palomino Fino"
-                  ],
-                  "soil_types": [
-                    "albariza chalk"
-                  ],
-                  "style_notes": "Home of Manzanilla — maritime flor aging, saline tang",
-                  "price_tier": "premium",
-                  "climate": "maritime Mediterranean"
+                  "name": "Pajares de los Oteros"
+                }
+              ]
+            },
+            {
+              "name": "Tierra del Vino de Zamora",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Zamora"
                 },
                 {
-                  "name": "El Puerto de Santa María",
-                  "primary_grapes": [
-                    "Palomino Fino"
-                  ],
-                  "soil_types": [
-                    "albariza",
-                    "clay"
-                  ],
-                  "style_notes": "Coastal Fino — between Jerez and Sanlúcar in style",
-                  "climate": "maritime Mediterranean"
+                  "name": "Corrales del Vino"
+                }
+              ]
+            },
+            {
+              "name": "Arlanza",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Lerma"
+                },
+                {
+                  "name": "Covarrubias"
+                }
+              ]
+            },
+            {
+              "name": "Sierra de Salamanca",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "San Esteban de la Sierra"
+                },
+                {
+                  "name": "Miranda del Castañar"
+                }
+              ]
+            },
+            {
+              "name": "Cebreros",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Cebreros"
+                },
+                {
+                  "name": "El Tiemblo"
                 }
               ]
             }
@@ -26143,66 +25631,889 @@
           "sub_regions": [
             {
               "name": "Priorat",
-              "primary_grapes": [
-                "Garnacha",
-                "Cariñena"
-              ],
-              "climate": "Mediterranean continental",
+              "classification": "DOCa",
               "communes": [
                 {
-                  "name": "Gratallops",
-                  "primary_grapes": [
-                    "Garnacha",
-                    "Cariñena"
-                  ],
-                  "soil_types": [
-                    "llicorella slate"
-                  ],
-                  "style_notes": "Priorat's spiritual heart — ancient Garnacha on slate",
-                  "price_tier": "luxury",
-                  "climate": "Mediterranean continental",
-                  "elevation_m": [
-                    300,
-                    600
-                  ]
+                  "name": "Gratallops"
                 },
                 {
-                  "name": "Porrera",
-                  "primary_grapes": [
-                    "Cariñena",
-                    "Garnacha"
-                  ],
-                  "soil_types": [
-                    "llicorella slate"
-                  ],
-                  "style_notes": "Old-vine Cariñena stronghold — some vines 100+ years",
-                  "price_tier": "luxury",
-                  "climate": "Mediterranean continental"
+                  "name": "Porrera"
+                },
+                {
+                  "name": "Bellmunt del Priorat"
+                },
+                {
+                  "name": "Torroja del Priorat"
+                },
+                {
+                  "name": "Scala Dei"
                 }
               ]
             },
             {
               "name": "Penedès",
-              "primary_grapes": [
-                "Xarel·lo",
-                "Macabeo",
-                "Parellada"
-              ],
-              "climate": "Mediterranean",
+              "classification": "DO",
               "communes": [
                 {
-                  "name": "Sant Sadurní d'Anoia",
-                  "primary_grapes": [
-                    "Xarel·lo",
-                    "Macabeo",
-                    "Parellada"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "clay"
-                  ],
-                  "style_notes": "Cava capital — 95% of all Cava production",
-                  "climate": "Mediterranean"
+                  "name": "Sant Sadurní d'Anoia"
+                },
+                {
+                  "name": "Vilafranca del Penedès"
+                },
+                {
+                  "name": "Subirats"
+                }
+              ]
+            },
+            {
+              "name": "Cava",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Sant Sadurní d'Anoia"
+                },
+                {
+                  "name": "Vilafranca del Penedès"
+                }
+              ]
+            },
+            {
+              "name": "Montsant",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Falset"
+                },
+                {
+                  "name": "Cornudella de Montsant"
+                },
+                {
+                  "name": "Capçanes"
+                }
+              ]
+            },
+            {
+              "name": "Costers del Segre",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Raimat"
+                },
+                {
+                  "name": "Artesa de Segre"
+                }
+              ]
+            },
+            {
+              "name": "Terra Alta",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Gandesa"
+                },
+                {
+                  "name": "Batea"
+                }
+              ]
+            },
+            {
+              "name": "Empordà",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Peralada"
+                },
+                {
+                  "name": "Garriguella"
+                },
+                {
+                  "name": "Espolla"
+                }
+              ]
+            },
+            {
+              "name": "Conca de Barberà",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Montblanc"
+                },
+                {
+                  "name": "L'Espluga de Francolí"
+                }
+              ]
+            },
+            {
+              "name": "Tarragona",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Tarragona"
+                },
+                {
+                  "name": "El Vendrell"
+                }
+              ]
+            },
+            {
+              "name": "Pla de Bages",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Artés"
+                },
+                {
+                  "name": "Navàs"
+                }
+              ]
+            },
+            {
+              "name": "Alella",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Alella"
+                },
+                {
+                  "name": "Tiana"
+                }
+              ]
+            },
+            {
+              "name": "Catalunya",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Various"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Galicia",
+          "sub_regions": [
+            {
+              "name": "Rías Baixas",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Val do Salnés"
+                },
+                {
+                  "name": "Condado do Tea"
+                },
+                {
+                  "name": "O Rosal"
+                },
+                {
+                  "name": "Ribeira do Ulla"
+                },
+                {
+                  "name": "Soutomaior"
+                }
+              ]
+            },
+            {
+              "name": "Ribeira Sacra",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Amandi"
+                },
+                {
+                  "name": "Chantada"
+                },
+                {
+                  "name": "Sober"
+                }
+              ]
+            },
+            {
+              "name": "Valdeorras",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "O Barco"
+                },
+                {
+                  "name": "Vilamartín de Valdeorras"
+                },
+                {
+                  "name": "A Rúa"
+                }
+              ]
+            },
+            {
+              "name": "Ribeiro",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Ribadavia"
+                },
+                {
+                  "name": "Arnoia"
+                },
+                {
+                  "name": "Leiro"
+                }
+              ]
+            },
+            {
+              "name": "Monterrei",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Verín"
+                },
+                {
+                  "name": "Monterrei"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Navarra",
+          "sub_regions": [
+            {
+              "name": "Navarra",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Olite"
+                },
+                {
+                  "name": "Puente la Reina"
+                },
+                {
+                  "name": "Estella"
+                },
+                {
+                  "name": "Corella"
+                },
+                {
+                  "name": "Cascante"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Aragón",
+          "sub_regions": [
+            {
+              "name": "Campo de Borja",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Borja"
+                },
+                {
+                  "name": "Ainzón"
+                },
+                {
+                  "name": "Fuendejalón"
+                }
+              ]
+            },
+            {
+              "name": "Cariñena",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Cariñena"
+                },
+                {
+                  "name": "Aguarón"
+                },
+                {
+                  "name": "Paniza"
+                }
+              ]
+            },
+            {
+              "name": "Somontano",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Barbastro"
+                },
+                {
+                  "name": "Salas Bajas"
+                },
+                {
+                  "name": "Estadilla"
+                }
+              ]
+            },
+            {
+              "name": "Calatayud",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Calatayud"
+                },
+                {
+                  "name": "Ateca"
+                },
+                {
+                  "name": "Maluenda"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Basque Country",
+          "sub_regions": [
+            {
+              "name": "Txakoli de Getaria / Getariako Txakolina",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Getaria"
+                },
+                {
+                  "name": "Zarautz"
+                }
+              ]
+            },
+            {
+              "name": "Txakoli de Bizkaia / Bizkaiko Txakolina",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Bakio"
+                },
+                {
+                  "name": "Busturia"
+                }
+              ]
+            },
+            {
+              "name": "Txakoli de Álava / Arabako Txakolina",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Amurrio"
+                },
+                {
+                  "name": "Artziniega"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Andalucía",
+          "sub_regions": [
+            {
+              "name": "Jerez-Xérès-Sherry",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Jerez de la Frontera"
+                },
+                {
+                  "name": "Sanlúcar de Barrameda"
+                },
+                {
+                  "name": "El Puerto de Santa María"
+                }
+              ]
+            },
+            {
+              "name": "Manzanilla-Sanlúcar de Barrameda",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Sanlúcar de Barrameda"
+                }
+              ]
+            },
+            {
+              "name": "Montilla-Moriles",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Montilla"
+                },
+                {
+                  "name": "Moriles"
+                },
+                {
+                  "name": "Aguilar de la Frontera"
+                }
+              ]
+            },
+            {
+              "name": "Málaga",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Málaga"
+                },
+                {
+                  "name": "Mollina"
+                }
+              ]
+            },
+            {
+              "name": "Sierras de Málaga",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Ronda"
+                },
+                {
+                  "name": "Serranía de Ronda"
+                }
+              ]
+            },
+            {
+              "name": "Condado de Huelva",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Bollullos Par del Condado"
+                },
+                {
+                  "name": "La Palma del Condado"
+                }
+              ]
+            },
+            {
+              "name": "Granada",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Granada"
+                },
+                {
+                  "name": "Alpujarra"
+                }
+              ]
+            },
+            {
+              "name": "Lebrija",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Lebrija"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Valencia",
+          "sub_regions": [
+            {
+              "name": "Valencia",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Requena"
+                },
+                {
+                  "name": "Utiel"
+                },
+                {
+                  "name": "Cheste"
+                },
+                {
+                  "name": "Valentino"
+                }
+              ]
+            },
+            {
+              "name": "Utiel-Requena",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Utiel"
+                },
+                {
+                  "name": "Requena"
+                },
+                {
+                  "name": "Caudete de las Fuentes"
+                }
+              ]
+            },
+            {
+              "name": "Alicante",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Villena"
+                },
+                {
+                  "name": "Monóvar"
+                },
+                {
+                  "name": "Pinoso"
+                },
+                {
+                  "name": "Algueña"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Murcia",
+          "sub_regions": [
+            {
+              "name": "Jumilla",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Jumilla"
+                }
+              ]
+            },
+            {
+              "name": "Yecla",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Yecla"
+                }
+              ]
+            },
+            {
+              "name": "Bullas",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Bullas"
+                },
+                {
+                  "name": "Cehegín"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Castilla-La Mancha",
+          "sub_regions": [
+            {
+              "name": "La Mancha",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Alcázar de San Juan"
+                },
+                {
+                  "name": "Valdepeñas"
+                },
+                {
+                  "name": "Tomelloso"
+                },
+                {
+                  "name": "Manzanares"
+                }
+              ]
+            },
+            {
+              "name": "Valdepeñas",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Valdepeñas"
+                }
+              ]
+            },
+            {
+              "name": "Almansa",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Almansa"
+                }
+              ]
+            },
+            {
+              "name": "Méntrida",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Méntrida"
+                },
+                {
+                  "name": "Fuensalida"
+                }
+              ]
+            },
+            {
+              "name": "Mondéjar",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Mondéjar"
+                },
+                {
+                  "name": "Sacedón"
+                }
+              ]
+            },
+            {
+              "name": "Manchuela",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Casas-Ibáñez"
+                },
+                {
+                  "name": "Fuentealbilla"
+                }
+              ]
+            },
+            {
+              "name": "Ribera del Júcar",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Casas de Benítez"
+                },
+                {
+                  "name": "Sisante"
+                }
+              ]
+            },
+            {
+              "name": "Uclés",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Uclés"
+                },
+                {
+                  "name": "Tarancón"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Extremadura",
+          "sub_regions": [
+            {
+              "name": "Ribera del Guadiana",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Almendralejo"
+                },
+                {
+                  "name": "Aceuchal"
+                },
+                {
+                  "name": "Villafranca de los Barros"
+                }
+              ]
+            },
+            {
+              "name": "Cava (Extremadura)",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Almendralejo"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Madrid",
+          "sub_regions": [
+            {
+              "name": "Vinos de Madrid",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "San Martín de Valdeiglesias"
+                },
+                {
+                  "name": "Navalcarnero"
+                },
+                {
+                  "name": "Arganda del Rey"
+                },
+                {
+                  "name": "Villarejo de Salvanés"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Canary Islands",
+          "sub_regions": [
+            {
+              "name": "Tacoronte-Acentejo",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Tacoronte"
+                },
+                {
+                  "name": "La Matanza de Acentejo"
+                }
+              ]
+            },
+            {
+              "name": "Valle de la Orotava",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "La Orotava"
+                },
+                {
+                  "name": "Los Realejos"
+                }
+              ]
+            },
+            {
+              "name": "Ycoden-Daute-Isora",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Icod de los Vinos"
+                },
+                {
+                  "name": "Garachico"
+                }
+              ]
+            },
+            {
+              "name": "Abona",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Arico"
+                },
+                {
+                  "name": "Granadilla de Abona"
+                },
+                {
+                  "name": "Vilaflor"
+                }
+              ]
+            },
+            {
+              "name": "Valle de Güímar",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Güímar"
+                },
+                {
+                  "name": "Arafo"
+                }
+              ]
+            },
+            {
+              "name": "La Palma",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Fuencaliente"
+                },
+                {
+                  "name": "Mazo"
+                }
+              ]
+            },
+            {
+              "name": "El Hierro",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Frontera"
+                },
+                {
+                  "name": "Valverde"
+                }
+              ]
+            },
+            {
+              "name": "Lanzarote",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "La Geria"
+                },
+                {
+                  "name": "San Bartolomé"
+                },
+                {
+                  "name": "Tías"
+                }
+              ]
+            },
+            {
+              "name": "Gran Canaria",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Santa Brígida"
+                },
+                {
+                  "name": "Telde"
+                },
+                {
+                  "name": "San Bartolomé de Tirajana"
+                }
+              ]
+            },
+            {
+              "name": "La Gomera",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Hermigua"
+                },
+                {
+                  "name": "Vallehermoso"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Balearic Islands",
+          "sub_regions": [
+            {
+              "name": "Binissalem",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Binissalem"
+                },
+                {
+                  "name": "Santa Maria del Camí"
+                },
+                {
+                  "name": "Consell"
+                }
+              ]
+            },
+            {
+              "name": "Pla i Llevant",
+              "classification": "DO",
+              "communes": [
+                {
+                  "name": "Felanitx"
+                },
+                {
+                  "name": "Manacor"
+                },
+                {
+                  "name": "Porreres"
                 }
               ]
             }
@@ -26214,326 +26525,80 @@
       "country": "Portugal",
       "wine_regions": [
         {
-          "name": "Douro Valley",
-          "classification_system": "DOC / Port Classification",
-          "primary_grapes": [
-            "Touriga Nacional",
-            "Touriga Franca",
-            "Tinta Roriz",
-            "Tinta Barroca",
-            "Tinta Cão"
-          ],
-          "climate": "hot continental",
-          "style_notes": "Port wine homeland + world-class dry reds",
+          "name": "Douro / Porto",
           "sub_regions": [
             {
-              "name": "Cima Corgo",
-              "primary_grapes": [
-                "Touriga Nacional",
-                "Touriga Franca",
-                "Tinta Roriz"
-              ],
-              "climate": "hot continental",
+              "name": "Douro",
+              "classification": "DOC",
               "communes": [
                 {
-                  "name": "Pinhão",
-                  "classification_tiers": [
-                    "Single Vineyard",
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Touriga Nacional",
-                    "Touriga Franca",
-                    "Tinta Roriz"
-                  ],
-                  "soil_types": [
-                    "schist"
-                  ],
-                  "style_notes": "Heart of Port — finest vineyards",
-                  "price_tier": "luxury"
+                  "name": "Pinhão"
                 },
                 {
-                  "name": "São João da Pesqueira",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Touriga Nacional",
-                    "Touriga Franca"
-                  ],
-                  "soil_types": [
-                    "schist",
-                    "granite"
-                  ],
-                  "style_notes": "Premium Douro reds and Port",
-                  "price_tier": "premium"
+                  "name": "São João da Pesqueira"
+                },
+                {
+                  "name": "Vila Nova de Foz Côa"
+                },
+                {
+                  "name": "Ervedosa do Douro"
+                },
+                {
+                  "name": "Sabrosa"
                 }
               ]
             },
             {
-              "name": "Douro Superior",
-              "primary_grapes": [
-                "Touriga Nacional",
-                "Tinta Roriz"
-              ],
-              "climate": "hot continental",
+              "name": "Porto",
+              "classification": "DOC",
               "communes": [
                 {
-                  "name": "Vila Nova de Foz Côa",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Touriga Nacional",
-                    "Tinta Roriz"
-                  ],
-                  "soil_types": [
-                    "schist"
-                  ],
-                  "style_notes": "Powerful concentrated Douro reds"
+                  "name": "Vila Nova de Gaia"
+                },
+                {
+                  "name": "Pinhão"
+                },
+                {
+                  "name": "Régua"
+                }
+              ]
+            },
+            {
+              "name": "Cima Corgo",
+              "communes": [
+                {
+                  "name": "Pinhão"
+                },
+                {
+                  "name": "São João da Pesqueira"
+                },
+                {
+                  "name": "Tabuaço"
                 }
               ]
             },
             {
               "name": "Baixo Corgo",
-              "primary_grapes": [
-                "Touriga Franca",
-                "Tinta Roriz",
-                "Touriga Nacional"
-              ],
-              "climate": "continental",
               "communes": [
                 {
-                  "name": "Régua",
-                  "primary_grapes": [
-                    "Touriga Franca",
-                    "Tinta Roriz"
-                  ],
-                  "soil_types": [
-                    "schist",
-                    "granite"
-                  ],
-                  "style_notes": "Lower Douro — more accessible Port and Douro table wines"
+                  "name": "Régua"
                 },
                 {
-                  "name": "Lamego",
-                  "primary_grapes": [
-                    "Touriga Nacional"
-                  ],
-                  "soil_types": [
-                    "granite",
-                    "schist"
-                  ],
-                  "style_notes": "Historic sparkling wine center — Raposeira and Murganheira",
-                  "elevation_m": [
-                    300,
-                    600
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Dão",
-          "classification_system": "DOC",
-          "primary_grapes": [
-            "Touriga Nacional",
-            "Encruzado",
-            "Jaen",
-            "Alfrocheiro"
-          ],
-          "climate": "continental",
-          "style_notes": "Elegant granitic wines — Portugal's Burgundy",
-          "sub_regions": [
-            {
-              "name": "Dão",
-              "primary_grapes": [
-                "Touriga Nacional",
-                "Encruzado"
-              ],
-              "climate": "continental",
-              "communes": [
-                {
-                  "name": "Penalva do Castelo",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Touriga Nacional",
-                    "Encruzado"
-                  ],
-                  "soil_types": [
-                    "granite"
-                  ],
-                  "style_notes": "Elegant mineral reds and whites"
+                  "name": "Lamego"
                 },
                 {
-                  "name": "Nelas",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Touriga Nacional",
-                    "Encruzado"
-                  ],
-                  "soil_types": [
-                    "granite",
-                    "clay"
-                  ],
-                  "style_notes": "Classic Dão style"
+                  "name": "Santa Marta de Penaguião"
                 }
               ]
             },
             {
-              "name": "Serra da Estrela",
-              "primary_grapes": [
-                "Touriga Nacional",
-                "Jaen",
-                "Encruzado"
-              ],
-              "climate": "continental mountain",
+              "name": "Douro Superior",
               "communes": [
                 {
-                  "name": "Nelas",
-                  "primary_grapes": [
-                    "Touriga Nacional",
-                    "Jaen",
-                    "Alfrocheiro"
-                  ],
-                  "soil_types": [
-                    "granite"
-                  ],
-                  "style_notes": "Top Dão sub-region — elegant reds from granite at altitude",
-                  "price_tier": "premium",
-                  "elevation_m": [
-                    400,
-                    600
-                  ]
+                  "name": "Vila Nova de Foz Côa"
                 },
                 {
-                  "name": "Penalva do Castelo",
-                  "primary_grapes": [
-                    "Encruzado",
-                    "Touriga Nacional"
-                  ],
-                  "soil_types": [
-                    "granite",
-                    "sand"
-                  ],
-                  "style_notes": "Premium Encruzado — Portugal's finest white grape at its best",
-                  "price_tier": "premium"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Alentejo",
-          "classification_system": "DOC",
-          "primary_grapes": [
-            "Trincadeira",
-            "Aragonez",
-            "Alicante Bouschet",
-            "Antão Vaz"
-          ],
-          "climate": "hot mediterranean",
-          "style_notes": "Portugal's warm plains — rich modern reds",
-          "sub_regions": [
-            {
-              "name": "Alentejo",
-              "primary_grapes": [
-                "Trincadeira",
-                "Aragonez"
-              ],
-              "climate": "hot mediterranean",
-              "communes": [
-                {
-                  "name": "Estremoz",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Trincadeira",
-                    "Aragonez",
-                    "Alicante Bouschet"
-                  ],
-                  "soil_types": [
-                    "schist",
-                    "granite",
-                    "clay"
-                  ],
-                  "style_notes": "Full-bodied Alentejo reds"
-                },
-                {
-                  "name": "Portalegre",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Trincadeira",
-                    "Aragonez"
-                  ],
-                  "soil_types": [
-                    "granite"
-                  ],
-                  "style_notes": "Higher altitude Alentejo — more elegant",
-                  "elevation_m": [
-                    500,
-                    800
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "Borba-Reguengos",
-              "primary_grapes": [
-                "Aragonez",
-                "Trincadeira"
-              ],
-              "climate": "hot Mediterranean",
-              "communes": [
-                {
-                  "name": "Reguengos de Monsaraz",
-                  "primary_grapes": [
-                    "Aragonez",
-                    "Trincadeira"
-                  ],
-                  "soil_types": [
-                    "schist",
-                    "granite"
-                  ],
-                  "style_notes": "Premium Alentejo reds near Spanish border",
-                  "price_tier": "premium",
-                  "climate": "hot Mediterranean"
-                },
-                {
-                  "name": "Borba",
-                  "primary_grapes": [
-                    "Aragonez",
-                    "Castelão"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "clay"
-                  ],
-                  "style_notes": "Marble country — age-worthy reds from limestone soils",
-                  "climate": "hot Mediterranean"
-                },
-                {
-                  "name": "Portalegre",
-                  "primary_grapes": [
-                    "Aragonez",
-                    "Grand Noir"
-                  ],
-                  "soil_types": [
-                    "granite"
-                  ],
-                  "style_notes": "High altitude Alentejo — cooler, more elegant",
-                  "elevation_m": [
-                    400,
-                    800
-                  ]
+                  "name": "Torre de Moncorvo"
                 }
               ]
             }
@@ -26541,59 +26606,181 @@
         },
         {
           "name": "Vinho Verde",
-          "classification_system": "DOC",
-          "primary_grapes": [
-            "Alvarinho",
-            "Loureiro",
-            "Arinto",
-            "Trajadura"
-          ],
-          "climate": "cool maritime",
-          "style_notes": "Fresh light whites and a few reds",
+          "classification": "DOC",
           "sub_regions": [
             {
               "name": "Monção e Melgaço",
-              "primary_grapes": [
-                "Alvarinho"
-              ],
-              "climate": "cool maritime",
               "communes": [
                 {
-                  "name": "Monção",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Alvarinho"
-                  ],
-                  "soil_types": [
-                    "granite"
-                  ],
-                  "style_notes": "Portugal's finest Alvarinho"
+                  "name": "Monção"
+                },
+                {
+                  "name": "Melgaço"
                 }
               ]
             },
             {
               "name": "Lima",
-              "primary_grapes": [
-                "Loureiro"
-              ],
-              "climate": "cool maritime",
               "communes": [
                 {
-                  "name": "Lima",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Loureiro",
-                    "Arinto"
-                  ],
-                  "soil_types": [
-                    "granite"
-                  ],
-                  "style_notes": "Aromatic Loureiro whites",
-                  "price_tier": "value"
+                  "name": "Ponte de Lima"
+                },
+                {
+                  "name": "Ponte da Barca"
+                }
+              ]
+            },
+            {
+              "name": "Cávado",
+              "communes": [
+                {
+                  "name": "Amares"
+                },
+                {
+                  "name": "Barcelos"
+                }
+              ]
+            },
+            {
+              "name": "Ave",
+              "communes": [
+                {
+                  "name": "Guimarães"
+                },
+                {
+                  "name": "Felgueiras"
+                }
+              ]
+            },
+            {
+              "name": "Sousa",
+              "communes": [
+                {
+                  "name": "Penafiel"
+                },
+                {
+                  "name": "Lousada"
+                }
+              ]
+            },
+            {
+              "name": "Basto",
+              "communes": [
+                {
+                  "name": "Celorico de Basto"
+                },
+                {
+                  "name": "Cabeceiras de Basto"
+                }
+              ]
+            },
+            {
+              "name": "Baião",
+              "communes": [
+                {
+                  "name": "Baião"
+                },
+                {
+                  "name": "Resende"
+                }
+              ]
+            },
+            {
+              "name": "Paiva",
+              "communes": [
+                {
+                  "name": "Castelo de Paiva"
+                }
+              ]
+            },
+            {
+              "name": "Amarante",
+              "communes": [
+                {
+                  "name": "Amarante"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Dão",
+          "classification": "DOC",
+          "sub_regions": [
+            {
+              "name": "Dão",
+              "communes": [
+                {
+                  "name": "Penalva do Castelo"
+                },
+                {
+                  "name": "Nelas"
+                },
+                {
+                  "name": "Viseu"
+                },
+                {
+                  "name": "Mangualde"
+                },
+                {
+                  "name": "Tondela"
+                }
+              ]
+            },
+            {
+              "name": "Serra da Estrela",
+              "communes": [
+                {
+                  "name": "Seia"
+                },
+                {
+                  "name": "Gouveia"
+                }
+              ]
+            },
+            {
+              "name": "Terras de Senhorim",
+              "communes": [
+                {
+                  "name": "Senhorim"
+                },
+                {
+                  "name": "Santa Comba Dão"
+                }
+              ]
+            },
+            {
+              "name": "Silgueiros",
+              "communes": [
+                {
+                  "name": "Silgueiros"
+                }
+              ]
+            },
+            {
+              "name": "Besteiros",
+              "communes": [
+                {
+                  "name": "Tondela"
+                },
+                {
+                  "name": "Besteiros"
+                }
+              ]
+            },
+            {
+              "name": "Castendo",
+              "communes": [
+                {
+                  "name": "Penalva do Castelo"
+                }
+              ]
+            },
+            {
+              "name": "Alva",
+              "communes": [
+                {
+                  "name": "Oliveira do Hospital"
                 }
               ]
             }
@@ -26601,69 +26788,257 @@
         },
         {
           "name": "Bairrada",
-          "classification_system": "DOC",
-          "primary_grapes": [
-            "Baga"
-          ],
-          "climate": "maritime",
-          "style_notes": "Powerful tannic Baga reds",
+          "classification": "DOC",
           "sub_regions": [
             {
-              "name": "Bairrada",
-              "primary_grapes": [
-                "Baga"
-              ],
-              "climate": "maritime",
+              "name": "Central Bairrada",
               "communes": [
                 {
-                  "name": "Anadia",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Baga"
-                  ],
-                  "soil_types": [
-                    "clay",
-                    "limestone"
-                  ],
-                  "style_notes": "Age-worthy tannic Baga — Portugal's Barolo"
+                  "name": "Anadia"
+                },
+                {
+                  "name": "Cantanhede"
+                },
+                {
+                  "name": "Mealhada"
+                },
+                {
+                  "name": "Oliveira do Bairro"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Alentejo",
+          "classification": "DOC",
+          "sub_regions": [
+            {
+              "name": "Borba",
+              "communes": [
+                {
+                  "name": "Borba"
                 }
               ]
             },
             {
-              "name": "Central Bairrada",
-              "primary_grapes": [
-                "Baga"
-              ],
-              "climate": "Atlantic",
+              "name": "Évora",
               "communes": [
                 {
-                  "name": "Anadia",
-                  "primary_grapes": [
-                    "Baga"
-                  ],
-                  "soil_types": [
-                    "clay",
-                    "limestone"
-                  ],
-                  "style_notes": "Heart of Baga country — powerful, age-worthy reds",
-                  "price_tier": "premium",
-                  "climate": "Atlantic",
-                  "annual_rainfall_mm": 1000
+                  "name": "Évora"
+                }
+              ]
+            },
+            {
+              "name": "Granja-Amareleja",
+              "communes": [
+                {
+                  "name": "Mourão"
                 },
                 {
-                  "name": "Cantanhede",
-                  "primary_grapes": [
-                    "Baga",
-                    "Maria Gomes"
-                  ],
-                  "soil_types": [
-                    "limestone",
-                    "sand"
-                  ],
-                  "style_notes": "Limestone-rich — more elegant style of Baga",
-                  "climate": "Atlantic"
+                  "name": "Moura"
+                }
+              ]
+            },
+            {
+              "name": "Moura",
+              "communes": [
+                {
+                  "name": "Moura"
+                }
+              ]
+            },
+            {
+              "name": "Portalegre",
+              "communes": [
+                {
+                  "name": "Portalegre"
+                }
+              ]
+            },
+            {
+              "name": "Redondo",
+              "communes": [
+                {
+                  "name": "Redondo"
+                }
+              ]
+            },
+            {
+              "name": "Reguengos de Monsaraz",
+              "communes": [
+                {
+                  "name": "Reguengos de Monsaraz"
+                }
+              ]
+            },
+            {
+              "name": "Vidigueira",
+              "communes": [
+                {
+                  "name": "Vidigueira"
+                },
+                {
+                  "name": "Cuba"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Lisboa",
+          "sub_regions": [
+            {
+              "name": "Bucelas",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Bucelas"
+                },
+                {
+                  "name": "Loures"
+                }
+              ]
+            },
+            {
+              "name": "Carcavelos",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Oeiras"
+                },
+                {
+                  "name": "Cascais"
+                }
+              ]
+            },
+            {
+              "name": "Colares",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Colares"
+                },
+                {
+                  "name": "Sintra"
+                }
+              ]
+            },
+            {
+              "name": "Alenquer",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Alenquer"
+                }
+              ]
+            },
+            {
+              "name": "Arruda",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Arruda dos Vinhos"
+                }
+              ]
+            },
+            {
+              "name": "Óbidos",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Óbidos"
+                },
+                {
+                  "name": "Caldas da Rainha"
+                }
+              ]
+            },
+            {
+              "name": "Torres Vedras",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Torres Vedras"
+                }
+              ]
+            },
+            {
+              "name": "Lourinhã",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Lourinhã"
+                }
+              ]
+            },
+            {
+              "name": "Encostas d'Aire",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Alcobaça"
+                },
+                {
+                  "name": "Ourém"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tejo",
+          "sub_regions": [
+            {
+              "name": "Tejo",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Almeirim"
+                },
+                {
+                  "name": "Cartaxo"
+                },
+                {
+                  "name": "Santarém"
+                },
+                {
+                  "name": "Chamusca"
+                },
+                {
+                  "name": "Coruche"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Península de Setúbal",
+          "sub_regions": [
+            {
+              "name": "Setúbal",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Setúbal"
+                },
+                {
+                  "name": "Palmela"
+                },
+                {
+                  "name": "Azeitão"
+                }
+              ]
+            },
+            {
+              "name": "Palmela",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Palmela"
+                },
+                {
+                  "name": "Setúbal"
                 }
               ]
             }
@@ -26671,46 +27046,184 @@
         },
         {
           "name": "Madeira",
-          "classification_system": "DOC — Fortified",
-          "primary_grapes": [
-            "Tinta Negra",
-            "Sercial",
-            "Verdelho",
-            "Bual",
-            "Malmsey"
-          ],
-          "climate": "subtropical maritime",
-          "style_notes": "Legendary fortified wines — virtually immortal",
+          "classification": "DOC",
           "sub_regions": [
             {
               "name": "Madeira",
-              "primary_grapes": [
-                "Tinta Negra",
-                "Sercial",
-                "Verdelho",
-                "Bual",
-                "Malmsey"
-              ],
-              "climate": "subtropical maritime",
               "communes": [
                 {
-                  "name": "Câmara de Lobos",
-                  "classification_tiers": [
-                    "Village"
-                  ],
-                  "primary_grapes": [
-                    "Tinta Negra",
-                    "Sercial",
-                    "Verdelho",
-                    "Bual",
-                    "Malmsey"
-                  ],
-                  "soil_types": [
-                    "volcanic",
-                    "basalt"
-                  ],
-                  "style_notes": "Heart of Madeira production — fortified wines",
-                  "price_tier": "premium"
+                  "name": "Câmara de Lobos"
+                },
+                {
+                  "name": "São Vicente"
+                },
+                {
+                  "name": "Santana"
+                },
+                {
+                  "name": "Funchal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Trás-os-Montes",
+          "sub_regions": [
+            {
+              "name": "Trás-os-Montes",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Valpaços"
+                },
+                {
+                  "name": "Chaves"
+                },
+                {
+                  "name": "Planalto Mirandês"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Beira Interior",
+          "sub_regions": [
+            {
+              "name": "Beira Interior",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Castelo Branco"
+                },
+                {
+                  "name": "Pinhel"
+                },
+                {
+                  "name": "Cova da Beira"
+                },
+                {
+                  "name": "Fundão"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Távora-Varosa",
+          "sub_regions": [
+            {
+              "name": "Távora-Varosa",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Tarouca"
+                },
+                {
+                  "name": "Moimenta da Beira"
+                },
+                {
+                  "name": "Lamego"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Lafões",
+          "sub_regions": [
+            {
+              "name": "Lafões",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Vouzela"
+                },
+                {
+                  "name": "São Pedro do Sul"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Açores",
+          "sub_regions": [
+            {
+              "name": "Biscoitos",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Biscoitos"
+                },
+                {
+                  "name": "Angra do Heroísmo"
+                }
+              ]
+            },
+            {
+              "name": "Graciosa",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Santa Cruz da Graciosa"
+                }
+              ]
+            },
+            {
+              "name": "Pico",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Madalena"
+                },
+                {
+                  "name": "Lajes do Pico"
+                },
+                {
+                  "name": "São Roque do Pico"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Algarve",
+          "sub_regions": [
+            {
+              "name": "Lagos",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Lagos"
+                }
+              ]
+            },
+            {
+              "name": "Portimão",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Portimão"
+                }
+              ]
+            },
+            {
+              "name": "Lagoa",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Lagoa"
+                }
+              ]
+            },
+            {
+              "name": "Tavira",
+              "classification": "DOC",
+              "communes": [
+                {
+                  "name": "Tavira"
                 }
               ]
             }
