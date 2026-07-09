@@ -1,0 +1,386 @@
+{
+  "window": [
+    1990,
+    2019
+  ],
+  "n_countries": {
+    "High income": 85,
+    "Other developing": 84,
+    "Sub-Saharan Africa": 48
+  },
+  "A1_cross_source": {
+    "n_country_years": 4985,
+    "median_spread_by_group": {
+      "Sub-Saharan Africa": 0.38596866732866486,
+      "Other developing": 0.06286130772157694,
+      "High income": 0.03895812034606916
+    },
+    "mean_spread_by_group": {
+      "Sub-Saharan Africa": 2.0105939968132365,
+      "Other developing": 0.8575179386256804,
+      "High income": 0.399725325060772
+    },
+    "country_median_spread_by_group": {
+      "Sub-Saharan Africa": 0.4840664863586426,
+      "Other developing": 0.06610682036630933,
+      "High income": 0.032604650766590304
+    },
+    "pairwise_median_by_group": {
+      "Sub-Saharan Africa": {
+        "wdi_vs_imf": 0.04484407987761019,
+        "wdi_vs_pwt": 0.041499864245817975,
+        "imf_vs_pwt": 0.10000629425048824
+      },
+      "Other developing": {
+        "wdi_vs_imf": 0.036079130078269905,
+        "wdi_vs_pwt": 0.0022629508676299537,
+        "imf_vs_pwt": 0.04593648910522463
+      },
+      "High income": {
+        "wdi_vs_imf": 0.02945195574088011,
+        "wdi_vs_pwt": 2.2607847044220364e-05,
+        "imf_vs_pwt": 0.03635597229003906
+      }
+    },
+    "ssa_vs_otherdev_median_diff_pp": 0.3231073596070879,
+    "perm_p": 0.00024993751562109475,
+    "share_spread_gt2pp": {
+      "Sub-Saharan Africa": 0.2621359223300971,
+      "Other developing": 0.09196006305832895,
+      "High income": 0.04704532415375789
+    },
+    "share_spread_gt5pp": {
+      "Sub-Saharan Africa": 0.10828976848394324,
+      "Other developing": 0.04046242774566474,
+      "High income": 0.01549053356282272
+    },
+    "spearman_spread_vs_spi": -0.551948512105122
+  },
+  "A2_deflator_gap": {
+    "n_country_years": 5749,
+    "median_gap_by_group": {
+      "Sub-Saharan Africa": 0.1308843094411003,
+      "Other developing": -0.20400529205092022,
+      "High income": -0.06432599068767214
+    },
+    "country_median_gap_by_group": {
+      "Sub-Saharan Africa": 0.21998117813003623,
+      "Other developing": -0.15616787520545705,
+      "High income": -0.2709044584964104
+    },
+    "share_countries_gap_gt1pp": {
+      "Sub-Saharan Africa": 0.25,
+      "Other developing": 0.09090909090909091,
+      "High income": 0.047619047619047616
+    },
+    "ssa_vs_otherdev_median_diff_pp": 0.3348896014920205,
+    "perm_p": 0.03599100224943764,
+    "ssa_median_country_gap_pp_per_year": 0.21998117813003623
+  },
+  "A3_benford2_gdp_lcu": {
+    "Sub-Saharan Africa": {
+      "n": 2885,
+      "chi2": 4.435902157984751,
+      "p_sim": 0.8827793051737066,
+      "dist": [
+        0.1189,
+        0.1147,
+        0.1113,
+        0.1009,
+        0.0988,
+        0.0988,
+        0.096,
+        0.0967,
+        0.087,
+        0.0769
+      ]
+    },
+    "Other developing": {
+      "n": 4543,
+      "chi2": 7.277577435035582,
+      "p_sim": 0.5983504123969008,
+      "dist": [
+        0.1266,
+        0.1167,
+        0.1092,
+        0.1028,
+        0.0949,
+        0.0973,
+        0.0918,
+        0.0949,
+        0.0806,
+        0.0854
+      ]
+    },
+    "High income": {
+      "n": 4433,
+      "chi2": 5.143374796367174,
+      "p_sim": 0.8250437390652337,
+      "dist": [
+        0.1214,
+        0.109,
+        0.1072,
+        0.1026,
+        0.1006,
+        0.0952,
+        0.0997,
+        0.0882,
+        0.0929,
+        0.0832
+      ]
+    }
+  },
+  "A3_heaping_weo_first_prints": {
+    "Sub-Saharan Africa": {
+      "n": 1566,
+      "chi2_vs_uniform": 169.74712643678157,
+      "p_sim": 0.00024993751562109475,
+      "share_decimal_0_or_5": 0.3186462324393359,
+      "share_exact_integers": 0.05236270753512133,
+      "dist": [
+        0.1852,
+        0.092,
+        0.1047,
+        0.083,
+        0.0741,
+        0.1335,
+        0.0907,
+        0.0779,
+        0.0792,
+        0.0798
+      ]
+    },
+    "Other developing": {
+      "n": 2558,
+      "chi2_vs_uniform": 605.7216575449571,
+      "p_sim": 0.00024993751562109475,
+      "share_decimal_0_or_5": 0.3706020328381548,
+      "share_exact_integers": 0.11806098514464425,
+      "dist": [
+        0.2306,
+        0.0805,
+        0.104,
+        0.0876,
+        0.0676,
+        0.14,
+        0.0684,
+        0.0774,
+        0.0848,
+        0.059
+      ]
+    },
+    "High income": {
+      "n": 1981,
+      "chi2_vs_uniform": 114.71428571428571,
+      "p_sim": 0.00024993751562109475,
+      "share_decimal_0_or_5": 0.281675921251893,
+      "share_exact_integers": 0.05047955577990914,
+      "dist": [
+        0.1656,
+        0.0979,
+        0.0969,
+        0.0929,
+        0.0929,
+        0.1161,
+        0.0777,
+        0.0873,
+        0.0798,
+        0.0929
+      ]
+    }
+  },
+  "A4_zero_discontinuity_first_prints": {
+    "Sub-Saharan Africa": {
+      "n": 1524,
+      "z_left_of_zero": -2.316915739320835,
+      "z_right_of_zero": 1.3659034363796128,
+      "counts_around_zero": [
+        24,
+        20,
+        17,
+        40,
+        43
+      ]
+    },
+    "Other developing": {
+      "n": 2459,
+      "z_left_of_zero": -1.3286072580187016,
+      "z_right_of_zero": 1.9765357897292053,
+      "counts_around_zero": [
+        23,
+        31,
+        43,
+        77,
+        71
+      ]
+    },
+    "High income": {
+      "n": 1934,
+      "z_left_of_zero": -2.5020728472748464,
+      "z_right_of_zero": 0.9017209265281968,
+      "counts_around_zero": [
+        35,
+        42,
+        37,
+        72,
+        89
+      ]
+    }
+  },
+  "A4_zero_discontinuity_latest": {
+    "Sub-Saharan Africa": {
+      "n": 1478,
+      "z_left_of_zero": -0.6950526185484351,
+      "z_right_of_zero": 0.0,
+      "counts_around_zero": [
+        24,
+        28,
+        27,
+        35,
+        43
+      ]
+    },
+    "Other developing": {
+      "n": 2364,
+      "z_left_of_zero": 1.5682867392227544,
+      "z_right_of_zero": -1.3872514344858242,
+      "counts_around_zero": [
+        37,
+        36,
+        55,
+        47,
+        63
+      ]
+    },
+    "High income": {
+      "n": 1903,
+      "z_left_of_zero": -1.7133108626117992,
+      "z_right_of_zero": 1.18419636318885,
+      "counts_around_zero": [
+        32,
+        41,
+        41,
+        69,
+        74
+      ]
+    }
+  },
+  "A5_revisions": {
+    "Sub-Saharan Africa": {
+      "n": 1534,
+      "mean_revision_pp": 0.3147617787385102,
+      "ci95": [
+        0.05441322120865629,
+        0.6207049655082767
+      ],
+      "median_abs_revision_pp": 1.2510786663040805,
+      "share_abs_gt1pp": 0.5645371577574967,
+      "share_abs_gt2pp": 0.35658409387222945,
+      "median_abs_short_run_rev_pp": 0.5145360541430666
+    },
+    "Other developing": {
+      "n": 2461,
+      "mean_revision_pp": 0.25888333107812356,
+      "ci95": [
+        0.01842818013758504,
+        0.4607472218791104
+      ],
+      "median_abs_revision_pp": 0.8354537690827675,
+      "share_abs_gt1pp": 0.45916294189353923,
+      "share_abs_gt2pp": 0.26412027631044294,
+      "median_abs_short_run_rev_pp": 0.33446668293892756
+    },
+    "High income": {
+      "n": 1948,
+      "mean_revision_pp": 0.3811624690222026,
+      "ci95": [
+        0.262800369530179,
+        0.4999658116682925
+      ],
+      "median_abs_revision_pp": 0.75924959012014,
+      "share_abs_gt1pp": 0.3834702258726899,
+      "share_abs_gt2pp": 0.16940451745379878,
+      "median_abs_short_run_rev_pp": 0.31748832487837886
+    },
+    "ssa_vs_otherdev_abs_median_diff": 0.415624897221313,
+    "perm_p_abs": 0.0049987503124218945,
+    "ssa_vs_otherdev_mean_diff": 0.05587844766038663,
+    "perm_p_mean": 0.7745563609097725,
+    "spearman_absrev_vs_spi": -0.6340825592107436,
+    "spearman_absrev_vs_statcap": -0.6472200974878141,
+    "spearman_meanrev_vs_voice": 0.02221435820736072
+  },
+  "A6_pwt_rewrite": {
+    "median_abs_change_by_group": {
+      "Sub-Saharan Africa": 1.1920928955078125e-05,
+      "Other developing": 1.1920928955078125e-05,
+      "High income": 1.239776611328125e-05
+    },
+    "share_gt1pp": {
+      "Sub-Saharan Africa": 0.06059451219512195,
+      "Other developing": 0.08381670533642692,
+      "High income": 0.04623085983510012
+    },
+    "share_gt2pp": {
+      "Sub-Saharan Africa": 0.036204268292682924,
+      "Other developing": 0.040023201856148494,
+      "High income": 0.02061248527679623
+    },
+    "n": {
+      "Sub-Saharan Africa": 2624,
+      "Other developing": 3448,
+      "High income": 3396
+    },
+    "ssa_vs_otherdev_share_gt1pp_diff": -0.02322219314130497,
+    "perm_p_share_gt1pp": 0.33341664583854036
+  },
+  "A7_discrepancy": {
+    "coverage_share_reporting": {
+      "Sub-Saharan Africa": 0.7791666666666667,
+      "Other developing": 0.7619047619047619,
+      "High income": 0.6968627450980392
+    },
+    "median_disc_pct_gdp": {
+      "Sub-Saharan Africa": 7.4999458115880105e-06,
+      "Other developing": 0.00038582698206145367,
+      "High income": 1.2459450770752516e-05
+    },
+    "share_disc_gt2pct": {
+      "Sub-Saharan Africa": 0.20085470085470086,
+      "Other developing": 0.2533373786407767,
+      "High income": 0.09805194805194806
+    }
+  },
+  "A8_mean_growth_by_source": {
+    "WDI": {
+      "Sub-Saharan Africa": 4.081727094976169,
+      "Other developing": 3.7696190233492413,
+      "High income": 2.5814664658844837
+    },
+    "IMF WEO (current)": {
+      "Sub-Saharan Africa": 4.076277372262774,
+      "Other developing": 3.833601429848078,
+      "High income": 2.940984483681113
+    },
+    "PWT 11.0": {
+      "Sub-Saharan Africa": 4.459650039672852,
+      "Other developing": 3.889401435852051,
+      "High income": 3.0344882011413574
+    },
+    "Maddison 2023": {
+      "Sub-Saharan Africa": 4.468278090000355,
+      "Other developing": 3.9684500423043754,
+      "High income": 3.682005085710565
+    }
+  },
+  "A8_africa_rising_gdppc": {
+    "Sub-Saharan Africa": 1.7952334286719187,
+    "Other developing": 2.936782486147911,
+    "High income": 1.6876260667258198
+  },
+  "A8_spi_by_group": {
+    "Sub-Saharan Africa": 57.061517730496455,
+    "Other developing": 63.78577400548697,
+    "High income": 79.00339351851852
+  }
+}
