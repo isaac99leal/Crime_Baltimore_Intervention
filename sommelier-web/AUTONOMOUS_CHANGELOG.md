@@ -133,3 +133,57 @@ The user's `Issyk-Tul` example appears likely to refer to **Issyk-Kul, Kyrgyzsta
 - Product-level chemistry should next connect actual YAN/pH/DO/SO2/closure measurements and winemaking selections to generated aroma/fault trajectories.
 - Full VIVC/national identity normalization is still required for the rare-variety queue and unresolved appellation grape spellings.
 - Historical legal versions remain sparse compared with the modern-law layer and need systematic archival backfilling.
+
+## 2026-09-05 — special-wine, chemistry, historical archive and gameplay expansion
+
+### Product-law depth
+- Added a seventh hand-research profile pass with a field-level **Jerez-Xérès-Sherry** matrix, **Porto/Port** special-category matrix, current **Tokaj** specialty-wine matrix and current South African WO framework.
+- Jerez now stores product-specific alcohol/sugar ranges, biological versus oxidative ageing paths, two-year baseline ageing, Fino Viejo seven-year minimum, VOS/VORS 20/30-year qualification, ageing systems, vessel limits, sweet-wine pathways and formal geographic units. Detailed procedural products remain conditional where the exact grape/use or blending table is not yet fully encoded.
+- Port now distinguishes LBV 4–6-year pre-bottling ageing, Vintage 2–3-year bottling timing, Crusted minimum bottle ageing, Colheita wood ageing, 10/20/30/40/50-year age indications and Very Very Old >80-year identity, plus category-specific after-opening guidance. Port remains reference-only until the complete current grape/benefício/fortification/certification rule set is extracted.
+- Tokaj now distinguishes current late harvest, dry and sweet Szamorodni, Aszú, 6 puttonyos, Eszencia, Fordítás and Máslás with current residual-sugar, wood-ageing, process and release constraints. Products are generation-safe only where the required process is fully represented.
+- Exact-product resolver advanced to **three passes** and **54+ product rules** with special-wine analytical and ageing fields.
+
+### Winemaking decision depth
+- Added a second cellar-decision pass; validation now requires **43+ decisions and 120+ options**.
+- New primitives include Tokaj specialty extraction, Jerez cabeceo/sweetening, white-juice turbidity, nutrient timing, fermentation-temperature trajectory, post-fermentation SO2 timing, smoke-impact remediation and molecular-SO2 targeting.
+- Special-wine processes are therefore actual decision gates rather than text-only tasting notes.
+
+### Chemistry and smoke-taint model
+- Added a second chemistry pass, bringing the chemistry library to **28+ source-backed records**.
+- Added residual-YAN/spoilage pressure, white-juice solids/turbidity, Brett's post-fermentation/MLF risk window, pH-dependent SO2 effectiveness and smoke-taint chemistry.
+- Added AWRI cultivar-specific smoke-marker interpretation for Chardonnay, Pinot Noir and Shiraz, including free volatile phenols and glycoside precursors.
+- Smoke character can now have a derived latent-glycoside/ageing-release component instead of being a permanent binary taint flag; the published marker tables remain analytical risk guides, not universal sensory cutoffs.
+- Smoke remediation carries style tradeoffs rather than functioning as free fault removal.
+
+### Historical evidence depth
+- Added a second historical-vintage archive pass.
+- Added the **25-year South African SAWIS harvest-report sequence from 2002 through 2026** as `authority-report-available` evidence.
+- National report existence is explicitly weaker than a normalized district/ward growing-season record; national observations are never automatically projected onto every WO area.
+- The authority archive ledger now contains at least 140 documented/report years while retaining Port's 1756 earliest documented year.
+
+### Provenance audit gameplay
+- Added `audit.ts`, a deterministic wine-provenance audit engine that checks cultivar identity, exact reference geography, GI/grape compatibility, future vintages, product-rule integrity, historical-law uncertainty, source provenance and legal-ageing references.
+- Added an audit challenge generator so the highest-severity finding can become a staff-training question instead of remaining hidden metadata.
+- A first 500-bottle stress test exposed a genuine auditor bug: ambiguous appellation-name matching could select the wrong same-name place before the bottle's exact stored path. The auditor was corrected to resolve exact reference paths first and use name-only fallback only when unambiguous.
+
+### Staff BTG blind tasting
+- Added `staffBlindTasting.ts` for blind training on wines actually present and enabled as BTG inventory.
+- Challenges use structural/aroma clues and same-family distractors; difficulty incorporates prestige, rarity, bottle age, provenance complexity, blend status and exact-product specificity.
+- Staff ability incorporates wine knowledge, service skill and accumulated training hours.
+- Results are deterministic for reproducible simulation/testing, consume training time when available, update knowledge/service/morale, and can surface a post-reveal provenance warning.
+
+### South Africa coverage status
+- Added current SAWIS WO hierarchy research and 2025 vine-statistics provenance, but did **not** bulk-promote the current production-area PDF into a ward/district registry from partial search snippets. The live PDF fetch/screenshot path was unreliable during this pass; the project keeps South Africa `framework-only` rather than claiming a complete current local index from incomplete extraction.
+
+### Validation
+- CI run `33952456196` passed both `npm test` and `npm run build` on commit `1bbae5c343fdc14b81fdd908c6896090fc554463` after the audit path-resolution fix.
+- The green run includes the three-pass product resolver, two-pass chemistry model, two-pass winemaking layer, two-pass historical archive, audit engine and BTG staff blind-tasting implementation/tests.
+- Dependency installation still reports **5 known npm vulnerabilities (3 moderate, 1 high, 1 critical)**. This pass does not claim a clean dependency-security state.
+
+### Remaining pressure points
+- Complete current South African district/ward registry ingestion using a reliably captured official table or register representation.
+- Extract full Port beneficio/grape/fortification/certification law before promoting procedural generation.
+- Finish Jerez grape-use/blending legality tables before promoting detailed categories from conditional status.
+- Add historical legal versions for Tokaj/Jerez/Port rather than applying current product matrices backward.
+- Connect chemistry measurements and smoke/Brett/premox state into long-term aroma evolution, pairing response, storage decisions and bottle condition.
+- Wire audit and staff blind-tasting engines into the browser UI and weekly staff-management loop.
