@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.1",
+  "notes": "The 28 official Pommard Premier Cru climat identities come from the homologated specification. A current BIVB interactive listing additionally surfaces 'Les Perrières' as Pommard Premier Cru, but that name is absent from the homologated 28-name legal list and was not found as a current INAO Pommard Premier Cru product. It is retained separately as a secondary-listing discrepancy and is not legal-claim eligible.",
+  "sources": {
+    "pommard_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Pommard homologué par le décret n°2011-1510 du 10 novembre 2011",
+      "url": "https://www.bourgogne-wines.com/our-wines-our-terroir/all-bourgogne-wines/gallery_files/site/321/19990/20251.pdf",
+      "checked": "2026-09-05",
+      "scope": "Homologated legal list of 28 Premier Cru climat names."
+    },
+    "bourgogne_pommard_current": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "title": "Current Pommard appellation page and climat/lieu-dit inventory",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/pommard%2C2458%2C9253.html",
+      "checked": "2026-09-05",
+      "scope": "Current BIVB interface states 28 Premiers Crus but its detailed listing includes an additional 'Les Perrières' Premier Cru entry; this conflict is recorded without promoting legal status."
+    },
+    "pommard_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Pommard Premier Cru current product record",
+      "url": "https://www.inao.gouv.fr/produit/pommard-premier-cru-8599",
+      "checked": "2026-09-05",
+      "scope": "Current INAO page states that Pommard contains 28 Premier Cru climats."
+    }
+  },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "commune": "Pommard",
+      "parent": "Pommard",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["pommard_bivb_spec_2011", "pommard_inao_current"],
+      "notes": "Official Premier Cru climat identity from the homologated 28-name legal list.",
+      "names": [
+        "Clos Blanc",
+        "Clos de la Commaraine",
+        "Clos de Verger",
+        "Clos des Epeneaux",
+        "Derrière Saint-Jean",
+        "En Largillière",
+        "La Chanière",
+        "La Platière",
+        "La Refène",
+        "Le Clos Micot",
+        "Le Village",
+        "Les Arvelets",
+        "Les Bertins",
+        "Les Boucherottes",
+        "Les Chanlins-Bas",
+        "Les Chaponnières",
+        "Les Charmots",
+        "Les Combes Dessus",
+        "Les Croix Noires",
+        "Les Fremiers",
+        "Les Grands Epenots",
+        "Les Jarolières",
+        "Les Petits Epenots",
+        "Les Pézerolles",
+        "Les Poutures",
+        "Les Rugiens Bas",
+        "Les Rugiens Hauts",
+        "Les Saussilles"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": "site:fr:bourgogne:pommard:les-perrieres:secondary-premier-cru-listing",
+      "name": "Les Perrières",
+      "country": "France",
+      "region": "Bourgogne",
+      "commune": "Pommard",
+      "parent": "Pommard",
+      "site_type": "secondary_premier_cru_listing",
+      "classification": "Premier Cru listing discrepancy",
+      "legal_status": "secondary_listing_not_homologated",
+      "source_ids": ["bourgogne_pommard_current"],
+      "notes": "Current BIVB interface surfaces this as Pommard Premier Cru despite the same page stating 28 Premiers Crus and the homologated specification omitting the name. Retained as conflicting evidence only; no protected label claim is granted."
+    }
+  ]
+}
