@@ -6,6 +6,7 @@ import {
   currentBearingVarieties,
   regionalCultivationObservations,
   validateCommercialCultivarEvidence,
+  vintageContextsForCultivar,
 } from './commercialCultivarEvidence';
 
 describe('commercial cultivar cultivation and wine-use evidence', () => {
@@ -15,6 +16,7 @@ describe('commercial cultivar cultivation and wine-use evidence', () => {
     expect(commercialBearingVarieties.length).toBeGreaterThan(1200);
     expect(currentBearingVarieties.length).toBeGreaterThan(1000);
     expect(regionalCultivationObservations.length).toBeGreaterThan(2500);
+    expect(report.regionalVintageObservationsAvailable).toBeGreaterThanOrEqual(15);
     expect(report.issues).toEqual([]);
   });
 
@@ -36,7 +38,24 @@ describe('commercial cultivar cultivation and wine-use evidence', () => {
     expect(nebbiolo?.status).not.toBe('statistical-bearing-area-only');
   });
 
-  it('can corroborate commercial wine use from importer technical evidence without granting legal authority', () => {
+  it('corroborates commercial wine use from importer technical evidence and retains actual cellar choices', () => {
+    const romorantin = commercialCultivarCoverage('Romorantin');
+    const cazin = romorantin?.tradeWineUse.find((record) => record.producer === 'Cazin');
+    expect(cazin?.vintage).toBe(2023);
+    expect(cazin?.technicalFields.vineAgeYearsRange).toEqual([40, 90]);
+    expect(cazin?.technicalFields.malolactic).toContain('does not undergo');
+    expect(cazin?.technicalFields.maturationVessel).toBe('used 300 L barrels');
+  });
+
+  it('keeps regional vintage evidence attached to grape-place context rather than inventing a global grape vintage score', () => {
+    const contexts = vintageContextsForCultivar('Sangiovese');
+    const chianti2021 = contexts.find((context) => context.region === 'Chianti Classico' && context.year === 2021);
+    expect(chianti2021?.scope).toBe('regional-context-not-universal-cultivar-rating');
+    expect(chianti2021?.styleEffects).toContain('fine ripe tannins');
+    expect(chianti2021?.matchBasis).toContain('legal-wine-use-geography');
+  });
+
+  it('still preserves existing vintage-specific importer evidence for established cultivars', () => {
     const zinfandel = commercialCultivarCoverage('Zinfandel');
     expect(zinfandel?.tradeWineUse.some((record) => record.producer === 'Bedrock Wine Co.')).toBe(true);
     expect(zinfandel?.tradeWineUse.some((record) => record.vintage === 2024)).toBe(true);
