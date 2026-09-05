@@ -125,6 +125,10 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
                     same_grape=self.same_grape,
                 )
 
+            # The legacy regional rulebook is useful for canonicalization and
+            # plausibility diagnostics, but it is never positive legal authority.
+            # Returning an eligible legacy decision here would allow a stale or
+            # hand-maintained allowed_grapes list to create a legally impossible GI.
             fallback = super().evaluate(
                 country=country,
                 grapes=grapes,
@@ -136,21 +140,39 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
                 commune=commune,
                 experimental=experimental,
             )
-            if fallback.eligible or promotion is None or not promotion.verified:
-                return fallback
+            if promotion is not None and promotion.verified:
+                return OriginDecision(
+                    eligible=False,
+                    status="composition_verified_full_spec_pending",
+                    label_scope=scope,
+                    canonical_grapes=promotion.canonical_grapes,
+                    rule_id=f"machine:{machine.gi_identifier}",
+                    issues=(
+                        "The grape-composition dimension is verified, but the full protected-origin production specification has not yet been promoted.",
+                    ),
+                    warnings=(
+                        "Composition verification is not full GI certification; yield, process, aging, release, bottling, and other applicable requirements remain fail-closed.",
+                    ),
+                    evidence=promotion.evidence,
+                )
+
+            warnings = [
+                "No reviewed strict product specification is available for positive protected-origin authorization.",
+                "Legacy regional grape lists may support plausibility checks, but they cannot certify a protected-origin claim.",
+            ]
+            if fallback.status:
+                warnings.append(f"Legacy diagnostic status: {fallback.status}.")
             return OriginDecision(
                 eligible=False,
-                status="composition_verified_full_spec_pending",
+                status="strict_legal_spec_pending",
                 label_scope=scope,
-                canonical_grapes=promotion.canonical_grapes,
-                rule_id=f"machine:{machine.gi_identifier}",
+                canonical_grapes=fallback.canonical_grapes,
+                rule_id=fallback.rule_id,
                 issues=(
-                    "The grape-composition dimension is verified, but the full protected-origin production specification has not yet been promoted.",
+                    "Protected-origin generation is blocked until a reviewed strict legal specification is available.",
                 ),
-                warnings=(
-                    "Composition verification is not full GI certification; yield, process, aging, release, bottling, and other applicable requirements remain fail-closed.",
-                ),
-                evidence=promotion.evidence,
+                warnings=tuple(warnings),
+                evidence=fallback.evidence,
             )
 
         blend, issues = self._blend(grapes)
