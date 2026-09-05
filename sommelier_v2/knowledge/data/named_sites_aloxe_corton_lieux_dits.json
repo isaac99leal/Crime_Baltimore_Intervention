@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.1",
+  "notes": "Ordinary Aloxe-Corton lieux-dits from the current BIVB appellation inventory. These records establish named-site identity only and are not automatically eligible for Premier Cru label claims.",
+  "sources": {
+    "bourgogne_aloxe_current": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "title": "Aloxe-Corton appellation page: Climats et Lieux-dits",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/aloxe-corton,2458,9253.html",
+      "checked": "2026-09-05",
+      "scope": "Current appellation inventory distinguishes the official Premier Cru climat set from ordinary lieux-dits."
+    }
+  },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "commune": "Aloxe-Corton",
+      "parent": "Aloxe-Corton",
+      "site_type": "lieu_dit",
+      "classification": "Lieu-dit",
+      "legal_status": "documented_named_site",
+      "source_ids": ["bourgogne_aloxe_current"],
+      "notes": "Documented ordinary lieu-dit identity. No Premier Cru claim is implied.",
+      "names": [
+        "Boulmeau",
+        "La Boulotte",
+        "La Toppe Marteneau",
+        "Les Boutières",
+        "Les Brunettes et Planchots",
+        "Les Bruyères",
+        "Les Caillettes",
+        "Les Citernes",
+        "Les Combes",
+        "Les Crapousuets",
+        "Les Cras",
+        "Les Genevrières et le Suchot",
+        "Les Morais",
+        "Les Petits Vercots",
+        "Les Valozières"
+      ]
+    }
+  ]
+}
