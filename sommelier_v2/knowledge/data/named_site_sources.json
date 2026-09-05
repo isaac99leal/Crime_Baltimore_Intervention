@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "notes": "Registry of authoritative or institutional named-vineyard/site bulk sources. A source record establishes identity/boundary evidence only. It does not by itself authorize a protected-origin wine, a grape, a vintage, or a site claim.",
+  "sources": [
+    {
+      "id": "bivb_bourgogne_maps_2025",
+      "country": "France",
+      "region": "Bourgogne",
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "unit_types": ["climat", "lieu_dit", "parcel"],
+      "coverage_status": "institutional_bulk_registry",
+      "reported_named_units": 11541,
+      "reported_parcels": 296663,
+      "source_url": "https://www.vins-bourgogne.fr/presse/gallery_files/site/289/1910/55801.pdf",
+      "legal_claim_authority": false,
+      "notes": "Bourgogne Maps reports 11,541 identified Climats/lieux-dits and 296,663 mapped parcels."
+    },
+    {
+      "id": "rp_weinbergsrolle_2026",
+      "country": "Germany",
+      "region": "Rheinland-Pfalz",
+      "authority": "Landwirtschaftskammer Rheinland-Pfalz",
+      "unit_types": ["Einzellage", "Gewann", "parcel"],
+      "coverage_status": "official_bulk_registry",
+      "minimum_reported_named_units": 1600,
+      "source_url": "https://www.lwk-rlp.de/weinbau/rebflaechen/weinlagen",
+      "legal_claim_authority": false,
+      "notes": "Official public registry/map covers more than 1,600 Einzellagen and registered Gewanne; Gewann list dated 2026-08-04."
+    },
+    {
+      "id": "vienna_riedenkarte_2026",
+      "country": "Austria",
+      "region": "Wien",
+      "authority": "Stadt Wien",
+      "unit_types": ["Ried", "parcel"],
+      "coverage_status": "official_bulk_registry",
+      "reported_named_units": 140,
+      "source_url": "https://www.wien.gv.at/umwelt/weinbaufluren-riedenkarte",
+      "legal_claim_authority": false,
+      "notes": "Official Riedenkarte documents all 140 wine-growing Rieden with parcel-level delimitation."
+    },
+    {
+      "id": "lower_austria_rieden_ogd_2026",
+      "country": "Austria",
+      "region": "Niederösterreich",
+      "authority": "Land Niederösterreich",
+      "unit_types": ["Ried", "vineyard_boundary"],
+      "coverage_status": "official_partial_bulk_registry",
+      "source_url": "https://open-data.noe.gv.at/noe/Open-Government-Data/Bestandsliste.html",
+      "legal_claim_authority": false,
+      "notes": "Ried boundaries are being captured for the first time and are explicitly not yet available statewide."
+    },
+    {
+      "id": "inao_alsace_grand_cru_2025",
+      "country": "France",
+      "region": "Alsace",
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "unit_types": ["grand_cru_lieu_dit"],
+      "coverage_status": "official_appellation_named_sites",
+      "reported_named_units": 51,
+      "source_url": "https://www.inao.gouv.fr/en/node/36434",
+      "legal_claim_authority": true,
+      "notes": "Current INAO material documents the 51 Alsace Grand Cru appellations followed by named lieux-dits. Detailed wine eligibility remains in the legal specification layer."
+    }
+  ]
+}
