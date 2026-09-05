@@ -1,4 +1,5 @@
 import productData from '../data/research/product_resolution_rules.json';
+import productDataPass2 from '../data/research/product_resolution_rules_pass2.json';
 import { legalAgeingRules, type AgeingArchetype } from './ageing';
 import { findGrape, type RawGrape, type ReferencePlace } from './reference';
 import { researchProfileById, type ResearchProfile } from './research';
@@ -33,6 +34,8 @@ export type ProductResolutionRule = {
   generationStatus: ProductGenerationStatus;
   ageingArchetype: AgeingArchetype;
   composition?: ProductCompositionRule[];
+  exclusiveComposition?: boolean;
+  requiresBlend?: boolean;
   requiredPractices?: ProductPracticeRule[];
   permittedPractices?: ProductPracticeRule[];
   prohibitedPractices?: ProductPracticeRule[];
@@ -41,6 +44,7 @@ export type ProductResolutionRule = {
   minimumOakMonths?: number;
   minimumOxidativeAgeingMonths?: number;
   minimumResidualSugarGPerL?: number;
+  maximumResidualSugarGPerL?: number;
   effectiveFromYear?: number;
   effectiveThroughYear?: number;
   notes?: string[];
@@ -53,9 +57,13 @@ type ProductResolutionFile = {
   records: ProductResolutionRule[];
 };
 
-const file = productData as unknown as ProductResolutionFile;
-export const productResolutionMethod = file.method;
-export const productResolutionRules = file.records;
+const files = [
+  productData as unknown as ProductResolutionFile,
+  productDataPass2 as unknown as ProductResolutionFile,
+];
+export const productResolutionMethod = files.map((candidate) => candidate.method).join(' ');
+export const productResolutionPassCount = files.length;
+export const productResolutionRules = files.flatMap((candidate) => candidate.records);
 export const productResolutionRuleById = new Map(productResolutionRules.map((record) => [record.id, record]));
 
 export type ProductResolutionRequest = {
@@ -129,22 +137,37 @@ function termScore(rule: ProductResolutionRule, termsText: string): number {
   return best;
 }
 
+function canonicalGrape(name: string): string {
+  return findGrape(name)?.name ?? name;
+}
+
 function blendMap(request: ProductResolutionRequest): Map<string, number> | undefined {
   if (request.blend?.length) {
-    return new Map(request.blend.map((item) => [findGrape(item.grape)?.name ?? item.grape, item.percent]));
+    return new Map(request.blend.map((item) => [canonicalGrape(item.grape), item.percent]));
   }
-  if (request.grape) return new Map([[findGrape(request.grape)?.name ?? request.grape, 100]]);
+  if (request.grape) return new Map([[canonicalGrape(request.grape), 100]]);
   return undefined;
 }
 
 function compositionIssues(rule: ProductResolutionRule, request: ProductResolutionRequest): string[] {
-  if (!rule.composition?.length) return [];
+  if (!rule.composition?.length && !rule.requiresBlend && !rule.exclusiveComposition) return [];
   const blend = blendMap(request);
   if (!blend) return [];
   const issues: string[] = [];
 
-  for (const constraint of rule.composition) {
-    const canonical = findGrape(constraint.grape)?.name ?? constraint.grape;
+  if (rule.requiresBlend && blend.size < 2) {
+    issues.push(`${rule.productName} requires a researched multi-grape blend; a single-grape case is insufficient.`);
+  }
+
+  if (rule.exclusiveComposition && rule.composition?.length) {
+    const permitted = new Set(rule.composition.map((constraint) => canonicalGrape(constraint.grape)));
+    for (const [grape, pct] of blend) {
+      if (pct > 0 && !permitted.has(grape)) issues.push(`${grape} is outside the exclusive grape set for ${rule.productName}.`);
+    }
+  }
+
+  for (const constraint of rule.composition ?? []) {
+    const canonical = canonicalGrape(constraint.grape);
     const pct = blend.get(canonical) ?? 0;
     if (constraint.minPct !== undefined && pct < constraint.minPct) {
       issues.push(`${canonical} ${pct}% is below ${constraint.minPct}% minimum for ${rule.productName}.`);
@@ -155,7 +178,7 @@ function compositionIssues(rule: ProductResolutionRule, request: ProductResoluti
   }
 
   const groups = new Map<string, ProductCompositionRule[]>();
-  for (const constraint of rule.composition) {
+  for (const constraint of rule.composition ?? []) {
     if (!constraint.group || constraint.maxCombinedPct === undefined) continue;
     const values = groups.get(constraint.group) ?? [];
     values.push(constraint);
@@ -164,7 +187,7 @@ function compositionIssues(rule: ProductResolutionRule, request: ProductResoluti
   for (const [group, constraints] of groups) {
     const limit = constraints.find((item) => item.maxCombinedPct !== undefined)?.maxCombinedPct;
     if (limit === undefined) continue;
-    const total = constraints.reduce((sum, item) => sum + (blend.get(findGrape(item.grape)?.name ?? item.grape) ?? 0), 0);
+    const total = constraints.reduce((sum, item) => sum + (blend.get(canonicalGrape(item.grape)) ?? 0), 0);
     if (total > limit) issues.push(`${group} totals ${total}% and exceeds ${limit}% maximum for ${rule.productName}.`);
   }
 
@@ -285,6 +308,7 @@ export function generationProductCandidates(place: ReferencePlace, grape: RawGra
   const designationText = [place.name, ...place.path].join(' / ');
   return productResolutionRules.filter((rule) => {
     if (rule.generationStatus !== 'generation-safe') return false;
+    if (rule.requiresBlend) return false;
     if (!designationMatches(rule, place.country, designationText)) return false;
     if (!colorMatches(rule, grape.color)) return false;
     const request: ProductResolutionRequest = { country: place.country, designation: designationText, grape: grape.name, color: grape.color };
@@ -326,6 +350,7 @@ export function validateProductResolver() {
     const profile = profileForRule(rule);
     if (rule.profileId && !profile) issues.push(`Unknown research profile ${rule.profileId} in ${rule.id}`);
     if (rule.generationStatus === 'generation-safe' && (!profile || profile.generationStatus !== 'candidate')) issues.push(`Generation-safe product lacks candidate profile: ${rule.id}`);
+    if (rule.requiresBlend && (!rule.composition || rule.composition.length < 2)) issues.push(`Blend-required product lacks multi-grape composition: ${rule.id}`);
     for (const ageingId of rule.ageingRuleIds ?? []) if (!legalAgeingRules.some((candidate) => candidate.id === ageingId)) issues.push(`Unknown ageing rule ${ageingId} in ${rule.id}`);
     for (const constraint of rule.composition ?? []) if (!findGrape(constraint.grape)) unresolvedGrapes.add(constraint.grape);
     for (const practice of [...(rule.requiredPractices ?? []), ...(rule.permittedPractices ?? []), ...(rule.prohibitedPractices ?? [])]) {
@@ -339,6 +364,7 @@ export function validateProductResolver() {
   }
   return {
     records: productResolutionRules.length,
+    passes: productResolutionPassCount,
     generationSafe: productResolutionRules.filter((rule) => rule.generationStatus === 'generation-safe').length,
     conditional: productResolutionRules.filter((rule) => rule.generationStatus === 'conditional').length,
     referenceOnly: productResolutionRules.filter((rule) => rule.generationStatus === 'reference-only').length,
