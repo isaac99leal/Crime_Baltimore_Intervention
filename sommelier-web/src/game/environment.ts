@@ -1,6 +1,7 @@
 import environmentalData from '../data/research/environmental_profiles.json';
 import environmentalDataPass2 from '../data/research/environmental_profiles_pass2.json';
 import vintageData from '../data/research/vintage_observations.json';
+import vintageDataPass2 from '../data/research/vintage_observations_pass2.json';
 import { researchProfileById, researchSourceById } from './research';
 import type { ReferencePlace } from './reference';
 import type { WineProfile } from './types';
@@ -88,14 +89,18 @@ const environmentalFiles: EnvironmentalFile[] = [
   environmentalData as unknown as EnvironmentalFile,
   environmentalDataPass2 as unknown as EnvironmentalFile,
 ];
-const vintageFile = vintageData as unknown as VintageFile;
+const vintageFiles: VintageFile[] = [
+  vintageData as unknown as VintageFile,
+  vintageDataPass2 as unknown as VintageFile,
+];
 
 export const environmentalResearchMethod = environmentalFiles.map((file) => file.method).join(' ');
 export const environmentalResearchPassCount = environmentalFiles.length;
-export const vintageResearchMethod = vintageFile.method;
+export const vintageResearchMethod = vintageFiles.map((file) => file.method).join(' ');
+export const vintageResearchPassCount = vintageFiles.length;
 export const environmentalProfiles = environmentalFiles.flatMap((file) => file.profiles);
-export const vintageObservations = vintageFile.observations;
-export const authorityVintageRatings = vintageFile.authorityRatings;
+export const vintageObservations = vintageFiles.flatMap((file) => file.observations);
+export const authorityVintageRatings = vintageFiles.flatMap((file) => file.authorityRatings);
 export const environmentalProfileById = new Map(environmentalProfiles.map((profile) => [profile.id, profile]));
 export const vintageObservationById = new Map(vintageObservations.map((vintage) => [vintage.id, vintage]));
 
@@ -281,6 +286,7 @@ export function validateEnvironmentalResearch() {
     environmentalProfiles: environmentalProfiles.length,
     environmentalResearchPasses: environmentalResearchPassCount,
     vintageObservations: vintageObservations.length,
+    vintageResearchPasses: vintageResearchPassCount,
     authorityVintageRatings: authorityVintageRatings.length,
     countries: new Set(environmentalProfiles.map((profile) => profile.country)).size,
     issues,
