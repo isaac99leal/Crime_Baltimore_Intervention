@@ -195,3 +195,49 @@ export type GameState = {
   certifications: CertificationTrack[];
   time: TimeLedger;
 };
+
+export type Guest = {
+  id: string;
+  name: string;
+  description: string;
+  budget: number;
+  preferredRegions: string[];
+  hint: string;
+  adventure: number;
+  patience?: number;
+  wineKnowledge?: number;
+  occasion?: string;
+  requestedStyle?: string;
+};
+
+export type Dish = {
+  name: string;
+  pairingKey: string;
+  detail: string;
+  course?: string;
+  cookingMethod?: string;
+  sauce?: string;
+  flavorProfile?: string;
+  weight?: 'light' | 'medium' | 'heavy' | string;
+  pairingKeywords?: string[];
+};
+
+export type ServiceScenario = {
+  guest: Guest;
+  dish: Dish;
+};
+
+export type ServiceResult = {
+  score: number;
+  revenue: number;
+  tip: number;
+  reputationDelta: number;
+  summary: string;
+  pairingScore?: number;
+  breakdown?: string[];
+};
+
+export type TastingChallenge = {
+  wine: WineDefinition;
+  options: string[];
+};
