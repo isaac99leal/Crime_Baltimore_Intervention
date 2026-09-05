@@ -2,8 +2,10 @@
 
 This module is the safe path from knowledge evidence to a game-facing WineRecord.
 It does not invent legal authority. Origin legality is resolved first; named-site
-label use is resolved separately; vintage and fermentation evidence can enrich a
-legal record but can never override an origin rejection.
+label use is resolved separately; protected-origin production and release rules
+are validated before a record can enter an authoritative catalog; vintage and
+fermentation evidence can enrich a legal record but can never override a legal
+rejection.
 """
 from __future__ import annotations
 
@@ -18,9 +20,19 @@ from .knowledge.fermentation_guidance import (
     assess_malolactic_conditions,
 )
 from .knowledge.fermentation_process import FermentationPlan, MustComposition
+from .knowledge.legal_rules import LegalAwareRegionGrapeRulebook
 from .knowledge.origin_factory import ConstrainedOrigin, OriginRequest, WineOriginFactory
+from .knowledge.regional_rules import OriginConstraintError
 from .knowledge.vintage_engine import DailyWeather
 from .knowledge.vintage_indices import VintageClimateIndices, calculate_vintage_climate_indices
+
+
+class WineProductionConstraintError(ValueError):
+    """Raised when a protected-origin wine fails modeled production rules."""
+
+
+class WineReleaseConstraintError(ValueError):
+    """Raised when a protected-origin wine fails modeled release rules."""
 
 
 @dataclass(frozen=True)
@@ -52,6 +64,22 @@ class WineBuildRequest:
     is_ungrafted: bool = False
     is_old_vine: bool = False
 
+    # Machine-modeled legal production/release facts. These remain distinct from
+    # sensory fields. For example, ``acidity`` above is a 1..5 tasting-scale value;
+    # ``total_acidity_g_l`` below is a measured legal chemistry value.
+    vineyard_yield_t_ha: float | None = None
+    actual_grape_to_wine_yield_pct: float | None = None
+    potential_alcohol_pct: float | None = None
+    bottled_in_origin: bool | None = None
+    total_aging_months: int | None = None
+    wood_aging_months: int = 0
+    bottle_aging_months: int = 0
+    method: str | None = None
+    manual_harvest: bool | None = None
+    total_acidity_g_l: float | None = None
+    dry_extract_g_l: float | None = None
+    release_year: int | None = None
+
 
 @dataclass(frozen=True)
 class GenerationEvidence:
@@ -64,6 +92,10 @@ class GenerationEvidence:
     site_claim_status: str
     site_claim_rule_id: str | None
     site_claim_evidence: tuple[str, ...]
+    legal_spec_id: str | None = None
+    production_status: str = "not_applicable"
+    release_status: str = "not_applicable"
+    legal_model_notes: str = ""
     vintage_indices: VintageClimateIndices | None = None
     alcoholic_fermentation_guidance: FermentationGuidance | None = None
     malolactic_guidance: FermentationGuidance | None = None
@@ -77,7 +109,7 @@ class GeneratedWine:
 
 
 class ConstrainedWineBuilder:
-    """Build game-facing wine records only after the evidence gates pass."""
+    """Build game-facing wine records only after all modeled evidence gates pass."""
 
     def __init__(self, *, origin_factory: WineOriginFactory | None = None) -> None:
         self.origin_factory = origin_factory or WineOriginFactory()
@@ -98,6 +130,10 @@ class ConstrainedWineBuilder:
             raise ValueError("Drink-window offsets cannot be negative")
         if request.drink_window_end and request.drink_window_start > request.drink_window_end:
             raise ValueError("Drink-window start cannot be after drink-window end")
+        if request.total_aging_months is not None and request.total_aging_months < 0:
+            raise ValueError("Total aging months cannot be negative")
+        if request.wood_aging_months < 0 or request.bottle_aging_months < 0:
+            raise ValueError("Wood and bottle aging months cannot be negative")
         if (
             request.origin.producer
             and normalize_name(request.origin.producer) != normalize_name(request.producer)
@@ -105,6 +141,73 @@ class ConstrainedWineBuilder:
             raise ValueError(
                 "WineBuildRequest producer must match OriginRequest producer when both are supplied"
             )
+
+    def _validate_regulated_production_and_release(
+        self,
+        *,
+        request: WineBuildRequest,
+        origin: ConstrainedOrigin,
+        vintage_year: int,
+    ) -> tuple[str | None, str, str, str]:
+        if request.origin.label_scope.casefold() != "regulated_gi":
+            return None, "not_applicable", "not_applicable", ""
+        if not isinstance(self.origin_factory.rulebook, LegalAwareRegionGrapeRulebook):
+            raise OriginConstraintError(
+                "Protected-origin authoritative generation requires LegalAwareRegionGrapeRulebook"
+            )
+
+        rulebook = self.origin_factory.rulebook
+        spec = rulebook.resolve_legal_spec(
+            country=origin.country,
+            appellation=origin.appellation,
+            region=origin.region,
+            sub_region=origin.sub_region,
+            commune=origin.commune,
+            wine_variant=request.origin.wine_variant,
+        )
+        if spec is None:
+            raise OriginConstraintError(
+                "Protected-origin wine passed origin validation without a resolvable strict legal specification"
+            )
+
+        production = rulebook.legal_specs.validate_production(
+            spec,
+            vineyard_yield_t_ha=request.vineyard_yield_t_ha,
+            actual_grape_to_wine_yield_pct=request.actual_grape_to_wine_yield_pct,
+            potential_alcohol_pct=request.potential_alcohol_pct,
+            bottled_in_origin=request.bottled_in_origin,
+            require_complete=True,
+        )
+        if not production.eligible:
+            raise WineProductionConstraintError(
+                "; ".join(production.issues) or "protected-origin production requirements not met"
+            )
+
+        release = rulebook.legal_specs.validate_release(
+            spec,
+            total_aging_months=request.total_aging_months or 0,
+            wood_aging_months=request.wood_aging_months,
+            bottle_aging_months=request.bottle_aging_months,
+            method=request.method,
+            manual_harvest=request.manual_harvest,
+            final_alcohol_pct=request.alcohol,
+            total_acidity_g_l=request.total_acidity_g_l,
+            dry_extract_g_l=request.dry_extract_g_l,
+            vintage_year=vintage_year,
+            release_year=request.release_year,
+            require_complete=True,
+        )
+        if not release.eligible:
+            raise WineReleaseConstraintError(
+                "; ".join(release.issues) or "protected-origin release requirements not met"
+            )
+
+        return (
+            spec.id,
+            "production_eligible_sourced_spec",
+            "release_eligible_sourced_spec",
+            spec.notes,
+        )
 
     def build(
         self,
@@ -128,6 +231,14 @@ class ConstrainedWineBuilder:
         # Origin is deliberately first. If it fails, no amount of vintage or
         # cellar detail can create the protected-origin wine.
         origin = self.origin_factory.create(origin_request)
+
+        legal_spec_id, production_status, release_status, legal_model_notes = (
+            self._validate_regulated_production_and_release(
+                request=request,
+                origin=origin,
+                vintage_year=origin_request.vintage_year,
+            )
+        )
 
         vintage_indices = None
         if weather_days is not None:
@@ -204,6 +315,10 @@ class ConstrainedWineBuilder:
             site_claim_status=origin.site_claim_status,
             site_claim_rule_id=origin.site_claim_rule_id,
             site_claim_evidence=origin.site_claim_evidence,
+            legal_spec_id=legal_spec_id,
+            production_status=production_status,
+            release_status=release_status,
+            legal_model_notes=legal_model_notes,
             vintage_indices=vintage_indices,
             alcoholic_fermentation_guidance=alcoholic_guidance,
             malolactic_guidance=mlf_guidance,

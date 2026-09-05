@@ -167,6 +167,9 @@ class NationalAwareLegalSpecRegistry:
     def evaluate_blend(self, spec, *args, **kwargs):
         return self.base.evaluate_blend(spec, *args, **kwargs)
 
+    def validate_production(self, spec, *args, **kwargs):
+        return self.base.validate_production(spec, *args, **kwargs)
+
     def validate_release(self, spec, *args, **kwargs):
         return self.base.validate_release(spec, *args, **kwargs)
 
