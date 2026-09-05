@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.1",
+  "notes": "Official Premier Cru climat identities for Pernand-Vergelesses and Auxey-Duresses from their effective homologated specifications. Pernand's three white-only climat names remain physical identities shared with the parent appellation, while label color eligibility is enforced separately.",
+  "sources": {
+    "pernand_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Pernand-Vergelesses homologué par le décret n°2011-1790 du 5 décembre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20249.pdf",
+      "checked": "2026-09-05"
+    },
+    "auxey_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Auxey-Duresses homologué par le décret n°2011-1776 du 5 décembre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20189.pdf",
+      "checked": "2026-09-05"
+    }
+  },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "commune": "Pernand-Vergelesses",
+      "parent": "Pernand-Vergelesses",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["pernand_bivb_spec_2011"],
+      "notes": "Official Premier Cru climat identity. Color-specific claim eligibility is evaluated separately.",
+      "names": [
+        "Sous Frétille",
+        "Clos Berthet",
+        "Creux de la Net",
+        "En Caradeux",
+        "Ile des Vergelesses",
+        "Les Fichots",
+        "Vergelesses",
+        "Village de Pernand"
+      ]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "commune": "Auxey-Duresses",
+      "parent": "Auxey-Duresses",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["auxey_bivb_spec_2011"],
+      "notes": "Official Premier Cru climat identity. Legal claim eligibility is evaluated separately.",
+      "names": [
+        "Bas des Duresses",
+        "Climat du Val",
+        "Clos du Val",
+        "La Chapelle",
+        "Les Bréterins",
+        "Les Duresses",
+        "Les Ecussaux",
+        "Les Grands Champs",
+        "Reugne"
+      ]
+    }
+  ]
+}
