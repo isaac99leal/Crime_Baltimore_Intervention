@@ -29,7 +29,7 @@ The game deliberately separates factual identity, legal rules, historical eviden
 
 Current authoritative indices include 1,997 winegrape records, 60 winegrape-growing countries, 613 statistical planting geographies, 280 U.S. AVAs and 1,665 EU wine GIs. Statistical planting areas are never treated as legal GIs.
 
-The global designation target is exhaustive but not yet complete. EU/eAmbrosia and U.S./TTB are live normalized registry indices; several additional national authorities are identified; remaining jurisdictions are an explicit pending queue. No GI is intentionally excluded because it is small or obscure.
+The global designation target is exhaustive but not yet complete. EU/eAmbrosia and U.S./TTB are live normalized registry indices. Additional national/provincial authority sources have been identified for Australia, New Zealand, Japan, Georgia, Argentina, Chile, South Africa, Ontario, British Columbia, Brazil, Mexico and the United Kingdom, but authority identification is not counted as completed ingestion. Remaining jurisdictions stay in an explicit pending queue. No GI is intentionally excluded because it is small or obscure.
 
 ## Vintage and ageing
 
