@@ -1,5 +1,6 @@
 import { studyCertification, takeCertificationExam, trainStaff, upgradeEquipment, workSupplierRelationship } from '../game/systems';
 import type { GameState } from '../game/types';
+import { TrainingLab } from './TrainingLab';
 
 function money(value: number) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
@@ -32,6 +33,8 @@ export function PeopleView({ game, setGame }: { game: GameState; setGame: (updat
           </article>)}
         </div>
       </div>
+
+      <TrainingLab game={game} setGame={setGame} />
 
       <div className="panel">
         <p className="eyebrow">Capex</p><h2>Equipment</h2>
