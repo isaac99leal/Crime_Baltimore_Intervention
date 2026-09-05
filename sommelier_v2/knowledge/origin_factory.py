@@ -1,7 +1,8 @@
 """Single constrained origin-creation path for v2 wine records.
 
 All new v2 generators should construct origin metadata through this factory.
-Protected-origin claims fail closed when grape rules are absent or violated.
+Protected-origin claims use sourced legal specifications when available and fail
+closed when grape rules are absent or violated.
 """
 from __future__ import annotations
 
@@ -10,6 +11,7 @@ from typing import Mapping, Sequence
 
 from .catalog import normalize_name
 from .expanded_catalog import NamedSite, WorldWineKnowledgeCatalog
+from .legal_rules import LegalAwareRegionGrapeRulebook
 from .regional_rules import OriginConstraintError, OriginDecision, RegionGrapeRulebook
 from .vineyard_engine import SiteRegistry
 
@@ -27,6 +29,7 @@ class OriginRequest:
     site_id: str | None = None
     producer: str | None = None
     experimental: bool = False
+    wine_variant: str | None = None
 
 
 @dataclass(frozen=True)
@@ -51,7 +54,7 @@ class WineOriginFactory:
         rulebook: RegionGrapeRulebook | None = None,
     ) -> None:
         self.catalog = catalog or WorldWineKnowledgeCatalog()
-        self.rulebook = rulebook or RegionGrapeRulebook(catalog=self.catalog)
+        self.rulebook = rulebook or LegalAwareRegionGrapeRulebook(catalog=self.catalog)
         self.sites = SiteRegistry(self.catalog.named_sites)
 
     def create(self, request: OriginRequest) -> ConstrainedOrigin:
@@ -74,7 +77,7 @@ class WineOriginFactory:
         if site is not None and request.appellation and site.parent and normalize_name(site.parent) != normalize_name(request.appellation):
             raise OriginConstraintError(f"Site {site.name} is tied to {site.parent}; it cannot be attached to {request.appellation}.")
 
-        decision = self.rulebook.evaluate(
+        kwargs = dict(
             country=request.country,
             region=request.region,
             sub_region=request.sub_region,
@@ -85,6 +88,9 @@ class WineOriginFactory:
             vintage_year=request.vintage_year,
             experimental=request.experimental,
         )
+        if isinstance(self.rulebook, LegalAwareRegionGrapeRulebook):
+            kwargs["wine_variant"] = request.wine_variant
+        decision = self.rulebook.evaluate(**kwargs)
         decision.require()
 
         site_claim = bool(site) and request.label_scope.casefold() == "regulated_gi"
