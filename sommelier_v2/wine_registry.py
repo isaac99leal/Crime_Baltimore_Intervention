@@ -89,7 +89,6 @@ def authoritative_item_to_legacy_wine(
         if value and all(value.casefold() != existing.casefold() for existing in region_path):
             region_path.append(value)
 
-    primary_aromas = list(record.aromas[:6])
     profile = TastingProfile(
         acidity=record.acidity,
         tannin=record.tannin,
@@ -99,7 +98,7 @@ def authoritative_item_to_legacy_wine(
         fruit_intensity=record.fruit_intensity,
         earth_intensity=record.earth_intensity,
         oak_influence=record.oak_influence,
-        primary_aromas=primary_aromas,
+        primary_aromas=list(record.aromas[:6]),
         secondary_aromas=[],
         tertiary_aromas=[],
         color=_legacy_color(record.style),
@@ -197,6 +196,13 @@ class SommelierWorldRegistry(Sequence):
         if target_count <= 0:
             raise ValueError("target_count must be positive")
 
+        # Legacy hierarchy/database helpers remain available because existing UI
+        # code still queries them. They are no longer used to generate market wines.
+        from somm_simulator.models.grape import GrapeDatabase
+        from somm_simulator.models.region import RegionDatabase
+
+        region_db = RegionDatabase()
+        grape_db = GrapeDatabase()
         knowledge = WorldWineKnowledgeCatalog()
         generator = AuthoritativeCatalogGenerator(catalog=knowledge)
 
@@ -237,7 +243,13 @@ class SommelierWorldRegistry(Sequence):
             authoritative_item_to_legacy_wine(item, as_of_year=as_of_year)
             for item in items
         ]
-        return cls(legacy, v2, knowledge)
+        return cls(
+            legacy,
+            v2,
+            knowledge,
+            region_db=region_db,
+            grape_db=grape_db,
+        )
 
     # Sequence compatibility keeps the existing Pygame market/tasting scenes
     # operational while they migrate from ``Wine`` to ``WineRecord``. These are
