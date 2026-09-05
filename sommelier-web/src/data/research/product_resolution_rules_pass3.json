@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Third exact-product pass. Detailed special-wine identities are modeled separately from geography. Jerez products remain conditional where exact grape/use or blending legality is not yet exhaustively encoded; current Tokaj products are promoted only where official production constraints are sufficiently explicit.",
+  "records": [
+    {
+      "id":"product-es-jerez-fino-detailed","profileId":"es-jerez-product-matrix-2024","country":"Spain","designation":"Jerez-Xérès-Sherry","productName":"Fino","family":"fortified generoso","matchTerms":["fino detailed","fino current"],"generationStatus":"conditional","ageingArchetype":"biological-flor","requiredPractices":[{"decisionId":"fortification","optionIds":["after-fermentation"]},{"decisionId":"flor-ageing","optionIds":["biological"]}],"maximumResidualSugarGPerL":4,"alcoholPctRange":[15,17],"minimumAverageAgeYears":2,"notes":["Current specification: exclusively biological ageing under flor and minimum average ageing of two years.","Kept conditional for procedural generation until the current specification's exact grape-use table is represented at product level."]
+    },
+    {
+      "id":"product-es-jerez-fino-viejo","profileId":"es-jerez-product-matrix-2024","country":"Spain","designation":"Jerez-Xérès-Sherry","productName":"Fino Viejo","family":"fortified generoso","matchTerms":["fino viejo"],"generationStatus":"conditional","ageingArchetype":"biological-flor","requiredPractices":[{"decisionId":"fortification","optionIds":["after-fermentation"]},{"decisionId":"flor-ageing","optionIds":["biological"]}],"maximumResidualSugarGPerL":4,"alcoholPctRange":[15,17],"minimumAverageAgeYears":7
+    },
+    {
+      "id":"product-es-jerez-amontillado-detailed","profileId":"es-jerez-product-matrix-2024","country":"Spain","designation":"Jerez-Xérès-Sherry","productName":"Amontillado","family":"fortified generoso","matchTerms":["amontillado detailed","amontillado current"],"generationStatus":"conditional","ageingArchetype":"oxidative-flor-derived","requiredPractices":[{"decisionId":"fortification","optionIds":["after-fermentation"]},{"decisionId":"flor-ageing","optionIds":["biological-then-oxidative"]}],"maximumResidualSugarGPerL":4,"alcoholPctRange":[16,22],"minimumAverageAgeYears":2
+    },
+    {
+      "id":"product-es-jerez-oloroso-detailed","profileId":"es-jerez-product-matrix-2024","country":"Spain","designation":"Jerez-Xérès-Sherry","productName":"Oloroso","family":"fortified generoso","matchTerms":["oloroso detailed","oloroso current"],"generationStatus":"conditional","ageingArchetype":"oxidative-fortified","requiredPractices":[{"decisionId":"fortification","optionIds":["after-fermentation"]},{"decisionId":"flor-ageing","optionIds":["none"]}],"maximumResidualSugarGPerL":4,"alcoholPctRange":[17,22],"minimumAverageAgeYears":2,"notes":["The specification describes oxidative ageing after disappearance/prevention of flor; the required flor-ageing=none option is a game encoding of the mature oxidative pathway, not a claim that flor biology can never occur transiently before classification."]
+    },
+    {
+      "id":"product-es-jerez-palo-cortado-detailed","profileId":"es-jerez-product-matrix-2024","country":"Spain","designation":"Jerez-Xérès-Sherry","productName":"Palo Cortado","family":"fortified generoso","matchTerms":["palo cortado detailed","palo cortado current"],"generationStatus":"conditional","ageingArchetype":"oxidative-flor-derived","requiredPractices":[{"decisionId":"fortification","optionIds":["after-fermentation"]},{"decisionId":"flor-ageing","optionIds":["biological-then-oxidative"]}],"maximumResidualSugarGPerL":4,"alcoholPctRange":[17,22],"minimumAverageAgeYears":2,"notes":["The biological-then-oxidative option approximates the researched transition to predominantly oxidative ageing after initial flor disappears; exact cellar trajectory remains producer/batch dependent."]
+    },
+    {
+      "id":"product-es-jerez-pedro-ximenez-detailed","profileId":"es-jerez-product-matrix-2024","country":"Spain","designation":"Jerez-Xérès-Sherry","productName":"Pedro Ximénez","family":"natural sweet fortified wine","matchTerms":["pedro ximenez detailed","pedro ximénez detailed","px detailed"],"generationStatus":"conditional","ageingArchetype":"oxidative-fortified","composition":[{"grape":"Pedro Ximénez","minPct":85}],"requiredPractices":[{"decisionId":"harvest-raisining","optionIds":["natural","controlled"]},{"decisionId":"fortification","optionIds":["during-fermentation"]}],"minimumResidualSugarGPerL":212,"alcoholPctRange":[15,22],"minimumOxidativeAgeingMonths":24
+    },
+    {
+      "id":"product-es-jerez-moscatel-detailed","profileId":"es-jerez-product-matrix-2024","country":"Spain","designation":"Jerez-Xérès-Sherry","productName":"Moscatel","family":"natural sweet fortified wine","matchTerms":["moscatel detailed","moscatel current"],"generationStatus":"conditional","ageingArchetype":"oxidative-fortified","composition":[{"grape":"Moscatel de Alejandría","minPct":85}],"requiredPractices":[{"decisionId":"fortification","optionIds":["during-fermentation"]}],"minimumResidualSugarGPerL":160,"alcoholPctRange":[15,22],"minimumOxidativeAgeingMonths":24,"notes":["The current specification allows Moscatel from ripe/overripe grapes with or without asoleo; raisining is therefore not encoded as universally required."]
+    },
+    {
+      "id":"product-es-jerez-vos","profileId":"es-jerez-product-matrix-2024","country":"Spain","designation":"Jerez-Xérès-Sherry","productName":"VOS — Vinum Optimum Signatum / Very Old Sherry","family":"qualified-age fortified wine","matchTerms":["vos","very old sherry"],"generationStatus":"conditional","ageingArchetype":"oxidative-flor-derived","minimumAverageAgeYears":20,"notes":["Qualified-age category; exact eligible base product and certification constraints remain separately validated before procedural generation."]
+    },
+    {
+      "id":"product-es-jerez-vors","profileId":"es-jerez-product-matrix-2024","country":"Spain","designation":"Jerez-Xérès-Sherry","productName":"VORS — Vinum Optimum Rare Signatum / Very Old Rare Sherry","family":"qualified-age fortified wine","matchTerms":["vors","very old rare sherry"],"generationStatus":"conditional","ageingArchetype":"oxidative-flor-derived","minimumAverageAgeYears":30,"notes":["Qualified-age category; exact eligible base product and certification constraints remain separately validated before procedural generation."]
+    },
+
+    {
+      "id":"product-hu-tokaj-late-harvest-current","profileId":"hu-tokaj-product-matrix-2026","country":"Hungary","designation":"Tokaj","productName":"Tokaji late-harvest wine","family":"late-harvest wine","matchTerms":["late harvest current","kesoi szuret current","késői szüret current"],"generationStatus":"generation-safe","ageingArchetype":"sweet-botrytis","minimumResidualSugarGPerL":45,"notes":["Current regional rule sets a 45 g/L residual-sugar minimum but no compulsory production process; noble rot must not be assumed for every late-harvest wine."]
+    },
+    {
+      "id":"product-hu-tokaj-szamorodni-dry-current","profileId":"hu-tokaj-product-matrix-2026","country":"Hungary","designation":"Tokaj","productName":"Tokaji dry Szamorodni","family":"Szamorodni","matchTerms":["dry szamorodni","szaraz szamorodni","száraz szamorodni"],"generationStatus":"generation-safe","ageingArchetype":"structured-white","maximumResidualSugarGPerL":9,"minimumWoodAgeMonths":6,"notes":["Healthy and aszú berries remain together in harvested bunches for Szamorodni; the dry product is not modeled as a generic dry Tokaj."]
+    },
+    {
+      "id":"product-hu-tokaj-szamorodni-sweet-current","profileId":"hu-tokaj-product-matrix-2026","country":"Hungary","designation":"Tokaj","productName":"Tokaji sweet Szamorodni","family":"Szamorodni","matchTerms":["sweet szamorodni","edes szamorodni","édes szamorodni"],"generationStatus":"generation-safe","ageingArchetype":"sweet-botrytis","minimumResidualSugarGPerL":45,"minimumWoodAgeMonths":6
+    },
+    {
+      "id":"product-hu-tokaj-aszu-current","profileId":"hu-tokaj-product-matrix-2026","country":"Hungary","designation":"Tokaj","productName":"Tokaji Aszú — current rule","family":"Aszú","matchTerms":["aszu current","aszú current"],"generationStatus":"generation-safe","ageingArchetype":"sweet-botrytis","requiredPractices":[{"decisionId":"harvest-sorting","optionIds":["strict"]}],"minimumResidualSugarGPerL":120,"minimumActualAlcoholPct":9,"minimumTotalPotentialAlcoholPct":19,"minimumWoodAgeMonths":18,"notes":["Individually hand-selected botrytised/shrivelled berries; earliest release is 1 January of the third year after harvest."]
+    },
+    {
+      "id":"product-hu-tokaj-aszu-6-puttonyos-current","profileId":"hu-tokaj-product-matrix-2026","country":"Hungary","designation":"Tokaj","productName":"Tokaji Aszú 6 puttonyos — current rule","family":"Aszú","matchTerms":["6 puttonyos current","six puttonyos current"],"generationStatus":"generation-safe","ageingArchetype":"sweet-botrytis","requiredPractices":[{"decisionId":"harvest-sorting","optionIds":["strict"]}],"minimumResidualSugarGPerL":150,"minimumActualAlcoholPct":9,"minimumTotalPotentialAlcoholPct":19,"minimumWoodAgeMonths":18
+    },
+    {
+      "id":"product-hu-tokaj-eszencia-current","profileId":"hu-tokaj-product-matrix-2026","country":"Hungary","designation":"Tokaj","productName":"Tokaji Eszencia — current rule","family":"Eszencia","matchTerms":["eszencia current"],"generationStatus":"conditional","ageingArchetype":"sweet-botrytis","minimumResidualSugarGPerL":45,"maximumYieldLitresPer100KgAszuBerries":6,"notes":["Free-run juice under the berries' own weight without pressing. Remains conditional until that special extraction process is represented as an explicit cellar decision."]
+    },
+    {
+      "id":"product-hu-tokaj-forditas-current","profileId":"hu-tokaj-product-matrix-2026","country":"Hungary","designation":"Tokaj","productName":"Tokaji Fordítás — current rule","family":"Fordítás","matchTerms":["forditas current","fordítás current"],"generationStatus":"conditional","ageingArchetype":"sweet-botrytis","minimumResidualSugarGPerL":45,"minimumWoodAgeMonths":6,"notes":["Pressed aszú dough is refilled with same-vintage must/part-fermented must/fermenting must/wine. Kept conditional until the process has its own decision primitive."]
+    },
+    {
+      "id":"product-hu-tokaj-maslas-current","profileId":"hu-tokaj-product-matrix-2026","country":"Hungary","designation":"Tokaj","productName":"Tokaji Máslás — current rule","family":"Máslás","matchTerms":["maslas current","máslás current"],"generationStatus":"conditional","ageingArchetype":"sweet-botrytis","minimumResidualSugarGPerL":45,"minimumWoodAgeMonths":6,"notes":["Aszú or Szamorodni lees are topped with must/part-fermented must/fermenting new wine. Kept conditional until the process has its own decision primitive."]
+    },
+
+    {
+      "id":"product-pt-port-crusted-current","profileId":"pt-port-product-matrix-2026","country":"Portugal","designation":"Porto / Port","productName":"Crusted Port","family":"fortified wine","matchTerms":["crusted"],"generationStatus":"reference-only","ageingArchetype":"bottle-aged-fortified","minimumBottleAgeYears":3,"notes":["Multi-harvest blend; minimum three years in bottle before sale. Remains reference-only pending full current Port production/certification extraction."]
+    },
+    {
+      "id":"product-pt-port-vvo-current","profileId":"pt-port-product-matrix-2026","country":"Portugal","designation":"Porto / Port","productName":"Very Very Old Port","family":"fortified wine","matchTerms":["very very old","vvo"],"generationStatus":"reference-only","ageingArchetype":"oxidative-fortified","minimumWoodAgeYears":80,"notes":["Very Very Old is an age-profile category above 80 years and does not display a numeric age indication on the label."]
+    }
+  ]
+}
