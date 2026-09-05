@@ -29,6 +29,7 @@ class VineyardBlock:
     producer: str | None = None
     label_scope: str = "country_wine"
     experimental: bool = False
+    wine_variant: str | None = None
 
     elevation_m: float = 250.0
     slope_pct: float = 5.0
@@ -180,7 +181,7 @@ class VineyardEngine:
         if appellation is None and site is not None:
             appellation = site.parent or site.region
 
-        decision = self.rulebook.evaluate(
+        kwargs = dict(
             country=block.country,
             region=block.region,
             appellation=appellation,
@@ -189,6 +190,11 @@ class VineyardEngine:
             vintage_year=vintage_year,
             experimental=block.experimental,
         )
+        # LegalAwareRegionGrapeRulebook adds variant resolution; keep the base
+        # engine independent by testing that capability instead of importing it.
+        if block.wine_variant is not None and hasattr(self.rulebook, "resolve_legal_spec"):
+            kwargs["wine_variant"] = block.wine_variant
+        decision = self.rulebook.evaluate(**kwargs)
         if not decision.eligible and block.label_scope.casefold() == "regulated_gi":
             decision.require()
         return site, decision
