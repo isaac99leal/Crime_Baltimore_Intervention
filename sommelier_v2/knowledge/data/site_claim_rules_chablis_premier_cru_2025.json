@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.1",
+  "notes": "Current 2025 Chablis Premier Cru label rule. Every one of the 40 listed climats may be claimed by its own name. In addition, the principal climat heading each of the 17 legal groups may be used for wine physically originating in any climat within that same group. These are explicit cover-name permissions, not aliases or geographic identity mergers.",
+  "sources": {
+    "chablis_masaa_2025": {
+      "authority": "Ministère de l'agriculture et de la souveraineté alimentaire",
+      "title": "Cahier des charges de l'appellation d'origine contrôlée Chablis homologué par l'arrêté du 10 septembre 2025",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-567c3bd8-0c51-425b-a397-05e3b4b23cf0/telechargement",
+      "checked": "2026-09-05",
+      "effective_from": "2025-09-12",
+      "scope": "Official 40-name Premier Cru climat list. The principal climat at the head of each group may, by usage, designate wines from all climats within that group."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:chablis:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Chablis",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["chablis_masaa_2025"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["chablis_masaa_2025"],
+      "claim_kind": "premier_cru_climat_or_authorized_group_name",
+      "cover_name_groups": {
+        "Beauroy": ["Beauroy", "Côte de Savant", "Troesmes"],
+        "Berdiot": ["Berdiot"],
+        "Chaume de Talvat": ["Chaume de Talvat"],
+        "Côte de Jouan": ["Côte de Jouan"],
+        "Côte de Léchet": ["Côte de Léchet"],
+        "Côte de Vaubarousse": ["Côte de Vaubarousse"],
+        "Fourchaume": ["Fourchaume", "Côte de Fontenay", "L'Homme Mort", "Vaulorent", "Vaupulent"],
+        "Les Beauregards": ["Les Beauregards", "Côte de Cuisy"],
+        "Les Fourneaux": ["Les Fourneaux", "Côte des Prés-Girots", "Morein"],
+        "Mont de Milieu": ["Mont de Milieu"],
+        "Montée de Tonnerre": ["Montée de Tonnerre", "Chapelot", "Côte de Bréchain", "Pied d'Aloup"],
+        "Montmains": ["Montmains", "Butteaux", "Forêts"],
+        "Vaillons": ["Vaillons", "Beugnons", "Chatains", "les Épinottes", "Les Lys", "Mélinots", "Roncières", "Sécher"],
+        "Vau de Vey": ["Vau de Vey", "Vaux Ragons"],
+        "Vau Ligneau": ["Vau Ligneau"],
+        "Vaucoupin": ["Vaucoupin"],
+        "Vosgros": ["Vosgros", "Vaugiraut"]
+      },
+      "notes": "Exact physical climat claims are legal. A different requested name is legal only when it is the principal cover name of the physical site's expressly defined 2025 group. Cross-group substitutions remain fail-closed."
+    }
+  ]
+}
