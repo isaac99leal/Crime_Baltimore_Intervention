@@ -127,12 +127,17 @@ def _site_from_values(*, raw: Mapping[str, object], defaults: Mapping[str, objec
     elif id_prefix:
         site_id = f"{id_prefix}:{_slug(name)}"
     else:
+        # Site type is part of identity. The same legal spelling can legitimately
+        # occur under one appellation as both a classified climat and a village
+        # lieu-dit. Omitting site_type caused the validator to collapse those
+        # distinct records in the legacy seed.
         site_id = "site:" + ":".join(
             _slug(str(v))
             for v in (
                 value("country", ""),
                 value("region", ""),
                 value("parent", ""),
+                value("site_type", "named_site"),
                 name,
             )
             if v
