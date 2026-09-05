@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Third place-specific environmental pass. Official terroir facts remain separate from bounded simulation-derived matrix modifiers.",
+  "profiles": [
+    {
+      "id":"env-de-mosel","country":"Germany","name":"Mosel","scope":"anbaugebiet-environment",
+      "climate":{"classification":"protected cool-climate river-valley system with strong warm-slope mesoclimates","influences":["Mosel, Saar and Ruwer valleys","steep sun-exposed slopes","slate heat storage"],"viticulturalEffects":["protected valleys and heat-retaining slate permit late-ripening Riesling","steep slopes increase solar interception","river valleys and aspect create large site differences"]},
+      "soils":[{"name":"Lower Mosel clayish slate and greywacke","components":["slate","greywacke"]},{"name":"Middle Mosel Devonian slate","components":["Devonian slate"],"flatlandComponents":["sand","gravel"]},{"name":"Upper Mosel shell-limestone","components":["shell limestone","chalky soils"]}],
+      "topography":{"steepOrTerracedVineyardShareApproxPct":50,"steepThresholdPct":30,"extremeSlopePct":70},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":5,"acidity":0.50,"tannin":-0.25,"body":-0.20,"alcohol":-0.35,"fruitIntensity":0.15,"earthIntensity":0.30,"aromaticFreshness":0.55,"droughtStress":0.05,"diseasePressure":0.10,"frostRisk":0.20,"botrytisSuitability":0.25},
+      "sourceRefs":["de-mosel-terroir-2026"]
+    },
+    {
+      "id":"env-at-kamptal","country":"Austria","name":"Kamptal","scope":"dac-environment",
+      "climate":{"classification":"continental Lower Austrian climate with warm Pannonian influence and cool Waldviertel night air","influences":["Kamp River","Pannonian warmth","cool air from the Waldviertel"],"viticulturalEffects":["large day-night differences slow ripening and retain freshness","Heiligenstein can form a notably hot dry mesoclimate"]},
+      "soils":[{"name":"loess","components":["loess"],"relativeClay":2,"relativeLime":2},{"name":"gneiss / primary rock","components":["gneiss","granite","slate"],"relativeClay":1,"relativeLime":1},{"name":"loam","components":["loam"],"relativeClay":3,"relativeLime":2},{"name":"Heiligenstein Permian sandstone","components":["270-million-year-old sandstone","volcanic particles"],"mesoclimate":"hot and dry"}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.35,"tannin":-0.20,"body":0.05,"alcohol":0.00,"fruitIntensity":0.15,"earthIntensity":0.25,"aromaticFreshness":0.40,"droughtStress":0.15,"diseasePressure":0.00,"frostRisk":0.15,"botrytisSuitability":0.05},
+      "sourceRefs":["at-kamptal-terroir-2026","at-kamptal-soils-2026"]
+    },
+    {
+      "id":"env-at-wachau","country":"Austria","name":"Wachau","scope":"dac-environment",
+      "climate":{"classification":"Danube valley transition with Pannonian warmth and strong altitude/aspect mesoclimates","influences":["Danube","Pannonian climate","forest-edge elevation"],"viticulturalEffects":["warm exposed terraces can achieve high ripeness","large vertical differences moderate heat and preserve site diversity"]},
+      "soils":[{"name":"Gföhler gneiss terraces","components":["Gföhler gneiss"]},{"name":"loess deposits","components":["loess"]}],
+      "topography":{"exampleLoibenbergVerticalRangeM":200,"exampleForestEdgeElevationM":420,"terracing":"steep stone-terraced vineyards are characteristic"},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":3,"acidity":0.25,"tannin":-0.20,"body":0.20,"alcohol":0.15,"fruitIntensity":0.20,"earthIntensity":0.25,"aromaticFreshness":0.30,"droughtStress":0.20,"diseasePressure":0.00,"frostRisk":0.10,"botrytisSuitability":0.05},
+      "sourceRefs":["at-wachau-terroir-education"]
+    },
+    {
+      "id":"env-hu-tokaj","country":"Hungary","name":"Tokaj","scope":"wine-region-environment",
+      "climate":{"classification":"continental basin/foothill climate with specialized autumn noble-rot mesoclimate","influences":["Bodrog River","Tisza River","morning autumn mist","Zemplén volcanic hills"],"viticulturalEffects":["morning humidity and subsequent drying can support Botrytis cinerea","slope and volcanic geology create major site variation","high natural acidity supports dry and sweet styles"]},
+      "soils":[{"name":"diverse volcanic Tokaj soils","components":["volcanic tuff","rhyolite-derived material","other volcanic rocks"],"geologicContext":"extinct volcanic landscape roughly 9 million years old","localComplexity":"official regional guide notes that a single plot can contain up to 35 soil layers"}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.40,"tannin":-0.30,"body":0.15,"alcohol":0.05,"fruitIntensity":0.20,"earthIntensity":0.40,"aromaticFreshness":0.35,"droughtStress":0.05,"diseasePressure":0.20,"frostRisk":0.20,"botrytisSuitability":0.85},
+      "sourceRefs":["hu-tokaj-terroir-2024"]
+    },
+    {
+      "id":"env-ar-uco-valley","country":"Argentina","name":"Uco Valley","scope":"gi-environment",
+      "climate":{"classification":"arid high-altitude Andean continental environment","influences":["Andes","high elevation","large thermal amplitude","irrigated desert conditions"],"viticulturalEffects":["high-elevation sectors create distinct temperature regimes","cooler high sites can extend ripening and retain acidity","water access and irrigation are fundamental to site expression"]},
+      "soils":[{"name":"Andean alluvial sedimentary plains","components":["river-borne sediment","sand","silt","gravel","locally calcareous material"],"formation":"rivers, wind and volcanic activity contributed to sedimentary plains"}],
+      "topography":{"highPlantings":"new Tunuyán highland vineyards are commonly above 1,000 m","majorDepartments":["Tupungato","Tunuyán","San Carlos"]},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.20,"tannin":0.25,"body":0.25,"alcohol":0.20,"fruitIntensity":0.30,"earthIntensity":0.20,"aromaticFreshness":0.20,"droughtStress":0.70,"diseasePressure":-0.35,"frostRisk":0.45,"botrytisSuitability":-0.30},
+      "sourceRefs":["ar-mendoza-uco-terroir-2022"]
+    },
+    {
+      "id":"env-au-barossa-valley","country":"Australia","name":"Barossa Valley","scope":"gi-environment",
+      "climate":{"classification":"warm Mediterranean with cooler high-altitude mesoclimates","influences":["valley-floor heat","surrounding hills","large diurnal temperature range"],"conditions":["high sunshine","low humidity","low rainfall"],"viticulturalEffects":["warm valley floor supports full-bodied reds","higher sites produce cooler mesoclimates","drought and heat management are important"]},
+      "soils":[{"name":"Barossa low-fertility clay-loam to sandy soil family","components":["clay loam","sandy soils"],"colors":["grey","brown","red"],"subsoil":"increasing acidity can restrict root growth and vigour"}],
+      "topography":{"altitudeM":[130,430]},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":-0.15,"tannin":0.30,"body":0.45,"alcohol":0.45,"fruitIntensity":0.45,"earthIntensity":0.10,"aromaticFreshness":-0.05,"droughtStress":0.55,"diseasePressure":-0.30,"frostRisk":-0.20,"botrytisSuitability":-0.20},
+      "sourceRefs":["au-barossa-terroir-2026","au-barossa-terroir-research-2023"]
+    },
+    {
+      "id":"env-au-margaret-river","country":"Australia","name":"Margaret River","scope":"gi-environment",
+      "climate":{"classification":"strongly maritime Mediterranean","influences":["Indian Ocean","Southern Ocean"],"meanJanuaryTempC":20.9,"growingSeasonRainfallMm":202,"viticulturalEffects":["low diurnal range produces even heat accumulation","maritime moderation supports Cabernet Sauvignon and Chardonnay","growing season is comparatively dry despite strong maritime annual-rainfall influence"]},
+      "soils":[{"name":"gravelly loam over granite and gneiss","components":["gravelly loam","granite","gneiss"],"waterHoldingCapacity":"low"},{"name":"regional soil mosaic","components":["ironstone gravel","red-brown loams","sandy duplex","alluvial sands and loams","deep sands"],"variation":"soil profiles merge across the landscape rather than forming simple discrete blocks"}],
+      "topography":{"altitudeM":[0,234]},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":5,"acidity":0.15,"tannin":0.25,"body":0.25,"alcohol":0.10,"fruitIntensity":0.25,"earthIntensity":0.20,"aromaticFreshness":0.20,"droughtStress":0.20,"diseasePressure":0.05,"frostRisk":-0.20,"botrytisSuitability":0.00},
+      "sourceRefs":["au-margaret-river-terroir-2026"]
+    }
+  ]
+}
