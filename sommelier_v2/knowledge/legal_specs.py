@@ -49,8 +49,10 @@ class LegalWineSpec:
     max_yield_t_ha: float | None = None
     max_yield_hl_ha: float | None = None
     grape_to_wine_yield_pct: float | None = None
+    min_must_sugar_g_l: float | None = None
     min_potential_alcohol_pct: float | None = None
     min_final_alcohol_pct: float | None = None
+    max_total_alcohol_pct: float | None = None
     min_total_acidity_g_l: float | None = None
     min_dry_extract_g_l: float | None = None
     max_residual_sugar_g_l: float | None = None
@@ -58,7 +60,12 @@ class LegalWineSpec:
     min_total_aging_months: int | None = None
     min_wood_aging_months: int | None = None
     min_bottle_aging_months: int | None = None
+    min_elevage_year_offset: int | None = None
+    min_elevage_until_month: int | None = None
+    min_elevage_until_day: int | None = None
     release_year_offset: int | None = None
+    earliest_release_month: int | None = None
+    earliest_release_day: int | None = None
     required_method: str | None = None
     manual_harvest_required: bool = False
     bottling_in_origin_required: bool = False
@@ -108,6 +115,18 @@ def _i(value: object) -> int | None:
     if value is None or value == "":
         return None
     return int(value)
+
+
+def _valid_month_day(month: int | None, day: int | None) -> bool:
+    if month is None or day is None:
+        return False
+    if month < 1 or month > 12 or day < 1 or day > 31:
+        return False
+    if month in {4, 6, 9, 11} and day > 30:
+        return False
+    if month == 2 and day > 29:
+        return False
+    return True
 
 
 class LegalSpecRegistry:
@@ -178,8 +197,10 @@ class LegalSpecRegistry:
                 max_yield_t_ha=_f(row.get("max_yield_t_ha")),
                 max_yield_hl_ha=_f(row.get("max_yield_hl_ha")),
                 grape_to_wine_yield_pct=_f(row.get("grape_to_wine_yield_pct")),
+                min_must_sugar_g_l=_f(row.get("min_must_sugar_g_l")),
                 min_potential_alcohol_pct=_f(row.get("min_potential_alcohol_pct")),
                 min_final_alcohol_pct=_f(row.get("min_final_alcohol_pct")),
+                max_total_alcohol_pct=_f(row.get("max_total_alcohol_pct")),
                 min_total_acidity_g_l=_f(row.get("min_total_acidity_g_l")),
                 min_dry_extract_g_l=_f(row.get("min_dry_extract_g_l")),
                 max_residual_sugar_g_l=_f(row.get("max_residual_sugar_g_l")),
@@ -187,7 +208,12 @@ class LegalSpecRegistry:
                 min_total_aging_months=_i(row.get("min_total_aging_months")),
                 min_wood_aging_months=_i(row.get("min_wood_aging_months")),
                 min_bottle_aging_months=_i(row.get("min_bottle_aging_months")),
+                min_elevage_year_offset=_i(row.get("min_elevage_year_offset")),
+                min_elevage_until_month=_i(row.get("min_elevage_until_month")),
+                min_elevage_until_day=_i(row.get("min_elevage_until_day")),
                 release_year_offset=_i(row.get("release_year_offset")),
+                earliest_release_month=_i(row.get("earliest_release_month")),
+                earliest_release_day=_i(row.get("earliest_release_day")),
                 required_method=row.get("required_method"),
                 manual_harvest_required=bool(row.get("manual_harvest_required", False)),
                 bottling_in_origin_required=bool(row.get("bottling_in_origin_required", False)),
@@ -197,6 +223,18 @@ class LegalSpecRegistry:
                 source_ids=source_ids,
                 notes=str(row.get("notes", "")),
             )
+            if (spec.min_elevage_until_month is None) != (spec.min_elevage_until_day is None):
+                raise ValueError(f"{spec.id} must define both elevage month and day")
+            if spec.min_elevage_until_month is not None and not _valid_month_day(
+                spec.min_elevage_until_month, spec.min_elevage_until_day
+            ):
+                raise ValueError(f"{spec.id} has an invalid elevage month/day")
+            if (spec.earliest_release_month is None) != (spec.earliest_release_day is None):
+                raise ValueError(f"{spec.id} must define both release month and day")
+            if spec.earliest_release_month is not None and not _valid_month_day(
+                spec.earliest_release_month, spec.earliest_release_day
+            ):
+                raise ValueError(f"{spec.id} has an invalid release month/day")
             self.specs.append(spec)
             country = normalize_name(spec.country)
             for name in (spec.appellation, *spec.aliases):
@@ -333,11 +371,12 @@ class LegalSpecRegistry:
         vineyard_yield_t_ha: float | None = None,
         wine_yield_hl_ha: float | None = None,
         actual_grape_to_wine_yield_pct: float | None = None,
+        must_sugar_g_l: float | None = None,
         potential_alcohol_pct: float | None = None,
         bottled_in_origin: bool | None = None,
         require_complete: bool = False,
     ) -> ProductionDecision:
-        """Validate machine-modeled vineyard and pre-release production limits."""
+        """Validate machine-modeled vineyard, maturity and pre-release limits."""
         issues: list[str] = []
 
         if spec.max_yield_t_ha is not None:
@@ -363,6 +402,13 @@ class LegalSpecRegistry:
                     f"Grape-to-wine yield must not exceed {spec.grape_to_wine_yield_pct:g}%"
                 )
 
+        if spec.min_must_sugar_g_l is not None:
+            if must_sugar_g_l is None:
+                if require_complete:
+                    issues.append("Must sugar is required for complete maturity validation")
+            elif must_sugar_g_l + 1e-9 < spec.min_must_sugar_g_l:
+                issues.append(f"Must sugar must be at least {spec.min_must_sugar_g_l:g} g/L")
+
         if spec.min_potential_alcohol_pct is not None:
             if potential_alcohol_pct is None:
                 if require_complete:
@@ -387,12 +433,18 @@ class LegalSpecRegistry:
         method: str | None = None,
         manual_harvest: bool | None = None,
         final_alcohol_pct: float | None = None,
+        total_alcohol_pct: float | None = None,
         total_acidity_g_l: float | None = None,
         dry_extract_g_l: float | None = None,
         residual_sugar_g_l: float | None = None,
         malic_acid_g_l: float | None = None,
         vintage_year: int | None = None,
+        elevage_end_year: int | None = None,
+        elevage_end_month: int | None = None,
+        elevage_end_day: int | None = None,
         release_year: int | None = None,
+        release_month: int | None = None,
+        release_day: int | None = None,
         require_complete: bool = False,
     ) -> ReleaseDecision:
         issues: list[str] = []
@@ -410,6 +462,14 @@ class LegalSpecRegistry:
             final_alcohol_pct is None or final_alcohol_pct < spec.min_final_alcohol_pct
         ):
             issues.append(f"Final alcohol must be at least {spec.min_final_alcohol_pct:g}% vol")
+        if spec.max_total_alcohol_pct is not None:
+            if total_alcohol_pct is None:
+                if require_complete:
+                    issues.append("Total alcoholic strength is required for complete legal validation")
+            elif total_alcohol_pct > spec.max_total_alcohol_pct + 1e-9:
+                issues.append(
+                    f"Total alcoholic strength must not exceed {spec.max_total_alcohol_pct:g}% vol"
+                )
         if spec.min_total_acidity_g_l is not None and (
             total_acidity_g_l is None or total_acidity_g_l < spec.min_total_acidity_g_l
         ):
@@ -435,16 +495,47 @@ class LegalSpecRegistry:
             elif malic_acid_g_l > spec.max_malic_acid_g_l + 1e-9:
                 issues.append(f"Malic acid must not exceed {spec.max_malic_acid_g_l:g} g/L")
 
+        if spec.min_elevage_until_month is not None and spec.min_elevage_until_day is not None:
+            if vintage_year is None or elevage_end_year is None or elevage_end_month is None or elevage_end_day is None:
+                if require_complete:
+                    issues.append("Exact elevage end date is required for complete legal validation")
+            else:
+                required_elevage_year = vintage_year + (spec.min_elevage_year_offset or 0)
+                actual = (elevage_end_year, elevage_end_month, elevage_end_day)
+                required = (
+                    required_elevage_year,
+                    spec.min_elevage_until_month,
+                    spec.min_elevage_until_day,
+                )
+                if actual < required:
+                    issues.append(
+                        f"Elevage must continue through {required_elevage_year:04d}-{spec.min_elevage_until_month:02d}-{spec.min_elevage_until_day:02d}"
+                    )
+
         if spec.release_year_offset is not None:
             if vintage_year is None or release_year is None:
                 if require_complete:
                     issues.append(
                         "Vintage year and release year are required for complete release-date validation"
                     )
-            elif release_year < vintage_year + spec.release_year_offset:
-                issues.append(
-                    f"Release year must be at least {vintage_year + spec.release_year_offset} for vintage {vintage_year}"
-                )
+            else:
+                required_year = vintage_year + spec.release_year_offset
+                if spec.earliest_release_month is not None and spec.earliest_release_day is not None:
+                    if release_month is None or release_day is None:
+                        if require_complete:
+                            issues.append("Exact release month/day is required for complete release-date validation")
+                    elif (release_year, release_month, release_day) < (
+                        required_year,
+                        spec.earliest_release_month,
+                        spec.earliest_release_day,
+                    ):
+                        issues.append(
+                            f"Consumer release must not occur before {required_year:04d}-{spec.earliest_release_month:02d}-{spec.earliest_release_day:02d}"
+                        )
+                elif release_year < required_year:
+                    issues.append(
+                        f"Release year must be at least {required_year} for vintage {vintage_year}"
+                    )
 
         return ReleaseDecision(not issues, spec.id, tuple(issues))
 
@@ -459,7 +550,9 @@ class LegalSpecRegistry:
             "legal_specs_with_yield_limits": sum(s.max_yield_t_ha is not None for s in self.specs),
             "legal_specs_with_wine_yield_limits": sum(s.max_yield_hl_ha is not None for s in self.specs),
             "legal_specs_with_grape_to_wine_yield_limits": sum(s.grape_to_wine_yield_pct is not None for s in self.specs),
+            "legal_specs_with_must_sugar_rules": sum(s.min_must_sugar_g_l is not None for s in self.specs),
             "legal_specs_with_potential_alcohol_rules": sum(s.min_potential_alcohol_pct is not None for s in self.specs),
+            "legal_specs_with_max_total_alcohol_rules": sum(s.max_total_alcohol_pct is not None for s in self.specs),
             "legal_specs_with_bottling_origin_rules": sum(s.bottling_in_origin_required for s in self.specs),
             "legal_specs_with_residual_sugar_limits": sum(s.max_residual_sugar_g_l is not None for s in self.specs),
             "legal_specs_with_malic_acid_limits": sum(s.max_malic_acid_g_l is not None for s in self.specs),
@@ -467,7 +560,10 @@ class LegalSpecRegistry:
                 s.min_total_aging_months is not None
                 or s.min_wood_aging_months is not None
                 or s.min_bottle_aging_months is not None
+                or s.min_elevage_until_month is not None
                 for s in self.specs
             ),
+            "legal_specs_with_exact_elevage_dates": sum(s.min_elevage_until_month is not None for s in self.specs),
             "legal_specs_with_release_year_rules": sum(s.release_year_offset is not None for s in self.specs),
+            "legal_specs_with_exact_release_dates": sum(s.earliest_release_month is not None for s in self.specs),
         }

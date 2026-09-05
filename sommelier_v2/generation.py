@@ -70,6 +70,7 @@ class WineBuildRequest:
     vineyard_yield_t_ha: float | None = None
     wine_yield_hl_ha: float | None = None
     actual_grape_to_wine_yield_pct: float | None = None
+    must_sugar_g_l: float | None = None
     potential_alcohol_pct: float | None = None
     bottled_in_origin: bool | None = None
     total_aging_months: int | None = None
@@ -77,11 +78,17 @@ class WineBuildRequest:
     bottle_aging_months: int = 0
     method: str | None = None
     manual_harvest: bool | None = None
+    total_alcohol_pct: float | None = None
     total_acidity_g_l: float | None = None
     dry_extract_g_l: float | None = None
     residual_sugar_g_l: float | None = None
     malic_acid_g_l: float | None = None
+    elevage_end_year: int | None = None
+    elevage_end_month: int | None = None
+    elevage_end_day: int | None = None
     release_year: int | None = None
+    release_month: int | None = None
+    release_day: int | None = None
 
 
 @dataclass(frozen=True)
@@ -141,7 +148,9 @@ class ConstrainedWineBuilder:
             ("vineyard_yield_t_ha", request.vineyard_yield_t_ha),
             ("wine_yield_hl_ha", request.wine_yield_hl_ha),
             ("actual_grape_to_wine_yield_pct", request.actual_grape_to_wine_yield_pct),
+            ("must_sugar_g_l", request.must_sugar_g_l),
             ("potential_alcohol_pct", request.potential_alcohol_pct),
+            ("total_alcohol_pct", request.total_alcohol_pct),
             ("total_acidity_g_l", request.total_acidity_g_l),
             ("dry_extract_g_l", request.dry_extract_g_l),
             ("residual_sugar_g_l", request.residual_sugar_g_l),
@@ -149,6 +158,14 @@ class ConstrainedWineBuilder:
         ):
             if value is not None and value < 0:
                 raise ValueError(f"{name} cannot be negative")
+        for name, value, low, high in (
+            ("elevage_end_month", request.elevage_end_month, 1, 12),
+            ("release_month", request.release_month, 1, 12),
+            ("elevage_end_day", request.elevage_end_day, 1, 31),
+            ("release_day", request.release_day, 1, 31),
+        ):
+            if value is not None and not low <= value <= high:
+                raise ValueError(f"{name} must be within {low}..{high}")
         if (
             request.origin.producer
             and normalize_name(request.origin.producer) != normalize_name(request.producer)
@@ -190,6 +207,7 @@ class ConstrainedWineBuilder:
             vineyard_yield_t_ha=request.vineyard_yield_t_ha,
             wine_yield_hl_ha=request.wine_yield_hl_ha,
             actual_grape_to_wine_yield_pct=request.actual_grape_to_wine_yield_pct,
+            must_sugar_g_l=request.must_sugar_g_l,
             potential_alcohol_pct=request.potential_alcohol_pct,
             bottled_in_origin=request.bottled_in_origin,
             require_complete=True,
@@ -207,12 +225,18 @@ class ConstrainedWineBuilder:
             method=request.method,
             manual_harvest=request.manual_harvest,
             final_alcohol_pct=request.alcohol,
+            total_alcohol_pct=request.total_alcohol_pct,
             total_acidity_g_l=request.total_acidity_g_l,
             dry_extract_g_l=request.dry_extract_g_l,
             residual_sugar_g_l=request.residual_sugar_g_l,
             malic_acid_g_l=request.malic_acid_g_l,
             vintage_year=vintage_year,
+            elevage_end_year=request.elevage_end_year,
+            elevage_end_month=request.elevage_end_month,
+            elevage_end_day=request.elevage_end_day,
             release_year=request.release_year,
+            release_month=request.release_month,
+            release_day=request.release_day,
             require_complete=True,
         )
         if not release.eligible:

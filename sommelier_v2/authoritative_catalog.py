@@ -134,6 +134,11 @@ class AuthoritativeCatalogGenerator:
         wood = spec.min_wood_aging_months or 0
         bottle = spec.min_bottle_aging_months or 0
         total = max(spec.min_total_aging_months or 0, wood + bottle)
+        elevage_year = (
+            vintage + (spec.min_elevage_year_offset or 0)
+            if spec.min_elevage_until_month is not None
+            else None
+        )
         return {
             "vineyard_yield_t_ha": (
                 round(spec.max_yield_t_ha * 0.90, 3)
@@ -148,6 +153,11 @@ class AuthoritativeCatalogGenerator:
             "actual_grape_to_wine_yield_pct": (
                 round(spec.grape_to_wine_yield_pct * 0.95, 3)
                 if spec.grape_to_wine_yield_pct is not None
+                else None
+            ),
+            "must_sugar_g_l": (
+                round(spec.min_must_sugar_g_l + 5.0, 2)
+                if spec.min_must_sugar_g_l is not None
                 else None
             ),
             "potential_alcohol_pct": (
@@ -181,7 +191,12 @@ class AuthoritativeCatalogGenerator:
                 if spec.max_malic_acid_g_l is not None
                 else None
             ),
+            "elevage_end_year": elevage_year,
+            "elevage_end_month": spec.min_elevage_until_month,
+            "elevage_end_day": spec.min_elevage_until_day,
             "release_year": as_of_year,
+            "release_month": spec.earliest_release_month,
+            "release_day": spec.earliest_release_day,
         }
 
     @staticmethod
@@ -254,6 +269,8 @@ class AuthoritativeCatalogGenerator:
         )
         if spec.min_final_alcohol_pct is not None:
             alcohol = max(alcohol, spec.min_final_alcohol_pct + 0.5)
+        if spec.max_total_alcohol_pct is not None:
+            alcohol = min(alcohol, spec.max_total_alcohol_pct - 0.5)
         values["alcohol"] = round(alcohol, 2)
         if alcohol_prior:
             prior_fields.append("alcohol")
@@ -294,20 +311,32 @@ class AuthoritativeCatalogGenerator:
     @staticmethod
     def _legal_notes(spec: LegalWineSpec) -> str:
         parts: list[str] = []
+        if spec.min_must_sugar_g_l is not None:
+            parts.append(f">={spec.min_must_sugar_g_l:g} g/L must sugar")
         if spec.min_total_aging_months is not None:
             parts.append(f">={spec.min_total_aging_months} months total aging")
         if spec.min_wood_aging_months is not None:
             parts.append(f">={spec.min_wood_aging_months} months wood")
         if spec.min_bottle_aging_months is not None:
             parts.append(f">={spec.min_bottle_aging_months} months bottle")
+        if spec.min_elevage_until_month is not None and spec.min_elevage_until_day is not None:
+            parts.append(
+                f"elevage through {spec.min_elevage_until_month:02d}-{spec.min_elevage_until_day:02d} of required year"
+            )
         if spec.required_method:
             parts.append(spec.required_method)
         if spec.max_yield_hl_ha is not None:
             parts.append(f"<={spec.max_yield_hl_ha:g} hL/ha")
+        if spec.max_total_alcohol_pct is not None:
+            parts.append(f"<={spec.max_total_alcohol_pct:g}% total alcohol")
         if spec.max_residual_sugar_g_l is not None:
             parts.append(f"<={spec.max_residual_sugar_g_l:g} g/L fermentable sugar")
         if spec.max_malic_acid_g_l is not None:
             parts.append(f"<={spec.max_malic_acid_g_l:g} g/L malic acid")
+        if spec.earliest_release_month is not None and spec.earliest_release_day is not None:
+            parts.append(
+                f"release no earlier than {spec.earliest_release_month:02d}-{spec.earliest_release_day:02d} of required year"
+            )
         return "; ".join(parts)
 
     def _build_item(
@@ -323,6 +352,14 @@ class AuthoritativeCatalogGenerator:
         sensory, sensory_priors = self._sensory_values(spec, blend)
         wholesale, rarity = self._pricing_prior(spec, site=site)
         production = self._production_values(spec, vintage, as_of_year)
+        if spec.max_total_alcohol_pct is not None:
+            production["total_alcohol_pct"] = round(
+                max(float(sensory["alcohol"]), spec.max_total_alcohol_pct - 0.25), 2
+            )
+            if production["total_alcohol_pct"] > spec.max_total_alcohol_pct:
+                production["total_alcohol_pct"] = spec.max_total_alcohol_pct
+        else:
+            production["total_alcohol_pct"] = None
         producer = f"Simulation Producer {serial:05d}"
         site_suffix = f" · {site.name}" if site is not None else ""
         variant_suffix = (

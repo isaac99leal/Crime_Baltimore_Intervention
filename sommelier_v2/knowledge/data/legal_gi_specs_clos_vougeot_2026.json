@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.1",
+  "notes": "Current Clos de Vougeot / Clos Vougeot specification homologated 25 March 2026. This supersedes and abrogates the 2011 decree. Maturity, alcohol and exact calendar release rules are machine-executable in the legal-spec layer.",
+  "sources": {
+    "clos_vougeot_masaa_2026": {
+      "authority": "Ministère de l'agriculture, de l'agro-alimentaire et de la souveraineté alimentaire",
+      "title": "Cahier des charges de l'appellation d'origine contrôlée Clos de Vougeot ou Clos Vougeot",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-4d5bf76d-50ff-43c6-84e1-54e10078aecc/telechargement",
+      "checked": "2026-09-05",
+      "effective_from": "2026-03-29",
+      "scope": "Current specification homologated 25 March 2026: red still wine; Pinot Noir principal with accessory varieties only in mixed plantings; 198 g/L minimum must sugar; 11.5% minimum natural alcohol; 42 hL/ha yield; 49 hL/ha rendement butoir; <=0.4 g/L malic acid; <=2 g/L fermentable sugar; <=14.5% total alcohol after enrichment; elevage through 15 June; consumer release from 30 June of the following year."
+    },
+    "clos_vougeot_legifrance_2026": {
+      "authority": "Journal officiel de la République française / Légifrance",
+      "title": "Arrêté du 25 mars 2026 homologuant le cahier des charges de l'AOC Clos de Vougeot ou Clos Vougeot",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053727007",
+      "checked": "2026-09-05",
+      "effective_from": "2026-03-29",
+      "scope": "Homologates the 2026 specification and abrogates decree no. 2011-1332."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:clos-de-vougeot:grand-cru",
+      "country": "France",
+      "appellation": "Clos de Vougeot",
+      "aliases": ["Clos Vougeot", "Clos de Vougeot AOC", "Clos Vougeot AOC", "Clos de Vougeot AOP", "Clos Vougeot AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 198.0,
+      "min_potential_alcohol_pct": 11.5,
+      "max_total_alcohol_pct": 14.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "effective_from": "2026-03-29",
+      "source_ids": ["clos_vougeot_masaa_2026", "clos_vougeot_legifrance_2026"],
+      "notes": "Current 2026 law. Conservative 100% Pinot Noir positive path: Chardonnay, Pinot Blanc and Pinot Gris are accessories only in mixed vineyard plantings, limited to 15% per parcel. Rendement butoir is 49 hL/ha and is retained in source metadata until the simulation adds authorized-overrun mechanics."
+    }
+  ]
+}
