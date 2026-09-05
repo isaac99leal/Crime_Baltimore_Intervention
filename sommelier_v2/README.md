@@ -25,13 +25,15 @@ V2 separates the simulation from presentation. A Pygame client, web client, or f
 
 Protected-origin data has three distinct trust levels. Do not collapse them.
 
-1. **Authoritative source index** — `scripts/sync_legal_spec_sources.py` maps registered EU wine GIs to the European Commission eAmbrosia application record and its official product-specification/single-document attachments. A source record proves that a legal document exists. It does not authorize a wine.
-2. **Machine deny constraints** — `scripts/extract_legal_spec_constraints.py` reads official product-specification PDFs for supported jurisdictions and extracts only clearly bounded authorized-variety sections. These records are deny-only: an outsider can be rejected, but an insider is not automatically eligible.
+1. **Authoritative source index** — `scripts/sync_legal_spec_sources.py` maps registered EU wine GIs to the European Commission eAmbrosia application record and its official product-specification/single-document attachments. The current snapshot contains 1,649 registered wine GIs across 24 countries; 1,563 have at least one authoritative document and 846 expose a full product-specification attachment. A source record proves that a legal document exists. It does not authorize a wine.
+2. **Machine deny constraints** — `scripts/extract_legal_spec_constraints.py` reads official product-specification PDFs for supported jurisdictions and extracts only clearly bounded authorized-variety sections. The current snapshot contains 1,437 parsed/source records and 415 deny-safe constraints across 8 countries. These records are deny-only: an outsider can be rejected, but an insider is not automatically eligible.
 3. **Verified strict specifications** — `knowledge/legal_specs.py` contains structured, source-reviewed production specifications. Only this level can positively authorize a protected-origin grape/blend claim and apply detailed yield, alcohol, aging, release, method, bottling, and similar rules.
 
 This asymmetric design is intentional. A false positive creates a legally impossible wine; a false negative only leaves a wine unavailable until the source is parsed and reviewed. The simulator therefore fails closed whenever legal completeness is uncertain.
 
 New World geographical indications must not be forced into the same model as European PDO/PGI specifications. U.S. AVAs and Australian/New Zealand GIs commonly depend on origin-percentage and label-integrity rules rather than an appellation-specific grape list. Those jurisdiction rules should be modeled separately from EU authorized-variety extraction.
+
+The external knowledge workflow is serialized per branch. It refreshes the public wine registries, indexes the official legal documents, derives deny-safe constraints, commits generated snapshots, and prevents concurrent refresh runs from racing each other.
 
 ## Gameplay systems to build next
 
