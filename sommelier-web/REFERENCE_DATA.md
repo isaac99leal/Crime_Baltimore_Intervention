@@ -26,16 +26,7 @@ Vintage and time are different inputs.
 
 ### Vintage
 
-A vintage describes the material produced by a particular growing season. When a sourced year-specific record exists, the simulation may derive bounded effects on:
-
-- acidity and ripeness;
-- concentration;
-- tannin maturity;
-- aromatic freshness;
-- disease/selection pressure;
-- yield;
-- ageability;
-- botrytis suitability when appropriate.
+A vintage describes the material produced by a particular growing season. When a sourced year-specific record exists, the simulation may derive bounded effects on acidity, ripeness, concentration, tannin maturity, aromatic freshness, disease/selection pressure, yield, ageability and botrytis suitability when appropriate.
 
 `noteEvolution.ts` then converts only sufficiently strong vintage effects into explicitly derived expression terms such as a riper fruit spectrum, concentrated expression or heightened aromatic freshness. Botrytis-linked descriptors are only available to a compatible sweet-botrytis archetype. If no sourced vintage record exists, no historical-weather aroma story is invented.
 
@@ -65,13 +56,7 @@ Potential sensory consequences are modeled separately from the technical/legal f
 
 ### Time
 
-`ageing.ts` treats bottle time as a trajectory rather than a generic age score. Current broad phases are youth, development, mature, late-mature and fragile. Time can change the active tasting profile by:
-
-- reducing primary fruit intensity;
-- softening tannin;
-- increasing savory/earth/tertiary expression;
-- producing archetype-dependent mature notes;
-- increasing sediment and fragile-bottle service risk.
+`ageing.ts` treats bottle time as a trajectory rather than a generic age score. Current broad phases are youth, development, mature, late-mature and fragile. Time can reduce primary fruit intensity, soften tannin, increase savory/earth/tertiary expression, produce archetype-dependent mature notes, and increase sediment/fragile-bottle service risk.
 
 Ageing speed is style-dependent. Structured dry reds, traditional-method sparkling wines, botrytized sweets, bottle-aged fortified wines and oxidative fortified wines do not share one clock. Storage quality further modifies the trajectory.
 
@@ -81,14 +66,7 @@ The current ageing archetypes are broad simulation categories, not substitutes f
 
 Mandatory production/release ageing is a legal constraint. Sensory ageing is a separate physical/simulation process.
 
-Examples already stored include:
-
-- non-vintage versus vintage Champagne minimum maturation;
-- Rioja Crianza, Reserva and Gran Reserva red/white/rosé distinctions;
-- Rioja quality sparkling levels at 15, 24 and 36 months;
-- Brunello versus Brunello Riserva release/ageing requirements;
-- Port Colheita and age-indication categories;
-- Madeira Estufagem and Canteiro processes.
+Examples already stored include non-vintage versus vintage Champagne; Rioja Crianza, Reserva and Gran Reserva distinctions; Rioja quality sparkling levels at 15, 24 and 36 months; Brunello versus Brunello Riserva; Port Colheita and age-indication categories; and Madeira Estufagem/Canteiro processes.
 
 Current rules must not be projected backward into historical bottles. Historical legal versions need effective, amendment and repeal dates.
 
@@ -107,14 +85,7 @@ The generator no longer assigns `Vieilles Vignes` or equivalent language randoml
 
 The generator no longer uses a universal 45-year cap. Broad style-aware simulation horizons now permit archival inventory, but extreme age by itself is not evidence that a historical wine existed under a modern designation.
 
-The preferred model is an authority year ledger:
-
-- **structured-growing-season-ingested** — detailed season data are available;
-- **authority-archive-detail-available** — an authority confirms the historical vintage/product entry and more detail can be extracted;
-- **authority-report-available** — an official vintage report exists;
-- **documentary-bottle-or-harvest-evidence** — existence evidence without a full season record;
-- **monitoring-system-confirmed-detail-not-yet-ingested** — an annual monitoring system is known, but its specific year record is not yet captured;
-- **unknown** — no claim is made.
+The preferred model is an authority year ledger with evidence states: structured growing-season record ingested; authority archive detail available; authority report available; documentary bottle/harvest evidence; monitoring system known but annual detail not yet ingested; or unknown.
 
 A 1756/1790/1815-era Port record therefore can exist as documentary authority evidence without fabricating rainfall, phenology or today's DOP wording.
 
@@ -122,42 +93,14 @@ A 1756/1790/1815-era Port record therefore can exist as documentary authority ev
 
 The target is exhaustive: **every legally recognized wine GI, appellation, denomination of origin, viticultural area and equivalent protected-origin system globally, with no fame or size threshold.**
 
-Each final designation record should eventually include:
+This target is **not yet complete**. At present, the program has live normalized registry indices for EU wine GIs and U.S. AVAs, source authorities identified for several additional jurisdictions, and an explicit pending queue for the rest. A jurisdiction counts as complete only when its actual designation register and required product/legal detail have been ingested and validated; merely identifying the regulator does not count as complete coverage.
 
-- protected identity/spellings/transliterations;
-- protection class and legal system;
-- registration, effective, amendment and repeal dates;
-- hierarchy and parent/child geography;
-- official boundaries/geometry where available;
-- product categories/colors/styles;
-- authorized/principal/prohibited grapes and blend/origin percentages;
-- viticultural density, training, pruning, irrigation, yield and harvest rules;
-- analytical parameters;
-- required/permitted/prohibited winemaking practices;
-- enrichment, acidification, sweetening and fortification rules;
-- pressing/extraction/fermentation/vessel rules where specified;
-- ageing/release requirements by level/style;
-- traditional terms and reserved indications;
-- old-vine/vine-age requirements;
-- formal subzones, communes, crus, climats, MGAs, wards and named vineyards;
-- soil, geology, topography and climate;
-- historical vintage observations;
-- historical legal version applicable to each vintage.
+Each final designation record should eventually include protected identity/spellings/transliterations; protection class and legal system; registration/effective/amendment/repeal dates; hierarchy and boundaries; product categories; authorized/prohibited grapes; blend/origin percentages; viticultural rules; analytical parameters; winemaking permissions/prohibitions; ageing/release rules; traditional terms; vine-age rules; formal named subzones/sites; environment; historical vintages; and the historical legal version applicable to each vintage.
 
 No small GI is intentionally excluded. Incomplete jurisdictions stay visible in the coverage queue until their primary authority and full registry have been ingested.
 
 ## Validation
 
-Current automated tests separately validate:
-
-- real geography/grape resolution;
-- legal/appellation provenance;
-- environmental and growing-season research;
-- historical vintage archive evidence;
-- legal ageing and vine-age rules;
-- detailed winemaking decisions and legality gates;
-- global designation coverage accounting;
-- vintage/winemaking/time tasting-note layers;
-- core service, pairing, inventory and economy behavior.
+Current automated tests separately validate real geography/grape resolution; legal/appellation provenance; environmental and growing-season research; historical vintage evidence; legal ageing and vine-age rules; detailed winemaking decisions and legality gates; global designation coverage accounting; layered vintage/winemaking/time note evolution; and core service/pairing/inventory/economy behavior.
 
 A factual layer must pass validation before it is allowed to drive generation. Unresolved synonyms, legal ambiguities and missing jurisdictions remain explicit research work rather than guessed data.
