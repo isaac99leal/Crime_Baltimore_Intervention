@@ -3,6 +3,10 @@
 Named-site identity and protected-origin eligibility are separate evidence axes.
 This registry only permits a site name when an explicit claim rule matches the
 site and the parent wine has already passed the strict legal specification layer.
+A physical site and the name legally claimed on the label are normally identical,
+but some specifications explicitly allow a principal or cover name for wine from
+other sites in a defined group. Those substitutions are permitted only through an
+explicit ``cover_name_groups`` rule and never through generic alias inference.
 """
 from __future__ import annotations
 
@@ -36,6 +40,7 @@ class SiteClaimRule:
     claim_kind: str
     allowed_site_names: tuple[str, ...] = ()
     excluded_site_names: tuple[str, ...] = ()
+    cover_name_groups: tuple[tuple[str, tuple[str, ...]], ...] = ()
     notes: str = ""
 
 
@@ -48,10 +53,11 @@ class SiteClaimDecision:
     issues: tuple[str, ...] = ()
     warnings: tuple[str, ...] = ()
     evidence: tuple[str, ...] = ()
+    claim_name: str | None = None
 
 
 class SiteClaimRegistry:
-    """Evaluate whether a known site name can be used as a legal label claim."""
+    """Evaluate whether a known physical site can support a requested label claim."""
 
     def __init__(self, data_path: Path | None = None) -> None:
         paths = [Path(data_path)] if data_path is not None else _default_data_paths()
@@ -106,6 +112,34 @@ class SiteClaimRegistry:
                     f"{rule_id} lists the same site in allowed_site_names and excluded_site_names"
                 )
 
+            raw_cover_groups = row.get("cover_name_groups", {})
+            if raw_cover_groups in (None, ""):
+                raw_cover_groups = {}
+            if not isinstance(raw_cover_groups, dict):
+                raise ValueError(f"{rule_id} cover_name_groups must be a JSON object")
+            cover_name_groups: list[tuple[str, tuple[str, ...]]] = []
+            seen_cover_names: set[str] = set()
+            for raw_claim_name, raw_physical_names in raw_cover_groups.items():
+                claim_name = str(raw_claim_name).strip()
+                if not claim_name:
+                    raise ValueError(f"{rule_id} contains an empty cover claim name")
+                normalized_claim = normalize_name(claim_name)
+                if normalized_claim in seen_cover_names:
+                    raise ValueError(f"{rule_id} contains a duplicate cover claim name: {claim_name}")
+                seen_cover_names.add(normalized_claim)
+                if not isinstance(raw_physical_names, list) or not raw_physical_names:
+                    raise ValueError(
+                        f"{rule_id} cover claim {claim_name!r} must list at least one physical site"
+                    )
+                physical_names = tuple(
+                    str(value).strip() for value in raw_physical_names if str(value).strip()
+                )
+                if not physical_names:
+                    raise ValueError(
+                        f"{rule_id} cover claim {claim_name!r} has no usable physical site names"
+                    )
+                cover_name_groups.append((claim_name, physical_names))
+
             self.rules.append(
                 SiteClaimRule(
                     id=rule_id,
@@ -119,6 +153,7 @@ class SiteClaimRegistry:
                     claim_kind=str(row.get("claim_kind") or "named_site"),
                     allowed_site_names=allowed_site_names,
                     excluded_site_names=excluded_site_names,
+                    cover_name_groups=tuple(cover_name_groups),
                     notes=str(row.get("notes") or ""),
                 )
             )
@@ -145,6 +180,23 @@ class SiteClaimRegistry:
             return False
         return True
 
+    @classmethod
+    def _claim_name_matches(
+        cls,
+        rule: SiteClaimRule,
+        *,
+        physical_site_name: str,
+        claimed_site_name: str,
+    ) -> bool:
+        """Return True only for an exact claim or an explicitly mapped cover claim."""
+        if cls._same(physical_site_name, claimed_site_name):
+            return True
+        for cover_name, physical_names in rule.cover_name_groups:
+            if not cls._same(cover_name, claimed_site_name):
+                continue
+            return any(cls._same(physical_site_name, name) for name in physical_names)
+        return False
+
     def _source_evidence(self, rule: SiteClaimRule) -> tuple[str, ...]:
         evidence: list[str] = []
         for source_id in rule.source_ids:
@@ -162,15 +214,26 @@ class SiteClaimRegistry:
         origin_decision: OriginDecision,
         appellation: str | None,
         wine_variant: str | None = None,
+        claimed_site_name: str | None = None,
     ) -> SiteClaimDecision:
         if site is None:
             return SiteClaimDecision(False, "site_claim_not_requested", None)
+
+        requested_claim = site.name if claimed_site_name is None else str(claimed_site_name).strip()
+        if not requested_claim:
+            return SiteClaimDecision(
+                False,
+                "site_claim_name_empty",
+                site.id,
+                issues=("A requested site claim name cannot be empty.",),
+            )
         if origin_decision.label_scope.casefold() != "regulated_gi":
             return SiteClaimDecision(
                 False,
                 "site_claim_requires_regulated_gi",
                 site.id,
                 issues=("A named-site legal label claim requires a regulated GI context.",),
+                claim_name=requested_claim,
             )
         if not origin_decision.eligible:
             return SiteClaimDecision(
@@ -178,6 +241,7 @@ class SiteClaimRegistry:
                 "parent_origin_not_eligible",
                 site.id,
                 issues=("The parent protected-origin claim is not eligible.",),
+                claim_name=requested_claim,
             )
         if origin_decision.status != "appellation_eligible_sourced_spec":
             return SiteClaimDecision(
@@ -185,6 +249,7 @@ class SiteClaimRegistry:
                 "strict_parent_spec_required_for_site_claim",
                 site.id,
                 issues=("The parent origin has not passed a reviewed strict legal specification.",),
+                claim_name=requested_claim,
             )
 
         parent = appellation or site.parent
@@ -203,6 +268,7 @@ class SiteClaimRegistry:
                 issues=(
                     "The site is documented, but no positive legal label-claim rule is verified for this site type and parent appellation.",
                 ),
+                claim_name=requested_claim,
             )
 
         site_sources = {str(source_id) for source_id in site.source_ids}
@@ -227,13 +293,28 @@ class SiteClaimRegistry:
                     f"{rule.id}: site {site.name!r} is outside the verified site-name set for this rule."
                 )
                 continue
+            if not self._claim_name_matches(
+                rule,
+                physical_site_name=site.name,
+                claimed_site_name=requested_claim,
+            ):
+                mismatch_reasons.append(
+                    f"{rule.id}: physical site {site.name!r} cannot use requested claim {requested_claim!r}."
+                )
+                continue
+
+            evidence = list(self._source_evidence(rule))
+            if not self._same(site.name, requested_claim):
+                evidence.append(f"physical_site:{site.name}")
+                evidence.append(f"authorized_cover_claim:{requested_claim}")
             return SiteClaimDecision(
                 True,
                 "site_claim_eligible_verified_rule",
                 site.id,
                 rule_id=rule.id,
                 warnings=(rule.notes,) if rule.notes else (),
-                evidence=self._source_evidence(rule),
+                evidence=tuple(evidence),
+                claim_name=requested_claim,
             )
 
         return SiteClaimDecision(
@@ -241,6 +322,7 @@ class SiteClaimRegistry:
             "site_claim_rule_conditions_not_met",
             site.id,
             issues=tuple(mismatch_reasons) or ("A site-claim rule exists, but its conditions are not met.",),
+            claim_name=requested_claim,
         )
 
     def stats(self) -> dict[str, int]:
@@ -252,4 +334,7 @@ class SiteClaimRegistry:
             "verified_site_claim_rules": len(self.rules),
             "verified_site_claim_parent_appellations": len(parents),
             "verified_site_claim_sources": len(self.sources),
+            "verified_site_cover_name_groups": sum(
+                len(rule.cover_name_groups) for rule in self.rules
+            ),
         }

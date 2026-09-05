@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.1",
+  "notes": "Current Chablis specification homologated by arrêté of 10 September 2025. Chablis is white still wine exclusively from Chardonnay. Premier Cru uses distinct maturity, yield and total-alcohol limits. The conditional fermentable-sugar allowance to 4 g/L is conservatively fail-closed at the unconditional 3 g/L ceiling until the acidity condition is represented. The specification does not establish a Chablis-specific minimum élevage or consumer-release calendar, so no Grand Cru calendar rule is imported by analogy.",
+  "sources": {
+    "chablis_masaa_2025": {
+      "authority": "Ministère de l'agriculture et de la souveraineté alimentaire",
+      "title": "Cahier des charges de l'appellation d'origine contrôlée Chablis homologué par l'arrêté du 10 septembre 2025",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-567c3bd8-0c51-425b-a397-05e3b4b23cf0/telechargement",
+      "checked": "2026-09-05",
+      "effective_from": "2025-09-12",
+      "scope": "Current national specification: Chardonnay-only white still wine; standard and Premier Cru maturity/yield/analytical limits; 40 Premier Cru climats in 17 legal cover-name groups."
+    },
+    "chablis_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Current Chablis AOP product registry",
+      "url": "https://www.inao.gouv.fr/produit/chablis-22934",
+      "checked": "2026-09-05",
+      "scope": "Current INAO registry references the specification homologated 10 September 2025."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:chablis:standard",
+      "country": "France",
+      "appellation": "Chablis",
+      "aliases": ["Chablis AOC", "Chablis AOP"],
+      "variant": "standard",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay"],
+      "grape_constraints": [{"grape": "Chardonnay", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 161.0,
+      "min_potential_alcohol_pct": 10.0,
+      "max_total_alcohol_pct": 13.0,
+      "max_yield_hl_ha": 60.0,
+      "max_residual_sugar_g_l": 3.0,
+      "effective_from": "2025-09-12",
+      "source_ids": ["chablis_masaa_2025", "chablis_inao_current"],
+      "notes": "Current village-level Chablis path. No Chablis-specific minimum release date is encoded because the 2025 specification refers market release to the general code rather than establishing the Grand Cru March calendar."
+    },
+    {
+      "id": "fr:chablis:premier-cru",
+      "country": "France",
+      "appellation": "Chablis",
+      "aliases": ["Chablis Premier Cru", "Chablis 1er Cru", "Chablis AOC Premier Cru", "Chablis AOP Premier Cru"],
+      "variant": "premier cru",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay"],
+      "grape_constraints": [{"grape": "Chardonnay", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 170.0,
+      "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5,
+      "max_yield_hl_ha": 58.0,
+      "max_residual_sugar_g_l": 3.0,
+      "effective_from": "2025-09-12",
+      "source_ids": ["chablis_masaa_2025", "chablis_inao_current"],
+      "notes": "Current Premier Cru path. The 40 protected climat names and the 17 principal cover-name group relationships are represented separately in the named-site and site-claim registries. No Chablis-specific minimum release date is encoded."
+    }
+  ]
+}
