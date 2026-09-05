@@ -14,9 +14,13 @@ from .catalog import normalize_name
 from .expanded_catalog import NamedSite
 from .regional_rules import OriginDecision
 
-DATA_PATH = Path(__file__).resolve().parent / "data" / "site_claim_rules_seed.json"
-BURGUNDY_PATH = Path(__file__).resolve().parent / "data" / "site_claim_rules_burgundy.json"
-COTE_DE_NUITS_PATH = Path(__file__).resolve().parent / "data" / "site_claim_rules_cote_de_nuits.json"
+DATA_DIR = Path(__file__).resolve().parent / "data"
+DATA_PATH = DATA_DIR / "site_claim_rules_seed.json"
+
+
+def _default_data_paths() -> list[Path]:
+    """Load every reviewed site-claim tranche in deterministic filename order."""
+    return sorted(DATA_DIR.glob("site_claim_rules_*.json"), key=lambda path: path.name)
 
 
 @dataclass(frozen=True)
@@ -50,11 +54,7 @@ class SiteClaimRegistry:
     """Evaluate whether a known site name can be used as a legal label claim."""
 
     def __init__(self, data_path: Path | None = None) -> None:
-        paths = (
-            [Path(data_path)]
-            if data_path is not None
-            else [DATA_PATH, BURGUNDY_PATH, COTE_DE_NUITS_PATH]
-        )
+        paths = [Path(data_path)] if data_path is not None else _default_data_paths()
         documents: list[dict] = []
         for path in paths:
             if not path.exists():
