@@ -1,14 +1,116 @@
 {
-  "schema_version": "1.0",
-  "notes": "Supplemental named-site identities sourced directly from current authoritative legal material. This file extends the legacy site seed without rewriting its historical source set.",
+  "schema_version": "1.1",
+  "notes": "Supplemental named-site identities sourced directly from current authoritative or official trade-body material. This file extends the legacy site seed without rewriting its historical source set.",
   "sources": {
     "mercurey_masa_2025": {
       "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
       "title": "Cahier des charges de l'AOC Mercurey homologué par arrêté du 1er septembre 2025",
       "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-84e3b2df-7c1c-489f-8058-fc3b3babba25",
       "checked": "2026-09-05"
+    },
+    "bourgogne_gevrey_current": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "title": "Gevrey-Chambertin — Climats et lieux-dits",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gevrey-chambertin,2458,9253.html",
+      "checked": "2026-09-05"
+    },
+    "bourgogne_morey_current": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "title": "Morey-Saint-Denis — Climats et lieux-dits",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/morey-saint-denis,2458,9253.html",
+      "checked": "2026-09-05"
+    },
+    "bourgogne_vosne_current": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "title": "Vosne-Romanée — Climats et lieux-dits",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/vosne-romanee,2458,9253.html",
+      "checked": "2026-09-05"
+    },
+    "bourgogne_nuits_current": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "title": "Nuits-Saint-Georges — Climats et lieux-dits",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/nuits-saint-georges,2458,9253.html",
+      "checked": "2026-09-05"
     }
   },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Gevrey-Chambertin",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["bourgogne_gevrey_current"],
+      "names": ["Au Closeau", "Aux Combottes", "Bel Air", "Champeaux", "Champonnet", "Cherbaudes", "Clos des Varoilles", "Clos du Chapitre", "Clos Prieur", "Clos Saint-Jacques", "Combe au Moine", "Craipillot", "En Ergot", "Estournelles-Saint-Jacques", "Fonteny", "Issarts", "La Bossière", "La Perrière", "La Romanée", "Lavaut Saint-Jacques", "Les Cazetiers", "Les Corbeaux", "Les Goulots", "Petite Chapelle", "Petits Cazetiers", "Poissenot"]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Gevrey-Chambertin",
+      "site_type": "lieu_dit",
+      "legal_status": "official_appellation_lieu_dit",
+      "source_ids": ["bourgogne_gevrey_current"],
+      "names": ["Au Prunier", "Au Vellé", "Aux Corvées", "Aux Echezeaux", "Aux Etelois", "Baraques", "Billard", "Carougeot", "Champ", "Champ Franc", "Champerrier du Bas", "Champerrier du Dessus", "Champs-Chenys", "Charreux", "Chazière", "Chéseaux", "Clos Prieur-Bas", "Combe de Lavaux", "Combes du Bas", "Combes du Dessus", "Craite-Paille", "Creux Brouillard", "Croix des Champs", "En Champs", "En Dérée", "En Pallud", "En Songe", "En Vosne", "Es Murots", "Grandes Rayes", "Grands Champs", "Jouise", "La Bossière", "La Brunelle", "La Burie", "La Justice", "La Marie", "La Nouroy", "La Platière", "Le Carré Rougeaud", "Le Créot", "Le Fourneau", "Les Cercueils", "Les Champs Perriers", "Les Crais", "Les Croisettes", "Les Epointures", "Les Evocelles", "Les Gueulepines", "Les Jeunes Rois", "Les Journaux", "Les Marchais", "Les Seuvrées", "Meix des Ouches", "Meix-Bas", "Mévelle", "Pince-Vin", "Pressonnier", "Puits de la Baraque", "Reniard", "Roncevie", "Sylvie", "Tamisot", "Vignes Belles", "Village"]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Morey-Saint-Denis",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["bourgogne_morey_current"],
+      "names": ["Aux Charmes", "Aux Cheseaux", "Clos Baulet", "Clos des Ormes", "Clos Sorbè", "Côte Rotie", "La Bussière", "La Riotte", "Le Village", "Les Blanchards", "Les Chaffots", "Les Charrières", "Les Chenevery", "Les Faconnières", "Les Genavrières", "Les Gruenchers", "Les Millandes", "Les Ruchots", "Les Sorbès", "Monts Luisants"]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Morey-Saint-Denis",
+      "site_type": "lieu_dit",
+      "legal_status": "official_appellation_lieu_dit",
+      "source_ids": ["bourgogne_morey_current"],
+      "names": ["Bas Chenevery", "Clos des Ormes", "Clos Solon", "Corvée Creunille", "En la Rue de Vergy", "En Seuvrey", "La Bidaude", "Larrey Froid", "Le Village", "Les Brâs", "Les Champs de la Vigne", "Les Cognées", "Les Crais", "Les Crais-Gillon", "Les Herbuottes", "Les Larrets", "Les Pertuisées", "Les Porroux", "Les Sionnières", "Monts Luisants", "Pierre Virant", "Rue de Vergy", "Très Girard"]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Vosne-Romanée",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["bourgogne_vosne_current"],
+      "names": ["Au-dessus des Malconsorts", "Aux Brulées", "Aux Malconsorts", "Aux Raignots", "Clos des Réas", "Cros Parantoux", "En Orveaux", "La Croix Rameau", "Les Beaux Monts", "Les Chaumes", "Les Gaudichots", "Les Petits Monts", "Les Rouges", "Les Suchots"]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Vosne-Romanée",
+      "site_type": "lieu_dit",
+      "legal_status": "official_appellation_lieu_dit",
+      "source_ids": ["bourgogne_vosne_current"],
+      "names": ["Au-Dessus de la Rivière", "Aux Champs Perdrix", "Aux Communes", "Aux Genaivrières", "Aux Jachées", "Aux Ormes", "Aux Raviolles", "Aux Réas", "Aux Saules", "Bossières", "Champs Goudins", "La Colombière", "La Croix Blanche", "La Montagne", "Le Pré de la Folie", "Les Barreaux", "Les Beaux Monts Hauts Rougeots", "Les Chalandins", "Les Damaudes", "Les Jacquines", "Les Violettes", "Maizières Basses", "Maizières Hautes", "Porte-Feuilles ou Murailles du Clos", "Vigneux", "Village"]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Nuits-Saint-Georges",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["bourgogne_nuits_current"],
+      "names": ["Aux Argillas", "Aux Boudots", "Aux Bousselots", "Aux Chaignots", "Aux Champs Perdrix", "Aux Cras", "Aux Murgers", "Aux Perdrix", "Aux Thorey", "Aux Vignerondes", "Chaines Carteaux", "Château Gris", "Clos Arlot", "Clos de la Maréchale", "Clos des Argillières", "Clos des Corvées", "Clos des Corvées Pagets", "Clos des Forêts Saint-Georges", "Clos des Grandes Vignes", "Clos des Porrets-Saint-Georges", "Clos Saint-Marc", "En la Perrière Noblot", "La Richemone", "Les Argillières", "Les Cailles", "Les Chaboeufs", "Les Crots", "Les Damodes", "Les Didiers", "Les Hauts Pruliers", "Les Perrières", "Les Porrets-Saint-Georges", "Les Poulettes", "Les Procès", "Les Pruliers", "Les Saints-Georges", "Les Terres Blanches", "Les Vallerots", "Les Vaucrains", "Roncière", "Rue de Chaux"]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Nuits-Saint-Georges",
+      "site_type": "lieu_dit",
+      "legal_status": "official_appellation_lieu_dit",
+      "source_ids": ["bourgogne_nuits_current"],
+      "names": ["Au Bas de Combe", "Au Chouillet", "Aux Allots", "Aux Athées", "Aux Barrières", "Aux Croix Rouges", "Aux Herbues", "Aux Lavières", "Aux Pertuis Maréchaux", "Aux Saints-Jacques", "Aux Saints-Juliens", "Aux Tuyaux", "Belle Croix", "En la Perrière Noblot", "La Charmotte", "La Petite Charmotte", "Le Coteau des Bois", "Les Argillats", "Les Brûlées", "Les Chaliots", "Les Charbonnières", "Les Charmois", "Les Damodes", "Les Fleurières", "Les Hauts Poirets", "Les Hauts Pruliers", "Les Longecourts", "Les Maladières", "Les Plateaux", "Les Poisets", "Les Topons", "Les Vallerots", "Plantes au Baron", "Tribourg"]
+    }
+  ],
   "records": [
     {
       "name": "Clos du Château de Montaigu",
