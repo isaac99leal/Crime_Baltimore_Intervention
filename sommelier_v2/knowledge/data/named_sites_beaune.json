@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.1",
+  "notes": "All 42 Beaune Premier Cru climat identities from the effective specification, cross-checked against current INAO product records. Current INAO spelling 'Clos du Roi' is used where the published specification copy renders 'Clos de roi'.",
+  "sources": {
+    "bourgogne_beaune_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO) / BIVB",
+      "title": "Current Beaune Premier Cru product inventory",
+      "url": "https://www.inao.gouv.fr/produit/beaune-premier-cru-belissand-blanc-9600",
+      "checked": "2026-09-05",
+      "scope": "Current INAO product records identify 42 Beaune Premier Cru climats for white and red wines."
+    },
+    "beaune_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Beaune homologué par le décret n°2011-1751 du 2 décembre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20191.pdf",
+      "checked": "2026-09-05",
+      "scope": "Effective specification enumerates the protected climat names and permits their use under Premier Cru production conditions."
+    }
+  },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "commune": "Beaune",
+      "parent": "Beaune",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["bourgogne_beaune_current", "beaune_bivb_spec_2011"],
+      "notes": "Official Premier Cru climat identity. Claim eligibility is evaluated separately from physical identity.",
+      "names": [
+        "A l'Ecu",
+        "Aux Coucherias",
+        "Aux Cras",
+        "Belissand",
+        "Blanches Fleurs",
+        "Champs Pimont",
+        "Clos de l'Ecu",
+        "Clos de la Feguine",
+        "Clos de la Mousse",
+        "Clos du Roi",
+        "Clos des Avaux",
+        "Clos des Ursules",
+        "Clos Saint-Landry",
+        "En Genêt",
+        "En l'Orme",
+        "La Mignotte",
+        "Le Bas des Teurons",
+        "Le Clos des Mouches",
+        "Les Aigrots",
+        "Les Avaux",
+        "Les Boucherottes",
+        "Les Bressandes",
+        "Les Cents Vignes",
+        "Les Chouacheux",
+        "Les Epenotes",
+        "Les Fèves",
+        "Les Grèves",
+        "Les Marconnets",
+        "Les Montrevenots",
+        "Les Perrières",
+        "Les Reversés",
+        "Les Sceaux",
+        "Les Seurey",
+        "Les Sizies",
+        "Les Teurons",
+        "Les Toussaints",
+        "Les Tuvilains",
+        "Les Vignes Franches",
+        "Montée Rouge",
+        "Pertuisots",
+        "Sur les Grèves",
+        "Sur les Grèves-Clos Sainte-Anne"
+      ]
+    }
+  ]
+}
