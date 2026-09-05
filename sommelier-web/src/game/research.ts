@@ -1,5 +1,8 @@
 import profileData from '../data/research/appellation_profiles.json';
+import profileDataPass2 from '../data/research/appellation_profiles_pass2.json';
 import sourceData from '../data/research/sources.json';
+import sourceDataPass2 from '../data/research/sources_pass2.json';
+import sourceDataPass3 from '../data/research/sources_pass3.json';
 import { findGrape } from './reference';
 
 export type ResearchGenerationStatus = 'candidate' | 'reference-only' | 'framework-only';
@@ -40,23 +43,33 @@ export type ResearchProfile = {
 type ResearchProfileFile = {
   schemaVersion: number;
   updatedAt: string;
-  method: string;
+  method?: string;
   profiles: ResearchProfile[];
 };
 
 type ResearchSourceFile = {
   updatedAt: string;
-  policy: string;
+  policy?: string;
   sources: ResearchSource[];
 };
 
-const profilesFile = profileData as ResearchProfileFile;
-const sourcesFile = sourceData as ResearchSourceFile;
+const profileFiles: ResearchProfileFile[] = [
+  profileData as unknown as ResearchProfileFile,
+  profileDataPass2 as unknown as ResearchProfileFile,
+];
 
-export const researchMethod = profilesFile.method;
-export const researchPolicy = sourcesFile.policy;
-export const researchSources = sourcesFile.sources;
-export const researchProfiles = profilesFile.profiles;
+const sourceFiles: ResearchSourceFile[] = [
+  sourceData as unknown as ResearchSourceFile,
+  sourceDataPass2 as unknown as ResearchSourceFile,
+  sourceDataPass3 as unknown as ResearchSourceFile,
+];
+
+export const researchMethod = profileFiles.find((file) => file.method)?.method ?? 'Hand-researched wine reference overlay.';
+export const researchPolicy = sourceFiles.find((file) => file.policy)?.policy ?? 'Prefer primary legal and official sources.';
+export const researchPassCount = profileFiles.length;
+export const researchSourcePassCount = sourceFiles.length;
+export const researchSources = sourceFiles.flatMap((file) => file.sources);
+export const researchProfiles = profileFiles.flatMap((file) => file.profiles);
 export const researchSourceById = new Map(researchSources.map((source) => [source.id, source]));
 export const researchProfileById = new Map(researchProfiles.map((profile) => [profile.id, profile]));
 export const researchCountries = [...new Set(researchProfiles.map((profile) => profile.country))].sort();
