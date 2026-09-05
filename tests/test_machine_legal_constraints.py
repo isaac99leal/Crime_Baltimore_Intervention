@@ -97,6 +97,18 @@ class MachineConstraintSafetyTests(unittest.TestCase):
         self.assertFalse(decision.eligible)
         self.assertEqual(decision.status, "legal_grape_rule_unverified")
 
+    def test_materialized_machine_constraints_are_deny_safe_and_provenanced(self):
+        registry = MachineLegalConstraintRegistry()
+        stats = registry.stats()
+        self.assertGreaterEqual(stats["machine_legal_constraint_records"], 1000)
+        self.assertGreaterEqual(stats["machine_legal_deny_safe_records"], 300)
+        self.assertGreaterEqual(stats["machine_legal_deny_safe_countries"], 5)
+        deny = [record for record in registry.records if record.deny_safe]
+        self.assertTrue(all(record.allowed_grapes for record in deny))
+        self.assertTrue(all(record.source_attachment_id for record in deny))
+        self.assertTrue(all(record.source_url for record in deny))
+        self.assertTrue(all(record.section_sha256 for record in deny))
+
 
 if __name__ == "__main__":
     unittest.main()
