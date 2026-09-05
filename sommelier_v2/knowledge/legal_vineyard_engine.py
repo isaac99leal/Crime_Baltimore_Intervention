@@ -1,10 +1,9 @@
 """Legal-spec-aware vineyard simulation.
 
-The base vineyard engine handles physical block/vintage mechanics and the legacy
-geographic guard. This wrapper makes sourced protected-origin specifications the
-default authority, applies vineyard-level yield and minimum-potential-alcohol
-limits, and separately evaluates whether a named site can be used as a legal
-label claim.
+The base vineyard engine handles physical block/vintage mechanics. This wrapper
+makes sourced protected-origin specifications the default authority, applies
+strict vineyard/wine-yield and minimum-potential-alcohol limits, and separately
+evaluates whether a named site can be used as a legal label claim.
 """
 from __future__ import annotations
 
@@ -52,10 +51,9 @@ class LegalVineyardEngine(BaseVineyardEngine):
             country=block.country,
             appellation=appellation,
             region=block.region,
+            wine_variant=block.wine_variant,
         )
         if spec is None:
-            # The strict origin rulebook should already fail closed here, but keep
-            # the named-site claim independently fail closed as a second guard.
             return replace(result, site_claim_eligible=False)
 
         issues = list(result.issues)
@@ -66,6 +64,11 @@ class LegalVineyardEngine(BaseVineyardEngine):
             label_eligible = False
             issues.append(
                 f"Yield {result.yield_t_ha:.2f} t/ha exceeds sourced {spec.appellation} maximum {spec.max_yield_t_ha:.2f} t/ha."
+            )
+        if spec.max_yield_hl_ha is not None and result.yield_hl_ha > spec.max_yield_hl_ha + 1e-9:
+            label_eligible = False
+            issues.append(
+                f"Wine yield {result.yield_hl_ha:.2f} hL/ha exceeds sourced {spec.appellation} maximum {spec.max_yield_hl_ha:.2f} hL/ha."
             )
         if (
             spec.min_potential_alcohol_pct is not None
@@ -79,18 +82,20 @@ class LegalVineyardEngine(BaseVineyardEngine):
             warnings.append(
                 f"Legal grape-to-wine yield ceiling is {spec.grape_to_wine_yield_pct:g}%; enforce it at pressing/vinification, not vineyard harvest."
             )
+        if spec.max_residual_sugar_g_l is not None or spec.max_malic_acid_g_l is not None:
+            warnings.append(
+                "Finished-wine sugar and malic-acid limits are enforced at the constrained wine/release stage, not at grape harvest."
+            )
 
         site_claim = self.site_claims.evaluate(
             site=site,
             origin_decision=result.origin_decision,
             appellation=appellation,
-            wine_variant=None,
+            wine_variant=block.wine_variant,
         )
         site_claim_eligible = bool(site_claim.eligible and label_eligible)
         if site is not None and not site_claim_eligible:
-            warnings.append(
-                f"Named-site label claim remains unavailable: {site_claim.status}."
-            )
+            warnings.append(f"Named-site label claim remains unavailable: {site_claim.status}.")
 
         return replace(
             result,
