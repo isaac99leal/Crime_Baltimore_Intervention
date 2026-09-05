@@ -206,6 +206,12 @@ export type Dish = {
   name: string;
   pairingKey: string;
   detail: string;
+  course?: string;
+  cookingMethod?: string;
+  sauce?: string;
+  flavorProfile?: string;
+  weight?: 'light' | 'medium' | 'heavy' | string;
+  pairingKeywords?: string[];
 };
 
 export type ServiceScenario = {
@@ -219,6 +225,8 @@ export type ServiceResult = {
   tip: number;
   reputationDelta: number;
   summary: string;
+  pairingScore?: number;
+  breakdown?: string[];
 };
 
 export type TastingChallenge = {

@@ -1,14 +1,12 @@
 import guestData from '../data/guest_archetypes.json';
-import pairingData from '../data/food_pairings.json';
 import { wineById, wineCatalog } from './catalog';
+import { menuDishes, scorePairing } from './pairing';
 import type {
-  Dish,
   GameState,
   Guest,
   ServiceResult,
   ServiceScenario,
   TastingChallenge,
-  WineDefinition,
 } from './types';
 
 type GuestArchetype = {
@@ -25,27 +23,7 @@ type GuestArchetype = {
   frequency: number;
 };
 
-type PairRule = {
-  ideal_wine_attributes?: Record<string, number[]>;
-  ideal_grapes?: string[];
-  avoid_grapes?: string[];
-  notes?: string;
-};
-
 const archetypes = (guestData as { archetypes: GuestArchetype[] }).archetypes;
-const rules = (pairingData as { protein_pairings: Record<string, PairRule> }).protein_pairings;
-
-const dishes: Dish[] = [
-  { name: 'Dry-aged ribeye', pairingKey: 'beef', detail: 'Charred crust, bordelaise, pommes fondant' },
-  { name: 'Roast lamb saddle', pairingKey: 'lamb', detail: 'Rosemary, garlic, olive jus' },
-  { name: 'Duck breast', pairingKey: 'duck', detail: 'Sour cherry, black pepper, turnip' },
-  { name: 'Butter-poached halibut', pairingKey: 'fish_white', detail: 'Leek, beurre blanc, chive' },
-  { name: 'King salmon', pairingKey: 'fish_rich', detail: 'Miso glaze, sesame, charred scallion' },
-  { name: 'Oysters on the half shell', pairingKey: 'shellfish', detail: 'Mignonette, cucumber, sea herbs' },
-  { name: 'Wild mushroom risotto', pairingKey: 'mushroom', detail: 'Porcini, parmesan, thyme' },
-  { name: 'Herb-roasted chicken', pairingKey: 'poultry', detail: 'Morels, jus, spring peas' },
-];
-
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const randomFrom = <T,>(items: T[]): T => items[Math.floor(Math.random() * items.length)];
 const randomBetween = (min: number, max: number) => min + Math.random() * (max - min);
@@ -152,7 +130,7 @@ export function buyWine(state: GameState, wineId: string, quantity = 3): GameSta
       btg: false,
       openBottleMl: 0,
     }];
-  return { ...state, cash: state.cash - totalCost, inventory };
+  return { ...state, cash: state.cash - totalCost, cogs: state.cogs + totalCost, inventory };
 }
 
 export function toggleListing(state: GameState, wineId: string): GameState {
@@ -202,31 +180,7 @@ export function generateServiceScenario(): ServiceScenario {
     patience: randomBetween(patienceMin, patienceMax),
     occasion: archetype.celebrations?.length ? randomFrom(archetype.celebrations) : undefined,
   };
-  return { guest, dish: randomFrom(dishes) };
-}
-
-function profileValueForRule(wine: WineDefinition, ruleKey: string): number | undefined {
-  const map: Record<string, keyof WineDefinition['profile']> = {
-    acidity: 'acidity',
-    tannin: 'tannin',
-    body: 'body',
-    sweetness: 'sweetness',
-    fruit_intensity: 'fruitIntensity',
-    earth_intensity: 'earthIntensity',
-  };
-  const profileKey = map[ruleKey];
-  return profileKey ? wine.profile[profileKey] : undefined;
-}
-
-function attributeFit(wine: WineDefinition, rule: PairRule): number {
-  const entries = Object.entries(rule.ideal_wine_attributes ?? {});
-  if (!entries.length) return 0;
-  const matches = entries.filter(([name, range]) => {
-    if (range.length < 2) return false;
-    const value = profileValueForRule(wine, name);
-    return typeof value === 'number' && value >= range[0] && value <= range[1];
-  }).length;
-  return (matches / entries.length) * 22;
+  return { guest, dish: randomFrom(menuDishes) };
 }
 
 export function recommendWine(state: GameState, scenario: ServiceScenario, wineId: string): { state: GameState; result: ServiceResult } {
@@ -235,18 +189,16 @@ export function recommendWine(state: GameState, scenario: ServiceScenario, wineI
   if (!item || !wine || item.bottles <= 0 || !item.listed) {
     return {
       state,
-      result: { score: 0, revenue: 0, tip: 0, reputationDelta: -1, summary: 'That bottle is not available on the active list.' },
+      result: { score: 0, pairingScore: 0, revenue: 0, tip: 0, reputationDelta: -1, summary: 'That bottle is not available on the active list.', breakdown: ['Check physical stock, listing status, and the current published list.'] },
     };
   }
 
-  const rule = rules[scenario.dish.pairingKey] ?? {};
-  let score = 34 + attributeFit(wine, rule);
-  if (rule.ideal_grapes?.includes(wine.grape)) score += 27;
-  if (rule.avoid_grapes?.includes(wine.grape)) score -= 32;
-  if (scenario.guest.preferredRegions.some((region) => [wine.region, wine.country, wine.appellation].includes(region))) score += 10;
+  const pairing = scorePairing(wine, scenario.dish);
+  let score = pairing.score;
+  if (scenario.guest.preferredRegions.some((region) => [wine.region, wine.country, wine.appellation].includes(region))) score += 8;
   if (item.listPrice <= scenario.guest.budget) score += 12;
   else score -= Math.min(35, ((item.listPrice - scenario.guest.budget) / scenario.guest.budget) * 45);
-  if (scenario.guest.adventure > 0.7 && wine.prestige < 70) score += 6;
+  if (scenario.guest.adventure > 0.7 && wine.prestige < 70) score += 5;
   if ((scenario.guest.wineKnowledge ?? 0) > 0.75 && wine.prestige > 78) score += 4;
   score = Math.round(clamp(score, 0, 100));
 
@@ -257,10 +209,10 @@ export function recommendWine(state: GameState, scenario: ServiceScenario, wineI
   const summary = score >= 85
     ? 'Exceptional match. The table trusts you and remembers the recommendation.'
     : score >= 68
-      ? 'Strong service. The pairing works and the guest is satisfied.'
+      ? 'Strong service. The wine fits the dish, preparation, and guest brief.'
       : score >= 45
-        ? 'Acceptable, but the recommendation missed part of the brief.'
-        : 'Poor fit. Revisit the dish, budget, and guest cues before choosing.';
+        ? 'Acceptable, but one or more structural, preparation, or guest factors are off.'
+        : 'Poor fit. Revisit the dish, sauce, cooking method, budget, and guest cues.';
 
   const nextState: GameState = {
     ...state,
@@ -269,12 +221,22 @@ export function recommendWine(state: GameState, scenario: ServiceScenario, wineI
     xp: state.xp + Math.max(1, Math.round(score / 12)),
     serviceCount: state.serviceCount + 1,
     lifetimeRevenue: state.lifetimeRevenue + revenue,
-    cogs: state.cogs + wine.cost,
     inventory: state.inventory.map((candidate) => candidate.wineId === wineId
       ? { ...candidate, bottles: candidate.bottles - 1 }
       : candidate),
   };
-  return { state: nextState, result: { score, revenue, tip, reputationDelta, summary } };
+  return {
+    state: nextState,
+    result: {
+      score,
+      pairingScore: pairing.score,
+      revenue,
+      tip,
+      reputationDelta,
+      summary,
+      breakdown: pairing.breakdown,
+    },
+  };
 }
 
 export function advanceWeek(state: GameState): { state: GameState; overhead: number } {
