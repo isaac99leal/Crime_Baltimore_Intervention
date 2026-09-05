@@ -10,13 +10,14 @@ import {
 describe('expanded authority designation registry', () => {
   it('locks the authority registry tranches to their researched sizes', () => {
     const report = validateExpandedDesignationRegistry();
-    expect(expandedDesignationPassCount).toBe(2);
-    expect(expandedDesignationRecords).toHaveLength(407);
+    expect(expandedDesignationPassCount).toBe(3);
+    expect(expandedDesignationRecords).toHaveLength(559);
     expect(report.countsByCountry.Australia).toBe(114);
     expect(report.countsByCountry.Argentina).toBe(121);
     expect(report.countsByCountry.Georgia).toBe(32);
     expect(report.countsByCountry['New Zealand']).toBe(22);
     expect(report.countsByCountry.Chile).toBe(118);
+    expect(report.countsByCountry['South Africa']).toBe(152);
     expect(report.issues).toEqual([]);
   });
 
@@ -34,6 +35,29 @@ describe('expanded authority designation registry', () => {
     expect(findExpandedDesignation('Chile', 'Chiloé')[0]?.parent).toBe('Región Vitícola Austral');
   });
 
+  it('preserves the February 2026 South African WO hierarchy without carrying obsolete names forward', () => {
+    expect(findExpandedDesignation('South Africa', 'Goukou River Valley')[0]?.parent).toBe('Still Bay');
+    expect(findExpandedDesignation('South Africa', 'Still Bay')[0]?.parent).toBe('Cape South Coast');
+    expect(findExpandedDesignation('South Africa', 'Cape South Coast')[0]?.parent).toBe('Cape Coast');
+    expect(findExpandedDesignation('South Africa', 'Cape Coast')[0]?.parent).toBe('Western Cape');
+    expect(findExpandedDesignation('South Africa', 'Shaw’s Mountain')[0]?.parent).toBe('Overberg');
+    expect(findExpandedDesignation('South Africa', 'Keeromsberg')[0]?.parent).toBe('Worcester');
+    expect(findExpandedDesignation('South Africa', 'Moordkuil')[0]?.parent).toBe('Worcester');
+    expect(findExpandedDesignation('South Africa', 'Rooikrans')[0]?.parent).toBe('Worcester');
+    expect(findExpandedDesignation('South Africa', 'Agter-Pakhuis')[0]?.parent).toBe('Olifants River');
+    expect(findExpandedDesignation('South Africa', 'Rocklands Valley')[0]?.parent).toBe('Olifants River');
+    expect(findExpandedDesignation('South Africa', 'Sutherland-Karoo')[0]?.parent).toBe('Karoo-Hoogland');
+    expect(findExpandedDesignation('South Africa', 'Lanseria')[0]?.level).toBe('ward');
+    expect(findExpandedDesignation('South Africa', 'Still Bay East')).toHaveLength(0);
+  });
+
+  it('preserves bilingual South African aliases as aliases rather than duplicate legal identities', () => {
+    expect(findExpandedDesignation('South Africa', 'Kaapstad')[0]?.name).toBe('Cape Town');
+    expect(findExpandedDesignation('South Africa', 'Breërivier Vallei')[0]?.name).toBe('Breede River Valley');
+    expect(findExpandedDesignation('South Africa', 'Sentraal-Oranjerivier')[0]?.name).toBe('Central Orange River');
+    expect(findExpandedDesignation('South Africa', 'Rietrivier VS')[0]?.name).toBe('Rietrivier FS');
+  });
+
   it('preserves same-name Argentine origins when jurisdiction or legal class differs', () => {
     expect(findExpandedDesignation('Argentina', 'Luján de Cuyo')).toHaveLength(2);
     expect(new Set(findExpandedDesignation('Argentina', 'Luján de Cuyo').map((record) => record.legalClass))).toEqual(new Set(['IG', 'DOC']));
@@ -41,7 +65,7 @@ describe('expanded authority designation registry', () => {
   });
 
   it('keeps every registry identity reference-only until product rules are separately researched', () => {
-    for (const country of ['Georgia', 'New Zealand', 'Chile']) {
+    for (const country of ['Georgia', 'New Zealand', 'Chile', 'South Africa']) {
       expect(designationsForCountry(country).every((record) => record.generationStatus === 'reference-only')).toBe(true);
     }
   });
