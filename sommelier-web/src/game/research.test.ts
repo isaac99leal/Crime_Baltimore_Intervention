@@ -12,12 +12,12 @@ import {
 describe('hand-researched wine reference overlay', () => {
   it('has meaningful research depth with resolvable provenance', () => {
     const report = validateResearchLibrary();
-    expect(researchPassCount).toBe(4);
-    expect(researchSourcePassCount).toBe(13);
-    expect(researchProfiles.length).toBeGreaterThanOrEqual(66);
-    expect(researchSources.length).toBeGreaterThanOrEqual(160);
+    expect(researchPassCount).toBe(5);
+    expect(researchSourcePassCount).toBe(14);
+    expect(researchProfiles.length).toBeGreaterThanOrEqual(70);
+    expect(researchSources.length).toBeGreaterThanOrEqual(165);
     expect(researchCountries.length).toBeGreaterThanOrEqual(15);
-    expect(report.generationCandidates).toBeGreaterThanOrEqual(28);
+    expect(report.generationCandidates).toBeGreaterThanOrEqual(30);
     expect(report.issues).toEqual([]);
   });
 
@@ -71,6 +71,21 @@ describe('hand-researched wine reference overlay', () => {
     expect(pomerol?.classificationTerms).toEqual([]);
     expect(sauternes?.communes).toEqual(['Barsac', 'Bommes', 'Fargues', 'Preignac', 'Sauternes']);
     expect(saintEmilionGrandCru?.classificationTerms).toContain('Premier Grand Cru Classé');
+  });
+
+  it('preserves exact Georgian PDO production rules when a full specification is available', () => {
+    const magraani = findResearchProfile('ge-kisi-magraani-pdo');
+    const khvanchkara = findResearchProfile('ge-khvanchkara-pdo');
+    const zegaani = findResearchProfile('ge-zegaani-pdo');
+
+    expect(magraani?.authorizedGrapes).toEqual(['Kisi']);
+    expect(magraani?.productionRules?.maxYieldTonnesPerHa).toBe(8);
+    expect((magraani?.productionRules?.amber as Record<string, unknown>)?.qvevriRequired).toBe(true);
+    expect((magraani?.productionRules?.amber as Record<string, unknown>)?.capMixingTimesPerDay).toEqual([4, 5]);
+    expect(khvanchkara?.authorizedGrapes).toEqual(['Aleksandrouli', 'Mujuretuli']);
+    expect(khvanchkara?.productionRules?.residualSugarGPerL).toEqual([30, 45]);
+    expect(khvanchkara?.productionRules?.maxYieldTonnesPerHa).toBe(7);
+    expect(zegaani?.generationStatus).toBe('reference-only');
   });
 
   it('preserves New World origin, variety and vintage percentage rules', () => {
