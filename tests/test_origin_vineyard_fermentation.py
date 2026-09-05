@@ -7,6 +7,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from types import SimpleNamespace
 
+from sommelier_v2.catalog import constrain_legacy_record
+from sommelier_v2.domain import WineRecord
 from sommelier_v2.knowledge.expanded_catalog import NamedSite
 from sommelier_v2.knowledge.fermentation_process import (
     FermentationConstraintError,
@@ -150,6 +152,24 @@ class OriginAndVineyardTests(unittest.TestCase):
         self.assertFalse(blocked.eligible)
         allowed = self.rules.evaluate(country="Testland", grapes={"Forbidden":100}, label_scope="experimental", experimental=True)
         self.assertTrue(allowed.eligible)
+
+    def test_legacy_catalog_bridge_cannot_bypass_region_grape_gate(self):
+        allowed_record = WineRecord(
+            id="legacy-ok", producer="P", label="L",
+            country="Testland", region="Strict Valley",
+            subregion="Core", appellation="Unknown-Law GI",
+            grapes=("Alias Allowed",),
+        )
+        accepted = constrain_legacy_record(allowed_record, self.rules)
+        self.assertIsNotNone(accepted)
+        self.assertEqual(accepted.grapes, ("Allowed",))
+        impossible_record = WineRecord(
+            id="legacy-bad", producer="P", label="L",
+            country="Testland", region="Strict Valley",
+            subregion="Core", appellation="Unknown-Law GI",
+            grapes=("Forbidden",),
+        )
+        self.assertIsNone(constrain_legacy_record(impossible_record, self.rules))
 
     @staticmethod
     def weather():

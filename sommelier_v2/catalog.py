@@ -1,8 +1,14 @@
-"""Catalog bridge that reuses the existing large legacy wine data assets."""
+"""Catalog bridge that reuses the existing large legacy wine data assets.
 
+The compatibility layer is intentionally conservative. The legacy procedural
+generator can still be useful for breadth, but v2 does not import one of its
+records unless the generated grape/origin combination passes the current
+regional plausibility rule. Legal GI certification is handled separately by the
+stricter ``regulated_gi`` origin factory.
+"""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Iterable
 
 from .domain import WineRecord, WineStyle
@@ -16,6 +22,7 @@ def _style(value: str) -> WineStyle:
 
 
 def from_legacy_wine(wine: object) -> WineRecord:
+    """Convert a legacy wine object without asserting origin validity."""
     profile = getattr(wine, "profile")
     region_path = list(getattr(wine, "region_path", []))
     grapes = tuple(getattr(g, "grape", str(g)) for g in getattr(wine, "grapes", []))
@@ -43,15 +50,63 @@ def from_legacy_wine(wine: object) -> WineRecord:
     )
 
 
-def load_legacy_catalog(target_count: int = 10_000, seed: int = 42) -> list[WineRecord]:
-    from somm_simulator.models.region import RegionDatabase
-    from somm_simulator.models.grape import GrapeDatabase
+def legacy_record_origin_decision(record: WineRecord, rulebook: object | None = None):
+    """Return the non-legal regional plausibility decision for a legacy record.
+
+    The legacy region catalog has broad ``primary_grapes`` coverage but does
+    not yet contain sourced, exhaustive ``allowed_grapes`` legal lists.
+    Therefore this bridge may certify only ``regional_style`` plausibility,
+    never protected-origin legality.
+    """
+    if rulebook is None:
+        from .knowledge.regional_rules import RegionGrapeRulebook
+        rulebook = RegionGrapeRulebook()
+    return rulebook.evaluate(
+        country=record.country,
+        region=record.region,
+        sub_region=record.subregion or None,
+        appellation=record.appellation or None,
+        grapes=record.grapes,
+        label_scope="regional_style",
+        vintage_year=record.vintage or 2023,
+    )
+
+
+def constrain_legacy_record(record: WineRecord, rulebook: object | None = None) -> WineRecord | None:
+    """Canonicalize and accept only a plausible legacy origin/grape record."""
+    decision = legacy_record_origin_decision(record, rulebook)
+    if not decision.eligible:
+        return None
+    return replace(record, grapes=decision.canonical_grapes)
+
+
+def load_legacy_catalog(target_count: int = 10_000, seed: int = 42, *, strict_origin: bool = True) -> list[WineRecord]:
+    """Generate legacy breadth, then gate every imported record for v2.
+
+    ``strict_origin=True`` is the default. Records that cannot pass the
+    non-legal regional-style grape/origin guard are dropped instead of entering
+    the v2 catalog with an impossible combination. This function still does not
+    certify legal GI eligibility; that requires explicit legal grape rules.
+    """
     from somm_simulator.generators.wine_generator import generate_wine_database
+    from somm_simulator.models.grape import GrapeDatabase
+    from somm_simulator.models.region import RegionDatabase
 
     region_db = RegionDatabase()
     grape_db = GrapeDatabase()
     legacy = generate_wine_database(region_db, grape_db, target_count=target_count, seed=seed)
-    return [from_legacy_wine(wine) for wine in legacy]
+    records = [from_legacy_wine(wine) for wine in legacy]
+    if not strict_origin:
+        return records
+
+    from .knowledge.regional_rules import RegionGrapeRulebook
+    rulebook = RegionGrapeRulebook()
+    accepted: list[WineRecord] = []
+    for record in records:
+        constrained = constrain_legacy_record(record, rulebook)
+        if constrained is not None:
+            accepted.append(constrained)
+    return accepted
 
 
 @dataclass(frozen=True)
@@ -64,8 +119,8 @@ class CoverageReport:
 
 
 def legacy_coverage_report() -> CoverageReport:
-    from somm_simulator.models.region import RegionDatabase
     from somm_simulator.models.grape import GrapeDatabase
+    from somm_simulator.models.region import RegionDatabase
     region_db = RegionDatabase()
     grape_db = GrapeDatabase()
     countries = len(region_db.countries)
