@@ -36,6 +36,6 @@ describe('historical vintage evidence ledger', () => {
     const ontario = findHistoricalVintageArchive('archive-ca-ontario-vintage-reports-2001-2025');
     expect(ontario?.years).toHaveLength(25);
     expect(ontario?.years[0]).toBe(2001);
-    expect(ontario?.years.at(-1)).toBe(2025);
+    expect(ontario?.years[ontario.years.length - 1]).toBe(2025);
   });
 });
