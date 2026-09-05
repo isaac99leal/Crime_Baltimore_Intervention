@@ -40,6 +40,16 @@ class LegalSourceRegistryTests(unittest.TestCase):
             self.assertEqual(registry.find("Strict Example", country_code="XX"), (record,))
             self.assertEqual(registry.stats()["legal_sources_with_product_specification"], 1)
 
+    def test_materialized_eu_source_index_has_mass_coverage(self):
+        registry = LegalSourceRegistry()
+        stats = registry.stats()
+        self.assertGreaterEqual(stats["legal_source_records"], 1600)
+        self.assertGreaterEqual(stats["legal_source_countries"], 20)
+        self.assertGreaterEqual(stats["legal_sources_with_any_document"], 1500)
+        self.assertGreaterEqual(stats["legal_sources_with_product_specification"], 800)
+        self.assertTrue(all(record.gi_identifier for record in registry.records))
+        self.assertTrue(all(record.protected_names for record in registry.records))
+
 
 if __name__ == "__main__":
     unittest.main()
