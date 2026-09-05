@@ -1,0 +1,96 @@
+{
+  "schemaVersion":1,
+  "updatedAt":"2026-09-04",
+  "profiles":[
+    {
+      "id":"fr-chablis-grand-cru-aop","country":"France","name":"Chablis Grand Cru","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bourgogne","Chablisien","Chablis Grand Cru"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry still white wine"],"authorizedGrapes":["Chardonnay"],"principalGrapes":["Chardonnay"],
+      "classificationTerms":["Grand Cru"],"grandCruClimats":["Blanchot","Bougros","Les Clos","Grenouilles","Preuses","Valmur","Vaudésir"],
+      "productionRules":{"officialGrandCruClimatCount":7,"moutonneUsage":{"status":"traditional usage name","vaudesirPct":95,"preusesPct":5}},
+      "terroir":{"geography":"single delimited slope on the right bank of the Serein near Chablis","siteFactors":["favorable exposure","slope","protection from cold northerly winds"]},
+      "styleNotes":["dry, vivid and fruit-driven Chardonnay with notable minerality","can be austere young and gain complexity and finesse with age","INAO describes approximately ten years as a typical point of plenitude rather than a legal drinking window"],
+      "sourceRefs":["fr-inao-chablis-grand-cru-2024"]
+    },
+    {
+      "id":"fr-gevrey-chambertin-aop","country":"France","name":"Gevrey-Chambertin","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bourgogne","Côte de Nuits","Gevrey-Chambertin"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry still red wine"],"principalGrapes":["Pinot Noir"],
+      "classificationTerms":["Village","Premier Cru"],"premierCruClimatCount":26,
+      "relatedGrandCrus":["Chapelle-Chambertin","Charmes-Chambertin","Griottes-Chambertin","Latricières-Chambertin","Mazis-Chambertin","Mazoyères-Chambertin","Ruchottes-Chambertin","Chambertin","Chambertin-Clos de Bèze"],
+      "styleNotes":["ruby red with intense small-fruit aromas","powerful, densely tannic yet capable of velvety texture","grand cru wines are associated with spice, violet and forest-floor development and substantial longevity"],
+      "researchNotes":["The nine named grands crus are separate AOPs, not simply a 'grand cru tier' inside the Gevrey-Chambertin AOP. Generation must preserve that legal distinction."],
+      "sourceRefs":["fr-inao-gevrey-chambertin-2026"]
+    },
+    {
+      "id":"fr-meursault-aop","country":"France","name":"Meursault","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bourgogne","Côte de Beaune","Meursault"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["dry still white wine","limited dry still red wine"],"principalGrapes":["Chardonnay"],
+      "classificationTerms":["Village","Premier Cru"],"premierCruClimatCount":19,
+      "terroir":{"geography":"appellation area confined to the commune of Meursault on the Côte de Beaune"},
+      "styleNotes":["white wines are dry, concentrated and persistent","toasted and almond-like aromatic notes are common descriptors in the official product presentation","acidity supports ageing"],
+      "researchNotes":["Red Meursault exists but is exceptional. The game should not force every Meursault bottle to white, but white must dominate generation weights.","The exact 19 premier-cru climats will be entered only from the current specification or official climate list."],
+      "sourceRefs":["fr-inao-meursault-2026"]
+    },
+    {
+      "id":"fr-aloxe-corton-aop","country":"France","name":"Aloxe-Corton","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bourgogne","Côte de Beaune","Aloxe-Corton"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["dry still red wine","dry still white wine"],
+      "classificationTerms":["Village","Premier Cru"],"premierCruClimatCount":14,
+      "communes":["Aloxe-Corton","Ladoix-Serrigny","Pernand-Vergelesses"],
+      "relatedGrandCrus":["Corton","Corton-Charlemagne","Charlemagne"],
+      "styleNotes":["red wines are structured and tannic with red- and black-fruit aromas","white wines show mineral character and fresh white-fruit aromas"],
+      "researchNotes":["Corton, Corton-Charlemagne and Charlemagne are separate grand-cru AOPs related geographically to the hill, not internal labels that can be freely appended to Aloxe-Corton."],
+      "sourceRefs":["fr-inao-aloxe-corton-2026"]
+    },
+    {
+      "id":"fr-margaux-aop","country":"France","name":"Margaux","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bordeaux","Médoc","Margaux"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["dry still red wine"],"principalGrapes":["Cabernet Sauvignon","Merlot","Cabernet Franc","Petit Verdot"],
+      "classificationTerms":["1855 Grand Cru Classé"],
+      "productionRules":{"communeCount":5,"classifiedGrowthCount1855":21},
+      "terroir":{"soils":["gravel terraces"],"climate":"mild winters, good sunshine and generally moderate summer drought; forest to the west reduces ocean-wind exposure"},
+      "styleNotes":["ageworthy structured reds noted for aromatic richness and finesse","Cabernet Sauvignon contributes cassis, green-pepper and cedar descriptors; Merlot red/black plum-fruit; Cabernet Franc floral red fruit; Petit Verdot blueberry/coffee descriptors"],
+      "sourceRefs":["fr-inao-margaux-2023"]
+    },
+    {
+      "id":"fr-pomerol-aop","country":"France","name":"Pomerol","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bordeaux","Libournais","Pomerol"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["dry still red wine"],"principalGrapes":["Merlot","Cabernet Franc","Cabernet Sauvignon","Côt"],
+      "classificationTerms":[],
+      "terroir":{"soils":["sand","gravel","pebbles"],"geography":"Pomerol commune and part of Libourne; relatively flat terraces shaped by Isle deposits"},
+      "styleNotes":["Merlot is dominant and contributes dense color, black fruit, violet and truffle-like development","Cabernet varieties and Côt/Malbec contribute structure and complexity","wines can support long bottle ageing"],
+      "researchNotes":["Pomerol has no official classified-growth hierarchy. The game must not fabricate a 'Grand Cru Classé' tier for Pomerol."],
+      "sourceRefs":["fr-inao-pomerol-2021"]
+    },
+    {
+      "id":"fr-sauternes-aop","country":"France","name":"Sauternes","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bordeaux","Graves","Sauternes"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["sweet white wine"],
+      "communes":["Barsac","Bommes","Fargues","Preignac","Sauternes"],
+      "productionRules":{"harvest":"manual selective picking","botrytisRole":"noble rot concentrates berries and sugar","productionStagesWithinDelimitedArea":true},
+      "terroir":{"climateMechanism":"night humidity, particularly from the Ciron/Garonne system, alternating with fine autumn days supports Botrytis cinerea"},
+      "styleNotes":["young wines show floral and fruit aromas","ageing develops candied fruit, citrus and honey descriptors with long aromatic persistence"],
+      "researchNotes":["Exact current grape percentages, minimum potential alcohol/sugar and yield rules remain to be extracted from the March 2026 specification before blend generation is fully strict."],
+      "sourceRefs":["fr-inao-sauternes-2026"]
+    },
+    {
+      "id":"fr-saint-emilion-aop","country":"France","name":"Saint-Émilion","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bordeaux","Libournais","Saint-Émilion"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["dry still red wine"],"principalGrapes":["Merlot","Cabernet Franc","Cabernet Sauvignon"],
+      "productionRules":{"communeCount":9,"approxVineyardAreaHa":5500},
+      "terroir":{"soils":["limestone","clay","gravel","sand"]},
+      "styleNotes":["Merlot is the dominant variety and contributes roundness and red/black fruit","Cabernet Franc contributes freshness, finesse and firmer tannin","Cabernet Sauvignon contributes spice and power"],
+      "researchNotes":["Saint-Émilion and Saint-Émilion Grand Cru are separate appellations. The word 'grand cru' is therefore not a generic quality adjective in the generator."],
+      "sourceRefs":["fr-inao-saint-emilion-2026"]
+    },
+    {
+      "id":"fr-saint-emilion-grand-cru-aop","country":"France","name":"Saint-Émilion Grand Cru","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bordeaux","Libournais","Saint-Émilion","Saint-Émilion Grand Cru"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry still red wine"],"principalGrapes":["Merlot","Cabernet Franc","Cabernet Sauvignon"],
+      "classificationTerms":["Saint-Émilion Grand Cru","Grand Cru Classé","Premier Grand Cru Classé"],
+      "productionRules":{"classificationVersion":"2022 classification homologated 15 December 2022","specificationVersion":"27 July 2023"},
+      "styleNotes":["lower-yield and longer-ageing requirements distinguish grand-cru production from the base Saint-Émilion appellation","barrel maturation is common and supports ageing potential"],
+      "researchNotes":["The classified-growth list is periodically revised. It must be versioned by classification cycle rather than treated as timeless metadata.","Producer classification is a separate axis from the appellation itself."],
+      "sourceRefs":["fr-inao-saint-emilion-grand-cru-2023"]
+    },
+    {
+      "id":"it-barbaresco-docg","country":"Italy","name":"Barbaresco","recordType":"appellation","legalClass":"DOCG/DOP","hierarchy":["Italy","Piemonte","Langhe","Barbaresco"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["dry still red wine"],"principalGrapes":["Nebbiolo"],
+      "classificationTerms":["Barbaresco","Riserva","Menzione Geografica Aggiuntiva"],
+      "researchNotes":["MASAF published a consolidated Barbaresco DOCG production specification on 4 March 2026.","The legacy project already contains extensive Barbaresco MGA material. That material will remain reference-only until the 2026 specification is extracted field by field for grape composition, ageing, release and MGA/vigna naming rules."],
+      "sourceRefs":["it-masaf-barbaresco-2026"]
+    }
+  ]
+}
