@@ -35,12 +35,12 @@ function place(country: string, name: string, path: string[]): ReferencePlace {
 describe('soil climate vintage and matrix research', () => {
   it('keeps multi-pass sourced environmental and vintage layers with bounded derived matrices', () => {
     const report = validateEnvironmentalResearch();
-    expect(environmentalResearchPassCount).toBe(2);
-    expect(vintageResearchPassCount).toBe(2);
-    expect(environmentalProfiles.length).toBeGreaterThanOrEqual(19);
-    expect(vintageObservations.length).toBeGreaterThanOrEqual(14);
+    expect(environmentalResearchPassCount).toBe(3);
+    expect(vintageResearchPassCount).toBe(3);
+    expect(environmentalProfiles.length).toBeGreaterThanOrEqual(26);
+    expect(vintageObservations.length).toBeGreaterThanOrEqual(17);
     expect(authorityVintageRatings.length).toBeGreaterThanOrEqual(25);
-    expect(report.countries).toBeGreaterThanOrEqual(7);
+    expect(report.countries).toBeGreaterThanOrEqual(12);
     expect(report.issues).toEqual([]);
   });
 
@@ -55,6 +55,12 @@ describe('soil climate vintage and matrix research', () => {
     const brunello = findEnvironmentalProfile('env-it-brunello-montalcino');
     const chianti = findEnvironmentalProfile('env-it-chianti-classico');
     const santorini = findEnvironmentalProfile('env-gr-santorini');
+    const mosel = findEnvironmentalProfile('env-de-mosel');
+    const kamptal = findEnvironmentalProfile('env-at-kamptal');
+    const tokaj = findEnvironmentalProfile('env-hu-tokaj');
+    const uco = findEnvironmentalProfile('env-ar-uco-valley');
+    const barossa = findEnvironmentalProfile('env-au-barossa-valley');
+    const margaretRiver = findEnvironmentalProfile('env-au-margaret-river');
 
     expect(champagne && rec(champagne.climate).annualMeanTempC).toBe(11);
     expect(champagne && rec(champagne.soils[0]).shareOfOutcroppingSedimentaryRockPct).toBe(75);
@@ -68,6 +74,12 @@ describe('soil climate vintage and matrix research', () => {
     expect(rec(chianti?.climate).annualRainfallMm).toEqual([800, 900]);
     expect(santorini?.matrixModifiers.droughtStress).toBeGreaterThan(0.8);
     expect(santorini?.matrixModifiers.diseasePressure).toBeLessThan(0);
+    expect(rec(mosel?.topography).extremeSlopePct).toBe(70);
+    expect(kamptal?.soils.map((soil) => rec(soil).name)).toContain('Heiligenstein Permian sandstone');
+    expect(tokaj?.matrixModifiers.botrytisSuitability).toBeGreaterThan(0.8);
+    expect(rec(uco?.topography).majorDepartments).toEqual(['Tupungato', 'Tunuyán', 'San Carlos']);
+    expect(rec(barossa?.topography).altitudeM).toEqual([130, 430]);
+    expect(rec(margaretRiver?.climate).meanJanuaryTempC).toBe(20.9);
   });
 
   it('maps detailed game geography to the most specific researched environment', () => {
@@ -81,6 +93,13 @@ describe('soil climate vintage and matrix research', () => {
     const rutherford = place('United States', 'Rutherford', ['California', 'Napa Valley', 'Rutherford']);
     const marlborough = place('New Zealand', 'Marlborough', ['South Island', 'Marlborough']);
     const stellenbosch = place('South Africa', 'Stellenbosch', ['Coastal Region', 'Stellenbosch']);
+    const mosel = place('Germany', 'Mosel', ['Mosel']);
+    const kamptal = place('Austria', 'Kamptal', ['Niederösterreich', 'Kamptal']);
+    const wachau = place('Austria', 'Wachau', ['Niederösterreich', 'Wachau']);
+    const tokaj = place('Hungary', 'Tokaj', ['Tokaj']);
+    const uco = place('Argentina', 'Valle de Uco', ['Mendoza', 'Valle de Uco']);
+    const barossa = place('Australia', 'Barossa Valley', ['South Australia', 'Barossa Valley']);
+    const margaretRiver = place('Australia', 'Margaret River', ['Western Australia', 'Margaret River']);
 
     expect(environmentalProfileForPlace(meursault)?.id).toBe('env-fr-meursault');
     expect(environmentalProfileForPlace(gevrey)?.id).toBe('env-fr-gevrey-chambertin');
@@ -92,6 +111,13 @@ describe('soil climate vintage and matrix research', () => {
     expect(environmentalProfileForPlace(rutherford)?.id).toBe('env-us-napa-valley');
     expect(environmentalProfileForPlace(marlborough)?.id).toBe('env-nz-marlborough');
     expect(environmentalProfileForPlace(stellenbosch)?.id).toBe('env-za-stellenbosch');
+    expect(environmentalProfileForPlace(mosel)?.id).toBe('env-de-mosel');
+    expect(environmentalProfileForPlace(kamptal)?.id).toBe('env-at-kamptal');
+    expect(environmentalProfileForPlace(wachau)?.id).toBe('env-at-wachau');
+    expect(environmentalProfileForPlace(tokaj)?.id).toBe('env-hu-tokaj');
+    expect(environmentalProfileForPlace(uco)?.id).toBe('env-ar-uco-valley');
+    expect(environmentalProfileForPlace(barossa)?.id).toBe('env-au-barossa-valley');
+    expect(environmentalProfileForPlace(margaretRiver)?.id).toBe('env-au-margaret-river');
   });
 
   it('stores actual growing-season observations instead of legacy generic quality scores', () => {
@@ -118,11 +144,18 @@ describe('soil climate vintage and matrix research', () => {
     const chianti2025 = findVintageObservation('vintage-it-chianti-classico-2025');
     const brunello2021 = findVintageObservation('vintage-it-brunello-montalcino-2021');
     const stellenbosch2021 = findVintageObservation('vintage-za-stellenbosch-2021');
+    const mosel2023 = findVintageObservation('vintage-de-mosel-2023');
+    const mosel2025 = findVintageObservation('vintage-de-mosel-2025');
+    const uco2022 = findVintageObservation('vintage-ar-uco-valley-2022');
 
     expect(rec(chianti2021?.growingSeason).sangioveseHarvestStart).toBe('around 2021-09-20');
     expect(rec(chianti2025?.growingSeason).productionHectolitres).toBe(265000);
     expect(brunello2021?.matrixModifiers.yield).toBeLessThan(0);
     expect(stellenbosch2021?.matrixModifiers.ageability).toBeGreaterThan(0.3);
+    expect(rec(mosel2023?.growingSeason).estimatedMustHectolitres).toBe(710000);
+    expect(rec(mosel2025?.growingSeason).selectionLossesSteepSlopesPct).toEqual([50, 75]);
+    expect(uco2022?.matrixModifiers.yield).toBeLessThan(-0.3);
+    expect(rec(uco2022?.growingSeason).nationalYieldVs2021Pct).toBe(-12);
   });
 
   it('resolves researched vintages through game geography and applies place plus vintage matrices', () => {
@@ -149,9 +182,13 @@ describe('soil climate vintage and matrix research', () => {
     const chianti = place('Italy', 'Chianti Classico', ['Tuscany', 'Chianti Classico']);
     const brunello = place('Italy', 'Brunello di Montalcino', ['Tuscany', 'Brunello di Montalcino']);
     const stellenbosch = place('South Africa', 'Stellenbosch', ['Coastal Region', 'Stellenbosch']);
+    const mosel = place('Germany', 'Mosel', ['Mosel']);
+    const uco = place('Argentina', 'Valle de Uco', ['Mendoza', 'Valle de Uco']);
     expect(vintageObservationForPlace(chianti, 2021)?.id).toBe('vintage-it-chianti-classico-2021');
     expect(vintageObservationForPlace(brunello, 2021)?.id).toBe('vintage-it-brunello-montalcino-2021');
     expect(vintageObservationForPlace(stellenbosch, 2021)?.id).toBe('vintage-za-stellenbosch-2021');
+    expect(vintageObservationForPlace(mosel, 2025)?.id).toBe('vintage-de-mosel-2025');
+    expect(vintageObservationForPlace(uco, 2022)?.id).toBe('vintage-ar-uco-valley-2022');
   });
 
   it('keeps measured Napa rainfall separate from derived vintage effects', () => {
