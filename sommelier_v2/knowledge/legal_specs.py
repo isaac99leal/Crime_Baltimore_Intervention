@@ -15,10 +15,16 @@ from typing import Callable, Mapping, Sequence
 
 from .catalog import normalize_name
 
-DATA_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_seed.json"
-SUPPLEMENT_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_supplement.json"
-BURGUNDY_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_burgundy.json"
-COTE_DE_NUITS_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_cote_de_nuits.json"
+DATA_DIR = Path(__file__).resolve().parent / "data"
+DATA_PATH = DATA_DIR / "legal_gi_specs_seed.json"
+SUPPLEMENT_PATH = DATA_DIR / "legal_gi_specs_supplement.json"
+BURGUNDY_PATH = DATA_DIR / "legal_gi_specs_burgundy.json"
+COTE_DE_NUITS_PATH = DATA_DIR / "legal_gi_specs_cote_de_nuits.json"
+
+
+def _default_data_paths() -> list[Path]:
+    """Load every reviewed legal-spec tranche in deterministic filename order."""
+    return sorted(DATA_DIR.glob("legal_gi_specs_*.json"), key=lambda path: path.name)
 
 
 @dataclass(frozen=True)
@@ -108,11 +114,7 @@ class LegalSpecRegistry:
     """Load and evaluate reviewed protected-origin production specifications."""
 
     def __init__(self, data_path: Path | None = None) -> None:
-        paths = (
-            [Path(data_path)]
-            if data_path is not None
-            else [DATA_PATH, SUPPLEMENT_PATH, BURGUNDY_PATH, COTE_DE_NUITS_PATH]
-        )
+        paths = [Path(data_path)] if data_path is not None else _default_data_paths()
         documents: list[dict[str, object]] = []
         for path in paths:
             if not path.exists():
