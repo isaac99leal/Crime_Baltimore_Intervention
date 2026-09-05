@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   findRareCultivar,
   historicalVarietyResearchQueue,
+  rareCultivarPassCount,
   rareCultivarQueuePolicy,
   validateRareCultivarResearch,
 } from './rareCultivarResearch';
@@ -9,7 +10,8 @@ import {
 describe('rare and historically eroded cultivar research', () => {
   it('preserves deep rare-cultivar profiles and a larger identity research queue', () => {
     const report = validateRareCultivarResearch();
-    expect(report.detailedProfiles).toBeGreaterThanOrEqual(3);
+    expect(rareCultivarPassCount).toBe(2);
+    expect(report.detailedProfiles).toBeGreaterThanOrEqual(6);
     expect(report.queueRegions).toBeGreaterThanOrEqual(5);
     expect(report.queuedNames).toBeGreaterThanOrEqual(30);
     expect(report.issues).toEqual([]);
@@ -27,6 +29,29 @@ describe('rare and historically eroded cultivar research', () => {
     const jani = findRareCultivar('Jani');
     expect((jani?.viticulture as Record<string, unknown>)?.yieldTonnesPerHaOfficialRange).toEqual([2.2, 3.5]);
     expect(jani?.generationStatus).toBe('reference-only');
+  });
+
+  it('adds Romorantin with time-stamped acreage and certified clone data', () => {
+    const romorantin = findRareCultivar('Romorantin');
+    expect(romorantin?.country).toBe('France');
+    expect((romorantin?.historicalStatus.cultivatedAreaFranceHaByYear as Record<string, number>)?.['2018']).toBe(79);
+    expect((romorantin?.identity?.certifiedFrenchClones as number[])).toEqual([466, 873, 928, 929]);
+  });
+
+  it('hard-separates Limniona from Limnio and preserves the recovery/clonal context', () => {
+    const limniona = findRareCultivar('Limniona');
+    expect((limniona?.identity?.distinctFrom as string[])).toContain('Limnio');
+    expect(limniona?.identity?.officialClone).toBe('ENTAV-INRA 013VNB');
+    expect(findRareCultivar('Lemniona')?.id).toBe(limniona?.id);
+  });
+
+  it('resolves the user transliteration Ak-Dzuzhum to the sourced Ak-Dzhuzyum profile without claiming current acreage', () => {
+    const ak = findRareCultivar('Ak-Dzuzhum');
+    expect(ak?.name).toBe('Ak-Dzhuzyum');
+    expect(ak?.country).toBe('Kyrgyzstan');
+    expect(ak?.identity?.pedigree).toBe('Madeleine Angevine × Pinot Noir');
+    expect(ak?.historicalStatus.currentCommercialStatus).toContain('unresolved');
+    expect(findRareCultivar('Ак-джузюм')?.id).toBe(ak?.id);
   });
 
   it('keeps official historical variety names as a normalization queue rather than fabricated aliases', () => {
