@@ -1,62 +1,51 @@
 # Sommelier Web — reboot
 
-This folder is a browser-first reboot of the original Pygame sommelier simulator.
+This folder is a browser-first reboot of the original Pygame sommelier simulator. The original implementation remains intact on the source branch.
 
-## Why this exists
+## Current playable systems
 
-The original prototype contains substantial domain work: a large grape database, detailed wine regions, guest archetypes, pairing rules, generators, cellar management, service, blind tasting and event concepts. Its main constraint is product architecture. It is a local Pygame application inside an unrelated repository, with no clean browser launch path.
+- Dining-room recommendation and detailed food-pairing scoring.
+- Cellar inventory, lots/bins/storage condition, pricing, BTG, list management and reprints.
+- Deterministic wholesale market with 15,000 fictional commercial offers constrained to validated wine reference data.
+- Blind tasting.
+- Weekly office/economy loop.
+- Suppliers, allocations, staff training, equipment and fictional certification progression.
+- Browser/local-storage saves.
 
-This reboot keeps the original game untouched and reuses its data as source material. The new application is designed for a web launch and for incremental, source-backed wine research.
+## Wine data architecture
 
-## Current playable loop
+The game deliberately separates factual identity, legal rules, historical evidence and simulation-derived sensory behavior.
 
-- Dining-room service with full menu, preparation, sauce and aromatic pairing logic.
-- Cellar inventory, bins, par levels, bottle condition, list pricing and off-menu stock.
-- By-the-glass program with pour size, glass pricing and open-bottle handling.
-- Large deterministic wholesale market built from validated real geography/grapes and fictional commercial producers/cuvées.
-- Blind tasting from structural and aromatic clues.
-- Supplier relationships, staff training, equipment and certification-style progression.
-- Weekly office/economy loop and browser local save.
+- `src/game/reference.ts` — generation-safe detailed grape/geography layer from the original project.
+- `src/data/official/` — authoritative normalized identity/index snapshots.
+- `src/game/research.ts` + `src/data/research/appellation_profiles*.json` — sourced legal/appellation research.
+- `src/game/environment.ts` — sourced climate/soil/geology and historical growing-season matrices.
+- `src/game/vintageArchive.ts` — centuries-deep historical vintage evidence ledger without fabricated weather.
+- `src/game/ageing.ts` — legal ageing/vine-age rules plus separate bottle-age evolution.
+- `src/game/winemaking.ts` — detailed cellar-decision engine with designation/product legality gates.
+- `src/game/noteEvolution.ts` — separate vintage, winemaking and time-derived tasting-note layers.
+- `src/game/designationProgram.ts` — global wine-GI/equivalent coverage accounting.
+- `REFERENCE_DATA.md` — data-policy and provenance contract.
 
-## Wine-data architecture
+Current authoritative indices include 1,997 winegrape records, 60 winegrape-growing countries, 613 statistical planting geographies, 280 U.S. AVAs and 1,665 EU wine GIs. Statistical planting areas are never treated as legal GIs.
 
-The reboot does not flatten all wine data into one source.
+The global designation target is exhaustive but not yet complete. EU/eAmbrosia and U.S./TTB are live normalized registry indices; several additional national authorities are identified; remaining jurisdictions are an explicit pending queue. No GI is intentionally excluded because it is small or obscure.
 
-1. **Original detailed model** — hundreds of hand-modeled grapes and detailed geography, tasting structure, aromas and production context.
-2. **Authoritative identity indices** — 1,997 prime winegrape records, 60 countries, 613 statistical planting geographies, 280 U.S. AVAs and 1,665 EU wine GIs.
-3. **Hand-researched legal/appellation overlay** — source-by-source rules, hierarchy, grapes, styles, classifications, subzones, climats/MGAs, ageing and production requirements.
-4. **Environmental research** — three current passes with 26 researched soil/climate/geology/topography profiles across at least 12 countries.
-5. **Historical vintage research** — three current passes with 17 detailed growing-season observations plus official categorical Rioja vintage ratings from 2001–2025.
+## Vintage and ageing
 
-The simulation matrix follows the original design philosophy:
+The old universal 45-year generation cap has been removed. The new model separates:
 
-`grape baseline × place modifier × vintage modifier × winemaking modifier`
+1. harvest/vintage evidence;
+2. historical legal regime;
+3. mandatory legal ageing before release;
+4. bottle age and storage condition;
+5. style-specific sensory evolution.
 
-The original 1–5 grape structure remains the baseline. Place and vintage effects are bounded, explicitly simulation-derived transformations based on sourced environmental or growing-season evidence. They are not presented as laboratory measurements or official numeric vintage scores.
+The historical authority ledger already reaches 1756 for documented Port archive entries. A historical archive entry proves documentary evidence at the stated level; it does not create fake rainfall, vintage scores or modern DOP law for that year.
 
-See `REFERENCE_DATA.md` and `src/data/research/MATRIX_MODEL.md` for the full provenance and matrix rules.
+## Winemaking
 
-## Research status
-
-Current detailed environmental coverage includes, among others: Champagne; Côte de Nuits/Côte de Beaune and Gevrey-Chambertin/Meursault; Pauillac, Pomerol, Saint-Émilion and Sauternes; Barolo; Brunello/Montalcino; Chianti Classico; Valpolicella/Amarone; Rioja Alta/Alavesa/Oriental; Santorini; Napa Valley; Marlborough; Stellenbosch; Mosel; Kamptal; Wachau; Tokaj; Uco Valley; Barossa Valley; and Margaret River.
-
-Detailed historical observations currently include Champagne 2021/2022; Bourgogne 2021/2022; Bordeaux 2020/2021/2022; Napa Valley 2021/2022/2023; Chianti Classico 2021/2025; Brunello/Montalcino 2021; Stellenbosch 2021; Mosel 2023/2025; and Uco Valley 2022.
-
-If a year-specific record has not been researched, the engine does not invent historical weather. The original Python `VINTAGE_QUALITY` table is retained only as legacy design history and is not treated as authoritative data.
-
-## Architecture
-
-- `src/game/engine.ts`: pure game rules and state transitions.
-- `src/game/reference.ts`: canonical adapter for the original detailed grape/region model.
-- `src/game/research.ts`: hand-researched legal/appellation overlay and provenance validation.
-- `src/game/environment.ts`: soil, climate, vintage and matrix lookup/application.
-- `src/game/world.ts`: deterministic fictional commercial generation constrained by validated wine reference data.
-- `src/game/pairing.ts`: menu/preparation/sauce/aromatic pairing system.
-- `src/game/systems.ts`: beverage-program operations.
-- `src/data/official/`: normalized authoritative bulk indices.
-- `src/data/research/`: source registries, rich appellation profiles, environmental profiles and historical vintage observations.
-
-The rule engine does not depend on React. Simulation and reference logic can grow without coupling it to presentation code.
+The winemaking matrix currently models more than 35 separate decision points and more than 90 options across harvest, extraction, fermentation, MLF, lees, oak, oxygen, fortification, flor, blending, sparkling production, clarification, filtration and bottling. Choices that can be legally restricted are blocked until the exact product/designation resolver says they are permitted.
 
 ## Run locally
 
@@ -73,18 +62,6 @@ npm test
 npm run build
 ```
 
-## Product roadmap
+## Repository status
 
-1. Continue old-school source-by-source research, prioritizing deeper site, soil, climate, vintage and production-method coverage over shallow name counts.
-2. Normalize cultivar synonymy/parentage against VIVC and preserve local names without duplicate grape identities.
-3. Expand environmental resolution from region/appellation toward subzone, commune, MGA/climat and vineyard/site where authoritative data supports it.
-4. Expand sourced historical vintages without fabricating weather; retain measured observations in original units and keep derived effects separate.
-5. Complete the winemaking matrix: extraction, whole cluster, oak, lees, malolactic, oxidative handling, drying/appassimento, botrytis, fortification, flor/solera, sparkling production, amphora/qvevri and other techniques.
-6. Deepen service decisions: faults, glassware, decanting, temperature, pacing, pairing by course, upselling and recovery.
-7. Expand blind tasting into sight, nose, palate, structure, climate, grape, region, vintage and quality-tier deduction.
-8. Restore and expand weekly events, career progression, allocations, restaurant moves and producer/guest arcs from the original prototype.
-9. Split this folder into its own repository before public launch.
-
-## Data rule
-
-Game balance and factual accuracy are separate concerns. Factual wine identity, law, geography, soil, climate and historical vintage claims need provenance. Simulation-derived commercial values and matrices must remain clearly distinguishable from those facts.
+This remains a draft reboot in `revamp/sommelier-web-v2`. It is intentionally staged in `sommelier-web/` so it can later be extracted into a dedicated repository. Do not treat incomplete reference coverage as authoritative merely because the UI can display it.
