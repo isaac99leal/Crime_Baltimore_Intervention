@@ -173,6 +173,29 @@ def _apply_due_nutrients(state: FermentationState, additions: tuple[NutrientAddi
     return replace(state, yan_mg_l=yan) if changed else state
 
 
+def _complete_to_target(state: FermentationState, target_sugar_g_l: float, params: AlcoholicFermentationParams) -> FermentationState:
+    """Reconcile a small low-level finish tolerance to the process RS target.
+
+    The low-level kinetic model can mark a batch ``finished`` a few hundredths
+    of a gram per litre above the process-level dry target. Treating that state
+    as incomplete created a state-machine contradiction. This function closes
+    only that small remaining sugar mass and applies the same sugar→ethanol,
+    YAN and CO2 stoichiometry used by the kinetic model.
+    """
+    target = max(0.0, target_sugar_g_l)
+    consumed = max(0.0, state.sugar_g_l - target)
+    if consumed > 0.10:
+        raise FermentationConstraintError("Low-level fermentation stopped too far above the requested residual-sugar target.")
+    return replace(
+        state,
+        sugar_g_l=target,
+        ethanol_pct=state.ethanol_pct + consumed / params.sugar_g_l_per_abv_pct,
+        yan_mg_l=max(0.0, state.yan_mg_l - consumed * params.yan_consumption_mg_per_g_sugar),
+        co2_generated_g_l=state.co2_generated_g_l + consumed * params.co2_yield_g_per_g_sugar,
+        finished=True,
+    )
+
+
 def run_fermentation(must: MustComposition, plan: FermentationPlan) -> FermentationResult:
     validate_plan(must, plan)
     params = _planned_params(plan)
@@ -195,11 +218,8 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
     while current.hour < plan.max_hours:
         current = _apply_due_nutrients(current, additions, applied)
         if current.sugar_g_l <= plan.target_residual_sugar_g_l + 0.05:
-            if plan.target_residual_sugar_g_l > 2.0:
-                arrested = True
-                current = replace(current, sugar_g_l=max(plan.target_residual_sugar_g_l, current.sugar_g_l), finished=True)
-            else:
-                current = replace(current, finished=True)
+            current = _complete_to_target(current, plan.target_residual_sugar_g_l, params)
+            arrested = plan.target_residual_sugar_g_l > 2.0
             history.append(current)
             break
 
@@ -223,7 +243,14 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
 
         history.append(next_state)
         current = next_state
-        if arrested or current.finished:
+        if arrested:
+            break
+        if current.finished:
+            if current.sugar_g_l <= plan.target_residual_sugar_g_l + 0.05:
+                current = _complete_to_target(current, plan.target_residual_sugar_g_l, params)
+                history[-1] = current
+            else:
+                warnings.append("The kinetic model stopped above the requested residual-sugar target.")
             break
 
         if len(history) > 36:
@@ -238,7 +265,7 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
         stuck = True
         warnings.append("Alcoholic fermentation reached the configured time limit.")
 
-    dry = current.sugar_g_l <= 2.0
+    dry = current.sugar_g_l <= 2.0 + 1e-9
     alcoholic_completed = dry or arrested
     if stuck and plan.allow_native_stall:
         warnings.append("The plan allows a natural stall; wine remains microbiologically unstable.")
