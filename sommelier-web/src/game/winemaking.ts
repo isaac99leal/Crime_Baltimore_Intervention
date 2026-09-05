@@ -1,4 +1,5 @@
 import winemakingData from '../data/research/winemaking_decisions.json';
+import winemakingDataPass2 from '../data/research/winemaking_decisions_pass2.json';
 import { researchSourceById } from './research';
 import type { WineProfile } from './types';
 
@@ -32,10 +33,14 @@ type WinemakingFile = {
   decisions: WinemakingDecision[];
 };
 
-const file = winemakingData as unknown as WinemakingFile;
-export const winemakingResearchMethod = file.method;
-export const winemakingAxes = file.axes;
-export const winemakingDecisions = file.decisions;
+const files = [
+  winemakingData as unknown as WinemakingFile,
+  winemakingDataPass2 as unknown as WinemakingFile,
+];
+export const winemakingResearchMethod = files.map((candidate) => candidate.method).join(' ');
+export const winemakingResearchPassCount = files.length;
+export const winemakingAxes = [...new Set(files.flatMap((candidate) => candidate.axes))];
+export const winemakingDecisions = files.flatMap((candidate) => candidate.decisions);
 export const winemakingDecisionById = new Map(winemakingDecisions.map((decision) => [decision.id, decision]));
 
 export type WinemakingSelection = { decisionId: string; optionId: string };
@@ -113,6 +118,10 @@ export function validateWinemakingResearch() {
   const ids = new Set<string>();
   const allowedAxes = new Set(winemakingAxes);
 
+  for (const file of files) {
+    for (const axis of file.axes) if (!allowedAxes.has(axis)) issues.push(`Unknown winemaking file axis: ${axis}`);
+  }
+
   for (const decision of winemakingDecisions) {
     if (ids.has(decision.id)) issues.push(`Duplicate winemaking decision: ${decision.id}`);
     ids.add(decision.id);
@@ -130,6 +139,7 @@ export function validateWinemakingResearch() {
   }
 
   return {
+    passes: winemakingResearchPassCount,
     decisions: winemakingDecisions.length,
     stages: new Set(winemakingDecisions.map((decision) => decision.stage)).size,
     options: winemakingDecisions.reduce((sum, decision) => sum + decision.options.length, 0),
