@@ -40,9 +40,9 @@
     },
     "chianti_classico_disciplinare": {
       "authority": "Consorzio Vino Chianti Classico",
-      "url": "https://www.chianticlassico.com/wp-content/uploads/2020/11/disciplinare-Chianti-Classico.pdf",
+      "url": "https://www.chianticlassico.com/wp-content/uploads/2024/01/Production-Code-2023.pdf",
       "checked": "2026-09-05",
-      "scope": "Sangiovese 80-100%; up to 20% other Tuscany-suitable red varieties"
+      "scope": "Annata/Riserva Sangiovese 80-100%; Gran Selezione Sangiovese 90-100% with only listed local red secondary varieties up to 10%; UGA labeling rules"
     },
     "chianti_classico_parameters": {
       "authority": "Consorzio Vino Chianti Classico",
@@ -232,12 +232,13 @@
       "variant": "gran selezione",
       "wine_style": "red",
       "allowed_grapes": ["Sangiovese"],
-      "grape_constraints": [{"grape": "Sangiovese", "min_pct": 80, "max_pct": 100}],
+      "grape_constraints": [{"grape": "Sangiovese", "min_pct": 90, "max_pct": 100}],
       "min_final_alcohol_pct": 13.0,
       "min_total_acidity_g_l": 4.5,
       "min_dry_extract_g_l": 26.0,
       "min_total_aging_months": 30,
-      "source_ids": ["chianti_classico_disciplinare", "chianti_classico_parameters"]
+      "source_ids": ["chianti_classico_disciplinare", "chianti_classico_parameters"],
+      "notes": "Current Gran Selezione requires 90-100% Sangiovese. The remaining maximum 10% is restricted to Colorino, Canaiolo, Ciliegiolo, Mammolo, Pugnitello, Malvasia Nera, Foglia Tonda and Sanforte. This conservative seed still authorizes only the always-legal 100% Sangiovese path until those secondary varieties are represented with the full vineyard-level rule."
     },
     {
       "id": "es:rioja:standard",

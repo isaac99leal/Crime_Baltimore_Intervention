@@ -2,8 +2,9 @@
 
 The base vineyard engine handles physical block/vintage mechanics and the legacy
 geographic guard. This wrapper makes sourced protected-origin specifications the
-default authority and applies vineyard-level yield and minimum-potential-alcohol
-limits without pretending that final-wine chemistry is known at harvest.
+default authority, applies vineyard-level yield and minimum-potential-alcohol
+limits, and separately evaluates whether a named site can be used as a legal
+label claim.
 """
 from __future__ import annotations
 
@@ -13,6 +14,7 @@ from typing import Iterable
 from .expanded_catalog import NamedSite, WorldWineKnowledgeCatalog
 from .legal_rules import LegalAwareRegionGrapeRulebook
 from .regional_rules import RegionGrapeRulebook
+from .site_claims import SiteClaimRegistry
 from .vineyard_engine import VineyardBlock, VineyardEngine as BaseVineyardEngine, VineyardOutcome
 from .vintage_engine import DailyWeather
 
@@ -24,10 +26,12 @@ class LegalVineyardEngine(BaseVineyardEngine):
         catalog: WorldWineKnowledgeCatalog | None = None,
         rulebook: RegionGrapeRulebook | None = None,
         sites: Iterable[NamedSite] | None = None,
+        site_claims: SiteClaimRegistry | None = None,
     ) -> None:
         catalog = catalog or WorldWineKnowledgeCatalog()
         rulebook = rulebook or LegalAwareRegionGrapeRulebook(catalog=catalog)
         super().__init__(catalog=catalog, rulebook=rulebook, sites=sites)
+        self.site_claims = site_claims or SiteClaimRegistry()
 
     def simulate(
         self,
@@ -38,9 +42,9 @@ class LegalVineyardEngine(BaseVineyardEngine):
     ) -> VineyardOutcome:
         result = super().simulate(block, weather_days, vintage_year=vintage_year)
         if block.label_scope.casefold() != "regulated_gi":
-            return result
+            return replace(result, site_claim_eligible=False)
         if not isinstance(self.rulebook, LegalAwareRegionGrapeRulebook):
-            return result
+            return replace(result, site_claim_eligible=False)
 
         site = self.site_registry.resolve(site_id=block.site_id) if block.site_id else None
         appellation = block.appellation or (site.parent if site else None)
@@ -50,7 +54,9 @@ class LegalVineyardEngine(BaseVineyardEngine):
             region=block.region,
         )
         if spec is None:
-            return result
+            # The strict origin rulebook should already fail closed here, but keep
+            # the named-site claim independently fail closed as a second guard.
+            return replace(result, site_claim_eligible=False)
 
         issues = list(result.issues)
         warnings = list(result.warnings)
@@ -74,10 +80,22 @@ class LegalVineyardEngine(BaseVineyardEngine):
                 f"Legal grape-to-wine yield ceiling is {spec.grape_to_wine_yield_pct:g}%; enforce it at pressing/vinification, not vineyard harvest."
             )
 
+        site_claim = self.site_claims.evaluate(
+            site=site,
+            origin_decision=result.origin_decision,
+            appellation=appellation,
+            wine_variant=None,
+        )
+        site_claim_eligible = bool(site_claim.eligible and label_eligible)
+        if site is not None and not site_claim_eligible:
+            warnings.append(
+                f"Named-site label claim remains unavailable: {site_claim.status}."
+            )
+
         return replace(
             result,
             label_eligible=label_eligible,
-            site_claim_eligible=bool(result.site_claim_eligible and label_eligible),
+            site_claim_eligible=site_claim_eligible,
             issues=tuple(issues),
             warnings=tuple(warnings),
         )
