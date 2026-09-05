@@ -102,6 +102,7 @@ class GenerationEvidence:
     site_claim_status: str
     site_claim_rule_id: str | None
     site_claim_evidence: tuple[str, ...]
+    site_claim_name: str | None = None
     legal_spec_id: str | None = None
     production_status: str = "not_applicable"
     release_status: str = "not_applicable"
@@ -301,11 +302,8 @@ class ConstrainedWineBuilder:
             )
 
         physical_site_name = origin.site.name if origin.site is not None else None
-        vineyard_label = (
-            physical_site_name
-            if physical_site_name and origin.site_claim_eligible
-            else ""
-        )
+        site_claim_name = origin.site_claim_name if origin.site_claim_eligible else None
+        vineyard_label = site_claim_name or ""
 
         wine = WineRecord(
             id=request.id,
@@ -352,6 +350,7 @@ class ConstrainedWineBuilder:
             site_claim_status=origin.site_claim_status,
             site_claim_rule_id=origin.site_claim_rule_id,
             site_claim_evidence=origin.site_claim_evidence,
+            site_claim_name=origin.site_claim_name,
             legal_spec_id=legal_spec_id,
             production_status=production_status,
             release_status=release_status,
