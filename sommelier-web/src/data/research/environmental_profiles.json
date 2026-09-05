@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Place-specific environmental research. Factual climate, geology and soil statements are sourced. Numeric matrix modifiers are simulation-derived transforms on the legacy grape baseline and are never presented as legal, analytical or published measurements.",
+  "profiles": [
+    {
+      "id":"env-fr-champagne",
+      "researchProfileId":"fr-champagne-aop",
+      "country":"France","name":"Champagne","scope":"appellation",
+      "climate":{"classification":"cool dual oceanic-continental","annualMeanTempC":11,"influences":["oceanic moderation","continental frost and summer storm risk"],"hazards":["winter and spring frost","violent summer storms","year-to-year weather variability"],"viticulturalEffects":["natural acidity retention","sugar-acid balance is sensitive to sunshine and rainfall","sloped sites improve light interception and drainage"]},
+      "soils":[{"name":"limestone-dominant Champagne subsoil","components":["chalk","marl","hard limestone"],"shareOfOutcroppingSedimentaryRockPct":75,"drainage":"high porosity and effective drainage","waterBehavior":"chalk stores roughly 300-400 L/m3 and supplies water by capillary action","viticulturalEffects":["moderated vine water supply","supports acidity-ripeness balance"]}],
+      "topography":{"vineyardElevationM":[90,300],"typicalSlopePct":12,"extremeSlopePctApprox":60,"commonAspects":["south","south-east","east"]},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.60,"tannin":-0.20,"body":-0.30,"alcohol":-0.40,"fruitIntensity":-0.10,"earthIntensity":0.20,"aromaticFreshness":0.60,"droughtStress":-0.10,"diseasePressure":0.10,"frostRisk":0.60,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-champagne-climate-2026","fr-champagne-soil-2026"]
+    },
+    {
+      "id":"env-fr-bourgogne-cote",
+      "country":"France","name":"Côte de Nuits / Côte de Beaune","scope":"regional-environment",
+      "climate":{"classification":"cool-to-moderate continental-influenced","influences":["latitude","slope and aspect","localized rainfall and temperature variation"],"hazards":["spring frost","summer heat and drought episodes","localized rain and disease pressure"]},
+      "soils":[{"name":"Jurassic clay-limestone complex","components":["limestone","marl","clay","r rendzina and brown limestone soils"],"geologicAge":"Jurassic strata exposed by later faulting","drainage":"variable; generally enhanced on stony limestone slopes","viticulturalEffects":["Pinot Noir benefits from well-drained limestone slopes","Chardonnay performs strongly on limestone and clay-rich marls"]}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":3,"acidity":0.35,"tannin":0.05,"body":0.00,"alcohol":-0.10,"fruitIntensity":0.00,"earthIntensity":0.35,"aromaticFreshness":0.35,"droughtStress":0.05,"diseasePressure":0.15,"frostRisk":0.35,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-bivb-cote-geology-2026"]
+    },
+    {
+      "id":"env-fr-meursault",
+      "researchProfileId":"fr-meursault-aop",
+      "country":"France","name":"Meursault","scope":"appellation",
+      "climate":{"classification":"Côte de Beaune mesoclimate","influences":["east-to-south exposures","slope position around best sites near 260 m"]},
+      "soils":[{"name":"Jurassic marl and marly limestone","components":["Jurassic marls","marly limestone","patches of magnesian limestone","Callovian limestone","Argovian marls"],"viticulturalEffects":["strong Chardonnay suitability","site-to-site textural and drainage variation"]}],
+      "topography":{"keyElevationM":260,"favoredAspects":["east","south-east","south"]},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.20,"tannin":0.00,"body":0.25,"alcohol":0.05,"fruitIntensity":0.10,"earthIntensity":0.30,"aromaticFreshness":0.20,"droughtStress":0.00,"diseasePressure":0.10,"frostRisk":0.30,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-bivb-meursault-2024"]
+    },
+    {
+      "id":"env-it-barolo",
+      "researchProfileId":"it-barolo-docg",
+      "country":"Italy","name":"Barolo zone","scope":"appellation-environment",
+      "climate":{"classification":"cold subcontinental temperate Langhe climate","influences":["Alpine protection","mild humid Ligurian Sea currents","warm humid air rising from the Tanaro valley"],"mesoclimate":"Barolo has intermediate temperatures and strong ridge/exposure-driven microclimate variation"},
+      "soils":[
+        {"name":"Lequio Formation","components":["clayey marl","sand"],"texture":"silty with clay and sand","calcareous":true,"distribution":["central-southern Serralunga","eastern Monforte"]},
+        {"name":"Sant'Agata Fossili Marls","components":["marl","silt","clay"],"distribution":["large parts of Barolo and Barbaresco"]},
+        {"name":"Diano Sandstones","components":["sandstone","sand"],"texture":"sand-rich, lower clay and limestone","distribution":["Monforte","Castiglione Falletto","Barolo"]},
+        {"name":"La Morra Conglomerates","components":["pebbly conglomerate","gravel"],"distribution":["La Morra"]},
+        {"name":"Gypsum Vein Formation","components":["clay marl","gypsum crystals"],"distribution":["west-facing La Morra and Verduno"]}
+      ],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.35,"tannin":0.60,"body":0.20,"alcohol":0.15,"fruitIntensity":0.05,"earthIntensity":0.45,"aromaticFreshness":0.25,"droughtStress":0.10,"diseasePressure":0.10,"frostRisk":0.10,"botrytisSuitability":0.00},
+      "sourceRefs":["it-langhe-climate-geology-2026"]
+    },
+    {
+      "id":"env-es-rioja-alta",
+      "country":"Spain","name":"Rioja Alta","scope":"official-production-area",
+      "climate":{"classification":"Atlantic-influenced temperate","temperatureNotes":"higher sites ripen later and preserve more acidity; lower sites show riper fruit","annualRainfallLitresPerM2":[200,400],"influences":["Atlantic climate","altitude"]},
+      "soils":[{"name":"calcareous-clay","effects":["supports structure","favored for Tempranillo"]},{"name":"clay-ferrous","effects":["freshness","balanced body and acidity"]},{"name":"alluvial","effects":["moisture accumulation","lighter fruitier wine tendency"]}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.25,"tannin":0.15,"body":0.10,"alcohol":-0.05,"fruitIntensity":0.10,"earthIntensity":0.25,"aromaticFreshness":0.25,"droughtStress":0.10,"diseasePressure":0.05,"frostRisk":0.10,"botrytisSuitability":0.00},
+      "sourceRefs":["es-rioja-alta-terroir-2026"]
+    },
+    {
+      "id":"env-es-rioja-alavesa",
+      "country":"Spain","name":"Rioja Alavesa","scope":"official-production-area",
+      "climate":{"classification":"Atlantic-influenced, dry and sunny","influences":["Sierra de Cantabria rain and cold protection","Foehn effect"],"relativeConditions":"generally colder and more humid than the other Rioja areas"},
+      "soils":[{"name":"clay-limestone","estimatedSharePct":95,"effects":["calcium-rich structure","balanced vine growth","strong Tempranillo suitability"]}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.35,"tannin":0.15,"body":0.05,"alcohol":-0.10,"fruitIntensity":0.05,"earthIntensity":0.30,"aromaticFreshness":0.35,"droughtStress":0.05,"diseasePressure":0.10,"frostRisk":0.15,"botrytisSuitability":0.00},
+      "sourceRefs":["es-rioja-alavesa-terroir-2026"]
+    },
+    {
+      "id":"env-es-rioja-oriental",
+      "country":"Spain","name":"Rioja Oriental","scope":"official-production-area",
+      "climate":{"classification":"Mediterranean-influenced, drier and warmer at lower altitude","annualRainfallLitresPerM2":[200,400],"influences":["Mediterranean climate","northern winds","large altitude contrast"],"viticulturalEffects":["warmer lower sites favor structure and higher alcohol","mountain sectors can be among the coldest in Rioja"]},
+      "soils":[{"name":"clay-ferrous","effects":["freshness","moderate body and acidity"]},{"name":"alluvial","effects":["water retention","permeability","lighter wine tendency"]}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":-0.10,"tannin":0.10,"body":0.25,"alcohol":0.35,"fruitIntensity":0.25,"earthIntensity":0.10,"aromaticFreshness":-0.05,"droughtStress":0.45,"diseasePressure":-0.10,"frostRisk":0.00,"botrytisSuitability":0.00},
+      "sourceRefs":["es-rioja-oriental-terroir-2026"]
+    },
+    {
+      "id":"env-us-napa-valley",
+      "country":"United States","name":"Napa Valley","scope":"ava",
+      "climate":{"classification":"dry Mediterranean with strong mesoclimate variation","influences":["coastal fog","Pacific wind","mountain topography","large diurnal range"],"viticulturalEffects":["slow ripening with nighttime acidity retention","high consistency but substantial nested-AVA variation"]},
+      "soils":[{"name":"Napa Valley soil mosaic","components":["volcanic","marine sedimentary","alluvial","clay loam","gravelly and stony loam"],"variation":"strong differences among nested AVAs","viticulturalEffects":["drainage and water-holding capacity vary sharply by site","fertility ranges from low mountain soils to richer valley-floor alluvium"]}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":3,"acidity":-0.10,"tannin":0.25,"body":0.35,"alcohol":0.40,"fruitIntensity":0.40,"earthIntensity":0.10,"aromaticFreshness":-0.05,"droughtStress":0.35,"diseasePressure":-0.10,"frostRisk":0.05,"botrytisSuitability":0.00},
+      "sourceRefs":["us-napa-terroir-science-2026"]
+    },
+    {
+      "id":"env-fr-sauternes",
+      "researchProfileId":"fr-sauternes-aop",
+      "country":"France","name":"Sauternes","scope":"appellation",
+      "climate":{"classification":"temperate Bordeaux climate with specialized autumn botrytis mesoclimate","influences":["Garonne system","Ciron fog","dry easterly air"],"viticulturalEffects":["autumn fog encourages Botrytis cinerea","subsequent dry conditions can concentrate berries"]},
+      "soils":[{"name":"Sauternes soil mosaic","components":["alluvial deposits","sandy gravel","silt","clayey sand"],"drainage":"generally strong on gravelly sectors","viticulturalEffects":["supports finesse and controlled water status"]}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.15,"tannin":-0.40,"body":0.35,"alcohol":0.10,"fruitIntensity":0.35,"earthIntensity":0.05,"aromaticFreshness":0.10,"droughtStress":0.00,"diseasePressure":0.35,"frostRisk":0.15,"botrytisSuitability":0.85},
+      "sourceRefs":["fr-bordeaux-sauternes-terroir-2026"]
+    }
+  ]
+}
