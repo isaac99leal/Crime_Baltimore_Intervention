@@ -1,0 +1,11 @@
+{
+  "updatedAt": "2026-09-05",
+  "policy": "High-volume trade directories are discovery evidence only. A listed company must still be individually verified and its technical material inspected before it can contribute producer, vineyard, vintage or winemaking observations.",
+  "sources": [
+    {"id":"trade-network-natural-wine-authority-pass23","publisher":"Natural Wine Authority","title":"Natural Wine Distributor Network","url":"https://www.naturalwineauthority.com/distributors","jurisdiction":"United States","kind":"specialist importer-distributor discovery network","accessed":"2026-09-05"},
+    {"id":"trade-directory-harpers-uk-pass23","publisher":"The Harpers Wine & Spirit Directory","title":"Agents/Importers/Distributors United Kingdom","url":"https://www.harpers-directory.com/products/agents-importers-distributors-united-kingdom","jurisdiction":"United Kingdom","kind":"trade directory discovery source","accessed":"2026-09-05"},
+    {"id":"trade-directory-harpers-australia-pass23","publisher":"The Harpers Wine & Spirit Directory","title":"Agents/Importers/Distributors Australia","url":"https://harpers-directory.com/products/agents-importers-distributors-australia","jurisdiction":"Australia","kind":"trade directory discovery source","accessed":"2026-09-05"},
+    {"id":"trade-directory-vinaty-global-pass23","publisher":"Vinaty","title":"Wine Importers and Distributors Database","url":"https://vinaty.com/","jurisdiction":"Global","kind":"commercial trade-directory discovery source","accessed":"2026-09-05"},
+    {"id":"trade-network-pdxwine-pass23","publisher":"PDXWine","title":"Our Importers, Domestic Selections, and Direct Suppliers","url":"https://www.pdxwine.com/about/","jurisdiction":"Oregon, United States","kind":"distributor importer-network evidence","accessed":"2026-09-05"}
+  ]
+}
