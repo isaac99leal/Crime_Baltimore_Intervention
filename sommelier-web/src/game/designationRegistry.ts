@@ -1,5 +1,6 @@
 import registryData from '../data/research/designation_registry_records_pass1.json';
 import registryDataPass2 from '../data/research/designation_registry_records_pass2.json';
+import registryDataPass3 from '../data/research/designation_registry_records_pass3.json';
 import { researchSourceById } from './research';
 
 export type ExpandedDesignation = {
@@ -33,7 +34,11 @@ type RegistryFile = {
   groups: RegistryGroup[];
 };
 
-const files = [registryData as unknown as RegistryFile, registryDataPass2 as unknown as RegistryFile];
+const files = [
+  registryData as unknown as RegistryFile,
+  registryDataPass2 as unknown as RegistryFile,
+  registryDataPass3 as unknown as RegistryFile,
+];
 
 function slug(value: string): string {
   return value
@@ -121,7 +126,7 @@ export function validateExpandedDesignationRegistry() {
     if (record.generationStatus !== 'reference-only') issues.push(`Registry identity escaped generation safety: ${record.id}`);
   }
 
-  for (const country of ['Australia', 'Chile']) {
+  for (const country of ['Australia', 'Chile', 'South Africa']) {
     const countryRecords = designationsForCountry(country);
     for (const record of countryRecords) {
       if (record.parent && !countryRecords.some((candidate) => candidate.name === record.parent)) {
