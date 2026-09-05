@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 from typing import Callable, Mapping, Sequence
 
@@ -120,11 +121,17 @@ def _i(value: object) -> int | None:
 def _valid_month_day(month: int | None, day: int | None) -> bool:
     if month is None or day is None:
         return False
-    if month < 1 or month > 12 or day < 1 or day > 31:
+    try:
+        date(2000, month, day)  # Leap year permits a static Feb 29 rule.
+    except ValueError:
         return False
-    if month in {4, 6, 9, 11} and day > 30:
-        return False
-    if month == 2 and day > 29:
+    return True
+
+
+def _valid_actual_date(year: int, month: int, day: int) -> bool:
+    try:
+        date(year, month, day)
+    except ValueError:
         return False
     return True
 
@@ -495,47 +502,82 @@ class LegalSpecRegistry:
             elif malic_acid_g_l > spec.max_malic_acid_g_l + 1e-9:
                 issues.append(f"Malic acid must not exceed {spec.max_malic_acid_g_l:g} g/L")
 
+        # Exact elevage rules use partial-evidence semantics: any known
+        # contradiction is rejected immediately, while missing fields only block
+        # complete validation or a same-year boundary decision.
         if spec.min_elevage_until_month is not None and spec.min_elevage_until_day is not None:
-            if vintage_year is None or elevage_end_year is None or elevage_end_month is None or elevage_end_day is None:
+            if (elevage_end_month is None) != (elevage_end_day is None):
+                issues.append("Elevage end month and day must be provided together")
+            elif (
+                elevage_end_year is not None
+                and elevage_end_month is not None
+                and elevage_end_day is not None
+                and not _valid_actual_date(elevage_end_year, elevage_end_month, elevage_end_day)
+            ):
+                issues.append("Elevage end date is not a valid calendar date")
+
+            if vintage_year is None:
                 if require_complete:
-                    issues.append("Exact elevage end date is required for complete legal validation")
+                    issues.append("Vintage year is required for complete elevage-date validation")
             else:
                 required_elevage_year = vintage_year + (spec.min_elevage_year_offset or 0)
-                actual = (elevage_end_year, elevage_end_month, elevage_end_day)
-                required = (
-                    required_elevage_year,
-                    spec.min_elevage_until_month,
-                    spec.min_elevage_until_day,
-                )
-                if actual < required:
+                if elevage_end_year is None:
+                    if require_complete:
+                        issues.append("Exact elevage end date is required for complete legal validation")
+                elif elevage_end_year < required_elevage_year:
                     issues.append(
                         f"Elevage must continue through {required_elevage_year:04d}-{spec.min_elevage_until_month:02d}-{spec.min_elevage_until_day:02d}"
                     )
+                elif elevage_end_year == required_elevage_year:
+                    if elevage_end_month is None or elevage_end_day is None:
+                        if require_complete:
+                            issues.append("Exact elevage end month/day is required for complete legal validation")
+                    elif _valid_actual_date(elevage_end_year, elevage_end_month, elevage_end_day) and (
+                        elevage_end_month,
+                        elevage_end_day,
+                    ) < (spec.min_elevage_until_month, spec.min_elevage_until_day):
+                        issues.append(
+                            f"Elevage must continue through {required_elevage_year:04d}-{spec.min_elevage_until_month:02d}-{spec.min_elevage_until_day:02d}"
+                        )
 
         if spec.release_year_offset is not None:
-            if vintage_year is None or release_year is None:
+            if (release_month is None) != (release_day is None):
+                issues.append("Release month and day must be provided together")
+            elif (
+                release_year is not None
+                and release_month is not None
+                and release_day is not None
+                and not _valid_actual_date(release_year, release_month, release_day)
+            ):
+                issues.append("Release date is not a valid calendar date")
+
+            if vintage_year is None:
                 if require_complete:
-                    issues.append(
-                        "Vintage year and release year are required for complete release-date validation"
-                    )
+                    issues.append("Vintage year is required for complete release-date validation")
             else:
                 required_year = vintage_year + spec.release_year_offset
-                if spec.earliest_release_month is not None and spec.earliest_release_day is not None:
-                    if release_month is None or release_day is None:
-                        if require_complete:
-                            issues.append("Exact release month/day is required for complete release-date validation")
-                    elif (release_year, release_month, release_day) < (
-                        required_year,
-                        spec.earliest_release_month,
-                        spec.earliest_release_day,
-                    ):
-                        issues.append(
-                            f"Consumer release must not occur before {required_year:04d}-{spec.earliest_release_month:02d}-{spec.earliest_release_day:02d}"
-                        )
+                if release_year is None:
+                    if require_complete:
+                        issues.append("Release year is required for complete release-date validation")
                 elif release_year < required_year:
                     issues.append(
                         f"Release year must be at least {required_year} for vintage {vintage_year}"
                     )
+                elif (
+                    release_year == required_year
+                    and spec.earliest_release_month is not None
+                    and spec.earliest_release_day is not None
+                ):
+                    if release_month is None or release_day is None:
+                        if require_complete:
+                            issues.append("Exact release month/day is required for complete release-date validation")
+                    elif _valid_actual_date(release_year, release_month, release_day) and (
+                        release_month,
+                        release_day,
+                    ) < (spec.earliest_release_month, spec.earliest_release_day):
+                        issues.append(
+                            f"Consumer release must not occur before {required_year:04d}-{spec.earliest_release_month:02d}-{spec.earliest_release_day:02d}"
+                        )
 
         return ReleaseDecision(not issues, spec.id, tuple(issues))
 
