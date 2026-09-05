@@ -1,4 +1,5 @@
 import registryData from '../data/research/designation_registry_records_pass1.json';
+import registryDataPass2 from '../data/research/designation_registry_records_pass2.json';
 import { researchSourceById } from './research';
 
 export type ExpandedDesignation = {
@@ -32,7 +33,7 @@ type RegistryFile = {
   groups: RegistryGroup[];
 };
 
-const file = registryData as unknown as RegistryFile;
+const files = [registryData as unknown as RegistryFile, registryDataPass2 as unknown as RegistryFile];
 
 function slug(value: string): string {
   return value
@@ -80,8 +81,9 @@ function expandGroup(group: RegistryGroup): ExpandedDesignation[] {
   });
 }
 
-export const expandedDesignationMethod = file.method;
-export const expandedDesignationRecords = file.groups.flatMap(expandGroup);
+export const expandedDesignationMethod = files.map((file) => file.method).join(' ');
+export const expandedDesignationPassCount = files.length;
+export const expandedDesignationRecords = files.flatMap((file) => file.groups.flatMap(expandGroup));
 export const expandedDesignationById = new Map(expandedDesignationRecords.map((record) => [record.id, record]));
 export const expandedDesignationCountries = [...new Set(expandedDesignationRecords.map((record) => record.country))].sort();
 export const expandedDesignationCountsByCountry = Object.fromEntries(
@@ -105,9 +107,10 @@ export function findExpandedDesignation(country: string, name: string, location?
 export function validateExpandedDesignationRegistry() {
   const issues: string[] = [];
   const ids = new Set<string>();
+  const expected = files.reduce((sum, file) => sum + file.count, 0);
 
-  if (expandedDesignationRecords.length !== file.count) {
-    issues.push(`Expanded designation count mismatch: expected ${file.count}, got ${expandedDesignationRecords.length}`);
+  if (expandedDesignationRecords.length !== expected) {
+    issues.push(`Expanded designation count mismatch: expected ${expected}, got ${expandedDesignationRecords.length}`);
   }
 
   for (const record of expandedDesignationRecords) {
@@ -118,14 +121,18 @@ export function validateExpandedDesignationRegistry() {
     if (record.generationStatus !== 'reference-only') issues.push(`Registry identity escaped generation safety: ${record.id}`);
   }
 
-  for (const record of designationsForCountry('Australia')) {
-    if (record.parent && !designationsForCountry('Australia').some((candidate) => candidate.name === record.parent)) {
-      issues.push(`Australian GI parent not found for ${record.name}: ${record.parent}`);
+  for (const country of ['Australia', 'Chile']) {
+    const countryRecords = designationsForCountry(country);
+    for (const record of countryRecords) {
+      if (record.parent && !countryRecords.some((candidate) => candidate.name === record.parent)) {
+        issues.push(`${country} designation parent not found for ${record.name}: ${record.parent}`);
+      }
     }
   }
 
   return {
     records: expandedDesignationRecords.length,
+    passes: expandedDesignationPassCount,
     countries: expandedDesignationCountries.length,
     countsByCountry: expandedDesignationCountsByCountry,
     issues,
