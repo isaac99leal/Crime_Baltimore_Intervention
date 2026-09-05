@@ -5,6 +5,8 @@ from .catalog import SOURCES, WineKnowledgeCatalog, normalize_name
 from .expanded_catalog import CommercialObservation, NamedSite, PiwiRecord, VarietyAreaObservation, WorldWineKnowledgeCatalog
 from .fermentation_engine import AlcoholicFermentationParams, FermentationState, MalolacticParams, MalolacticState, initial_state, run_alcoholic_fermentation, run_malolactic, step_alcoholic_fermentation, step_malolactic
 from .fermentation_process import FermentationConstraintError, FermentationPlan, FermentationResult, MustComposition, NutrientAddition, run_fermentation, validate_must, validate_plan
+from .legal_rules import LegalAwareRegionGrapeRulebook
+from .legal_specs import GrapeConstraint, LegalSpecDecision, LegalSpecRegistry, LegalWineSpec, ReleaseDecision
 from .origin_factory import ConstrainedOrigin, OriginRequest, WineOriginFactory
 from .priors import SimulationPriors
 from .regional_rules import OriginConstraintError, OriginDecision, RegionGrapeRulebook, RegionRule
@@ -16,13 +18,14 @@ from .vintage_engine import DailyWeather, VintageDayState, VintageModelParams, V
 __all__ = [
     "SOURCES", "AlcoholicFermentationParams", "CommercialObservation", "ConstrainedOrigin",
     "DailyWeather", "FermentationConstraintError", "FermentationPlan", "FermentationResult",
-    "FermentationState", "MalolacticParams", "MalolacticState", "MustComposition", "NamedSite",
-    "NutrientAddition", "OriginConstraintError", "OriginDecision", "OriginRequest", "PiwiRecord",
-    "RegionGrapeRulebook", "RegionRule", "SimulationPriors", "SiteRegistry", "VarietyAreaObservation",
-    "VineyardBlock", "VineyardEngine", "VineyardOutcome", "VintageDayState", "VintageModelParams",
-    "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory", "WorldWineKnowledgeCatalog",
-    "initial_state", "load_legacy_vintage_knowledge", "modified_archetype", "normalize_name",
-    "run_alcoholic_fermentation", "run_fermentation", "run_malolactic", "simulate_vintage",
-    "state_at_age", "step_alcoholic_fermentation", "step_malolactic", "validate_must",
-    "validate_plan", "vintage_stats",
+    "FermentationState", "GrapeConstraint", "LegalAwareRegionGrapeRulebook", "LegalSpecDecision",
+    "LegalSpecRegistry", "LegalWineSpec", "MalolacticParams", "MalolacticState", "MustComposition",
+    "NamedSite", "NutrientAddition", "OriginConstraintError", "OriginDecision", "OriginRequest",
+    "PiwiRecord", "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "SimulationPriors",
+    "SiteRegistry", "VarietyAreaObservation", "VineyardBlock", "VineyardEngine", "VineyardOutcome",
+    "VintageDayState", "VintageModelParams", "VintageOutcome", "WineKnowledgeCatalog",
+    "WineOriginFactory", "WorldWineKnowledgeCatalog", "initial_state", "load_legacy_vintage_knowledge",
+    "modified_archetype", "normalize_name", "run_alcoholic_fermentation", "run_fermentation",
+    "run_malolactic", "simulate_vintage", "state_at_age", "step_alcoholic_fermentation",
+    "step_malolactic", "validate_must", "validate_plan", "vintage_stats",
 ]
