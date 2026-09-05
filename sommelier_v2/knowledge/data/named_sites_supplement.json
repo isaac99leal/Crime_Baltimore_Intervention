@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "notes": "Supplemental named-site identities sourced directly from current authoritative legal material. This file extends the legacy site seed without rewriting its historical source set.",
+  "sources": {
+    "mercurey_masa_2025": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOC Mercurey homologué par arrêté du 1er septembre 2025",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-84e3b2df-7c1c-489f-8058-fc3b3babba25",
+      "checked": "2026-09-05"
+    }
+  },
+  "records": [
+    {
+      "name": "Clos du Château de Montaigu",
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Mercurey",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["mercurey_masa_2025"],
+      "notes": "Current Mercurey Premier Cru climat identity added from the 2025 homologated specification; absent from the older Burgundy Wines seed used by the project."
+    }
+  ]
+}

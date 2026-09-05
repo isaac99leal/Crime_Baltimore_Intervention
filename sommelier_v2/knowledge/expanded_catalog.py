@@ -100,6 +100,39 @@ def _read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def _dedupe_sites(sites: Iterable[NamedSite]) -> list[NamedSite]:
+    """Preserve stable IDs while retaining legally distinct colliding site identities."""
+    unique: dict[str, NamedSite] = {}
+    for site in sites:
+        if not site.name:
+            continue
+        existing = unique.get(site.id)
+        if existing is None:
+            unique[site.id] = site
+            continue
+        if existing == site:
+            continue
+
+        base_collision_id = f"{site.id}:{_slug(site.site_type)}"
+        collision_id = base_collision_id
+        counter = 2
+        while collision_id in unique and unique[collision_id] != site:
+            collision_id = f"{base_collision_id}-{counter}"
+            counter += 1
+        unique.setdefault(collision_id, replace(site, id=collision_id))
+
+    return sorted(
+        unique.values(),
+        key=lambda s: (
+            s.country,
+            s.region,
+            s.parent or "",
+            s.name.casefold(),
+            s.site_type,
+        ),
+    )
+
+
 def _load_sites(path: Path) -> list[NamedSite]:
     if not path.exists():
         return []
@@ -152,40 +185,7 @@ def _load_sites(path: Path) -> list[NamedSite]:
                 notes=str(row.get("notes", "")),
             )
         )
-
-    # Preserve existing stable IDs for the first record, but do not collapse a
-    # legally distinct site that has the same displayed name and parent. Burgundy
-    # can legitimately use one name both as a Premier Cru climat and as a broader
-    # lieu-dit. Later colliding identities receive a typed suffix.
-    unique: dict[str, NamedSite] = {}
-    for site in sites:
-        if not site.name:
-            continue
-        existing = unique.get(site.id)
-        if existing is None:
-            unique[site.id] = site
-            continue
-        if existing == site:
-            continue
-
-        base_collision_id = f"{site.id}:{_slug(site.site_type)}"
-        collision_id = base_collision_id
-        counter = 2
-        while collision_id in unique and unique[collision_id] != site:
-            collision_id = f"{base_collision_id}-{counter}"
-            counter += 1
-        unique.setdefault(collision_id, replace(site, id=collision_id))
-
-    return sorted(
-        unique.values(),
-        key=lambda s: (
-            s.country,
-            s.region,
-            s.parent or "",
-            s.name.casefold(),
-            s.site_type,
-        ),
-    )
+    return _dedupe_sites(sites)
 
 
 class WorldWineKnowledgeCatalog:
@@ -205,7 +205,9 @@ class WorldWineKnowledgeCatalog:
         self._load_piwi()
         self._load_commercial()
         self._load_eambrosia()
-        self.named_sites = _load_sites(DATA_DIR / "named_sites_seed.json")
+        seed_sites = _load_sites(DATA_DIR / "named_sites_seed.json")
+        supplement_sites = _load_sites(DATA_DIR / "named_sites_supplement.json")
+        self.named_sites = _dedupe_sites([*seed_sites, *supplement_sites])
         self._merge_grape_universe()
 
     def _load_area(self) -> None:

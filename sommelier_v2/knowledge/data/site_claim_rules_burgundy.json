@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0",
-  "notes": "Positive Burgundy climat label-claim rules promoted from current official production specifications. Generic lieux-dits remain fail-closed unless separately promoted.",
+  "schema_version": "1.1",
+  "notes": "Positive Burgundy climat label-claim rules promoted from current official production specifications. Generic lieux-dits remain fail-closed unless separately promoted. Site-specific allow/exclude matrices are used where legal color eligibility differs by climat.",
   "sources": {
     "meursault_maasa_2026": {
       "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
@@ -46,6 +46,11 @@
       "authority": "Institut national de l'origine et de la qualité (INAO)",
       "title": "Montagny AOP current product specification",
       "url": "https://www.inao.gouv.fr/produit/montagny-7868"
+    },
+    "ladoix_masa_2011_current": {
+      "authority": "Ministère de l'Agriculture",
+      "title": "Cahier des charges de l'AOC Ladoix homologué par décret n° 2011-1559 du 15 novembre 2011",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-64c27bea-ac3a-4400-be93-525ce351fdc4/telechargement"
     }
   },
   "rules": [
@@ -83,7 +88,20 @@
       "allowed_wine_variants": ["white premier cru"],
       "source_ids": ["puligny_masa_2011_current"],
       "claim_kind": "premier_cru_climat_name",
-      "notes": "All 17 listed Puligny-Montrachet Premier Cru climats are authorized for white wine. The official color matrix has three white-only climats, so a broad red climat rule is deliberately not created until site-specific exclusions are modeled."
+      "notes": "All 17 listed Puligny-Montrachet Premier Cru climats are authorized for white wine."
+    },
+    {
+      "id": "siteclaim:fr:puligny-montrachet:red-premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Puligny-Montrachet",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_puligny"],
+      "allowed_wine_variants": ["red premier cru"],
+      "excluded_site_names": ["Hameau de Blagny", "La Garenne", "Sous le Puits"],
+      "source_ids": ["puligny_masa_2011_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The published Puligny-Montrachet color matrix permits red Premier Cru climat claims except Hameau de Blagny, La Garenne and Sous le Puits, which are white-only."
     },
     {
       "id": "siteclaim:fr:volnay:premier-cru-climat",
@@ -131,7 +149,19 @@
       "allowed_wine_variants": ["white premier cru", "red premier cru"],
       "source_ids": ["mercurey_masa_2025"],
       "claim_kind": "premier_cru_climat_name",
-      "notes": "The 2025 Mercurey specification authorizes 33 Premier Cru climats for white and red wine. This rule promotes the 32 official climat identities currently present in the project seed; Clos du Château de Montaigu remains a tracked site-registry coverage gap."
+      "notes": "The 2025 Mercurey specification authorizes Premier Cru climat names for white and red wine. This rule covers the historical Burgundy Wines site identities in the seed."
+    },
+    {
+      "id": "siteclaim:fr:mercurey:premier-cru-climat-ministry-supplement",
+      "country": "France",
+      "parent_appellation": "Mercurey",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["mercurey_masa_2025"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["mercurey_masa_2025"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "Direct ministry-backed supplemental site identities use this rule."
     },
     {
       "id": "siteclaim:fr:givry:premier-cru-climat",
@@ -156,6 +186,32 @@
       "source_ids": ["montagny_inao_current"],
       "claim_kind": "premier_cru_climat_name",
       "notes": "The current Montagny specification authorizes the 49 listed Premier Cru climat names for white wine."
+    },
+    {
+      "id": "siteclaim:fr:ladoix:white-premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Ladoix",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_ladoix"],
+      "allowed_wine_variants": ["white premier cru"],
+      "allowed_site_names": ["Basses Mourottes", "En Naget", "Hautes Mourottes", "La Corvée", "La Micaude", "Le Clou d'Orge", "Le Rognet et Corton", "Les Grêchons et Foutrières"],
+      "source_ids": ["ladoix_masa_2011_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "Exact white Premier Cru climat matrix from the effective 2011 Ladoix specification."
+    },
+    {
+      "id": "siteclaim:fr:ladoix:red-premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Ladoix",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_ladoix"],
+      "allowed_wine_variants": ["red premier cru"],
+      "allowed_site_names": ["Basses Mourottes", "Bois Roussot", "Hautes Mourottes", "La Corvée", "La Micaude", "Le Clou d'Orge", "Les Buis", "Les Joyeuses"],
+      "source_ids": ["ladoix_masa_2011_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "Exact red Premier Cru climat matrix from the effective 2011 Ladoix specification."
     }
   ]
 }

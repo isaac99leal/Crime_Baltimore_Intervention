@@ -29,6 +29,8 @@ class SiteClaimRule:
     allowed_wine_variants: tuple[str, ...]
     source_ids: tuple[str, ...]
     claim_kind: str
+    allowed_site_names: tuple[str, ...] = ()
+    excluded_site_names: tuple[str, ...] = ()
     notes: str = ""
 
 
@@ -87,6 +89,18 @@ class SiteClaimRegistry:
             if missing:
                 raise ValueError(f"{rule_id} references unknown claim sources: {missing}")
 
+            allowed_site_names = tuple(str(v) for v in row.get("allowed_site_names", []))
+            excluded_site_names = tuple(str(v) for v in row.get("excluded_site_names", []))
+            overlap = {
+                normalize_name(name) for name in allowed_site_names
+            } & {
+                normalize_name(name) for name in excluded_site_names
+            }
+            if overlap:
+                raise ValueError(
+                    f"{rule_id} lists the same site in allowed_site_names and excluded_site_names"
+                )
+
             self.rules.append(
                 SiteClaimRule(
                     id=rule_id,
@@ -98,6 +112,8 @@ class SiteClaimRegistry:
                     allowed_wine_variants=tuple(str(v) for v in row.get("allowed_wine_variants", [])),
                     source_ids=source_ids,
                     claim_kind=str(row.get("claim_kind") or "named_site"),
+                    allowed_site_names=allowed_site_names,
+                    excluded_site_names=excluded_site_names,
                     notes=str(row.get("notes") or ""),
                 )
             )
@@ -112,6 +128,17 @@ class SiteClaimRegistry:
             return True
         requested = normalize_name(wine_variant or "")
         return any(requested == normalize_name(allowed) for allowed in rule.allowed_wine_variants)
+
+    @staticmethod
+    def _site_name_matches(rule: SiteClaimRule, site_name: str) -> bool:
+        normalized = normalize_name(site_name)
+        if rule.allowed_site_names and normalized not in {
+            normalize_name(name) for name in rule.allowed_site_names
+        }:
+            return False
+        if normalized in {normalize_name(name) for name in rule.excluded_site_names}:
+            return False
+        return True
 
     def _source_evidence(self, rule: SiteClaimRule) -> tuple[str, ...]:
         evidence: list[str] = []
@@ -188,6 +215,11 @@ class SiteClaimRegistry:
                 allowed = ", ".join(rule.allowed_wine_variants)
                 mismatch_reasons.append(
                     f"{rule.id}: this claim is restricted to wine variant(s): {allowed}."
+                )
+                continue
+            if not self._site_name_matches(rule, site.name):
+                mismatch_reasons.append(
+                    f"{rule.id}: site {site.name!r} is outside the verified site-name set for this rule."
                 )
                 continue
             return SiteClaimDecision(

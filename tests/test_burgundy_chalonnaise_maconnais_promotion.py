@@ -79,14 +79,15 @@ class ChalonnaiseMaconnaisSiteClaimTests(unittest.TestCase):
         self.assertTrue(origin.site_claim_eligible)
 
     def test_mercurey_premier_cru_climat_passes_for_both_colors(self):
-        site = self.site("Mercurey", "Le Clos du Roy")
-        for variant, grapes in (("white premier cru", {"Chardonnay": 100}), ("red premier cru", {"Pinot Noir": 100})):
-            origin = self.factory.create(OriginRequest(
-                country="France", region=site.region, appellation="Mercurey",
-                grapes=grapes, vintage_year=2025, label_scope="regulated_gi",
-                site_id=site.id, wine_variant=variant,
-            ))
-            self.assertTrue(origin.site_claim_eligible, variant)
+        for name in ("Le Clos du Roy", "Clos du Château de Montaigu"):
+            site = self.site("Mercurey", name)
+            for variant, grapes in (("white premier cru", {"Chardonnay": 100}), ("red premier cru", {"Pinot Noir": 100})):
+                origin = self.factory.create(OriginRequest(
+                    country="France", region=site.region, appellation="Mercurey",
+                    grapes=grapes, vintage_year=2025, label_scope="regulated_gi",
+                    site_id=site.id, wine_variant=variant,
+                ))
+                self.assertTrue(origin.site_claim_eligible, (name, variant))
 
     def test_givry_premier_cru_climat_passes_for_both_colors(self):
         site = self.site("Givry", "Clos Salomon")
@@ -133,24 +134,28 @@ class ChalonnaiseMaconnaisCatalogTests(unittest.TestCase):
     def sites(self, spec_id: str) -> set[str]:
         return {item.wine.vineyard for item in self.items if item.legal_spec_id == spec_id and item.wine.vineyard}
 
-    def test_exact_current_seed_counts(self):
+    def test_exact_current_counts(self):
         self.assertEqual(len(self.sites("fr:pouilly-fuisse:premier-cru")), 22)
-        self.assertEqual(len(self.sites("fr:mercurey:white-premier-cru")), 32)
-        self.assertEqual(len(self.sites("fr:mercurey:red-premier-cru")), 32)
+        self.assertEqual(len(self.sites("fr:mercurey:white-premier-cru")), 33)
+        self.assertEqual(len(self.sites("fr:mercurey:red-premier-cru")), 33)
         self.assertEqual(len(self.sites("fr:givry:white-premier-cru")), 38)
         self.assertEqual(len(self.sites("fr:givry:red-premier-cru")), 38)
         self.assertEqual(len(self.sites("fr:montagny:premier-cru")), 49)
 
-    def test_mercurey_current_legal_list_gap_is_not_silently_fabricated(self):
+    def test_mercurey_current_legal_list_gap_is_closed_by_supplement(self):
         all_mercurey = {
             site.name for site in self.generator.catalog.named_sites
             if site.parent == "Mercurey" and site.site_type == "climat"
         }
-        self.assertEqual(len(all_mercurey), 32)
-        self.assertNotIn("Clos du Château de Montaigu", all_mercurey)
-        spec = self.generator.legal_specs.resolve(country="France", appellation="Mercurey", variant="white premier cru")
-        self.assertIsNotNone(spec)
-        self.assertIn("33 climats", spec.notes)
+        self.assertEqual(len(all_mercurey), 33)
+        self.assertIn("Clos du Château de Montaigu", all_mercurey)
+        supplemented = next(
+            site for site in self.generator.catalog.named_sites
+            if site.parent == "Mercurey"
+            and site.site_type == "climat"
+            and site.name == "Clos du Château de Montaigu"
+        )
+        self.assertIn("mercurey_masa_2025", supplemented.source_ids)
 
 
 if __name__ == "__main__":
