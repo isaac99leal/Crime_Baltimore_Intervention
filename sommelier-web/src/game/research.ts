@@ -1,6 +1,7 @@
 import profileData from '../data/research/appellation_profiles.json';
 import profileDataPass2 from '../data/research/appellation_profiles_pass2.json';
 import profileDataPass3 from '../data/research/appellation_profiles_pass3.json';
+import profileDataPass4 from '../data/research/appellation_profiles_pass4.json';
 import sourceData from '../data/research/sources.json';
 import sourceDataPass2 from '../data/research/sources_pass2.json';
 import sourceDataPass3 from '../data/research/sources_pass3.json';
@@ -68,6 +69,7 @@ const profileFiles: ResearchProfileFile[] = [
   profileData as unknown as ResearchProfileFile,
   profileDataPass2 as unknown as ResearchProfileFile,
   profileDataPass3 as unknown as ResearchProfileFile,
+  profileDataPass4 as unknown as ResearchProfileFile,
 ];
 
 const sourceFiles: ResearchSourceFile[] = [
