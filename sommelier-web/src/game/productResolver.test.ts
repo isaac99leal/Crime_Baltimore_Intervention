@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  productResolutionPassCount,
   productResolutionRules,
   productWinemakingLegality,
   resolveWineProduct,
@@ -8,11 +9,12 @@ import {
 import { winemakingDecisionById } from './winemaking';
 
 describe('exact wine product resolver', () => {
-  it('validates a non-trivial product library with no broken provenance links', () => {
+  it('validates a non-trivial multi-pass product library with no broken rule links', () => {
     const report = validateProductResolver();
-    expect(productResolutionRules.length).toBeGreaterThanOrEqual(30);
-    expect(report.generationSafe).toBeGreaterThanOrEqual(20);
-    expect(report.designations).toBeGreaterThanOrEqual(8);
+    expect(productResolutionPassCount).toBe(2);
+    expect(productResolutionRules.length).toBeGreaterThanOrEqual(37);
+    expect(report.generationSafe).toBeGreaterThanOrEqual(23);
+    expect(report.designations).toBeGreaterThanOrEqual(11);
     expect(report.issues).toEqual([]);
   });
 
@@ -65,15 +67,52 @@ describe('exact wine product resolver', () => {
     expect(fino.rule?.ageingArchetype).toBe('biological-flor');
   });
 
+  it('resolves Georgian white and amber Kisi Magraani as different legal/process products', () => {
+    const white = resolveWineProduct({ country: 'Georgia', designation: 'Kisi Magraani', color: 'white', grape: 'Kisi', requestedTerms: 'white dry' });
+    const amber = resolveWineProduct({ country: 'Georgia', designation: 'Magraani’s Kisi', color: 'white', grape: 'Kisi', requestedTerms: 'amber qvevri' });
+
+    expect(white.status).toBe('resolved');
+    expect(white.rule?.productName).toBe('Kisi Magraani white dry');
+    expect(white.rule?.exclusiveComposition).toBe(true);
+    expect(amber.rule?.productName).toBe('Kisi Magraani amber dry');
+    expect(amber.rule?.ageingArchetype).toBe('amber-skin-contact');
+    expect(amber.exactProductGenerationSafe).toBe(true);
+  });
+
+  it('requires an actual Aleksandrouli-Mujuretuli blend for exact Khvanchkara resolution', () => {
+    const single = resolveWineProduct({ country: 'Georgia', designation: 'Khvanchkara', color: 'red', grape: 'Aleksandrouli', requestedTerms: 'Khvanchkara' });
+    const blend = resolveWineProduct({
+      country: 'Georgia', designation: 'Khvanchkara', color: 'red', requestedTerms: 'Khvanchkara',
+      blend: [{ grape: 'Aleksandrouli', percent: 55 }, { grape: 'Mujuretuli', percent: 45 }],
+    });
+    const contaminated = resolveWineProduct({
+      country: 'Georgia', designation: 'Khvanchkara', color: 'red', requestedTerms: 'Khvanchkara',
+      blend: [{ grape: 'Aleksandrouli', percent: 45 }, { grape: 'Mujuretuli', percent: 45 }, { grape: 'Saperavi', percent: 10 }],
+    });
+
+    expect(single.status).toBe('unresolved');
+    expect(blend.status).toBe('resolved');
+    expect(blend.rule?.requiresBlend).toBe(true);
+    expect(blend.rule?.maximumResidualSugarGPerL).toBe(45);
+    expect(contaminated.status).toBe('unresolved');
+  });
+
   it('uses product rules as a conservative legality gate for constrained winemaking choices', () => {
-    const resolution = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino' });
+    const finoResolution = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino' });
     const flor = winemakingDecisionById.get('flor-ageing');
-    expect(resolution.rule).toBeTruthy();
+    expect(finoResolution.rule).toBeTruthy();
     expect(flor).toBeTruthy();
     const biological = flor?.options.find((option) => option.id === 'biological');
     const oxidative = flor?.options.find((option) => option.id === 'biological-then-oxidative');
-    expect(resolution.rule && flor && biological && productWinemakingLegality(resolution.rule, flor, biological)).toBe(true);
-    expect(resolution.rule && flor && oxidative && productWinemakingLegality(resolution.rule, flor, oxidative)).toBe(false);
+    expect(finoResolution.rule && flor && biological && productWinemakingLegality(finoResolution.rule, flor, biological)).toBe(true);
+    expect(finoResolution.rule && flor && oxidative && productWinemakingLegality(finoResolution.rule, flor, oxidative)).toBe(false);
+
+    const amberResolution = resolveWineProduct({ country: 'Georgia', designation: 'Kisi Magraani', color: 'white', grape: 'Kisi', requestedTerms: 'amber' });
+    const vessel = winemakingDecisionById.get('fermentation-vessel');
+    const qvevri = vessel?.options.find((option) => option.id === 'amphora');
+    const steel = vessel?.options.find((option) => option.id === 'stainless');
+    expect(amberResolution.rule && vessel && qvevri && productWinemakingLegality(amberResolution.rule, vessel, qvevri)).toBe(true);
+    expect(amberResolution.rule && vessel && steel && productWinemakingLegality(amberResolution.rule, vessel, steel)).toBe(false);
   });
 
   it('rejects a composition that cannot satisfy an exact product', () => {
