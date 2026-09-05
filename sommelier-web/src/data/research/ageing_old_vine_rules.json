@@ -48,6 +48,27 @@
       "sourceRefs":["rioja-classification-ageing-2026"]
     },
     {
+      "id":"age-es-rioja-sparkling-generic-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Espumoso de Calidad de Rioja","ruleType":"traditional-method-bottle-ageing","legal":true,"effective":"current",
+      "requirements":{"traditionalMethod":true,"minimumBottleAgeingMonths":15},
+      "mechanisms":["secondary fermentation in bottle","lees contact"],
+      "sourceRefs":["es-rioja-classification-2026","es-rioja-specification-2022"]
+    },
+    {
+      "id":"age-es-rioja-sparkling-reserva-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Espumoso Reserva","ruleType":"traditional-method-bottle-ageing","legal":true,"effective":"current",
+      "requirements":{"traditionalMethod":true,"minimumBottleAgeingMonths":24},
+      "mechanisms":["secondary fermentation in bottle","extended lees contact","autolytic development"],
+      "sourceRefs":["es-rioja-classification-2026","es-rioja-specification-2022"]
+    },
+    {
+      "id":"age-es-rioja-sparkling-gran-anada-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Espumoso Gran Añada","ruleType":"traditional-method-bottle-ageing","legal":true,"effective":"current",
+      "requirements":{"traditionalMethod":true,"minimumBottleAgeingMonths":36,"manualHarvest":true},
+      "mechanisms":["secondary fermentation in bottle","longer lees contact","autolytic development"],
+      "sourceRefs":["es-rioja-classification-2026","es-rioja-specification-2022"]
+    },
+    {
       "id":"age-it-brunello-current",
       "country":"Italy","designation":"Brunello di Montalcino DOCG","productLevel":"Brunello di Montalcino","ruleType":"minimum-ageing-and-release","legal":true,"effective":"current",
       "requirements":{"minimumOakMonths":24,"minimumBottleMonths":4,"release":"1 January of the fifth year after harvest"},
@@ -98,6 +119,11 @@
       "id":"oldvine-oiv-vineyard-global-2024","scope":"international-reference","term":"Old vineyard","effectiveFrom":"2024-10-18","legalOrCertification":"intergovernmental-definition",
       "requirements":{"minimumShareOldVinesPct":85,"minimumPlantAgeYears":35,"continuousLegallyDelimitedBlock":true,"eligibleForLegalCertification":true},
       "sourceRefs":["oiv-old-vine-703-2024"]
+    },
+    {
+      "id":"oldvine-es-rioja-vinedo-singular-current","scope":"Rioja DOCa","term":"Viñedo Singular","legalOrCertification":"DOCa certified smaller-geographical-unit/product classification; not a generic old-vine synonym",
+      "requirements":{"minimumPlantAgeYears":35,"manualHarvest":true,"maximumRedYieldKgHa":5000,"maximumWhiteYieldKgHa":6922,"maximumProcessingYieldPct":65,"sameWineryProductionAgeingStorageBottling":true,"minimumExclusiveProductionControlYears":10,"doubleQualitativeTasting":true,"secondTastingRequiredAssessment":"Excellent","exclusiveGrapeOrigin":true},
+      "sourceRefs":["es-rioja-vinedo-singular-2026"]
     },
     {
       "id":"oldvine-za-certified-heritage","scope":"South Africa","term":"Certified Heritage Vineyard","legalOrCertification":"private-sector certification with documented planting date",
