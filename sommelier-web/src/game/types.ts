@@ -17,6 +17,10 @@ export type WineNotes = {
   service: string;
   cellar: string;
   pairing: string;
+  ageEvolution?: string;
+  legalAgeing?: string;
+  historicalIdentity?: string;
+  winemaking?: string;
 };
 
 export type WineDefinition = {
@@ -49,6 +53,10 @@ export type WineDefinition = {
   fictional?: boolean;
   dataConfidence?: DataConfidence;
   referencePath?: string[];
+  agePhase?: string;
+  ageYears?: number;
+  storageQuality?: number;
+  legalAgeingRuleIds?: string[];
 };
 
 export type StorageZone = 'service-cellar' | 'reserve-cellar' | 'offsite' | 'bar' | 'quarantine';
@@ -186,50 +194,4 @@ export type GameState = {
   equipment: EquipmentItem[];
   certifications: CertificationTrack[];
   time: TimeLedger;
-};
-
-export type Guest = {
-  id: string;
-  name: string;
-  description: string;
-  budget: number;
-  preferredRegions: string[];
-  hint: string;
-  adventure: number;
-  patience?: number;
-  wineKnowledge?: number;
-  occasion?: string;
-  requestedStyle?: string;
-};
-
-export type Dish = {
-  name: string;
-  pairingKey: string;
-  detail: string;
-  course?: string;
-  cookingMethod?: string;
-  sauce?: string;
-  flavorProfile?: string;
-  weight?: 'light' | 'medium' | 'heavy' | string;
-  pairingKeywords?: string[];
-};
-
-export type ServiceScenario = {
-  guest: Guest;
-  dish: Dish;
-};
-
-export type ServiceResult = {
-  score: number;
-  revenue: number;
-  tip: number;
-  reputationDelta: number;
-  summary: string;
-  pairingScore?: number;
-  breakdown?: string[];
-};
-
-export type TastingChallenge = {
-  wine: WineDefinition;
-  options: string[];
 };
