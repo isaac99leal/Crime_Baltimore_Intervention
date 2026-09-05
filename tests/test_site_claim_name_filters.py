@@ -30,17 +30,9 @@ class SiteClaimNameFilterUnitTests(unittest.TestCase):
         return OriginDecision(
             eligible=True,
             status="appellation_eligible_sourced_spec",
-            country="France",
-            region="Bourgogne",
-            sub_region=None,
-            commune=None,
-            appellation="Example",
             label_scope="regulated_gi",
-            grapes=("Pinot Noir",),
-            evidence=(),
-            warnings=(),
-            issues=(),
-            legal_spec_id="fr:example:premier-cru",
+            canonical_grapes=("Pinot Noir",),
+            rule_id="fr:example:premier-cru",
         )
 
     @staticmethod
