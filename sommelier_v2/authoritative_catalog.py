@@ -88,24 +88,14 @@ class AuthoritativeCatalogGenerator:
         return _STYLE_MAP.get(normalize_name(spec.wine_style or ""), WineStyle.OTHER)
 
     def _legal_blends(self, spec: LegalWineSpec) -> tuple[dict[str, float], ...]:
-        """Return deterministic positive blend paths verified by the same legal registry."""
+        """Return deterministic positive blend paths verified by the legal registry."""
         blends: list[dict[str, float]] = []
-
-        # Prefer every individually legal 100% path. This gives broad varietal
-        # representation for specifications such as Rioja and Champagne without
-        # inventing blend ratios.
         for grape in spec.allowed_grapes:
             candidate = {grape: 100.0}
             if self.legal_specs.evaluate_blend(spec, candidate).eligible:
                 blends.append(candidate)
-
         if blends:
             return tuple(blends)
-
-        # If no single-variety path is legal, construct the most conservative
-        # constrained blend: start at every minimum and allocate the remainder
-        # only within explicit maxima. The candidate is accepted only if the legal
-        # evaluator independently verifies it.
         if not spec.grape_constraints:
             return ()
 
@@ -114,26 +104,20 @@ class AuthoritativeCatalogGenerator:
             for row in spec.grape_constraints
             if row.min_pct > 0
         }
-        total = sum(candidate.values())
-        remaining = 100.0 - total
+        remaining = 100.0 - sum(candidate.values())
         if remaining < -1e-9:
             return ()
-
         for constraint in spec.grape_constraints:
             if remaining <= 1e-9:
                 break
             current = candidate.get(constraint.grape, 0.0)
-            capacity = max(0.0, float(constraint.max_pct) - current)
-            addition = min(remaining, capacity)
+            addition = min(remaining, max(0.0, float(constraint.max_pct) - current))
             if addition > 0:
                 candidate[constraint.grape] = current + addition
                 remaining -= addition
-
         if remaining > 1e-6:
             return ()
-        if self.legal_specs.evaluate_blend(spec, candidate).eligible:
-            return (candidate,)
-        return ()
+        return (candidate,) if self.legal_specs.evaluate_blend(spec, candidate).eligible else ()
 
     @staticmethod
     def _default_vintage(spec: LegalWineSpec, as_of_year: int) -> int:
@@ -142,7 +126,11 @@ class AuthoritativeCatalogGenerator:
         return as_of_year - legal_delay
 
     @staticmethod
-    def _production_values(spec: LegalWineSpec, vintage: int, as_of_year: int) -> dict[str, object]:
+    def _production_values(
+        spec: LegalWineSpec,
+        vintage: int,
+        as_of_year: int,
+    ) -> dict[str, object]:
         wood = spec.min_wood_aging_months or 0
         bottle = spec.min_bottle_aging_months or 0
         total = max(spec.min_total_aging_months or 0, wood + bottle)
@@ -150,6 +138,11 @@ class AuthoritativeCatalogGenerator:
             "vineyard_yield_t_ha": (
                 round(spec.max_yield_t_ha * 0.90, 3)
                 if spec.max_yield_t_ha is not None
+                else None
+            ),
+            "wine_yield_hl_ha": (
+                round(spec.max_yield_hl_ha * 0.90, 3)
+                if spec.max_yield_hl_ha is not None
                 else None
             ),
             "actual_grape_to_wine_yield_pct": (
@@ -178,11 +171,24 @@ class AuthoritativeCatalogGenerator:
                 if spec.min_dry_extract_g_l is not None
                 else None
             ),
+            "residual_sugar_g_l": (
+                round(max(0.0, spec.max_residual_sugar_g_l * 0.75), 2)
+                if spec.max_residual_sugar_g_l is not None
+                else None
+            ),
+            "malic_acid_g_l": (
+                round(max(0.0, spec.max_malic_acid_g_l * 0.75), 2)
+                if spec.max_malic_acid_g_l is not None
+                else None
+            ),
             "release_year": as_of_year,
         }
 
     @staticmethod
-    def _weighted(values: list[tuple[float | None, float]], default: float) -> tuple[float, bool]:
+    def _weighted(
+        values: list[tuple[float | None, float]],
+        default: float,
+    ) -> tuple[float, bool]:
         observed = [(float(value), weight) for value, weight in values if value is not None]
         if not observed:
             return default, True
@@ -202,12 +208,14 @@ class AuthoritativeCatalogGenerator:
             WineStyle.WHITE: dict(acidity=3.8, tannin=1.0, body=2.8, sweetness=1.1, fruit_intensity=3.2, earth_intensity=1.8, oak_influence=1.7, alcohol=12.5),
             WineStyle.SPARKLING: dict(acidity=4.2, tannin=1.0, body=2.4, sweetness=1.2, fruit_intensity=2.9, earth_intensity=1.7, oak_influence=1.2, alcohol=12.0),
             WineStyle.ROSE: dict(acidity=3.8, tannin=1.3, body=2.3, sweetness=1.1, fruit_intensity=3.2, earth_intensity=1.4, oak_influence=1.0, alcohol=12.5),
-        }.get(style, dict(acidity=3.2, tannin=2.0, body=3.0, sweetness=1.2, fruit_intensity=3.0, earth_intensity=2.0, oak_influence=1.8, alcohol=13.0))
+        }.get(
+            style,
+            dict(acidity=3.2, tannin=2.0, body=3.0, sweetness=1.2, fruit_intensity=3.0, earth_intensity=2.0, oak_influence=1.8, alcohol=13.0),
+        )
 
         grapes = []
         for name, pct in blend.items():
-            grape = self.catalog.grape(name)
-            grapes.append((grape, float(pct) / 100.0))
+            grapes.append((self.catalog.grape(name), float(pct) / 100.0))
 
         prior_fields: list[str] = []
         values: dict[str, object] = {}
@@ -223,7 +231,9 @@ class AuthoritativeCatalogGenerator:
             value, used_prior = self._weighted(
                 [
                     (
-                        getattr(grape.sensory, grape_attr, None) if grape is not None else None,
+                        getattr(grape.sensory, grape_attr, None)
+                        if grape is not None
+                        else None,
                         weight,
                     )
                     for grape, weight in grapes
@@ -236,9 +246,7 @@ class AuthoritativeCatalogGenerator:
 
         alcohol_candidates: list[tuple[float | None, float]] = []
         for grape, weight in grapes:
-            typical = None
-            if grape is not None:
-                typical = grape.sensory.alcohol_pct.typical
+            typical = grape.sensory.alcohol_pct.typical if grape is not None else None
             alcohol_candidates.append((typical, weight))
         alcohol, alcohol_prior = self._weighted(
             alcohol_candidates,
@@ -264,11 +272,14 @@ class AuthoritativeCatalogGenerator:
         values["aromas"] = tuple(aromas)
         if not aromas:
             prior_fields.append("aromas")
-
         return values, tuple(prior_fields)
 
     @staticmethod
-    def _pricing_prior(spec: LegalWineSpec, *, site: NamedSite | None) -> tuple[float, float]:
+    def _pricing_prior(
+        spec: LegalWineSpec,
+        *,
+        site: NamedSite | None,
+    ) -> tuple[float, float]:
         aging = spec.min_total_aging_months or 0
         wholesale = 18.0 + 0.45 * aging
         if normalize_name(spec.variant) not in {"", "standard"}:
@@ -291,6 +302,12 @@ class AuthoritativeCatalogGenerator:
             parts.append(f">={spec.min_bottle_aging_months} months bottle")
         if spec.required_method:
             parts.append(spec.required_method)
+        if spec.max_yield_hl_ha is not None:
+            parts.append(f"<={spec.max_yield_hl_ha:g} hL/ha")
+        if spec.max_residual_sugar_g_l is not None:
+            parts.append(f"<={spec.max_residual_sugar_g_l:g} g/L fermentable sugar")
+        if spec.max_malic_acid_g_l is not None:
+            parts.append(f"<={spec.max_malic_acid_g_l:g} g/L malic acid")
         return "; ".join(parts)
 
     def _build_item(
@@ -308,7 +325,22 @@ class AuthoritativeCatalogGenerator:
         production = self._production_values(spec, vintage, as_of_year)
         producer = f"Simulation Producer {serial:05d}"
         site_suffix = f" · {site.name}" if site is not None else ""
-        variant_suffix = "" if normalize_name(spec.variant) == "standard" else f" · {spec.variant.title()}"
+        variant_suffix = (
+            ""
+            if normalize_name(spec.variant) == "standard"
+            else f" · {spec.variant.title()}"
+        )
+        yield_note = ""
+        if production["vineyard_yield_t_ha"] is not None:
+            yield_note = (
+                f"Modeled legal-compliant vineyard yield "
+                f"{production['vineyard_yield_t_ha']} t/ha"
+            )
+        elif production["wine_yield_hl_ha"] is not None:
+            yield_note = (
+                f"Modeled legal-compliant wine yield "
+                f"{production['wine_yield_hl_ha']} hL/ha"
+            )
 
         request = WineBuildRequest(
             id=f"strict:{spec.id}:{vintage}:{serial:05d}",
@@ -329,11 +361,7 @@ class AuthoritativeCatalogGenerator:
             wholesale_cost=wholesale,
             rarity=rarity,
             winemaking_notes=self._legal_notes(spec),
-            farming_notes=(
-                f"Modeled legal-compliant vineyard yield {production['vineyard_yield_t_ha']} t/ha"
-                if production["vineyard_yield_t_ha"] is not None
-                else ""
-            ),
+            farming_notes=yield_note,
             **sensory,
             **production,
         )
@@ -342,11 +370,15 @@ class AuthoritativeCatalogGenerator:
             raise ValueError(
                 f"Site {site.id} was proposed for authoritative catalog generation but its legal claim did not pass"
             )
-        priors = tuple(sorted(set(("producer", "wholesale_cost", "rarity", *sensory_priors))))
+        priors = tuple(
+            sorted(set(("producer", "wholesale_cost", "rarity", *sensory_priors)))
+        )
         return AuthoritativeCatalogItem(
             generated=generated,
             legal_spec_id=spec.id,
-            blend_percentages=tuple((name, float(pct)) for name, pct in blend.items()),
+            blend_percentages=tuple(
+                (name, float(pct)) for name, pct in blend.items()
+            ),
             simulation_prior_fields=priors,
         )
 
@@ -371,12 +403,14 @@ class AuthoritativeCatalogGenerator:
             blends = self._legal_blends(spec)
             if not blends:
                 continue
-            spec_vintages = tuple(vintages) if vintages is not None else (
-                self._default_vintage(spec, as_of_year),
+            spec_vintages = (
+                tuple(vintages)
+                if vintages is not None
+                else (self._default_vintage(spec, as_of_year),)
             )
-
             matching_sites = [
-                site for site in self.catalog.named_sites
+                site
+                for site in self.catalog.named_sites
                 if normalize_name(site.country) == normalize_name(spec.country)
                 and normalize_name(site.parent or "") == normalize_name(spec.appellation)
             ]
@@ -386,14 +420,16 @@ class AuthoritativeCatalogGenerator:
             for vintage in spec_vintages:
                 for blend in blends:
                     serial += 1
-                    items.append(self._build_item(
-                        spec=spec,
-                        blend=blend,
-                        vintage=int(vintage),
-                        as_of_year=as_of_year,
-                        serial=serial,
-                        site=None,
-                    ))
+                    items.append(
+                        self._build_item(
+                            spec=spec,
+                            blend=blend,
+                            vintage=int(vintage),
+                            as_of_year=as_of_year,
+                            serial=serial,
+                            site=None,
+                        )
+                    )
                     if not include_site_claims:
                         continue
                     for site in matching_sites:
@@ -408,9 +444,6 @@ class AuthoritativeCatalogGenerator:
                                 site=site,
                             )
                         except ValueError as exc:
-                            # Only verified site claims belong in the authoritative
-                            # catalog. A documented but non-claimable site is not an
-                            # error in the site registry itself.
                             if "legal claim did not pass" in str(exc):
                                 continue
                             raise
@@ -418,7 +451,9 @@ class AuthoritativeCatalogGenerator:
         return items
 
     @staticmethod
-    def report(items: Sequence[AuthoritativeCatalogItem]) -> AuthoritativeCatalogReport:
+    def report(
+        items: Sequence[AuthoritativeCatalogItem],
+    ) -> AuthoritativeCatalogReport:
         specs = {item.legal_spec_id for item in items}
         appellations = {
             (normalize_name(item.wine.country), normalize_name(item.wine.appellation))
