@@ -1,4 +1,5 @@
 import archiveData from '../data/research/historical_vintage_archives.json';
+import archiveDataPass2 from '../data/research/historical_vintage_archives_pass2.json';
 import { researchSourceById } from './research';
 
 export type VintageArchiveStatus =
@@ -31,10 +32,14 @@ type ArchiveFile = {
   evidenceStatuses: VintageArchiveStatus[];
 };
 
-const file = archiveData as unknown as ArchiveFile;
-export const historicalVintageMethod = file.method;
-export const historicalVintageArchives = file.archives;
-export const vintageEvidenceStatuses = file.evidenceStatuses;
+const files = [
+  archiveData as unknown as ArchiveFile,
+  archiveDataPass2 as unknown as ArchiveFile,
+];
+export const historicalVintageMethod = files.map((file) => file.method).join(' ');
+export const historicalVintageArchivePassCount = files.length;
+export const historicalVintageArchives = files.flatMap((file) => file.archives);
+export const vintageEvidenceStatuses = [...new Set(files.flatMap((file) => file.evidenceStatuses))];
 export const historicalVintageArchiveById = new Map(historicalVintageArchives.map((archive) => [archive.id, archive]));
 
 export function findHistoricalVintageArchive(id: string): HistoricalVintageArchive | undefined {
@@ -82,10 +87,12 @@ export function validateHistoricalVintageArchives() {
     }
   }
 
+  const documented = historicalVintageArchives.filter((archive) => archive.years.length);
   return {
+    passes: historicalVintageArchivePassCount,
     archives: historicalVintageArchives.length,
     documentedYears: historicalVintageArchives.reduce((sum, archive) => sum + archive.years.length, 0),
-    earliestDocumentedYear: Math.min(...historicalVintageArchives.filter((archive) => archive.years.length).map((archive) => Math.min(...archive.years))),
+    earliestDocumentedYear: documented.length ? Math.min(...documented.map((archive) => Math.min(...archive.years))) : undefined,
     issues,
   };
 }
