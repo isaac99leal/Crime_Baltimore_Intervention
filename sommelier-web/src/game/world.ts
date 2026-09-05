@@ -1,4 +1,4 @@
-import { findGrape, grapeReference, placeAllowsGrape, referenceAppellations, type RawGrape, type ReferencePlace } from './reference';
+import { findGrape, placeAllowsGrape, referenceAppellations, type RawGrape, type ReferencePlace } from './reference';
 import type { WineDefinition, WineProfile } from './types';
 
 function xmur3(value: string) {
@@ -58,13 +58,19 @@ function producerName(country: string, random: () => number): string {
   return mode === 0 ? [prefix, family].filter(Boolean).join(' ') : mode === 1 ? [prefix, place].filter(Boolean).join(' ') : [family, place].filter(Boolean).join(' ');
 }
 
-function grapeForPlace(place: ReferencePlace, random: () => number): RawGrape | undefined {
-  const candidates = [...place.primaryGrapes, ...place.authorizedGrapes]
+function validatedGrapesForPlace(place: ReferencePlace): RawGrape[] {
+  const resolved = [...place.primaryGrapes, ...place.authorizedGrapes]
     .map(findGrape)
-    .filter((grape): grape is RawGrape => Boolean(grape));
-  if (candidates.length) return pick(candidates, random);
-  const regional = grapeReference.filter((grape) => grape.origin_country === place.country || grape.key_regions?.some((region) => place.path.includes(region)));
-  return regional.length ? pick(regional, random) : undefined;
+    .filter((grape): grape is RawGrape => Boolean(grape))
+    .filter((grape) => placeAllowsGrape(place, grape.name));
+  return [...new Map(resolved.map((grape) => [grape.name, grape])).values()];
+}
+
+const usablePlaces = referenceAppellations.filter((place) => validatedGrapesForPlace(place).length > 0);
+
+function grapeForPlace(place: ReferencePlace, random: () => number): RawGrape | undefined {
+  const candidates = validatedGrapesForPlace(place);
+  return candidates.length ? pick(candidates, random) : undefined;
 }
 
 function alcohol(profile: RawGrape['typical_profile']): number | undefined {
@@ -112,11 +118,10 @@ function generatedNotes(place: ReferencePlace, grape: RawGrape, vintage: number,
 
 export function generateWine(seed: string): WineDefinition {
   const random = rng(seed);
-  const usablePlaces = referenceAppellations.filter((place) => place.primaryGrapes.length || place.authorizedGrapes.length);
-  if (!usablePlaces.length) throw new Error('Reference geography contains no usable appellations.');
+  if (!usablePlaces.length) throw new Error('Reference geography contains no appellations with normalized grape identities.');
   const place = pick(usablePlaces, random);
   const grape = grapeForPlace(place, random);
-  if (!grape || !placeAllowsGrape(place, grape.name)) throw new Error(`Could not generate a validated grape for ${place.name}.`);
+  if (!grape) throw new Error(`Could not generate a normalized grape for ${place.name}.`);
   const vintage = vintageFor(grape, random);
   const producer = producerName(place.country, random);
   const cuvees = ['Tradition', 'Vieilles Vignes', 'Reserve', 'Selection', 'Estate', 'Parcelle', 'Classico', 'Single Vineyard'];
