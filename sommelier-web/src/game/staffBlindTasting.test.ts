@@ -32,7 +32,7 @@ describe('staff BTG blind-tasting training', () => {
     expect(expertResult?.chancePct ?? 0).toBeGreaterThan(noviceResult?.chancePct ?? 100);
   });
 
-  it('consumes training time and creates more learning on a miss than an easy success', () => {
+  it('consumes training time and creates learning from the actual BTG drill', () => {
     const state = createInitialGame();
     const btg = state.inventory.find((item) => item.btg)!;
     const before = state.staff.find((person) => person.id === 'jonah')!;
@@ -43,6 +43,13 @@ describe('staff BTG blind-tasting training', () => {
     expect(after.trainingHours).toBe(before.trainingHours + 1.5);
     expect(after.wineKnowledge).toBeGreaterThan(before.wineKnowledge);
     expect(result.learningGain).toBeGreaterThan(0);
+  });
+
+  it('refuses to award staff training when the weekly time budget is exhausted', () => {
+    const base = createInitialGame();
+    const btg = base.inventory.find((item) => item.btg)!;
+    const state = { ...base, time: { ...base.time, committed: base.time.available } };
+    expect(simulateStaffBtgBlindTasting(state, 'maya', btg.wineId)).toBeUndefined();
   });
 
   it('is deterministic for the same week, staff state and BTG bottle', () => {
