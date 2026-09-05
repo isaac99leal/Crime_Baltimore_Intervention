@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "notes": "Reviewed Burgundy strict specifications. Conditional exceptions and co-planted accessory-variety rules are conservatively omitted until their conditions can be represented directly.",
   "sources": {
     "meursault_maasa_2026": {
@@ -31,6 +31,12 @@
       "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-ebbf3fef-7ba9-449c-bbeb-75e54f694efb",
       "checked": "2026-09-05",
       "scope": "Current published Saint-Aubin specification modified 2 December 2013: white/red encépagement, 30 Premier Cru climats, natural alcohol, yields, analytical limits, aging and 31 March market release."
+    },
+    "ladoix_masa_2011_current": {
+      "authority": "Ministère de l'Agriculture",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-64c27bea-ac3a-4400-be93-525ce351fdc4/telechargement",
+      "checked": "2026-09-05",
+      "scope": "Effective published Ladoix specification homologated 15 November 2011: white/red encépagement, 11 Premier Cru climat color matrix, natural alcohol, hL/ha yields, analytical limits, aging through 15 June and market release from 30 June of the following year."
     }
   },
   "specs": [
@@ -194,7 +200,7 @@
       "max_malic_acid_g_l": 0.4,
       "release_year_offset": 1,
       "source_ids": ["puligny_masa_2011_current"],
-      "notes": "Parent red Premier Cru path. The official climat/color matrix contains three white-only climats; red climat claims remain fail-closed until site-specific exclusions are executable."
+      "notes": "Parent red Premier Cru path. SiteClaimRegistry now applies the official site-by-color matrix and excludes the three white-only Premier Cru climats."
     },
     {
       "id": "fr:volnay:standard",
@@ -293,6 +299,70 @@
       "release_year_offset": 1,
       "source_ids": ["saint_aubin_masa_2013_current"],
       "notes": "Red Premier Cru 100% Pinot Noir positive path. The specification permits the listed climat names for red as well as white Premier Cru wines."
+    },
+    {
+      "id": "fr:ladoix:white-standard",
+      "country": "France",
+      "appellation": "Ladoix",
+      "aliases": ["Ladoix AOC", "Ladoix AOP"],
+      "variant": "white standard",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_potential_alcohol_pct": 11.0,
+      "max_yield_hl_ha": 57.0,
+      "max_residual_sugar_g_l": 3.0,
+      "release_year_offset": 1,
+      "source_ids": ["ladoix_masa_2011_current"],
+      "notes": "Conservative positive path. Pinot Gris is an accessory variety subject to vineyard and assemblage proportion rules and is not promoted into the ordinary positive blend engine. The conditional 4 g/L sugar allowance is fail-closed at 3 g/L."
+    },
+    {
+      "id": "fr:ladoix:red-standard",
+      "country": "France",
+      "appellation": "Ladoix",
+      "aliases": ["Ladoix AOC", "Ladoix AOP"],
+      "variant": "red standard",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 10.5,
+      "max_yield_hl_ha": 50.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["ladoix_masa_2011_current"],
+      "notes": "Conservative 100% Pinot Noir positive path. Chardonnay, Pinot Blanc and Pinot Gris are accessory grapes allowed only as co-planted vines and are not promoted as ordinary blend components."
+    },
+    {
+      "id": "fr:ladoix:white-premier-cru",
+      "country": "France",
+      "appellation": "Ladoix",
+      "aliases": ["Ladoix Premier Cru", "Ladoix 1er Cru"],
+      "variant": "white premier cru",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 55.0,
+      "max_residual_sugar_g_l": 3.0,
+      "release_year_offset": 1,
+      "source_ids": ["ladoix_masa_2011_current"],
+      "notes": "Parent white Premier Cru path. The site-claim layer applies the official climat-by-color matrix. Exact aging through 15 June and 30 June release are source-verified but the engine currently enforces only the year offset."
+    },
+    {
+      "id": "fr:ladoix:red-premier-cru",
+      "country": "France",
+      "appellation": "Ladoix",
+      "aliases": ["Ladoix Premier Cru", "Ladoix 1er Cru"],
+      "variant": "red premier cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.0,
+      "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["ladoix_masa_2011_current"],
+      "notes": "Parent red Premier Cru path. The site-claim layer applies the official climat-by-color matrix. Exact aging through 15 June and 30 June release are source-verified but the engine currently enforces only the year offset."
     }
   ]
 }
