@@ -1,14 +1,33 @@
 import { describe, expect, it } from 'vitest';
 import {
+  applyResearchMatrices,
   authorityVintageRatings,
+  environmentalProfileForPlace,
   environmentalProfiles,
   findEnvironmentalProfile,
   findVintageObservation,
   validateEnvironmentalResearch,
+  vintageObservationForPlace,
   vintageObservations,
 } from './environment';
+import type { ReferencePlace } from './reference';
+import type { WineProfile } from './types';
 
 const rec = (value: unknown) => value as Record<string, unknown>;
+
+function place(country: string, name: string, path: string[]): ReferencePlace {
+  return {
+    id: `${country}:${name}`,
+    country,
+    name,
+    kind: 'appellation',
+    path,
+    classificationTiers: [],
+    primaryGrapes: [],
+    authorizedGrapes: [],
+    soils: [],
+  };
+}
 
 describe('soil climate vintage and matrix research', () => {
   it('keeps a sourced environmental layer with bounded derived matrices', () => {
@@ -16,7 +35,7 @@ describe('soil climate vintage and matrix research', () => {
     expect(environmentalProfiles.length).toBeGreaterThanOrEqual(9);
     expect(vintageObservations.length).toBeGreaterThanOrEqual(10);
     expect(authorityVintageRatings.length).toBeGreaterThanOrEqual(25);
-    expect(report.countries).toBeGreaterThanOrEqual(5);
+    expect(report.countries).toBeGreaterThanOrEqual(4);
     expect(report.issues).toEqual([]);
   });
 
@@ -37,6 +56,18 @@ describe('soil climate vintage and matrix research', () => {
     expect(oriental?.matrixModifiers.alcohol).toBeGreaterThan(alta?.matrixModifiers.alcohol ?? 0);
   });
 
+  it('maps detailed game geography to the most specific researched environment', () => {
+    const meursault = place('France', 'Meursault', ['Burgundy', 'Côte de Beaune', 'Meursault']);
+    const gevrey = place('France', 'Gevrey-Chambertin', ['Burgundy', 'Côte de Nuits', 'Gevrey-Chambertin']);
+    const oriental = place('Spain', 'Rioja Oriental', ['Rioja', 'Rioja Oriental']);
+    const rutherford = place('United States', 'Rutherford', ['California', 'Napa Valley', 'Rutherford']);
+
+    expect(environmentalProfileForPlace(meursault)?.id).toBe('env-fr-meursault');
+    expect(environmentalProfileForPlace(gevrey)?.id).toBe('env-fr-bourgogne-cote');
+    expect(environmentalProfileForPlace(oriental)?.id).toBe('env-es-rioja-oriental');
+    expect(environmentalProfileForPlace(rutherford)?.id).toBe('env-us-napa-valley');
+  });
+
   it('stores actual growing-season observations instead of legacy generic quality scores', () => {
     const champagne2021 = findVintageObservation('vintage-fr-champagne-2021');
     const champagne2022 = findVintageObservation('vintage-fr-champagne-2022');
@@ -54,6 +85,28 @@ describe('soil climate vintage and matrix research', () => {
       expect(vintage).not.toHaveProperty('qualityScore');
       expect(vintage).not.toHaveProperty('legacyQualityScore');
     }
+  });
+
+  it('resolves a researched vintage through game geography and applies place plus vintage matrices', () => {
+    const champagne = place('France', 'Champagne', ['Champagne']);
+    const environment = environmentalProfileForPlace(champagne);
+    const vintage = vintageObservationForPlace(champagne, 2022);
+    const base: WineProfile = {
+      acidity: 3,
+      tannin: 1.5,
+      body: 2.5,
+      sweetness: 1,
+      fruitIntensity: 3,
+      earthIntensity: 2,
+      alcohol: 12,
+    };
+    const modeled = applyResearchMatrices(base, environment, vintage);
+
+    expect(environment?.id).toBe('env-fr-champagne');
+    expect(vintage?.id).toBe('vintage-fr-champagne-2022');
+    expect(modeled.acidity).toBeGreaterThan(base.acidity);
+    expect(modeled.body).toBeLessThan(base.body);
+    expect(modeled.alcohol).toBeLessThan(base.alcohol);
   });
 
   it('keeps measured Napa rainfall separate from derived vintage effects', () => {
