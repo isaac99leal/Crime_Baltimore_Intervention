@@ -2,19 +2,27 @@ import { describe, expect, it } from 'vitest';
 import {
   createTradeObservationCandidate,
   detectTradeConflicts,
+  tradeDiscoveryCandidateCount,
+  tradeDiscoveryCountsByStage,
   tradeFieldAuthority,
+  tradeObservationPassCount,
   tradeObservations,
   tradeObservationsForProducer,
+  tradeSourcePassCount,
   tradeSources,
   validateTradeSheetIngestion,
 } from './tradeSheetIngestion';
 
 describe('trade tech-sheet research ingestion', () => {
-  it('loads a curated importer/distributor registry and normalized seed observations', () => {
+  it('scales from a curated seed registry into verified sources plus a larger discovery queue', () => {
     const report = validateTradeSheetIngestion();
-    expect(tradeSources).toHaveLength(5);
-    expect(tradeObservations.length).toBeGreaterThanOrEqual(5);
-    expect(report.fieldsExtracted).toBeGreaterThanOrEqual(40);
+    expect(tradeSourcePassCount).toBe(2);
+    expect(tradeObservationPassCount).toBe(2);
+    expect(tradeSources.length).toBeGreaterThanOrEqual(20);
+    expect(tradeDiscoveryCandidateCount).toBeGreaterThanOrEqual(60);
+    expect(tradeDiscoveryCountsByStage['directory-lead']).toBeGreaterThanOrEqual(40);
+    expect(tradeObservations.length).toBeGreaterThanOrEqual(16);
+    expect(report.fieldsExtracted).toBeGreaterThanOrEqual(120);
     expect(report.conflicts).toBe(0);
     expect(report.issues).toEqual([]);
   });
@@ -40,6 +48,24 @@ describe('trade tech-sheet research ingestion', () => {
     expect(bedrock?.fields.vineyardPlantedYear).toBe(1915);
     expect(bedrock?.fields.newOakPct).toBe(25);
     expect(bedrock?.fields.alcoholPct).toBe(14.5);
+  });
+
+  it('turns niche commercial grapes into wine-specific technical evidence rather than generic grape prose', () => {
+    const romorantin = tradeObservations.find((observation) => observation.id === 'tradeobs-bowler-cazin-romorantin-2023');
+    const baco = tradeObservations.find((observation) => observation.id === 'tradeobs-jenny-francois-stavek-baco-noir');
+    const inzo = tradeObservations.find((observation) => observation.id === 'tradeobs-massanois-caruso-minini-inzolia');
+    expect(romorantin?.fields.varietyComposition).toBe('100% Romorantin');
+    expect(romorantin?.fields.vineAgeYearsRange).toEqual([40, 90]);
+    expect(baco?.fields.productionQuantityBottles).toBe(450);
+    expect(inzo?.fields.varietyComposition).toBe('100% Inzolia');
+    expect(inzo?.fields.productionQuantityBottles).toBe(25000);
+  });
+
+  it('retains mixed-planting and obscure-variety composition evidence at producer/wine scope', () => {
+    const oldArgentina = tradeObservations.find((observation) => observation.id === 'tradeobs-josepastor-elmontanista-viejas-tintas');
+    const galicia = tradeObservations.find((observation) => observation.id === 'tradeobs-josepastor-nanclares-tinto');
+    expect(oldArgentina?.fields.varieties).toEqual(['Barbera', 'Bonarda', 'Greco Nero', 'Rabosso Veronese', 'Cardin', 'Freisa']);
+    expect(galicia?.fields.varieties).toEqual(['Mencía', 'Caiño', 'Espadeiro', 'Sousón', 'Brancellao']);
   });
 
   it('detects same-entity same-vintage conflicts without overwriting either observation', () => {
