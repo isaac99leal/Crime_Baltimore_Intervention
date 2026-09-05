@@ -103,10 +103,22 @@ def authoritative_item_to_legacy_wine(
         tertiary_aromas=[],
         color=_legacy_color(record.style),
     )
-    grapes = [
-        GrapeBlend(grape=name, percentage=float(pct))
-        for name, pct in item.blend_percentages
-    ]
+
+    # The legal specification may use a jurisdictional synonym (for example,
+    # Pinot Nero) while the world catalog canonicalizes the identity (Pinot Noir).
+    # Keep the exact legal percentages but expose the same canonical identities in
+    # both object models.
+    legal_percentages = [float(pct) for _, pct in item.blend_percentages]
+    if len(record.grapes) == len(legal_percentages):
+        grapes = [
+            GrapeBlend(grape=name, percentage=pct)
+            for name, pct in zip(record.grapes, legal_percentages)
+        ]
+    else:
+        grapes = [
+            GrapeBlend(grape=name, percentage=float(pct))
+            for name, pct in item.blend_percentages
+        ]
 
     estate_name = record.label
     if record.vineyard:
