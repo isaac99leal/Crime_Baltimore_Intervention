@@ -1,0 +1,69 @@
+name: Wine knowledge external sync
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - restart/sommelier-v2-foundation
+    paths:
+      - scripts/sync_external_knowledge.py
+      - scripts/sync_external_knowledge_ci.py
+      - scripts/sync_legal_spec_sources.py
+      - scripts/extract_legal_spec_constraints.py
+      - .github/workflows/knowledge-sync.yml
+
+concurrency:
+  group: wine-knowledge-sync-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: restart/sommelier-v2-foundation
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install legal-document extraction tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+      - name: Refresh public wine registries
+        run: python scripts/sync_external_knowledge_ci.py
+      - name: Index authoritative wine product specifications
+        run: python scripts/sync_legal_spec_sources.py
+      - name: Commit authoritative source snapshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sommelier_v2/knowledge/data/adelaide_world_varieties_2000_2023.csv
+          git add sommelier_v2/knowledge/data/adelaide_country_varieties_2000_2023.csv
+          git add sommelier_v2/knowledge/data/eambrosia_wine_gis.json || true
+          git add sommelier_v2/knowledge/data/legal_spec_source_index.json || true
+          git add sommelier_v2/knowledge/data/legal_spec_source_manifest.json || true
+          git add sommelier_v2/knowledge/data/external_sync_manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh authoritative wine legal source snapshots"
+            git fetch origin restart/sommelier-v2-foundation
+            git rebase origin/restart/sommelier-v2-foundation
+            git push origin HEAD:restart/sommelier-v2-foundation
+          fi
+      - name: Extract deny-safe legal grape constraints
+        run: python scripts/extract_legal_spec_constraints.py
+      - name: Commit derived legal constraints
+        run: |
+          git add sommelier_v2/knowledge/data/legal_spec_machine_constraints.json || true
+          git add sommelier_v2/knowledge/data/legal_spec_machine_constraints_manifest.json || true
+          if git diff --cached --quiet; then
+            echo "No derived legal constraint changes"
+          else
+            git commit -m "Refresh deny-safe legal grape constraints"
+            git fetch origin restart/sommelier-v2-foundation
+            git rebase origin/restart/sommelier-v2-foundation
+            git push origin HEAD:restart/sommelier-v2-foundation
+          fi

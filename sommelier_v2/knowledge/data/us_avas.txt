@@ -1,0 +1,285 @@
+# Authority: U.S. Alcohol and Tobacco Tax and Trade Bureau
+# Source: https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/ava-establishment-dates
+# Cross-check: https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas
+# Retrieved: 2026-09-05; TTB stated 280 established AVAs as of 2026-08-18.
+# Each line is an established American Viticultural Area.
+Augusta
+Napa Valley
+Santa Maria Valley
+Fennville
+San Pasquale Valley
+Guenoc Valley
+McDowell Valley
+Santa Cruz Mountains
+Sonoma Valley
+Leelanau Peninsula
+Edna Valley
+Lancaster Valley
+Hudson River Region
+Lime Kiln Valley
+Chalone
+Paicines
+Cienega Valley
+Isle St. George
+Livermore Valley
+Finger Lakes
+Suisun Valley
+Loramie Creek
+Carmel Valley
+California Shenandoah Valley
+Shenandoah Valley
+Solano County Green Valley
+Rocky Knob
+Yakima Valley
+Arroyo Seco
+Cole Ranch
+North Fork of Roanoke
+Santa Ynez Valley
+Merritt Island
+Dry Creek Valley
+Anderson Valley
+Hermann
+Los Carneros
+Linganore
+Willow Creek
+York Mountain
+Ohio River Valley
+North Coast
+Fiddletown
+Paso Robles
+Catoctin
+El Dorado
+Lake Michigan Shore
+Potter Valley
+Chalk Hill
+Grand River Valley
+Knights Valley
+Lake Erie
+Russian River Valley
+Green Valley of Russian River Valley
+Willamette Valley
+Howell Mountain
+Clarksburg
+Monticello
+Walla Walla Valley
+Pacheco Pass
+Central Delaware Valley
+Southeastern New England
+Umpqua Valley
+Clear Lake
+Altus
+Mendocino
+Monterey
+Mississippi Delta
+Temecula Valley
+Alexander Valley
+Sonoita
+Columbia Valley
+Madera
+Martha’s Vineyard
+Sonoma Mountain
+Mesilla Valley
+The Hamptons, Long Island
+Northern Sonoma
+Cumberland Valley
+Mimbres Valley
+North Yuba
+South Coast
+Central Coast
+Lodi
+Kanawha River Valley
+Ozark Mountain
+Arkansas Mountain
+Bell Mountain
+North Fork of Long Island
+San Lucas
+Northern Neck George Washington Birthplace
+Old Mission Peninsula
+Sonoma Coast
+Ozark Highlands
+San Benito
+Sierra Foothills
+Ben Lomond Mountain
+Middle Rio Grande Valley
+Western Connecticut Highlands
+Cayuga Lake
+Warren Hills
+Wild Horse Valley
+Fredericksburg in the Texas Hill Country
+Stags Leap District
+Santa Clara Valley
+Arroyo Grande Valley
+Mt. Veeder
+Mt. Harlan
+San Ysidro District
+Virginia’s Eastern Shore
+Rogue Valley
+Benmore Valley
+Grand Valley
+Texas Hill Country
+Atlas Peak
+Escondido Valley
+Santa Lucia Highlands
+Texas High Plains
+Dunnigan Hills
+Spring Mountain District
+Oakville
+Rutherford
+Lake Wisconsin
+Hames Valley
+Seiad Valley
+Cucamonga Valley
+St. Helena
+Puget Sound
+Malibu-Newton Canyon
+Redwood Valley
+Mendocino Ridge
+Texas Davis Mountains
+Yorkville Highlands
+Diablo Grande
+San Francisco Bay
+Chiles Valley
+Yountville
+Applegate Valley
+Fair Play
+West Elks
+Red Mountain
+River Junction
+Long Island
+Sta. Rita Hills
+Diamond Mountain District
+Rockpile
+Yadkin Valley
+Capay Valley
+Seneca Lake
+Bennett Valley
+Oak Knoll District of Napa Valley
+Columbia Gorge
+Salado Creek
+San Bernabe
+Red Hills Lake County
+Dundee Hills
+Southern Oregon
+Yamhill-Carlton
+McMinnville
+Trinity Lakes
+Ribbon Ridge
+Alexandria Lakes
+High Valley
+Horse Heaven Hills
+Niagara Escarpment
+Dos Rios
+Red Hill Douglas County, Oregon
+Ramona Valley
+Texoma
+Wahluke Slope
+Covelo
+Rattlesnake Hills
+San Antonio Valley
+Alta Mesa
+Borden Ranch
+Clements Hills
+Cosumnes River
+Eola-Amity Hills
+Jahant
+Mokelumne River
+Saddle Rock-Malibu
+Sloughhouse
+Tracy Hills
+Chehalem Mountains
+Shawnee Hills
+Outer Coastal Plain
+Snake River Valley
+Lehigh Valley
+Swan Creek
+Leona Valley
+Snipes Mountain
+Haw River Valley
+Lake Chelan
+Upper Mississippi River Valley
+Happy Canyon of Santa Barbara
+Calistoga
+Sierra Pelona
+Antelope Valley of the California High Desert
+Pine Mountain-Cloverdale Peak
+Coombsville
+Fort Ross-Seaview
+Naches Heights
+Wisconsin Ledge
+Ancient Lakes of Columbia Valley
+Inwood Valley
+Middleburg, Virginia
+Elkton, OR
+Indiana Uplands
+Ballard Canyon
+Big Valley District-Lake County
+Moon Mountain District Sonoma County
+Kelsey Bench-Lake County
+Malibu Coast
+Upper Hiwassee Highlands
+Manton Valley
+Adelaida District
+Creston District
+Eagle Peak Mendocino County
+El Pomar District
+Paso Robles Estrella District
+Paso Robles Geneseo District
+Paso Robles Highlands District
+Paso Robles Willow Creek District
+San Juan Creek
+San Miguel District
+Santa Margarita Ranch
+Templeton Gap District
+The Rocks District of Milton-Freewater
+Fountaingrove District
+Squaw Valley-Miramonte
+Eagle Foothills
+Los Olivos District
+Lamorinda
+Loess Hills District
+Lewis-Clark Valley
+Tip of the Mitt
+Champlain Valley of New York
+Willcox
+Appalachian High Country
+Petaluma Gap
+Cape May Peninsula
+Dahlonega Plateau
+Upper Hudson
+Van Duzer Corridor
+Crest of the Blue Ridge Henderson County
+Eastern Connecticut Highlands
+Tualatin Hills
+Laurelwood District
+Alisos Canyon
+Royal Slope
+Candy Mountain
+Tehachapi Mountains
+Palos Verdes Peninsula
+White Bluffs
+The Burn of Columbia Valley
+Goose Gap
+Ulupalakua
+Virginia Peninsula
+Verde Valley
+Lower Long Tom
+San Luis Obispo Coast (SLO Coast)
+West Sonoma Coast
+Mt. Pisgah, Polk County, Oregon
+Paulsell Valley
+Rocky Reach
+Upper Lake Valley
+Gabilan Mountains
+Long Valley-Lake County
+Winters Highlands
+Contra Costa
+Comptche
+Yucaipa Valley
+Upper Cumberland
+San Luis Rey
+Crystal Springs of Napa Valley
+Beverly, Washington
+Tryon Foothills
+Nashoba Valley
+Nine Lakes of East Tennessee
+Columbia Hills

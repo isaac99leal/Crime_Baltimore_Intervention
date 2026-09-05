@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-09-05T14:06:22.454550+00:00",
+  "target_records": 1437,
+  "deny_safe_constraints": 415,
+  "countries_with_deny_safe_constraints": {
+    "AT": 4,
+    "DE": 15,
+    "FR": 337,
+    "GR": 7,
+    "HU": 7,
+    "IT": 5,
+    "PT": 24,
+    "SI": 16
+  },
+  "source_only_or_unparsed": 1022,
+  "safety": "Machine-extracted constraints are deny-only. They never authorize a protected-origin wine."
+}

@@ -1,0 +1,334 @@
+{
+  "schema_version": "1.0",
+  "notes": "Conservative sourced legal-spec seed. A missing rule is not inferred from regional tradition. Where a regulation permits a broader class that is not yet enumerated in this registry, the engine intentionally over-blocks rather than inventing legal authorization.",
+  "sources": {
+    "brunello_consortium_current": {
+      "authority": "Consorzio del vino Brunello di Montalcino",
+      "url": "https://www.consorziobrunellodimontalcino.it/en/586/il-brunello",
+      "checked": "2026-09-05",
+      "scope": "Sangiovese, yield, grape-to-wine yield, alcohol, acidity, dry extract, wood/bottle aging, bottling and release"
+    },
+    "barolo_masaf_2026": {
+      "authority": "Ministero dell'agricoltura, della sovranita alimentare e delle foreste (MASAF)",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24322",
+      "checked": "2026-09-05",
+      "scope": "2026 consolidated Barolo specification; base yield and minimum natural alcohol"
+    },
+    "barolo_langhe_consortium": {
+      "authority": "Consorzio di tutela Barolo Barbaresco Alba Langhe e Dogliani",
+      "url": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barolo-docg/",
+      "checked": "2026-09-05",
+      "scope": "100% Nebbiolo identity rule"
+    },
+    "barolo_regulation_aging": {
+      "authority": "Consorzio di tutela Barolo Barbaresco Alba Langhe e Dogliani",
+      "url": "https://www.langhevini.it/wp-content/uploads/2019/05/Disciplinare-BAROLO-EN.pdf",
+      "checked": "2026-09-05",
+      "scope": "Barolo and Riserva mandatory total and wood aging"
+    },
+    "barbaresco_masaf_2026": {
+      "authority": "Ministero dell'agricoltura, della sovranita alimentare e delle foreste (MASAF)",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24323",
+      "checked": "2026-09-05",
+      "scope": "2026 consolidated Barbaresco specification registry"
+    },
+    "barbaresco_langhe_consortium": {
+      "authority": "Consorzio di tutela Barolo Barbaresco Alba Langhe e Dogliani",
+      "url": "https://www.langhevini.it/en/le-denominazioni-tutelate-dal-consorzio/barbaresco-docg/",
+      "checked": "2026-09-05",
+      "scope": "100% Nebbiolo; minimum two years aging including nine months oak; Riserva after four years"
+    },
+    "chianti_classico_disciplinare": {
+      "authority": "Consorzio Vino Chianti Classico",
+      "url": "https://www.chianticlassico.com/wp-content/uploads/2020/11/disciplinare-Chianti-Classico.pdf",
+      "checked": "2026-09-05",
+      "scope": "Sangiovese 80-100%; up to 20% other Tuscany-suitable red varieties"
+    },
+    "chianti_classico_parameters": {
+      "authority": "Consorzio Vino Chianti Classico",
+      "url": "https://www.chianticlassico.com/vino/tipologie/parametri/",
+      "checked": "2026-09-05",
+      "scope": "Minimum alcohol, aging, acidity and extract by Annata/Riserva/Gran Selezione"
+    },
+    "rioja_varieties_2026": {
+      "authority": "Consejo Regulador DOCa Rioja",
+      "url": "https://riojawine.com/en-us/the-designation/grape-varieties/",
+      "checked": "2026-09-05",
+      "scope": "Five red and nine white authorized grape varieties"
+    },
+    "rioja_classification_2026": {
+      "authority": "Consejo Regulador DOCa Rioja",
+      "url": "https://riojawine.com/es/doca-rioja/denominacion-de-origen-calificada/",
+      "checked": "2026-09-05",
+      "scope": "Crianza, Reserva, Gran Reserva and sparkling aging/method rules"
+    },
+    "champagne_inao_2025_2026": {
+      "authority": "Institut national de l'origine et de la qualite (INAO)",
+      "url": "https://inao.gouv.fr/produit/champagne-21054",
+      "checked": "2026-09-05",
+      "scope": "Current 2025 homologated Champagne specification and 2026 modification procedure"
+    },
+    "champagne_grapes_current": {
+      "authority": "Comite Champagne",
+      "url": "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties",
+      "checked": "2026-09-05",
+      "scope": "Current grape presentation including Chardonnay Rose authorization in 2025"
+    },
+    "champagne_inao_variety_modification": {
+      "authority": "INAO",
+      "url": "https://extranet.inao.gouv.fr/fichier/CDCPNOChampagne20240911.pdf",
+      "checked": "2026-09-05",
+      "scope": "Eight main varieties and Voltis adaptation-variety planting limit"
+    },
+    "champagne_making_2025": {
+      "authority": "Comite Champagne",
+      "url": "https://www.champagne.fr/system/files/2025-09/FICHE%20%C3%89LABORATION%20DU%20CHAMPAGNE%20EN%202025.pdf",
+      "checked": "2026-09-05",
+      "scope": "Bottle secondary fermentation; 15-month non-vintage and 36-month vintage aging; pressing fractions"
+    },
+    "prosecco_rose_masaf": {
+      "authority": "Ministero dell'agricoltura, della sovranita alimentare e delle foreste (MASAF)",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/16153",
+      "checked": "2026-09-05",
+      "scope": "Prosecco Rose Glera 85-90%, Pinot nero 10-15% and Pinot nero yield/minimum natural alcohol rule"
+    }
+  },
+  "specs": [
+    {
+      "id": "it:brunello-di-montalcino:standard",
+      "country": "Italy",
+      "appellation": "Brunello di Montalcino DOCG",
+      "aliases": ["Brunello di Montalcino", "Brunello"],
+      "variant": "standard",
+      "wine_style": "red",
+      "allowed_grapes": ["Sangiovese"],
+      "grape_constraints": [{"grape": "Sangiovese", "min_pct": 100, "max_pct": 100}],
+      "max_yield_t_ha": 8.0,
+      "grape_to_wine_yield_pct": 68.0,
+      "min_final_alcohol_pct": 12.5,
+      "min_total_acidity_g_l": 5.0,
+      "min_dry_extract_g_l": 26.0,
+      "min_wood_aging_months": 24,
+      "min_bottle_aging_months": 4,
+      "release_year_offset": 5,
+      "bottling_in_origin_required": true,
+      "source_ids": ["brunello_consortium_current"]
+    },
+    {
+      "id": "it:brunello-di-montalcino:riserva",
+      "country": "Italy",
+      "appellation": "Brunello di Montalcino DOCG",
+      "aliases": ["Brunello di Montalcino", "Brunello"],
+      "variant": "riserva",
+      "wine_style": "red",
+      "allowed_grapes": ["Sangiovese"],
+      "grape_constraints": [{"grape": "Sangiovese", "min_pct": 100, "max_pct": 100}],
+      "max_yield_t_ha": 8.0,
+      "grape_to_wine_yield_pct": 68.0,
+      "min_final_alcohol_pct": 12.5,
+      "min_total_acidity_g_l": 5.0,
+      "min_dry_extract_g_l": 26.0,
+      "min_wood_aging_months": 24,
+      "min_bottle_aging_months": 6,
+      "release_year_offset": 6,
+      "bottling_in_origin_required": true,
+      "source_ids": ["brunello_consortium_current"]
+    },
+    {
+      "id": "it:barolo:standard",
+      "country": "Italy",
+      "appellation": "Barolo DOCG",
+      "aliases": ["Barolo"],
+      "variant": "standard",
+      "wine_style": "red",
+      "allowed_grapes": ["Nebbiolo"],
+      "grape_constraints": [{"grape": "Nebbiolo", "min_pct": 100, "max_pct": 100}],
+      "max_yield_t_ha": 8.0,
+      "min_potential_alcohol_pct": 12.5,
+      "min_total_aging_months": 38,
+      "min_wood_aging_months": 18,
+      "release_year_offset": 4,
+      "source_ids": ["barolo_masaf_2026", "barolo_langhe_consortium", "barolo_regulation_aging"]
+    },
+    {
+      "id": "it:barolo:riserva",
+      "country": "Italy",
+      "appellation": "Barolo DOCG",
+      "aliases": ["Barolo"],
+      "variant": "riserva",
+      "wine_style": "red",
+      "allowed_grapes": ["Nebbiolo"],
+      "grape_constraints": [{"grape": "Nebbiolo", "min_pct": 100, "max_pct": 100}],
+      "max_yield_t_ha": 8.0,
+      "min_potential_alcohol_pct": 12.5,
+      "min_total_aging_months": 62,
+      "min_wood_aging_months": 18,
+      "release_year_offset": 6,
+      "source_ids": ["barolo_masaf_2026", "barolo_langhe_consortium", "barolo_regulation_aging"]
+    },
+    {
+      "id": "it:barbaresco:standard",
+      "country": "Italy",
+      "appellation": "Barbaresco DOCG",
+      "aliases": ["Barbaresco"],
+      "variant": "standard",
+      "wine_style": "red",
+      "allowed_grapes": ["Nebbiolo"],
+      "grape_constraints": [{"grape": "Nebbiolo", "min_pct": 100, "max_pct": 100}],
+      "min_total_aging_months": 24,
+      "min_wood_aging_months": 9,
+      "source_ids": ["barbaresco_masaf_2026", "barbaresco_langhe_consortium"]
+    },
+    {
+      "id": "it:barbaresco:riserva",
+      "country": "Italy",
+      "appellation": "Barbaresco DOCG",
+      "aliases": ["Barbaresco"],
+      "variant": "riserva",
+      "wine_style": "red",
+      "allowed_grapes": ["Nebbiolo"],
+      "grape_constraints": [{"grape": "Nebbiolo", "min_pct": 100, "max_pct": 100}],
+      "min_total_aging_months": 48,
+      "min_wood_aging_months": 9,
+      "source_ids": ["barbaresco_masaf_2026", "barbaresco_langhe_consortium"],
+      "notes": "Consortium public description states Riserva after four years; exact current consolidated month accounting should be rechecked against the full 2026 specification before adding a stricter release-date rule."
+    },
+    {
+      "id": "it:chianti-classico:standard",
+      "country": "Italy",
+      "appellation": "Chianti Classico DOCG",
+      "aliases": ["Chianti Classico"],
+      "variant": "standard",
+      "wine_style": "red",
+      "allowed_grapes": ["Sangiovese"],
+      "grape_constraints": [{"grape": "Sangiovese", "min_pct": 80, "max_pct": 100}],
+      "min_final_alcohol_pct": 12.0,
+      "min_total_acidity_g_l": 4.5,
+      "min_dry_extract_g_l": 24.0,
+      "min_total_aging_months": 12,
+      "source_ids": ["chianti_classico_disciplinare", "chianti_classico_parameters"],
+      "notes": "The discipline permits up to 20% other red varieties suitable for Tuscany. The complete current Tuscany registry is not yet enumerated here, so this conservative seed authorizes only the always-legal 100% Sangiovese path rather than guessing the secondary list."
+    },
+    {
+      "id": "it:chianti-classico:riserva",
+      "country": "Italy",
+      "appellation": "Chianti Classico DOCG",
+      "aliases": ["Chianti Classico"],
+      "variant": "riserva",
+      "wine_style": "red",
+      "allowed_grapes": ["Sangiovese"],
+      "grape_constraints": [{"grape": "Sangiovese", "min_pct": 80, "max_pct": 100}],
+      "min_final_alcohol_pct": 12.5,
+      "min_total_acidity_g_l": 4.5,
+      "min_dry_extract_g_l": 25.0,
+      "min_total_aging_months": 24,
+      "source_ids": ["chianti_classico_disciplinare", "chianti_classico_parameters"]
+    },
+    {
+      "id": "it:chianti-classico:gran-selezione",
+      "country": "Italy",
+      "appellation": "Chianti Classico DOCG",
+      "aliases": ["Chianti Classico"],
+      "variant": "gran selezione",
+      "wine_style": "red",
+      "allowed_grapes": ["Sangiovese"],
+      "grape_constraints": [{"grape": "Sangiovese", "min_pct": 80, "max_pct": 100}],
+      "min_final_alcohol_pct": 13.0,
+      "min_total_acidity_g_l": 4.5,
+      "min_dry_extract_g_l": 26.0,
+      "min_total_aging_months": 30,
+      "source_ids": ["chianti_classico_disciplinare", "chianti_classico_parameters"]
+    },
+    {
+      "id": "es:rioja:standard",
+      "country": "Spain",
+      "appellation": "Rioja DOCa",
+      "aliases": ["Rioja", "DOCa Rioja", "Rioja DOP"],
+      "variant": "standard",
+      "allowed_grapes": ["Tempranillo", "Garnacha Tinta", "Graciano", "Mazuelo", "Maturana Tinta", "Viura", "Garnacha Blanca", "Malvasia", "Tempranillo Blanco", "Maturana Blanca", "Turruntes", "Chardonnay", "Sauvignon Blanc", "Verdejo"],
+      "source_ids": ["rioja_varieties_2026"]
+    },
+    {
+      "id": "es:rioja:red-crianza",
+      "country": "Spain",
+      "appellation": "Rioja DOCa",
+      "aliases": ["Rioja", "DOCa Rioja", "Rioja DOP"],
+      "variant": "red crianza",
+      "wine_style": "red",
+      "allowed_grapes": ["Tempranillo", "Garnacha Tinta", "Graciano", "Mazuelo", "Maturana Tinta"],
+      "min_total_aging_months": 24,
+      "min_wood_aging_months": 12,
+      "source_ids": ["rioja_varieties_2026", "rioja_classification_2026"]
+    },
+    {
+      "id": "es:rioja:red-reserva",
+      "country": "Spain",
+      "appellation": "Rioja DOCa",
+      "aliases": ["Rioja", "DOCa Rioja", "Rioja DOP"],
+      "variant": "red reserva",
+      "wine_style": "red",
+      "allowed_grapes": ["Tempranillo", "Garnacha Tinta", "Graciano", "Mazuelo", "Maturana Tinta"],
+      "min_total_aging_months": 36,
+      "min_wood_aging_months": 12,
+      "min_bottle_aging_months": 6,
+      "source_ids": ["rioja_varieties_2026", "rioja_classification_2026"]
+    },
+    {
+      "id": "es:rioja:red-gran-reserva",
+      "country": "Spain",
+      "appellation": "Rioja DOCa",
+      "aliases": ["Rioja", "DOCa Rioja", "Rioja DOP"],
+      "variant": "red gran reserva",
+      "wine_style": "red",
+      "allowed_grapes": ["Tempranillo", "Garnacha Tinta", "Graciano", "Mazuelo", "Maturana Tinta"],
+      "min_total_aging_months": 60,
+      "min_wood_aging_months": 24,
+      "min_bottle_aging_months": 24,
+      "source_ids": ["rioja_varieties_2026", "rioja_classification_2026"]
+    },
+    {
+      "id": "fr:champagne:non-vintage",
+      "country": "France",
+      "appellation": "Champagne AOP",
+      "aliases": ["Champagne", "AOC Champagne"],
+      "variant": "standard",
+      "wine_style": "sparkling",
+      "allowed_grapes": ["Arbane", "Chardonnay", "Chardonnay Rose", "Meunier", "Petit Meslier", "Pinot Blanc", "Pinot Gris", "Pinot Noir"],
+      "vineyard_adaptation_grapes": ["Voltis"],
+      "vineyard_adaptation_max_pct": 5.0,
+      "min_total_aging_months": 15,
+      "required_method": "traditional method",
+      "source_ids": ["champagne_inao_2025_2026", "champagne_grapes_current", "champagne_inao_variety_modification", "champagne_making_2025"],
+      "notes": "Voltis is recorded separately as a variety of interest for adaptation under a convention and <=5% holding-level planting rule; it is not silently treated as a normal blend grape by this seed."
+    },
+    {
+      "id": "fr:champagne:vintage",
+      "country": "France",
+      "appellation": "Champagne AOP",
+      "aliases": ["Champagne", "AOC Champagne"],
+      "variant": "vintage",
+      "wine_style": "sparkling",
+      "allowed_grapes": ["Arbane", "Chardonnay", "Chardonnay Rose", "Meunier", "Petit Meslier", "Pinot Blanc", "Pinot Gris", "Pinot Noir"],
+      "vineyard_adaptation_grapes": ["Voltis"],
+      "vineyard_adaptation_max_pct": 5.0,
+      "min_total_aging_months": 36,
+      "required_method": "traditional method",
+      "source_ids": ["champagne_inao_2025_2026", "champagne_grapes_current", "champagne_inao_variety_modification", "champagne_making_2025"]
+    },
+    {
+      "id": "it:prosecco:rose",
+      "country": "Italy",
+      "appellation": "Prosecco DOC",
+      "aliases": ["Prosecco DOP", "Prosecco"],
+      "variant": "rose",
+      "wine_style": "sparkling rose",
+      "allowed_grapes": ["Glera", "Pinot Nero"],
+      "grape_constraints": [
+        {"grape": "Glera", "min_pct": 85, "max_pct": 90},
+        {"grape": "Pinot Nero", "min_pct": 10, "max_pct": 15}
+      ],
+      "source_ids": ["prosecco_rose_masaf"],
+      "notes": "The cited modification also sets a 13.5 t/ha maximum for Pinot Nero and 9% minimum natural alcohol. Those are grape-specific vineyard rules, so they are retained in source metadata rather than incorrectly applied to the whole mixed block."
+    }
+  ]
+}

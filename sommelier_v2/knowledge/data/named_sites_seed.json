@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "notes": "Named vineyard/site registry seed. Legal classifications, informal lieux-dits, monopoles, and producer-defined blocks are intentionally distinct. The registry is extensible and does not claim that private block names worldwide form a closed public set.",
+  "sources": {
+    "barolo_enoteca_mga": "https://www.enotecadelbarolo.it/the-wine-barolo/barolo-mga/locate-mgas/?lang=en",
+    "barbaresco_enoteca_mga": "https://www.enotecadelbarbaresco.it/en/menzioni-geografiche-aggiuntive",
+    "chianti_classico_uga": "https://www.chianticlassico.com/en/territory/uga/",
+    "bourgogne_chambolle": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/chambolle-musigny,2458,9253.html",
+    "bourgogne_meursault": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/meursault,2458,9253.html",
+    "bourgogne_puligny": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/puligny-montrachet,2458,9253.html",
+    "bourgogne_volnay": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/volnay,2458,9253.html",
+    "bourgogne_saint_aubin": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/saint-aubin,2458,9253.html",
+    "bourgogne_pouilly_fuisse": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/pouilly-fuisse,2458,9253.html",
+    "bourgogne_mercurey": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/mercurey,2458,9253.html",
+    "bourgogne_ladoix": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/ladoix,2458,9253.html",
+    "bourgogne_givry": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/givry,2458,9253.html",
+    "bourgogne_montagny": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/montagny,2458,9253.html",
+    "bourgogne_cote_nuits_villages": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/cote-de-nuits-villages,2458,9253.html",
+    "bourgogne_monopoles": "https://www.bourgogne-wines.com/",
+    "chateau_pommard_clos_marey_monge": "https://www.chateaudepommard.com/clos-marey-monge/"
+  },
+  "groups": [
+    {
+      "country": "Italy", "region": "Barolo DOCG", "parent": "Barolo DOCG",
+      "site_type": "MGA", "classification": "Menzione Geografica Aggiuntiva",
+      "legal_status": "official_additional_geographical_mention",
+      "source_ids": ["barolo_enoteca_mga"],
+      "names": [
+        "Albarella","Altenasso","Annunziata","Arborina","Arione","Ascheri","Bablino","Badarina","Baudana","Bergesia","Bergera - Pezzole","Berri","Bettolotti","Boiolo","Borzone","Boscareto","Boscatto","Boschetti","Brandini","Brea","Breri","Bricco Ambrogio","Bricco Boschis","Bricco Chiesa","Bricco Cogni","Bricco delle Viole","Briccolina","Bricco Luciani","Bricco Manescotto","Bricco Manzoni","Bricco Rocca","Bricco Rocche","Bricco San Biagio","Bricco San Giovanni","Bricco San Pietro","Bricco Voghera","Broglio","Brunate","Brunella","Bussia","Campasso","Cannubi","Cannubi Boschis","Cannubi Muscatel","Cannubi San Lorenzo","Cannubi Valletta","Canova","Capalot","Cappallotto","Carpegna","Case Nere","Castagni","Castellero","Castelletto","Castello","Cerequio","Cerrati","Cerretta","Cerviano - Merli","Ciocchini","Ciocchini - Loschetto","Codana","Collaretto","Colombaro","Conca","Corini - Pallaretta","Costabella","Coste di Rose","Coste di Vergne","Crosia","Damiano","Drucà","Falletto","Fiasco","Fontanafredda","Fossati","Francia","Gabutti","Galina","Gallaretto","Garretti","Gattera","Giachini","Gianetto","Ginestra","Gramolere","Gustava","La Corte","La Serra","La Vigna","La Volta","Lazzarito","Le Coste","Le Coste di Monforte","Le Turne","Lirano","Liste","Manocino","Mantoetto","Marenca","Margheria","Mariondino","Massara","Meriame","Monprivato","Monrobiolo di Bussia","Montanello","Monvigliero","Mosconi","Neirane","Ornato","Paiagallo","Panerole","Parafada","Parussi","Pernanno","Perno","Piantà","Pira","Pisapola","Prabon","Prapò","Preda","Pugnane","Ravera","Ravera di Monforte","Raviole","Riva Rocca","Rivassi","Rive","Rivette","Rocche dell'Annunziata","Rocche dell'Olmo","Rocche di Castiglione","Rocchettevino","Rodasca","Roere di Santa Maria","Roggeri","Roncaglie","Ruè","San Bernardo","San Giacomo","San Giovanni","San Lorenzo","San Lorenzo di Verduno","San Pietro","San Ponzio","San Rocco","Santa Maria","Sant'Anna","Sarmassa","Scarrone","Serra","Serra dei Turchi","Serradenari","Silio","Solanotto","Sorano","Sottocastello di Novello","Teodoro","Terlo","Torriglione","Valentino","Vignane","Vignarionda","Vignolo","Villero","Zoccolaio","Zonchetta","Zuncai"
+      ]
+    },
+    {
+      "country": "Italy", "region": "Barbaresco DOCG", "parent": "Barbaresco DOCG",
+      "site_type": "MGA", "classification": "Menzione Geografica Aggiuntiva",
+      "legal_status": "official_additional_geographical_mention",
+      "source_ids": ["barbaresco_enoteca_mga"],
+      "names": [
+        "Albesani","Asili","Ausario","Balluri","Basarin","Bernadot","Bordini","Bric Micca","Bricco di Neive","Bricco di Treiso","Cà Grossa","Canova","Cars","Casot","Castellizzano","Cavanna","Cole","Cottà","Currà","Faset","Fausoni","Ferrere","Gaia-Principe","Gallina","Garassino","Giacone","Giacosa","Manzola","Marcarini","Marcorino","Martinenga","Meruzzano","Montaribaldi","Montefico","Montersino","Montestefano","Muncagota","Nervo","Ovello","Pajè","Pajorè","Pora","Rabajà","Rabajà-Bas","Rio Sordo","Rivetti","Rizzi","Roccalini","Rocche Massalupo","Rombone","Roncaglie","Roncagliette","Ronchi","San Cristoforo","San Giuliano","San Stunet","Secondine","Serraboella","Serracapelli","Serragrilli","Starderi","Tre Stelle","Trifolera","Valeirano","Vallegrande","Vicenziana"
+      ]
+    },
+    {
+      "country": "Italy", "region": "Chianti Classico DOCG", "parent": "Chianti Classico DOCG",
+      "site_type": "UGA", "classification": "Unità Geografica Aggiuntiva",
+      "legal_status": "official_additional_geographical_unit",
+      "source_ids": ["chianti_classico_uga"],
+      "names": ["Castellina","Castelnuovo Berardenga","Gaiole","Greve","Lamole","Montefioralle","Panzano","Radda","San Casciano","San Donato in Poggio","Vagliagli"]
+    },
+
+    {
+      "country":"France","region":"Bourgogne","parent":"Chambolle-Musigny","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_chambolle"],
+      "names":["Aux Beaux Bruns","Aux Combottes","Aux Echanges","Derrière la Grange","La Combe d'Orveau","Les Amoureuses","Les Baudes","Les Borniques","Les Carrières","Les Chabiots","Les Charmes","Les Chatelots","Les Combottes","Les Cras","Les Feusselottes","Les Fuées","Les Groseilles","Les Gruenchers","Les Hauts Doix","Les Lavrottes","Les Noirots","Les Plantes","Les Sentiers","Les Véroilles"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Chambolle-Musigny","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_chambolle"],
+      "names":["Aux Croix","Derrière le Four","La Combe d'Orveau","La Taupe","Le Village","Les Argillières","Les Athets","Les Babillères","Les Barottes","Les Bas Doix","Les Bussières","Les Chardannes","Les Clos","Les Clos de l'Orme","Les Condemennes","Les Cras","Les Creux Baissants","Les Danguerrins","Les Drazey","Les Echezeaux","Les Fouchères","Les Fremières","Les Gamaires","Les Guérippes","Les Herbues","Les Jutruots","Les Mal Carrées","Les Maladières","Les Mombies","Les Nazoires","Les Pas de Chat","Les Porlottes","Les Sordes"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Meursault","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_meursault"],
+      "names":["Blagny","Charmes","Clos des Perrières","Genevrières","La Jeunellotte","La Pièce sous le Bois","Le Porusot","Les Bouchères","Les Caillerets","Les Cras","Les Gouttes d'Or","Les Plures","Les Ravelles","Les Santenots Blancs","Les Santenots du Milieu","Perrières","Porusot","Sous Blagny","Sous le Dos d'Ane"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Meursault","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_meursault"],
+      "names":["Au Moulin Judas","Au Moulin Landin","Au Murger de Monthélie","Au Village","Clos de la Barre","Clos des Mouches","En Gargouillot","En l'Ormeau","En la Barre","En Marcausse","La Barre Dessus","Le Bois de Blagny","Le Buisson Certaut","Le Cromin","Le Limozin","Le Meix sous le Château","Le Meix Tavaux","Le Pré de Manche","Le Tesson","Les Casse-Têtes","Les Chaumes","Les Chaumes de Narvaux","Les Chevalières","Les Clous Dessous","Les Clous Dessus","Les Corbins","Les Criots","Les Dressoles","Les Durots","Les Forges","Les Gorges de Narvaux","Les Grands Charrons","Les Gruyaches","Les Luchets","Les Magny","Les Malpoiriers","Les Meix Chavaux","Les Millerands","Les Narvaux Dessoux","Les Narvaux Dessus","Les Pellans","Les Pelles-Dessous","Les Pelles-Dessus","Les Perchots","Les Petits Charrons","Les Peutes Vignes","Les Rougeots","Les Santenots Dessous","Les Terres Blanches","Les Tillets","Les Vireuils Dessous","Les Vireuils Dessus"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Puligny-Montrachet","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_puligny"],
+      "names":["Champ Canet","Champ Gain","Clavaillon","Clos de la Garenne","Clos de la Mouchère","Hameau de Blagny","La Garenne","La Truffière","Le Cailleret","Les Chalumaux","Les Combettes","Les Demoiselles","Les Folatières","Les Perrières","Les Pucelles","Les Referts","Sous le Puits"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Puligny-Montrachet","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_puligny"],
+      "names":["Au Paupillot","Brelance","Champ Croyon","Corvée des Vignes","Derrière la Velle","La Rousselle","La Rue aux Vaches","Le Trézin","Le Village","Les Aubues","Les Boudrières","Les Charmes","Les Enseignères","Les Grands Champs","Les Houlières","Les Levrons","Les Meix","Les Nosroyes","Les Petites Nosroyes","Les Petits Grands Champs","Les Reuchaux","Les Tremblots","Meix Pelletier","Noyer Bret","Rue Rousseau","Voitte"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Volnay","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_volnay"],
+      "names":["Carelle sous la Chapelle","Champans","Clos de l'Audignac","Clos de la Barre","Clos de la Bousse-d'Or","Clos de la Cave des Ducs","Clos de la Chapelle","Clos de la Rougeotte","Clos des 60 Ouvrées","Clos des Chênes","Clos des Ducs","Clos du Château des Ducs","Clos du Verseuil","En Chevret","Frémiets","Frémiets - Clos de la Rougeotte","La Gigotte","Lassolle","Le Ronceret","Le Village","Les Angles","Les Brouillards","Les Caillerets","Les Lurets","Les Mitans","Pitures Dessus","Robardelle","Santenots","Taille Pieds"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Volnay","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_volnay"],
+      "names":["Beau Regard","Cros Martin","En Vaut","Ez Blanches","Ez Echards","La Bouchère","La Cave","La Gigotte","Le Village","Les Aussy","Les Buttes","Les Combes","Les Famines","Les Grands Champs","Les Grands Poisots","Les Jouères","Les Lurets","Les Pasquiers","Les Petits Gamets","Les Petits Poisots","Les Pluchots","Les Serpens","Paux Bois","Sur Roches"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Saint-Aubin","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_saint_aubin"],
+      "names":["Bas de Vermarain à l'Est","Derrière Chez Edouard","Derrière la Tour","Echaille","En Créot","En la Ranché","En Montceau","En Remilly","En Vollon à l'Est","Es Champs","La Chatenière","Le Bas de Gamay à l'Est","Le Charmois","Le Puits","Les Castets","Les Champlots","Les Combes","Les Combes au Sud","Les Cortons","Les Frionnes","Les Murgers des dents de chien","Les Perrières","Les Travers de Marinot","Marinot","Pitangeret","Sous Roche Dumay","Sur Gamay","Sur le sentier du Clou","Vignes Moingeon","Village"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Saint-Aubin","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_saint_aubin"],
+      "names":["Au Bas de Jorcul","Bas de Vermarain à l'Ouest","Champ Tirant","En Choilles","En Goulin","En Jorcul","En l'Ebaupin","En Vermarain à l'Est","En Vesveau","Gamay","La Fontenotte","La Traversaine","Le Banc","Le Banc de Monin","Le Puits","Les Argillers","Les Castets","Les Pucelles","Les Travers de chez Edouard","Les Vellerottes","Sous les Foires","Tope Bataille"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Pouilly-Fuissé","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_pouilly_fuisse"],
+      "names":["Au Vignerais","Aux Bouthières","Aux Chailloux","Aux Quarts","En France","En Servy","La Frérie","La Maréchaude","Le Clos","Le Clos de Monsieur Noly","Le Clos de Solutré","Le Clos Reyssier","Les Brulés","Les Chevrières","Les Crays","Les Ménétrières","Les Perrières","Les Reisses","Les Vignes Blanches","Pouilly","Sur la Roche","Vers Cras"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Pouilly-Fuissé","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_pouilly_fuisse"],
+      "names":["A la Chaneau","A la Cotonne","A la Croix Bonne","Au Bois Billon","Au Bourg","Au Bucherat","Au Buchot","Au Chapal","Au Clos","Au Gaulia","Au Gros Bois","Au May","Au Métertière","Au Moule","Au Peloux","Au Sauge","Au Suif","Aux Charmes","Aux Combes","Aux Concizes","Aux Coreaux","Aux Grands Champs","Aux Morlays","Aux Murs","Aux Plantés","Aux Prats","Aux Vignes Dessus","Barvay","Beauregard","Bois Dayer","Bois de Lacroix","Bois des Fousses","Bois du Molard","Bois Lafaye","Bois Sansonnet","Bois Seguin","Champ Potard","Champ Ruy","Clos de la Maison","Clos Gaillard","Combe Poncet","Derrière la Maison","En Bertillonne","En Bonnard","En Buland","En Buterie","En Carmentrant","En Cenan","En Champ Roux","En Charmont","En Chatenay","En Chauffaille","En Courtesse","En Larzille","En Nanche","En Ouche","En Pomard","En Pragne","En Recepey","En Ronchevat","En Rontenoux","En Rousselaine","En Tancul","En Tillier","En Vallée","L'Arse","La Barrière","La Baudotte","La Bergerie","La Brétaude","La Bucharlatte","La Cadole","La Carrière","La Chardette","La Chattière","La Corège","La Côte","La Croix Pardon","La Dépendaine","La Folle","La Gorge au Loup","La Grange Murger","La Grouillère","La Mouille","La Petite Bruyère","La Roue","La Ruère","La Teppe Charpy","La Terre Jeanduc","La Toule","La Truche","La Verchère","La Vigne des Verchères","Lamure","Le Bois des Taches","Le Carron","Le Champ Rocher","Le Grand Pré","Le Haut de Savy","Le Martelet","Le Moulin","Le Nambret","Le Plan","Le Repostère","Le Routé","Le Sabotier","Le Sang Clos","Les Belouzes","Les Bois Denis","Les Chardonnets","Les Chataigniers","Les Chevaux","Les Combettes","Les Condemines","Les Courtelongs","Les Creuzettes","Les Croux","Les Fourneaux","Les Gerbeaux","Les Grandes Terres","Les Guilloux","Les Insarts","Les Jettes","Les Longues Raies","Les Murgers","Les Piasses","Les Plessis","Les Prâles","Les Préauds","Les Prés Hauts","Les Prouges","Les Robées","Les Rontets","Les Rossins","Les Scélés","Les Séries","Les Terres du Perret","Les Travers","Les Verchères","Les Verchères de Savy","Les Vernays","Les Vieilles Plantes","Les Vignes des Taches","Long Poil","Maison du Villard","Mont Garcin","Petite Croix","Petites Bruyères","Pierre Lotey","Plan de Bourdon","Pré de Vaux","Pré des Aires","Solutré","Sous le Four","Sur la Rochette","Sur les Moulins","Vergisson","Vers Agnières","Vers Châne","Vers Faux","Vers la Croix","Vers la Roche","Vers Pouilly","Vers Saint Léger","Vignes de la Fontaine","Vignes de la Hys","Vignes de la l'Eau","Vignes de la Roche","Vignes Derrière","Vignes des Champs","Vignes du Riat","Vignes Mottin","Vignes sur la Fontaine"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Mercurey","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_mercurey"],
+      "names":["Clos de Paradis","Clos des Barraults","Clos des grands Voyens","Clos des Montaigus","Clos des Myglands","Clos Marcilly","Clos Tonnerre","Clos Voyens","Grand Clos Fortoul","Griffères","La Bondue","La Cailloute","La Chassière","La Levrière","La Mission","Le Clos du Roy","Le Clos l'Evêque","Les Byots","Les Champs Martin","Les Combins","Les Crêts","Les Croichots","Les Fourneaux","Les Montaigus","Les Naugues","Les Puillets","Les Ruelles","Les Saumonts","Les Vasées","Les Velley","Les Vignes Blanches","Sazenay"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Mercurey","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_mercurey"],
+      "names":["Bourg Bassot","Bourg-Neuf","Chamirey","Champ Ladoy","Champ Pillot","Champ Roin","Clos Château de Montaigu","Clos des Hayes","Clos Fortoul","Clos Rochette-Mauvarennes","Creu de Montelons","En Boussoy","En Grillot","En Pierre Milley","En Theurot","Es Montelons","Etroyes","Garnerot","La Brigadière","La Charmée","La Chiquette","La Corvée","La Creuse","La Croix Rousse","La Perrière","La Pillotte","La Plante Chassey","Le Bois Cassien","Le Bourg","Le Clos la Marche","Le Clos Laurent","Le Clos Rond","Le Closeau","Le Crêt","Le Fourneau","Le Meix de la Guinarde","Le Meix Foulot","Le Meix Frappé","Le Puits Brintet","Le Saut Muchiau","Les Bacs","Les Berlands-Framboisière","Les Bois de Lalier","Les Bosebuts","Les Bussières","Les Caraby","Les Caudroyes","Les Chaumellottes","Les Chavances","Les Cheneaults","Les Creux","Les Doués","Les Marcoeurs","Les Montelons","Les Montots","Les Morées","Les Morins","Les Murgers","Les Mussiaux","Les Noiterons","Les Obus","Les Plantes","Les Pronges","Les Rochelles","Les Varennes","Les Vaux","Les Vignes d'Orge","Les Vignes de la Bouthière","Les Vignes des Chazeaux","Les Villeranges","Meix Adenot","Mipont","Château Ropiton","Sarrazine","Touches","Vigne de Maillonge","Vignes du Chapître"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Ladoix","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_ladoix"],
+      "names":["Basses Mourottes","Bois Roussot","En Naget","Hautes Mourottes","La Corvée","La Micaude","Le Clou d'Orge","Le Rognet et Corton","Les Buis","Les Grêchons et Foutrières","Les Joyeuses"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Ladoix","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_ladoix"],
+      "names":["Bas de Naget","Bois de Gréchon","Bois de Naget","Bois des Toppes","Buisson","Champ Pussuet","Clos des Chagnots","Clos Royer","La Blancharde","La Butte","La Combe","La Corvée Basse","La Huchotte","La Mort","La Rangie","La Toppe d'Avignon","Le Bois d'Herbues","Le Clou","Le Seuriat","Les Barres","Les Briquottes","Les Buis","Les Carrières","Les Chagnots","Les Chaillots","Les Champs Rammés","Les Combottes","Les Forêts","Les Issards","Les Lièvrières","Les Madonnes","Les Mamées","Les Ranches","Les Toppes Coiffées","Les Vris","Sur les Forêts","Sur les Vris","Vigne Adaim"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Givry","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_givry"],
+      "names":["A Vigne Rouge","Champ Nalot","Clos Charlé","Clos de la Baraude","Clos du Cellier aux Moines","Clos du Cras long","Clos du Vernoy","Clos Jus","Clos Marceaux","Clos Marole","Clos Salomon","Clos-Saint-Paul","Clos-Saint-Pierre","Crauzot","Crémillons","En Choué","En Veau","La Brûlée","La Grande Berge","La Matrosse","La Petite Berge","La Plante","Le Champ Lalot","Le Médenchot","Le Paradis","Le Petit Prétan","Le Pied du Clou","Le Vernoy","Le Vigron","Les Bois Chevaux","Les Bois Gautiers","Les Combes","Les Galaffres","Les Grandes Vignes","Les Grands Prétans","Petit Marole","Pied de Chaume","Servoisine"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Givry","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_givry"],
+      "names":["Brusseaux de Charron","Champ la Dame","Champ Pourot","Chanevarie","Clos de la Brûlée","En Chenève","Gauron","La Corvée","La Feusée","La Pièce","La Pierre","La Putin","La Ridette","La Vernoise","Le Paradis","Les Faussillons","Les Fontenottes","Les Galaffres","Les Grognots","Les Mureys","Les Plants Sont Fleuris","Les Vignes Rondes","Meix Saint-Antoine","Mortières","Tambournette","Teppe des Chenèves","Varange","Vauvry","Virgaudine"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Montagny","site_type":"climat","classification":"Premier Cru","legal_status":"official_appellation_climat","source_ids":["bourgogne_montagny"],
+      "names":["Champ Toizeau","Chazelle","Cornevent","Creux de Beaux Champs","L'Epaule","La Condemine du Vieux Château","La Grande Pièce","La Moullière","Le Clos Chaudron","Le Cloux","Le Clouzot","Le Vieux Château","Les Bassets","Les Beaux Champs","Les Bonneveaux","Les Bordes","Les Bouchots","Les Burnins","Les Chaniots","Les Chaumelottes","Les Coères","Les Combes","Les Coudrettes","Les Craboulettes","Les Garchères","Les Gouresses","Les Jardins","Les Las","Les Macles","Les Maroques","Les Paquiers","Les Perrières","Les Pidances","Les Platières","Les Resses","Les Treuffères","Les Vignes Derrière","Les Vignes des Prés","Les Vignes longues","Mont Laurent","Montcuchot","Montorge","Saint-Ytages","Sainte-Morille","Sous les Feilles","Vigne du soleil","Vignes Couland","Vignes Saint-Pierre","Vignes sur le Cloux"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Montagny","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_montagny"],
+      "names":["Cruzille","Davenay","La Corvée","La Groule","La Pallue","La Tillonne","Le Corbeau","Le Creux de la Feuille","Le Curtil","Le May","Le May Cottin","Le May Morin","Le Reculleron","Le Reuilly","Les Beaucons","Les Betaux","Les Brus","Les Chazelles","Les Cloux","Les Corbaisons","Les Crets","Les Dazés","Les Echeliers","Les Guignottes","Les Joncs","Les Marais","Les Pendars","Les Plantats","Les Préaux","Les Prés","Les Rougereaux","Les Thilles","Les Varignys","Les Variniers","Les Vignes Sous l'Eglise","Montagny","Prés Berceaux","Sous les Roches","St Vallerin","Vignes Dessous"]
+    },
+    {
+      "country":"France","region":"Bourgogne","parent":"Côte de Nuits-Villages","site_type":"lieu_dit","legal_status":"official_appellation_lieu_dit","source_ids":["bourgogne_cote_nuits_villages"],
+      "names":["Au Chapeau","Au Clos Bardot","Au Clou","Au Leurey","Aux Boulardes","Aux Boutoillottes","Aux Brûlées","Aux Cases","Aux Cheminots","Aux Clous Virey","Aux Courottes","Aux Fauques","Aux Guillandes","Aux Herbues","Aux Langres","Aux Montagnes","Aux Petits Crais","Aux Prés","Aux Quartiers","Aux Vignois","Belle-Vue","Bois de Laranche","Champs de Vosger","Champs Pennebaut","Champs Perdrix","Clémenfert","Créole","Crétevent","En Beauregard","En Chantemerle","En Chenailla","En Clomée","En Combe Roy","En Coton","En Créchelin","En Fontenelle","En l'Olivier","En la Botte","En Tabeillion","En Vireville","Es Bonnemaines","Ez Polleuses","Fixey","La Berchère","La Cocarde","La Combe Assole","La Combe de la Damoda","La Croix Blanche","La Croix Violette","La Damoda","La Dominode","La Julbigne","La Mazière","La Montagne","La Mouille","La Place","La Platerre","La Prétière","La Sorgentière","La Toppe Citeau","La Vionne","Le Bas du Mont de Boncourt","Le Clos de Magny","Le Clos des Langres","Le Creux de Sobron","Le Creux Sobron","Le Fourneau","Le Meix au Maire","Le Meix Fringuet","Le Poirier Gaillard","Le Réchaux","Le Rozier","Le Vaucrain","Le Village","Les Basses Chenevières","Les Boudières","Les Carrés","Les Chaillots","Les Champs des Charmes","Les Champs Tions","Les Chazots","Les Chenevières","Les Clos","Les Crais","Les Crais de Chêne","Les Echalais","Les Entre Deux Velles","Les Essards","Les Fondements","Les Fourches","Les Foussottes","Les Germets","Les Gibassier","Les Grandes Vignes","Les Herbues","Les Loges","Les Mogottes","Les Monts de Boncourt","Les Ormeaux","Les Petits Crais","Les Plantes du Bois","Les Portes-Feuilles","Les Retraits","Les Ruisseaux","Les Tellières","Les Treuilles","Les Vignes aux Grands","Les Vignottes","Meix Trouhant","Pommier Rougeot","Préau","Queue de hareng","Saint Seine","Vignois"]
+    }
+  ],
+  "records": [
+    {"name":"Romanée-Conti","country":"France","region":"Bourgogne","parent":"Romanée-Conti Grand Cru","site_type":"monopole","classification":"Grand Cru","legal_status":"appellation_monopole","owner":"Domaine de la Romanée-Conti","source_ids":["bourgogne_monopoles"]},
+    {"name":"La Romanée","country":"France","region":"Bourgogne","parent":"La Romanée Grand Cru","site_type":"monopole","classification":"Grand Cru","legal_status":"appellation_monopole","source_ids":["bourgogne_monopoles"]},
+    {"name":"La Tâche","country":"France","region":"Bourgogne","parent":"La Tâche Grand Cru","site_type":"monopole","classification":"Grand Cru","legal_status":"appellation_monopole","owner":"Domaine de la Romanée-Conti","source_ids":["bourgogne_monopoles"]},
+    {"name":"La Grande Rue","country":"France","region":"Bourgogne","parent":"La Grande Rue Grand Cru","site_type":"monopole","classification":"Grand Cru","legal_status":"appellation_monopole","source_ids":["bourgogne_monopoles"]},
+    {"name":"Clos de la Fortune","country":"France","region":"Bourgogne","parent":"Bouzeron","site_type":"monopole","legal_status":"producer_owned_monopole","owner":"Domaine Chanzy","area_ha":2.76,"source_ids":["bourgogne_monopoles"]},
+    {"name":"Clos de la Bataillère","country":"France","region":"Bourgogne","parent":"Savigny-lès-Beaune Premier Cru","site_type":"monopole","classification":"Premier Cru","legal_status":"producer_owned_monopole","owner":"Domaine Morot","area_ha":2.0,"source_ids":["bourgogne_monopoles"]},
+    {"name":"Clos Marcilly","country":"France","region":"Bourgogne","parent":"Mercurey Premier Cru","site_type":"monopole","classification":"Premier Cru","legal_status":"producer_owned_monopole","source_ids":["bourgogne_monopoles"]},
+    {"name":"Clos du Village","country":"France","region":"Bourgogne","parent":"Savigny-lès-Beaune","site_type":"monopole","legal_status":"producer_owned_monopole","owner":"Domaine Julien Gros","source_ids":["bourgogne_monopoles"]},
+    {"name":"Clos Marey-Monge","country":"France","region":"Bourgogne","parent":"Pommard","site_type":"monopole","legal_status":"producer_owned_monopole","owner":"Château de Pommard","area_ha":20.0,"source_ids":["chateau_pommard_clos_marey_monge"]},
+
+    {"name":"Simone","country":"France","region":"Bourgogne","parent":"Clos Marey-Monge","site_type":"block","legal_status":"producer_defined_block","owner":"Château de Pommard","area_ha":0.5,"row_count":55,"source_ids":["chateau_pommard_clos_marey_monge"]},
+    {"name":"Nicolas-Joseph","country":"France","region":"Bourgogne","parent":"Clos Marey-Monge","site_type":"block","legal_status":"producer_defined_block","owner":"Château de Pommard","source_ids":["chateau_pommard_clos_marey_monge"]},
+    {"name":"Grands Esprits","country":"France","region":"Bourgogne","parent":"Clos Marey-Monge","site_type":"block","legal_status":"producer_defined_block","owner":"Château de Pommard","source_ids":["chateau_pommard_clos_marey_monge"]},
+    {"name":"Chantrerie","country":"France","region":"Bourgogne","parent":"Clos Marey-Monge","site_type":"block","legal_status":"producer_defined_block","owner":"Château de Pommard","source_ids":["chateau_pommard_clos_marey_monge"]},
+    {"name":"75 Rangs","country":"France","region":"Bourgogne","parent":"Clos Marey-Monge","site_type":"block","legal_status":"producer_defined_block","owner":"Château de Pommard","source_ids":["chateau_pommard_clos_marey_monge"]},
+    {"name":"Vivant Micault","country":"France","region":"Bourgogne","parent":"Clos Marey-Monge","site_type":"block","legal_status":"producer_defined_block","owner":"Château de Pommard","source_ids":["chateau_pommard_clos_marey_monge"]},
+    {"name":"Émilie","country":"France","region":"Bourgogne","parent":"Clos Marey-Monge","site_type":"block","legal_status":"producer_defined_block","owner":"Château de Pommard","source_ids":["chateau_pommard_clos_marey_monge"]}
+  ]
+}

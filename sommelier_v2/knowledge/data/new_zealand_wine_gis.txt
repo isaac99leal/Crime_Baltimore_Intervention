@@ -1,0 +1,23 @@
+# Authority: Intellectual Property Office of New Zealand (IPONZ)
+# Source: https://www.iponz.govt.nz/get-ip/geographical-indications/register/?location=nz&type=wine
+# Retrieved: 2026-09-05
+# Each line is a registered New Zealand wine geographical indication shown by the official register filter.
+Auckland
+Bannockburn
+Canterbury
+Central Hawke's Bay / Central Hawkes Bay
+Central Otago
+Gisborne
+Gladstone
+Hawke’s Bay / Hawkes Bay
+Kumeu
+Marlborough
+Martinborough
+Matakana
+Nelson
+North Canterbury
+Northland
+Waiheke Island
+Waipara Valley / Waipara
+Wairarapa
+Waitaki Valley North Otago / Waitaki Valley

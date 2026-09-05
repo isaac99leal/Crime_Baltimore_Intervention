@@ -1,0 +1,132 @@
+# Authority: U.S. Alcohol and Tobacco Tax and Trade Bureau
+# Source: https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/grape-variety-designations-on-american-wine-labels
+# Retrieved: 2026-09-05
+# Administratively approved grape names pending formal rulemaking, as listed by TTB.
+Albillo Mayor
+Alexander
+Ambulo Blanc
+Amigne
+Arandell
+Arinarnoa
+Aromella
+Arvine
+Assyrtiko
+Baga
+Bianchetta Trevigiana
+Black Spanish
+Bluebell
+Bourboulenc
+Brachetto
+By George
+Cabernet Dorsa
+Cabernet Volos
+Caladoc
+Caminante Blanc
+Camminare Noir
+Cannonau
+Caprettone
+Carignano
+Carricante
+Catarratto
+Chisago
+Ciliegiolo
+Cinsault
+Clarion
+Coda di Volpe
+Colorino
+Courbu Blanc
+Crimson Pearl
+Crljenak Kaštelanski
+Diana
+Dobricic
+Enchantment
+Errante Noir
+Esprit
+Falanghina
+Fleurtai
+Frappato
+Frontenac Blanc
+Garanoir
+Garnacha Roja
+Geneva Red
+Godello
+Golubok
+Gouais Blanc
+Greco
+Greco Bianco
+Grenache Gris
+Gros Manseng
+Humagne Rouge
+Itasca
+Jacquez
+Jupiter
+King of the North
+Koshu
+L'Acadie Blanc
+Lambrusca di Alessandria
+Lomanto
+Loureiro
+Macabeo
+Madeleine Angevine
+Madeleine Sylvaner
+Marquis
+Marselan
+Mavron
+Mencia
+Merlot Kanthus
+Moschofilero
+Mourtaou
+Muscardin
+Mustang
+Nerello Mascalese
+Opportunity
+Pallagrello Bianco
+Parellada
+Paseante Noir
+Pecorino
+Petite Pearl
+Picardan
+Pinot Bianco
+Pinot Nero
+Plymouth
+Poulsard
+Prieto Picudo
+Regent
+Ribolla Gialla
+Rieslaner
+Riverbank
+Roditis
+Rose of Peru
+Rossese
+Ruche
+San Marco
+Saperavi
+Sauvignon Kretos
+Sauvignon Rytos
+Savagnin
+Savagnin Blanc
+Schiava Grossa
+Schioppettino
+Schönburger
+Sheridan
+Somerset Seedless
+Soreli
+Southern Cross
+Terret Noir
+Thiakon
+Tibouren
+Tinta Amarela
+Tinta Cao
+Tinta Roriz
+Torrontés Riojano
+Touriga Nacional
+Treixadura
+Trentina
+Trincadeira
+Vaccarèse
+Valjohn
+Verdejo
+Verdicchio
+Vranac
+Xarel·lo
+Xynisteri
