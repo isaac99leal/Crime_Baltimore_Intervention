@@ -17,6 +17,15 @@ from .catalog import normalize_name
 DATA_PATH = Path(__file__).resolve().parent / "data" / "legal_spec_source_index.json"
 MANIFEST_PATH = Path(__file__).resolve().parent / "data" / "legal_spec_source_manifest.json"
 
+COUNTRY_TO_CODE = {
+    "Austria": "AT", "Belgium": "BE", "Bulgaria": "BG", "Croatia": "HR",
+    "Cyprus": "CY", "Czech Republic": "CZ", "Czechia": "CZ", "France": "FR",
+    "Germany": "DE", "Greece": "GR", "Hungary": "HU", "Italy": "IT",
+    "Luxembourg": "LU", "Malta": "MT", "Netherlands": "NL", "Poland": "PL",
+    "Portugal": "PT", "Romania": "RO", "Slovakia": "SK", "Slovenia": "SI",
+    "Spain": "ES", "Sweden": "SE",
+}
+
 
 @dataclass(frozen=True)
 class LegalSourceRecord:
@@ -84,10 +93,10 @@ class LegalSourceRegistry:
     def find(self, name: str, *, country_code: str | None = None) -> tuple[LegalSourceRecord, ...]:
         key = normalize_name(name)
         if country_code:
-            return tuple(self._by_name.get((normalize_name(country_code), key), []))
+            code = COUNTRY_TO_CODE.get(country_code, country_code)
+            return tuple(self._by_name.get((normalize_name(code), key), []))
         matches: list[LegalSourceRecord] = []
-        for (country, candidate), rows in self._by_name.items():
-            del country
+        for (_, candidate), rows in self._by_name.items():
             if candidate == key:
                 matches.extend(rows)
         return tuple(matches)
