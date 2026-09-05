@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive Premier Cru climat claim rules for Pernand-Vergelesses and Auxey-Duresses. Pernand has an explicit color matrix: Sous Frétille, Clos Berthet and Village de Pernand are white-only; the remaining five may be claimed for white or red. All nine Auxey-Duresses Premier Cru climats are claimable for both colors under the corresponding Premier Cru production rules.",
+  "sources": {
+    "pernand_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Pernand-Vergelesses homologué par le décret n°2011-1790 du 5 décembre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20249.pdf",
+      "checked": "2026-09-05"
+    },
+    "auxey_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Auxey-Duresses homologué par le décret n°2011-1776 du 5 décembre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20189.pdf",
+      "checked": "2026-09-05"
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:pernand-vergelesses:white-premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Pernand-Vergelesses",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["pernand_bivb_spec_2011"],
+      "allowed_wine_variants": ["white premier cru"],
+      "source_ids": ["pernand_bivb_spec_2011"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "All eight enumerated Pernand-Vergelesses Premier Cru climat names are valid for white wine meeting Premier Cru conditions."
+    },
+    {
+      "id": "siteclaim:fr:pernand-vergelesses:red-premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Pernand-Vergelesses",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["pernand_bivb_spec_2011"],
+      "allowed_wine_variants": ["red premier cru"],
+      "allowed_site_names": [
+        "Creux de la Net",
+        "En Caradeux",
+        "Ile des Vergelesses",
+        "Les Fichots",
+        "Vergelesses"
+      ],
+      "source_ids": ["pernand_bivb_spec_2011"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "Red Premier Cru claims are limited to the five climats authorized for red; Sous Frétille, Clos Berthet and Village de Pernand are white-only."
+    },
+    {
+      "id": "siteclaim:fr:auxey-duresses:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Auxey-Duresses",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["auxey_bivb_spec_2011"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["auxey_bivb_spec_2011"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "All nine enumerated Auxey-Duresses Premier Cru climat names are valid for both white and red wines satisfying the corresponding Premier Cru production specification."
+    }
+  ]
+}
