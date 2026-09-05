@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive official-climat label-claim rule under the current 2024 Chablis grand cru specification. Historical usage names such as La Moutonne are intentionally outside this rule.",
+  "sources": {
+    "chablis_grand_cru_claim_masaa_2024": {
+      "authority": "Ministère de l'agriculture, de la souveraineté alimentaire et de la forêt",
+      "title": "Cahier des charges de l'AOC Chablis grand cru homologué par l'arrêté du 24 octobre 2024",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-f26dd8c5-103a-488e-9bd8-069c6053f605/telechargement",
+      "checked": "2026-09-05",
+      "scope": "The AOC name may be followed by one of seven enumerated climat names when the wine comes exclusively from the corresponding particular delimited production area."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:chablis-grand-cru:official-climat",
+      "country": "France",
+      "parent_appellation": "Chablis grand cru",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["chablis_grand_cru_masaa_2024"],
+      "allowed_wine_variants": ["grand cru"],
+      "allowed_site_names": ["Blanchot", "Bougros", "Grenouilles", "Les Clos", "Preuses", "Valmur", "Vaudésir"],
+      "source_ids": ["chablis_grand_cru_claim_masaa_2024"],
+      "claim_kind": "grand_cru_climat_name",
+      "notes": "Current 2024 specification authorizes only these seven enumerated climat names on the standard official-climat claim path."
+    }
+  ]
+}

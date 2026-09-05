@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.1",
+  "notes": "Current Chablis Grand Cru named-site identities. The seven official climats are legal suffix candidates under the 2024 specification. La Moutonne is retained separately as a historical usage name documented by INAO and is not upgraded to an official climat claim.",
+  "sources": {
+    "chablis_grand_cru_masaa_2024": {
+      "authority": "Ministère de l'agriculture, de la souveraineté alimentaire et de la forêt",
+      "title": "Cahier des charges de l'AOC Chablis grand cru homologué par l'arrêté du 24 octobre 2024",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-f26dd8c5-103a-488e-9bd8-069c6053f605/telechargement",
+      "checked": "2026-09-05",
+      "scope": "Official seven-climat list and particular delimited production areas for climat-suffixed claims."
+    },
+    "inao_chablis_grand_cru_usage": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Chablis Grand Cru product information",
+      "url": "https://www.inao.gouv.fr/produit/chablis-grand-cru-preuses-21908",
+      "checked": "2026-09-05",
+      "scope": "Identifies the seven official climats and separately describes La Moutonne as a centuries-old usage name located approximately 95% in Vaudésir and 5% in Preuses."
+    }
+  },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Chablis",
+      "parent": "Chablis grand cru",
+      "commune": "Chablis",
+      "site_type": "climat",
+      "classification": "Grand Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["chablis_grand_cru_masaa_2024"],
+      "notes": "Official climat listed in the current 2024 Chablis grand cru specification. Legal label-claim eligibility is evaluated separately.",
+      "names": ["Blanchot", "Bougros", "Grenouilles", "Les Clos", "Preuses", "Valmur", "Vaudésir"]
+    }
+  ],
+  "records": [
+    {
+      "id": "site:fr:chablis:chablis-grand-cru:la-moutonne:usage-name",
+      "name": "La Moutonne",
+      "country": "France",
+      "region": "Chablis",
+      "parent": "Chablis grand cru",
+      "commune": "Chablis",
+      "site_type": "usage_name",
+      "classification": "Grand Cru historical usage",
+      "legal_status": "historical_usage_name",
+      "source_ids": ["inao_chablis_grand_cru_usage"],
+      "notes": "INAO describes La Moutonne as a historic usage name, approximately 95% within Vaudésir and 5% within Preuses. It is not one of the seven official climat names enumerated in the current specification and therefore remains fail-closed for the ordinary official-climat claim path."
+    }
+  ]
+}
