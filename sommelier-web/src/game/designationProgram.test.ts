@@ -26,14 +26,14 @@ describe('global wine designation coverage program', () => {
     expect(coverageForCountry('Australia')?.ingestionStatus).toBe('live-index');
     expect(coverageForCountry('Georgia')?.ingestionStatus).toBe('live-index');
     expect(coverageForCountry('New Zealand')?.ingestionStatus).toBe('live-index');
-    expect(coverageForCountry('Chile')?.ingestionStatus).toBe('authority-identified');
+    expect(coverageForCountry('Chile')?.ingestionStatus).toBe('live-index');
     expect(pendingDesignationCountries.length).toBeGreaterThan(0);
   });
 
-  it('keeps bulk and new authority-index counts intact', () => {
+  it('keeps bulk and expanded authority-index counts intact', () => {
     expect(liveDesignationIndexCounts.eambrosiaWineGis).toBe(1665);
     expect(liveDesignationIndexCounts.ttbAvas).toBe(280);
-    expect(liveDesignationIndexCounts.expandedAuthorityDesignations).toBe(289);
+    expect(liveDesignationIndexCounts.expandedAuthorityDesignations).toBe(407);
   });
 
   it('makes exhaustive depth part of the data contract, not an informal roadmap', () => {
