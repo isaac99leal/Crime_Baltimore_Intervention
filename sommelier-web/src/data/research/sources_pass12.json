@@ -1,0 +1,9 @@
+{
+  "updatedAt": "2026-09-04",
+  "policy": "Rioja product-level pass. Use current Consejo Regulador sources for Viñedo Singular requirements and sparkling ageing categories; keep these requirements distinct from generic old-vine language.",
+  "sources": [
+    {"id":"es-rioja-vinedo-singular-2026","publisher":"Consejo Regulador DOCa Rioja","title":"Vino de Viñedo Singular","url":"https://riojawine.com/en-us/the-designation/classification/vinedo-singular-wine/","jurisdiction":"Spain / Rioja DOCa","kind":"regulatory-council-product-rule","accessed":"2026-09-04"},
+    {"id":"es-rioja-classification-2026","publisher":"Consejo Regulador DOCa Rioja","title":"Classification by origin and ageing","url":"https://riojawine.com/en-gb/the-designation/classification/","jurisdiction":"Spain / Rioja DOCa","kind":"regulatory-council-classification","accessed":"2026-09-04"},
+    {"id":"es-rioja-specification-2022","publisher":"Consejo Regulador DOCa Rioja","title":"Rioja designation specifications","url":"https://riojawine.com/wp-content/uploads/2019/01/designation_specifications.pdf","jurisdiction":"Spain / Rioja DOCa","kind":"official-product-specification","accessed":"2026-09-04"}
+  ]
+}
