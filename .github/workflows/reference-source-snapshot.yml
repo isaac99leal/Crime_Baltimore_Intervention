@@ -7,20 +7,23 @@ on:
       - revamp/sommelier-web-v2
     paths:
       - '.github/workflows/reference-source-snapshot.yml'
+      - 'sommelier-web/scripts/build_official_reference.py'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   snapshot:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: revamp/sommelier-web-v2
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check requests openpyxl beautifulsoup4
-      - name: Fetch and inspect authoritative sources
+      - name: Fetch authoritative source snapshots
         run: |
           cat > "$RUNNER_TEMP/openssl-legacy.cnf" <<'EOF'
           openssl_conf = openssl_init
@@ -45,7 +48,7 @@ jobs:
           OUT = pathlib.Path('reference-snapshot')
           OUT.mkdir(exist_ok=True)
           session = requests.Session()
-          session.headers.update({'User-Agent': 'SommelierGameReferenceSync/0.2 (+GitHub Actions)'})
+          session.headers.update({'User-Agent': 'SommelierGameReferenceSync/0.3 (+GitHub Actions)'})
 
           binary_sources = {
               'adelaide_varieties.xlsx': 'https://economics.adelaide.edu.au/wine-economics/ua/media/476/varieties_2000_to_2023.xlsx',
@@ -69,47 +72,19 @@ jobs:
                   path.write_bytes(response.content)
                   summary['sources'][filename] = {'url': url, 'bytes': len(response.content)}
                   workbook = load_workbook(path, read_only=True, data_only=True)
-                  sheet_summary = {}
-                  for sheet in workbook.worksheets:
-                      preview = []
-                      for row in sheet.iter_rows(min_row=1, max_row=min(15, sheet.max_row), values_only=True):
-                          preview.append([value for value in row[:24]])
-                      sheet_summary[sheet.title] = {
-                          'maxRow': sheet.max_row,
-                          'maxColumn': sheet.max_column,
-                          'preview': preview,
-                      }
-                  summary['workbooks'][filename] = sheet_summary
+                  summary['workbooks'][filename] = {
+                      sheet.title: {'maxRow': sheet.max_row, 'maxColumn': sheet.max_column}
+                      for sheet in workbook.worksheets
+                  }
               except Exception as exc:
                   summary['errors'].append({'source': filename, 'url': url, 'error': repr(exc)})
 
           ttb_url = 'https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas'
-          avas = []
           try:
-              ttb_response = session.get(ttb_url, timeout=90)
-              ttb_response.raise_for_status()
-              (OUT / 'ttb-established-avas.html').write_text(ttb_response.text, encoding='utf-8')
-              soup = BeautifulSoup(ttb_response.text, 'html.parser')
-              for table in soup.find_all('table'):
-                  for row in table.find_all('tr'):
-                      cells = row.find_all(['th', 'td'])
-                      if not cells:
-                          continue
-                      name = ' '.join(cells[0].stripped_strings).strip()
-                      if not name or name.lower() in {'ava name', 'american viticultural area'}:
-                          continue
-                      if re.fullmatch(r'[A-Z ]+', name) and len(name) < 40:
-                          continue
-                      if any(char.isalpha() for char in name):
-                          avas.append(name.replace('*', '').replace('◊', '').strip())
-              avas = list(dict.fromkeys(avas))
-              (OUT / 'ttb-avas.json').write_text(json.dumps({
-                  'source': ttb_url,
-                  'retrievedAt': summary['generatedAt'],
-                  'count': len(avas),
-                  'avas': avas,
-              }, ensure_ascii=False, indent=2), encoding='utf-8')
-              summary['sources']['ttb'] = {'url': ttb_url, 'parsedAvas': len(avas)}
+              response = session.get(ttb_url, timeout=90)
+              response.raise_for_status()
+              (OUT / 'ttb-established-avas.html').write_text(response.text, encoding='utf-8')
+              summary['sources']['ttb'] = {'url': ttb_url, 'bytes': len(response.content)}
           except Exception as exc:
               summary['errors'].append({'source': 'ttb', 'url': ttb_url, 'error': repr(exc)})
 
@@ -136,37 +111,35 @@ jobs:
                               seen.add(key)
                               all_gis.append(gi)
               wines = [gi for gi in all_gis if gi.get('productType') == 'WINE' and not gi.get('removedFlag')]
-              compact = [{
-                  'giIdentifier': gi.get('giIdentifier'),
-                  'protectedNames': gi.get('protectedNames'),
-                  'fileNumber': gi.get('fileNumber'),
-                  'countries': gi.get('countries'),
-                  'giType': gi.get('giType'),
-                  'status': gi.get('status'),
-                  'euProtectionDate': gi.get('euProtectionDate'),
-                  'modificationDate': gi.get('modificationDate'),
-                  'legalInstrument': gi.get('legalInstrument'),
-              } for gi in wines]
               (OUT / 'eambrosia-wine-gis.json').write_text(json.dumps({
                   'source': eambrosia_url,
                   'retrievedAt': summary['generatedAt'],
-                  'count': len(compact),
-                  'records': compact,
-              }, ensure_ascii=False, indent=2), encoding='utf-8')
-              summary['sources']['eambrosia'] = {'url': eambrosia_url, 'wineRecords': len(compact), 'allGiRecords': len(all_gis)}
+                  'count': len(wines),
+                  'records': wines,
+              }, ensure_ascii=False), encoding='utf-8')
+              summary['sources']['eambrosia'] = {'url': eambrosia_url, 'wineRecords': len(wines), 'allGiRecords': len(all_gis)}
           except Exception as exc:
               summary['errors'].append({'source': 'eambrosia', 'url': eambrosia_url, 'error': repr(exc)})
 
           (OUT / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding='utf-8')
-          print(json.dumps({
-              'ttbAvas': len(avas),
-              'eambrosiaWineGis': summary.get('sources', {}).get('eambrosia', {}).get('wineRecords', 0),
-              'workbooks': list(summary['workbooks']),
-              'errors': summary['errors'],
-          }, indent=2))
+          if summary['errors']:
+              print(json.dumps(summary['errors'], indent=2))
           PY
+      - name: Normalize source data for the game
+        run: python sommelier-web/scripts/build_official_reference.py reference-snapshot sommelier-web/src/data/official
       - uses: actions/upload-artifact@v4
         with:
           name: wine-reference-source-snapshot
           path: reference-snapshot/
           retention-days: 7
+      - name: Commit normalized reference indices
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sommelier-web/src/data/official/
+          if git diff --cached --quiet; then
+            echo "No normalized reference changes."
+          else
+            git commit -m "Refresh authoritative wine reference indices"
+            git push origin HEAD:revamp/sommelier-web-v2
+          fi
