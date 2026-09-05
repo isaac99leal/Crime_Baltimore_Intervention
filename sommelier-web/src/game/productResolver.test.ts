@@ -11,9 +11,9 @@ import { winemakingDecisionById } from './winemaking';
 describe('exact wine product resolver', () => {
   it('validates a non-trivial multi-pass product library with no broken rule links', () => {
     const report = validateProductResolver();
-    expect(productResolutionPassCount).toBe(2);
-    expect(productResolutionRules.length).toBeGreaterThanOrEqual(37);
-    expect(report.generationSafe).toBeGreaterThanOrEqual(23);
+    expect(productResolutionPassCount).toBe(3);
+    expect(productResolutionRules.length).toBeGreaterThanOrEqual(54);
+    expect(report.generationSafe).toBeGreaterThanOrEqual(27);
     expect(report.designations).toBeGreaterThanOrEqual(11);
     expect(report.issues).toEqual([]);
   });
@@ -56,15 +56,59 @@ describe('exact wine product resolver', () => {
     expect(eszencia.exactProductGenerationSafe).toBe(false);
   });
 
-  it('keeps Port and Jerez reference-only until exact product regulation extraction is complete', () => {
+  it('resolves current Tokaj late harvest and Szamorodni as distinct exact products', () => {
+    const late = resolveWineProduct({ country: 'Hungary', designation: 'Tokaj', requestedTerms: 'late harvest current' });
+    const dry = resolveWineProduct({ country: 'Hungary', designation: 'Tokaj', requestedTerms: 'dry Szamorodni' });
+    const sweet = resolveWineProduct({ country: 'Hungary', designation: 'Tokaj', requestedTerms: 'sweet Szamorodni' });
+    const aszu = resolveWineProduct({ country: 'Hungary', designation: 'Tokaj', requestedTerms: 'Aszú current' });
+
+    expect(late.rule?.minimumResidualSugarGPerL).toBe(45);
+    expect(late.exactProductGenerationSafe).toBe(true);
+    expect(dry.rule?.maximumResidualSugarGPerL).toBe(9);
+    expect(dry.rule?.minimumWoodAgeMonths).toBe(6);
+    expect(sweet.rule?.minimumResidualSugarGPerL).toBe(45);
+    expect(sweet.rule?.minimumWoodAgeMonths).toBe(6);
+    expect(aszu.rule?.minimumResidualSugarGPerL).toBe(120);
+    expect(aszu.rule?.minimumActualAlcoholPct).toBe(9);
+    expect(aszu.rule?.minimumWoodAgeMonths).toBe(18);
+  });
+
+  it('adds detailed Jerez process and analytical product rules without prematurely making them generation-safe', () => {
+    const fino = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino current' });
+    const oloroso = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Oloroso current' });
+    const px = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'PX detailed', grape: 'Pedro Ximénez' });
+    const vors = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'VORS' });
+
+    expect(fino.rule?.alcoholPctRange).toEqual([15, 17]);
+    expect(fino.rule?.maximumResidualSugarGPerL).toBe(4);
+    expect(fino.rule?.minimumAverageAgeYears).toBe(2);
+    expect(fino.exactProductGenerationSafe).toBe(false);
+    expect(oloroso.rule?.ageingArchetype).toBe('oxidative-fortified');
+    expect(px.rule?.minimumResidualSugarGPerL).toBe(212);
+    expect(px.rule?.minimumOxidativeAgeingMonths).toBe(24);
+    expect(vors.rule?.minimumAverageAgeYears).toBe(30);
+  });
+
+  it('keeps Port reference-only while resolving newly modeled Crusted and Very Very Old identities', () => {
     const port = resolveWineProduct({ country: 'Portugal', designation: 'Porto / Port', vintage: 1963, requestedTerms: 'Vintage Port' });
-    const fino = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino' });
+    const crusted = resolveWineProduct({ country: 'Portugal', designation: 'Porto / Port', requestedTerms: 'Crusted' });
+    const vvo = resolveWineProduct({ country: 'Portugal', designation: 'Porto / Port', requestedTerms: 'Very Very Old' });
 
     expect(port.rule?.generationStatus).toBe('reference-only');
     expect(port.rule?.ageingArchetype).toBe('bottle-aged-fortified');
     expect(port.historicalComplianceVerified).toBe(false);
-    expect(fino.rule?.generationStatus).toBe('reference-only');
-    expect(fino.rule?.ageingArchetype).toBe('biological-flor');
+    expect(crusted.rule?.minimumBottleAgeYears).toBe(3);
+    expect(crusted.rule?.generationStatus).toBe('reference-only');
+    expect(vvo.rule?.minimumWoodAgeYears).toBe(80);
+  });
+
+  it('keeps legacy Jerez rules reference-only for generic terms while detailed current terms resolve to the new matrix', () => {
+    const generic = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino' });
+    const detailed = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino current' });
+    expect(generic.rule?.generationStatus).toBe('reference-only');
+    expect(generic.rule?.ageingArchetype).toBe('biological-flor');
+    expect(detailed.rule?.profileId).toBe('es-jerez-product-matrix-2024');
+    expect(detailed.rule?.generationStatus).toBe('conditional');
   });
 
   it('resolves Georgian white and amber Kisi Magraani as different legal/process products', () => {
