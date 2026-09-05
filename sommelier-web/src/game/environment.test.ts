@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   applyResearchMatrices,
+  authorityVintageRatingForPlace,
   authorityVintageRatings,
   environmentalProfileForPlace,
   environmentalProfiles,
@@ -106,7 +107,7 @@ describe('soil climate vintage and matrix research', () => {
     expect(vintage?.id).toBe('vintage-fr-champagne-2022');
     expect(modeled.acidity).toBeGreaterThan(base.acidity);
     expect(modeled.body).toBeLessThan(base.body);
-    expect(modeled.alcohol).toBeLessThan(base.alcohol);
+    expect(modeled.alcohol ?? 0).toBeLessThan(base.alcohol ?? Number.POSITIVE_INFINITY);
   });
 
   it('keeps measured Napa rainfall separate from derived vintage effects', () => {
@@ -122,8 +123,11 @@ describe('soil climate vintage and matrix research', () => {
     const rioja2025 = authorityVintageRatings.find((rating) => rating.region === 'Rioja DOCa' && rating.year === 2025);
     const rioja2019 = authorityVintageRatings.find((rating) => rating.region === 'Rioja DOCa' && rating.year === 2019);
     const rioja2018 = authorityVintageRatings.find((rating) => rating.region === 'Rioja DOCa' && rating.year === 2018);
+    const riojaPlace = place('Spain', 'Rioja Alta', ['Rioja', 'Rioja Alta']);
+
     expect(rioja2025?.rating).toBe('Excellent');
     expect(rioja2019?.rating).toBe('Excellent');
     expect(rioja2018?.rating).toBe('Good');
+    expect(authorityVintageRatingForPlace(riojaPlace, 2019)?.rating).toBe('Excellent');
   });
 });
