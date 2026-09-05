@@ -115,7 +115,7 @@ class VosneGrandCruAuthoritativeCatalogTests(unittest.TestCase):
             self.assertEqual(rows[0].wine.appellation, appellation)
             self.assertEqual(rows[0].wine.classification, "grand cru")
             self.assertEqual(rows[0].wine.grapes, ("Pinot Noir",))
-            self.assertIsNone(rows[0].wine.vineyard)
+            self.assertEqual(rows[0].wine.vineyard, "")
 
     def test_grand_cru_aocs_are_not_generated_as_vosne_site_suffixes(self):
         prohibited = set(GRAND_CRUS)
