@@ -20,12 +20,7 @@ describe('exact wine product resolver', () => {
 
   it('resolves Brunello Riserva separately from normale and preserves composition/ageing', () => {
     const riserva = resolveWineProduct({
-      country: 'Italy',
-      designation: 'Brunello di Montalcino',
-      vintage: 2021,
-      color: 'red',
-      grape: 'Sangiovese',
-      requestedTerms: 'Riserva',
+      country: 'Italy', designation: 'Brunello di Montalcino', vintage: 2021, color: 'red', grape: 'Sangiovese', requestedTerms: 'Riserva',
     });
     expect(riserva.status).toBe('resolved');
     expect(riserva.rule?.productName).toBe('Brunello di Montalcino Riserva');
@@ -39,7 +34,6 @@ describe('exact wine product resolver', () => {
     const red = resolveWineProduct({ country: 'Spain', designation: 'Rioja', color: 'red', requestedTerms: 'Crianza' });
     const white = resolveWineProduct({ country: 'Spain', designation: 'Rioja', color: 'white', requestedTerms: 'Crianza' });
     const granReserva = resolveWineProduct({ country: 'Spain', designation: 'Rioja', color: 'red', requestedTerms: 'Gran Reserva' });
-
     expect(red.rule?.ageingRuleIds).toContain('age-es-rioja-crianza-red-current');
     expect(white.rule?.ageingRuleIds).toContain('age-es-rioja-crianza-white-rose-current');
     expect(granReserva.rule?.ageingRuleIds).toContain('age-es-rioja-gran-reserva-red-current');
@@ -48,7 +42,6 @@ describe('exact wine product resolver', () => {
   it('prefers the most specific Tokaj product term and keeps incomplete products conditional', () => {
     const six = resolveWineProduct({ country: 'Hungary', designation: 'Tokaj', requestedTerms: 'Tokaji Aszú 6 puttonyos' });
     const eszencia = resolveWineProduct({ country: 'Hungary', designation: 'Tokaj', requestedTerms: 'Eszencia' });
-
     expect(six.rule?.productName).toBe('Tokaji Aszú 6 puttonyos');
     expect(six.rule?.minimumResidualSugarGPerL).toBe(150);
     expect(six.exactProductGenerationSafe).toBe(true);
@@ -61,7 +54,6 @@ describe('exact wine product resolver', () => {
     const dry = resolveWineProduct({ country: 'Hungary', designation: 'Tokaj', requestedTerms: 'dry Szamorodni' });
     const sweet = resolveWineProduct({ country: 'Hungary', designation: 'Tokaj', requestedTerms: 'sweet Szamorodni' });
     const aszu = resolveWineProduct({ country: 'Hungary', designation: 'Tokaj', requestedTerms: 'Aszú current' });
-
     expect(late.rule?.minimumResidualSugarGPerL).toBe(45);
     expect(late.exactProductGenerationSafe).toBe(true);
     expect(dry.rule?.maximumResidualSugarGPerL).toBe(9);
@@ -78,13 +70,12 @@ describe('exact wine product resolver', () => {
     const oloroso = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Oloroso current' });
     const px = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'PX detailed', grape: 'Pedro Ximénez' });
     const vors = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'VORS' });
-
     expect(fino.rule?.id).toBe('product-es-jerez-fino-2025-current');
     expect(fino.rule?.profileId).toBe('es-jerez-current-amendment-2025');
     expect(fino.rule?.alcoholPctRange).toEqual([15, 17]);
     expect(fino.rule?.maximumResidualSugarGPerL).toBe(4);
     expect(fino.rule?.minimumAverageAgeYears).toBe(2);
-    expect(fino.rule?.effectiveFromYear).toBe(2025);
+    expect(fino.rule?.effectiveFromYear).toBe(2026);
     expect(fino.exactProductGenerationSafe).toBe(false);
     expect(oloroso.rule?.id).toBe('product-es-jerez-oloroso-2025-current');
     expect(oloroso.rule?.ageingArchetype).toBe('oxidative-fortified');
@@ -93,12 +84,14 @@ describe('exact wine product resolver', () => {
     expect(vors.rule?.minimumAverageAgeYears).toBe(30);
   });
 
-  it('does not project the post-2025 Jerez override backward onto a pre-2025 vintage', () => {
-    const historical = resolveWineProduct({
-      country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2020, requestedTerms: 'Fino current',
-    });
-    expect(historical.status).toBe('ambiguous');
-    expect(historical.exactProductGenerationSafe).toBe(false);
+  it('treats 2025 Jerez as date-sensitive but 2026 as fully inside the amended year-level era', () => {
+    const transition = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2025, requestedTerms: 'Fino current' });
+    const fullEra = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2026, requestedTerms: 'Fino current' });
+    expect(transition.status).toBe('ambiguous');
+    expect(transition.exactProductGenerationSafe).toBe(false);
+    expect(fullEra.status).toBe('resolved');
+    expect(fullEra.rule?.id).toBe('product-es-jerez-fino-2025-current');
+    expect(fullEra.historicalComplianceVerified).toBe(true);
   });
 
   it('allows both unfortified wine and post-fermentation fortification for current Fino but not mid-fermentation arrest', () => {
@@ -107,7 +100,6 @@ describe('exact wine product resolver', () => {
     const none = fortification?.options.find((option) => option.id === 'none');
     const after = fortification?.options.find((option) => option.id === 'after-fermentation');
     const during = fortification?.options.find((option) => option.id === 'during-fermentation');
-
     expect(fino.rule && fortification && none && productWinemakingLegality(fino.rule, fortification, none)).toBe(true);
     expect(fino.rule && fortification && after && productWinemakingLegality(fino.rule, fortification, after)).toBe(true);
     expect(fino.rule && fortification && during && productWinemakingLegality(fino.rule, fortification, during)).toBe(false);
@@ -117,7 +109,6 @@ describe('exact wine product resolver', () => {
     const port = resolveWineProduct({ country: 'Portugal', designation: 'Porto / Port', vintage: 1963, requestedTerms: 'Vintage Port' });
     const crusted = resolveWineProduct({ country: 'Portugal', designation: 'Porto / Port', requestedTerms: 'Crusted' });
     const vvo = resolveWineProduct({ country: 'Portugal', designation: 'Porto / Port', requestedTerms: 'Very Very Old' });
-
     expect(port.rule?.generationStatus).toBe('reference-only');
     expect(port.rule?.ageingArchetype).toBe('bottle-aged-fortified');
     expect(port.historicalComplianceVerified).toBe(false);
@@ -138,7 +129,6 @@ describe('exact wine product resolver', () => {
   it('resolves Georgian white and amber Kisi Magraani as different legal/process products', () => {
     const white = resolveWineProduct({ country: 'Georgia', designation: 'Kisi Magraani', color: 'white', grape: 'Kisi', requestedTerms: 'white dry' });
     const amber = resolveWineProduct({ country: 'Georgia', designation: 'Magraani’s Kisi', color: 'white', grape: 'Kisi', requestedTerms: 'amber qvevri' });
-
     expect(white.status).toBe('resolved');
     expect(white.rule?.productName).toBe('Kisi Magraani white dry');
     expect(white.rule?.exclusiveComposition).toBe(true);
@@ -149,15 +139,8 @@ describe('exact wine product resolver', () => {
 
   it('requires an actual Aleksandrouli-Mujuretuli blend for exact Khvanchkara resolution', () => {
     const single = resolveWineProduct({ country: 'Georgia', designation: 'Khvanchkara', color: 'red', grape: 'Aleksandrouli', requestedTerms: 'Khvanchkara' });
-    const blend = resolveWineProduct({
-      country: 'Georgia', designation: 'Khvanchkara', color: 'red', requestedTerms: 'Khvanchkara',
-      blend: [{ grape: 'Aleksandrouli', percent: 55 }, { grape: 'Mujuretuli', percent: 45 }],
-    });
-    const contaminated = resolveWineProduct({
-      country: 'Georgia', designation: 'Khvanchkara', color: 'red', requestedTerms: 'Khvanchkara',
-      blend: [{ grape: 'Aleksandrouli', percent: 45 }, { grape: 'Mujuretuli', percent: 45 }, { grape: 'Saperavi', percent: 10 }],
-    });
-
+    const blend = resolveWineProduct({ country: 'Georgia', designation: 'Khvanchkara', color: 'red', requestedTerms: 'Khvanchkara', blend: [{ grape: 'Aleksandrouli', percent: 55 }, { grape: 'Mujuretuli', percent: 45 }] });
+    const contaminated = resolveWineProduct({ country: 'Georgia', designation: 'Khvanchkara', color: 'red', requestedTerms: 'Khvanchkara', blend: [{ grape: 'Aleksandrouli', percent: 45 }, { grape: 'Mujuretuli', percent: 45 }, { grape: 'Saperavi', percent: 10 }] });
     expect(single.status).toBe('unresolved');
     expect(blend.status).toBe('resolved');
     expect(blend.rule?.requiresBlend).toBe(true);
@@ -184,13 +167,7 @@ describe('exact wine product resolver', () => {
   });
 
   it('rejects a composition that cannot satisfy an exact product', () => {
-    const wrong = resolveWineProduct({
-      country: 'Italy',
-      designation: 'Brunello di Montalcino',
-      color: 'red',
-      grape: 'Merlot',
-      requestedTerms: 'Riserva',
-    });
+    const wrong = resolveWineProduct({ country: 'Italy', designation: 'Brunello di Montalcino', color: 'red', grape: 'Merlot', requestedTerms: 'Riserva' });
     expect(wrong.status).toBe('unresolved');
   });
 });
