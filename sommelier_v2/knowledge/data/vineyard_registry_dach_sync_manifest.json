@@ -1,0 +1,11 @@
+{
+  "generated": "2026-09-05T15:51:20.311783+00:00",
+  "noe_wfs_features": 3342,
+  "noe_sites_materialized": 3386,
+  "rlp_einzellagen_materialized": 0,
+  "rlp_status": "official_source_unavailable_or_schema_pending",
+  "rlp_error": "https://weinlagen.lwk-rlp.de/geoserver/lwk/ows: Could not fetch https://weinlagen.lwk-rlp.de/geoserver/lwk/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=lwk%3AWeinlagen&count=10000&outputFormat=application%2Fjson&srsName=EPSG%3A4326: HTTP Error 404: Not Found | http://weinlagen.lwk-rlp.de/geoserver/lwk/ows: Could not fetch http://weinlagen.lwk-rlp.de/geoserver/lwk/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=lwk%3AWeinlagen&count=10000&outputFormat=application%2Fjson&srsName=EPSG%3A4326: <urlopen error [Errno 111] Connection refused>",
+  "outputs": [
+    "sommelier_v2/knowledge/data/named_sites_expansion_2026_austria_noe.json"
+  ]
+}
