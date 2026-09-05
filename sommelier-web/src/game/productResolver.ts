@@ -1,5 +1,6 @@
 import productData from '../data/research/product_resolution_rules.json';
 import productDataPass2 from '../data/research/product_resolution_rules_pass2.json';
+import productDataPass3 from '../data/research/product_resolution_rules_pass3.json';
 import { legalAgeingRules, type AgeingArchetype } from './ageing';
 import { findGrape, type RawGrape, type ReferencePlace } from './reference';
 import { researchProfileById, type ResearchProfile } from './research';
@@ -45,6 +46,14 @@ export type ProductResolutionRule = {
   minimumOxidativeAgeingMonths?: number;
   minimumResidualSugarGPerL?: number;
   maximumResidualSugarGPerL?: number;
+  alcoholPctRange?: [number, number];
+  minimumAverageAgeYears?: number;
+  minimumWoodAgeMonths?: number;
+  minimumWoodAgeYears?: number;
+  minimumBottleAgeYears?: number;
+  minimumActualAlcoholPct?: number;
+  minimumTotalPotentialAlcoholPct?: number;
+  maximumYieldLitresPer100KgAszuBerries?: number;
   effectiveFromYear?: number;
   effectiveThroughYear?: number;
   notes?: string[];
@@ -60,6 +69,7 @@ type ProductResolutionFile = {
 const files = [
   productData as unknown as ProductResolutionFile,
   productDataPass2 as unknown as ProductResolutionFile,
+  productDataPass3 as unknown as ProductResolutionFile,
 ];
 export const productResolutionMethod = files.map((candidate) => candidate.method).join(' ');
 export const productResolutionPassCount = files.length;
