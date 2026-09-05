@@ -7,10 +7,11 @@ legal record but can never override an origin rejection.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Sequence
 
 from .domain import WineRecord, WineStyle
+from .knowledge.catalog import normalize_name
 from .knowledge.fermentation_guidance import (
     FermentationGuidance,
     assess_alcoholic_fermentation,
@@ -97,6 +98,13 @@ class ConstrainedWineBuilder:
             raise ValueError("Drink-window offsets cannot be negative")
         if request.drink_window_end and request.drink_window_start > request.drink_window_end:
             raise ValueError("Drink-window start cannot be after drink-window end")
+        if (
+            request.origin.producer
+            and normalize_name(request.origin.producer) != normalize_name(request.producer)
+        ):
+            raise ValueError(
+                "WineBuildRequest producer must match OriginRequest producer when both are supplied"
+            )
 
     def build(
         self,
@@ -110,9 +118,16 @@ class ConstrainedWineBuilder:
     ) -> GeneratedWine:
         self._validate_commercial_fields(request)
 
+        # Bind commercial identity to the producer identity used by monopole and
+        # block ownership checks. The builder never validates one producer and
+        # emits another.
+        origin_request = request.origin
+        if origin_request.producer is None:
+            origin_request = replace(origin_request, producer=request.producer)
+
         # Origin is deliberately first. If it fails, no amount of vintage or
         # cellar detail can create the protected-origin wine.
-        origin = self.origin_factory.create(request.origin)
+        origin = self.origin_factory.create(origin_request)
 
         vintage_indices = None
         if weather_days is not None:
@@ -153,7 +168,7 @@ class ConstrainedWineBuilder:
             subregion=origin.sub_region or "",
             appellation=origin.appellation or "",
             vineyard=vineyard_label,
-            vintage=request.origin.vintage_year,
+            vintage=origin_request.vintage_year,
             style=request.style,
             grapes=origin.canonical_grapes,
             classification=request.classification,
