@@ -147,6 +147,14 @@ export function vintageObservationForPlace(place: ReferencePlace, year: number):
   return fallbackRegion ? vintageObservations.find((vintage) => vintage.region === fallbackRegion && vintage.year === year) : undefined;
 }
 
+export function authorityVintageRatingForPlace(place: ReferencePlace, year: number): AuthorityVintageRating | undefined {
+  const haystack = normalized([place.name, ...place.path].join(' | '));
+  if (place.country === 'Spain' && haystack.includes('rioja')) {
+    return authorityVintageRatings.find((rating) => rating.region === 'Rioja DOCa' && rating.year === year);
+  }
+  return undefined;
+}
+
 function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
