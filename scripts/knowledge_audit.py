@@ -11,6 +11,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from sommelier_v2.knowledge import (  # noqa: E402
+    EuLegalPromotionRegistry,
+    JurisdictionLabelValidator,
     LegalAwareRegionGrapeRulebook,
     LegalSourceRegistry,
     SimulationPriors,
@@ -26,6 +28,8 @@ def main() -> None:
     world = WorldWineKnowledgeCatalog()
     rules = LegalAwareRegionGrapeRulebook(catalog=world)
     legal_sources = LegalSourceRegistry()
+    promotions = EuLegalPromotionRegistry(rules.machine_constraints)
+    labels = JurisdictionLabelValidator()
     priors = SimulationPriors()
     vintages = load_legacy_vintage_knowledge()
     stats = {}
@@ -33,6 +37,8 @@ def main() -> None:
     stats.update(world.stats())
     stats.update(rules.stats())
     stats.update(legal_sources.stats())
+    stats.update(promotions.stats())
+    stats.update(labels.stats())
     stats.update(vintage_stats(vintages))
     stats.update(priors.stats())
     print("KNOWLEDGE_AUDIT=" + json.dumps(stats, sort_keys=True))

@@ -15,6 +15,7 @@ from typing import Callable, Mapping, Sequence
 from .catalog import normalize_name
 
 DATA_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_seed.json"
+SUPPLEMENT_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_supplement.json"
 
 
 @dataclass(frozen=True)
@@ -91,15 +92,51 @@ def _i(value: object) -> int | None:
 
 
 class LegalSpecRegistry:
-    """Load and evaluate sourced GI production specifications."""
+    """Load and evaluate sourced GI production specifications.
+
+    Passing ``data_path`` preserves the historical single-document behavior used
+    by tests and callers with private registries. The default registry merges the
+    reviewed seed and reviewed supplement. Duplicate source IDs must be identical;
+    duplicate specification IDs are rejected.
+    """
 
     def __init__(self, data_path: Path | None = None) -> None:
-        self.data_path = data_path or DATA_PATH
-        doc = json.loads(self.data_path.read_text(encoding="utf-8"))
-        self.sources: dict[str, dict[str, object]] = dict(doc.get("sources", {}))
+        paths = [Path(data_path)] if data_path is not None else [DATA_PATH, SUPPLEMENT_PATH]
+        documents: list[dict[str, object]] = []
+        for path in paths:
+            if not path.exists():
+                if data_path is not None:
+                    raise FileNotFoundError(path)
+                continue
+            doc = json.loads(path.read_text(encoding="utf-8"))
+            if not isinstance(doc, dict):
+                raise ValueError(f"{path.name} must contain a JSON object")
+            documents.append(doc)
+
+        self.sources: dict[str, dict[str, object]] = {}
+        raw_specs: list[dict[str, object]] = []
+        seen_spec_ids: set[str] = set()
+        for doc in documents:
+            for source_id, source in dict(doc.get("sources", {})).items():
+                source_row = dict(source)
+                existing = self.sources.get(str(source_id))
+                if existing is not None and existing != source_row:
+                    raise ValueError(f"Conflicting legal source definition: {source_id}")
+                self.sources[str(source_id)] = source_row
+            for row in doc.get("specs", []):
+                if not isinstance(row, dict):
+                    continue
+                spec_id = str(row.get("id") or "")
+                if not spec_id:
+                    raise ValueError("Legal specification is missing an id")
+                if spec_id in seen_spec_ids:
+                    raise ValueError(f"Duplicate legal specification id: {spec_id}")
+                seen_spec_ids.add(spec_id)
+                raw_specs.append(row)
+
         self.specs: list[LegalWineSpec] = []
         self._index: dict[tuple[str, str], list[LegalWineSpec]] = {}
-        for row in doc.get("specs", []):
+        for row in raw_specs:
             constraints = tuple(
                 GrapeConstraint(
                     grape=str(item["grape"]),
@@ -108,6 +145,12 @@ class LegalSpecRegistry:
                 )
                 for item in row.get("grape_constraints", [])
             )
+            source_ids = tuple(row.get("source_ids", []))
+            unknown_sources = [sid for sid in source_ids if sid not in self.sources]
+            if unknown_sources:
+                raise ValueError(
+                    f"{row['id']} references unknown legal sources: {unknown_sources}"
+                )
             spec = LegalWineSpec(
                 id=str(row["id"]),
                 country=str(row["country"]),
@@ -135,7 +178,7 @@ class LegalSpecRegistry:
                 effective_from=row.get("effective_from"),
                 effective_to=row.get("effective_to"),
                 regulatory_status=str(row.get("regulatory_status", "current")),
-                source_ids=tuple(row.get("source_ids", [])),
+                source_ids=source_ids,
                 notes=str(row.get("notes", "")),
             )
             self.specs.append(spec)

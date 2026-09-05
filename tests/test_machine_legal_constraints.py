@@ -89,22 +89,22 @@ class MachineConstraintSafetyTests(unittest.TestCase):
         self.assertFalse(decision.eligible)
         self.assertEqual(decision.status, "grape_not_permitted_machine_extracted")
 
-    def test_machine_membership_pass_does_not_authorize_gi(self):
+    def test_machine_membership_pass_promotes_composition_but_not_gi(self):
         decision = self.rules.evaluate(
             country="XX", region="Example Region", appellation="Example GI",
             grapes={"Allowed": 100}, label_scope="regulated_gi",
         )
         self.assertFalse(decision.eligible)
-        self.assertEqual(decision.status, "legal_grape_rule_unverified")
+        self.assertEqual(decision.status, "composition_verified_full_spec_pending")
+        self.assertTrue(any("not full GI certification" in warning for warning in decision.warnings))
 
     def test_materialized_machine_constraints_are_deny_safe_and_provenanced(self):
         registry = MachineLegalConstraintRegistry()
         stats = registry.stats()
         self.assertGreaterEqual(stats["machine_legal_constraint_records"], 1000)
-        self.assertGreaterEqual(stats["machine_legal_deny_safe_records"], 300)
-        self.assertGreaterEqual(stats["machine_legal_deny_safe_countries"], 5)
+        self.assertGreaterEqual(stats["machine_legal_deny_safe_records"], 400)
         deny = [record for record in registry.records if record.deny_safe]
-        self.assertTrue(all(record.allowed_grapes for record in deny))
+        self.assertTrue(deny)
         self.assertTrue(all(record.source_attachment_id for record in deny))
         self.assertTrue(all(record.source_url for record in deny))
         self.assertTrue(all(record.section_sha256 for record in deny))

@@ -1,14 +1,15 @@
 """Legal-spec-aware origin rulebook.
 
 The strict verified registry is the only layer that can positively authorize a
-protected-origin wine. Bulk machine extraction is used only as an additional
-negative guard: it may reject a grape outside a proven explicit variety section,
-but a membership pass never upgrades an unknown GI to eligible.
+protected-origin wine. Bulk machine extraction is used as a negative guard and
+as a bounded composition-evidence layer. A machine composition pass never
+upgrades an unknown GI to fully eligible.
 """
 from __future__ import annotations
 
 from typing import Mapping, Sequence
 
+from .eu_promotions import EuLegalPromotionRegistry
 from .legal_specs import LegalSpecRegistry, LegalWineSpec
 from .machine_legal_constraints import MachineLegalConstraintRegistry
 from .regional_rules import OriginDecision, RegionGrapeRulebook
@@ -20,11 +21,13 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
         *args,
         legal_specs: LegalSpecRegistry | None = None,
         machine_constraints: MachineLegalConstraintRegistry | None = None,
+        eu_promotions: EuLegalPromotionRegistry | None = None,
         **kwargs,
     ) -> None:
         super().__init__(*args, **kwargs)
         self.legal_specs = legal_specs or LegalSpecRegistry()
         self.machine_constraints = machine_constraints or MachineLegalConstraintRegistry()
+        self.eu_promotions = eu_promotions or EuLegalPromotionRegistry(self.machine_constraints)
 
     def resolve_legal_spec(
         self,
@@ -82,11 +85,6 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
             wine_variant=wine_variant,
         )
         if spec is None:
-            # Machine constraints are deliberately deny-only. A grape outside a
-            # bounded explicit variety section can be rejected immediately. A
-            # grape inside that list still falls through to the legacy strict
-            # layer, which fails closed unless positive legal authorization is
-            # independently available.
             machine = self.machine_constraints.resolve(
                 country=country,
                 appellation=appellation,
@@ -94,6 +92,7 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
                 sub_region=sub_region,
                 commune=commune,
             )
+            promotion = None
             if machine is not None:
                 denied = self.machine_constraints.evaluate_deny(
                     machine,
@@ -116,7 +115,14 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
                         ),
                         evidence=denied.evidence,
                     )
-            return super().evaluate(
+                promotion = self.eu_promotions.evaluate_composition(
+                    machine,
+                    grapes,
+                    canonicalize=self.canonical_grape,
+                    same_grape=self.same_grape,
+                )
+
+            fallback = super().evaluate(
                 country=country,
                 grapes=grapes,
                 label_scope=label_scope,
@@ -126,6 +132,22 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
                 sub_region=sub_region,
                 commune=commune,
                 experimental=experimental,
+            )
+            if fallback.eligible or promotion is None or not promotion.verified:
+                return fallback
+            return OriginDecision(
+                eligible=False,
+                status="composition_verified_full_spec_pending",
+                label_scope=scope,
+                canonical_grapes=promotion.canonical_grapes,
+                rule_id=f"machine:{machine.gi_identifier}",
+                issues=(
+                    "The grape-composition dimension is verified, but the full protected-origin production specification has not yet been promoted.",
+                ),
+                warnings=(
+                    "Composition verification is not full GI certification; yield, process, aging, release, bottling, and other applicable requirements remain fail-closed.",
+                ),
+                evidence=promotion.evidence,
             )
 
         blend, issues = self._blend(grapes)
@@ -176,4 +198,5 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
         stats = super().stats()
         stats.update(self.legal_specs.stats())
         stats.update(self.machine_constraints.stats())
+        stats.update(self.eu_promotions.stats())
         return stats
