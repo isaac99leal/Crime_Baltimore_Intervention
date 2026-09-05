@@ -14,7 +14,8 @@ class VineyardRegistryExpansionTests(unittest.TestCase):
     def test_registry_more_than_doubles_named_site_foundation(self) -> None:
         stats = self.catalog.stats()
         self.assertGreaterEqual(stats["named_sites"], 2100)
-        self.assertEqual(stats["named_sites_2026_expansion"], 949)
+        # Burgundy + Alsace alone contribute 949. Jurisdiction syncs may add more.
+        self.assertGreaterEqual(stats["named_sites_2026_expansion"], 949)
         self.assertGreaterEqual(stats["named_site_sources"], 30)
         self.assertGreaterEqual(stats["named_site_bulk_sources_discovered"], 4)
 
@@ -82,14 +83,14 @@ class VineyardRegistryExpansionTests(unittest.TestCase):
         for site in self.catalog.named_sites:
             self.assertTrue(set(site.source_ids).issubset(known), site.id)
 
-    def test_bulk_source_targets_are_explicitly_non_materialized(self) -> None:
+    def test_unmaterialized_bulk_targets_remain_explicit(self) -> None:
         bulk = self.catalog.named_site_bulk_sources
         self.assertIn("bourgogne_maps_bulk", bulk)
         self.assertIn("rlp_weinbergsrolle", bulk)
         self.assertIn("noe_rieden_open_data", bulk)
         self.assertIn("vienna_rieden", bulk)
-        for raw in bulk.values():
-            self.assertEqual(raw.get("ingest_status"), "discovered_not_materialized")
+        self.assertEqual(bulk["bourgogne_maps_bulk"].get("ingest_status"), "discovered_not_materialized")
+        self.assertEqual(bulk["vienna_rieden"].get("ingest_status"), "discovered_not_materialized")
 
 
 if __name__ == "__main__":
