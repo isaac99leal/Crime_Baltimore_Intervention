@@ -35,12 +35,12 @@ function place(country: string, name: string, path: string[]): ReferencePlace {
 describe('soil climate vintage and matrix research', () => {
   it('keeps multi-pass sourced environmental and vintage layers with bounded derived matrices', () => {
     const report = validateEnvironmentalResearch();
-    expect(environmentalResearchPassCount).toBe(3);
+    expect(environmentalResearchPassCount).toBe(4);
     expect(vintageResearchPassCount).toBe(3);
-    expect(environmentalProfiles.length).toBeGreaterThanOrEqual(26);
+    expect(environmentalProfiles.length).toBeGreaterThanOrEqual(28);
     expect(vintageObservations.length).toBeGreaterThanOrEqual(17);
     expect(authorityVintageRatings.length).toBeGreaterThanOrEqual(25);
-    expect(report.countries).toBeGreaterThanOrEqual(12);
+    expect(report.countries).toBeGreaterThanOrEqual(13);
     expect(report.issues).toEqual([]);
   });
 
@@ -61,6 +61,8 @@ describe('soil climate vintage and matrix research', () => {
     const uco = findEnvironmentalProfile('env-ar-uco-valley');
     const barossa = findEnvironmentalProfile('env-au-barossa-valley');
     const margaretRiver = findEnvironmentalProfile('env-au-margaret-river');
+    const magraani = findEnvironmentalProfile('env-ge-kisi-magraani');
+    const khvanchkara = findEnvironmentalProfile('env-ge-khvanchkara');
 
     expect(champagne && rec(champagne.climate).annualMeanTempC).toBe(11);
     expect(champagne && rec(champagne.soils[0]).shareOfOutcroppingSedimentaryRockPct).toBe(75);
@@ -80,6 +82,10 @@ describe('soil climate vintage and matrix research', () => {
     expect(rec(uco?.topography).majorDepartments).toEqual(['Tupungato', 'Tunuyán', 'San Carlos']);
     expect(rec(barossa?.topography).altitudeM).toEqual([130, 430]);
     expect(rec(margaretRiver?.climate).meanJanuaryTempC).toBe(20.9);
+    expect(rec(magraani?.topography).elevationMeters).toEqual([400, 800]);
+    expect(rec(magraani?.climate).annualPrecipitationMm).toEqual([750, 850]);
+    expect(khvanchkara?.soils.map((soil) => rec(soil).name)).toContain('humus-carbonate clay');
+    expect(rec(khvanchkara?.climate).relativeHumidityAnnualPct).toEqual([75, 76]);
   });
 
   it('maps detailed game geography to the most specific researched environment', () => {
@@ -100,6 +106,8 @@ describe('soil climate vintage and matrix research', () => {
     const uco = place('Argentina', 'Valle de Uco', ['Mendoza', 'Valle de Uco']);
     const barossa = place('Australia', 'Barossa Valley', ['South Australia', 'Barossa Valley']);
     const margaretRiver = place('Australia', 'Margaret River', ['Western Australia', 'Margaret River']);
+    const magraani = place('Georgia', 'Kisi Magraani', ['Kakheti', 'Akhmeta', 'Kisi Magraani']);
+    const khvanchkara = place('Georgia', 'Khvanchkara', ['Racha-Lechkhumi', 'Khvanchkara']);
 
     expect(environmentalProfileForPlace(meursault)?.id).toBe('env-fr-meursault');
     expect(environmentalProfileForPlace(gevrey)?.id).toBe('env-fr-gevrey-chambertin');
@@ -118,6 +126,8 @@ describe('soil climate vintage and matrix research', () => {
     expect(environmentalProfileForPlace(uco)?.id).toBe('env-ar-uco-valley');
     expect(environmentalProfileForPlace(barossa)?.id).toBe('env-au-barossa-valley');
     expect(environmentalProfileForPlace(margaretRiver)?.id).toBe('env-au-margaret-river');
+    expect(environmentalProfileForPlace(magraani)?.id).toBe('env-ge-kisi-magraani');
+    expect(environmentalProfileForPlace(khvanchkara)?.id).toBe('env-ge-khvanchkara');
   });
 
   it('stores actual growing-season observations instead of legacy generic quality scores', () => {
@@ -162,15 +172,7 @@ describe('soil climate vintage and matrix research', () => {
     const champagne = place('France', 'Champagne', ['Champagne']);
     const environment = environmentalProfileForPlace(champagne);
     const vintage = vintageObservationForPlace(champagne, 2022);
-    const base: WineProfile = {
-      acidity: 3,
-      tannin: 1.5,
-      body: 2.5,
-      sweetness: 1,
-      fruitIntensity: 3,
-      earthIntensity: 2,
-      alcohol: 12,
-    };
+    const base: WineProfile = { acidity: 3, tannin: 1.5, body: 2.5, sweetness: 1, fruitIntensity: 3, earthIntensity: 2, alcohol: 12 };
     const modeled = applyResearchMatrices(base, environment, vintage);
 
     expect(environment?.id).toBe('env-fr-champagne');
