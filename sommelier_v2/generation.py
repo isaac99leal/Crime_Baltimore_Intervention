@@ -68,6 +68,7 @@ class WineBuildRequest:
     # sensory fields. For example, ``acidity`` above is a 1..5 tasting-scale value;
     # ``total_acidity_g_l`` below is a measured legal chemistry value.
     vineyard_yield_t_ha: float | None = None
+    wine_yield_hl_ha: float | None = None
     actual_grape_to_wine_yield_pct: float | None = None
     potential_alcohol_pct: float | None = None
     bottled_in_origin: bool | None = None
@@ -78,6 +79,8 @@ class WineBuildRequest:
     manual_harvest: bool | None = None
     total_acidity_g_l: float | None = None
     dry_extract_g_l: float | None = None
+    residual_sugar_g_l: float | None = None
+    malic_acid_g_l: float | None = None
     release_year: int | None = None
 
 
@@ -134,6 +137,18 @@ class ConstrainedWineBuilder:
             raise ValueError("Total aging months cannot be negative")
         if request.wood_aging_months < 0 or request.bottle_aging_months < 0:
             raise ValueError("Wood and bottle aging months cannot be negative")
+        for name, value in (
+            ("vineyard_yield_t_ha", request.vineyard_yield_t_ha),
+            ("wine_yield_hl_ha", request.wine_yield_hl_ha),
+            ("actual_grape_to_wine_yield_pct", request.actual_grape_to_wine_yield_pct),
+            ("potential_alcohol_pct", request.potential_alcohol_pct),
+            ("total_acidity_g_l", request.total_acidity_g_l),
+            ("dry_extract_g_l", request.dry_extract_g_l),
+            ("residual_sugar_g_l", request.residual_sugar_g_l),
+            ("malic_acid_g_l", request.malic_acid_g_l),
+        ):
+            if value is not None and value < 0:
+                raise ValueError(f"{name} cannot be negative")
         if (
             request.origin.producer
             and normalize_name(request.origin.producer) != normalize_name(request.producer)
@@ -173,6 +188,7 @@ class ConstrainedWineBuilder:
         production = rulebook.legal_specs.validate_production(
             spec,
             vineyard_yield_t_ha=request.vineyard_yield_t_ha,
+            wine_yield_hl_ha=request.wine_yield_hl_ha,
             actual_grape_to_wine_yield_pct=request.actual_grape_to_wine_yield_pct,
             potential_alcohol_pct=request.potential_alcohol_pct,
             bottled_in_origin=request.bottled_in_origin,
@@ -193,6 +209,8 @@ class ConstrainedWineBuilder:
             final_alcohol_pct=request.alcohol,
             total_acidity_g_l=request.total_acidity_g_l,
             dry_extract_g_l=request.dry_extract_g_l,
+            residual_sugar_g_l=request.residual_sugar_g_l,
+            malic_acid_g_l=request.malic_acid_g_l,
             vintage_year=vintage_year,
             release_year=request.release_year,
             require_complete=True,
@@ -221,17 +239,12 @@ class ConstrainedWineBuilder:
     ) -> GeneratedWine:
         self._validate_commercial_fields(request)
 
-        # Bind commercial identity to the producer identity used by monopole and
-        # block ownership checks. The builder never validates one producer and
-        # emits another.
         origin_request = request.origin
         if origin_request.producer is None:
             origin_request = replace(origin_request, producer=request.producer)
 
-        # Origin is deliberately first. If it fails, no amount of vintage or
-        # cellar detail can create the protected-origin wine.
+        # Legal origin precedes every physical or sensory enrichment step.
         origin = self.origin_factory.create(origin_request)
-
         legal_spec_id, production_status, release_status, legal_model_notes = (
             self._validate_regulated_production_and_release(
                 request=request,
