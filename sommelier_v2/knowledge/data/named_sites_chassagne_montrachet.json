@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.1",
+  "notes": "Full official Chassagne-Montrachet Premier Cru climat identity set from the effective specification and current BIVB/INAO references. These are physical/legal climat identities; claim eligibility is evaluated separately.",
+  "sources": {
+    "bourgogne_chassagne_current": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB) / INAO",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/chassagne-montrachet,2458,9253.html",
+      "checked": "2026-09-05",
+      "scope": "BIVB lists 55 Premiers Crus climats; current INAO product records confirm Chassagne-Montrachet Premier Cru in both white and red."
+    }
+  },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "commune": "Chassagne-Montrachet",
+      "parent": "Chassagne-Montrachet",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["bourgogne_chassagne_current"],
+      "notes": "Official Chassagne-Montrachet Premier Cru climat.",
+      "names": [
+        "Abbaye de Morgeot", "Blanchot dessus", "Bois de Chassagne", "Cailleret", "Champs Jendreau", "Chassagne", "Chassagne du Clos Saint-Jean", "Clos Chareau", "Clos Pitois", "Clos Saint-Jean", "Dent de Chien", "En Cailleret", "En Remilly", "En Virondot", "Ez Crets", "Ez Crottes", "Francemont", "Guerchère", "La Boudriotte", "La Cardeuse", "La Chapelle", "La Grande Borne", "La Grande Montagne", "La Maltroie", "La Romanée", "La Roquemaure", "Les Baudines", "Les Boirettes", "Les Bondues", "Les Brussonnes", "Les Champs gain", "Les Chaumées", "Les Chaumes", "Les Chenevottes", "Les Combards", "Les Commes", "Les Embazées", "Les Fairendes", "Les Grandes Ruchottes", "Les Grands Clos", "Les Macherelles", "Les Murées", "Les Pasquelles", "Les Petites Fairendes", "Les Petits Clos", "Les Places", "Les Rebichets", "Les Vergers", "Morgeot", "Petingeret", "Tête du Clos", "Tonton Marcel", "Vide Bourse", "Vigne Blanche", "Vigne Derrière"
+      ]
+    }
+  ]
+}
