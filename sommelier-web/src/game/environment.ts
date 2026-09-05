@@ -1,6 +1,7 @@
 import environmentalData from '../data/research/environmental_profiles.json';
 import environmentalDataPass2 from '../data/research/environmental_profiles_pass2.json';
 import environmentalDataPass3 from '../data/research/environmental_profiles_pass3.json';
+import environmentalDataPass4 from '../data/research/environmental_profiles_pass4.json';
 import vintageData from '../data/research/vintage_observations.json';
 import vintageDataPass2 from '../data/research/vintage_observations_pass2.json';
 import vintageDataPass3 from '../data/research/vintage_observations_pass3.json';
@@ -91,6 +92,7 @@ const environmentalFiles: EnvironmentalFile[] = [
   environmentalData as unknown as EnvironmentalFile,
   environmentalDataPass2 as unknown as EnvironmentalFile,
   environmentalDataPass3 as unknown as EnvironmentalFile,
+  environmentalDataPass4 as unknown as EnvironmentalFile,
 ];
 const vintageFiles: VintageFile[] = [
   vintageData as unknown as VintageFile,
@@ -125,6 +127,8 @@ function normalized(value: string): string {
 }
 
 const placeMatchers: Array<{ profileId: string; country: string; terms: string[] }> = [
+  { profileId: 'env-ge-kisi-magraani', country: 'Georgia', terms: ['kisi magraani', 'magraani'] },
+  { profileId: 'env-ge-khvanchkara', country: 'Georgia', terms: ['khvanchkara'] },
   { profileId: 'env-fr-gevrey-chambertin', country: 'France', terms: ['gevrey-chambertin'] },
   { profileId: 'env-fr-meursault', country: 'France', terms: ['meursault'] },
   { profileId: 'env-fr-sauternes', country: 'France', terms: ['sauternes'] },
