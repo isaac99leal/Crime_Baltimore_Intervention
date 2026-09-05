@@ -11,6 +11,21 @@
       "authority": "Institut national de l'origine et de la qualité (INAO)",
       "title": "Chambolle-Musigny AOP current product specification",
       "url": "https://www.inao.gouv.fr/produit/chambolle-musigny-7683"
+    },
+    "puligny_masa_2011_current": {
+      "authority": "Ministère de l'Agriculture",
+      "title": "Cahier des charges de l'AOC Puligny-Montrachet homologué par décret du 12 octobre 2011",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-437a4e9a-13eb-4d74-8d07-9711118e5d41"
+    },
+    "volnay_masa_2026": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOC Volnay homologué par arrêté du 20 février 2026",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-3c0ee7f6-d1d2-4a6f-b5ef-592027ddaf01"
+    },
+    "saint_aubin_masa_2013_current": {
+      "authority": "Ministère de l'Agriculture",
+      "title": "Cahier des charges de l'AOC Saint-Aubin modifié par décret du 2 décembre 2013",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-ebbf3fef-7ba9-449c-bbeb-75e54f694efb"
     }
   },
   "rules": [
@@ -37,6 +52,42 @@
       "source_ids": ["chambolle_inao_current"],
       "claim_kind": "premier_cru_climat_name",
       "notes": "The current Chambolle-Musigny specification authorizes Premier Cru wines to carry the listed climat name. Generic lieux-dits are not promoted by this rule."
+    },
+    {
+      "id": "siteclaim:fr:puligny-montrachet:white-premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Puligny-Montrachet",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_puligny"],
+      "allowed_wine_variants": ["white premier cru"],
+      "source_ids": ["puligny_masa_2011_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "All 17 listed Puligny-Montrachet Premier Cru climats are authorized for white wine. The official color matrix has three white-only climats, so a broad red climat rule is deliberately not created until site-specific exclusions are modeled."
+    },
+    {
+      "id": "siteclaim:fr:volnay:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Volnay",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_volnay"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["volnay_masa_2026"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The current 2026 Volnay specification authorizes Premier Cru wines to carry the listed climat names. Generic lieux-dits remain outside this positive rule."
+    },
+    {
+      "id": "siteclaim:fr:saint-aubin:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Saint-Aubin",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_saint_aubin"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["saint_aubin_masa_2013_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The published Saint-Aubin specification explicitly permits the listed Premier Cru climat names for both white and red still wines. Generic lieux-dits are not promoted by this rule."
     }
   ]
 }
