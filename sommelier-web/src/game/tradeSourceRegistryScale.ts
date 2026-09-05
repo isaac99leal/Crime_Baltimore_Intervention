@@ -1,18 +1,8 @@
-import registryPass3 from '../data/research/trade_source_registry_pass3.json';
 import { researchSourceById } from './research';
-import { tradeSources, type TradeSource } from './tradeSheetIngestion';
+import { tradeSourcePassCount, tradeSources } from './tradeSheetIngestion';
 
-type TradeRegistryFile = {
-  schemaVersion: number;
-  updatedAt: string;
-  method: string;
-  sources: TradeSource[];
-};
-
-const file = registryPass3 as unknown as TradeRegistryFile;
-
-export const verifiedTradeSourcePassCount = 3;
-export const scaledVerifiedTradeSources = [...tradeSources, ...file.sources];
+export const verifiedTradeSourcePassCount = tradeSourcePassCount;
+export const scaledVerifiedTradeSources = tradeSources;
 export const scaledVerifiedTradeSourceById = new Map(scaledVerifiedTradeSources.map((source) => [source.id, source]));
 export const techResourceQualifiedSources = scaledVerifiedTradeSources.filter((source) =>
   source.discovery.some((channel) => /tech|resource|sheet|vintage|catalog/i.test(channel)),
