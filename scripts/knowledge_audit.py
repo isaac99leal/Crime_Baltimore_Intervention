@@ -10,20 +10,19 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from sommelier_v2.knowledge import (  # noqa: E402
-    SimulationPriors,
-    WineKnowledgeCatalog,
-    load_legacy_vintage_knowledge,
-    vintage_stats,
-)
+from sommelier_v2.knowledge import RegionGrapeRulebook, SimulationPriors, WineKnowledgeCatalog, WorldWineKnowledgeCatalog, load_legacy_vintage_knowledge, vintage_stats  # noqa: E402
 
 
 def main() -> None:
     catalog = WineKnowledgeCatalog()
+    world = WorldWineKnowledgeCatalog()
+    rules = RegionGrapeRulebook(catalog=world)
     priors = SimulationPriors()
     vintages = load_legacy_vintage_knowledge()
     stats = {}
     stats.update(catalog.stats())
+    stats.update(world.stats())
+    stats.update(rules.stats())
     stats.update(vintage_stats(vintages))
     stats.update(priors.stats())
     print("KNOWLEDGE_AUDIT=" + json.dumps(stats, sort_keys=True))
