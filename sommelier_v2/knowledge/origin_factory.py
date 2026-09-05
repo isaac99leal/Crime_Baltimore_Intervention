@@ -4,6 +4,8 @@ All new v2 generators should construct origin metadata through this factory.
 Protected-origin claims use sourced legal specifications when available and fail
 closed when grape rules are absent or violated. Named-site identity is evaluated
 separately from the legal right to put that site name on a protected-origin label.
+A requested claim may differ from the physical site only when an explicit sourced
+site-claim rule authorizes that cover name for the physical origin.
 """
 from __future__ import annotations
 
@@ -29,6 +31,7 @@ class OriginRequest:
     appellation: str | None = None
     commune: str | None = None
     site_id: str | None = None
+    claimed_site_name: str | None = None
     producer: str | None = None
     experimental: bool = False
     wine_variant: str | None = None
@@ -49,6 +52,7 @@ class ConstrainedOrigin:
     site_claim_status: str = "site_claim_not_requested"
     site_claim_rule_id: str | None = None
     site_claim_evidence: tuple[str, ...] = ()
+    site_claim_name: str | None = None
 
 
 class WineOriginFactory:
@@ -71,6 +75,10 @@ class WineOriginFactory:
         site = self.sites.resolve(site_id=request.site_id) if request.site_id else None
         if request.site_id and site is None:
             raise OriginConstraintError(f"Unknown site ID {request.site_id}")
+        if request.claimed_site_name is not None and site is None:
+            raise OriginConstraintError(
+                "A claimed site name requires a physical site_id so label eligibility can be verified."
+            )
         if site is not None:
             if normalize_name(site.country) != normalize_name(request.country):
                 raise OriginConstraintError(f"{site.name} is in {site.country}, not {request.country}.")
@@ -116,6 +124,7 @@ class WineOriginFactory:
             origin_decision=decision,
             appellation=appellation,
             wine_variant=request.wine_variant,
+            claimed_site_name=request.claimed_site_name,
         )
         if site is not None and site_claim.eligible:
             self.sites.validate_ownership(site, request.producer)
@@ -134,6 +143,7 @@ class WineOriginFactory:
             site_claim_status=site_claim.status,
             site_claim_rule_id=site_claim.rule_id,
             site_claim_evidence=site_claim.evidence,
+            site_claim_name=site_claim.claim_name,
         )
 
     def declassification_options(self, request: OriginRequest) -> tuple[OriginDecision, ...]:
