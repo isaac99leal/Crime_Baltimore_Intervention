@@ -9,6 +9,7 @@ from .legal_rules import LegalAwareRegionGrapeRulebook
 from .legal_sources import LegalSourceRecord, LegalSourceRegistry
 from .legal_specs import GrapeConstraint, LegalSpecDecision, LegalSpecRegistry, LegalWineSpec, ReleaseDecision
 from .legal_vineyard_engine import LegalVineyardEngine
+from .machine_legal_constraints import MachineConstraintDecision, MachineLegalConstraint, MachineLegalConstraintRegistry
 from .origin_factory import ConstrainedOrigin, OriginRequest, WineOriginFactory
 from .priors import SimulationPriors
 from .regional_rules import OriginConstraintError, OriginDecision, RegionGrapeRulebook, RegionRule
@@ -26,7 +27,8 @@ __all__ = [
     "ConstrainedOrigin", "DailyWeather", "FermentationConstraintError", "FermentationPlan",
     "FermentationResult", "FermentationState", "GrapeConstraint", "LegalAwareRegionGrapeRulebook",
     "LegalSourceRecord", "LegalSourceRegistry", "LegalSpecDecision", "LegalSpecRegistry",
-    "LegalVineyardEngine", "LegalWineSpec", "MalolacticParams", "MalolacticState", "MustComposition",
+    "LegalVineyardEngine", "LegalWineSpec", "MachineConstraintDecision", "MachineLegalConstraint",
+    "MachineLegalConstraintRegistry", "MalolacticParams", "MalolacticState", "MustComposition",
     "NamedSite", "NutrientAddition", "OriginConstraintError", "OriginDecision", "OriginRequest",
     "PiwiRecord", "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "SimulationPriors",
     "SiteRegistry", "VarietyAreaObservation", "VineyardBlock", "VineyardEngine", "VineyardOutcome",
