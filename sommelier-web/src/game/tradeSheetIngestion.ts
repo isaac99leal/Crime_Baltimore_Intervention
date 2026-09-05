@@ -8,6 +8,7 @@ import observationData from '../data/research/trade_tech_sheet_observations_pass
 import observationDataPass2 from '../data/research/trade_tech_sheet_observations_pass2.json';
 import observationDataPass3 from '../data/research/trade_tech_sheet_observations_pass3.json';
 import observationDataPass4 from '../data/research/trade_tech_sheet_observations_pass4.json';
+import observationDataPass5 from '../data/research/trade_tech_sheet_observations_pass5.json';
 import { researchSourceById } from './research';
 
 export type TradeTrustTier = 'trade-curated' | 'trade-verified';
@@ -98,11 +99,12 @@ const observationsFile = observationData as unknown as TradeObservationFile;
 const observationsFile2 = observationDataPass2 as unknown as TradeObservationFile;
 const observationsFile3 = observationDataPass3 as unknown as TradeObservationFile;
 const observationsFile4 = observationDataPass4 as unknown as TradeObservationFile;
+const observationsFile5 = observationDataPass5 as unknown as TradeObservationFile;
 
 export const tradeSourceMethod = [registry.method, registry2.method, registry3.method, ...discoveryFiles.map((file) => file.method)].join(' ');
 export const tradeSourcePassCount = 3;
 export const tradeDiscoveryPassCount = discoveryFiles.length;
-export const tradeObservationPassCount = 4;
+export const tradeObservationPassCount = 5;
 export const tradeFieldPolicy = registry.fieldPolicy;
 export const tradeConflictPolicy = registry.conflictPolicy;
 export const tradePromotionPolicy = typeof discovery2.promotionPolicy === 'object' && discovery2.promotionPolicy
@@ -115,6 +117,7 @@ export const tradeObservations = [
   ...observationsFile2.observations,
   ...observationsFile3.observations,
   ...observationsFile4.observations,
+  ...observationsFile5.observations,
 ];
 export const tradeObservationById = new Map(tradeObservations.map((observation) => [observation.id, observation]));
 
