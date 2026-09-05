@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
-"""Materialize official German/Austrian named-vineyard registries.
+"""Materialize authoritative German/Austrian named-vineyard registries.
 
-The sync is jurisdiction-independent: one unavailable public endpoint never
-blocks a second authoritative registry. A failed jurisdiction is recorded in
-the manifest and remains unmaterialized rather than being guessed.
+Sources are deliberately kept at their real evidence date:
+- Land Niederösterreich current OGD WFS for Rieden/Subrieden.
+- Landwirtschaftskammer Rheinland-Pfalz official "Ernte 2024" Weinlagen
+  register PDF for Einzellagen. The PDF is a dated official register snapshot,
+  not a claim that every row is unchanged in 2026.
 
-Current live source:
-- Land Niederösterreich OGD WFS (Rieden/Subrieden)
-
-Rheinland-Pfalz remains wired as an optional WFS source, but its historical
-GeoServer endpoint was returning 404 on 2026-09-05. The official LWK register
-therefore remains a researched source until a stable current machine endpoint
-or the official register PDF parser is promoted.
+No site-level soil, grape, slope, elevation, ownership, or geometry facts are
+inferred when the source does not provide them.
 """
 from __future__ import annotations
 
 import json
 import re
+import subprocess
+import tempfile
 import time
 import unicodedata
 import urllib.parse
@@ -32,10 +31,7 @@ NOE_OUT = DATA_DIR / "named_sites_expansion_2026_austria_noe.json"
 MANIFEST_OUT = DATA_DIR / "vineyard_registry_dach_sync_manifest.json"
 
 RLP_SOURCE_PAGE = "https://www.lwk-rlp.de/weinbau/rebflaechen/weinlagen"
-RLP_WFS_URLS = (
-    "https://weinlagen.lwk-rlp.de/geoserver/lwk/ows",
-    "http://weinlagen.lwk-rlp.de/geoserver/lwk/ows",
-)
+RLP_PDF_URL = "https://www.lwk-rlp.de/fileadmin/lwk/Weinbau/PDF/Weinlagen_Internet_2024.pdf"
 NOE_SOURCE_PAGE = "https://www.noe.gv.at/noe/OGD_Detailseite.html?id=a22e57c2-bbb0-4fb9-a731-b7f675e48476&print=true"
 NOE_WFS_URL = "https://sdi.noe.gv.at/at.gv.noe.geoserver/OGD/wfs"
 UA = "SommelierSimulatorV2/1.0 (+https://github.com/isaac99leal/Crime_Baltimore_Intervention)"
@@ -55,23 +51,27 @@ def _text(value: Any) -> str | None:
     return value or None
 
 
-def _request_json(base_url: str, params: Mapping[str, str], attempts: int = 4) -> dict[str, Any]:
-    url = base_url + ("&" if "?" in base_url else "?") + urllib.parse.urlencode(params)
+def _download(url: str, *, accept: str = "*/*", attempts: int = 4) -> bytes:
     last_error: Exception | None = None
     for attempt in range(attempts):
         try:
-            request = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
-            with urllib.request.urlopen(request, timeout=90) as response:
-                payload = response.read()
-            doc = json.loads(payload)
-            if not isinstance(doc, dict):
-                raise ValueError("Expected JSON object")
-            return doc
+            request = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": accept})
+            with urllib.request.urlopen(request, timeout=120) as response:
+                return response.read()
         except Exception as exc:
             last_error = exc
             if attempt + 1 < attempts:
                 time.sleep(2 ** attempt)
     raise RuntimeError(f"Could not fetch {url}: {last_error}")
+
+
+def _request_json(base_url: str, params: Mapping[str, str], attempts: int = 4) -> dict[str, Any]:
+    url = base_url + ("&" if "?" in base_url else "?") + urllib.parse.urlencode(params)
+    payload = _download(url, accept="application/json", attempts=attempts)
+    doc = json.loads(payload)
+    if not isinstance(doc, dict):
+        raise ValueError("Expected JSON object")
+    return doc
 
 
 def _features(base_url: str, type_name: str, version: str = "2.0.0") -> list[dict[str, Any]]:
@@ -155,17 +155,94 @@ def _noe_records(features: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return sorted(records.values(), key=lambda row: (row.get("commune") or "", row["site_type"], row["name"].casefold()))
 
 
-def _optional_rlp() -> tuple[list[dict[str, Any]], str | None, str | None]:
-    errors: list[str] = []
-    for endpoint in RLP_WFS_URLS:
-        try:
-            features = _features(endpoint, "lwk:Weinlagen", "1.1.0")
-            if features:
-                keys = sorted(_properties(features[0]))
-                return [], endpoint, "Endpoint responded, but RLP schema promotion is intentionally pending: " + ",".join(keys)
-        except Exception as exc:
-            errors.append(f"{endpoint}: {exc}")
-    return [], None, " | ".join(errors)
+def _pdf_to_layout_text(pdf_bytes: bytes) -> str:
+    with tempfile.TemporaryDirectory() as tmp:
+        pdf_path = Path(tmp) / "weinlagen.pdf"
+        pdf_path.write_bytes(pdf_bytes)
+        result = subprocess.run(
+            ["pdftotext", "-layout", str(pdf_path), "-"],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(f"pdftotext failed: {result.stderr.strip()}")
+        return result.stdout
+
+
+def _rlp_records_from_pdf(pdf_bytes: bytes) -> list[dict[str, Any]]:
+    """Parse the fixed-column official LWK Weinlagen register.
+
+    `pdftotext -layout` preserves the table columns. Rows begin with a six-digit
+    Lagennummer. Header context supplies Anbaugebiet/Bereich/Großlage.
+    """
+    content = _pdf_to_layout_text(pdf_bytes)
+    anbaugebiet: str | None = None
+    bereich: str | None = None
+    grosslage: str | None = None
+    records: dict[str, dict[str, Any]] = {}
+    candidate_rows = 0
+    rejected_samples: list[str] = []
+
+    for raw_line in content.splitlines():
+        line = raw_line.rstrip()
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("Anbaugebiet:"):
+            anbaugebiet = stripped.split(":", 1)[1].strip()
+            continue
+        if stripped.startswith("Bereich:"):
+            bereich = stripped.split(":", 1)[1].strip()
+            continue
+        if stripped.startswith("Großlage:") or stripped.startswith("Grosslage:"):
+            grosslage = stripped.split(":", 1)[1].strip()
+            continue
+        if not re.match(r"^\s*\d{6}\b", line):
+            continue
+
+        candidate_rows += 1
+        fields = [field.strip() for field in re.split(r"\s{2,}", stripped) if field.strip()]
+        if len(fields) < 5 or not re.fullmatch(r"\d{6}", fields[0]):
+            if len(rejected_samples) < 20:
+                rejected_samples.append(stripped)
+            continue
+
+        code, name, municipality, cadastral, area_text = fields[:5]
+        area_match = re.match(r"^(\d+(?:[.,]\d+)?)", area_text)
+        if not name or not municipality or not cadastral or area_match is None:
+            if len(rejected_samples) < 20:
+                rejected_samples.append(stripped)
+            continue
+        area_ha = float(area_match.group(1).replace(",", "."))
+        region = anbaugebiet or "Rheinland-Pfalz"
+        parent = grosslage or bereich or region
+
+        records[code] = {
+            "id": f"site:germany:rlp:einzellage:{code}",
+            "name": name,
+            "country": "Germany",
+            "region": region,
+            "parent": parent,
+            "commune": municipality,
+            "site_type": "einzellage",
+            "classification": "Einzellage",
+            "legal_status": "official_weinbergsrolle_snapshot_2024",
+            "area_ha": area_ha,
+            "source_ids": ["rlp_weinlagen_register_2024"],
+            "effective_from": "2024",
+            "notes": (
+                f"Landwirtschaftskammer Rheinland-Pfalz Weinlagen register, Ernte 2024; "
+                f"Lagennummer {code}; Gemarkung {cadastral}; planted vineyard area {area_ha:g} ha."
+            ),
+        }
+
+    if len(records) < 1500:
+        raise ValueError(
+            f"RLP PDF parser produced only {len(records)} records from {candidate_rows} six-digit candidates; "
+            f"rejected samples={rejected_samples[:8]}"
+        )
+    return sorted(records.values(), key=lambda row: (row["region"], row.get("parent") or "", row["commune"], row["name"].casefold()))
 
 
 def _write(path: Path, doc: dict[str, Any]) -> None:
@@ -200,22 +277,37 @@ def main() -> None:
         "records": noe_records,
     })
 
-    rlp_records, rlp_endpoint, rlp_error = _optional_rlp()
-    if rlp_records:
-        _write(RLP_OUT, {
-            "schema_version": "2.0", "generated": checked,
-            "sources": {"rlp_weinbergsrolle_wfs_2026": {"authority": "Landwirtschaftskammer Rheinland-Pfalz", "url": RLP_SOURCE_PAGE, "data_url": rlp_endpoint, "checked": checked}},
-            "groups": [], "records": rlp_records,
-        })
+    rlp_pdf = _download(RLP_PDF_URL, accept="application/pdf")
+    rlp_records = _rlp_records_from_pdf(rlp_pdf)
+    _write(RLP_OUT, {
+        "schema_version": "2.0",
+        "generated": checked,
+        "notes": (
+            "Machine-materialized official Rheinland-Pfalz Weinlagen register snapshot for Ernte 2024. "
+            "This is authoritative historical registry evidence; it is not silently treated as a live 2026 legal snapshot."
+        ),
+        "sources": {
+            "rlp_weinlagen_register_2024": {
+                "authority": "Landwirtschaftskammer Rheinland-Pfalz",
+                "url": RLP_SOURCE_PAGE,
+                "data_url": RLP_PDF_URL,
+                "checked": checked,
+                "source_effective_label": "Ernte 2024",
+                "scope": "Official Einzellage register rows with Lagennummer, municipality, cadastral district and planted area.",
+                "evidence_class": "official_vineyard_register_snapshot_pdf",
+            }
+        },
+        "groups": [],
+        "records": rlp_records,
+    })
 
     manifest = {
         "generated": datetime.now(timezone.utc).isoformat(),
         "noe_wfs_features": len(noe_features),
         "noe_sites_materialized": len(noe_records),
         "rlp_einzellagen_materialized": len(rlp_records),
-        "rlp_status": "materialized" if rlp_records else "official_source_unavailable_or_schema_pending",
-        "rlp_error": rlp_error,
-        "outputs": [str(NOE_OUT.relative_to(ROOT))] + ([str(RLP_OUT.relative_to(ROOT))] if rlp_records else []),
+        "rlp_status": "official_2024_register_snapshot_materialized",
+        "outputs": [str(NOE_OUT.relative_to(ROOT)), str(RLP_OUT.relative_to(ROOT))],
     }
     _write(MANIFEST_OUT, manifest)
     print("VINEYARD_DACH_SYNC=" + json.dumps(manifest, ensure_ascii=False, sort_keys=True))
