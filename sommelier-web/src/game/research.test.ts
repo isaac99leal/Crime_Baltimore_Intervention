@@ -13,9 +13,9 @@ describe('hand-researched wine reference overlay', () => {
   it('has meaningful research depth with resolvable provenance', () => {
     const report = validateResearchLibrary();
     expect(researchPassCount).toBe(7);
-    expect(researchSourcePassCount).toBe(15);
+    expect(researchSourcePassCount).toBe(16);
     expect(researchProfiles.length).toBeGreaterThanOrEqual(76);
-    expect(researchSources.length).toBeGreaterThanOrEqual(177);
+    expect(researchSources.length).toBeGreaterThanOrEqual(182);
     expect(researchCountries.length).toBeGreaterThanOrEqual(15);
     expect(report.generationCandidates).toBeGreaterThanOrEqual(32);
     expect(report.issues).toEqual([]);
