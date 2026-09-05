@@ -1,0 +1,69 @@
+{
+  "updatedAt": "2026-09-05",
+  "policy": "Current-law and current-authority pass for South African WO geography plus Jerez and Port product rules. Registry identities remain reference-only unless a separate product rule establishes procedural legality.",
+  "sources": [
+    {
+      "id": "za-sawis-production-areas-feb2026",
+      "publisher": "SAWIS",
+      "title": "Production areas defined in terms of the Wine of Origin Scheme — February 2026",
+      "url": "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_%26_Afr_-_Feb26.pdf",
+      "jurisdiction": "South Africa",
+      "kind": "official-wine-origin-production-area-register",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "za-sawis-wine-law-2026",
+      "publisher": "SAWIS",
+      "title": "South Africa wine law — Wine of Origin Scheme current legal index",
+      "url": "https://sawis.co.za/winelaw/southafrica.php",
+      "jurisdiction": "South Africa",
+      "kind": "official-wine-law-index",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "es-jerez-spec-2023-consolidated",
+      "publisher": "Consejo Regulador / Junta de Andalucía",
+      "title": "Pliego de condiciones DOP Jerez-Xérès-Sherry — consolidated to 26 October 2023",
+      "url": "https://www.sherry.wine/documents/536/Pliego_de_Condiciones_Jerez-X%C3%A9r%C3%A8s-Sherry_d2Ek0Eb.pdf",
+      "jurisdiction": "Spain — Andalucía",
+      "kind": "official-product-specification",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "es-jerez-union-amendment-2025",
+      "publisher": "European Commission / Official Journal of the European Union",
+      "title": "Jerez-Xérès-Sherry PDO Union amendment PDO-ES-A1483-AM05 — approved by Implementing Regulation (EU) 2025/1713",
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2025/1713/oj",
+      "jurisdiction": "European Union / Spain",
+      "kind": "approved-union-product-specification-amendment",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "pt-ivdp-port-special-categories-2026",
+      "publisher": "IVDP",
+      "title": "Vinhos do Porto — Categorias Especiais",
+      "url": "https://www.ivdp.pt/pt/vinhos/vinhos-do-porto/categorias-especiais/",
+      "jurisdiction": "Portugal — Região Demarcada do Douro",
+      "kind": "official-special-category-guide",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "pt-ivdp-port-commercialization-2026",
+      "publisher": "IVDP",
+      "title": "Guia de Comercialização — Colocação no mercado",
+      "url": "https://www.ivdp.pt/pt/comunicacao/guias-tematicos/comercializacao/guia-comercializacap/capitulo-2-colocacao-no-mercado/",
+      "jurisdiction": "Portugal — Região Demarcada do Douro",
+      "kind": "official-certification-and-bottling-guide",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "pt-ivdp-port-product-specifications-2026",
+      "publisher": "IVDP",
+      "title": "Guia Enologia e Práticas Enológicas — especificações dos produtos vitivinícolas da RDD",
+      "url": "https://www.ivdp.pt/pt/comunicacao/guias-tematicos/enologia-e-praticas-enologicas/guia-enologia-e-praticas-enologicas/capitulo-3-especificacoes-dos-produtos-vitivinicolas-da-rdd-produto-acabado/",
+      "jurisdiction": "Portugal — Região Demarcada do Douro",
+      "kind": "official-product-specification-guide",
+      "accessed": "2026-09-05"
+    }
+  ]
+}
