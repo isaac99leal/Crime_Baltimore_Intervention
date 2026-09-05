@@ -107,25 +107,27 @@ export function createStaffBtgBlindChallenge(state: GameState, staffId: string, 
 
 function applyTrainingResult(state: GameState, staffId: string, correct: boolean, learningGain: number): GameState {
   const hours = 1.5;
-  const canSpendTime = state.time.committed + hours <= state.time.available;
   return {
     ...state,
-    time: canSpendTime ? {
+    time: {
       ...state.time,
       committed: state.time.committed + hours,
       training: state.time.training + hours,
-    } : state.time,
+    },
     staff: state.staff.map((person) => person.id === staffId ? {
       ...person,
       wineKnowledge: clamp(person.wineKnowledge + learningGain, 0, 100),
       service: clamp(person.service + learningGain * 0.12, 0, 100),
       morale: clamp(person.morale + (correct ? 0.7 : -0.2), 0, 100),
-      trainingHours: person.trainingHours + (canSpendTime ? hours : 0),
+      trainingHours: person.trainingHours + hours,
     } : person),
   };
 }
 
 export function simulateStaffBtgBlindTasting(state: GameState, staffId: string, wineId: string): StaffBlindResult | undefined {
+  const trainingHours = 1.5;
+  if (state.time.committed + trainingHours > state.time.available) return undefined;
+
   const challenge = createStaffBtgBlindChallenge(state, staffId, wineId);
   const staff = state.staff.find((person) => person.id === staffId);
   const wine = wineById.get(wineId);
