@@ -21,6 +21,7 @@ export type WineNotes = {
   legalAgeing?: string;
   historicalIdentity?: string;
   winemaking?: string;
+  productResolution?: string;
 };
 
 export type WineDefinition = {
@@ -57,6 +58,13 @@ export type WineDefinition = {
   ageYears?: number;
   storageQuality?: number;
   legalAgeingRuleIds?: string[];
+  productRuleId?: string;
+  productName?: string;
+  productResolutionStatus?: 'resolved' | 'ambiguous' | 'unresolved';
+  legalEraStatus?: string;
+  productSourceIds?: string[];
+  provenanceRisk?: number;
+  provenanceFlags?: string[];
 };
 
 export type StorageZone = 'service-cellar' | 'reserve-cellar' | 'offsite' | 'bar' | 'quarantine';
