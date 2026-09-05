@@ -1,0 +1,222 @@
+{
+  "schemaVersion":1,
+  "updatedAt":"2026-09-04",
+  "profiles":[
+    {
+      "id":"de-quality-origin-framework","country":"Germany","name":"German quality and Prädikat wine framework","recordType":"legal-framework","legalClass":"Qualitätswein / Prädikatswein","hierarchy":["Germany"],"researchCompleteness":4,"generationStatus":"framework-only",
+      "products":["quality wine","Prädikat wine"],
+      "classificationTerms":["Kabinett","Spätlese","Auslese","Beerenauslese","Eiswein","Trockenbeerenauslese"],
+      "productionRules":{"qualityAndPraedikatOriginPct":100,"recognizedAnbaugebiete":13,"praedikatEnrichmentAllowed":false,"qualityWineEnrichment":"legally limited enrichment permitted","eisweinHarvestAndPressTemperatureCMax":-7},
+      "researchNotes":["Prädikat is a grape-ripeness/must-weight classification whose minimum values depend on grape variety and growing region; it is not a universal sweetness scale.","Quality and Prädikat wines must come entirely from one of the 13 German Anbaugebiete and pass quality assessment."],
+      "sourceRefs":["de-dwi-regions-2026","de-dwi-praedikate-2026"]
+    },
+    {
+      "id":"de-mosel","country":"Germany","name":"Mosel","recordType":"wine-growing-region","legalClass":"Anbaugebiet / PDO context","hierarchy":["Germany","Mosel"],"researchCompleteness":4,"generationStatus":"reference-only",
+      "products":["white wine","red wine","sparkling wine"],"principalGrapes":["Riesling","Müller-Thurgau","Spätburgunder","Elbling"],
+      "subregions":["Burg Cochem","Bernkastel","Obermosel","Moseltor","Saar","Ruwertal"],
+      "terroir":{"vineyardAreaHa2025":8287,"einzellagenCount":524,"steepSlopeShare":"about half of vineyard area is on steep or terraced sites above 30 degrees"},
+      "productionRules":{"snapshotPlantings2025":{"RieslingHa":5156,"MüllerThurgauHa":679,"SpätburgunderHa":441,"ElblingHa":405}},
+      "styleNotes":["Riesling is the defining variety and is strongly associated with steep river-valley sites","Elbling remains an important historic specialty of the southern Mosel"],
+      "sourceRefs":["de-dwi-mosel-2026","de-dwi-praedikate-2026"]
+    },
+    {
+      "id":"de-rheingau","country":"Germany","name":"Rheingau","recordType":"wine-growing-region","legalClass":"Anbaugebiet / PDO context","hierarchy":["Germany","Rheingau"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["wine","sparkling wine"],"principalGrapes":["Riesling","Spätburgunder"],
+      "terroir":{"vineyardAreaHa2025":3117,"einzellagenCount":129,"rieslingHa2025":2355,"geography":"vineyards extend along the right bank of the Rhine; the Rhine bend creates an important mesoclimate"},
+      "researchNotes":["This pass records current regional planting/geographic context. Exact PDO village/site and modern origin-tier rules require a legal-specification pass."],
+      "sourceRefs":["de-dwi-rheingau-2026","de-dwi-praedikate-2026"]
+    },
+    {
+      "id":"de-pfalz","country":"Germany","name":"Pfalz","recordType":"wine-growing-region","legalClass":"Anbaugebiet / PDO context","hierarchy":["Germany","Pfalz"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["white wine","red wine","sparkling wine"],"principalGrapes":["Riesling","Spätburgunder","Dornfelder","Grauburgunder","Weißburgunder"],
+      "subregions":["Mittelhaardt-Deutsche Weinstraße","Südliche Weinstraße"],
+      "terroir":{"vineyardAreaHa2025":23640,"einzellagenCount":323,"wineTowns":130,"rieslingHa2025":5883,"redWineAreaHa2025":7375},
+      "researchNotes":["Pfalz is the second-largest German growing region in the 2025 DWI snapshot and the largest German red-wine area by planted hectares in that snapshot.","Exact PDO/Grosslage/Einzellage legal hierarchy needs separate extraction."],
+      "sourceRefs":["de-dwi-pfalz-2026","de-dwi-praedikate-2026"]
+    },
+    {
+      "id":"de-rheinhessen","country":"Germany","name":"Rheinhessen","recordType":"wine-growing-region","legalClass":"Anbaugebiet / PDO context","hierarchy":["Germany","Rheinhessen"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["white wine","red wine","sparkling wine"],"principalGrapes":["Riesling","Müller-Thurgau","Grauburgunder","Silvaner","Chardonnay"],
+      "terroir":{"vineyardAreaHa2025":27657,"einzellagenCount":414,"whiteWineSharePct":75,"rieslingHa2025":5471,"muellerThurgauHa2025":3761,"grauburgunderHa2025":2462,"silvanerHa2025":1763,"chardonnayHa2025":1187,"climate":"low rainfall, warm summers and mild winters, protected by uplands to the west"},
+      "researchNotes":["Current planting statistics are snapshot data and must be year-labelled rather than treated as timeless regional rules."],
+      "sourceRefs":["de-dwi-rheinhessen-2026","de-dwi-praedikate-2026"]
+    },
+    {
+      "id":"de-ahr","country":"Germany","name":"Ahr","recordType":"wine-growing-region","legalClass":"Anbaugebiet / PDO context","hierarchy":["Germany","Ahr"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["red wine","white wine","sparkling wine"],"principalGrapes":["Spätburgunder","Frühburgunder"],
+      "terroir":{"vineyardAreaHa2025":535,"einzellagenCount":40,"spaetburgunderSharePct2025":64.9,"geography":"steep vineyards above the Ahr river in northern Rheinland-Pfalz"},
+      "researchNotes":["Ahr's red-wine identity is strong, but generation should not assume every Ahr wine is Pinot-derived without a legal/product specification."],
+      "sourceRefs":["de-dwi-ahr-2026","de-dwi-praedikate-2026"]
+    },
+
+    {
+      "id":"gr-santorini-pdo","country":"Greece","name":"Santorini","recordType":"appellation","legalClass":"PDO","hierarchy":["Greece","Aegean Islands","Cyclades","Santorini"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry white wine","sweet wine from dried grapes","sweet fortified wine from dried grapes"],
+      "authorizedGrapes":["Assyrtiko","Athiri","Aidani","Gaidouria","Katsano","Moschato Aspro","Monemvasia","Platani","Potamisi","Roditis"],"principalGrapes":["Assyrtiko"],
+      "classificationTerms":["Santorini","Nykteri","Vinsanto"],
+      "productionRules":{"dryAssyrtikoMinPct":85,"dryAthiriAidaniMaxCombinedPct":15,"sweetAssyrtikoMinPct":51,"nykteriMinimumAlcoholPct":13.5,"nykteriMinimumOakMonths":3,"vinsantoGrapeSugarMinimumGPerL":370,"vinsantoMinimumOxidativeAgeingMonths":24,"maximumYieldHlHa":55},
+      "terroir":{"soils":["basalt","volcanic ash","sand","pumice","andesite","other volcanic rock"],"phylloxera":"sandy low-clay soils preserved self-rooted vines","trainingSystems":["kouloura basket","low koulouraki gobelet"],"climate":"dry, windy island climate with strong northerly Meltemi"},
+      "styleNotes":["dry Assyrtiko is high-acid, structured and saline/mineral","Vinsanto combines concentrated sweetness with unusually high acidity and oxidative ageing complexity"],
+      "sourceRefs":["gr-wog-santorini-2026"]
+    },
+    {
+      "id":"gr-nemea-pdo","country":"Greece","name":"Nemea","recordType":"appellation","legalClass":"PDO","hierarchy":["Greece","Peloponnese","Nemea"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry red wine","semi-sweet red wine","sweet fortified red wine","sweet red wine from dried grapes"],"authorizedGrapes":["Agiorgitiko"],"principalGrapes":["Agiorgitiko"],
+      "subregions":["Aidonia","Ancient Kleones","Ancient Nemea","Asprokambos","Galatas","Dafni","Kastraki","Kefalari","Koutsi","Leontio","Bozika","Nemea","Petri","Titani","Psari","Gymno","Malandreni"],
+      "productionRules":{"agiorgitikoPct":100},
+      "terroir":{"elevationMeters":[200,850],"climate":"Mediterranean with substantial mesoclimate variation by altitude","informalElevationBandsMeters":[[230,450],[450,650],[650,850]]},
+      "styleNotes":["Agiorgitiko can range from fresh fruit-driven reds to structured ageworthy wines","higher-altitude variation can materially change ripening and style"],
+      "sourceRefs":["gr-wog-nemea-2026"]
+    },
+    {
+      "id":"gr-naoussa-pdo","country":"Greece","name":"Naoussa","recordType":"appellation","legalClass":"PDO","hierarchy":["Greece","Macedonia","Imathia","Naoussa"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry red wine","semi-dry red wine","semi-sweet red wine"],"authorizedGrapes":["Xinomavro"],"principalGrapes":["Xinomavro"],
+      "subregions":["Kopanos","Lefkada","Marina","Anthemion","Naoussa","Giannakochori","Stenimachus","Rodochori","Trilofos","Fitia","Dobra"],
+      "productionRules":{"xinomavroPct":100},
+      "terroir":{"elevationMeters":[150,400],"climate":"temperate Mediterranean with continental influence","geography":"mainly south-eastern slopes of Mount Vermio"},
+      "styleNotes":["typically pale in color with high acidity and high tannin","traditional long-maceration/wood-aged styles can be austere young and highly ageworthy","modern styles emphasize fruit while retaining structural tannin"],
+      "sourceRefs":["gr-wog-naoussa-2026"]
+    },
+    {
+      "id":"gr-mantinia-pdo","country":"Greece","name":"Mantinia","recordType":"appellation","legalClass":"PDO","hierarchy":["Greece","Peloponnese","Arkadia","Mantinia"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry white wine","sparkling white wine"],"authorizedGrapes":["Moschofilero","Asproudes"],"principalGrapes":["Moschofilero"],
+      "productionRules":{"moschofileroMinPct":85,"asproudesMaxPct":15,"sparklingSweetnessTerms":["brut nature","extra brut","brut","extra sec","sec","demi sec","doux"]},
+      "terroir":{"plateauMeanElevationMeters":660,"maximumSlopeVineyardElevationMeters":800,"climate":"cool Mediterranean with continental influence; late ripening, with spring frost and hail risks"},
+      "styleNotes":["floral, rose-like and citrus aromas with high acidity","still and sparkling expressions are both legal PDO styles"],
+      "sourceRefs":["gr-wog-mantinia-2026"]
+    },
+
+    {
+      "id":"hu-tokaj-pdo","country":"Hungary","name":"Tokaj","recordType":"appellation","legalClass":"PDO","hierarchy":["Hungary","Tokaj Wine Region","Tokaj"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry white wine","late-harvest wine","Szamorodni","Aszú","Eszencia","Fordítás","Máslás","sparkling wine"],
+      "authorizedGrapes":["Furmint","Hárslevelű","Sárgamuskotály","Kövérszőlő","Kabar","Zéta"],"principalGrapes":["Furmint","Hárslevelű","Sárgamuskotály"],
+      "classificationTerms":["Szamorodni","Aszú","Eszencia","Fordítás","Máslás","6 puttonyos"],
+      "productionRules":{"aszuBerrySelection":"botrytised, shrivelled berries picked separately by hand","aszuEarliestRelease":"1 January of the third year after harvest","sixPuttonyosResidualSugarMinGPerL":150,"vintageRequiredForSpecialtyStyles":true,"protectedOriginBottling":"Tokaj PDO wines must be bottled within the product-specification area"},
+      "terroir":{"climate":"warm, dry continental overall with local autumn humidity important for noble rot","geology":"highly varied, with substantial volcanic bedrock and soils"},
+      "styleNotes":["Furmint supplies marked acidity and strong botrytis aptitude","Hárslevelű is generally softer and more aromatic","Sárgamuskotály is the most overtly aromatic of the main varieties","Aszú depends on noble rot and individual berry selection"],
+      "researchNotes":["The current regional source lists six permitted varieties and reports Furmint as dominant. Planting percentages are snapshot values and should remain date-stamped if imported."],
+      "sourceRefs":["hu-njt-wine-act-2026","hu-tokaj-bottle-2026","hu-tokaj-grapes-2026","hu-tokaj-wines-2026"]
+    },
+
+    {
+      "id":"us-federal-wine-label-framework","country":"United States","name":"United States federal wine origin, variety and vintage framework","recordType":"legal-framework","legalClass":"27 CFR Parts 4 and 9","hierarchy":["United States"],"researchCompleteness":5,"generationStatus":"framework-only",
+      "products":["American wine"],
+      "classificationTerms":["American Viticultural Area","state appellation","county appellation","single-varietal designation","vintage date","estate bottled"],
+      "productionRules":{"avaOriginMinPct":85,"countyOriginMinPct":75,"singleVarietyMinPct":75,"singleVitisLabruscaVarietyMinPct":51,"avaVintageMinPct":95,"otherAppellationVintageMinPct":85,"multipleNamedVarietiesTotalPct":100,"avaFinishRequirement":"wine must be fully finished, subject to limited cellar-treatment/blending exceptions, in the state or one of the states containing the AVA"},
+      "researchNotes":["AVA identity is a geographic-origin system; an AVA does not itself impose an authorized-grape list.","A varietal designation requires an appellation of origin, and the qualifying named-variety proportion must come from that labeled appellation."],
+      "sourceRefs":["us-ttb-ava-framework-2026","us-ttb-appellation-label-2026","us-ttb-varietal-label-2026","us-ttb-vintage-label-2025"]
+    },
+    {
+      "id":"us-napa-valley-ava","country":"United States","name":"Napa Valley","recordType":"geographical-indication","legalClass":"AVA","hierarchy":["United States","California","North Coast","Napa Valley"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["wine"],"registration":{"established":"1981-01-28"},
+      "productionRules":{"federalAvaOriginMinPct":85,"federalAvaVintageMinPct":95},
+      "researchNotes":["Legal AVA identity and federal label thresholds are established. Sub-AVA, climate, soil, and cultivar distributions require dedicated petition/official regional research before the game assigns them as universal Napa traits."],
+      "sourceRefs":["us-ttb-ava-list-2026","us-ttb-ava-dates-2026","us-ttb-appellation-label-2026"]
+    },
+    {
+      "id":"us-willamette-valley-ava","country":"United States","name":"Willamette Valley","recordType":"geographical-indication","legalClass":"AVA","hierarchy":["United States","Oregon","Willamette Valley"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["wine"],"registration":{"established":"1983-12-01"},
+      "productionRules":{"federalAvaOriginMinPct":85,"federalAvaVintageMinPct":95},
+      "researchNotes":["The AVA predates its nested modern sub-AVAs. Nested geography should be represented only from the TTB hierarchy rather than inferred from marketing usage."],
+      "sourceRefs":["us-ttb-ava-list-2026","us-ttb-ava-dates-2026","us-ttb-appellation-label-2026"]
+    },
+    {
+      "id":"us-finger-lakes-ava","country":"United States","name":"Finger Lakes","recordType":"geographical-indication","legalClass":"AVA","hierarchy":["United States","New York","Finger Lakes"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["wine"],"subregions":["Cayuga Lake","Seneca Lake"],"registration":{"established":"1982-09-01"},
+      "productionRules":{"federalAvaOriginMinPct":85,"federalAvaVintageMinPct":95},
+      "researchNotes":["TTB explicitly lists Cayuga Lake and Seneca Lake as AVAs contained within Finger Lakes."],
+      "sourceRefs":["us-ttb-ava-list-2026","us-ttb-ava-dates-2026","us-ttb-appellation-label-2026"]
+    },
+
+    {
+      "id":"ca-ontario-vqa-framework","country":"Canada","name":"Ontario VQA framework","recordType":"legal-framework","legalClass":"VQA Ontario","hierarchy":["Canada","Ontario"],"researchCompleteness":5,"generationStatus":"framework-only",
+      "products":["table wine","sparkling wine","Icewine","late-harvest wine","botrytized wine","appassimento wine","fortified wine","liqueur wine"],
+      "classificationTerms":["VQA Ontario","VQA Viticultural Area","VQA Sub-Appellation","Vineyard","Estate Bottled","Icewine","Botrytized","Late Harvest","Appassimento","Vin de Curé"],
+      "productionRules":{"ontarioOriginPct":100,"viticulturalAreaOriginMinPct":85,"vintageMinPct":85,"singleVarietyMinPct":85,"productionLocation":"VQA wine is fermented, processed, blended, finished and bottled in Ontario"},
+      "researchNotes":["Ontario has a formal distinction between provincial, viticultural-area, sub-appellation and vineyard origin claims.","Current rules include protected production/style terms in addition to geography."],
+      "sourceRefs":["ca-on-vqa-reg-2026","ca-on-vqa-label-2026"]
+    },
+    {
+      "id":"ca-niagara-peninsula-vqa","country":"Canada","name":"Niagara Peninsula","recordType":"appellation","legalClass":"VQA Viticultural Area","hierarchy":["Canada","Ontario","Niagara Peninsula"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["VQA wine"],
+      "subregions":["Niagara Escarpment","Niagara-on-the-Lake","West Niagara","Niagara River","Niagara Lakeshore","Four Mile Creek","St. David's Bench","Lincoln Lakeshore","Creek Shores","Beamsville Bench","Twenty Mile Bench","Short Hills Bench","Vinemount Ridge"],
+      "productionRules":{"niagaraOriginMinPct":85,"remainderOrigin":"Ontario","vintageMinPct":85,"singleVarietyMinPct":85,"productionLocation":"Ontario"},
+      "researchNotes":["Sub-appellation origin requirements are more specific and are not automatically inherited as the same 85% rule. Each named sub-appellation should be researched against the current regulation before generation uses it."],
+      "sourceRefs":["ca-on-vqa-reg-2026","ca-on-vqa-label-2026"]
+    },
+    {
+      "id":"ca-beamsville-bench-vqa","country":"Canada","name":"Beamsville Bench","recordType":"appellation","legalClass":"VQA Sub-Appellation","hierarchy":["Canada","Ontario","Niagara Peninsula","Beamsville Bench"],"researchCompleteness":2,"generationStatus":"reference-only","products":["VQA wine"],
+      "researchNotes":["Protected sub-appellation identity is current. Exact current boundary and origin-percentage treatment will be extracted separately from the consolidated regulation rather than copied from an older amendment."],
+      "sourceRefs":["ca-on-vqa-reg-2026"]
+    },
+    {
+      "id":"ca-four-mile-creek-vqa","country":"Canada","name":"Four Mile Creek","recordType":"appellation","legalClass":"VQA Sub-Appellation","hierarchy":["Canada","Ontario","Niagara Peninsula","Niagara-on-the-Lake","Four Mile Creek"],"researchCompleteness":2,"generationStatus":"reference-only","products":["VQA wine"],
+      "researchNotes":["Protected current term. A dedicated sub-appellation pass will add boundary, soils, mesoclimate and exact current origin rule."],
+      "sourceRefs":["ca-on-vqa-reg-2026"]
+    },
+    {
+      "id":"ca-bc-vqa-framework","country":"Canada","name":"British Columbia VQA framework","recordType":"legal-framework","legalClass":"BC VQA / Wines of Marked Quality Regulation","hierarchy":["Canada","British Columbia"],"researchCompleteness":5,"generationStatus":"framework-only",
+      "products":["table wine","Blanc de Noirs","Nouveau","sparkling wine","traditional-method sparkling wine","cuve-close sparkling wine","aromatic sparkling wine","fortified wine","liqueur wine","solera wine","Icewine"],
+      "classificationTerms":["BC VQA","British Columbia VQA","Geographical Indication","Sub-Geographical Indication","Icewine","Late Harvest","Meritage","Vin du Curé"],
+      "productionRules":{"bcOriginPctForBritishColumbiaGI":100,"currentNamedGiOriginMinPct":85,"vintageMinPct":85,"dualVarietyNamedTotalMinPct":90,"dualVarietySecondMinPctOfWine":13.5,"tripleVarietyNamedTotalMinPct":95,"tripleVarietySecondMinPctOfWine":14.25,"tripleVarietyThirdMinPctOfWine":9.5},
+      "researchNotes":["British Columbia amended the named-GI certification threshold from 95% to 85% effective in 2025. Historical game vintages must not retroactively use the new rule.","All Vitis vinifera varieties are permitted for BC VQA plus a regulated list of interspecific varieties."],
+      "sourceRefs":["ca-bc-vqa-reg-2026","ca-bc-vqa-amend-2025","ca-bc-wine-regions-2026"]
+    },
+    {
+      "id":"ca-okanagan-valley-gi","country":"Canada","name":"Okanagan Valley","recordType":"geographical-indication","legalClass":"BC GI","hierarchy":["Canada","British Columbia","Okanagan Valley"],"researchCompleteness":4,"generationStatus":"candidate","products":["BC VQA wine"],
+      "subregions":["East Kelowna Slopes","Golden Mile Bench","Golden Mile Slopes","Lake Country","Naramata Bench","Okanagan Falls","Skaha Bench","South Kelowna Slopes","Summerland Bench","Summerland Lakefront","Summerland Valleys"],
+      "productionRules":{"currentOriginMinPct":85,"remainderOrigin":"British Columbia","vintageMinPct":85},
+      "researchNotes":["The 2025 rule change is version-sensitive; older vintages and label regimes may have used a 95% GI threshold.","Sub-GIs are legally separate origin units and should not be treated as marketing nicknames."],
+      "sourceRefs":["ca-bc-vqa-reg-2026","ca-bc-vqa-amend-2025","ca-bc-wine-regions-2026","ca-bc-okanagan-2026"]
+    },
+    {
+      "id":"ca-naramata-bench-subgi","country":"Canada","name":"Naramata Bench","recordType":"geographical-indication","legalClass":"BC Sub-GI","hierarchy":["Canada","British Columbia","Okanagan Valley","Naramata Bench"],"researchCompleteness":2,"generationStatus":"reference-only","products":["BC VQA wine"],
+      "researchNotes":["Boundary identity is regulated. A separate petition/terroir pass is required before grape or style expectations are encoded."],"sourceRefs":["ca-bc-vqa-reg-2026","ca-bc-wine-regions-2026"]
+    },
+    {
+      "id":"ca-golden-mile-bench-subgi","country":"Canada","name":"Golden Mile Bench","recordType":"geographical-indication","legalClass":"BC Sub-GI","hierarchy":["Canada","British Columbia","Okanagan Valley","Golden Mile Bench"],"researchCompleteness":2,"generationStatus":"reference-only","products":["BC VQA wine"],
+      "researchNotes":["Protected sub-GI identity only in this pass; no unsourced cultivar stereotypes are added."],"sourceRefs":["ca-bc-vqa-reg-2026","ca-bc-wine-regions-2026"]
+    },
+    {
+      "id":"ca-okanagan-falls-subgi","country":"Canada","name":"Okanagan Falls","recordType":"geographical-indication","legalClass":"BC Sub-GI","hierarchy":["Canada","British Columbia","Okanagan Valley","Okanagan Falls"],"researchCompleteness":2,"generationStatus":"reference-only","products":["BC VQA wine"],
+      "researchNotes":["Protected sub-GI identity only in this pass; physical-environment evidence will be added from the official application/decision material."],"sourceRefs":["ca-bc-vqa-reg-2026","ca-bc-wine-regions-2026"]
+    },
+
+    {
+      "id":"au-wine-gi-framework","country":"Australia","name":"Australian wine GI, variety and vintage blending framework","recordType":"legal-framework","legalClass":"Wine Australia Act / Regulations / Label Integrity Program","hierarchy":["Australia"],"researchCompleteness":5,"generationStatus":"framework-only",
+      "products":["Australian wine"],
+      "classificationTerms":["State","Zone","Region","Subregion","Geographical Indication"],
+      "productionRules":{"singleVintageMinPct":85,"multipleVintageClaimsTotalPct":100,"singleVarietyMinPct":85,"multipleVarietyClaimsTotalMinPct":85,"singleGiMinPct":85,"multipleGiClaimsTotalMinPct":95,"multipleGiEachMinExclusivePct":5,"multipleGiMaxCount":3,"claimOrder":"descending proportion"},
+      "researchNotes":["Australian GI hierarchy describes geographic scale, not a quality ranking.","Registered GI identity is protected and origin claims are audited through the Label Integrity Program."],
+      "sourceRefs":["au-wa-blending-2026","au-wa-gi-register-2026"]
+    },
+    {
+      "id":"au-margaret-river-gi","country":"Australia","name":"Margaret River","recordType":"geographical-indication","legalClass":"Australian GI — Region","hierarchy":["Australia","Western Australia","South West Australia","Margaret River"],"researchCompleteness":3,"generationStatus":"reference-only","products":["wine"],"registration":{"enteredRegister":"1996-10-30"},
+      "productionRules":{"singleGiOriginMinPct":85},"researchNotes":["The legal textual boundary, not a stylized map, is the definitive GI definition. Variety/style enrichment will be added separately."],"sourceRefs":["au-wa-margaret-river","au-wa-blending-2026"]
+    },
+    {
+      "id":"au-coonawarra-gi","country":"Australia","name":"Coonawarra","recordType":"geographical-indication","legalClass":"Australian GI — Region","hierarchy":["Australia","South Australia","Limestone Coast","Coonawarra"],"researchCompleteness":3,"generationStatus":"reference-only","products":["wine"],"registration":{"enteredRegister":"2003-01-06"},
+      "productionRules":{"singleGiOriginMinPct":85},"researchNotes":["Legal boundary and GI hierarchy are sourced; cultivar and terra rossa style assumptions are deliberately deferred to a dedicated official regional pass."],"sourceRefs":["au-wa-coonawarra","au-wa-blending-2026"]
+    },
+    {
+      "id":"au-mclaren-vale-gi","country":"Australia","name":"McLaren Vale","recordType":"geographical-indication","legalClass":"Australian GI — Region","hierarchy":["Australia","South Australia","Fleurieu","McLaren Vale"],"researchCompleteness":3,"generationStatus":"reference-only","products":["wine"],"registration":{"enteredRegister":"1997-09-02"},
+      "productionRules":{"singleGiOriginMinPct":85},"researchNotes":["Legal GI identity and hierarchy verified. Detailed mesoclimate, geology and planting distributions remain a separate research unit."],"sourceRefs":["au-wa-mclaren-vale","au-wa-blending-2026"]
+    },
+    {
+      "id":"au-hunter-valley-gi","country":"Australia","name":"Hunter Valley","recordType":"geographical-indication","legalClass":"Australian GI — Zone","hierarchy":["Australia","New South Wales","Hunter Valley"],"researchCompleteness":3,"generationStatus":"reference-only","products":["wine"],"registration":{"enteredRegister":"1996-05-01"},
+      "productionRules":{"singleGiOriginMinPct":85},"researchNotes":["Hunter Valley is a registered GI. Nested Hunter/Pokolbin/Upper Hunter relationships need a separate hierarchy normalization pass before they are generated."],"sourceRefs":["au-wa-hunter-valley","au-wa-blending-2026"]
+    },
+    {
+      "id":"au-yarra-valley-gi","country":"Australia","name":"Yarra Valley","recordType":"geographical-indication","legalClass":"Australian GI — Region","hierarchy":["Australia","Victoria","Port Phillip","Yarra Valley"],"researchCompleteness":3,"generationStatus":"reference-only","products":["wine"],"registration":{"enteredRegister":"1996-10-30"},
+      "productionRules":{"singleGiOriginMinPct":85},"researchNotes":["Legal GI identity and placement within Port Phillip verified; detailed variety/style modeling awaits official regional evidence."],"sourceRefs":["au-wa-yarra-valley","au-wa-blending-2026"]
+    },
+    {
+      "id":"au-clare-valley-gi","country":"Australia","name":"Clare Valley","recordType":"geographical-indication","legalClass":"Australian GI — Region","hierarchy":["Australia","South Australia","Mount Lofty Ranges","Clare Valley"],"researchCompleteness":3,"generationStatus":"reference-only","products":["wine"],"registration":{"enteredRegister":"1999-03-25"},
+      "productionRules":{"singleGiOriginMinPct":85},"researchNotes":["Legal GI identity and hierarchy verified. Riesling/Shiraz expectations are not added as hard generation rules in this pass."],"sourceRefs":["au-wa-clare-valley","au-wa-blending-2026"]
+    },
+    {
+      "id":"au-tasmania-gi","country":"Australia","name":"Tasmania","recordType":"geographical-indication","legalClass":"Australian GI — State","hierarchy":["Australia","Tasmania"],"researchCompleteness":3,"generationStatus":"reference-only","products":["wine"],"registration":{"enteredRegister":"1994-01-26"},
+      "productionRules":{"singleGiOriginMinPct":85},"researchNotes":["Tasmania is a registered state-level GI. Subregional terms should not be promoted to registered GI status without checking the Wine Australia register."],"sourceRefs":["au-wa-tasmania","au-wa-blending-2026"]
+    }
+  ]
+}
