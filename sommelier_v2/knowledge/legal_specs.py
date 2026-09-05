@@ -18,6 +18,7 @@ from .catalog import normalize_name
 DATA_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_seed.json"
 SUPPLEMENT_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_supplement.json"
 BURGUNDY_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_burgundy.json"
+COTE_DE_NUITS_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_cote_de_nuits.json"
 
 
 @dataclass(frozen=True)
@@ -39,23 +40,15 @@ class LegalWineSpec:
     grape_constraints: tuple[GrapeConstraint, ...] = ()
     vineyard_adaptation_grapes: tuple[str, ...] = ()
     vineyard_adaptation_max_pct: float | None = None
-
-    # Vineyard / conversion production limits. These are separate because some
-    # jurisdictions regulate harvested grape mass while others regulate finished
-    # wine yield by area.
     max_yield_t_ha: float | None = None
     max_yield_hl_ha: float | None = None
     grape_to_wine_yield_pct: float | None = None
     min_potential_alcohol_pct: float | None = None
-
-    # Finished-wine analytical limits.
     min_final_alcohol_pct: float | None = None
     min_total_acidity_g_l: float | None = None
     min_dry_extract_g_l: float | None = None
     max_residual_sugar_g_l: float | None = None
     max_malic_acid_g_l: float | None = None
-
-    # Process / release limits.
     min_total_aging_months: int | None = None
     min_wood_aging_months: int | None = None
     min_bottle_aging_months: int | None = None
@@ -63,7 +56,6 @@ class LegalWineSpec:
     required_method: str | None = None
     manual_harvest_required: bool = False
     bottling_in_origin_required: bool = False
-
     effective_from: str | None = None
     effective_to: str | None = None
     regulatory_status: str = "current"
@@ -119,7 +111,7 @@ class LegalSpecRegistry:
         paths = (
             [Path(data_path)]
             if data_path is not None
-            else [DATA_PATH, SUPPLEMENT_PATH, BURGUNDY_PATH]
+            else [DATA_PATH, SUPPLEMENT_PATH, BURGUNDY_PATH, COTE_DE_NUITS_PATH]
         )
         documents: list[dict[str, object]] = []
         for path in paths:
