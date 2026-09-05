@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buyWine, changePrice, createInitialGame, recommendWine, resolveTasting, toggleListing } from './engine';
+import { advanceWeek, buyWine, changePrice, createInitialGame, recommendWine, resolveTasting, toggleListing } from './engine';
 import { wineCatalog } from './catalog';
 
 const scenario = {
@@ -43,6 +43,15 @@ describe('sommelier game engine', () => {
     expect(after.bottles).toBe(before.bottles - 1);
     expect(outcome.result.score).toBeGreaterThan(60);
     expect(outcome.state.cash).toBeGreaterThan(state.cash);
+  });
+
+  it('ages sealed inventory condition during weekly close', () => {
+    const state = createInitialGame();
+    const before = state.inventory.map((item) => item.condition ?? 100);
+    const outcome = advanceWeek(state);
+    const after = outcome.state.inventory.map((item) => item.condition ?? 100);
+    expect(outcome.state.week).toBe(2);
+    expect(after.some((value, index) => value < before[index])).toBe(true);
   });
 
   it('scores a correct blind tasting answer', () => {
