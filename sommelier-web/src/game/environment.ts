@@ -1,4 +1,5 @@
 import environmentalData from '../data/research/environmental_profiles.json';
+import environmentalDataPass2 from '../data/research/environmental_profiles_pass2.json';
 import vintageData from '../data/research/vintage_observations.json';
 import { researchProfileById, researchSourceById } from './research';
 import type { ReferencePlace } from './reference';
@@ -83,12 +84,16 @@ type VintageFile = {
   authorityRatings: AuthorityVintageRating[];
 };
 
-const environmentalFile = environmentalData as unknown as EnvironmentalFile;
+const environmentalFiles: EnvironmentalFile[] = [
+  environmentalData as unknown as EnvironmentalFile,
+  environmentalDataPass2 as unknown as EnvironmentalFile,
+];
 const vintageFile = vintageData as unknown as VintageFile;
 
-export const environmentalResearchMethod = environmentalFile.method;
+export const environmentalResearchMethod = environmentalFiles.map((file) => file.method).join(' ');
+export const environmentalResearchPassCount = environmentalFiles.length;
 export const vintageResearchMethod = vintageFile.method;
-export const environmentalProfiles = environmentalFile.profiles;
+export const environmentalProfiles = environmentalFiles.flatMap((file) => file.profiles);
 export const vintageObservations = vintageFile.observations;
 export const authorityVintageRatings = vintageFile.authorityRatings;
 export const environmentalProfileById = new Map(environmentalProfiles.map((profile) => [profile.id, profile]));
@@ -111,17 +116,27 @@ function normalized(value: string): string {
 }
 
 const placeMatchers: Array<{ profileId: string; country: string; terms: string[] }> = [
+  { profileId: 'env-fr-gevrey-chambertin', country: 'France', terms: ['gevrey-chambertin'] },
   { profileId: 'env-fr-meursault', country: 'France', terms: ['meursault'] },
   { profileId: 'env-fr-sauternes', country: 'France', terms: ['sauternes'] },
+  { profileId: 'env-fr-pauillac', country: 'France', terms: ['pauillac'] },
+  { profileId: 'env-fr-pomerol', country: 'France', terms: ['pomerol'] },
+  { profileId: 'env-fr-saint-emilion', country: 'France', terms: ['saint-emilion', 'saint-émilion'] },
   { profileId: 'env-fr-champagne', country: 'France', terms: ['champagne'] },
+  { profileId: 'env-it-brunello-montalcino', country: 'Italy', terms: ['brunello di montalcino', 'montalcino'] },
+  { profileId: 'env-it-chianti-classico', country: 'Italy', terms: ['chianti classico'] },
+  { profileId: 'env-it-valpolicella', country: 'Italy', terms: ['amarone della valpolicella', 'valpolicella'] },
   { profileId: 'env-it-barolo', country: 'Italy', terms: ['barolo'] },
+  { profileId: 'env-gr-santorini', country: 'Greece', terms: ['santorini'] },
   { profileId: 'env-es-rioja-alta', country: 'Spain', terms: ['rioja alta'] },
   { profileId: 'env-es-rioja-alavesa', country: 'Spain', terms: ['rioja alavesa'] },
   { profileId: 'env-es-rioja-oriental', country: 'Spain', terms: ['rioja oriental', 'rioja baja'] },
   { profileId: 'env-us-napa-valley', country: 'United States', terms: ['napa valley', 'rutherford', 'oakville', 'st. helena', 'st helena', 'los carneros'] },
+  { profileId: 'env-nz-marlborough', country: 'New Zealand', terms: ['marlborough', 'wairau', 'awatere'] },
+  { profileId: 'env-za-stellenbosch', country: 'South Africa', terms: ['stellenbosch', 'helderberg', 'simonsberg', 'bottelary'] },
   {
     profileId: 'env-fr-bourgogne-cote', country: 'France',
-    terms: ['cote de nuits', 'cote de beaune', 'gevrey-chambertin', 'morey-saint-denis', 'chambolle-musigny',
+    terms: ['cote de nuits', 'cote de beaune', 'morey-saint-denis', 'chambolle-musigny',
       'vosne-romanee', 'nuits-saint-georges', 'aloxe-corton', 'corton', 'pommard', 'volnay', 'puligny-montrachet',
       'chassagne-montrachet', 'beaune', 'savigny-les-beaune', 'pernand-vergelesses', 'monthelie', 'saint-aubin'],
   },
@@ -141,9 +156,15 @@ export function vintageObservationForPlace(place: ReferencePlace, year: number):
   if (environment) {
     const exact = vintageObservations.find((vintage) => vintage.environmentProfileId === environment.id && vintage.year === year);
     if (exact) return exact;
+    if (environment.id === 'env-fr-gevrey-chambertin') {
+      const burgundy = vintageObservations.find((vintage) => vintage.environmentProfileId === 'env-fr-bourgogne-cote' && vintage.year === year);
+      if (burgundy) return burgundy;
+    }
   }
   const haystack = normalized([place.name, ...place.path].join(' | '));
-  const fallbackRegion = haystack.includes('bordeaux') ? 'Bordeaux' : undefined;
+  const fallbackRegion = haystack.includes('bordeaux') || ['env-fr-pauillac', 'env-fr-pomerol', 'env-fr-saint-emilion', 'env-fr-sauternes'].includes(environment?.id ?? '')
+    ? 'Bordeaux'
+    : undefined;
   return fallbackRegion ? vintageObservations.find((vintage) => vintage.region === fallbackRegion && vintage.year === year) : undefined;
 }
 
@@ -258,6 +279,7 @@ export function validateEnvironmentalResearch() {
 
   return {
     environmentalProfiles: environmentalProfiles.length,
+    environmentalResearchPasses: environmentalResearchPassCount,
     vintageObservations: vintageObservations.length,
     authorityVintageRatings: authorityVintageRatings.length,
     countries: new Set(environmentalProfiles.map((profile) => profile.country)).size,
