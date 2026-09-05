@@ -55,6 +55,15 @@
       "jurisdiction": "Portugal — Região Demarcada do Douro",
       "kind": "official-product-specification-guide",
       "accessed": "2026-09-05"
+    },
+    {
+      "id": "pt-ivdp-port-vinification-2026",
+      "publisher": "IVDP",
+      "title": "Guia Enologia e Práticas Enológicas — vinificação e envelhecimento do Vinho do Porto",
+      "url": "https://www.ivdp.pt/pt/comunicacao/guias-tematicos/enologia-e-praticas-enologicas/",
+      "jurisdiction": "Portugal — Região Demarcada do Douro",
+      "kind": "official-vinification-and-ageing-guide",
+      "accessed": "2026-09-05"
     }
   ]
 }
