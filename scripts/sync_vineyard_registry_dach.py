@@ -170,23 +170,31 @@ def _pdf_to_layout_text(pdf_bytes: bytes) -> str:
         return result.stdout
 
 
-def _rlp_records_from_pdf(pdf_bytes: bytes) -> list[dict[str, Any]]:
-    """Parse the fixed-column official LWK Weinlagen register.
+def _exact_area(value: str) -> float | None:
+    match = re.fullmatch(r"(\d+(?:[.,]\d+)?)", value.strip())
+    return float(match.group(1).replace(",", ".")) if match else None
 
-    `pdftotext -layout` preserves the table columns. Rows begin with a six-digit
-    Lagennummer. Header context supplies Anbaugebiet/Bereich/Großlage.
+
+def _rlp_records_from_pdf(pdf_bytes: bytes) -> list[dict[str, Any]]:
+    """Parse and aggregate the official LWK fixed-column Weinlagen register.
+
+    One Einzellage may have several rows when it spans multiple Gemarkungen.
+    The six-digit Lagennummer is therefore the site identity. Exact numeric
+    planted-area rows are summed only when *every* distinct source row for the
+    site has an exact area. `< 1 ha` and `k.A.` remain unknown, not estimates.
     """
     content = _pdf_to_layout_text(pdf_bytes)
     anbaugebiet: str | None = None
     bereich: str | None = None
     grosslage: str | None = None
-    records: dict[str, dict[str, Any]] = {}
+    aggregate: dict[str, dict[str, Any]] = {}
+    seen_source_rows: set[tuple[str, str, str, str, str]] = set()
     candidate_rows = 0
+    parsed_rows = 0
     rejected_samples: list[str] = []
 
     for raw_line in content.splitlines():
-        line = raw_line.rstrip()
-        stripped = line.strip()
+        stripped = raw_line.strip()
         if not stripped:
             continue
         if stripped.startswith("Anbaugebiet:"):
@@ -198,7 +206,7 @@ def _rlp_records_from_pdf(pdf_bytes: bytes) -> list[dict[str, Any]]:
         if stripped.startswith("Großlage:") or stripped.startswith("Grosslage:"):
             grosslage = stripped.split(":", 1)[1].strip()
             continue
-        if not re.match(r"^\s*\d{6}\b", line):
+        if not re.match(r"^\d{6}\b", stripped):
             continue
 
         candidate_rows += 1
@@ -209,40 +217,75 @@ def _rlp_records_from_pdf(pdf_bytes: bytes) -> list[dict[str, Any]]:
             continue
 
         code, name, municipality, cadastral, area_text = fields[:5]
-        area_match = re.match(r"^(\d+(?:[.,]\d+)?)", area_text)
-        if not name or not municipality or not cadastral or area_match is None:
+        if not name or not municipality or not cadastral:
             if len(rejected_samples) < 20:
                 rejected_samples.append(stripped)
             continue
-        area_ha = float(area_match.group(1).replace(",", "."))
+        parsed_rows += 1
+        source_key = (code, name, municipality, cadastral, area_text)
+        if source_key in seen_source_rows:
+            continue
+        seen_source_rows.add(source_key)
+
         region = anbaugebiet or "Rheinland-Pfalz"
         parent = grosslage or bereich or region
+        existing = aggregate.get(code)
+        if existing is None:
+            existing = {
+                "code": code,
+                "name": name,
+                "region": region,
+                "parent": parent,
+                "municipalities": set(),
+                "cadastral": set(),
+                "area_entries": [],
+            }
+            aggregate[code] = existing
+        elif existing["name"] != name:
+            raise ValueError(f"Lagennummer {code} maps to conflicting names: {existing['name']!r} / {name!r}")
 
-        records[code] = {
+        existing["municipalities"].add(municipality)
+        existing["cadastral"].add(cadastral)
+        existing["area_entries"].append(area_text)
+
+    if len(aggregate) < 1500:
+        raise ValueError(
+            f"RLP PDF parser produced only {len(aggregate)} unique Lagennummer from "
+            f"{parsed_rows}/{candidate_rows} parsed rows; rejected samples={rejected_samples[:8]}"
+        )
+
+    records: list[dict[str, Any]] = []
+    for code, item in aggregate.items():
+        area_values = [_exact_area(value) for value in item["area_entries"]]
+        complete_exact_area = bool(area_values) and all(value is not None for value in area_values)
+        area_ha = round(sum(value for value in area_values if value is not None), 6) if complete_exact_area else None
+        municipalities = sorted(item["municipalities"])
+        cadastral = sorted(item["cadastral"])
+        raw_area_entries = sorted(set(item["area_entries"]))
+        notes = (
+            f"Landwirtschaftskammer Rheinland-Pfalz Weinlagen register, Ernte 2024; "
+            f"Lagennummer {code}; Gemarkung(en) {', '.join(cadastral)}; "
+            f"source area entry/entries {', '.join(raw_area_entries)}."
+        )
+        record: dict[str, Any] = {
             "id": f"site:germany:rlp:einzellage:{code}",
-            "name": name,
+            "name": item["name"],
             "country": "Germany",
-            "region": region,
-            "parent": parent,
-            "commune": municipality,
+            "region": item["region"],
+            "parent": item["parent"],
+            "commune": municipalities[0] if len(municipalities) == 1 else "; ".join(municipalities),
             "site_type": "einzellage",
             "classification": "Einzellage",
             "legal_status": "official_weinbergsrolle_snapshot_2024",
-            "area_ha": area_ha,
             "source_ids": ["rlp_weinlagen_register_2024"],
             "effective_from": "2024",
-            "notes": (
-                f"Landwirtschaftskammer Rheinland-Pfalz Weinlagen register, Ernte 2024; "
-                f"Lagennummer {code}; Gemarkung {cadastral}; planted vineyard area {area_ha:g} ha."
-            ),
+            "notes": notes,
         }
+        if area_ha is not None:
+            record["area_ha"] = area_ha
+        records.append(record)
 
-    if len(records) < 1500:
-        raise ValueError(
-            f"RLP PDF parser produced only {len(records)} records from {candidate_rows} six-digit candidates; "
-            f"rejected samples={rejected_samples[:8]}"
-        )
-    return sorted(records.values(), key=lambda row: (row["region"], row.get("parent") or "", row["commune"], row["name"].casefold()))
+    return sorted(records, key=lambda row: (row["region"], row.get("parent") or "", row["commune"], row["name"].casefold()))
 
 
 def _write(path: Path, doc: dict[str, Any]) -> None:
