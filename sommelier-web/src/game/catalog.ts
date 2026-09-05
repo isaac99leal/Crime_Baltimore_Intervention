@@ -1,4 +1,5 @@
 import grapesData from '../data/grapes.json';
+import { generateWineBook } from './world';
 import type { WineDefinition } from './types';
 
 type RawGrape = {
@@ -42,7 +43,7 @@ function profileValue(value: number | undefined, fallback: number) {
   return typeof value === 'number' ? value : fallback;
 }
 
-export const wineCatalog: WineDefinition[] = bottleSpecs.map(
+export const launchCatalog: WineDefinition[] = bottleSpecs.map(
   ([id, label, grapeName, region, country, cost, suggestedPrice, prestige]) => {
     const grape = byName.get(grapeName);
     const profile = grape?.typical_profile;
@@ -65,8 +66,13 @@ export const wineCatalog: WineDefinition[] = bottleSpecs.map(
       },
       aromas: [...(grape?.primary_aromas ?? []), ...(grape?.secondary_aromas ?? [])].slice(0, 5),
       story: grape?.fun_fact ?? `${grapeName} from ${region}.`,
+      dataConfidence: 'curated',
     };
   },
 );
 
+// The commercial universe is generated deterministically from real reference geography and
+// real grape identities. Producers/cuvées are fictional and explicitly marked as such.
+export const worldWineBook = generateWineBook('sommelier-canonical-world-v1', 15000);
+export const wineCatalog: WineDefinition[] = [...launchCatalog, ...worldWineBook];
 export const wineById = new Map(wineCatalog.map((wine) => [wine.id, wine]));
