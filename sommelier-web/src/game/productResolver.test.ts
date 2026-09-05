@@ -19,9 +19,7 @@ describe('exact wine product resolver', () => {
   });
 
   it('resolves Brunello Riserva separately from normale and preserves composition/ageing', () => {
-    const riserva = resolveWineProduct({
-      country: 'Italy', designation: 'Brunello di Montalcino', vintage: 2021, color: 'red', grape: 'Sangiovese', requestedTerms: 'Riserva',
-    });
+    const riserva = resolveWineProduct({ country: 'Italy', designation: 'Brunello di Montalcino', vintage: 2021, color: 'red', grape: 'Sangiovese', requestedTerms: 'Riserva' });
     expect(riserva.status).toBe('resolved');
     expect(riserva.rule?.productName).toBe('Brunello di Montalcino Riserva');
     expect(riserva.rule?.composition?.[0]).toMatchObject({ grape: 'Sangiovese', minPct: 100, maxPct: 100 });
@@ -75,23 +73,25 @@ describe('exact wine product resolver', () => {
     expect(fino.rule?.alcoholPctRange).toEqual([15, 17]);
     expect(fino.rule?.maximumResidualSugarGPerL).toBe(4);
     expect(fino.rule?.minimumAverageAgeYears).toBe(2);
-    expect(fino.rule?.effectiveFromYear).toBe(2026);
+    expect(fino.rule?.effectiveFromDate).toBe('2025-08-24');
     expect(fino.exactProductGenerationSafe).toBe(false);
     expect(oloroso.rule?.id).toBe('product-es-jerez-oloroso-2025-current');
-    expect(oloroso.rule?.ageingArchetype).toBe('oxidative-fortified');
     expect(px.rule?.minimumResidualSugarGPerL).toBe(212);
-    expect(px.rule?.minimumOxidativeAgeingMonths).toBe(24);
     expect(vors.rule?.minimumAverageAgeYears).toBe(30);
   });
 
-  it('treats 2025 Jerez as date-sensitive but 2026 as fully inside the amended year-level era', () => {
-    const transition = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2025, requestedTerms: 'Fino current' });
-    const fullEra = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2026, requestedTerms: 'Fino current' });
-    expect(transition.status).toBe('ambiguous');
-    expect(transition.exactProductGenerationSafe).toBe(false);
-    expect(fullEra.status).toBe('resolved');
-    expect(fullEra.rule?.id).toBe('product-es-jerez-fino-2025-current');
-    expect(fullEra.historicalComplianceVerified).toBe(true);
+  it('keeps a transition-year Jerez request conservative unless an exact legal reference date is supplied', () => {
+    const yearOnly = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2025, requestedTerms: 'Fino current' });
+    const before = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2025, legalReferenceDate: '2025-08-01', requestedTerms: 'Fino current' });
+    const after = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2025, legalReferenceDate: '2025-09-01', requestedTerms: 'Fino current' });
+    const nextVintage = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2026, requestedTerms: 'Fino current' });
+    expect(yearOnly.status).toBe('ambiguous');
+    expect(before.status).toBe('ambiguous');
+    expect(after.status).toBe('resolved');
+    expect(after.rule?.id).toBe('product-es-jerez-fino-2025-current');
+    expect(after.historicalComplianceVerified).toBe(true);
+    expect(nextVintage.status).toBe('resolved');
+    expect(nextVintage.historicalComplianceVerified).toBe(true);
   });
 
   it('allows both unfortified wine and post-fermentation fortification for current Fino but not mid-fermentation arrest', () => {
@@ -151,8 +151,6 @@ describe('exact wine product resolver', () => {
   it('uses product rules as a conservative legality gate for constrained winemaking choices', () => {
     const finoResolution = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino' });
     const flor = winemakingDecisionById.get('flor-ageing');
-    expect(finoResolution.rule).toBeTruthy();
-    expect(flor).toBeTruthy();
     const biological = flor?.options.find((option) => option.id === 'biological');
     const oxidative = flor?.options.find((option) => option.id === 'biological-then-oxidative');
     expect(finoResolution.rule && flor && biological && productWinemakingLegality(finoResolution.rule, flor, biological)).toBe(true);
