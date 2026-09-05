@@ -75,7 +75,7 @@
       "climate":{"classification":"Mediterranean coastal-zone climate","influences":["Atlantic and Indian Ocean maritime systems","cooling sea breezes","Cape Doctor southeaster"],"rainfallSeasonality":"mainly May-August","viticulturalEffects":["coastal influence moderates summer temperature","wind can cool and dry vine canopies","mesoclimate varies strongly with slope and distance from sea"]},
       "soils":[{"name":"weathered granite-associated red/yellow-brown soils","distribution":["Bottelary","Stellenbosch Mountain","Helderberg","Simonsberg footslopes"],"properties":["highly weathered","acidic","well-drained","good water-retention capacity"]},{"name":"Cape sandstone/granite/shale mosaic","components":["sandstone","granite","shale"],"variation":"strong over short distances"}],
       "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":3,"acidity":0.05,"tannin":0.25,"body":0.25,"alcohol":0.20,"fruitIntensity":0.30,"earthIntensity":0.20,"aromaticFreshness":0.10,"droughtStress":0.25,"diseasePressure":-0.05,"frostRisk":-0.30,"botrytisSuitability":0.00},
-      "sourceRefs":["za-wosa-soils-2026"]
+      "sourceRefs":["za-wosa-soils-2026","za-wosa-climate-2026"]
     }
   ]
 }
