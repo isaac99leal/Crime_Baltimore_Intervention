@@ -185,13 +185,11 @@ class FermentationTests(unittest.TestCase):
         return MustComposition(**values)
 
     def test_dry_fermentation_mlf_and_mass_balance(self):
-        # A clearly healthy cellar case must finish. Cooler or leaner musts are
-        # intentionally allowed to take longer or stall in the model.
         must = self.must(yan_mg_l=300.0, temp_c=25.0)
         result = run_fermentation(must, FermentationPlan(
             style="red", target_residual_sugar_g_l=2.0, max_hours=1200.0,
             nutrient_additions=(NutrientAddition(hour=24, yan_mg_l=30),), malolactic=True))
-        self.assertTrue(result.alcoholic_completed)
+        self.assertTrue(result.alcoholic_completed, f"status={result.status} sugar={result.final_sugar_g_l:.4f} ethanol={result.final_ethanol_pct:.4f} hours={result.alcoholic_history[-1].hour:.1f} stuck={result.stuck} risk={result.alcoholic_history[-1].stuck_risk:.4f}")
         self.assertTrue(result.dry)
         self.assertLessEqual(result.final_sugar_g_l, 2.1)
         self.assertLess(result.final_malic_acid_g_l, must.malic_acid_g_l)
