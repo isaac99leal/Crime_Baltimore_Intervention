@@ -1,21 +1,30 @@
 """Legal-spec-aware origin rulebook.
 
-This adapter keeps the broad legacy geographic/plausibility rulebook intact while
-making sourced legal specifications the first authority for ``regulated_gi``.
-If no sourced specification exists, the original fail-closed behavior remains.
+The strict verified registry is the only layer that can positively authorize a
+protected-origin wine. Bulk machine extraction is used only as an additional
+negative guard: it may reject a grape outside a proven explicit variety section,
+but a membership pass never upgrades an unknown GI to eligible.
 """
 from __future__ import annotations
 
 from typing import Mapping, Sequence
 
 from .legal_specs import LegalSpecRegistry, LegalWineSpec
+from .machine_legal_constraints import MachineLegalConstraintRegistry
 from .regional_rules import OriginDecision, RegionGrapeRulebook
 
 
 class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
-    def __init__(self, *args, legal_specs: LegalSpecRegistry | None = None, **kwargs) -> None:
+    def __init__(
+        self,
+        *args,
+        legal_specs: LegalSpecRegistry | None = None,
+        machine_constraints: MachineLegalConstraintRegistry | None = None,
+        **kwargs,
+    ) -> None:
         super().__init__(*args, **kwargs)
         self.legal_specs = legal_specs or LegalSpecRegistry()
+        self.machine_constraints = machine_constraints or MachineLegalConstraintRegistry()
 
     def resolve_legal_spec(
         self,
@@ -73,6 +82,40 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
             wine_variant=wine_variant,
         )
         if spec is None:
+            # Machine constraints are deliberately deny-only. A grape outside a
+            # bounded explicit variety section can be rejected immediately. A
+            # grape inside that list still falls through to the legacy strict
+            # layer, which fails closed unless positive legal authorization is
+            # independently available.
+            machine = self.machine_constraints.resolve(
+                country=country,
+                appellation=appellation,
+                region=region,
+                sub_region=sub_region,
+                commune=commune,
+            )
+            if machine is not None:
+                denied = self.machine_constraints.evaluate_deny(
+                    machine,
+                    grapes,
+                    canonicalize=self.canonical_grape,
+                    same_grape=self.same_grape,
+                )
+                if denied.rejected:
+                    blend, blend_issues = self._blend(grapes)
+                    canonical = tuple(self.canonical_grape(name) for name, _ in blend)
+                    return OriginDecision(
+                        eligible=False,
+                        status=denied.status,
+                        label_scope=scope,
+                        canonical_grapes=canonical,
+                        rule_id=f"machine:{machine.gi_identifier}",
+                        issues=tuple(blend_issues) + denied.issues,
+                        warnings=(
+                            "This rejection comes from a deny-safe machine extraction of an authoritative product specification. It is not positive GI certification.",
+                        ),
+                        evidence=denied.evidence,
+                    )
             return super().evaluate(
                 country=country,
                 grapes=grapes,
@@ -132,4 +175,5 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
     def stats(self) -> dict[str, int]:
         stats = super().stats()
         stats.update(self.legal_specs.stats())
+        stats.update(self.machine_constraints.stats())
         return stats
