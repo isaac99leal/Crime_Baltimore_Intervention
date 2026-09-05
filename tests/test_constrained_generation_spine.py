@@ -69,16 +69,17 @@ class SiteClaimRuleTests(unittest.TestCase):
         self.assertEqual(standard.status, "site_claim_rule_conditions_not_met")
         self.assertTrue(gran_selezione.eligible)
 
-    def test_documented_burgundy_climat_is_not_auto_authorized_for_label_use(self):
+    def test_documented_burgundy_lieu_dit_is_not_auto_authorized_for_label_use(self):
         site = self.site(
-            name="Les Amoureuses",
-            site_type="climat",
-            parent="Chambolle-Musigny",
+            name="Les Narvaux Dessus",
+            site_type="lieu_dit",
+            parent="Meursault",
         )
         decision = self.registry.evaluate(
             site=site,
-            origin_decision=self.strict_decision("Pinot Noir"),
-            appellation="Chambolle-Musigny",
+            origin_decision=self.strict_decision("Chardonnay"),
+            appellation="Meursault",
+            wine_variant="white standard",
         )
         self.assertFalse(decision.eligible)
         self.assertEqual(decision.status, "site_claim_rule_unverified")

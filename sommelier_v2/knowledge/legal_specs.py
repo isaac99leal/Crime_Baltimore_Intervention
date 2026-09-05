@@ -2,9 +2,9 @@
 
 The legacy region database is useful geographic context but its ``primary_grapes``
 field is not a legal authorization list. This module loads separately sourced legal
-specifications and evaluates grape blends, vineyard/production limits, and
-release/process requirements. Unknown rules fail closed when complete validation
-is requested.
+specifications and evaluates grape blends, vineyard/production limits, analytical
+limits, and release/process requirements. Unknown rules fail closed when complete
+validation is requested.
 """
 from __future__ import annotations
 
@@ -17,6 +17,7 @@ from .catalog import normalize_name
 
 DATA_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_seed.json"
 SUPPLEMENT_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_supplement.json"
+BURGUNDY_PATH = Path(__file__).resolve().parent / "data" / "legal_gi_specs_burgundy.json"
 
 
 @dataclass(frozen=True)
@@ -38,12 +39,23 @@ class LegalWineSpec:
     grape_constraints: tuple[GrapeConstraint, ...] = ()
     vineyard_adaptation_grapes: tuple[str, ...] = ()
     vineyard_adaptation_max_pct: float | None = None
+
+    # Vineyard / conversion production limits. These are separate because some
+    # jurisdictions regulate harvested grape mass while others regulate finished
+    # wine yield by area.
     max_yield_t_ha: float | None = None
+    max_yield_hl_ha: float | None = None
     grape_to_wine_yield_pct: float | None = None
     min_potential_alcohol_pct: float | None = None
+
+    # Finished-wine analytical limits.
     min_final_alcohol_pct: float | None = None
     min_total_acidity_g_l: float | None = None
     min_dry_extract_g_l: float | None = None
+    max_residual_sugar_g_l: float | None = None
+    max_malic_acid_g_l: float | None = None
+
+    # Process / release limits.
     min_total_aging_months: int | None = None
     min_wood_aging_months: int | None = None
     min_bottle_aging_months: int | None = None
@@ -51,6 +63,7 @@ class LegalWineSpec:
     required_method: str | None = None
     manual_harvest_required: bool = False
     bottling_in_origin_required: bool = False
+
     effective_from: str | None = None
     effective_to: str | None = None
     regulatory_status: str = "current"
@@ -100,16 +113,14 @@ def _i(value: object) -> int | None:
 
 
 class LegalSpecRegistry:
-    """Load and evaluate sourced GI production specifications.
-
-    Passing ``data_path`` preserves the historical single-document behavior used
-    by tests and callers with private registries. The default registry merges the
-    reviewed seed and reviewed supplement. Duplicate source IDs must be identical;
-    duplicate specification IDs are rejected.
-    """
+    """Load and evaluate reviewed protected-origin production specifications."""
 
     def __init__(self, data_path: Path | None = None) -> None:
-        paths = [Path(data_path)] if data_path is not None else [DATA_PATH, SUPPLEMENT_PATH]
+        paths = (
+            [Path(data_path)]
+            if data_path is not None
+            else [DATA_PATH, SUPPLEMENT_PATH, BURGUNDY_PATH]
+        )
         documents: list[dict[str, object]] = []
         for path in paths:
             if not path.exists():
@@ -171,11 +182,14 @@ class LegalSpecRegistry:
                 vineyard_adaptation_grapes=tuple(row.get("vineyard_adaptation_grapes", [])),
                 vineyard_adaptation_max_pct=_f(row.get("vineyard_adaptation_max_pct")),
                 max_yield_t_ha=_f(row.get("max_yield_t_ha")),
+                max_yield_hl_ha=_f(row.get("max_yield_hl_ha")),
                 grape_to_wine_yield_pct=_f(row.get("grape_to_wine_yield_pct")),
                 min_potential_alcohol_pct=_f(row.get("min_potential_alcohol_pct")),
                 min_final_alcohol_pct=_f(row.get("min_final_alcohol_pct")),
                 min_total_acidity_g_l=_f(row.get("min_total_acidity_g_l")),
                 min_dry_extract_g_l=_f(row.get("min_dry_extract_g_l")),
+                max_residual_sugar_g_l=_f(row.get("max_residual_sugar_g_l")),
+                max_malic_acid_g_l=_f(row.get("max_malic_acid_g_l")),
                 min_total_aging_months=_i(row.get("min_total_aging_months")),
                 min_wood_aging_months=_i(row.get("min_wood_aging_months")),
                 min_bottle_aging_months=_i(row.get("min_bottle_aging_months")),
@@ -260,33 +274,43 @@ class LegalSpecRegistry:
         canonical = [(canonicalize(name), pct) for name, pct in rows]
         if issues:
             return LegalSpecDecision(False, spec.id, "invalid_blend", tuple(issues))
-
         if not spec.allowed_grapes:
             return LegalSpecDecision(
-                False, spec.id, "legal_grape_rule_unverified",
+                False,
+                spec.id,
+                "legal_grape_rule_unverified",
                 ("The sourced specification has no explicit allowed-grape list.",),
             )
 
         forbidden = [
-            name for name, _ in canonical
+            name
+            for name, _ in canonical
             if not any(same(name, allowed) for allowed in spec.allowed_grapes)
         ]
         if forbidden:
             return LegalSpecDecision(
-                False, spec.id, "grape_not_permitted_for_appellation",
-                tuple(f"{name} is not authorized by {spec.appellation} specification {spec.id}" for name in forbidden),
+                False,
+                spec.id,
+                "grape_not_permitted_for_appellation",
+                tuple(
+                    f"{name} is not authorized by {spec.appellation} specification {spec.id}"
+                    for name in forbidden
+                ),
                 evidence=tuple(f"source:{sid}" for sid in spec.source_ids),
             )
 
         if spec.grape_constraints:
             if any(pct is None for _, pct in canonical):
                 return LegalSpecDecision(
-                    False, spec.id, "blend_percentages_required",
+                    False,
+                    spec.id,
+                    "blend_percentages_required",
                     ("This appellation has grape-percentage rules; explicit blend percentages are required.",),
                 )
             for constraint in spec.grape_constraints:
                 pct = sum(
-                    float(value or 0.0) for name, value in canonical
+                    float(value or 0.0)
+                    for name, value in canonical
                     if same(name, constraint.grape)
                 )
                 if pct + 1e-9 < constraint.min_pct or pct - 1e-9 > constraint.max_pct:
@@ -295,11 +319,16 @@ class LegalSpecRegistry:
                     )
         if issues:
             return LegalSpecDecision(
-                False, spec.id, "blend_percentage_violation", tuple(issues),
+                False,
+                spec.id,
+                "blend_percentage_violation",
+                tuple(issues),
                 evidence=tuple(f"source:{sid}" for sid in spec.source_ids),
             )
         return LegalSpecDecision(
-            True, spec.id, "legal_spec_eligible",
+            True,
+            spec.id,
+            "legal_spec_eligible",
             evidence=tuple(f"source:{sid}" for sid in spec.source_ids),
         )
 
@@ -308,18 +337,13 @@ class LegalSpecRegistry:
         spec: LegalWineSpec,
         *,
         vineyard_yield_t_ha: float | None = None,
+        wine_yield_hl_ha: float | None = None,
         actual_grape_to_wine_yield_pct: float | None = None,
         potential_alcohol_pct: float | None = None,
         bottled_in_origin: bool | None = None,
         require_complete: bool = False,
     ) -> ProductionDecision:
-        """Validate machine-modeled pre-release production constraints.
-
-        ``require_complete=True`` turns every modeled legal requirement into a
-        required input. This is the mode used by authoritative generation. The
-        default remains backward-compatible for callers that only validate the
-        dimensions they actually measured.
-        """
+        """Validate machine-modeled vineyard and pre-release production limits."""
         issues: list[str] = []
 
         if spec.max_yield_t_ha is not None:
@@ -327,9 +351,14 @@ class LegalSpecRegistry:
                 if require_complete:
                     issues.append("Vineyard yield is required for complete legal validation")
             elif vineyard_yield_t_ha > spec.max_yield_t_ha + 1e-9:
-                issues.append(
-                    f"Vineyard yield must not exceed {spec.max_yield_t_ha:g} t/ha"
-                )
+                issues.append(f"Vineyard yield must not exceed {spec.max_yield_t_ha:g} t/ha")
+
+        if spec.max_yield_hl_ha is not None:
+            if wine_yield_hl_ha is None:
+                if require_complete:
+                    issues.append("Wine yield is required for complete legal validation")
+            elif wine_yield_hl_ha > spec.max_yield_hl_ha + 1e-9:
+                issues.append(f"Wine yield must not exceed {spec.max_yield_hl_ha:g} hL/ha")
 
         if spec.grape_to_wine_yield_pct is not None:
             if actual_grape_to_wine_yield_pct is None:
@@ -349,9 +378,8 @@ class LegalSpecRegistry:
                     f"Potential alcohol must be at least {spec.min_potential_alcohol_pct:g}%"
                 )
 
-        if spec.bottling_in_origin_required:
-            if bottled_in_origin is not True:
-                issues.append("Bottling in the protected origin is required")
+        if spec.bottling_in_origin_required and bottled_in_origin is not True:
+            issues.append("Bottling in the protected origin is required")
 
         return ProductionDecision(not issues, spec.id, tuple(issues))
 
@@ -367,6 +395,8 @@ class LegalSpecRegistry:
         final_alcohol_pct: float | None = None,
         total_acidity_g_l: float | None = None,
         dry_extract_g_l: float | None = None,
+        residual_sugar_g_l: float | None = None,
+        malic_acid_g_l: float | None = None,
         vintage_year: int | None = None,
         release_year: int | None = None,
         require_complete: bool = False,
@@ -382,12 +412,34 @@ class LegalSpecRegistry:
             issues.append(f"Required production method: {spec.required_method}")
         if spec.manual_harvest_required and manual_harvest is not True:
             issues.append("Manual harvest is required")
-        if spec.min_final_alcohol_pct is not None and (final_alcohol_pct is None or final_alcohol_pct < spec.min_final_alcohol_pct):
+        if spec.min_final_alcohol_pct is not None and (
+            final_alcohol_pct is None or final_alcohol_pct < spec.min_final_alcohol_pct
+        ):
             issues.append(f"Final alcohol must be at least {spec.min_final_alcohol_pct:g}% vol")
-        if spec.min_total_acidity_g_l is not None and (total_acidity_g_l is None or total_acidity_g_l < spec.min_total_acidity_g_l):
+        if spec.min_total_acidity_g_l is not None and (
+            total_acidity_g_l is None or total_acidity_g_l < spec.min_total_acidity_g_l
+        ):
             issues.append(f"Total acidity must be at least {spec.min_total_acidity_g_l:g} g/L")
-        if spec.min_dry_extract_g_l is not None and (dry_extract_g_l is None or dry_extract_g_l < spec.min_dry_extract_g_l):
+        if spec.min_dry_extract_g_l is not None and (
+            dry_extract_g_l is None or dry_extract_g_l < spec.min_dry_extract_g_l
+        ):
             issues.append(f"Dry extract must be at least {spec.min_dry_extract_g_l:g} g/L")
+
+        if spec.max_residual_sugar_g_l is not None:
+            if residual_sugar_g_l is None:
+                if require_complete:
+                    issues.append("Residual sugar is required for complete legal validation")
+            elif residual_sugar_g_l > spec.max_residual_sugar_g_l + 1e-9:
+                issues.append(
+                    f"Residual sugar must not exceed {spec.max_residual_sugar_g_l:g} g/L"
+                )
+
+        if spec.max_malic_acid_g_l is not None:
+            if malic_acid_g_l is None:
+                if require_complete:
+                    issues.append("Malic acid is required for complete legal validation")
+            elif malic_acid_g_l > spec.max_malic_acid_g_l + 1e-9:
+                issues.append(f"Malic acid must not exceed {spec.max_malic_acid_g_l:g} g/L")
 
         if spec.release_year_offset is not None:
             if vintage_year is None or release_year is None:
@@ -403,17 +455,24 @@ class LegalSpecRegistry:
         return ReleaseDecision(not issues, spec.id, tuple(issues))
 
     def stats(self) -> dict[str, int]:
-        appellations = {(normalize_name(s.country), normalize_name(s.appellation)) for s in self.specs}
+        appellations = {
+            (normalize_name(s.country), normalize_name(s.appellation)) for s in self.specs
+        }
         return {
             "sourced_legal_wine_specs": len(self.specs),
             "sourced_appellations_with_strict_specs": len(appellations),
             "legal_specs_with_blend_percentages": sum(bool(s.grape_constraints) for s in self.specs),
             "legal_specs_with_yield_limits": sum(s.max_yield_t_ha is not None for s in self.specs),
+            "legal_specs_with_wine_yield_limits": sum(s.max_yield_hl_ha is not None for s in self.specs),
             "legal_specs_with_grape_to_wine_yield_limits": sum(s.grape_to_wine_yield_pct is not None for s in self.specs),
             "legal_specs_with_potential_alcohol_rules": sum(s.min_potential_alcohol_pct is not None for s in self.specs),
             "legal_specs_with_bottling_origin_rules": sum(s.bottling_in_origin_required for s in self.specs),
+            "legal_specs_with_residual_sugar_limits": sum(s.max_residual_sugar_g_l is not None for s in self.specs),
+            "legal_specs_with_malic_acid_limits": sum(s.max_malic_acid_g_l is not None for s in self.specs),
             "legal_specs_with_aging_rules": sum(
-                s.min_total_aging_months is not None or s.min_wood_aging_months is not None or s.min_bottle_aging_months is not None
+                s.min_total_aging_months is not None
+                or s.min_wood_aging_months is not None
+                or s.min_bottle_aging_months is not None
                 for s in self.specs
             ),
             "legal_specs_with_release_year_rules": sum(s.release_year_offset is not None for s in self.specs),

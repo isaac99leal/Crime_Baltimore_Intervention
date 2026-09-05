@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive Burgundy climat label-claim rules promoted from current official production specifications. Generic lieux-dits remain fail-closed unless separately promoted.",
+  "sources": {
+    "meursault_maasa_2026": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'appellation d'origine contrôlée Meursault, homologué par arrêté du 4 juin 2026",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-f14f68d0-cb2a-49ca-9fa5-edd6b2828624"
+    },
+    "chambolle_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Chambolle-Musigny AOP current product specification",
+      "url": "https://www.inao.gouv.fr/produit/chambolle-musigny-7683"
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:meursault:white-premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Meursault",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_meursault"],
+      "allowed_wine_variants": ["white premier cru"],
+      "source_ids": ["meursault_maasa_2026"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The 2026 Meursault specification authorizes Premier Cru with the listed climat names. This positive rule is limited to the white Premier Cru variant because every seeded Meursault Premier Cru climat is valid for white wine; the red climat color matrix remains separately fail-closed."
+    },
+    {
+      "id": "siteclaim:fr:chambolle-musigny:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Chambolle-Musigny",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_chambolle"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["chambolle_inao_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The current Chambolle-Musigny specification authorizes Premier Cru wines to carry the listed climat name. Generic lieux-dits are not promoted by this rule."
+    }
+  ]
+}
