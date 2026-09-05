@@ -20,12 +20,12 @@ describe('trade tech-sheet research ingestion', () => {
     const report = validateTradeSheetIngestion();
     expect(tradeSourcePassCount).toBe(3);
     expect(tradeDiscoveryPassCount).toBe(3);
-    expect(tradeObservationPassCount).toBe(3);
+    expect(tradeObservationPassCount).toBe(4);
     expect(tradeSources.length).toBeGreaterThanOrEqual(33);
-    expect(tradeDiscoveryCandidateCount).toBeGreaterThanOrEqual(175);
-    expect(tradeDiscoveryCountsByStage['directory-lead']).toBeGreaterThanOrEqual(130);
-    expect(tradeObservations.length).toBeGreaterThanOrEqual(28);
-    expect(report.fieldsExtracted).toBeGreaterThanOrEqual(250);
+    expect(tradeDiscoveryCandidateCount).toBeGreaterThanOrEqual(190);
+    expect(tradeDiscoveryCountsByStage['directory-lead']).toBeGreaterThanOrEqual(140);
+    expect(tradeObservations.length).toBeGreaterThanOrEqual(36);
+    expect(report.fieldsExtracted).toBeGreaterThanOrEqual(340);
     expect(report.conflicts).toBe(0);
     expect(report.issues).toEqual([]);
   });
@@ -81,6 +81,20 @@ describe('trade tech-sheet research ingestion', () => {
     expect(kisi?.fields.sulfurClaim).toContain('57 mg/L');
     expect(gravitas?.fields.varietyComposition).toBe('50% Kisi, 50% Khikhvi');
     expect(gravitas?.fields.productionQuantityBottles).toBe(3000);
+  });
+
+  it('adds commercial Cypriot indigenous-grape process evidence without inventing synonym resolution', () => {
+    const xynisteri = tradeObservations.find((observation) => observation.id === 'tradeobs-diamond-makarounas-xynisteri-aerides');
+    const spourtiko = tradeObservations.find((observation) => observation.id === 'tradeobs-diamond-makarounas-spourtiko');
+    const promara = tradeObservations.find((observation) => observation.id === 'tradeobs-diamond-makarounas-promara-amphora');
+    const yiannoudi = tradeObservations.find((observation) => observation.id === 'tradeobs-diamond-makarounas-yiannoudi');
+    expect(xynisteri?.fields.varietyComposition).toBe('100% Xynisteri');
+    expect(xynisteri?.fields.ungraftedVines).toBe(true);
+    expect(xynisteri?.fields.batonnage).toBe('twice per week');
+    expect(spourtiko?.fields.fermentationDurationDays).toBe(11);
+    expect(promara?.fields.fermentationVessel).toContain('amphoras');
+    expect(yiannoudi?.fields.tradeDisplayedWineName).toBe('Giannoudi');
+    expect(yiannoudi?.fields.identityReconciliationRequired).toBe(true);
   });
 
   it('tracks vintage-to-vintage technical trajectories instead of treating producer style as immutable', () => {
