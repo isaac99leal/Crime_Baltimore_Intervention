@@ -7,6 +7,7 @@ on:
       - restart/sommelier-v2-foundation
     paths:
       - scripts/sync_external_knowledge.py
+      - scripts/sync_external_knowledge_ci.py
       - .github/workflows/knowledge-sync.yml
 
 permissions:
@@ -23,7 +24,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Refresh public wine registries
-        run: python scripts/sync_external_knowledge.py
+        run: python scripts/sync_external_knowledge_ci.py
       - name: Commit refreshed snapshots
         run: |
           git config user.name "github-actions[bot]"
