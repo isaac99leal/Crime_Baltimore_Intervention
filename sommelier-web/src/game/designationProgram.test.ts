@@ -19,17 +19,21 @@ describe('global wine designation coverage program', () => {
     expect(report.issues).toEqual([]);
   });
 
-  it('does not pretend authority discovery is the same thing as a live complete index', () => {
+  it('distinguishes locally indexed authorities from authorities still awaiting ingestion', () => {
     expect(coverageForCountry('United States')?.ingestionStatus).toBe('live-index');
     expect(coverageForCountry('France')?.ingestionStatus).toBe('live-index');
-    expect(coverageForCountry('Argentina')?.ingestionStatus).toBe('authority-identified');
-    expect(coverageForCountry('Australia')?.ingestionStatus).toBe('authority-identified');
+    expect(coverageForCountry('Argentina')?.ingestionStatus).toBe('live-index');
+    expect(coverageForCountry('Australia')?.ingestionStatus).toBe('live-index');
+    expect(coverageForCountry('Georgia')?.ingestionStatus).toBe('live-index');
+    expect(coverageForCountry('New Zealand')?.ingestionStatus).toBe('live-index');
+    expect(coverageForCountry('Chile')?.ingestionStatus).toBe('authority-identified');
     expect(pendingDesignationCountries.length).toBeGreaterThan(0);
   });
 
-  it('keeps the already-normalized EU and US registry counts intact', () => {
+  it('keeps bulk and new authority-index counts intact', () => {
     expect(liveDesignationIndexCounts.eambrosiaWineGis).toBe(1665);
     expect(liveDesignationIndexCounts.ttbAvas).toBe(280);
+    expect(liveDesignationIndexCounts.expandedAuthorityDesignations).toBe(289);
   });
 
   it('makes exhaustive depth part of the data contract, not an informal roadmap', () => {
