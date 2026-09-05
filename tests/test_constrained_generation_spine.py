@@ -3,7 +3,12 @@ from __future__ import annotations
 import unittest
 
 from sommelier_v2.domain import WineStyle
-from sommelier_v2.generation import ConstrainedWineBuilder, WineBuildRequest
+from sommelier_v2.generation import (
+    ConstrainedWineBuilder,
+    WineBuildRequest,
+    WineProductionConstraintError,
+    WineReleaseConstraintError,
+)
 from sommelier_v2.knowledge.fermentation_process import FermentationPlan, MustComposition
 from sommelier_v2.knowledge.origin_factory import OriginRequest, WineOriginFactory
 from sommelier_v2.knowledge.regional_rules import OriginConstraintError, OriginDecision
@@ -176,8 +181,8 @@ class ConstrainedWineBuilderTests(unittest.TestCase):
             and site.parent == "Barolo DOCG"
         )
 
-    def barolo_request(self, grape: str = "Nebbiolo") -> WineBuildRequest:
-        return WineBuildRequest(
+    def barolo_request(self, grape: str = "Nebbiolo", **changes) -> WineBuildRequest:
+        values = dict(
             id="generated:test:barolo",
             producer="Fictional Estate",
             label="Barolo",
@@ -194,7 +199,14 @@ class ConstrainedWineBuilderTests(unittest.TestCase):
             alcohol=14.5,
             wholesale_cost=45.0,
             rarity=0.45,
+            vineyard_yield_t_ha=7.5,
+            potential_alcohol_pct=13.2,
+            total_aging_months=38,
+            wood_aging_months=18,
+            release_year=2026,
         )
+        values.update(changes)
+        return WineBuildRequest(**values)
 
     def test_builder_emits_verified_site_name_and_canonical_origin(self):
         result = self.builder.build(self.barolo_request())
@@ -203,6 +215,25 @@ class ConstrainedWineBuilderTests(unittest.TestCase):
         self.assertEqual(result.wine.vineyard, "Cannubi")
         self.assertTrue(result.evidence.site_claim_eligible)
         self.assertEqual(result.evidence.origin_status, "appellation_eligible_sourced_spec")
+        self.assertEqual(result.evidence.production_status, "production_eligible_sourced_spec")
+        self.assertEqual(result.evidence.release_status, "release_eligible_sourced_spec")
+        self.assertEqual(result.evidence.legal_spec_id, "it:barolo:standard")
+
+    def test_builder_rejects_missing_required_vineyard_production_evidence(self):
+        with self.assertRaises(WineProductionConstraintError):
+            self.builder.build(self.barolo_request(vineyard_yield_t_ha=None))
+
+    def test_builder_rejects_excess_vineyard_yield(self):
+        with self.assertRaises(WineProductionConstraintError):
+            self.builder.build(self.barolo_request(vineyard_yield_t_ha=8.1))
+
+    def test_builder_rejects_short_aging(self):
+        with self.assertRaises(WineReleaseConstraintError):
+            self.builder.build(self.barolo_request(total_aging_months=37))
+
+    def test_builder_rejects_early_release_year(self):
+        with self.assertRaises(WineReleaseConstraintError):
+            self.builder.build(self.barolo_request(release_year=2025))
 
     def test_builder_rejects_impossible_barolo_grape_before_other_evidence(self):
         weather = [
