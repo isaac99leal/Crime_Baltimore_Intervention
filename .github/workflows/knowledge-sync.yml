@@ -12,6 +12,10 @@ on:
       - scripts/extract_legal_spec_constraints.py
       - .github/workflows/knowledge-sync.yml
 
+concurrency:
+  group: wine-knowledge-sync-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
