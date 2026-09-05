@@ -12,10 +12,10 @@ import {
 describe('hand-researched wine reference overlay', () => {
   it('has meaningful research depth with resolvable provenance', () => {
     const report = validateResearchLibrary();
-    expect(researchPassCount).toBe(7);
-    expect(researchSourcePassCount).toBe(17);
-    expect(researchProfiles.length).toBeGreaterThanOrEqual(76);
-    expect(researchSources.length).toBeGreaterThanOrEqual(183);
+    expect(researchPassCount).toBe(8);
+    expect(researchSourcePassCount).toBe(18);
+    expect(researchProfiles.length).toBeGreaterThanOrEqual(79);
+    expect(researchSources.length).toBeGreaterThanOrEqual(190);
     expect(researchCountries.length).toBeGreaterThanOrEqual(15);
     expect(report.generationCandidates).toBeGreaterThanOrEqual(32);
     expect(report.issues).toEqual([]);
@@ -123,6 +123,21 @@ describe('hand-researched wine reference overlay', () => {
     expect(jerez?.geography && (jerez.geography as Record<string, unknown>).municipalities).toHaveLength(10);
   });
 
+  it('versions the 2025 Jerez amendment instead of preserving universal fortification assumptions', () => {
+    const current = findResearchProfile('es-jerez-current-amendment-2025');
+    const fino = current?.productionRules?.fino as Record<string, unknown>;
+    const reserva = current?.productionRules?.reserva as Record<string, unknown>;
+
+    expect(current?.productionRules?.effectiveFrom).toBe('2025-08-24');
+    expect(current?.productionRules?.wineCategory1Allowed).toBe(true);
+    expect(current?.productionRules?.liqueurWineCategory3Allowed).toBe(true);
+    expect(current?.productionRules?.fortificationUniversallyRequired).toBe(false);
+    expect(fino.sanlucarDeBarramedaAgeingAllowedCurrent).toBe(false);
+    expect(fino.transitionExistingBiologicalAgeingStockThrough).toBe('2030-12-31');
+    expect(reserva.normallyRestrictedToCategory3LiqueurWine).toBe(true);
+    expect(current?.generationStatus).toBe('reference-only');
+  });
+
   it('keeps Port category ageing and bottle behavior separate by product', () => {
     const port = findResearchProfile('pt-port-product-matrix-2026');
     const rules = port?.productionRules as Record<string, Record<string, unknown>>;
@@ -134,6 +149,19 @@ describe('hand-researched wine reference overlay', () => {
     expect(rules.Colheita.minimumWoodAgeYears).toBe(7);
     expect((rules.AgeIndication.permittedAgeIndicationsYears as number[])).toEqual([10, 20, 30, 40, 50]);
     expect(service.officialAfterOpeningGuidance.VintageDays).toEqual([1, 2]);
+    expect(port?.generationStatus).toBe('reference-only');
+  });
+
+  it('adds current Port certification and bottling windows without promoting procedural generation', () => {
+    const port = findResearchProfile('pt-port-current-category-certification-2026');
+    const rules = port?.productionRules as Record<string, Record<string, unknown>>;
+
+    expect(rules.Vintage.bottlingDeadline).toBe('30 July of the third year after harvest');
+    expect(rules.LBV.preBottlingAgeYears).toEqual([4, 6]);
+    expect(rules.LBV.bottlingDeadline).toBe('31 December of the sixth year after harvest');
+    expect(rules.Colheita.minimumWoodAgeYears).toBe(7);
+    expect(rules.AgeIndication.permittedAgeIndicationsYears).toEqual([10, 20, 30, 40, 50]);
+    expect(rules.AgeIndication.veryVeryOldMinimumAgeYears).toBe(80);
     expect(port?.generationStatus).toBe('reference-only');
   });
 
@@ -154,11 +182,14 @@ describe('hand-researched wine reference overlay', () => {
     expect(rules.AszuPlusForditasPlusEszenciaMaximumLitresPer100KgAszuBerries).toBe(220);
   });
 
-  it('keeps the South African WO hierarchy and vine statistics as separate legal/statistical layers', () => {
-    const southAfrica = findResearchProfile('za-wine-origin-current-framework-2026');
-    expect(southAfrica?.classificationTerms).toEqual(['geographical unit', 'overarching region', 'region', 'subregion', 'district', 'ward']);
-    expect(southAfrica?.productionRules?.authority).toContain('SAWIS');
-    expect(southAfrica?.generationStatus).toBe('framework-only');
+  it('keeps South African WO identity, product legality and vine statistics as separate layers', () => {
+    const current = findResearchProfile('za-wine-origin-framework-feb2026');
+    expect(current?.classificationTerms).toEqual(['geographical unit', 'overarching geographical unit', 'overarching region', 'region', 'subregion', 'district', 'ward']);
+    expect(current?.productionRules?.productionAreaSnapshot).toBe('2026-02');
+    expect(current?.productionRules?.indexedProductionAreaIdentities).toBe(152);
+    expect(current?.productionRules?.certificationScope).toEqual(['origin', 'vintage year', 'variety']);
+    expect(current?.productionRules?.identityDoesNotImplyProductRules).toBe(true);
+    expect(current?.generationStatus).toBe('framework-only');
   });
 
   it('preserves New World origin, variety and vintage percentage rules', () => {
