@@ -1,7 +1,9 @@
 import environmentalData from '../data/research/environmental_profiles.json';
 import environmentalDataPass2 from '../data/research/environmental_profiles_pass2.json';
+import environmentalDataPass3 from '../data/research/environmental_profiles_pass3.json';
 import vintageData from '../data/research/vintage_observations.json';
 import vintageDataPass2 from '../data/research/vintage_observations_pass2.json';
+import vintageDataPass3 from '../data/research/vintage_observations_pass3.json';
 import { researchProfileById, researchSourceById } from './research';
 import type { ReferencePlace } from './reference';
 import type { WineProfile } from './types';
@@ -88,10 +90,12 @@ type VintageFile = {
 const environmentalFiles: EnvironmentalFile[] = [
   environmentalData as unknown as EnvironmentalFile,
   environmentalDataPass2 as unknown as EnvironmentalFile,
+  environmentalDataPass3 as unknown as EnvironmentalFile,
 ];
 const vintageFiles: VintageFile[] = [
   vintageData as unknown as VintageFile,
   vintageDataPass2 as unknown as VintageFile,
+  vintageDataPass3 as unknown as VintageFile,
 ];
 
 export const environmentalResearchMethod = environmentalFiles.map((file) => file.method).join(' ');
@@ -139,6 +143,13 @@ const placeMatchers: Array<{ profileId: string; country: string; terms: string[]
   { profileId: 'env-us-napa-valley', country: 'United States', terms: ['napa valley', 'rutherford', 'oakville', 'st. helena', 'st helena', 'los carneros'] },
   { profileId: 'env-nz-marlborough', country: 'New Zealand', terms: ['marlborough', 'wairau', 'awatere'] },
   { profileId: 'env-za-stellenbosch', country: 'South Africa', terms: ['stellenbosch', 'helderberg', 'simonsberg', 'bottelary'] },
+  { profileId: 'env-de-mosel', country: 'Germany', terms: ['mosel', 'saar', 'ruwer'] },
+  { profileId: 'env-at-kamptal', country: 'Austria', terms: ['kamptal', 'langenlois', 'heiligenstein'] },
+  { profileId: 'env-at-wachau', country: 'Austria', terms: ['wachau', 'loibenberg', 'dürnstein', 'durnstein', 'spitz'] },
+  { profileId: 'env-hu-tokaj', country: 'Hungary', terms: ['tokaj', 'tokaji'] },
+  { profileId: 'env-ar-uco-valley', country: 'Argentina', terms: ['uco valley', 'valle de uco', 'tupungato', 'tunuyan', 'tunuyán', 'san carlos', 'gualtallary', 'paraje altamira', 'los chacayes', 'san pablo', 'vista flores'] },
+  { profileId: 'env-au-barossa-valley', country: 'Australia', terms: ['barossa valley', 'barossa'] },
+  { profileId: 'env-au-margaret-river', country: 'Australia', terms: ['margaret river'] },
   {
     profileId: 'env-fr-bourgogne-cote', country: 'France',
     terms: ['cote de nuits', 'cote de beaune', 'morey-saint-denis', 'chambolle-musigny',
