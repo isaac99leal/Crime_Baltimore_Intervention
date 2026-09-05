@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive Premier Cru climat label-claim rules for Aloxe-Corton, Pernand-Vergelesses and Santenay. Pernand-Vergelesses uses the explicit color matrix in the effective specification.",
+  "sources": {
+    "aloxe_claim_2011": {
+      "authority": "Ministère de l'agriculture / Journal officiel",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-302391de-0e09-4b5c-95d4-ddadcaf4ebeb/telechargement",
+      "checked": "2026-09-05"
+    },
+    "pernand_claim_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne / Journal officiel",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20249.pdf",
+      "checked": "2026-09-05"
+    },
+    "santenay_claim_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne / Journal officiel",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20265.pdf",
+      "checked": "2026-09-05"
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:aloxe-corton:premier-cru-climat",
+      "country": "France", "parent_appellation": "Aloxe-Corton", "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_aloxe_2011"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["aloxe_claim_2011"], "claim_kind": "premier_cru_climat_name",
+      "notes": "The effective Aloxe-Corton specification permits each listed Premier Cru climat for white or red wine."
+    },
+    {
+      "id": "siteclaim:fr:pernand-vergelesses:white-premier-cru-climat",
+      "country": "France", "parent_appellation": "Pernand-Vergelesses", "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_pernand_2011"],
+      "allowed_wine_variants": ["white premier cru"],
+      "source_ids": ["pernand_claim_2011"], "claim_kind": "premier_cru_climat_name",
+      "allowed_site_names": [
+        "Clos Berthet", "Creux de la Net", "En Caradeux", "Ile des Vergelesses",
+        "Les Fichots", "Sous Frétille", "Vergelesses", "Village de Pernand"
+      ],
+      "notes": "All eight listed Pernand-Vergelesses Premier Cru climats are authorized for white wine."
+    },
+    {
+      "id": "siteclaim:fr:pernand-vergelesses:red-premier-cru-climat",
+      "country": "France", "parent_appellation": "Pernand-Vergelesses", "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_pernand_2011"],
+      "allowed_wine_variants": ["red premier cru"],
+      "source_ids": ["pernand_claim_2011"], "claim_kind": "premier_cru_climat_name",
+      "allowed_site_names": ["Creux de la Net", "En Caradeux", "Ile des Vergelesses", "Les Fichots", "Vergelesses"],
+      "notes": "Clos Berthet, Sous Frétille and Village de Pernand are white-only in the effective specification and are excluded from red claims."
+    },
+    {
+      "id": "siteclaim:fr:santenay:premier-cru-climat",
+      "country": "France", "parent_appellation": "Santenay", "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_santenay_2011"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["santenay_claim_2011"], "claim_kind": "premier_cru_climat_name",
+      "notes": "The effective Santenay specification permits each listed Premier Cru climat for white or red wine."
+    }
+  ]
+}
