@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive legal label-claim rule for the 42 official Beaune Premier Cru climats. The effective specification permits the listed climat names for both white and red wines meeting Premier Cru production conditions.",
+  "sources": {
+    "beaune_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Beaune homologué par le décret n°2011-1751 du 2 décembre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20191.pdf",
+      "checked": "2026-09-05",
+      "scope": "The effective specification enumerates 42 climat names and permits their use under Premier Cru production conditions for white and red still wine."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:beaune:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Beaune",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["beaune_bivb_spec_2011"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["beaune_bivb_spec_2011"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "All 42 enumerated Premier Cru climats are valid for both white and red Beaune when the matching Premier Cru production specification is satisfied."
+    }
+  ]
+}
