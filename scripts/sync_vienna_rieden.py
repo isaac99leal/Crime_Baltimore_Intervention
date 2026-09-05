@@ -72,7 +72,10 @@ def _records(payload: bytes) -> list[dict[str, object]]:
     riede_occurrences = 0
 
     district_re = re.compile(r"(?:im|Im)\s+(\d{1,2})\.\s+Wiener\s+Gemeindebezirk")
-    kg_re = re.compile(r"^\s*in\s+der\s+KG\s+(.+?):\s*$", re.IGNORECASE)
+    # Most district sections use lettered sub-headings such as
+    # "a) in der KG Schönbrunn:". The optional prefix is part of the source
+    # layout, not the cadastral name, and must not cause KG context to leak.
+    kg_re = re.compile(r"^\s*(?:[a-z]\)\s*)?in\s+der\s+KG\s+(.+?):\s*$", re.IGNORECASE)
     riede_re = re.compile(r"^\s*Riede\s+(.+?)\s*$", re.IGNORECASE)
 
     for line in text.splitlines():
