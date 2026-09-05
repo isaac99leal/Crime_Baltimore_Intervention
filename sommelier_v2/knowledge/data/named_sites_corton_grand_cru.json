@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.1",
+  "notes": "The 24 named climats that the effective Corton specification permits after the AOC name for red wine. These are physical/legal site identities only; label-claim eligibility is evaluated separately and is restricted to the red Grand Cru variant.",
+  "sources": {
+    "bourgogne_corton_2011": {
+      "authority": "Ministère de l'agriculture / Journal officiel",
+      "title": "Cahier des charges de l'AOC Corton homologué par le décret n°2011-1390 du 26 octobre 2011",
+      "url": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-7b3c14e3-4105-489a-91a6-3e8b7ee78017/telechargement",
+      "checked": "2026-09-05",
+      "scope": "Official list of 24 climat names permitted after Corton for red wine."
+    }
+  },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Corton",
+      "site_type": "climat",
+      "classification": "Grand Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["bourgogne_corton_2011"],
+      "notes": "Official Corton climat identity. The protected climat suffix is legally restricted to red Corton by the separate site-claim rule.",
+      "names": [
+        "Basses Mourottes",
+        "Clos des Meix",
+        "Hautes Mourottes",
+        "La Toppe au Vert",
+        "La Vigne au Saint",
+        "Le Clos du Roi",
+        "Le Corton",
+        "Le Meix Lallemand",
+        "Le Rognet et Corton",
+        "Les Bressandes",
+        "Les Carrières",
+        "Les Chaumes",
+        "Les Combes",
+        "Les Fiètres",
+        "Les Grandes Lolières",
+        "Les Grèves",
+        "Les Languettes",
+        "Les Maréchaudes",
+        "Les Moutottes",
+        "Les Paulands",
+        "Les Perrières",
+        "Les Pougets",
+        "Les Renardes",
+        "Les Vergennes"
+      ]
+    }
+  ]
+}
