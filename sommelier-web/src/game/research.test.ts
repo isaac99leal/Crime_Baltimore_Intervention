@@ -12,12 +12,12 @@ import {
 describe('hand-researched wine reference overlay', () => {
   it('has meaningful research depth with resolvable provenance', () => {
     const report = validateResearchLibrary();
-    expect(researchPassCount).toBe(6);
-    expect(researchSourcePassCount).toBe(14);
-    expect(researchProfiles.length).toBeGreaterThanOrEqual(72);
-    expect(researchSources.length).toBeGreaterThanOrEqual(165);
+    expect(researchPassCount).toBe(7);
+    expect(researchSourcePassCount).toBe(15);
+    expect(researchProfiles.length).toBeGreaterThanOrEqual(76);
+    expect(researchSources.length).toBeGreaterThanOrEqual(177);
     expect(researchCountries.length).toBeGreaterThanOrEqual(15);
-    expect(report.generationCandidates).toBeGreaterThanOrEqual(30);
+    expect(report.generationCandidates).toBeGreaterThanOrEqual(32);
     expect(report.issues).toEqual([]);
   });
 
@@ -105,6 +105,60 @@ describe('hand-researched wine reference overlay', () => {
     expect(secano?.eligibleNamedAreas).toContain('Coelemu');
     expect(secano?.eligibleAdditionalCommunes).toContain('Tomé');
     expect(secano?.generationStatus).toBe('reference-only');
+  });
+
+  it('adds a field-level Jerez product matrix rather than a generic sherry style flag', () => {
+    const jerez = findResearchProfile('es-jerez-product-matrix-2024');
+    const analytical = jerez?.productionRules?.analytical as Record<string, Record<string, unknown>>;
+    const ageing = jerez?.productionRules?.ageingMechanisms as Record<string, string>;
+    const qualified = jerez?.productionRules?.qualifiedAgeYears as Record<string, number>;
+
+    expect(analytical.Fino.alcoholPct).toEqual([15, 17]);
+    expect(analytical.Fino.sugarGPerLMax).toBe(4);
+    expect(analytical['Pedro Ximénez'].sugarGPerLMin).toBe(212);
+    expect(ageing.Fino).toContain('biological');
+    expect(ageing.Amontillado).toContain('oxidative');
+    expect(qualified.VOS).toBe(20);
+    expect(qualified.VORS).toBe(30);
+    expect(jerez?.geography && (jerez.geography as Record<string, unknown>).municipalities).toHaveLength(10);
+  });
+
+  it('keeps Port category ageing and bottle behavior separate by product', () => {
+    const port = findResearchProfile('pt-port-product-matrix-2026');
+    const rules = port?.productionRules as Record<string, Record<string, unknown>>;
+    const service = port?.serviceResearch as Record<string, Record<string, unknown>>;
+
+    expect(rules.LBV.preBottlingAgeYears).toEqual([4, 6]);
+    expect(rules.Vintage.bottledYearsAfterHarvest).toEqual([2, 3]);
+    expect(rules.Crusted.minimumBottleAgeBeforeSaleYears).toBe(3);
+    expect(rules.Colheita.minimumWoodAgeYears).toBe(7);
+    expect((rules.AgeIndication.permittedAgeIndicationsYears as number[])).toEqual([10, 20, 30, 40, 50]);
+    expect(service.officialAfterOpeningGuidance.VintageDays).toEqual([1, 2]);
+    expect(port?.generationStatus).toBe('reference-only');
+  });
+
+  it('expands current Tokaj specialty categories into distinct production rules', () => {
+    const tokaj = findResearchProfile('hu-tokaj-product-matrix-2026');
+    const rules = tokaj?.productionRules as Record<string, Record<string, unknown> | number | string>;
+    const aszu = rules.Aszu as Record<string, unknown>;
+    const drySzamorodni = rules.drySzamorodni as Record<string, unknown>;
+    const sweetSzamorodni = rules.sweetSzamorodni as Record<string, unknown>;
+    const eszencia = rules.Eszencia as Record<string, unknown>;
+
+    expect(aszu.minimumResidualSugarGPerL).toBe(120);
+    expect(aszu.sixPuttonyosMinimumResidualSugarGPerL).toBe(150);
+    expect(aszu.minimumWoodAgeMonths).toBe(18);
+    expect(drySzamorodni.maximumResidualSugarGPerL).toBe(9);
+    expect(sweetSzamorodni.minimumResidualSugarGPerL).toBe(45);
+    expect(eszencia.maximumLitresPer100KgAszuBerries).toBe(6);
+    expect(rules.AszuPlusForditasPlusEszenciaMaximumLitresPer100KgAszuBerries).toBe(220);
+  });
+
+  it('keeps the South African WO hierarchy and vine statistics as separate legal/statistical layers', () => {
+    const southAfrica = findResearchProfile('za-wine-origin-current-framework-2026');
+    expect(southAfrica?.classificationTerms).toEqual(['geographical unit', 'overarching region', 'region', 'subregion', 'district', 'ward']);
+    expect(southAfrica?.productionRules?.authority).toContain('SAWIS');
+    expect(southAfrica?.generationStatus).toBe('framework-only');
   });
 
   it('preserves New World origin, variety and vintage percentage rules', () => {
