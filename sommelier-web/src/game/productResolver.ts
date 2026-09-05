@@ -58,6 +58,8 @@ export type ProductResolutionRule = {
   maximumYieldLitresPer100KgAszuBerries?: number;
   effectiveFromYear?: number;
   effectiveThroughYear?: number;
+  effectiveFromDate?: string;
+  effectiveThroughDate?: string;
   notes?: string[];
 };
 
@@ -83,6 +85,7 @@ export type ProductResolutionRequest = {
   country: string;
   designation: string;
   vintage?: number;
+  legalReferenceDate?: string;
   color?: string;
   requestedTerms?: string[] | string;
   grape?: string;
@@ -155,9 +158,7 @@ function canonicalGrape(name: string): string {
 }
 
 function blendMap(request: ProductResolutionRequest): Map<string, number> | undefined {
-  if (request.blend?.length) {
-    return new Map(request.blend.map((item) => [canonicalGrape(item.grape), item.percent]));
-  }
+  if (request.blend?.length) return new Map(request.blend.map((item) => [canonicalGrape(item.grape), item.percent]));
   if (request.grape) return new Map([[canonicalGrape(request.grape), 100]]);
   return undefined;
 }
@@ -168,26 +169,18 @@ function compositionIssues(rule: ProductResolutionRule, request: ProductResoluti
   if (!blend) return [];
   const issues: string[] = [];
 
-  if (rule.requiresBlend && blend.size < 2) {
-    issues.push(`${rule.productName} requires a researched multi-grape blend; a single-grape case is insufficient.`);
-  }
+  if (rule.requiresBlend && blend.size < 2) issues.push(`${rule.productName} requires a researched multi-grape blend; a single-grape case is insufficient.`);
 
   if (rule.exclusiveComposition && rule.composition?.length) {
     const permitted = new Set(rule.composition.map((constraint) => canonicalGrape(constraint.grape)));
-    for (const [grape, pct] of blend) {
-      if (pct > 0 && !permitted.has(grape)) issues.push(`${grape} is outside the exclusive grape set for ${rule.productName}.`);
-    }
+    for (const [grape, pct] of blend) if (pct > 0 && !permitted.has(grape)) issues.push(`${grape} is outside the exclusive grape set for ${rule.productName}.`);
   }
 
   for (const constraint of rule.composition ?? []) {
     const canonical = canonicalGrape(constraint.grape);
     const pct = blend.get(canonical) ?? 0;
-    if (constraint.minPct !== undefined && pct < constraint.minPct) {
-      issues.push(`${canonical} ${pct}% is below ${constraint.minPct}% minimum for ${rule.productName}.`);
-    }
-    if (constraint.maxPct !== undefined && pct > constraint.maxPct) {
-      issues.push(`${canonical} ${pct}% exceeds ${constraint.maxPct}% maximum for ${rule.productName}.`);
-    }
+    if (constraint.minPct !== undefined && pct < constraint.minPct) issues.push(`${canonical} ${pct}% is below ${constraint.minPct}% minimum for ${rule.productName}.`);
+    if (constraint.maxPct !== undefined && pct > constraint.maxPct) issues.push(`${canonical} ${pct}% exceeds ${constraint.maxPct}% maximum for ${rule.productName}.`);
   }
 
   const groups = new Map<string, ProductCompositionRule[]>();
@@ -211,28 +204,62 @@ function profileForRule(rule: ProductResolutionRule): ResearchProfile | undefine
   return rule.profileId ? researchProfileById.get(rule.profileId) : undefined;
 }
 
-function legalEra(rule: ProductResolutionRule, vintage?: number): { status: LegalEraStatus; verified: boolean } {
-  if (vintage === undefined) return { status: 'current-rule-version', verified: true };
-  const from = rule.effectiveFromYear;
-  const through = rule.effectiveThroughYear;
-  if (from !== undefined && vintage >= from && (through === undefined || vintage <= through)) {
-    return { status: 'historical-rule-version-explicit', verified: true };
-  }
-  return { status: 'product-resolved-historical-law-unverified', verified: false };
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+function validIsoDate(value?: string): value is string {
+  return Boolean(value && ISO_DATE.test(value));
+}
+function dateYear(value: string): number {
+  return Number(value.slice(0, 4));
+}
+function ruleDateApplies(rule: ProductResolutionRule, date: string): boolean {
+  if (validIsoDate(rule.effectiveFromDate) && date < rule.effectiveFromDate) return false;
+  if (validIsoDate(rule.effectiveThroughDate) && date > rule.effectiveThroughDate) return false;
+  const year = dateYear(date);
+  if (rule.effectiveFromYear !== undefined && year < rule.effectiveFromYear) return false;
+  if (rule.effectiveThroughYear !== undefined && year > rule.effectiveThroughYear) return false;
+  return true;
 }
 
-function canSupersedeAtVintage(rule: ProductResolutionRule, vintage?: number): boolean {
-  if (!rule.supersedesRuleIds?.length) return false;
-  if (vintage === undefined) return true;
+function wholeVintageInsideDateEra(rule: ProductResolutionRule, vintage: number): boolean {
+  if (validIsoDate(rule.effectiveFromDate)) {
+    const fromYear = dateYear(rule.effectiveFromDate);
+    if (vintage < fromYear) return false;
+    if (vintage === fromYear && !rule.effectiveFromDate.endsWith('-01-01')) return false;
+  }
+  if (validIsoDate(rule.effectiveThroughDate)) {
+    const throughYear = dateYear(rule.effectiveThroughDate);
+    if (vintage > throughYear) return false;
+    if (vintage === throughYear && !rule.effectiveThroughDate.endsWith('-12-31')) return false;
+  }
   if (rule.effectiveFromYear !== undefined && vintage < rule.effectiveFromYear) return false;
   if (rule.effectiveThroughYear !== undefined && vintage > rule.effectiveThroughYear) return false;
   return true;
 }
 
-function removeSupersededCandidates<T extends { rule: ProductResolutionRule }>(candidates: T[], vintage?: number): T[] {
+function legalEra(rule: ProductResolutionRule, request: ProductResolutionRequest): { status: LegalEraStatus; verified: boolean } {
+  if (request.legalReferenceDate !== undefined) {
+    if (!validIsoDate(request.legalReferenceDate)) return { status: 'product-resolved-historical-law-unverified', verified: false };
+    return ruleDateApplies(rule, request.legalReferenceDate)
+      ? { status: 'historical-rule-version-explicit', verified: true }
+      : { status: 'product-resolved-historical-law-unverified', verified: false };
+  }
+  if (request.vintage === undefined) return { status: 'current-rule-version', verified: true };
+  const hasEraBoundary = rule.effectiveFromYear !== undefined || rule.effectiveThroughYear !== undefined || validIsoDate(rule.effectiveFromDate) || validIsoDate(rule.effectiveThroughDate);
+  if (hasEraBoundary && wholeVintageInsideDateEra(rule, request.vintage)) return { status: 'historical-rule-version-explicit', verified: true };
+  return { status: 'product-resolved-historical-law-unverified', verified: false };
+}
+
+function canSupersedeForRequest(rule: ProductResolutionRule, request: ProductResolutionRequest): boolean {
+  if (!rule.supersedesRuleIds?.length) return false;
+  if (request.legalReferenceDate !== undefined) return validIsoDate(request.legalReferenceDate) && ruleDateApplies(rule, request.legalReferenceDate);
+  if (request.vintage !== undefined) return wholeVintageInsideDateEra(rule, request.vintage);
+  return true;
+}
+
+function removeSupersededCandidates<T extends { rule: ProductResolutionRule }>(candidates: T[], request: ProductResolutionRequest): T[] {
   const superseded = new Set<string>();
   for (const candidate of candidates) {
-    if (!canSupersedeAtVintage(candidate.rule, vintage)) continue;
+    if (!canSupersedeForRequest(candidate.rule, request)) continue;
     for (const id of candidate.rule.supersedesRuleIds ?? []) superseded.add(id);
   }
   return candidates.filter((candidate) => !superseded.has(candidate.rule.id));
@@ -263,112 +290,58 @@ export function resolveWineProduct(request: ProductResolutionRequest): ProductRe
     productRulesForDesignation(request.country, request.designation, request.color)
       .map((rule) => ({ rule, score: termScore(rule, termsText), issues: compositionIssues(rule, request) }))
       .filter((candidate) => candidate.issues.length === 0),
-    request.vintage,
+    request,
   );
 
-  if (!candidates.length) {
-    return {
-      status: 'unresolved',
-      alternatives: [],
-      exactProductGenerationSafe: false,
-      historicalComplianceVerified: false,
-      issues: [`No exact product rule resolves ${request.country} / ${request.designation}${request.color ? ` / ${request.color}` : ''}.`],
-      provenanceSourceIds: [],
-    };
-  }
+  if (!candidates.length) return { status: 'unresolved', alternatives: [], exactProductGenerationSafe: false, historicalComplianceVerified: false, issues: [`No exact product rule resolves ${request.country} / ${request.designation}${request.color ? ` / ${request.color}` : ''}.`], provenanceSourceIds: [] };
 
   const usable = termsText ? candidates.filter((candidate) => candidate.score >= 0) : candidates;
-  if (!usable.length) {
-    return {
-      status: 'unresolved',
-      alternatives: candidates.map((candidate) => candidate.rule),
-      exactProductGenerationSafe: false,
-      historicalComplianceVerified: false,
-      issues: [`Designation resolves, but requested product terms do not match a researched product for ${request.designation}.`],
-      provenanceSourceIds: [],
-    };
-  }
+  if (!usable.length) return { status: 'unresolved', alternatives: candidates.map((candidate) => candidate.rule), exactProductGenerationSafe: false, historicalComplianceVerified: false, issues: [`Designation resolves, but requested product terms do not match a researched product for ${request.designation}.`], provenanceSourceIds: [] };
 
   const ranked = [...usable].sort((a, b) => b.score - a.score || b.rule.matchTerms.join(' ').length - a.rule.matchTerms.join(' ').length);
   const top = ranked[0];
   const tied = termsText ? ranked.filter((candidate) => candidate.score === top.score) : ranked;
 
-  if (!termsText && ranked.length > 1) {
-    return {
-      status: 'ambiguous',
-      alternatives: ranked.map((candidate) => candidate.rule),
-      exactProductGenerationSafe: false,
-      historicalComplianceVerified: false,
-      issues: [`${request.designation} contains multiple researched products; product terms are required for an exact resolution.`],
-      provenanceSourceIds: [],
-    };
-  }
-
-  if (termsText && tied.length > 1 && tied[0].score === tied[1].score) {
-    return {
-      status: 'ambiguous',
-      alternatives: tied.map((candidate) => candidate.rule),
-      exactProductGenerationSafe: false,
-      historicalComplianceVerified: false,
-      issues: [`Requested terms match multiple product rules for ${request.designation}.`],
-      provenanceSourceIds: [],
-    };
-  }
+  if (!termsText && ranked.length > 1) return { status: 'ambiguous', alternatives: ranked.map((candidate) => candidate.rule), exactProductGenerationSafe: false, historicalComplianceVerified: false, issues: [`${request.designation} contains multiple researched products; product terms are required for an exact resolution.`], provenanceSourceIds: [] };
+  if (termsText && tied.length > 1 && tied[0].score === tied[1].score) return { status: 'ambiguous', alternatives: tied.map((candidate) => candidate.rule), exactProductGenerationSafe: false, historicalComplianceVerified: false, issues: [`Requested terms match multiple product rules for ${request.designation}.`], provenanceSourceIds: [] };
 
   const rule = top.rule;
   const profile = profileForRule(rule);
-  const era = legalEra(rule, request.vintage);
+  const era = legalEra(rule, request);
   const exactProductGenerationSafe = rule.generationStatus === 'generation-safe' && Boolean(profile && profile.generationStatus === 'candidate');
   const issues: string[] = [];
   if (rule.generationStatus !== 'generation-safe') issues.push(`${rule.productName} is ${rule.generationStatus}; exact production legality is not fully extracted.`);
   if (rule.profileId && !profile) issues.push(`Referenced research profile ${rule.profileId} is missing.`);
-  if (!era.verified && request.vintage !== undefined) issues.push(`Product identity resolves, but the exact legal rule version for vintage ${request.vintage} is not yet versioned.`);
+  if (!era.verified && (request.vintage !== undefined || request.legalReferenceDate !== undefined)) issues.push('Product identity resolves, but the exact legal rule version for the requested historical reference point is not fully verified.');
 
-  return {
-    status: 'resolved',
-    rule,
-    alternatives: [],
-    profile,
-    legalEraStatus: era.status,
-    exactProductGenerationSafe,
-    historicalComplianceVerified: era.verified,
-    issues,
-    provenanceSourceIds: provenanceFor(rule),
-  };
+  return { status: 'resolved', rule, alternatives: [], profile, legalEraStatus: era.status, exactProductGenerationSafe, historicalComplianceVerified: era.verified, issues, provenanceSourceIds: provenanceFor(rule) };
 }
 
 export function generationProductCandidates(place: ReferencePlace, grape: RawGrape): ProductResolutionRule[] {
   const designationText = [place.name, ...place.path].join(' / ');
+  const request: ProductResolutionRequest = { country: place.country, designation: designationText, grape: grape.name, color: grape.color };
   const candidates = productResolutionRules
     .filter((rule) => rule.generationStatus === 'generation-safe')
     .filter((rule) => !rule.requiresBlend)
     .filter((rule) => designationMatches(rule, place.country, designationText))
     .filter((rule) => colorMatches(rule, grape.color))
     .map((rule) => ({ rule }));
-  return removeSupersededCandidates(candidates)
+  return removeSupersededCandidates(candidates, request)
     .map((candidate) => candidate.rule)
     .filter((rule) => {
-      const request: ProductResolutionRequest = { country: place.country, designation: designationText, grape: grape.name, color: grape.color };
       if (compositionIssues(rule, request).length) return false;
       const profile = profileForRule(rule);
       return Boolean(profile && profile.generationStatus === 'candidate');
     });
 }
 
-export function productWinemakingLegality(
-  rule: ProductResolutionRule,
-  decision: WinemakingDecision,
-  option: DecisionOption,
-): boolean | undefined {
+export function productWinemakingLegality(rule: ProductResolutionRule, decision: WinemakingDecision, option: DecisionOption): boolean | undefined {
   const prohibited = rule.prohibitedPractices?.find((item) => item.decisionId === decision.id);
   if (prohibited?.optionIds.includes(option.id)) return false;
-
   const required = rule.requiredPractices?.find((item) => item.decisionId === decision.id);
   if (required) return required.optionIds.includes(option.id);
-
   const permitted = rule.permittedPractices?.find((item) => item.decisionId === decision.id);
   if (permitted) return permitted.optionIds.includes(option.id);
-
   return decision.requiresDesignationCheck ? undefined : true;
 }
 
@@ -388,6 +361,9 @@ export function validateProductResolver() {
     if (rule.profileId && !profile) issues.push(`Unknown research profile ${rule.profileId} in ${rule.id}`);
     if (rule.generationStatus === 'generation-safe' && (!profile || profile.generationStatus !== 'candidate')) issues.push(`Generation-safe product lacks candidate profile: ${rule.id}`);
     if (rule.requiresBlend && (!rule.composition || rule.composition.length < 2)) issues.push(`Blend-required product lacks multi-grape composition: ${rule.id}`);
+    if (rule.effectiveFromDate && !validIsoDate(rule.effectiveFromDate)) issues.push(`Invalid effectiveFromDate in ${rule.id}`);
+    if (rule.effectiveThroughDate && !validIsoDate(rule.effectiveThroughDate)) issues.push(`Invalid effectiveThroughDate in ${rule.id}`);
+    if (validIsoDate(rule.effectiveFromDate) && validIsoDate(rule.effectiveThroughDate) && rule.effectiveFromDate > rule.effectiveThroughDate) issues.push(`Invalid effective-date range in ${rule.id}`);
     for (const supersededId of rule.supersedesRuleIds ?? []) {
       if (supersededId === rule.id) issues.push(`Product rule supersedes itself: ${rule.id}`);
       if (!productResolutionRuleById.has(supersededId)) issues.push(`Unknown superseded product rule ${supersededId} in ${rule.id}`);
