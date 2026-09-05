@@ -1,0 +1,12 @@
+{
+  "synced_at": "2026-09-05T14:00:56.592581+00:00",
+  "source": "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/gi-applications/filter",
+  "registered_wine_gis": 1649,
+  "countries": 24,
+  "with_product_specification": 846,
+  "with_single_document": 1559,
+  "with_any_authoritative_document": 1563,
+  "detail_fetch_errors": 0,
+  "errors": [],
+  "safety": "Source indexing does not authorize a grape/origin combination. Strict generation requires promoted machine rules."
+}

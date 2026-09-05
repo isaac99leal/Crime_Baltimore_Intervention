@@ -25972,22 +25972,6 @@
     "removed": false
   },
   {
-    "gi_identifier": "EUGI00000007142",
-    "protected_names": [
-      "Dealu Mare"
-    ],
-    "file_number": "PDO-RO-A1336",
-    "countries": [
-      "RO"
-    ],
-    "gi_type": "PDO",
-    "status": "registered",
-    "eu_protection_date": "2007-05-10",
-    "modification_date": "2018-06-08T09:58:12.000Z",
-    "third_country": false,
-    "removed": false
-  },
-  {
     "gi_identifier": "EUGI00000006687",
     "protected_names": [
       "Dealu Mare"
@@ -26009,6 +25993,22 @@
       "Dealu Mare"
     ],
     "file_number": "PDO-RO-A1062",
+    "countries": [
+      "RO"
+    ],
+    "gi_type": "PDO",
+    "status": "registered",
+    "eu_protection_date": "2007-05-10",
+    "modification_date": "2018-06-08T09:58:12.000Z",
+    "third_country": false,
+    "removed": false
+  },
+  {
+    "gi_identifier": "EUGI00000007142",
+    "protected_names": [
+      "Dealu Mare"
+    ],
+    "file_number": "PDO-RO-A1336",
     "countries": [
       "RO"
     ],
