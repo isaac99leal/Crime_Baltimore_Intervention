@@ -11,8 +11,8 @@ import { winemakingDecisionById } from './winemaking';
 describe('exact wine product resolver', () => {
   it('validates a non-trivial multi-pass product library with no broken rule links', () => {
     const report = validateProductResolver();
-    expect(productResolutionPassCount).toBe(3);
-    expect(productResolutionRules.length).toBeGreaterThanOrEqual(54);
+    expect(productResolutionPassCount).toBe(4);
+    expect(productResolutionRules.length).toBeGreaterThanOrEqual(59);
     expect(report.generationSafe).toBeGreaterThanOrEqual(27);
     expect(report.designations).toBeGreaterThanOrEqual(11);
     expect(report.issues).toEqual([]);
@@ -73,20 +73,44 @@ describe('exact wine product resolver', () => {
     expect(aszu.rule?.minimumWoodAgeMonths).toBe(18);
   });
 
-  it('adds detailed Jerez process and analytical product rules without prematurely making them generation-safe', () => {
+  it('uses the post-2025 Jerez generoso rules for current detailed product terms', () => {
     const fino = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino current' });
     const oloroso = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Oloroso current' });
     const px = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'PX detailed', grape: 'Pedro Ximénez' });
     const vors = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'VORS' });
 
+    expect(fino.rule?.id).toBe('product-es-jerez-fino-2025-current');
+    expect(fino.rule?.profileId).toBe('es-jerez-current-amendment-2025');
     expect(fino.rule?.alcoholPctRange).toEqual([15, 17]);
     expect(fino.rule?.maximumResidualSugarGPerL).toBe(4);
     expect(fino.rule?.minimumAverageAgeYears).toBe(2);
+    expect(fino.rule?.effectiveFromYear).toBe(2025);
     expect(fino.exactProductGenerationSafe).toBe(false);
+    expect(oloroso.rule?.id).toBe('product-es-jerez-oloroso-2025-current');
     expect(oloroso.rule?.ageingArchetype).toBe('oxidative-fortified');
     expect(px.rule?.minimumResidualSugarGPerL).toBe(212);
     expect(px.rule?.minimumOxidativeAgeingMonths).toBe(24);
     expect(vors.rule?.minimumAverageAgeYears).toBe(30);
+  });
+
+  it('does not project the post-2025 Jerez override backward onto a pre-2025 vintage', () => {
+    const historical = resolveWineProduct({
+      country: 'Spain', designation: 'Jerez-Xérès-Sherry', vintage: 2020, requestedTerms: 'Fino current',
+    });
+    expect(historical.status).toBe('ambiguous');
+    expect(historical.exactProductGenerationSafe).toBe(false);
+  });
+
+  it('allows both unfortified wine and post-fermentation fortification for current Fino but not mid-fermentation arrest', () => {
+    const fino = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino current' });
+    const fortification = winemakingDecisionById.get('fortification');
+    const none = fortification?.options.find((option) => option.id === 'none');
+    const after = fortification?.options.find((option) => option.id === 'after-fermentation');
+    const during = fortification?.options.find((option) => option.id === 'during-fermentation');
+
+    expect(fino.rule && fortification && none && productWinemakingLegality(fino.rule, fortification, none)).toBe(true);
+    expect(fino.rule && fortification && after && productWinemakingLegality(fino.rule, fortification, after)).toBe(true);
+    expect(fino.rule && fortification && during && productWinemakingLegality(fino.rule, fortification, during)).toBe(false);
   });
 
   it('keeps Port reference-only while resolving newly modeled Crusted and Very Very Old identities', () => {
@@ -102,13 +126,13 @@ describe('exact wine product resolver', () => {
     expect(vvo.rule?.minimumWoodAgeYears).toBe(80);
   });
 
-  it('keeps legacy Jerez rules reference-only for generic terms while detailed current terms resolve to the new matrix', () => {
+  it('keeps legacy Jerez rules reference-only for generic terms while current terms resolve to the versioned rule', () => {
     const generic = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino' });
-    const detailed = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino current' });
+    const current = resolveWineProduct({ country: 'Spain', designation: 'Jerez-Xérès-Sherry', requestedTerms: 'Fino current' });
     expect(generic.rule?.generationStatus).toBe('reference-only');
     expect(generic.rule?.ageingArchetype).toBe('biological-flor');
-    expect(detailed.rule?.profileId).toBe('es-jerez-product-matrix-2024');
-    expect(detailed.rule?.generationStatus).toBe('conditional');
+    expect(current.rule?.profileId).toBe('es-jerez-current-amendment-2025');
+    expect(current.rule?.generationStatus).toBe('conditional');
   });
 
   it('resolves Georgian white and amber Kisi Magraani as different legal/process products', () => {
