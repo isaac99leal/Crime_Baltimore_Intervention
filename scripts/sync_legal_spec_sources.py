@@ -13,6 +13,7 @@ rule with provenance and confidence metadata.
 """
 from __future__ import annotations
 
+import http.client
 import json
 import time
 import urllib.error
@@ -42,12 +43,21 @@ def _request_json(url: str, *, payload: dict[str, Any] | None = None, timeout: i
         data = json.dumps(payload).encode("utf-8")
         headers["Content-Type"] = "application/json"
     last: Exception | None = None
-    for attempt in range(4):
+    retryable = (
+        urllib.error.URLError,
+        urllib.error.HTTPError,
+        TimeoutError,
+        ConnectionError,
+        http.client.RemoteDisconnected,
+        http.client.IncompleteRead,
+        json.JSONDecodeError,
+    )
+    for attempt in range(5):
         try:
             request = urllib.request.Request(url, data=data, headers=headers, method="POST" if data else "GET")
             with urllib.request.urlopen(request, timeout=timeout) as response:
                 return json.loads(response.read().decode("utf-8"))
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
+        except retryable as exc:
             last = exc
             time.sleep(1.2 * (attempt + 1))
     raise RuntimeError(f"Failed to fetch {url}: {last}")
@@ -126,7 +136,6 @@ def _extract_detail_attachments(detail: dict[str, Any]) -> tuple[list[str], list
     product = sorted(set(_collect_attachment_ids(product_value)))
     single = sorted(set(_collect_attachment_ids(single_value)))
 
-    # API versions have moved these arrays under nested application objects.
     if not product or not single:
         for key, value in detail.items():
             folded = key.casefold()
@@ -260,7 +269,6 @@ def main() -> None:
     MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("LEGAL_SPEC_SOURCE_SYNC=" + json.dumps(manifest, sort_keys=True))
 
-    # Fail on catastrophic source/API regressions, not on isolated unavailable records.
     if len(output) < 1000 or indexed < max(500, int(len(output) * 0.45)):
         raise RuntimeError(f"Legal source coverage is suspiciously low: {indexed}/{len(output)}")
 
