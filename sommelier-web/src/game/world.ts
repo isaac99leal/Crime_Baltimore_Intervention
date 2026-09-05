@@ -1,4 +1,13 @@
 import { findGrape, placeAllowsGrape, referenceAppellations, type RawGrape, type ReferencePlace } from './reference';
+import {
+  applyResearchMatrices,
+  authorityVintageRatingForPlace,
+  environmentalProfileForPlace,
+  vintageObservationForPlace,
+  type AuthorityVintageRating,
+  type EnvironmentalProfile,
+  type VintageObservation,
+} from './environment';
 import type { WineDefinition, WineProfile } from './types';
 
 function xmur3(value: string) {
@@ -99,19 +108,58 @@ function profileFor(grape: RawGrape, random: () => number): WineProfile {
 }
 
 function vintageFor(grape: RawGrape, random: () => number): number {
-  const current = 2025;
+  const latestCommercialVintage = 2025;
   const potential = grape.aging_potential?.toLowerCase() ?? '';
   const maxAge = potential.includes('exception') ? 45 : potential.includes('excellent') ? 30 : potential.includes('good') ? 20 : 12;
-  return current - Math.floor(random() * maxAge);
+  return latestCommercialVintage - Math.floor(random() * maxAge);
 }
 
-function generatedNotes(place: ReferencePlace, grape: RawGrape, vintage: number, aromas: string[]): WineDefinition['notes'] {
+function soilNames(environment?: EnvironmentalProfile): string[] {
+  if (!environment) return [];
+  return environment.soils
+    .map((soil) => typeof soil.name === 'string' ? soil.name : '')
+    .filter(Boolean);
+}
+
+function growingSeasonNote(
+  vintage: number,
+  environment?: EnvironmentalProfile,
+  observation?: VintageObservation,
+  authorityRating?: AuthorityVintageRating,
+): string {
+  if (observation) {
+    const effects = observation.styleEffects?.slice(0, 3).join('; ');
+    return `Source-backed ${vintage} growing-season record loaded for ${observation.region}.${effects ? ` Expected style implications: ${effects}.` : ''} Numeric vintage effects are simulation-derived from the sourced observations, not an official quality score.`;
+  }
+  if (authorityRating) {
+    return `Official ${authorityRating.region} vintage classification for ${vintage}: ${authorityRating.rating}. The category is preserved as published and is not converted into a fabricated numeric quality score.`;
+  }
+  if (environment) {
+    return `No source-backed year-specific growing-season record is loaded for ${vintage}. The profile uses sourced ${environment.name} climate, geology and soil context at the place layer only; historical weather is not invented.`;
+  }
+  return 'No source-backed year-specific growing-season record is loaded for this bottle. Bottle age is modeled without inventing historical weather.';
+}
+
+function generatedNotes(
+  place: ReferencePlace,
+  grape: RawGrape,
+  vintage: number,
+  aromas: string[],
+  environment?: EnvironmentalProfile,
+  observation?: VintageObservation,
+  authorityRating?: AuthorityVintageRating,
+): WineDefinition['notes'] {
+  const soils = soilNames(environment);
+  const matrixContext = environment
+    ? ` Research model includes the sourced ${environment.name} place layer${soils.length ? ` (${soils.slice(0, 3).join(', ')})` : ''}${observation ? ` plus the sourced ${vintage} vintage layer` : ''}.`
+    : observation ? ` Research model includes a sourced ${vintage} regional vintage layer.` : '';
+
   return {
     identity: `${vintage} ${grape.name} from ${place.country} / ${place.path.join(' / ')}. Geography and grape identity come from the curated reference layer; producer and cuvée are fictional.`,
-    growingSeason: 'Vintage-specific weather detail is not asserted unless a curated historical vintage record exists. The game currently models bottle age without inventing historical weather.',
-    tasting: `${aromas.slice(0, 4).join(', ')}; structure follows the reference profile for ${grape.name}.`,
+    growingSeason: growingSeasonNote(vintage, environment, observation, authorityRating),
+    tasting: `${aromas.slice(0, 4).join(', ')}; structure starts from the curated reference profile for ${grape.name}.${matrixContext} Matrix values are simulation parameters, not published analytical measurements.`,
     service: 'Serve according to structural weight, temperature, age, and sediment risk; detailed service rules are resolved by the simulation engine.',
-    cellar: grape.aging_potential ? `Reference aging potential: ${grape.aging_potential}.` : 'Cellaring potential is evaluated from structure and bottle condition.',
+    cellar: grape.aging_potential ? `Reference aging potential: ${grape.aging_potential}.${observation ? ` Vintage ageability modifier: ${observation.matrixModifiers.ageability >= 0 ? '+' : ''}${observation.matrixModifiers.ageability.toFixed(2)} (simulation-derived).` : ''}` : 'Cellaring potential is evaluated from structure and bottle condition.',
     pairing: grape.food_affinities?.length ? `Reference affinities include ${grape.food_affinities.slice(0, 4).join(', ')}.` : 'Pairing is scored from acidity, tannin, body, sweetness, aromatic bridges, preparation, sauce, and guest preference.',
   };
 }
@@ -126,7 +174,10 @@ export function generateWine(seed: string): WineDefinition {
   const producer = producerName(place.country, random);
   const cuvees = ['Tradition', 'Vieilles Vignes', 'Reserve', 'Selection', 'Estate', 'Parcelle', 'Classico', 'Single Vineyard'];
   const cuvee = pick(cuvees, random);
-  const profile = profileFor(grape, random);
+  const environment = environmentalProfileForPlace(place);
+  const vintageObservation = vintageObservationForPlace(place, vintage);
+  const authorityRating = authorityVintageRatingForPlace(place, vintage);
+  const profile = applyResearchMatrices(profileFor(grape, random), environment, vintageObservation);
   const aromas = [...new Set([...(grape.primary_aromas ?? []), ...(grape.secondary_aromas ?? []), ...(vintage < 2012 ? grape.tertiary_aromas ?? [] : [])])].slice(0, 7);
   const prestigeBase = place.priceTier === 'ultra_luxury' ? 88 : place.priceTier === 'luxury' ? 80 : place.priceTier === 'premium' ? 70 : place.priceTier === 'budget' ? 42 : 58;
   const prestige = Math.round(clamp(prestigeBase + (random() - 0.5) * 18, 25, 98));
@@ -134,6 +185,8 @@ export function generateWine(seed: string): WineDefinition {
   const suggestedPrice = Math.max(cost + 12, Math.round(cost * (2.1 + random() * 1.1)));
   const vineyard = place.kind === 'vineyard' ? place.name : undefined;
   const appellation = place.kind !== 'region' ? place.name : undefined;
+  const vintageYieldFactor = vintageObservation ? clamp(1 + vintageObservation.matrixModifiers.yield * 0.25, 0.75, 1.25) : 1;
+  const productionCases = Math.max(80, Math.round((15000 * Math.pow(1 - prestige / 110, 2) + random() * 600) * vintageYieldFactor));
 
   return {
     id: `world-${seed}`,
@@ -153,10 +206,10 @@ export function generateWine(seed: string): WineDefinition {
     suggestedPrice,
     prestige,
     rarity: Math.round(clamp(25 + prestige * 0.65 + random() * 20, 1, 100)),
-    productionCases: Math.max(80, Math.round(15000 * Math.pow(1 - prestige / 110, 2) + random() * 600)),
+    productionCases,
     profile,
     aromas,
-    notes: generatedNotes(place, grape, vintage, aromas),
+    notes: generatedNotes(place, grape, vintage, aromas, environment, vintageObservation, authorityRating),
     story: `${producer} is a fictional producer generated inside the real reference framework of ${place.country} / ${place.path.join(' / ')}.`,
     fictional: true,
     dataConfidence: 'derived',
