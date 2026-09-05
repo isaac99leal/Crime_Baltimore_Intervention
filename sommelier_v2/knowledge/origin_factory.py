@@ -76,7 +76,6 @@ class WineOriginFactory:
                 raise OriginConstraintError(f"{site.name} is in {site.country}, not {request.country}.")
             if normalize_name(site.region) != normalize_name(request.region):
                 raise OriginConstraintError(f"{site.name} belongs to {site.region}, not {request.region}.")
-            self.sites.validate_ownership(site, request.producer)
 
         appellation = request.appellation
         if site is not None and appellation is None:
@@ -107,12 +106,19 @@ class WineOriginFactory:
         decision = self.rulebook.evaluate(**kwargs)
         decision.require()
 
+        # Legal site-claim eligibility must be established before label-ownership
+        # enforcement. A catalog can contain physical sites (including owned
+        # monopoles or research-only discrepancies) that have no positive rule for
+        # the requested appellation/variant. Such sites are evidence, not label
+        # claims, and must fail closed without aborting generation of the parent GI.
         site_claim = self.site_claims.evaluate(
             site=site,
             origin_decision=decision,
             appellation=appellation,
             wine_variant=request.wine_variant,
         )
+        if site is not None and site_claim.eligible:
+            self.sites.validate_ownership(site, request.producer)
 
         return ConstrainedOrigin(
             country=request.country,
