@@ -20,12 +20,12 @@ describe('trade tech-sheet research ingestion', () => {
     const report = validateTradeSheetIngestion();
     expect(tradeSourcePassCount).toBe(3);
     expect(tradeDiscoveryPassCount).toBe(3);
-    expect(tradeObservationPassCount).toBe(4);
+    expect(tradeObservationPassCount).toBe(5);
     expect(tradeSources.length).toBeGreaterThanOrEqual(33);
     expect(tradeDiscoveryCandidateCount).toBeGreaterThanOrEqual(190);
     expect(tradeDiscoveryCountsByStage['directory-lead']).toBeGreaterThanOrEqual(140);
-    expect(tradeObservations.length).toBeGreaterThanOrEqual(36);
-    expect(report.fieldsExtracted).toBeGreaterThanOrEqual(340);
+    expect(tradeObservations.length).toBeGreaterThanOrEqual(43);
+    expect(report.fieldsExtracted).toBeGreaterThanOrEqual(410);
     expect(report.conflicts).toBe(0);
     expect(report.issues).toEqual([]);
   });
@@ -95,6 +95,18 @@ describe('trade tech-sheet research ingestion', () => {
     expect(promara?.fields.fermentationVessel).toContain('amphoras');
     expect(yiannoudi?.fields.tradeDisplayedWineName).toBe('Giannoudi');
     expect(yiannoudi?.fields.identityReconciliationRequired).toBe(true);
+  });
+
+  it('preserves different cellar pathways for the same indigenous cultivar rather than creating one grape recipe', () => {
+    const liatikoAmphora = tradeObservations.find((observation) => observation.id === 'tradeobs-diamond-douloufakis-liatiko-amphora');
+    const liatiko = tradeObservations.find((observation) => observation.id === 'tradeobs-diamond-douloufakis-liatiko');
+    const vidiano = tradeObservations.find((observation) => observation.id === 'tradeobs-diamond-douloufakis-vidiano');
+    const vidianoBarrel = tradeObservations.find((observation) => observation.id === 'tradeobs-diamond-douloufakis-vidiano-aspros-lagos');
+    expect(liatikoAmphora?.fields.fermentationVessel).toContain('pythi');
+    expect(liatikoAmphora?.fields.filtration).toBe('none');
+    expect(liatiko?.fields.maturationBlend).toHaveLength(3);
+    expect(vidiano?.fields.maturationVessel).toBe('stainless steel');
+    expect(vidianoBarrel?.fields.maturationWoodSharePct).toEqual({ Acacia: 30, FrenchOak: 70 });
   });
 
   it('tracks vintage-to-vintage technical trajectories instead of treating producer style as immutable', () => {
