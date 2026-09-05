@@ -1,8 +1,12 @@
 import registryData from '../data/research/trade_source_registry.json';
+import registryDataPass2 from '../data/research/trade_source_registry_pass2.json';
+import discoveryDataPass2 from '../data/research/trade_source_discovery_queue_pass2.json';
 import observationData from '../data/research/trade_tech_sheet_observations_pass1.json';
+import observationDataPass2 from '../data/research/trade_tech_sheet_observations_pass2.json';
 import { researchSourceById } from './research';
 
-export type TradeTrustTier = 'trade-curated';
+export type TradeTrustTier = 'trade-curated' | 'trade-verified';
+export type TradeDiscoveryStage = 'directory-lead' | 'website-verified' | 'portfolio-structured' | 'tech-sheet-capable' | 'observation-ingested';
 
 export type TradeSource = {
   id: string;
@@ -26,13 +30,13 @@ export type TradeObservation = {
   vintage: number | null;
   country: string;
   region: string;
-  vineyard?: string;
+  vineyard?: string | null;
   fields: Record<string, unknown>;
   evidenceChannel: string;
   sourceRef: string;
 };
 
-type TradeRegistryFile = {
+type TradePolicyRegistryFile = {
   schemaVersion: number;
   updatedAt: string;
   method: string;
@@ -45,6 +49,13 @@ type TradeRegistryFile = {
   conflictPolicy: Record<string, string>;
 };
 
+type TradeRegistryFile = {
+  schemaVersion: number;
+  updatedAt: string;
+  method: string;
+  sources: TradeSource[];
+};
+
 type TradeObservationFile = {
   schemaVersion: number;
   updatedAt: string;
@@ -52,16 +63,86 @@ type TradeObservationFile = {
   observations: TradeObservation[];
 };
 
-const registry = registryData as unknown as TradeRegistryFile;
-const observationsFile = observationData as unknown as TradeObservationFile;
+type TradeDiscoveryGroup = {
+  sourceRef: string;
+  candidates: string[];
+};
 
-export const tradeSourceMethod = registry.method;
+type TradeDiscoveryFile = {
+  schemaVersion: number;
+  updatedAt: string;
+  method: string;
+  groups: TradeDiscoveryGroup[];
+  promotionPolicy: Record<TradeDiscoveryStage, string>;
+};
+
+export type TradeDiscoveryCandidate = {
+  name: string;
+  stage: TradeDiscoveryStage;
+  discoverySourceRefs: string[];
+};
+
+const registry = registryData as unknown as TradePolicyRegistryFile;
+const registry2 = registryDataPass2 as unknown as TradeRegistryFile;
+const discovery = discoveryDataPass2 as unknown as TradeDiscoveryFile;
+const observationsFile = observationData as unknown as TradeObservationFile;
+const observationsFile2 = observationDataPass2 as unknown as TradeObservationFile;
+
+export const tradeSourceMethod = [registry.method, registry2.method, discovery.method].join(' ');
+export const tradeSourcePassCount = 2;
+export const tradeObservationPassCount = 2;
 export const tradeFieldPolicy = registry.fieldPolicy;
 export const tradeConflictPolicy = registry.conflictPolicy;
-export const tradeSources = registry.sources;
+export const tradePromotionPolicy = discovery.promotionPolicy;
+export const tradeSources = [...registry.sources, ...registry2.sources];
 export const tradeSourceById = new Map(tradeSources.map((source) => [source.id, source]));
-export const tradeObservations = observationsFile.observations;
+export const tradeObservations = [...observationsFile.observations, ...observationsFile2.observations];
 export const tradeObservationById = new Map(tradeObservations.map((observation) => [observation.id, observation]));
+
+const normalizedTradeName = (value: string) => value
+  .normalize('NFKD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/&/g, 'and')
+  .replace(/[^a-zA-Z0-9]+/g, ' ')
+  .trim()
+  .toLocaleLowerCase();
+
+const discoveryMap = new Map<string, TradeDiscoveryCandidate>();
+for (const group of discovery.groups) {
+  for (const name of group.candidates) {
+    const key = normalizedTradeName(name);
+    const existing = discoveryMap.get(key);
+    if (existing) {
+      if (!existing.discoverySourceRefs.includes(group.sourceRef)) existing.discoverySourceRefs.push(group.sourceRef);
+      continue;
+    }
+    discoveryMap.set(key, { name, stage: 'directory-lead', discoverySourceRefs: [group.sourceRef] });
+  }
+}
+
+for (const source of tradeSources) {
+  const key = normalizedTradeName(source.name);
+  const current = discoveryMap.get(key);
+  const stage: TradeDiscoveryStage = source.trustTier === 'trade-curated' ? 'observation-ingested' : 'website-verified';
+  if (current) {
+    current.stage = stage;
+  } else {
+    discoveryMap.set(key, { name: source.name, stage, discoverySourceRefs: [source.sourceRef] });
+  }
+}
+for (const observation of tradeObservations) {
+  const source = tradeSourceById.get(observation.tradeSourceId);
+  if (!source) continue;
+  const record = discoveryMap.get(normalizedTradeName(source.name));
+  if (record) record.stage = 'observation-ingested';
+}
+
+export const tradeDiscoveryCandidates = [...discoveryMap.values()].sort((a, b) => a.name.localeCompare(b.name));
+export const tradeDiscoveryCandidateCount = tradeDiscoveryCandidates.length;
+export const tradeDiscoveryCountsByStage = Object.fromEntries(
+  (['directory-lead', 'website-verified', 'portfolio-structured', 'tech-sheet-capable', 'observation-ingested'] as TradeDiscoveryStage[])
+    .map((stage) => [stage, tradeDiscoveryCandidates.filter((candidate) => candidate.stage === stage).length]),
+) as Record<TradeDiscoveryStage, number>;
 
 const stable = (value: unknown): string => {
   if (Array.isArray(value)) return JSON.stringify([...value].sort((a, b) => String(a).localeCompare(String(b))));
@@ -169,6 +250,11 @@ export function validateTradeSheetIngestion() {
     if (!researchSourceById.has(source.sourceRef)) issues.push(`Unknown trade registry sourceRef ${source.sourceRef} in ${source.id}`);
   }
 
+  for (const group of discovery.groups) {
+    if (!researchSourceById.has(group.sourceRef)) issues.push(`Unknown trade discovery sourceRef: ${group.sourceRef}`);
+    if (!group.candidates.length) issues.push(`Empty trade discovery group: ${group.sourceRef}`);
+  }
+
   for (const observation of tradeObservations) {
     if (observationIds.has(observation.id)) issues.push(`Duplicate trade observation id: ${observation.id}`);
     observationIds.add(observation.id);
@@ -184,7 +270,11 @@ export function validateTradeSheetIngestion() {
   }
 
   return {
+    sourcePasses: tradeSourcePassCount,
+    observationPasses: tradeObservationPassCount,
     sources: tradeSources.length,
+    discoveryCandidates: tradeDiscoveryCandidateCount,
+    discoveryCountsByStage: tradeDiscoveryCountsByStage,
     observations: tradeObservations.length,
     fieldsExtracted: tradeObservations.reduce((sum, observation) => sum + Object.keys(observation.fields).length, 0),
     conflicts: detectTradeConflicts().length,
