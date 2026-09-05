@@ -23,4 +23,13 @@ describe('canonical wine reference layer', () => {
     expect(book.every(validateGeneratedWine)).toBe(true);
     expect(new Set(book.map((wine) => wine.country)).size).toBeGreaterThan(10);
   });
+
+  it('attaches exact researched products only when the resolver can validate the chosen single-grape case', () => {
+    const book = generateWineBook('resolver-integration', 2500);
+    const resolved = book.filter((wine) => wine.productRuleId);
+    expect(resolved.length).toBeGreaterThan(10);
+    expect(resolved.every((wine) => wine.productResolutionStatus === 'resolved')).toBe(true);
+    expect(resolved.every((wine) => Boolean(wine.productName))).toBe(true);
+    expect(resolved.every((wine) => typeof wine.provenanceRisk === 'number' && wine.provenanceRisk >= 0 && wine.provenanceRisk <= 1)).toBe(true);
+  });
 });
