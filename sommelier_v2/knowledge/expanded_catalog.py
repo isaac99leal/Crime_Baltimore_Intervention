@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import csv
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Iterable
 
@@ -152,9 +152,40 @@ def _load_sites(path: Path) -> list[NamedSite]:
                 notes=str(row.get("notes", "")),
             )
         )
-    # Do not collapse same-name sites under different parents. Only exact IDs dedupe.
-    unique: dict[str, NamedSite] = {site.id: site for site in sites if site.name}
-    return sorted(unique.values(), key=lambda s: (s.country, s.region, s.parent or "", s.name.casefold()))
+
+    # Preserve existing stable IDs for the first record, but do not collapse a
+    # legally distinct site that has the same displayed name and parent. Burgundy
+    # can legitimately use one name both as a Premier Cru climat and as a broader
+    # lieu-dit. Later colliding identities receive a typed suffix.
+    unique: dict[str, NamedSite] = {}
+    for site in sites:
+        if not site.name:
+            continue
+        existing = unique.get(site.id)
+        if existing is None:
+            unique[site.id] = site
+            continue
+        if existing == site:
+            continue
+
+        base_collision_id = f"{site.id}:{_slug(site.site_type)}"
+        collision_id = base_collision_id
+        counter = 2
+        while collision_id in unique and unique[collision_id] != site:
+            collision_id = f"{base_collision_id}-{counter}"
+            counter += 1
+        unique.setdefault(collision_id, replace(site, id=collision_id))
+
+    return sorted(
+        unique.values(),
+        key=lambda s: (
+            s.country,
+            s.region,
+            s.parent or "",
+            s.name.casefold(),
+            s.site_type,
+        ),
+    )
 
 
 class WorldWineKnowledgeCatalog:
