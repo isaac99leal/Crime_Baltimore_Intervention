@@ -1,5 +1,8 @@
 import varietyData from '../data/official/adelaide-varieties.json';
 import regionData from '../data/official/adelaide-regions.json';
+import vintageData from '../data/research/vintage_observations.json';
+import vintageDataPass2 from '../data/research/vintage_observations_pass2.json';
+import vintageDataPass3 from '../data/research/vintage_observations_pass3.json';
 import { researchProfiles } from './research';
 import { tradeObservations } from './tradeSheetIngestion';
 
@@ -41,8 +44,29 @@ type AdelaideRegionFile = {
   records: AdelaideRegionRecord[];
 };
 
+type VintageObservation = {
+  id: string;
+  country: string;
+  region: string;
+  year: number;
+  growingSeason?: Record<string, unknown>;
+  styleEffects?: string[];
+  matrixModifiers?: Record<string, unknown>;
+  sourceRefs: string[];
+};
+
+type VintageObservationFile = {
+  observations: VintageObservation[];
+};
+
 const varieties = varietyData as unknown as AdelaideVarietyFile;
 const regions = regionData as unknown as AdelaideRegionFile;
+const vintageFiles = [
+  vintageData as unknown as VintageObservationFile,
+  vintageDataPass2 as unknown as VintageObservationFile,
+  vintageDataPass3 as unknown as VintageObservationFile,
+];
+const vintageObservations = vintageFiles.flatMap((file) => file.observations);
 
 export type CultivarAreaSeries = {
   name: string;
@@ -87,6 +111,21 @@ export type TradeWineUseEvidence = {
   country: string;
   region: string;
   sourceRef: string;
+  technicalFields: Record<string, unknown>;
+};
+
+export type CultivarVintageContext = {
+  cultivar: string;
+  observationId: string;
+  country: string;
+  region: string;
+  year: number;
+  growingSeason?: Record<string, unknown>;
+  styleEffects?: string[];
+  matrixModifiers?: Record<string, unknown>;
+  sourceRefs: string[];
+  matchBasis: Array<'statistical-cultivation-geography' | 'legal-wine-use-geography' | 'trade-wine-use-geography'>;
+  scope: 'regional-context-not-universal-cultivar-rating';
 };
 
 export type CommercialCultivarStatus =
@@ -100,11 +139,12 @@ export type CommercialCultivarCoverage = {
   cultivation: CultivationObservation[];
   legalWineUse: LegalWineUseEvidence[];
   tradeWineUse: TradeWineUseEvidence[];
+  vintageContexts: CultivarVintageContext[];
   status: CommercialCultivarStatus;
 };
 
 export const commercialCultivarMethod =
-  'Commercial-cultivar evidence keeps statistical bearing area, statistical cultivation geography, protected-origin legality, and producer/importer wine-use evidence in separate evidence channels. Statistical planting evidence never creates a GI, cultivar synonym, or bottle-generation permission by itself.';
+  'Commercial-cultivar evidence keeps statistical bearing area, statistical cultivation geography, protected-origin legality, producer/importer wine-use evidence, regional vintage observations, and wine-specific cellar choices in separate evidence channels. Statistical planting evidence never creates a GI, cultivar synonym, or bottle-generation permission by itself. Regional vintage context is never converted into one universal cultivar vintage score.';
 
 export const cultivarAreaSeries: CultivarAreaSeries[] = varieties.records.map((record) => ({
   name: record.name,
@@ -202,10 +242,17 @@ export const tradeWineUseEvidence: TradeWineUseEvidence[] = tradeObservations.fl
     country: observation.country,
     region: observation.region,
     sourceRef: observation.sourceRef,
+    technicalFields: observation.fields,
   })),
 );
 
 const exact = (value: string) => value.toLocaleLowerCase();
+const geoKey = (value: string) => value
+  .normalize('NFKD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-zA-Z0-9]+/g, ' ')
+  .trim()
+  .toLocaleLowerCase();
 const areaByName = new Map(cultivarAreaSeries.map((record) => [exact(record.name), record]));
 const cultivationByName = new Map<string, CultivationObservation[]>();
 for (const record of regionalCultivationObservations) {
@@ -229,6 +276,49 @@ for (const record of tradeWineUseEvidence) {
   tradeByName.set(key, bucket);
 }
 
+function vintageContexts(name: string): CultivarVintageContext[] {
+  const key = exact(name);
+  const locations: Array<{ country: string; label: string; basis: CultivarVintageContext['matchBasis'][number] }> = [];
+  for (const record of cultivationByName.get(key) ?? []) {
+    for (const label of record.path) locations.push({ country: record.country, label, basis: 'statistical-cultivation-geography' });
+  }
+  for (const record of legalByName.get(key) ?? []) {
+    locations.push({ country: record.country, label: record.designation, basis: 'legal-wine-use-geography' });
+  }
+  for (const record of tradeByName.get(key) ?? []) {
+    locations.push({ country: record.country, label: record.region, basis: 'trade-wine-use-geography' });
+  }
+
+  const contexts: CultivarVintageContext[] = [];
+  for (const observation of vintageObservations) {
+    const observationRegion = geoKey(observation.region);
+    const bases = new Set<CultivarVintageContext['matchBasis'][number]>();
+    for (const location of locations) {
+      if (location.country !== observation.country) continue;
+      const label = geoKey(location.label);
+      if (!label || !observationRegion) continue;
+      if (label === observationRegion || (label.length >= 6 && observationRegion.includes(label)) || (observationRegion.length >= 6 && label.includes(observationRegion))) {
+        bases.add(location.basis);
+      }
+    }
+    if (!bases.size) continue;
+    contexts.push({
+      cultivar: name,
+      observationId: observation.id,
+      country: observation.country,
+      region: observation.region,
+      year: observation.year,
+      growingSeason: observation.growingSeason,
+      styleEffects: observation.styleEffects,
+      matrixModifiers: observation.matrixModifiers,
+      sourceRefs: observation.sourceRefs,
+      matchBasis: [...bases],
+      scope: 'regional-context-not-universal-cultivar-rating',
+    });
+  }
+  return contexts.sort((a, b) => a.year - b.year || a.region.localeCompare(b.region));
+}
+
 export function commercialCultivarCoverage(name: string): CommercialCultivarCoverage | undefined {
   const key = exact(name);
   const areaSeries = areaByName.get(key);
@@ -245,12 +335,16 @@ export function commercialCultivarCoverage(name: string): CommercialCultivarCove
       ? 'wine-use-corroborated'
       : 'statistical-bearing-area-only';
 
-  return { name: areaSeries?.name ?? name, areaSeries, cultivation, legalWineUse, tradeWineUse, status };
+  return { name: areaSeries?.name ?? name, areaSeries, cultivation, legalWineUse, tradeWineUse, vintageContexts: vintageContexts(name), status };
 }
 
 export function cultivationForCultivar(name: string, country?: string): CultivationObservation[] {
   const records = cultivationByName.get(exact(name)) ?? [];
   return country ? records.filter((record) => record.country === country) : records;
+}
+
+export function vintageContextsForCultivar(name: string): CultivarVintageContext[] {
+  return vintageContexts(name);
 }
 
 export function validateCommercialCultivarEvidence() {
@@ -260,8 +354,11 @@ export function validateCommercialCultivarEvidence() {
   if (regionalCultivationObservations.some((record) => record.geographyStatus !== 'statistical-not-gi')) {
     issues.push('A statistical cultivation geography escaped the non-GI guardrail.');
   }
-  if (commercialCultivarMethod.toLocaleLowerCase().includes('statistical planting evidence never creates a gi') === false) {
+  if (!commercialCultivarMethod.toLocaleLowerCase().includes('statistical planting evidence never creates a gi')) {
     issues.push('Commercial cultivar method lost the statistical-geography guardrail.');
+  }
+  if (!commercialCultivarMethod.toLocaleLowerCase().includes('never converted into one universal cultivar vintage score')) {
+    issues.push('Commercial cultivar method lost the regional-vintage guardrail.');
   }
   return {
     authorityVarieties: varieties.records.length,
@@ -270,6 +367,7 @@ export function validateCommercialCultivarEvidence() {
     cultivationObservations: regionalCultivationObservations.length,
     legalWineUseObservations: legalWineUseEvidence.length,
     tradeWineUseObservations: tradeWineUseEvidence.length,
+    regionalVintageObservationsAvailable: vintageObservations.length,
     issues,
   };
 }
