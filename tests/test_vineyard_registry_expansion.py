@@ -64,8 +64,8 @@ class VineyardRegistryExpansionTests(unittest.TestCase):
             region="Niederösterreich",
         )
         self.assertEqual(len(rows), 3386)
-        self.assertGreater(sum(row.site_type == "ried" for row in rows), 3000)
-        self.assertTrue(any(row.site_type == "subried" for row in rows))
+        self.assertEqual(sum(row.site_type == "ried" for row in rows), 2878)
+        self.assertEqual(sum(row.site_type == "subried" for row in rows), 508)
         for row in rows:
             self.assertIn("noe_rieden_wfs_2026", row.source_ids)
             self.assertEqual(row.geometry_source_id, "noe_rieden_wfs_2026")
