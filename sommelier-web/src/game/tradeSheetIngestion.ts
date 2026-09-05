@@ -1,8 +1,12 @@
 import registryData from '../data/research/trade_source_registry.json';
 import registryDataPass2 from '../data/research/trade_source_registry_pass2.json';
+import registryDataPass3 from '../data/research/trade_source_registry_pass3.json';
 import discoveryDataPass2 from '../data/research/trade_source_discovery_queue_pass2.json';
+import discoveryDataPass3 from '../data/research/trade_source_discovery_queue_pass3.json';
+import discoveryDataPass4 from '../data/research/trade_source_discovery_queue_pass4.json';
 import observationData from '../data/research/trade_tech_sheet_observations_pass1.json';
 import observationDataPass2 from '../data/research/trade_tech_sheet_observations_pass2.json';
+import observationDataPass3 from '../data/research/trade_tech_sheet_observations_pass3.json';
 import { researchSourceById } from './research';
 
 export type TradeTrustTier = 'trade-curated' | 'trade-verified';
@@ -73,7 +77,7 @@ type TradeDiscoveryFile = {
   updatedAt: string;
   method: string;
   groups: TradeDiscoveryGroup[];
-  promotionPolicy: Record<TradeDiscoveryStage, string>;
+  promotionPolicy?: Record<TradeDiscoveryStage, string> | string;
 };
 
 export type TradeDiscoveryCandidate = {
@@ -84,39 +88,51 @@ export type TradeDiscoveryCandidate = {
 
 const registry = registryData as unknown as TradePolicyRegistryFile;
 const registry2 = registryDataPass2 as unknown as TradeRegistryFile;
-const discovery = discoveryDataPass2 as unknown as TradeDiscoveryFile;
+const registry3 = registryDataPass3 as unknown as TradeRegistryFile;
+const discovery2 = discoveryDataPass2 as unknown as TradeDiscoveryFile;
+const discovery3 = discoveryDataPass3 as unknown as TradeDiscoveryFile;
+const discovery4 = discoveryDataPass4 as unknown as TradeDiscoveryFile;
+const discoveryFiles = [discovery2, discovery3, discovery4];
 const observationsFile = observationData as unknown as TradeObservationFile;
 const observationsFile2 = observationDataPass2 as unknown as TradeObservationFile;
+const observationsFile3 = observationDataPass3 as unknown as TradeObservationFile;
 
-export const tradeSourceMethod = [registry.method, registry2.method, discovery.method].join(' ');
-export const tradeSourcePassCount = 2;
-export const tradeObservationPassCount = 2;
+export const tradeSourceMethod = [registry.method, registry2.method, registry3.method, ...discoveryFiles.map((file) => file.method)].join(' ');
+export const tradeSourcePassCount = 3;
+export const tradeDiscoveryPassCount = discoveryFiles.length;
+export const tradeObservationPassCount = 3;
 export const tradeFieldPolicy = registry.fieldPolicy;
 export const tradeConflictPolicy = registry.conflictPolicy;
-export const tradePromotionPolicy = discovery.promotionPolicy;
-export const tradeSources = [...registry.sources, ...registry2.sources];
+export const tradePromotionPolicy = typeof discovery2.promotionPolicy === 'object' && discovery2.promotionPolicy
+  ? discovery2.promotionPolicy
+  : {} as Record<TradeDiscoveryStage, string>;
+export const tradeSources = [...registry.sources, ...registry2.sources, ...registry3.sources];
 export const tradeSourceById = new Map(tradeSources.map((source) => [source.id, source]));
-export const tradeObservations = [...observationsFile.observations, ...observationsFile2.observations];
+export const tradeObservations = [...observationsFile.observations, ...observationsFile2.observations, ...observationsFile3.observations];
 export const tradeObservationById = new Map(tradeObservations.map((observation) => [observation.id, observation]));
 
 const normalizedTradeName = (value: string) => value
   .normalize('NFKD')
   .replace(/[\u0300-\u036f]/g, '')
   .replace(/&/g, 'and')
+  .replace(/\b(?:wine|wines|imports?|importers?|selections?|distribution|distributors?|merchant|merchants|company|co|ltd|llc|inc)\b/g, ' ')
   .replace(/[^a-zA-Z0-9]+/g, ' ')
+  .replace(/\s+/g, ' ')
   .trim()
   .toLocaleLowerCase();
 
 const discoveryMap = new Map<string, TradeDiscoveryCandidate>();
-for (const group of discovery.groups) {
-  for (const name of group.candidates) {
-    const key = normalizedTradeName(name);
-    const existing = discoveryMap.get(key);
-    if (existing) {
-      if (!existing.discoverySourceRefs.includes(group.sourceRef)) existing.discoverySourceRefs.push(group.sourceRef);
-      continue;
+for (const discovery of discoveryFiles) {
+  for (const group of discovery.groups) {
+    for (const name of group.candidates) {
+      const key = normalizedTradeName(name);
+      const existing = discoveryMap.get(key);
+      if (existing) {
+        if (!existing.discoverySourceRefs.includes(group.sourceRef)) existing.discoverySourceRefs.push(group.sourceRef);
+        continue;
+      }
+      discoveryMap.set(key, { name, stage: 'directory-lead', discoverySourceRefs: [group.sourceRef] });
     }
-    discoveryMap.set(key, { name, stage: 'directory-lead', discoverySourceRefs: [group.sourceRef] });
   }
 }
 
@@ -222,6 +238,32 @@ export function detectTradeConflicts(records: TradeObservation[] = tradeObservat
   return conflicts;
 }
 
+export type TradeTechnicalTrajectory = {
+  producer: string;
+  wine: string;
+  records: Array<{ observationId: string; vintage: number; fields: Record<string, unknown> }>;
+  changingFields: string[];
+};
+
+export function tradeTechnicalTrajectory(producer: string, wine: string): TradeTechnicalTrajectory {
+  const producerKey = producer.toLocaleLowerCase();
+  const wineKey = wine.toLocaleLowerCase();
+  const records = tradeObservations
+    .filter((observation) => observation.vintage !== null
+      && observation.producer.toLocaleLowerCase() === producerKey
+      && (observation.wine ?? '').toLocaleLowerCase() === wineKey)
+    .map((observation) => ({ observationId: observation.id, vintage: observation.vintage as number, fields: observation.fields }))
+    .sort((a, b) => a.vintage - b.vintage);
+
+  const fields = new Set(records.flatMap((record) => Object.keys(record.fields)));
+  const changingFields = [...fields].filter((field) => {
+    const observed = records.filter((record) => field in record.fields).map((record) => stable(record.fields[field]));
+    return new Set(observed).size > 1;
+  }).sort();
+
+  return { producer, wine, records, changingFields };
+}
+
 export function createTradeObservationCandidate(input: TradeObservation): { accepted: boolean; issues: string[]; record: TradeObservation } {
   const issues: string[] = [];
   if (!tradeSourceById.has(input.tradeSourceId)) issues.push(`Unknown trade source: ${input.tradeSourceId}`);
@@ -250,9 +292,11 @@ export function validateTradeSheetIngestion() {
     if (!researchSourceById.has(source.sourceRef)) issues.push(`Unknown trade registry sourceRef ${source.sourceRef} in ${source.id}`);
   }
 
-  for (const group of discovery.groups) {
-    if (!researchSourceById.has(group.sourceRef)) issues.push(`Unknown trade discovery sourceRef: ${group.sourceRef}`);
-    if (!group.candidates.length) issues.push(`Empty trade discovery group: ${group.sourceRef}`);
+  for (const discovery of discoveryFiles) {
+    for (const group of discovery.groups) {
+      if (!researchSourceById.has(group.sourceRef)) issues.push(`Unknown trade discovery sourceRef: ${group.sourceRef}`);
+      if (!group.candidates.length) issues.push(`Empty trade discovery group: ${group.sourceRef}`);
+    }
   }
 
   for (const observation of tradeObservations) {
@@ -271,6 +315,7 @@ export function validateTradeSheetIngestion() {
 
   return {
     sourcePasses: tradeSourcePassCount,
+    discoveryPasses: tradeDiscoveryPassCount,
     observationPasses: tradeObservationPassCount,
     sources: tradeSources.length,
     discoveryCandidates: tradeDiscoveryCandidateCount,
