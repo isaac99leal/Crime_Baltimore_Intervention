@@ -12,9 +12,9 @@ import {
 describe('hand-researched wine reference overlay', () => {
   it('has meaningful research depth with resolvable provenance', () => {
     const report = validateResearchLibrary();
-    expect(researchPassCount).toBe(5);
+    expect(researchPassCount).toBe(6);
     expect(researchSourcePassCount).toBe(14);
-    expect(researchProfiles.length).toBeGreaterThanOrEqual(70);
+    expect(researchProfiles.length).toBeGreaterThanOrEqual(72);
     expect(researchSources.length).toBeGreaterThanOrEqual(165);
     expect(researchCountries.length).toBeGreaterThanOrEqual(15);
     expect(report.generationCandidates).toBeGreaterThanOrEqual(30);
@@ -86,6 +86,25 @@ describe('hand-researched wine reference overlay', () => {
     expect(khvanchkara?.productionRules?.residualSugarGPerL).toEqual([30, 45]);
     expect(khvanchkara?.productionRules?.maxYieldTonnesPerHa).toBe(7);
     expect(zegaani?.generationStatus).toBe('reference-only');
+  });
+
+  it('versions current Chilean origin and label rules instead of flattening the 75% thresholds', () => {
+    const current = findResearchProfile('cl-wine-do-framework-2026');
+    const secano = findResearchProfile('cl-secano-interior-special-do-2026');
+    const multiOrigin = current?.productionRules?.multiOriginSameVariety as Record<string, unknown>;
+    const supplementary = current?.productionRules?.supplementaryGeographicTerms as Record<string, unknown>;
+
+    expect(current?.productionRules?.effectiveVersionDate).toBe('2026-07-14');
+    expect(current?.productionRules?.minimumGeographicOriginPct).toBe(75);
+    expect(current?.productionRules?.singleNamedVarietyMinPct).toBe(75);
+    expect(current?.productionRules?.vintageClaimMinPct).toBe(75);
+    expect(multiOrigin.maximumNamedRegionsOrSubregions).toBe(3);
+    expect(multiOrigin.minorComponentMinPct).toBe(15);
+    expect(supplementary.minimumQualifyingVolumePct).toBe(85);
+    expect(secano?.authorizedGrapes).toEqual(['País', 'Cinsault']);
+    expect(secano?.eligibleNamedAreas).toContain('Coelemu');
+    expect(secano?.eligibleAdditionalCommunes).toContain('Tomé');
+    expect(secano?.generationStatus).toBe('reference-only');
   });
 
   it('preserves New World origin, variety and vintage percentage rules', () => {
