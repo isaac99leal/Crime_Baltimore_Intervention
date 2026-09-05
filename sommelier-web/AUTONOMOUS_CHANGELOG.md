@@ -187,3 +187,89 @@ The user's `Issyk-Tul` example appears likely to refer to **Issyk-Kul, Kyrgyzsta
 - Add historical legal versions for Tokaj/Jerez/Port rather than applying current product matrices backward.
 - Connect chemistry measurements and smoke/Brett/premox state into long-term aroma evolution, pairing response, storage decisions and bottle condition.
 - Wire audit and staff blind-tasting engines into the browser UI and weekly staff-management loop.
+
+## 2026-09-05 — current WO, effective-date law, playable audit/training and bottle-condition tranche
+
+### South African Wine of Origin identity ingestion
+- Replaced the earlier framework-only coverage gap with **152 current February-2026 SAWIS Wine of Origin production-area identities**.
+- Preserved geographical-unit / overarching-region / region / subregion / district / ward hierarchy and bilingual aliases rather than creating duplicate identities.
+- Explicit regression tests keep obsolete `Still Bay East` out while retaining current areas including Still Bay, Goukou River Valley, Shaw's Mountain, Keeromsberg, Moordkuil, Rooikrans, Agter-Pakhuis, Rocklands Valley, Sutherland-Karoo and Lanseria.
+- This brought the expanded non-EU/non-TTB authority identity index from 407 to **559** at that stage.
+
+### Jerez effective-date correction
+- Added an eighth legal/appellation profile pass and an eighteenth source pass.
+- Versioned the approved 2025 Jerez Union amendment instead of mutating the older record in place.
+- Corrected the earlier overly strong universal-fortification assumption: post-amendment Fino, Amontillado, Oloroso and Palo Cortado may resolve through the category-1 wine or category-3 liqueur-wine framework where applicable.
+- Extended the product resolver to **four passes / 59+ rules** with supersession and an exact effective-date field.
+- A vintage year alone does not prove which side of a mid-year law change a wine falls on; exact dates can verify the applicable era and year-only requests remain conservative.
+
+### Port certification overlay
+- Added current IVDP certification/bottling/product-specification provenance and a conservative product-level certification profile.
+- Kept Port procedural generation reference-only while the remaining grape, beneficio, fortification and certification details are still being normalized.
+
+### Playable training systems
+- Wired staff BTG blind-tasting into the browser People & Trade view using wines actually enabled as BTG inventory.
+- Wired player provenance-audit drills into the browser UI; exercises spend study time and can award knowledge/XP.
+- Closed an engine loophole where direct calls could award staff learning without sufficient weekly training time; time-budget enforcement now exists inside the engine, not only in disabled UI buttons.
+
+### Bottle condition
+- Added weekly sealed-bottle condition evolution based on storage zone, cellar-cooling investment, bottle age and inherited storage quality.
+- Mature bottles are more sensitive to poor storage than young bottles.
+- Critically compromised stock is automatically quarantined, unlisted and removed from BTG service rather than remaining saleable at 100% functional status.
+
+### Validation
+- An intermediate CI run exposed one duplicate IVDP provenance-source ID; the duplicate was removed rather than renamed so one source document retains one canonical ID.
+- CI run `33954322685` passed the full test suite and production build on commit `307778cecd1e702523777473e1491155c1583398`.
+- npm still reported **5 vulnerabilities (3 moderate, 1 high, 1 critical)**; the tranche did not claim dependency-security remediation.
+
+## 2026-09-05 — Willamette block research, global registry expansion, rare cultivars and trade-sheet ingestion
+
+### Global authority registry
+- Added five authority-registry passes totaling **590 expanded non-EU/non-TTB protected-origin identities**.
+- New country coverage in this tranche: Japan 5 wine GIs; Moldova 5 wine PGI/PDO identities; Brazil 13 wine IP/DO identities; United Kingdom 6 registered wine PDO/PGIs; India 1 registered Nashik Valley Wine GI; Mexico 1 protected Querétaro wine GI.
+- Kept non-wine names out of the wine registry (for example Moldova `Divin`) and kept application-only UK names such as The Crouch Valley out of the registered count.
+- Preserved same-name legal distinctions such as `Vale dos Vinhedos` IP versus DO.
+- Did **not** relabel Uruguay's viticultural regions as protected GIs simply because the national wine institute publishes regional viticultural descriptions.
+
+### Willamette vineyard/block layer
+- Added a dedicated, source-bounded Willamette micro-site architecture with **2 passes, 11 vineyard/site records, 57+ exact blocks and 79+ total sub-site observations**.
+- Terry Family Vineyard: 13 named blocks with variety, clone and rootstock.
+- Open Claim: ten blocks with row counts, acreage, clone/rootstock, spacing, slope/aspect and site geology; block acreage reconciles to the published 20.78 planted acres.
+- Shea: East Hill, West Hill and Third Hill mesoclimate/soil zones plus contracted block clone/rootstock detail.
+- Hirschy, Abbott Claim, Freedom Hill, Lingua Franca and Penner-Ash preserve block/parcel/clone/rootstock or source-context observations.
+- Blakeslee preserves six exact blocks including graft history: Block 3B is not falsely represented as having always been Chardonnay.
+- iOTA/Pelos Sandberg preserves adjacent Yiayia and Pappou blocks as different volcanic versus marine-sedimentary sites despite the same Pommard/4453M planting material.
+- Knudsen carries block-specific elevation, clone, rootstock, spacing and vintage wine chemistry where published.
+
+### Data-quality conflict handling
+- Producer pages sometimes disagree. Knudsen Block 12 is the explicit first case: producer-published records variously describe clone 4407 planted 2012, clone 828 planted 2010, and clone 828 planted 2012.
+- The model stores these as versioned source-context observations with a material data-quality flag instead of choosing a winner or silently overwriting old information.
+- Lingua Franca Block 3 similarly retains source qualifiers such as selected rows/components while a canonical clone-token helper supports comparison without erasing the original wording.
+
+### Rare cultivars requested by the user
+- Added a second rare-cultivar pass with **Romorantin**, **Limniona**, and **Ak-Dzhuzyum**.
+- Romorantin retains time-stamped French planting-area history, certified French clones 466/873/928/929, phenology and Cour-Cheverny legal context. Historical hectare values are never presented as a 2026 acreage claim.
+- Limniona is hard-separated from **Limnio**, carries the ENTAV-INRA 013VNB clonal record, and preserves its recovery/research context.
+- Ak-Dzhuzyum preserves aliases/transliterations including the user's `Ak-Dzuzhum` and Cyrillic `Ак-джузюм`; the historical Soviet/Kyrgyz breeding record is stored with Madeleine Angevine × Pinot Noir parentage, breeding number, trial-era phenology/yield/chemistry observations and an explicitly unresolved current commercial status.
+- All three remain reference-only until their relationship to the legacy generation grape master is normalized safely.
+
+### Importer/distributor technical-sheet ingestion
+- Added a formal research-ingestion registry for Skurnik, European Cellars, The Rare Wine Co., Kermit Lynch and Bowler Wine.
+- Trade/producer-channel sheets may populate producer, wine, vintage, vineyard/block, vine age, clone, rootstock, spacing/training, farming, harvest, cellar choices, maturation, analytical data, production quantity, bottling and closure fields.
+- Trade sheets are **not** sufficient authority for protected-origin law, GI boundaries, prime cultivar identity/synonymy/genetic parentage, mutation identity, historical weather or official vintage ratings.
+- Added same-entity/same-vintage field conflict detection. Different vintages are versioned rather than treated as contradictions; legal conflicts defer to regulators and cultivar conflicts defer to VIVC/national genetic/registration evidence.
+- Seed normalized observations cover Bedrock/Katushas 2024 via Skurnik, Jose Gil, Viñedos de Alcohuaz and Dominio del Águila via European Cellars, and Bellande Willamette 2024 via Bowler.
+- Tests deliberately attempt to inject a trade-sheet `protectedOriginLegalStatus` claim and require the ingestion engine to quarantine it.
+
+### Provenance counts and validation
+- The research source registry now contains **21 provenance-source passes** while the legal/appellation profile library remains at 8 passes.
+- The first integrated CI run failed only because the Lingua Franca test compared source-qualified clone strings as if they were canonical clone names; the source qualifiers were retained and the comparator was fixed instead of simplifying the data.
+- CI run `33955599800` passed the full test suite and production build on commit `93bbe0c9d47dda2e0708fbec7c063e37fd884f35`.
+- The npm dependency audit still reports **5 vulnerabilities (3 moderate, 1 high, 1 critical)**; this data/research pass does not claim those are resolved.
+
+### Next pressure points
+- Extend Willamette block-level coverage into more producer-published vineyard maps, with special attention to time-varying grafts, replanting, clone changes and block renumbering.
+- Scale the trade-sheet collector from seed records to producer/importer portfolios, retaining vintage/document dates and automatic conflict queues.
+- Promote Romorantin, Limniona and Ak-Dzhuzyum into the main grape identity layer only after master-ID normalization and any remaining direct VIVC/national-registry corroboration.
+- Continue the non-EU global GI program jurisdiction by jurisdiction; do not substitute generic wine regions for legally protected names.
+- Use importer/producer technical data to enrich cellar chemistry and site models while keeping legal/genetic authority separated.
