@@ -45,12 +45,20 @@ const norm = (value: string) => value.normalize('NFKD').replace(/[\u0300-\u036f]
 
 function resolvedReferencePlace(wine: WineDefinition) {
   const referencePath = wine.referencePath?.map(norm).join(' / ');
-  return referencePlaces.find((place) => {
-    if (place.country !== wine.country) return false;
-    if (wine.appellation && norm(place.name) === norm(wine.appellation)) return true;
-    if (referencePath && place.path.map(norm).join(' / ') === referencePath) return true;
-    return false;
-  });
+  if (referencePath) {
+    const exact = referencePlaces.find((place) =>
+      place.country === wine.country && place.path.map(norm).join(' / ') === referencePath,
+    );
+    if (exact) return exact;
+  }
+
+  if (wine.appellation) {
+    const target = norm(wine.appellation);
+    const candidates = referencePlaces.filter((place) => place.country === wine.country && norm(place.name) === target);
+    if (candidates.length === 1) return candidates[0];
+  }
+
+  return undefined;
 }
 
 function addFinding(findings: AuditFinding[], finding: AuditFinding) {
