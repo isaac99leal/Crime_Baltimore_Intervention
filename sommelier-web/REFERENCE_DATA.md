@@ -1,93 +1,163 @@
 # Reference-data policy
 
-The game separates **factual wine reference data** from **fictional simulation content** and from **simulation-derived matrices**.
+The game separates **factual wine reference data**, **historical evidence**, **legal/product rules**, **fictional commercial simulation**, and **simulation-derived sensory matrices**.
 
 ## Hard rule
 
-The engine must not invent a country, wine region, geographical indication, appellation, commune, formally named vineyard/cru, classification, or grape variety and present it as real. Those entities must resolve to curated reference data before a generated bottle is valid.
+The engine must not invent a country, wine region, geographical indication, appellation, commune, formally named vineyard/cru, classification, grape variety, historical weather event, legal ageing rule, old-vine indication, or winemaking permission and present it as real.
 
-Generated producers, estates, cuvées, commercial prices, quantities, allocations, restaurant demand, and bottle histories may be fictional. They are marked as fictional and must remain plausible for their validated real-world geography and grapes.
+Generated producers, estates, cuvées, commercial prices, quantities, allocations, restaurant demand, bottle survival and storage histories may be fictional. They must be marked as fictional and remain plausible for validated geography, grapes, product rules and period.
 
-## Data layers
+## Current data layers
 
-The reboot deliberately keeps several layers separate instead of flattening all wine information into one database.
+1. **Original detailed model.** Hundreds of deeply modeled grapes plus the original region/appellation hierarchy, tasting structure, aromas, viticulture and winemaking affinities. `src/game/reference.ts` adapts this into the generation-safe layer.
+2. **Authoritative identity/index layer.** Current normalized indices contain 1,997 prime winegrape records, 60 winegrape-growing countries, 613 statistical planting geographies, 280 U.S. AVAs and 1,665 EU wine GIs. Statistical geography is never relabelled as a legal GI.
+3. **Hand-researched legal/appellation overlay.** Legal hierarchy, grapes, product categories, ageing/release rules, classifications, named subzones/sites, yields, analytical limits, production rules and unresolved questions. Twelve provenance-source passes are currently registered.
+4. **Environmental layer.** Three research passes currently supply 26 place-specific climate/geology/soil/topography models across at least 12 countries. Numeric matrix effects are explicitly simulation-derived.
+5. **Detailed growing-season layer.** Three passes currently supply 17 structured vintage observations plus published categorical authority ratings. Unsourced legacy `VINTAGE_QUALITY` scores are excluded.
+6. **Historical vintage evidence ledger.** `historical_vintage_archives.json` can record centuries of documentary evidence without fabricating weather. The IVDP Vintage Port archive currently supplies documented authority years back to 1756; Ontario authority vintage reports are indexed from 2001-2025; Champagne's MATU monitoring history is acknowledged from 1956 without pretending its annual records have all been ingested.
+7. **Legal ageing and vine-age layer.** `ageing_old_vine_rules.json` stores current product-specific ageing requirements and jurisdictional vine-age indications separately from sensory ageing. It currently includes Champagne, Rioja, Brunello, Port and Madeira examples plus OIV, South African, Barossa and Rioja vine-age rules.
+8. **Winemaking decision layer.** `winemaking_decisions.json` models more than 35 distinct cellar decisions with more than 90 options across harvest, pre-fermentation, fermentation, pressing, post-fermentation, maturation, special-wine production, blending, sparkling production, pre-bottling and bottling. Regulated choices cannot be applied until the exact product/designation legality check passes.
+9. **Global designation coverage controller.** `designation_registry_program.json` and `designationProgram.ts` require a coverage status for every one of the 60 currently verified winegrape-growing countries. EU/eAmbrosia and U.S./TTB are live normalized indices. Additional national authorities have been identified for Australia, New Zealand, Japan, Georgia, Argentina, Chile, South Africa, Ontario, British Columbia, Brazil, Mexico and the United Kingdom. Remaining jurisdictions stay visibly `pending-authority-discovery`; they are not silently omitted.
 
-1. **Original detailed model.** The original simulator contains hundreds of deeply modeled grape varieties plus a large hierarchy of countries, regions, appellations, communes, vineyards/crus, classifications, grape rules, soils, climate notes, tasting structure, aromas, viticulture and winemaking affinities. `src/game/reference.ts` adapts this into the generation-safe canonical layer.
-2. **Authoritative identity/index layer.** Automated source snapshots currently normalize 1,997 prime winegrape variety records, 60 countries, 613 statistical planting geographies, 280 U.S. AVAs and 1,665 EU wine GIs. These records prove identity/geography and improve coverage; they do not automatically imply detailed appellation rules or a tasting profile.
-3. **Hand-researched legal/appellation overlay.** `src/data/research/appellation_profiles*.json` stores source-by-source legal hierarchy, grapes, product types, classifications, ageing/release rules, subzones, communes, climats/MGAs, production rules, terroir notes and explicit unresolved research questions. Records remain `reference-only` or `framework-only` until they contain enough detail to become generation candidates. Seven provenance-source passes are currently registered, and tests require at least 115 source records.
-4. **Environmental research layer.** `environmental_profiles*.json` stores sourced place-specific climate, geology, soil and topography. Its numeric matrix modifiers are separately marked `derived: true`; they translate factual research into game behavior and are not claimed as published analytical measurements. Three environmental passes currently provide 26 place/environment profiles across at least 12 countries.
-5. **Historical vintage layer.** `vintage_observations*.json` stores year-specific growing-season facts, hazards, harvest timing, crop impact, fruit health and sourced style implications. Exact regional observations can produce bounded derived vintage modifiers. Three vintage passes currently provide 17 detailed growing-season observations. Official Rioja DOCa vintage classifications from 2001 through 2025 remain categorical authority ratings and are not converted to invented numeric scores.
+## Vintage, time and tasting notes
 
-## Matrix model
+Vintage and time are different inputs.
 
-The structural model follows the original simulator rather than replacing it:
+### Vintage
 
-**grape baseline × place modifier × vintage modifier × winemaking modifier**
+A vintage describes the material produced by a particular growing season. When a sourced year-specific record exists, the simulation may derive bounded effects on:
 
-The grape baseline remains the existing 1–5 tasting structure: acidity, tannin, body, sweetness, fruit intensity and earth intensity, with alcohol handled as an actual percentage range. Existing grape data also retains viticultural and winemaking attributes such as climate preference, vigor, yield potential, disease/drought/frost tolerance, sparkling/fortified/late-harvest suitability and production-method affinities.
+- acidity and ripeness;
+- concentration;
+- tannin maturity;
+- aromatic freshness;
+- disease/selection pressure;
+- yield;
+- ageability;
+- botrytis suitability when appropriate.
 
-The place layer can modify structural expression from researched climate, soil, geology, elevation, drainage and site exposure. The vintage layer can modify ripeness, concentration, tannin maturity, acidity, aromatic freshness, disease pressure, yield and ageability from sourced year-specific observations. Winemaking remains a separate layer for extraction, oak, lees, oxidative handling, fortification, botrytis handling, skin contact, amphora and other production decisions.
+`noteEvolution.ts` then converts only sufficiently strong vintage effects into explicitly derived expression terms such as a riper fruit spectrum, concentrated expression or heightened aromatic freshness. Botrytis-linked descriptors are only available to a compatible sweet-botrytis archetype. If no sourced vintage record exists, no historical-weather aroma story is invented.
 
-All simulation matrices are bounded and explicitly labeled as derived. A value such as `+0.35 acidity` means a game-model adjustment relative to the grape baseline. It is not a laboratory measurement and must never be presented as one.
+### Winemaking
 
-## Environmental coverage
+Winemaking supplies secondary/process-derived character only after the selected techniques pass the exact designation/product legality gate. Modeled choices include, among others:
 
-The first environmental pass covers Champagne; the Côte de Nuits/Côte de Beaune; Meursault; Barolo; Rioja Alta, Rioja Alavesa and Rioja Oriental; Napa Valley; and Sauternes.
+- picking maturity, hand/machine harvest and sorting;
+- raisining and cryoselection;
+- destemming, crushing, whole cluster and skin-contact policy;
+- prefermentative cold soak;
+- carbonic/semi-carbonic maceration;
+- fermentation vessel, temperature, yeast strategy, cap management and oxygen;
+- maceration length and press fractions;
+- MLF and its timing;
+- lees contact and bâtonnage;
+- maturation vessel;
+- oak origin/species, size, new-oak share, toast and barrel age;
+- maturation length, topping/ullage and micro-oxygenation;
+- flor/biological ageing;
+- fortification and fortification timing;
+- fractional and cross-vintage blending;
+- traditional/tank/ancestral sparkling methods, lees ageing and dosage;
+- clarification, filtration, sulfur management, bottling oxygen, closure and bottle format.
 
-The second environmental pass adds specific models for Gevrey-Chambertin, Pauillac, Pomerol, Saint-Émilion, Brunello di Montalcino/Montalcino, Chianti Classico, Valpolicella/Amarone, Santorini, Marlborough and Stellenbosch.
+Potential sensory consequences are modeled separately from the technical/legal fact. For example, heavy toast can create a derived roast/smoke note potential; it is not asserted as a guaranteed aroma or a regulator-published measurement.
 
-The third environmental pass adds Mosel, Kamptal, Wachau, Tokaj, Uco Valley, Barossa Valley and Margaret River. It preserves distinctions such as steep Devonian-slate Mosel versus shell-limestone Upper Mosel; Kamptal loess, gneiss and Heiligenstein sandstone; Tokaj volcanic soils and noble-rot mesoclimate; high-altitude arid Uco Valley; warm Barossa; and strongly maritime Margaret River.
+### Time
 
-The point is not only broader coverage but meaningful internal differentiation. Rioja Alta, Alavesa and Oriental do not share one generic Rioja climate. Pauillac gravel, Pomerol clay-gravel/iron-rich subsoil and Saint-Émilion limestone/clay/gravel mosaics remain different. Valpolicella preserves alluvial, marly-limestone and basaltic sectors. Marlborough keeps Wairau, Southern Valleys and Awatere distinctions. Santorini keeps its volcanic sandy soils, extreme drought/wind and basket-training context.
+`ageing.ts` treats bottle time as a trajectory rather than a generic age score. Current broad phases are youth, development, mature, late-mature and fragile. Time can change the active tasting profile by:
 
-## Vintage coverage
+- reducing primary fruit intensity;
+- softening tannin;
+- increasing savory/earth/tertiary expression;
+- producing archetype-dependent mature notes;
+- increasing sediment and fragile-bottle service risk.
 
-The first sourced vintage pass contains detailed observations for Champagne 2021/2022, Bourgogne 2021/2022, Bordeaux 2020/2021/2022 and Napa Valley 2021/2022/2023.
+Ageing speed is style-dependent. Structured dry reds, traditional-method sparkling wines, botrytized sweets, bottle-aged fortified wines and oxidative fortified wines do not share one clock. Storage quality further modifies the trajectory.
 
-The second pass adds Chianti Classico 2021 and 2025, Brunello/Montalcino 2021 and Stellenbosch 2021.
+The current ageing archetypes are broad simulation categories, not substitutes for exact product rules. A future product resolver must distinguish, for example, dry Tokaj from Tokaji Aszú and Vintage Port from wood-aged Tawny/Colheita before assigning a final ageing pathway.
 
-The third pass adds Mosel 2023 and 2025 plus Uco Valley 2022. These records capture actual chronology such as budbreak/flowering, drought, frost, rainfall, disease pressure, harvest acceleration or delay, selection losses, must volumes, and crop reduction where those facts are documented.
+## Legal ageing is not bottle ageing
 
-These records are intentionally incomplete. A place without researched environmental data still uses its validated grape/geographic reference model. A vintage without a sourced historical observation does not receive invented weather. The system reports the absence rather than filling it procedurally.
+Mandatory production/release ageing is a legal constraint. Sensory ageing is a separate physical/simulation process.
 
-## Legacy vintage scores
+Examples already stored include:
 
-The original Python generator contains a useful `VINTAGE_QUALITY` table with simplified 0–1 regional scores. That table is preserved as legacy design history only. The scores are not sourced strongly enough to be authoritative and are **not imported into the new historical-vintage layer**.
+- non-vintage versus vintage Champagne minimum maturation;
+- Rioja Crianza, Reserva and Gran Reserva red/white/rosé distinctions;
+- Rioja quality sparkling levels at 15, 24 and 36 months;
+- Brunello versus Brunello Riserva release/ageing requirements;
+- Port Colheita and age-indication categories;
+- Madeira Estufagem and Canteiro processes.
 
-The replacement model records the actual growing season first: frost, heat, drought, rainfall, hail, mildew/disease pressure, phenology, harvest dates, berry/fruit condition, crop size and authority assessments where available. Only then may the simulation derive bounded effects. This preserves the old game-design intent without presenting an unsourced score as wine fact.
+Current rules must not be projected backward into historical bottles. Historical legal versions need effective, amendment and repeal dates.
 
-## Runtime use
+## Old vines and named vine-age indications
 
-`world.ts` applies researched place and vintage matrices to the original grape baseline when a generated wine resolves to those researched records. The engine keeps the provenance layers separate:
+`Old Vine` is not a universal switch.
 
-- legal identity still comes from validated geography and grape data;
-- soil/climate facts come from environmental research;
-- historical weather comes only from an exact sourced vintage record or a deliberately documented regional fallback;
-- official categorical vintage ratings remain categorical;
-- fictional producer, cuvée, price, quantity and commercial history remain fictional;
-- a derived vintage yield modifier may alter fictional production volume within a narrow bounded range, but it is not presented as the real production of an actual estate.
+- The OIV international definition uses documented vines of at least 35 years, and an old-vineyard definition requiring at least 85% qualifying old vines.
+- South Africa's Certified Heritage Vineyard system records qualifying vineyards and planting date information.
+- The Barossa Old Vine Charter distinguishes Old Vine, Survivor, Centenarian and Ancestor tiers.
+- Rioja `Viñedo Singular` is not treated as a generic old-vine synonym. It is a certified smaller-geographical-unit/product classification with a minimum vineyard age of 35 years plus manual harvest, lower yield limits, a 65% maximum processing yield, same-winery production/ageing/storage/bottling, traceability/exclusive-control requirements and double qualitative tasting.
 
-If no year-specific vintage observation exists, the engine says so and does not fabricate historical weather.
+The generator no longer assigns `Vieilles Vignes` or equivalent language randomly.
 
-## Source policy
+## Historical vintages and centuries-old bottles
 
-Research should prefer primary or authoritative sources and retain provenance metadata. Priority sources include:
+The generator no longer uses a universal 45-year cap. Broad style-aware simulation horizons now permit archival inventory, but extreme age by itself is not evidence that a historical wine existed under a modern designation.
 
-- OIV vine-variety and global vine/wine statistics databases.
-- Vitis International Variety Catalogue (VIVC), Julius Kühn-Institut, for prime variety identity, synonyms, parentage and origin checks.
-- European Commission eAmbrosia for EU wine PDO/PGI and protected traditional terms.
-- National appellation authorities and official legal specifications for appellation rules.
-- Official regional/interprofessional bodies and regulatory councils for terroir, harvest and vintage documentation.
-- U.S. Alcohol and Tobacco Tax and Trade Bureau (TTB), 27 CFR Part 9, for American Viticultural Areas.
-- Wine Australia Register of Protected Geographical Indications.
-- Intellectual Property Office of New Zealand GI Register.
-- South African Wine and Spirit Board / Wine of Origin scheme.
-- University of Adelaide Wine Economics Research Centre global winegrape datasets for country/region/prime-variety cross-checking and planting relevance.
+The preferred model is an authority year ledger:
 
-Secondary descriptive material may enrich sensory or historical context when primary sources do not address it, but it must not override legal or regulatory information.
+- **structured-growing-season-ingested** — detailed season data are available;
+- **authority-archive-detail-available** — an authority confirms the historical vintage/product entry and more detail can be extracted;
+- **authority-report-available** — an official vintage report exists;
+- **documentary-bottle-or-harvest-evidence** — existence evidence without a full season record;
+- **monitoring-system-confirmed-detail-not-yet-ingested** — an annual monitoring system is known, but its specific year record is not yet captured;
+- **unknown** — no claim is made.
+
+A 1756/1790/1815-era Port record therefore can exist as documentary authority evidence without fabricating rainfall, phenology or today's DOP wording.
+
+## Global GI / equivalent program
+
+The target is exhaustive: **every legally recognized wine GI, appellation, denomination of origin, viticultural area and equivalent protected-origin system globally, with no fame or size threshold.**
+
+Each final designation record should eventually include:
+
+- protected identity/spellings/transliterations;
+- protection class and legal system;
+- registration, effective, amendment and repeal dates;
+- hierarchy and parent/child geography;
+- official boundaries/geometry where available;
+- product categories/colors/styles;
+- authorized/principal/prohibited grapes and blend/origin percentages;
+- viticultural density, training, pruning, irrigation, yield and harvest rules;
+- analytical parameters;
+- required/permitted/prohibited winemaking practices;
+- enrichment, acidification, sweetening and fortification rules;
+- pressing/extraction/fermentation/vessel rules where specified;
+- ageing/release requirements by level/style;
+- traditional terms and reserved indications;
+- old-vine/vine-age requirements;
+- formal subzones, communes, crus, climats, MGAs, wards and named vineyards;
+- soil, geology, topography and climate;
+- historical vintage observations;
+- historical legal version applicable to each vintage.
+
+No small GI is intentionally excluded. Incomplete jurisdictions stay visible in the coverage queue until their primary authority and full registry have been ingested.
 
 ## Validation
 
-`reference.test.ts` requires generated wines to resolve back to a real reference path and real grape identity. `research.test.ts` checks legal/appellation research and provenance. `environment.test.ts` validates environmental/vintage pass counts, soil/climate source links, matrix bounds, exact historical observations, geographic mapping and the rule that legacy generic quality scores cannot leak into the sourced vintage layer.
+Current automated tests separately validate:
 
-The current CI contract requires three environmental passes, three vintage passes, at least 26 environmental profiles, at least 17 detailed vintage observations, at least 25 categorical authority ratings and at least 12 countries represented in the environmental layer. The generator can apply researched place and vintage matrices only after those records pass validation. Unresolved grape synonyms, transliterations and legal ambiguities remain visible research work instead of being silently guessed.
+- real geography/grape resolution;
+- legal/appellation provenance;
+- environmental and growing-season research;
+- historical vintage archive evidence;
+- legal ageing and vine-age rules;
+- detailed winemaking decisions and legality gates;
+- global designation coverage accounting;
+- vintage/winemaking/time tasting-note layers;
+- core service, pairing, inventory and economy behavior.
+
+A factual layer must pass validation before it is allowed to drive generation. Unresolved synonyms, legal ambiguities and missing jurisdictions remain explicit research work rather than guessed data.
