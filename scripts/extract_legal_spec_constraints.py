@@ -16,6 +16,7 @@ import hashlib
 import json
 import re
 import subprocess
+import sys
 import tempfile
 import time
 import unicodedata
@@ -27,6 +28,8 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 DATA = ROOT / "sommelier_v2" / "knowledge" / "data"
 SOURCE_INDEX = DATA / "legal_spec_source_index.json"
 OUT = DATA / "legal_spec_machine_constraints.json"
@@ -137,8 +140,6 @@ def _section(text: str, country: str) -> tuple[str, str]:
     if start_match is None:
         return "", "section_not_found"
     start = start_match.start()
-    # Variety sections are normally compact. Limit the search window to prevent
-    # accidental matches in historical/geographical narrative later in the spec.
     window = text[start:start + 24000]
     end_positions: list[int] = []
     for pattern in ends:
@@ -204,8 +205,6 @@ def _extract_one(row: dict[str, Any], grape_pattern: re.Pattern[str], alias_map:
         elif len(found) > 80:
             base["extraction_status"] = "implausibly_large_variety_set"
         else:
-            # Deny-safe only. This list can reject outsiders but cannot authorize
-            # insiders until blend/process completeness is separately verified.
             base["constraint_level"] = "deny_only"
             base["extraction_status"] = "explicit_variety_section_extracted"
     except Exception as exc:
