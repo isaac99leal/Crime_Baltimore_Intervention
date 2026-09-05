@@ -1,0 +1,17 @@
+{
+  "synced_at": "2026-09-05T12:44:59.201247+00:00",
+  "adelaide": {
+    "world_variety_rows": 1998,
+    "country_variety_rows": 4807,
+    "country_labels": 59,
+    "positive_area_2023": 1591,
+    "tiny_area_le_1ha_2023": 363,
+    "micro_area_le_5ha_2023": 588
+  },
+  "sources": {
+    "adelaide_xlsx": "https://economics.adelaide.edu.au/wine-economics/ua/media/476/varieties_2000_to_2023.xlsx",
+    "adelaide_doi": "https://doi.org/10.25909/32870405.v1",
+    "eambrosia_api": "https://webgate.ec.europa.eu/eambrosia-api/api/v1/geographical-indications"
+  },
+  "eambrosia_wine_gis": 1688
+}
