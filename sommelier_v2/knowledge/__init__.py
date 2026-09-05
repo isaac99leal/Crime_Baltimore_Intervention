@@ -3,7 +3,20 @@
 from .aging import modified_archetype, state_at_age
 from .catalog import SOURCES, WineKnowledgeCatalog, normalize_name
 from .eu_promotions import EuCompositionDecision, EuLegalPromotionRegistry, VerificationLevel
-from .expanded_catalog import CommercialObservation, NamedSite, PiwiRecord, VarietyAreaObservation, WorldWineKnowledgeCatalog
+from . import expanded_catalog as _expanded_catalog
+from .expanded_catalog import CommercialObservation, PiwiRecord, VarietyAreaObservation
+from .vineyard_registry import (
+    NamedSite,
+    NamedSiteSource,
+    SiteOwnershipPeriod,
+    WorldWineKnowledgeCatalog,
+)
+
+# Keep direct imports from expanded_catalog compatible. The extended classes are
+# installed before modules such as vineyard_engine/finished_wine import them.
+_expanded_catalog.NamedSite = NamedSite
+_expanded_catalog.WorldWineKnowledgeCatalog = WorldWineKnowledgeCatalog
+
 from .fermentation_engine import AlcoholicFermentationParams, FermentationState, MalolacticParams, MalolacticState, initial_state, run_alcoholic_fermentation, run_malolactic, step_alcoholic_fermentation, step_malolactic
 from .fermentation_process import FermentationConstraintError, FermentationPlan, FermentationResult, MustComposition, NutrientAddition, run_fermentation, validate_must, validate_plan
 from .finished_wine import FinishedWineAssembler, FinishedWineConstraintError, ValidatedWineRecord
@@ -34,15 +47,15 @@ __all__ = [
     "LegalAwareRegionGrapeRulebook", "LegalSourceRecord", "LegalSourceRegistry", "LegalSpecDecision",
     "LegalSpecRegistry", "LegalVineyardEngine", "LegalWineSpec", "MachineConstraintDecision",
     "MachineLegalConstraint", "MachineLegalConstraintRegistry", "MalolacticParams", "MalolacticState",
-    "MustComposition", "NamedSite", "NationalAwareLegalSpecRegistry", "NationalLegalOverrideRegistry",
-    "NationalOverrideDecision", "NutrientAddition", "OriginConstraintError", "OriginDecision",
-    "OriginRequest", "PiwiRecord", "ProvenanceSlice", "RegionGrapeRulebook", "RegionRule",
-    "ReleaseDecision", "SimulationPriors", "SiteRegistry", "ValidatedWineRecord",
-    "VarietyAreaObservation", "VerificationLevel", "VineyardBlock", "VineyardEngine",
-    "VineyardOutcome", "VintageDayState", "VintageModelParams", "VintageOutcome",
-    "WineKnowledgeCatalog", "WineOriginFactory", "WineryLot", "WineryProvenanceError",
-    "WineryProvenanceLedger", "WorldWineKnowledgeCatalog", "initial_state",
-    "load_legacy_vintage_knowledge", "modified_archetype", "normalize_name",
+    "MustComposition", "NamedSite", "NamedSiteSource", "NationalAwareLegalSpecRegistry",
+    "NationalLegalOverrideRegistry", "NationalOverrideDecision", "NutrientAddition",
+    "OriginConstraintError", "OriginDecision", "OriginRequest", "PiwiRecord", "ProvenanceSlice",
+    "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "SimulationPriors",
+    "SiteOwnershipPeriod", "SiteRegistry", "ValidatedWineRecord", "VarietyAreaObservation",
+    "VerificationLevel", "VineyardBlock", "VineyardEngine", "VineyardOutcome", "VintageDayState",
+    "VintageModelParams", "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory",
+    "WineryLot", "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",
+    "initial_state", "load_legacy_vintage_knowledge", "modified_archetype", "normalize_name",
     "run_alcoholic_fermentation", "run_fermentation", "run_malolactic", "simulate_vintage",
     "state_at_age", "step_alcoholic_fermentation", "step_malolactic", "validate_must",
     "validate_plan", "vintage_stats",

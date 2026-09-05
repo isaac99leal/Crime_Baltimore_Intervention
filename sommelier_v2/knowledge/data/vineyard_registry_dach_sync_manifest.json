@@ -1,0 +1,11 @@
+{
+  "generated": "2026-09-05T15:57:44.627548+00:00",
+  "noe_wfs_features": 3342,
+  "noe_sites_materialized": 3386,
+  "rlp_einzellagen_materialized": 1533,
+  "rlp_status": "official_2024_register_snapshot_materialized",
+  "outputs": [
+    "sommelier_v2/knowledge/data/named_sites_expansion_2026_austria_noe.json",
+    "sommelier_v2/knowledge/data/named_sites_expansion_2026_germany_rlp.json"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "generated": "2026-09-05T16:34:17.258697+00:00",
+  "vienna_rieden_materialized": 140,
+  "vienna_regulation_ried_headings": 145,
+  "vienna_cross_kg_rieden": 5,
+  "source_effective_from": "2016-07-01",
+  "output": "sommelier_v2/knowledge/data/named_sites_expansion_2026_austria_vienna.json"
+}

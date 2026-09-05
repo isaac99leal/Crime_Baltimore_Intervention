@@ -1,0 +1,2399 @@
+{
+  "schema_version": "2.0",
+  "generated": "2026-09-05",
+  "notes": "All 140 Vienna Weinbaurieden materialized from the official 2016 city regulation. The regulation contains 145 administrative Riede headings; five cross-KG continuations are consolidated using the official parcel-map context. Same-name homonyms outside those five mappings remain separate. No site physical attributes are inferred here.",
+  "sources": {
+    "wien_rieden_regulation_2016": {
+      "authority": "Magistrat der Stadt Wien / Stadt Wien Umweltschutz",
+      "url": "https://www.wien.gv.at/umwelt/weinbaufluren-riedenkarte",
+      "data_url": "https://www.wien.gv.at/pdf/ma22/abgrenzung-weinbaufluren.pdf",
+      "checked": "2026-09-05",
+      "effective_from": "2016-07-01",
+      "scope": "Official parcel-level delimitation and names of all 140 Vienna Weinbaurieden.",
+      "evidence_class": "official_city_vineyard_regulation"
+    }
+  },
+  "groups": [],
+  "records": [
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:aichel",
+      "name": "Aichel",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:17:dornbach:ried:alsegg",
+      "name": "Alsegg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Dornbach",
+      "commune": "Dornbach",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 17; Katastralgemeinde(n) Dornbach. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:altweingarten",
+      "name": "Altweingarten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:obersievering:ried:am-himmel",
+      "name": "Am Himmel",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering",
+      "commune": "Obersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:arnolzau",
+      "name": "Arnolzau",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:auckenthal",
+      "name": "Auckenthal",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:untersievering:ried:bellevue",
+      "name": "Bellevue",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Untersievering",
+      "commune": "Untersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Untersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:13:speising:ried:bergheiden",
+      "name": "Bergheiden",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Speising",
+      "commune": "Speising",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 13; Katastralgemeinde(n) Speising. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:biberstein",
+      "name": "Biberstein",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:braschen",
+      "name": "Braschen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:breiten",
+      "name": "Breiten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:burgstall",
+      "name": "Burgstall",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:dennen",
+      "name": "Dennen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:dreizehnvierteln",
+      "name": "Dreizehnvierteln",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:erdln",
+      "name": "Erdln",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:erinnerungsgarten",
+      "name": "Erinnerungsgarten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:falkenberg",
+      "name": "Falkenberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:gabrissen",
+      "name": "Gabrissen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:gaisruck",
+      "name": "Gaisruck",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:obersievering:ried:gallein",
+      "name": "Gallein",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering",
+      "commune": "Obersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:gebhardin",
+      "name": "Gebhardin",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:gernen",
+      "name": "Gernen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:glocken",
+      "name": "Glocken",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:13:schonbrunn:ried:gloriette",
+      "name": "Gloriette",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Schönbrunn",
+      "commune": "Schönbrunn",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 13; Katastralgemeinde(n) Schönbrunn. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:heilgenstadt:ried:goasskeller",
+      "name": "Goaßkeller",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Heilgenstadt",
+      "commune": "Heilgenstadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Heilgenstadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:10:oberlaa-stadt:ried:goldberg",
+      "name": "Goldberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Oberlaa-Stadt",
+      "commune": "Oberlaa-Stadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 10; Katastralgemeinde(n) Oberlaa-Stadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:gollin",
+      "name": "Gollin",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:gritschen",
+      "name": "Gritschen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:gschefern",
+      "name": "Gschefern",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:obersievering:ried:gspott",
+      "name": "Gspött",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering",
+      "commune": "Obersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:gunersdorferin",
+      "name": "Gunersdorferin",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:obersievering:ried:gorgen",
+      "name": "Görgen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering",
+      "commune": "Obersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:heilgenstadt:ried:haarlocke",
+      "name": "Haarlocke",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Heilgenstadt",
+      "commune": "Heilgenstadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Heilgenstadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:hacken",
+      "name": "Hacken",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:ried:hackenberg-sievering",
+      "name": "Hackenberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering; Untersievering",
+      "commune": "Obersievering; Untersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 2,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering; Untersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:10:oberlaa-stadt:ried:haidacker",
+      "name": "Haidäcker",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Oberlaa-Stadt",
+      "commune": "Oberlaa-Stadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 10; Katastralgemeinde(n) Oberlaa-Stadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:obersievering:ried:haseleck",
+      "name": "Haseleck",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering",
+      "commune": "Obersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:hauermandl",
+      "name": "Hauermandl",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:haussatzen",
+      "name": "Haussätzen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:herrnholz",
+      "name": "Herrnholz",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:17:dornbach:ried:heuberg",
+      "name": "Heuberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Dornbach",
+      "commune": "Dornbach",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 17; Katastralgemeinde(n) Dornbach. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:liesing:ried:himmel",
+      "name": "Himmel",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Liesing",
+      "commune": "Liesing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Liesing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:obersievering:ried:hinterleiten",
+      "name": "Hinterleiten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering",
+      "commune": "Obersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:hochfeld",
+      "name": "Hochfeld",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:hofbreiten",
+      "name": "Hofbreiten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:neustift-am-walde:ried:hofstadten",
+      "name": "Hofstädten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Neustift am Walde",
+      "commune": "Neustift am Walde",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Neustift am Walde. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:obersievering:ried:hohe-berge",
+      "name": "Hohe Berge",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering",
+      "commune": "Obersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:untersievering:ried:hornsperg",
+      "name": "Hornsperg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Untersievering",
+      "commune": "Untersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Untersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:ried:hungerberg-grinzing-unterdobling",
+      "name": "Hungerberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing; Unterdöbling",
+      "commune": "Grinzing; Unterdöbling",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 2,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing; Unterdöbling. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:10:oberlaa-stadt:ried:johannespointen",
+      "name": "Johannespointen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Oberlaa-Stadt",
+      "commune": "Oberlaa-Stadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 10; Katastralgemeinde(n) Oberlaa-Stadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:jungenberg",
+      "name": "Jungenberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:jungherrn",
+      "name": "Jungherrn",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:untersievering:ried:kaasgraben",
+      "name": "Kaasgraben",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Untersievering",
+      "commune": "Untersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Untersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:mauer:ried:kadolzberg",
+      "name": "Kadolzberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Mauer",
+      "commune": "Mauer",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Mauer. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:kebeln",
+      "name": "Kebeln",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:kerninger",
+      "name": "Kerninger",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:kirchberg",
+      "name": "Kirchberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:kleben",
+      "name": "Kleben",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:kreften",
+      "name": "Kreften",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:mauer:ried:kroissberg",
+      "name": "Kroissberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Mauer",
+      "commune": "Mauer",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Mauer. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:kuchelviertel",
+      "name": "Kuchelviertel",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:langteufel",
+      "name": "Langteufel",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:leere-beuteln",
+      "name": "Leere Beuteln",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:mauer:ried:leiten",
+      "name": "Leiten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Mauer",
+      "commune": "Mauer",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Mauer. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:lengersfellner",
+      "name": "Lengersfellner",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:16:ottakring:ried:liebhart-sommerleiten",
+      "name": "Liebhart-Sommerleiten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Ottakring",
+      "commune": "Ottakring",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 16; Katastralgemeinde(n) Ottakring. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:13:schonbrunn:ried:liesenpfennig",
+      "name": "Liesenpfennig",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Schönbrunn",
+      "commune": "Schönbrunn",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 13; Katastralgemeinde(n) Schönbrunn. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:luckenholz",
+      "name": "Luckenholz",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:lussen",
+      "name": "Lüssen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:heilgenstadt:ried:mitterberg",
+      "name": "Mitterberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Heilgenstadt",
+      "commune": "Heilgenstadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Heilgenstadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:ried:mitterberg-neustift-salmannsdorf",
+      "name": "Mitterberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Neustift am Walde; Salmannsdorf",
+      "commune": "Neustift am Walde; Salmannsdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 2,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Neustift am Walde; Salmannsdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:muckenthal",
+      "name": "Muckenthal",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:kalksburg:ried:neuberg",
+      "name": "Neuberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kalksburg",
+      "commune": "Kalksburg",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Kalksburg. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:ried:neuberg-neustift-salmannsdorf",
+      "name": "Neuberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Neustift am Walde; Salmannsdorf",
+      "commune": "Neustift am Walde; Salmannsdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 2,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Neustift am Walde; Salmannsdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:neurisse",
+      "name": "Neurisse",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:josefsdorf:ried:neusatz",
+      "name": "Neusatz",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Josefsdorf",
+      "commune": "Josefsdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Josefsdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:neusatzen",
+      "name": "Neusätzen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:obere-schos",
+      "name": "Obere Schos",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:obersievering:ried:ortern",
+      "name": "Ortern",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering",
+      "commune": "Obersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:untersievering:ried:pfeffer",
+      "name": "Pfeffer",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Untersievering",
+      "commune": "Untersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Untersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:pisenkopf",
+      "name": "Pisenkopf",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:plachen",
+      "name": "Plachen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:heilgenstadt:ried:plagen",
+      "name": "Plagen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Heilgenstadt",
+      "commune": "Heilgenstadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Heilgenstadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:platte",
+      "name": "Platte",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:point",
+      "name": "Point",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:josefsdorf:ried:pratteln",
+      "name": "Pratteln",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Josefsdorf",
+      "commune": "Josefsdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Josefsdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:preussen",
+      "name": "Preussen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:raflerjoch",
+      "name": "Raflerjoch",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:raiffel",
+      "name": "Raiffel",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:reihmacher",
+      "name": "Reihmacher",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:ried:reisberg-kalksburg-rodaun",
+      "name": "Reisberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kalksburg; Rodaun",
+      "commune": "Kalksburg; Rodaun",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 2,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Kalksburg; Rodaun. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:reisenberg",
+      "name": "Reisenberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:obersievering:ried:reissern",
+      "name": "Reissern",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Obersievering",
+      "commune": "Obersievering",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Obersievering. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:rendezvouswald",
+      "name": "Rendezvouswald",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:ring",
+      "name": "Ring",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:rosengartel",
+      "name": "Rosengartel",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:16:ottakring:ried:rosengartl",
+      "name": "Rosengartl",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Ottakring",
+      "commune": "Ottakring",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 16; Katastralgemeinde(n) Ottakring. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:mauer:ried:roth-durren",
+      "name": "Roth-Dürren",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Mauer",
+      "commune": "Mauer",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Mauer. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:heilgenstadt:ried:rothen",
+      "name": "Rothen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Heilgenstadt",
+      "commune": "Heilgenstadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Heilgenstadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:rothen",
+      "name": "Rothen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:mauer:ried:sauberg",
+      "name": "Sauberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Mauer",
+      "commune": "Mauer",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Mauer. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:schalon",
+      "name": "Schalon",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:schederl",
+      "name": "Schederl",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:scheibling",
+      "name": "Scheibling",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:schenkenberg",
+      "name": "Schenkenberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:heilgenstadt:ried:schinaweisen",
+      "name": "Schinaweisen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Heilgenstadt",
+      "commune": "Heilgenstadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Heilgenstadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:heilgenstadt:ried:schlegel",
+      "name": "Schlegel",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Heilgenstadt",
+      "commune": "Heilgenstadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Heilgenstadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:heilgenstadt:ried:schmerbern",
+      "name": "Schmerbern",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Heilgenstadt",
+      "commune": "Heilgenstadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Heilgenstadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:schreibern",
+      "name": "Schreibern",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:schweizerberg",
+      "name": "Schweizerberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:schone-mauer",
+      "name": "Schöne Mauer",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:seidenhaus",
+      "name": "Seidenhaus",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:serfellner",
+      "name": "Serfellner",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:sommeregg",
+      "name": "Sommeregg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:22:breitenlee:ried:stadlbreiten",
+      "name": "Stadlbreiten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Breitenlee",
+      "commune": "Breitenlee",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 22; Katastralgemeinde(n) Breitenlee. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:steinberg",
+      "name": "Steinberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:steinbugeln",
+      "name": "Steinbügeln",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:strizzeln",
+      "name": "Strizzeln",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:liesing:ried:satzen",
+      "name": "Sätzen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Liesing",
+      "commune": "Liesing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Liesing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:satzen",
+      "name": "Sätzen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:22:sussenbrunn:ried:sussenbrunn",
+      "name": "Süßenbrunn",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Süßenbrunn",
+      "commune": "Süßenbrunn",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 22; Katastralgemeinde(n) Süßenbrunn. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:tachlern",
+      "name": "Tachlern",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:thorsaulen",
+      "name": "Thorsäulen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:ulm",
+      "name": "Ulm",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:heilgenstadt:ried:unger",
+      "name": "Unger",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Heilgenstadt",
+      "commune": "Heilgenstadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Heilgenstadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:untere-schos",
+      "name": "Untere Schos",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:strebersdorf:ried:untere-satzen",
+      "name": "Untere Sätzen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Strebersdorf",
+      "commune": "Strebersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Strebersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:10:oberlaa-stadt:ried:unteres-feld",
+      "name": "Unteres Feld",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Oberlaa-Stadt",
+      "commune": "Oberlaa-Stadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 10; Katastralgemeinde(n) Oberlaa-Stadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:vorleithen",
+      "name": "Vorleithen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:grinzing:ried:wagenspaer",
+      "name": "Wagenspaer",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Grinzing",
+      "commune": "Grinzing",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Grinzing. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:10:oberlaa-stadt:ried:weichseltal",
+      "name": "Weichseltal",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Oberlaa-Stadt",
+      "commune": "Oberlaa-Stadt",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 10; Katastralgemeinde(n) Oberlaa-Stadt. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:weisleiten",
+      "name": "Weisleiten",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:wiesthalen",
+      "name": "Wiesthalen",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:16:ottakring:ried:wilhelminenberg",
+      "name": "Wilhelminenberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Ottakring",
+      "commune": "Ottakring",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 16; Katastralgemeinde(n) Ottakring. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:zeisenbugel",
+      "name": "Zeisenbügel",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:kahlenbergerdorf:ried:zinken",
+      "name": "Zinken",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Kahlenbergerdorf",
+      "commune": "Kahlenbergerdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Kahlenbergerdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:nussdorf:ried:zither",
+      "name": "Zither",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Nußdorf",
+      "commune": "Nußdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Nußdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:23:rodaun:ried:zugberg",
+      "name": "Zugberg",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Rodaun",
+      "commune": "Rodaun",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 23; Katastralgemeinde(n) Rodaun. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:21:stammersdorf:ried:zwerchbreiteln",
+      "name": "Zwerchbreiteln",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Stammersdorf",
+      "commune": "Stammersdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 21; Katastralgemeinde(n) Stammersdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    },
+    {
+      "id": "site:austria:wien:19:potzleinsdorf:ried:ollern",
+      "name": "Öllern",
+      "country": "Austria",
+      "region": "Wien",
+      "parent": "Pötzleinsdorf",
+      "commune": "Pötzleinsdorf",
+      "site_type": "ried",
+      "classification": "Ried",
+      "legal_status": "official_city_ried_2016",
+      "row_count": 1,
+      "source_ids": [
+        "wien_rieden_regulation_2016"
+      ],
+      "effective_from": "2016-07-01",
+      "notes": "Magistrat der Stadt Wien legal Riedenkarte identity; district 19; Katastralgemeinde(n) Pötzleinsdorf. Parcel-level delineation is present in the official source; no geometry is reconstructed in this record."
+    }
+  ]
+}

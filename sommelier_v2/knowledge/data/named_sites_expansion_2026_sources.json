@@ -1,0 +1,41 @@
+{
+  "schema_version": "2.0",
+  "generated": "2026-09-05",
+  "notes": "Research ledger for high-volume named-site sources. ingest_status distinguishes materialized registry snapshots from sources that are still only discovered.",
+  "bulk_sources_discovered": {
+    "bourgogne_maps_bulk": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB) / Bourgogne Maps",
+      "url": "https://bourgogne-maps.fr/",
+      "checked": "2026-09-05",
+      "coverage_note": "BIVB reports 11,541 identified Climats and lieux-dits and 296,663 mapped parcels across the Bourgogne Maps GIS. The current registry already contains 898 separately sourced Burgundy sites, but the Bourgogne Maps bulk corpus itself has not yet been materialized because no stable authoritative bulk-name export was located.",
+      "ingest_status": "discovered_not_materialized"
+    },
+    "rlp_weinbergsrolle": {
+      "authority": "Landwirtschaftskammer Rheinland-Pfalz",
+      "url": "https://www.lwk-rlp.de/weinbau/rebflaechen/weinlagen",
+      "checked": "2026-09-05",
+      "coverage_note": "The current LWK page states that the live system covers more than 1,600 Einzellagen and registered Gewannen. The historical map GeoServer endpoint was unavailable. The official 'Weinlagen in Rheinland-Pfalz – Ernte 2024' register PDF has therefore been materialized as a dated authoritative snapshot: 1,533 unique six-digit Lagennummer identities, with municipality/Gemarkung evidence and exact planted area only where every contributing table row provides a numeric value. Current 2026 Gewanne and post-2024 changes remain separate work.",
+      "ingest_status": "materialized_official_2024_snapshot",
+      "materialized_source_id": "rlp_weinlagen_register_2024",
+      "materialized_records": 1533
+    },
+    "noe_rieden_open_data": {
+      "authority": "Land Niederösterreich, Abteilung BD1 - GIS Support",
+      "url": "https://www.noe.gv.at/noe/OGD_Detailseite.html?id=a22e57c2-bbb0-4fb9-a731-b7f675e48476",
+      "checked": "2026-09-05",
+      "coverage_note": "The official OGD WFS yielded 3,342 features and 3,386 distinct Ried/Subried identities. The publisher explicitly states that statewide capture is not yet complete, so absence from the materialized snapshot is not negative evidence.",
+      "ingest_status": "materialized_current_wfs_snapshot",
+      "materialized_source_id": "noe_rieden_wfs_2026",
+      "materialized_records": 3386
+    },
+    "vienna_rieden": {
+      "authority": "Stadt Wien",
+      "url": "https://www.wien.gv.at/umwelt/weinbaufluren-riedenkarte",
+      "checked": "2026-09-05",
+      "coverage_note": "Official Vienna Riedenkarte contains all 140 Weinbaurieden with exact parcel-level delimitations and traditional names.",
+      "ingest_status": "discovered_not_materialized"
+    }
+  },
+  "groups": [],
+  "records": []
+}
