@@ -160,6 +160,19 @@ def build_adelaide(snapshot: pathlib.Path, output: pathlib.Path, retrieved_at: s
     return {"varieties": len(varieties), "countries": len(countries), "statisticalPlaces": len(places)}
 
 
+def cfr_metadata(raw: str) -> dict[str, str | None] | None:
+    """Parse the CFR cell without losing TTB effective-date annotations."""
+    cleaned = unicodedata.normalize("NFKC", raw).replace("\u200b", " ").strip()
+    match = re.search(r"\b(9\.\d+)\b", cleaned)
+    if not match:
+        return None
+    effective = re.search(r"effective\s+([0-9/]+)", cleaned, flags=re.IGNORECASE)
+    return {
+        "cfr": match.group(1),
+        "effectiveDate": effective.group(1) if effective else None,
+    }
+
+
 def build_ttb(snapshot: pathlib.Path, output: pathlib.Path, retrieved_at: str) -> int:
     html = (snapshot / "ttb-established-avas.html").read_text(encoding="utf-8")
     soup = BeautifulSoup(html, "html.parser")
@@ -177,26 +190,28 @@ def build_ttb(snapshot: pathlib.Path, output: pathlib.Path, retrieved_at: str) -
         if len(cells) == 1 and re.fullmatch(r"[A-Z ]+", cells[0]) and cells[0] not in {"BACK TO TOP"}:
             current_state = cells[0].title()
             continue
-        if len(cells) >= 5 and re.fullmatch(r"9\.\d+", cells[-1]):
+        metadata = cfr_metadata(cells[-1]) if len(cells) >= 5 else None
+        if metadata:
             records.append({
                 "name": cells[0],
                 "states": [current_state],
                 "counties": cells[1],
                 "locatedWithin": cells[2],
                 "contains": cells[3],
-                "cfr": cells[4],
+                **metadata,
             })
 
     for row in tables[3].find_all("tr"):
         cells = [" ".join(cell.stripped_strings).strip() for cell in row.find_all(["th", "td"])]
-        if len(cells) >= 5 and re.fullmatch(r"9\.\d+", cells[-1]):
+        metadata = cfr_metadata(cells[-1]) if len(cells) >= 5 else None
+        if metadata:
             records.append({
                 "name": cells[0],
-                "states": cells[1].split(),
+                "states": [cells[1]],
                 "counties": "",
                 "locatedWithin": cells[2],
                 "contains": cells[3],
-                "cfr": cells[4],
+                **metadata,
             })
 
     unique = {record["name"]: record for record in records}
@@ -209,6 +224,7 @@ def build_ttb(snapshot: pathlib.Path, output: pathlib.Path, retrieved_at: str) -
         "title": "Established American Viticultural Areas",
         "url": "https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas",
         "retrievedAt": retrieved_at,
+        "note": "Rows with a future TTB effective date remain marked with effectiveDate and must not be treated as effective before that date.",
     }
     dump(output / "ttb-avas.json", {"source": source, "count": len(records), "records": records}, compact=True)
     return len(records)
