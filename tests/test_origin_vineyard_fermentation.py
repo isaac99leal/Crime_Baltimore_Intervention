@@ -8,7 +8,13 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from sommelier_v2.knowledge.expanded_catalog import NamedSite
-from sommelier_v2.knowledge.fermentation_process import FermentationConstraintError, FermentationPlan, MustComposition, NutrientAddition, run_fermentation
+from sommelier_v2.knowledge.fermentation_process import (
+    FermentationConstraintError,
+    FermentationPlan,
+    MustComposition,
+    NutrientAddition,
+    run_fermentation,
+)
 from sommelier_v2.knowledge.origin_factory import OriginRequest, WineOriginFactory
 from sommelier_v2.knowledge.regional_rules import OriginConstraintError, RegionGrapeRulebook
 from sommelier_v2.knowledge.vineyard_engine import VineyardBlock, VineyardEngine
@@ -56,7 +62,9 @@ class FakeCatalog:
     def grape(self, name):
         key = self.norm(name)
         for grape in self._grapes:
-            if key in {self.norm(grape.name), *(self.norm(a) for a in grape.aliases)}:
+            names = {self.norm(grape.name)}
+            names.update(self.norm(alias) for alias in grape.aliases)
+            if key in names:
                 return grape
         return None
 
@@ -124,6 +132,19 @@ class OriginAndVineyardTests(unittest.TestCase):
         self.assertFalse(unknown.eligible)
         self.assertEqual(unknown.status, "legal_grape_rule_unverified")
 
+    def test_regional_style_uses_primary_grapes_but_is_not_legal(self):
+        plausible = self.rules.evaluate(
+            country="Testland", region="Strict Valley", appellation="Unknown-Law GI",
+            grapes={"Alias Allowed":100}, label_scope="regional_style")
+        self.assertTrue(plausible.eligible)
+        self.assertEqual(plausible.status, "regional_style_supported")
+        self.assertTrue(any("not a legal" in warning.lower() for warning in plausible.warnings))
+        impossible = self.rules.evaluate(
+            country="Testland", region="Strict Valley", appellation="Unknown-Law GI",
+            grapes={"Forbidden":100}, label_scope="regional_style")
+        self.assertFalse(impossible.eligible)
+        self.assertEqual(impossible.status, "grape_not_plausible_for_region")
+
     def test_country_wine_requires_evidence_or_experimental(self):
         blocked = self.rules.evaluate(country="Testland", grapes={"Forbidden":100}, label_scope="country_wine")
         self.assertFalse(blocked.eligible)
@@ -164,9 +185,11 @@ class FermentationTests(unittest.TestCase):
         return MustComposition(**values)
 
     def test_dry_fermentation_mlf_and_mass_balance(self):
-        must = self.must()
+        # A clearly healthy cellar case must finish. Cooler or leaner musts are
+        # intentionally allowed to take longer or stall in the model.
+        must = self.must(yan_mg_l=300.0, temp_c=25.0)
         result = run_fermentation(must, FermentationPlan(
-            style="red", target_residual_sugar_g_l=2.0,
+            style="red", target_residual_sugar_g_l=2.0, max_hours=1200.0,
             nutrient_additions=(NutrientAddition(hour=24, yan_mg_l=30),), malolactic=True))
         self.assertTrue(result.alcoholic_completed)
         self.assertTrue(result.dry)
