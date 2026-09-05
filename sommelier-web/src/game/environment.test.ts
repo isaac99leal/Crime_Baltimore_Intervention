@@ -5,11 +5,13 @@ import {
   authorityVintageRatings,
   environmentalProfileForPlace,
   environmentalProfiles,
+  environmentalResearchPassCount,
   findEnvironmentalProfile,
   findVintageObservation,
   validateEnvironmentalResearch,
   vintageObservationForPlace,
   vintageObservations,
+  vintageResearchPassCount,
 } from './environment';
 import type { ReferencePlace } from './reference';
 import type { WineProfile } from './types';
@@ -31,12 +33,14 @@ function place(country: string, name: string, path: string[]): ReferencePlace {
 }
 
 describe('soil climate vintage and matrix research', () => {
-  it('keeps a sourced environmental layer with bounded derived matrices', () => {
+  it('keeps multi-pass sourced environmental and vintage layers with bounded derived matrices', () => {
     const report = validateEnvironmentalResearch();
-    expect(environmentalProfiles.length).toBeGreaterThanOrEqual(9);
-    expect(vintageObservations.length).toBeGreaterThanOrEqual(10);
+    expect(environmentalResearchPassCount).toBe(2);
+    expect(vintageResearchPassCount).toBe(2);
+    expect(environmentalProfiles.length).toBeGreaterThanOrEqual(19);
+    expect(vintageObservations.length).toBeGreaterThanOrEqual(14);
     expect(authorityVintageRatings.length).toBeGreaterThanOrEqual(25);
-    expect(report.countries).toBeGreaterThanOrEqual(4);
+    expect(report.countries).toBeGreaterThanOrEqual(7);
     expect(report.issues).toEqual([]);
   });
 
@@ -47,6 +51,10 @@ describe('soil climate vintage and matrix research', () => {
     const alavesa = findEnvironmentalProfile('env-es-rioja-alavesa');
     const oriental = findEnvironmentalProfile('env-es-rioja-oriental');
     const meursault = findEnvironmentalProfile('env-fr-meursault');
+    const pomerol = findEnvironmentalProfile('env-fr-pomerol');
+    const brunello = findEnvironmentalProfile('env-it-brunello-montalcino');
+    const chianti = findEnvironmentalProfile('env-it-chianti-classico');
+    const santorini = findEnvironmentalProfile('env-gr-santorini');
 
     expect(champagne && rec(champagne.climate).annualMeanTempC).toBe(11);
     expect(champagne && rec(champagne.soils[0]).shareOfOutcroppingSedimentaryRockPct).toBe(75);
@@ -55,18 +63,35 @@ describe('soil climate vintage and matrix research', () => {
     expect(alavesa && rec(alavesa.soils[0]).estimatedSharePct).toBe(95);
     expect(alta?.matrixModifiers.acidity).toBeGreaterThan(oriental?.matrixModifiers.acidity ?? 0);
     expect(oriental?.matrixModifiers.alcohol).toBeGreaterThan(alta?.matrixModifiers.alcohol ?? 0);
+    expect(pomerol?.soils.map((soil) => rec(soil).name)).toContain('iron-rich subsoil');
+    expect(rec(brunello?.topography).elevationM).toEqual([120, 650]);
+    expect(rec(chianti?.climate).annualRainfallMm).toEqual([800, 900]);
+    expect(santorini?.matrixModifiers.droughtStress).toBeGreaterThan(0.8);
+    expect(santorini?.matrixModifiers.diseasePressure).toBeLessThan(0);
   });
 
   it('maps detailed game geography to the most specific researched environment', () => {
     const meursault = place('France', 'Meursault', ['Burgundy', 'Côte de Beaune', 'Meursault']);
     const gevrey = place('France', 'Gevrey-Chambertin', ['Burgundy', 'Côte de Nuits', 'Gevrey-Chambertin']);
+    const pauillac = place('France', 'Pauillac', ['Bordeaux', 'Médoc', 'Pauillac']);
+    const saintEmilion = place('France', 'Saint-Émilion Grand Cru', ['Bordeaux', 'Saint-Émilion', 'Saint-Émilion Grand Cru']);
+    const montalcino = place('Italy', 'Brunello di Montalcino', ['Tuscany', 'Brunello di Montalcino']);
+    const santorini = place('Greece', 'Santorini', ['Aegean Islands', 'Santorini']);
     const oriental = place('Spain', 'Rioja Oriental', ['Rioja', 'Rioja Oriental']);
     const rutherford = place('United States', 'Rutherford', ['California', 'Napa Valley', 'Rutherford']);
+    const marlborough = place('New Zealand', 'Marlborough', ['South Island', 'Marlborough']);
+    const stellenbosch = place('South Africa', 'Stellenbosch', ['Coastal Region', 'Stellenbosch']);
 
     expect(environmentalProfileForPlace(meursault)?.id).toBe('env-fr-meursault');
-    expect(environmentalProfileForPlace(gevrey)?.id).toBe('env-fr-bourgogne-cote');
+    expect(environmentalProfileForPlace(gevrey)?.id).toBe('env-fr-gevrey-chambertin');
+    expect(environmentalProfileForPlace(pauillac)?.id).toBe('env-fr-pauillac');
+    expect(environmentalProfileForPlace(saintEmilion)?.id).toBe('env-fr-saint-emilion');
+    expect(environmentalProfileForPlace(montalcino)?.id).toBe('env-it-brunello-montalcino');
+    expect(environmentalProfileForPlace(santorini)?.id).toBe('env-gr-santorini');
     expect(environmentalProfileForPlace(oriental)?.id).toBe('env-es-rioja-oriental');
     expect(environmentalProfileForPlace(rutherford)?.id).toBe('env-us-napa-valley');
+    expect(environmentalProfileForPlace(marlborough)?.id).toBe('env-nz-marlborough');
+    expect(environmentalProfileForPlace(stellenbosch)?.id).toBe('env-za-stellenbosch');
   });
 
   it('stores actual growing-season observations instead of legacy generic quality scores', () => {
@@ -88,7 +113,19 @@ describe('soil climate vintage and matrix research', () => {
     }
   });
 
-  it('resolves a researched vintage through game geography and applies place plus vintage matrices', () => {
+  it('includes sourced classic-region vintage observations in the same model', () => {
+    const chianti2021 = findVintageObservation('vintage-it-chianti-classico-2021');
+    const chianti2025 = findVintageObservation('vintage-it-chianti-classico-2025');
+    const brunello2021 = findVintageObservation('vintage-it-brunello-montalcino-2021');
+    const stellenbosch2021 = findVintageObservation('vintage-za-stellenbosch-2021');
+
+    expect(rec(chianti2021?.growingSeason).sangioveseHarvestStart).toBe('around 2021-09-20');
+    expect(rec(chianti2025?.growingSeason).productionHectolitres).toBe(265000);
+    expect(brunello2021?.matrixModifiers.yield).toBeLessThan(0);
+    expect(stellenbosch2021?.matrixModifiers.ageability).toBeGreaterThan(0.3);
+  });
+
+  it('resolves researched vintages through game geography and applies place plus vintage matrices', () => {
     const champagne = place('France', 'Champagne', ['Champagne']);
     const environment = environmentalProfileForPlace(champagne);
     const vintage = vintageObservationForPlace(champagne, 2022);
@@ -108,6 +145,13 @@ describe('soil climate vintage and matrix research', () => {
     expect(modeled.acidity).toBeGreaterThan(base.acidity);
     expect(modeled.body).toBeLessThan(base.body);
     expect(modeled.alcohol ?? 0).toBeLessThan(base.alcohol ?? Number.POSITIVE_INFINITY);
+
+    const chianti = place('Italy', 'Chianti Classico', ['Tuscany', 'Chianti Classico']);
+    const brunello = place('Italy', 'Brunello di Montalcino', ['Tuscany', 'Brunello di Montalcino']);
+    const stellenbosch = place('South Africa', 'Stellenbosch', ['Coastal Region', 'Stellenbosch']);
+    expect(vintageObservationForPlace(chianti, 2021)?.id).toBe('vintage-it-chianti-classico-2021');
+    expect(vintageObservationForPlace(brunello, 2021)?.id).toBe('vintage-it-brunello-montalcino-2021');
+    expect(vintageObservationForPlace(stellenbosch, 2021)?.id).toBe('vintage-za-stellenbosch-2021');
   });
 
   it('keeps measured Napa rainfall separate from derived vintage effects', () => {
