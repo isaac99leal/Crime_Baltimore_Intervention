@@ -101,6 +101,12 @@ export function findWillametteBlocks(siteId: string, block: string): WillametteB
   return findWillametteSite(siteId)?.blocks?.filter((candidate) => candidate.block === block) ?? [];
 }
 
+export function canonicalCloneToken(value: string): string {
+  const trimmed = value.trim();
+  const match = trimmed.match(/^(PN\d+|\d+|Pommard|Wadenswil|Coury|Calera|LaTache|Dijon\s+\d+(?:\s*&\s*\d+)?)/i);
+  return match ? match[1] : trimmed;
+}
+
 export function validateWillametteMicroSites() {
   const issues: string[] = [];
   const ids = new Set<string>();
@@ -141,14 +147,16 @@ export function validateWillametteMicroSites() {
   if (!(shea?.blocks ?? []).some((block) => block.block === 'Third Hill Block 2')) issues.push('Shea Third Hill Block 2 identity is missing.');
 
   const lingua = findWillametteSite('us-or-lingua-franca-estate');
-  const linguaBlockThreeClones = new Set((lingua?.blockObservations ?? []).filter((item) => item.block === '3').map((item) => item.clone));
+  const linguaBlockThreeClones = new Set((lingua?.blockObservations ?? [])
+    .filter((item) => item.block === '3')
+    .map((item) => canonicalCloneToken(item.clone)));
   if (!linguaBlockThreeClones.has('PN777') || !linguaBlockThreeClones.has('PN115')) {
     issues.push('Lingua Franca Block 3 source-context clone observations were incorrectly collapsed.');
   }
 
   const knudsen = findWillametteSite('us-or-knudsen-vineyards');
   const knudsenBlock12 = (knudsen?.blockObservations ?? []).filter((item) => item.block === '12');
-  const knudsenBlock12Clones = new Set(knudsenBlock12.map((item) => item.clone));
+  const knudsenBlock12Clones = new Set(knudsenBlock12.map((item) => canonicalCloneToken(item.clone)));
   const knudsenBlock12PlantingYears = new Set(knudsenBlock12.map((item) => item.plantedYear));
   if (!knudsenBlock12Clones.has('4407') || !knudsenBlock12Clones.has('828') || knudsenBlock12PlantingYears.size < 2) {
     issues.push('Knudsen Block 12 contradictory producer observations were incorrectly collapsed.');
