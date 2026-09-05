@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "notes": "Reviewed strict specifications for the eight Vosne/Flagey Grand Cru AOCs. Each protected name is modeled as its own appellation. The positive blend engine uses a conservative 100% Pinot Noir path; accessory Chardonnay, Pinot Blanc and Pinot Gris co-planting provisions are not generalized into ordinary blend authorization. Exact day-level aging/release requirements remain source notes while the engine enforces the following-year release offset.",
+  "sources": {
+    "vosne_flagey_grands_crus_inao_2011": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/echezeaux-7736",
+      "checked": "2026-09-05",
+      "scope": "Current INAO product record for Echezeaux, linking the 2011 homologation and the shared regulatory history for Romanée-Saint-Vivant, Romanée-Conti, La Romanée, La Tâche, Richebourg, La Grande Rue, Echezeaux and Grands-Echezeaux. The eight specifications share the executable Grand Cru red-wine limits encoded here."
+    },
+    "romanee_conti_inao_2011": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/romanee-conti-7731",
+      "checked": "2026-09-05",
+      "scope": "Current Romanée-Conti AOP product record; decree no. 2011-1382 of 25 October 2011."
+    },
+    "la_romanee_inao_2011": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/la-romanee-7732",
+      "checked": "2026-09-05",
+      "scope": "Current La Romanée AOP product record; decree no. 2011-1396 of 26 October 2011."
+    },
+    "romanee_saint_vivant_inao_2011": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/romanee-saint-vivant-7730",
+      "checked": "2026-09-05",
+      "scope": "Current Romanée-Saint-Vivant AOP product record; decree no. 2011-1349 of 24 October 2011."
+    },
+    "richebourg_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/richebourg-7734",
+      "checked": "2026-09-05",
+      "scope": "Current Richebourg AOP product record and shared Vosne/Flagey Grand Cru regulatory history."
+    },
+    "la_grande_rue_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/la-grande-rue-7735",
+      "checked": "2026-09-05",
+      "scope": "Current La Grande Rue AOP product record and shared Vosne/Flagey Grand Cru regulatory history."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:echezeaux:grand-cru",
+      "country": "France",
+      "appellation": "Echezeaux",
+      "aliases": ["Échezeaux", "Echezeaux AOC", "Echezeaux AOP", "Echezeaux Grand Cru", "Échezeaux Grand Cru"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["vosne_flagey_grands_crus_inao_2011"],
+      "notes": "Separate Grand Cru AOC, not a Vosne-Romanée or Flagey-Echezeaux site suffix. Conservative 100% Pinot Noir positive path; accessory co-planted varieties are not promoted."
+    },
+    {
+      "id": "fr:grands-echezeaux:grand-cru",
+      "country": "France",
+      "appellation": "Grands-Echezeaux",
+      "aliases": ["Grands-Échezeaux", "Grands-Echezeaux AOC", "Grands-Echezeaux AOP", "Grands-Echezeaux Grand Cru", "Grands-Échezeaux Grand Cru"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["vosne_flagey_grands_crus_inao_2011"],
+      "notes": "Separate Grand Cru AOC. Conservative 100% Pinot Noir positive path; accessory co-planted varieties are not promoted."
+    },
+    {
+      "id": "fr:romanee-saint-vivant:grand-cru",
+      "country": "France",
+      "appellation": "Romanée-Saint-Vivant",
+      "aliases": ["Romanée-Saint-Vivant AOC", "Romanée-Saint-Vivant AOP", "Romanée-Saint-Vivant Grand Cru"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["romanee_saint_vivant_inao_2011", "vosne_flagey_grands_crus_inao_2011"],
+      "notes": "Separate Grand Cru AOC. Conservative 100% Pinot Noir positive path; accessory co-planted varieties are not promoted."
+    },
+    {
+      "id": "fr:romanee-conti:grand-cru",
+      "country": "France",
+      "appellation": "Romanée-Conti",
+      "aliases": ["Romanée-Conti AOC", "Romanée-Conti AOP", "Romanée-Conti Grand Cru"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["romanee_conti_inao_2011", "vosne_flagey_grands_crus_inao_2011"],
+      "notes": "Separate Grand Cru AOC. Vineyard ownership/monopole status is intentionally not encoded as an origin-production rule."
+    },
+    {
+      "id": "fr:la-romanee:grand-cru",
+      "country": "France",
+      "appellation": "La Romanée",
+      "aliases": ["La Romanée AOC", "La Romanée AOP", "La Romanée Grand Cru"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["la_romanee_inao_2011", "vosne_flagey_grands_crus_inao_2011"],
+      "notes": "Separate Grand Cru AOC. Vineyard ownership/monopole status is intentionally not encoded as an origin-production rule."
+    },
+    {
+      "id": "fr:la-tache:grand-cru",
+      "country": "France",
+      "appellation": "La Tâche",
+      "aliases": ["La Tâche AOC", "La Tâche AOP", "La Tâche Grand Cru"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["vosne_flagey_grands_crus_inao_2011"],
+      "notes": "Separate Grand Cru AOC. Vineyard ownership/monopole status is intentionally not encoded as an origin-production rule."
+    },
+    {
+      "id": "fr:richebourg:grand-cru",
+      "country": "France",
+      "appellation": "Richebourg",
+      "aliases": ["Richebourg AOC", "Richebourg AOP", "Richebourg Grand Cru"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["richebourg_inao_current", "vosne_flagey_grands_crus_inao_2011"],
+      "notes": "Separate Grand Cru AOC. Conservative 100% Pinot Noir positive path; accessory co-planted varieties are not promoted."
+    },
+    {
+      "id": "fr:la-grande-rue:grand-cru",
+      "country": "France",
+      "appellation": "La Grande Rue",
+      "aliases": ["La Grande Rue AOC", "La Grande Rue AOP", "La Grande Rue Grand Cru"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["la_grande_rue_inao_current", "vosne_flagey_grands_crus_inao_2011"],
+      "notes": "Separate Grand Cru AOC. Vineyard ownership/monopole status is intentionally not encoded as an origin-production rule."
+    }
+  ]
+}
