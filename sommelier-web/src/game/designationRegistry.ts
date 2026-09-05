@@ -1,6 +1,7 @@
 import registryData from '../data/research/designation_registry_records_pass1.json';
 import registryDataPass2 from '../data/research/designation_registry_records_pass2.json';
 import registryDataPass3 from '../data/research/designation_registry_records_pass3.json';
+import registryDataPass4 from '../data/research/designation_registry_records_pass4.json';
 import { researchSourceById } from './research';
 
 export type ExpandedDesignation = {
@@ -38,6 +39,7 @@ const files = [
   registryData as unknown as RegistryFile,
   registryDataPass2 as unknown as RegistryFile,
   registryDataPass3 as unknown as RegistryFile,
+  registryDataPass4 as unknown as RegistryFile,
 ];
 
 function slug(value: string): string {
