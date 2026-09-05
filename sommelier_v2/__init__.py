@@ -12,18 +12,22 @@ from .domain import (
     WineRecord,
     WineStyle,
 )
+from .knowledge.finished_wine import FinishedWineAssembler, FinishedWineConstraintError, ValidatedWineRecord
 from .simulation import RestaurantSimulation
 
 __all__ = [
     "BeverageProgram",
     "CareerState",
     "EquipmentAsset",
+    "FinishedWineAssembler",
+    "FinishedWineConstraintError",
     "GuestProfile",
     "InventoryLot",
     "MenuPlacement",
     "RelationshipAccount",
     "RestaurantSimulation",
     "StaffMember",
+    "ValidatedWineRecord",
     "WineRecord",
     "WineStyle",
 ]
