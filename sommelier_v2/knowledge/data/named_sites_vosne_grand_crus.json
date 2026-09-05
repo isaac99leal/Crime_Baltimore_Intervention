@@ -1,48 +1,12 @@
 {
-  "schema_version": "1.0",
-  "notes": "Physical vineyard identities for the eight Vosne-Romanée / Flagey-Echezeaux Grand Cru AOCs. These records are identity and ownership metadata only. They do not create a second legal label claim because each Grand Cru name is already its own protected appellation in the strict legal-spec registry.",
+  "schema_version": "1.1",
+  "notes": "Physical vineyard identities for the four Vosne/Flagey Grand Cru AOCs that were absent from the historical named-site seed. The four Grand Cru monopoles (Romanée-Conti, La Romanée, La Tâche and La Grande Rue) already have stable NamedSite identities in named_sites_seed.json and are intentionally not duplicated here. Current ownership and area evidence for those monopoles is stored separately in vineyard_ownership_vosne_grand_crus.json.",
   "sources": {
     "bourgogne_vosne_grands_crus": {
       "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
       "url": "https://www.bourgogne-wines.com/our-wines-our-terroir/the-bourgogne-winegrowing-region-and-its-appellations/vosne-romanee,2458,9253.html",
       "checked": "2026-09-05",
-      "scope": "BIVB lists the six Vosne-Romanée Grand Crus and the two neighboring Flagey-Echezeaux Grand Crus and identifies Romanée-Conti, La Romanée, La Tâche and La Grande Rue as singly-held entities."
-    },
-    "drc_grands_crus_current": {
-      "authority": "Société Civile du Domaine de la Romanée-Conti",
-      "url": "https://www.romanee-conti.fr/fr/9-grand-crus",
-      "checked": "2026-09-05",
-      "scope": "Current Domaine de la Romanée-Conti vineyard portfolio, including Romanée-Conti and La Tâche."
-    },
-    "drc_romanee_conti_current": {
-      "authority": "Société Civile du Domaine de la Romanée-Conti",
-      "url": "https://www.romanee-conti.fr/fr/9-grand-crus/7/romanee-conti",
-      "checked": "2026-09-05",
-      "scope": "Current Romanée-Conti vineyard page; Domaine surface 1.8140 ha."
-    },
-    "drc_la_tache_current": {
-      "authority": "Société Civile du Domaine de la Romanée-Conti",
-      "url": "https://www.romanee-conti.fr/fr/9-grand-crus/5/la-tache",
-      "checked": "2026-09-05",
-      "scope": "Current La Tâche vineyard page; Domaine surface 6.0620 ha."
-    },
-    "liger_belair_la_romanee_current": {
-      "authority": "Domaine du Comte Liger-Belair",
-      "url": "https://www.liger-belair.fr/nos-climats/",
-      "checked": "2026-09-05",
-      "scope": "Current Domaine vineyard page identifies La Romanée Grand Cru as a monopole and gives Domaine surface 0.8452 ha."
-    },
-    "bourgogne_la_grande_rue_current": {
-      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
-      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/grande-rue-la,2458,9253.html",
-      "checked": "2026-09-05",
-      "scope": "Current BIVB La Grande Rue page identifies the Grand Cru as a singly-held entity and reports 1.65 ha under production in 2022."
-    },
-    "sothebys_la_grande_rue_current": {
-      "authority": "Sotheby's Wine",
-      "url": "https://wine.sothebys.com/collections/a-stunning-site-la-grande-rue",
-      "checked": "2026-09-05",
-      "scope": "Current market/provenance reference states the 1.65-ha La Grande Rue vineyard belongs entirely to Domaine Nicole Lamarche. Used only for current owner metadata, not legal eligibility."
+      "scope": "BIVB lists the six Vosne-Romanée Grand Crus and the two neighboring Flagey-Echezeaux Grand Crus."
     }
   },
   "records": [
@@ -95,62 +59,6 @@
       "legal_status": "official_grand_cru_vineyard",
       "source_ids": ["bourgogne_vosne_grands_crus"],
       "notes": "Physical Grand Cru vineyard identity. No single-owner claim is encoded."
-    },
-    {
-      "id": "site:fr:bourgogne:romanee-conti:monopole",
-      "name": "Romanée-Conti",
-      "country": "France",
-      "region": "Bourgogne",
-      "commune": "Vosne-Romanée",
-      "site_type": "monopole",
-      "classification": "Grand Cru",
-      "legal_status": "official_grand_cru_monopole",
-      "owner": "Société Civile du Domaine de la Romanée-Conti",
-      "area_ha": 1.8140,
-      "source_ids": ["bourgogne_vosne_grands_crus", "drc_grands_crus_current", "drc_romanee_conti_current"],
-      "notes": "BIVB identifies Romanée-Conti as a singly-held Grand Cru; the current Domaine page gives 1.8140 ha. Ownership metadata is separate from the AOC production rule."
-    },
-    {
-      "id": "site:fr:bourgogne:la-tache:monopole",
-      "name": "La Tâche",
-      "country": "France",
-      "region": "Bourgogne",
-      "commune": "Vosne-Romanée",
-      "site_type": "monopole",
-      "classification": "Grand Cru",
-      "legal_status": "official_grand_cru_monopole",
-      "owner": "Société Civile du Domaine de la Romanée-Conti",
-      "area_ha": 6.0620,
-      "source_ids": ["bourgogne_vosne_grands_crus", "drc_grands_crus_current", "drc_la_tache_current"],
-      "notes": "BIVB identifies La Tâche as a singly-held Grand Cru; the current Domaine page gives 6.0620 ha. Ownership metadata is separate from the AOC production rule."
-    },
-    {
-      "id": "site:fr:bourgogne:la-romanee:monopole",
-      "name": "La Romanée",
-      "country": "France",
-      "region": "Bourgogne",
-      "commune": "Vosne-Romanée",
-      "site_type": "monopole",
-      "classification": "Grand Cru",
-      "legal_status": "official_grand_cru_monopole",
-      "owner": "Domaine du Comte Liger-Belair",
-      "area_ha": 0.8452,
-      "source_ids": ["bourgogne_vosne_grands_crus", "liger_belair_la_romanee_current"],
-      "notes": "The current Domaine du Comte Liger-Belair site explicitly identifies La Romanée Grand Cru as a monopole and reports 0.8452 ha."
-    },
-    {
-      "id": "site:fr:bourgogne:la-grande-rue:monopole",
-      "name": "La Grande Rue",
-      "country": "France",
-      "region": "Bourgogne",
-      "commune": "Vosne-Romanée",
-      "site_type": "monopole",
-      "classification": "Grand Cru",
-      "legal_status": "official_grand_cru_monopole",
-      "owner": "Domaine Nicole Lamarche",
-      "area_ha": 1.65,
-      "source_ids": ["bourgogne_la_grande_rue_current", "sothebys_la_grande_rue_current"],
-      "notes": "BIVB identifies La Grande Rue as singly held and reports 1.65 ha under production; current owner metadata is corroborated by Sotheby's Wine. This owner field is provenance metadata, not a legal claim rule."
     }
   ]
 }
