@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.1",
+  "notes": "All 14 Aloxe-Corton Premier Cru climat identities from the effective homologated specification, cross-checked against current INAO product records.",
+  "sources": {
+    "aloxe_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Aloxe-Corton homologué par le décret n°2011-1369 du 24 octobre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20188.pdf",
+      "checked": "2026-09-05",
+      "scope": "Effective specification enumerates the 14 protected Premier Cru climat names."
+    },
+    "aloxe_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Current Aloxe-Corton Premier Cru product records",
+      "url": "https://www.inao.gouv.fr/produit/aloxe-corton-premier-cru-blanc-8233",
+      "checked": "2026-09-05",
+      "scope": "Current INAO product records confirm 14 Premier Cru climats and both white and red production."
+    }
+  },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "commune": "Aloxe-Corton",
+      "parent": "Aloxe-Corton",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["aloxe_bivb_spec_2011", "aloxe_inao_current"],
+      "notes": "Official Premier Cru climat identity. Legal label-claim eligibility is evaluated separately.",
+      "names": [
+        "Clos des Maréchaudes",
+        "Clos du Chapitre",
+        "La Coutière",
+        "La Maréchaude",
+        "La Toppe au Vert",
+        "Les Chaillots",
+        "Les Fournières",
+        "Les Guérets",
+        "Les Maréchaudes",
+        "Les Moutottes",
+        "Les Paulands",
+        "Les Petites Folières",
+        "Les Valozières",
+        "Les Vercots"
+      ]
+    }
+  ]
+}
