@@ -1,6 +1,7 @@
 import countryData from '../data/official/adelaide-countries.json';
 import eambrosiaData from '../data/official/eambrosia-wine-gis.json';
 import ttbData from '../data/official/ttb-avas.json';
+import expandedRegistryData from '../data/research/designation_registry_records_pass1.json';
 import programData from '../data/research/designation_registry_program.json';
 import { researchSourceById } from './research';
 
@@ -23,6 +24,7 @@ type CountryFile = {
 };
 
 type OfficialIndex = { count: number; records: Array<Record<string, unknown>> };
+type ExpandedIndex = { count: number };
 
 type ProgramFile = {
   schemaVersion: number;
@@ -36,6 +38,7 @@ type ProgramFile = {
 const countriesFile = countryData as unknown as CountryFile;
 const eambrosiaFile = eambrosiaData as unknown as OfficialIndex;
 const ttbFile = ttbData as unknown as OfficialIndex;
+const expandedFile = expandedRegistryData as unknown as ExpandedIndex;
 const programFile = programData as unknown as ProgramFile;
 
 export const globalDesignationGoal = programFile.goal;
@@ -77,6 +80,7 @@ export const sourceIdentifiedDesignationCountries = designationCoverage
 export const liveDesignationIndexCounts = {
   eambrosiaWineGis: eambrosiaFile.count,
   ttbAvas: ttbFile.count,
+  expandedAuthorityDesignations: expandedFile.count,
 };
 
 export function coverageForCountry(country: string): CountryDesignationCoverage | undefined {
@@ -97,6 +101,7 @@ export function validateDesignationProgram() {
     ids.add(registry.id);
     if (!registry.system || !registry.countries.length || !registry.coverage) issues.push(`Incomplete designation registry: ${registry.id}`);
     if (!['live-index', 'authority-identified'].includes(registry.ingestionStatus)) issues.push(`Invalid ingestion status: ${registry.id}`);
+    if (registry.ingestionStatus === 'live-index' && !registry.localIndex) issues.push(`Live registry lacks local index: ${registry.id}`);
     for (const sourceId of registry.sourceRefs ?? []) {
       if (!researchSourceById.has(sourceId)) issues.push(`Unknown designation source ${sourceId} in ${registry.id}`);
     }
@@ -114,6 +119,7 @@ export function validateDesignationProgram() {
 
   if (eambrosiaFile.count < 1600) issues.push('eAmbrosia wine GI index unexpectedly small.');
   if (ttbFile.count < 280) issues.push('TTB AVA index unexpectedly small.');
+  if (expandedFile.count < 289) issues.push('Expanded authority designation index unexpectedly small.');
 
   return {
     verifiedPlantingCountries: designationCoverage.length,
