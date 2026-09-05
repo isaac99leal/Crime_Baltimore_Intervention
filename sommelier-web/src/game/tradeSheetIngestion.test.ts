@@ -4,25 +4,28 @@ import {
   detectTradeConflicts,
   tradeDiscoveryCandidateCount,
   tradeDiscoveryCountsByStage,
+  tradeDiscoveryPassCount,
   tradeFieldAuthority,
   tradeObservationPassCount,
   tradeObservations,
   tradeObservationsForProducer,
   tradeSourcePassCount,
   tradeSources,
+  tradeTechnicalTrajectory,
   validateTradeSheetIngestion,
 } from './tradeSheetIngestion';
 
 describe('trade tech-sheet research ingestion', () => {
-  it('scales from a curated seed registry into verified sources plus a larger discovery queue', () => {
+  it('scales from curated seeds into verified sources plus a hundreds-scale discovery funnel', () => {
     const report = validateTradeSheetIngestion();
-    expect(tradeSourcePassCount).toBe(2);
-    expect(tradeObservationPassCount).toBe(2);
-    expect(tradeSources.length).toBeGreaterThanOrEqual(20);
-    expect(tradeDiscoveryCandidateCount).toBeGreaterThanOrEqual(60);
-    expect(tradeDiscoveryCountsByStage['directory-lead']).toBeGreaterThanOrEqual(40);
-    expect(tradeObservations.length).toBeGreaterThanOrEqual(16);
-    expect(report.fieldsExtracted).toBeGreaterThanOrEqual(120);
+    expect(tradeSourcePassCount).toBe(3);
+    expect(tradeDiscoveryPassCount).toBe(3);
+    expect(tradeObservationPassCount).toBe(3);
+    expect(tradeSources.length).toBeGreaterThanOrEqual(33);
+    expect(tradeDiscoveryCandidateCount).toBeGreaterThanOrEqual(175);
+    expect(tradeDiscoveryCountsByStage['directory-lead']).toBeGreaterThanOrEqual(130);
+    expect(tradeObservations.length).toBeGreaterThanOrEqual(28);
+    expect(report.fieldsExtracted).toBeGreaterThanOrEqual(250);
     expect(report.conflicts).toBe(0);
     expect(report.issues).toEqual([]);
   });
@@ -66,6 +69,40 @@ describe('trade tech-sheet research ingestion', () => {
     const galicia = tradeObservations.find((observation) => observation.id === 'tradeobs-josepastor-nanclares-tinto');
     expect(oldArgentina?.fields.varieties).toEqual(['Barbera', 'Bonarda', 'Greco Nero', 'Rabosso Veronese', 'Cardin', 'Freisa']);
     expect(galicia?.fields.varieties).toEqual(['Mencía', 'Caiño', 'Espadeiro', 'Sousón', 'Brancellao']);
+  });
+
+  it('captures rare Georgian commercial production and qvevri process detail without promoting importer claims into cultivar law', () => {
+    const ojaleshi = tradeObservations.find((observation) => observation.id === 'tradeobs-georgianwinehouse-gvantsa-ojaleshi');
+    const kisi = tradeObservations.find((observation) => observation.id === 'tradeobs-georgianwinehouse-orgo-kisi');
+    const gravitas = tradeObservations.find((observation) => observation.id === 'tradeobs-georgianwinehouse-rosha-gravitas');
+    expect(ojaleshi?.fields.varietyComposition).toBe('100% Ojaleshi');
+    expect(ojaleshi?.fields.productionQuantityBottlesApprox).toBe(800);
+    expect(kisi?.fields.maceration).toContain('6 months');
+    expect(kisi?.fields.sulfurClaim).toContain('57 mg/L');
+    expect(gravitas?.fields.varietyComposition).toBe('50% Kisi, 50% Khikhvi');
+    expect(gravitas?.fields.productionQuantityBottles).toBe(3000);
+  });
+
+  it('tracks vintage-to-vintage technical trajectories instead of treating producer style as immutable', () => {
+    const trajectory = tradeTechnicalTrajectory('Cara Sur', 'Criolla Chica');
+    expect(trajectory.records.map((record) => record.vintage)).toContain(2018);
+    expect(trajectory.records.map((record) => record.vintage)).toContain(2022);
+    expect(trajectory.changingFields).toContain('alcoholPct');
+    expect(trajectory.changingFields).toContain('yieldTonsPerAcre');
+    expect(trajectory.changingFields).toContain('maturationVessel');
+    const v2018 = trajectory.records.find((record) => record.vintage === 2018);
+    const v2022 = trajectory.records.find((record) => record.vintage === 2022);
+    expect(v2018?.fields.alcoholPct).toBe(13.9);
+    expect(v2022?.fields.alcoholPct).toBe(12.5);
+  });
+
+  it('preserves oxidative cellar regimes as specific production observations', () => {
+    const sau = tradeObservations.find((observation) => observation.id === 'tradeobs-hausalpenz-sau-rancio-sec-nv');
+    const rombeau = tradeObservations.find((observation) => observation.id === 'tradeobs-hausalpenz-rombeau-rancio-sec-2009');
+    expect(sau?.fields.varietyComposition).toBe('100% Grenache gris');
+    expect(sau?.fields.topping).toBe('never topped up');
+    expect(sau?.fields.fortification).toContain('none');
+    expect(rombeau?.fields.ageingMonthsInitialOutdoorRange).toEqual([12, 18]);
   });
 
   it('detects same-entity same-vintage conflicts without overwriting either observation', () => {
