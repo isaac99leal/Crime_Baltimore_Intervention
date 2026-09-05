@@ -16,6 +16,7 @@ from .regional_rules import OriginDecision
 
 DATA_PATH = Path(__file__).resolve().parent / "data" / "site_claim_rules_seed.json"
 BURGUNDY_PATH = Path(__file__).resolve().parent / "data" / "site_claim_rules_burgundy.json"
+COTE_DE_NUITS_PATH = Path(__file__).resolve().parent / "data" / "site_claim_rules_cote_de_nuits.json"
 
 
 @dataclass(frozen=True)
@@ -49,7 +50,11 @@ class SiteClaimRegistry:
     """Evaluate whether a known site name can be used as a legal label claim."""
 
     def __init__(self, data_path: Path | None = None) -> None:
-        paths = [Path(data_path)] if data_path is not None else [DATA_PATH, BURGUNDY_PATH]
+        paths = (
+            [Path(data_path)]
+            if data_path is not None
+            else [DATA_PATH, BURGUNDY_PATH, COTE_DE_NUITS_PATH]
+        )
         documents: list[dict] = []
         for path in paths:
             if not path.exists():
