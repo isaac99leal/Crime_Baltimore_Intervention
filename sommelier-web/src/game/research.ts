@@ -2,6 +2,7 @@ import profileData from '../data/research/appellation_profiles.json';
 import profileDataPass2 from '../data/research/appellation_profiles_pass2.json';
 import profileDataPass3 from '../data/research/appellation_profiles_pass3.json';
 import profileDataPass4 from '../data/research/appellation_profiles_pass4.json';
+import profileDataPass5 from '../data/research/appellation_profiles_pass5.json';
 import sourceData from '../data/research/sources.json';
 import sourceDataPass2 from '../data/research/sources_pass2.json';
 import sourceDataPass3 from '../data/research/sources_pass3.json';
@@ -15,6 +16,7 @@ import sourceDataPass10 from '../data/research/sources_pass10.json';
 import sourceDataPass11 from '../data/research/sources_pass11.json';
 import sourceDataPass12 from '../data/research/sources_pass12.json';
 import sourceDataPass13 from '../data/research/sources_pass13.json';
+import sourceDataPass14 from '../data/research/sources_pass14.json';
 import { findGrape } from './reference';
 
 export type ResearchGenerationStatus = 'candidate' | 'reference-only' | 'framework-only';
@@ -71,6 +73,7 @@ const profileFiles: ResearchProfileFile[] = [
   profileDataPass2 as unknown as ResearchProfileFile,
   profileDataPass3 as unknown as ResearchProfileFile,
   profileDataPass4 as unknown as ResearchProfileFile,
+  profileDataPass5 as unknown as ResearchProfileFile,
 ];
 
 const sourceFiles: ResearchSourceFile[] = [
@@ -87,6 +90,7 @@ const sourceFiles: ResearchSourceFile[] = [
   sourceDataPass11 as unknown as ResearchSourceFile,
   sourceDataPass12 as unknown as ResearchSourceFile,
   sourceDataPass13 as unknown as ResearchSourceFile,
+  sourceDataPass14 as unknown as ResearchSourceFile,
 ];
 
 export const researchMethod = profileFiles.find((file) => file.method)?.method ?? 'Hand-researched wine reference overlay.';
