@@ -4,6 +4,7 @@ import {
   commercialCultivarCoverage,
   cultivationForCultivar,
   currentBearingVarieties,
+  explicitTradeCultivars,
   regionalCultivationObservations,
   validateCommercialCultivarEvidence,
   vintageContextsForCultivar,
@@ -45,6 +46,22 @@ describe('commercial cultivar cultivation and wine-use evidence', () => {
     expect(cazin?.technicalFields.vineAgeYearsRange).toEqual([40, 90]);
     expect(cazin?.technicalFields.malolactic).toContain('does not undergo');
     expect(cazin?.technicalFields.maturationVessel).toBe('used 300 L barrels');
+  });
+
+  it('parses semicolon and comma-delimited percentage blends into clean cultivar identities', () => {
+    expect(explicitTradeCultivars({
+      varietyComposition: '85% Mencía; 15% Godello, Palomino, Doña Blanca',
+    })).toEqual(['Mencía', 'Godello', 'Palomino', 'Doña Blanca']);
+    expect(explicitTradeCultivars({
+      varietyComposition: '90% Criolla Chica, 10% Criolla Blanca',
+    })).toEqual(['Criolla Chica', 'Criolla Blanca']);
+  });
+
+  it('adds commercial evidence for indigenous Cypriot cultivars while keeping identity reconciliation explicit', () => {
+    const xynisteri = commercialCultivarCoverage('Xynisteri');
+    const promara = commercialCultivarCoverage('Promara');
+    expect(xynisteri?.tradeWineUse.some((record) => record.producer === 'Makarounas Winery')).toBe(true);
+    expect(promara?.tradeWineUse.some((record) => record.technicalFields.fermentationVessel === '500 L, 800 L and 1200 L amphoras')).toBe(true);
   });
 
   it('keeps regional vintage evidence attached to grape-place context rather than inventing a global grape vintage score', () => {
