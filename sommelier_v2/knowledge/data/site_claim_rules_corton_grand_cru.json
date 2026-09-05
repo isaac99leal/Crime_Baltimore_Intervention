@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive Corton climat suffix rule. The effective specification permits the 24 listed climat names only for red Corton; white Corton must not inherit this claim rule.",
+  "sources": {
+    "corton_climat_claim_masaa_2011": {
+      "authority": "Ministère de l'agriculture / Journal officiel",
+      "title": "Cahier des charges de l'AOC Corton homologué par le décret n°2011-1390 du 26 octobre 2011",
+      "url": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-7b3c14e3-4105-489a-91a6-3e8b7ee78017/telechargement",
+      "checked": "2026-09-05",
+      "scope": "Permits one of the listed climat names after Corton for red wines only."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:corton:grand-cru-climat:red",
+      "country": "France",
+      "parent_appellation": "Corton",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_corton_2011"],
+      "allowed_wine_variants": ["red grand cru"],
+      "source_ids": ["corton_climat_claim_masaa_2011"],
+      "claim_kind": "grand_cru_climat_name",
+      "notes": "The listed Corton climat suffixes are authorized for red Corton only. White Corton remains a valid base AOC but cannot use this climat-suffix rule."
+    }
+  ]
+}

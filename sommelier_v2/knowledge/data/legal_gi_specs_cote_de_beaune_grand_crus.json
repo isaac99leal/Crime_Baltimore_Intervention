@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.0",
+  "notes": "Reviewed strict Côte de Beaune Grand Cru specifications. This first tranche encodes Corton by color, Corton-Charlemagne, and Montrachet. Conditional white-wine fermentable-sugar relief to 4 g/L is fail-closed at the unconditional 3 g/L ceiling until the acidity condition is represented. Red Corton uses a conservative 100% Pinot Noir positive path because Chardonnay, Pinot Blanc, and Pinot Gris are accessory varieties permitted only in mixed vineyard plantings.",
+  "sources": {
+    "corton_masaa_2011": {
+      "authority": "Ministère de l'agriculture / Journal officiel",
+      "title": "Cahier des charges de l'AOC Corton homologué par le décret n°2011-1390 du 26 octobre 2011",
+      "url": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-7b3c14e3-4105-489a-91a6-3e8b7ee78017/telechargement",
+      "checked": "2026-09-05",
+      "scope": "Effective Corton specification: white and red still wines; grape rules; 195/198 g/L must sugar; 12/11.5% minimum natural alcohol; 48/42 hL/ha normal yield; Pinot Blanc <=30% in white blend; <=3 g/L unconditional white fermentable sugar; <=2 g/L red fermentable sugar; <=0.4 g/L red malic acid; <=14.5% total alcohol after enrichment; elevage through 15 June and consumer release from 30 June N+1."
+    },
+    "corton_charlemagne_masaa_2011": {
+      "authority": "Ministère de l'agriculture / Journal officiel",
+      "title": "Cahier des charges de l'AOC Corton-Charlemagne homologué par le décret n°2011-1380 du 25 octobre 2011",
+      "url": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-b0de3df4-2bfa-4b92-8e50-9fe5d7d24d73/telechargement",
+      "checked": "2026-09-05",
+      "scope": "Effective Corton-Charlemagne specification: white still wine; Chardonnay principal and Pinot Blanc accessory; 195 g/L must sugar; 12% minimum natural alcohol; 48 hL/ha normal yield; Pinot Blanc <=30% in blend; <=3 g/L unconditional fermentable sugar; <=14.5% total alcohol after enrichment; elevage through 15 June and consumer release from 30 June N+1."
+    },
+    "montrachet_inao_2011": {
+      "authority": "Institut national de l'origine et de la qualité (INAO) / Journal officiel",
+      "title": "Montrachet AOP - décret n°2011-1531 du 14 novembre 2011",
+      "url": "https://www.inao.gouv.fr/produit/montrachet-7677",
+      "checked": "2026-09-05",
+      "scope": "Current INAO product record points to the effective 2011 specification."
+    },
+    "montrachet_masaa_2011": {
+      "authority": "Ministère de l'agriculture / Journal officiel",
+      "title": "Cahier des charges de l'AOC Montrachet homologué par le décret n°2011-1531 du 14 novembre 2011",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-a6d08a6a-3210-42d2-8c23-0869f0c8fd25/telechargement",
+      "checked": "2026-09-05",
+      "scope": "Effective Montrachet specification: white still wine exclusively Chardonnay; 195 g/L must sugar; 12% minimum natural alcohol; 48 hL/ha normal yield; <=3 g/L unconditional fermentable sugar; <=14.5% total alcohol after enrichment; elevage through 15 June and consumer release from 30 June N+1."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:corton:red-grand-cru",
+      "country": "France",
+      "appellation": "Corton",
+      "aliases": ["Corton rouge", "Corton AOC", "Corton AOP"],
+      "variant": "red grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 198.0,
+      "min_potential_alcohol_pct": 11.5,
+      "max_total_alcohol_pct": 14.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["corton_masaa_2011"],
+      "notes": "Conservative 100% Pinot Noir positive path. Chardonnay, Pinot Blanc and Pinot Gris are accessory varieties only in mixed vineyard plantings and are not modeled as ordinary cellar blend options."
+    },
+    {
+      "id": "fr:corton:white-grand-cru",
+      "country": "France",
+      "appellation": "Corton",
+      "aliases": ["Corton blanc"],
+      "variant": "white grand cru",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "grape_constraints": [
+        {"grape": "Chardonnay", "min_pct": 70, "max_pct": 100},
+        {"grape": "Pinot Blanc", "min_pct": 0, "max_pct": 30}
+      ],
+      "min_must_sugar_g_l": 195.0,
+      "min_potential_alcohol_pct": 12.0,
+      "max_total_alcohol_pct": 14.5,
+      "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["corton_masaa_2011"],
+      "notes": "Pinot Blanc is limited to 10% of the white vineyard planting but may comprise up to 30% of the white wine blend. The current generic blend model enforces the wine-level <=30% rule."
+    },
+    {
+      "id": "fr:corton-charlemagne:grand-cru",
+      "country": "France",
+      "appellation": "Corton-Charlemagne",
+      "aliases": ["Corton Charlemagne", "Corton-Charlemagne AOC", "Corton-Charlemagne AOP"],
+      "variant": "grand cru",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "grape_constraints": [
+        {"grape": "Chardonnay", "min_pct": 70, "max_pct": 100},
+        {"grape": "Pinot Blanc", "min_pct": 0, "max_pct": 30}
+      ],
+      "min_must_sugar_g_l": 195.0,
+      "min_potential_alcohol_pct": 12.0,
+      "max_total_alcohol_pct": 14.5,
+      "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["corton_charlemagne_masaa_2011"],
+      "notes": "Pinot Blanc is limited to 10% of vineyard planting and <=30% of the finished blend. A transitional Aligoté mixed-planting provision for vines already in place by 31 July 2009 is not promoted as a normal positive blend path."
+    },
+    {
+      "id": "fr:montrachet:grand-cru",
+      "country": "France",
+      "appellation": "Montrachet",
+      "aliases": ["Le Montrachet", "Montrachet AOC", "Montrachet AOP"],
+      "variant": "grand cru",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay"],
+      "grape_constraints": [{"grape": "Chardonnay", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 195.0,
+      "min_potential_alcohol_pct": 12.0,
+      "max_total_alcohol_pct": 14.5,
+      "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["montrachet_inao_2011", "montrachet_masaa_2011"],
+      "notes": "The effective specification states that Montrachet wines are exclusively Chardonnay. The conditional 4 g/L fermentable-sugar allowance at sufficiently high total acidity is conservatively fail-closed at the unconditional 3 g/L ceiling."
+    }
+  ]
+}
