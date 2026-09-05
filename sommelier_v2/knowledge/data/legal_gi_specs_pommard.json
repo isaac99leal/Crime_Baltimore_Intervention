@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "notes": "Strict Pommard AOC specifications from the effective cahier des charges homologated by decree n°2011-1510. Pommard is red only. Accessory Chardonnay, Pinot Blanc and Pinot Gris are permitted only as mixed vineyard plantings up to 15% per parcel, so the authoritative positive path remains 100% Pinot Noir.",
+  "sources": {
+    "pommard_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Pommard and Pommard Premier Cru current product records",
+      "url": "https://www.inao.gouv.fr/produit/pommard-premier-cru-8599",
+      "checked": "2026-09-05",
+      "scope": "Current INAO record: red-only AOP, 28 Premier Cru climats, current cahier homologated by decree n°2011-1510."
+    },
+    "pommard_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Pommard homologué par le décret n°2011-1510 du 10 novembre 2011",
+      "url": "https://www.bourgogne-wines.com/our-wines-our-terroir/all-bourgogne-wines/gallery_files/site/321/19990/20251.pdf",
+      "checked": "2026-09-05",
+      "scope": "Effective homologated specification: 28 legal climat names, Pinot Noir principal variety, maturity, yield, analytical, élevage and release rules."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:pommard:standard",
+      "country": "France",
+      "appellation": "Pommard",
+      "aliases": ["Pommard AOC", "Pommard AOP"],
+      "variant": "standard",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 180.0,
+      "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5,
+      "max_yield_hl_ha": 50.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["pommard_inao_current", "pommard_bivb_spec_2011"],
+      "notes": "Conservative 100% Pinot Noir positive path. Accessory white varieties are mixed-planting exceptions only."
+    },
+    {
+      "id": "fr:pommard:premier-cru",
+      "country": "France",
+      "appellation": "Pommard",
+      "variant": "premier cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 189.0,
+      "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 14.0,
+      "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["pommard_inao_current", "pommard_bivb_spec_2011"],
+      "notes": "Premier Cru production conditions apply to the 28 climat names enumerated by the homologated specification."
+    }
+  ]
+}
