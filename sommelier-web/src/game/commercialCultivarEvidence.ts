@@ -210,7 +210,7 @@ for (const profile of researchProfiles) {
 }
 export const legalWineUseEvidence = legalEvidence;
 
-function explicitTradeCultivars(fields: Record<string, unknown>): string[] {
+export function explicitTradeCultivars(fields: Record<string, unknown>): string[] {
   const names = new Set<string>();
   for (const key of ['varieties', 'grapes', 'authorizedVarieties']) {
     const value = fields[key];
@@ -221,10 +221,10 @@ function explicitTradeCultivars(fields: Record<string, unknown>): string[] {
 
   const composition = fields.varietyComposition;
   if (typeof composition === 'string') {
-    for (const piece of composition.split(/[,+/&]/)) {
+    for (const piece of composition.split(/[,+/&;]/)) {
       const cleaned = piece
-        .replace(/\b\d+(?:\.\d+)?\s*%\b/g, '')
-        .replace(/^\s*\d+(?:\.\d+)?\s*%\s*/g, '')
+        .replace(/^\s*\d+(?:\.\d+)?\s*%\s*/, '')
+        .replace(/\s+/g, ' ')
         .trim();
       if (cleaned && !/\bblend\b/i.test(cleaned)) names.add(cleaned);
     }
