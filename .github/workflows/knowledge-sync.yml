@@ -8,6 +8,7 @@ on:
     paths:
       - scripts/sync_external_knowledge.py
       - scripts/sync_external_knowledge_ci.py
+      - scripts/sync_legal_spec_sources.py
       - .github/workflows/knowledge-sync.yml
 
 permissions:
@@ -25,6 +26,8 @@ jobs:
           python-version: '3.12'
       - name: Refresh public wine registries
         run: python scripts/sync_external_knowledge_ci.py
+      - name: Index authoritative wine product specifications
+        run: python scripts/sync_legal_spec_sources.py
       - name: Commit refreshed snapshots
         run: |
           git config user.name "github-actions[bot]"
@@ -32,10 +35,12 @@ jobs:
           git add sommelier_v2/knowledge/data/adelaide_world_varieties_2000_2023.csv
           git add sommelier_v2/knowledge/data/adelaide_country_varieties_2000_2023.csv
           git add sommelier_v2/knowledge/data/eambrosia_wine_gis.json || true
+          git add sommelier_v2/knowledge/data/legal_spec_source_index.json || true
+          git add sommelier_v2/knowledge/data/legal_spec_source_manifest.json || true
           git add sommelier_v2/knowledge/data/external_sync_manifest.json
           if git diff --cached --quiet; then
             echo "No external knowledge changes"
           else
-            git commit -m "Refresh global wine knowledge snapshots"
+            git commit -m "Refresh external wine and legal specification snapshots"
             git push origin HEAD:restart/sommelier-v2-foundation
           fi
