@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive Premier Cru climat label-claim rules for core Côte de Nuits communal appellations. Ordinary lieux-dits remain fail-closed.",
+  "sources": {
+    "gevrey_masa_2011_current": {
+      "authority": "Ministère de l'Agriculture",
+      "title": "Cahier des charges de l'AOC Gevrey-Chambertin homologué par décret n° 2011-1381 du 25 octobre 2011",
+      "url": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-b0de3df4-2bfa-4b92-8e50-9fe5d7d24d73/telechargement"
+    },
+    "morey_masa_2011_current": {
+      "authority": "Ministère de l'Agriculture",
+      "title": "Cahier des charges de l'AOC Morey-Saint-Denis homologué par décret n° 2011-1803 du 6 décembre 2011",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-6d8683b3-0d77-4bd6-b1c3-8ae16e2331fa/telechargement"
+    },
+    "vosne_masa_2025": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOC Vosne-Romanée homologué par arrêté du 24 décembre 2024",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-aa3dec41-6530-42d2-b806-f02074478fba/telechargement"
+    },
+    "nuits_masa_2025": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOC Nuits-Saint-Georges homologué par arrêté du 24 décembre 2024",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-b1623bde-4ee9-46cb-806e-556ec29a84a4/telechargement"
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:gevrey-chambertin:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Gevrey-Chambertin",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_gevrey_current"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["gevrey_masa_2011_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The effective Gevrey-Chambertin specification authorizes the 26 listed Premier Cru climat names for red wine."
+    },
+    {
+      "id": "siteclaim:fr:morey-saint-denis:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Morey-Saint-Denis",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_morey_current"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["morey_masa_2011_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The effective Morey-Saint-Denis specification permits the 20 listed Premier Cru climat names for white and red wines. The Monts Luisants Aligoté convention remains a separate composition question."
+    },
+    {
+      "id": "siteclaim:fr:vosne-romanee:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Vosne-Romanée",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_vosne_current"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["vosne_masa_2025"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The current Vosne-Romanée specification authorizes the 14 official Premier Cru climat names for red wine."
+    },
+    {
+      "id": "siteclaim:fr:nuits-saint-georges:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Nuits-Saint-Georges",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_nuits_current"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["nuits_masa_2025"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The current Nuits-Saint-Georges specification permits the 41 listed Premier Cru climat names for white and red wines."
+    }
+  ]
+}
