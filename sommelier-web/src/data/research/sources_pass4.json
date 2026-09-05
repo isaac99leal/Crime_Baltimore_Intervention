@@ -1,0 +1,15 @@
+{
+  "updatedAt":"2026-09-04",
+  "sources":[
+    {"id":"fr-inao-chablis-grand-cru-2024","publisher":"Institut national de l'origine et de la qualité (INAO)","title":"Chablis Grand Cru AOP — current specification and official climats","url":"https://www.inao.gouv.fr/produit/chablis-grand-cru-les-clos-21907","jurisdiction":"France","kind":"regulator","accessed":"2026-09-04"},
+    {"id":"fr-inao-gevrey-chambertin-2026","publisher":"INAO","title":"Gevrey-Chambertin AOP — premier cru and grand cru hierarchy","url":"https://www.inao.gouv.fr/produit/gevrey-chambertin-premier-cru-clos-prieur-8322","jurisdiction":"France","kind":"regulator","accessed":"2026-09-04"},
+    {"id":"fr-inao-meursault-2026","publisher":"INAO","title":"Meursault AOP — commune and premier cru structure","url":"https://www.inao.gouv.fr/produit/meursault-blanc-7712","jurisdiction":"France","kind":"regulator","accessed":"2026-09-04"},
+    {"id":"fr-inao-aloxe-corton-2026","publisher":"INAO","title":"Aloxe-Corton AOP — premier cru and grand cru relationships","url":"https://www.inao.gouv.fr/produit/aloxe-corton-premier-cru-blanc-8233","jurisdiction":"France","kind":"regulator","accessed":"2026-09-04"},
+    {"id":"fr-inao-margaux-2023","publisher":"INAO","title":"Margaux AOP — 2023 specification and territory","url":"https://www.inao.gouv.fr/produit/margaux-17485","jurisdiction":"France","kind":"regulator","accessed":"2026-09-04"},
+    {"id":"fr-inao-pomerol-2021","publisher":"INAO","title":"Pomerol AOP — 2021 specification and territory","url":"https://www.inao.gouv.fr/produit/pomerol-16531","jurisdiction":"France","kind":"regulator","accessed":"2026-09-04"},
+    {"id":"fr-inao-sauternes-2026","publisher":"INAO","title":"Sauternes AOP — 2026 specification and botrytis harvest context","url":"https://www.inao.gouv.fr/produit/sauternes-24314","jurisdiction":"France","kind":"regulator","accessed":"2026-09-04"},
+    {"id":"fr-inao-saint-emilion-2026","publisher":"INAO","title":"Saint-Émilion AOP — territory, grapes and styles","url":"https://www.inao.gouv.fr/produit/saint-emilion-17447","jurisdiction":"France","kind":"regulator","accessed":"2026-09-04"},
+    {"id":"fr-inao-saint-emilion-grand-cru-2023","publisher":"INAO","title":"Saint-Émilion Grand Cru AOP — 2023 specification and classified-growth framework","url":"https://www.inao.gouv.fr/produit/saint-emilion-grand-cru-premier-grand-cru-classe-17450","jurisdiction":"France","kind":"regulator","accessed":"2026-09-04"},
+    {"id":"it-masaf-barbaresco-2026","publisher":"Ministero dell'agricoltura, della sovranità alimentare e delle foreste (MASAF)","title":"Barbaresco DOCG — consolidated production specification, 4 March 2026","url":"https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24323","jurisdiction":"Italy","kind":"regulator","accessed":"2026-09-04"}
+  ]
+}
