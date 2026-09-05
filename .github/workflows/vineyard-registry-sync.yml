@@ -1,0 +1,49 @@
+name: Vineyard registry DACH sync
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - data/vineyard-registry-expansion
+    paths:
+      - scripts/sync_vineyard_registry_dach.py
+      - .github/workflows/vineyard-registry-sync.yml
+
+concurrency:
+  group: vineyard-registry-sync-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: data/vineyard-registry-expansion
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Materialize official DACH vineyard registries
+        run: python scripts/sync_vineyard_registry_dach.py
+      - name: Validate expanded registry
+        run: |
+          python scripts/knowledge_audit.py
+          python -m unittest discover -s tests -v
+      - name: Commit materialized DACH vineyard data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sommelier_v2/knowledge/data/named_sites_expansion_2026_germany_rlp.json
+          git add sommelier_v2/knowledge/data/named_sites_expansion_2026_austria_noe.json
+          git add sommelier_v2/knowledge/data/vineyard_registry_dach_sync_manifest.json
+          if git diff --cached --quiet; then
+            echo "No DACH vineyard registry changes"
+          else
+            git commit -m "Materialize official German and Austrian vineyard registries"
+            git fetch origin data/vineyard-registry-expansion
+            git rebase origin/data/vineyard-registry-expansion
+            git push origin HEAD:data/vineyard-registry-expansion
+          fi
