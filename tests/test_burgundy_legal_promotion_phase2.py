@@ -112,22 +112,41 @@ class BurgundyPhase2SiteClaimTests(unittest.TestCase):
             "siteclaim:fr:puligny-montrachet:white-premier-cru-climat",
         )
 
-    def test_puligny_red_climat_remains_fail_closed(self):
-        site = self.site("Les Pucelles", "climat", "Puligny-Montrachet")
-        origin = self.factory.create(
+    def test_puligny_red_climat_uses_exact_color_matrix(self):
+        dual = self.site("Les Pucelles", "climat", "Puligny-Montrachet")
+        eligible = self.factory.create(
             OriginRequest(
                 country="France",
-                region=site.region,
+                region=dual.region,
                 appellation="Puligny-Montrachet",
                 grapes={"Pinot Noir": 100},
                 vintage_year=2025,
                 label_scope="regulated_gi",
-                site_id=site.id,
+                site_id=dual.id,
                 wine_variant="red premier cru",
             )
         )
-        self.assertFalse(origin.site_claim_eligible)
-        self.assertEqual(origin.site_claim_status, "site_claim_rule_conditions_not_met")
+        self.assertTrue(eligible.site_claim_eligible)
+        self.assertEqual(
+            eligible.site_claim_rule_id,
+            "siteclaim:fr:puligny-montrachet:red-premier-cru-climat",
+        )
+
+        white_only = self.site("Hameau de Blagny", "climat", "Puligny-Montrachet")
+        blocked = self.factory.create(
+            OriginRequest(
+                country="France",
+                region=white_only.region,
+                appellation="Puligny-Montrachet",
+                grapes={"Pinot Noir": 100},
+                vintage_year=2025,
+                label_scope="regulated_gi",
+                site_id=white_only.id,
+                wine_variant="red premier cru",
+            )
+        )
+        self.assertFalse(blocked.site_claim_eligible)
+        self.assertEqual(blocked.site_claim_status, "site_claim_rule_conditions_not_met")
 
     def test_volnay_premier_cru_climat_passes(self):
         site = self.site("Clos des Chênes", "climat", "Volnay")
@@ -210,12 +229,16 @@ class BurgundyPhase2AuthoritativeCatalogTests(unittest.TestCase):
             if item.legal_spec_id == spec_id and item.wine.vineyard
         }
 
-    def test_catalog_contains_all_seeded_puligny_white_premier_cru_climats(self):
-        sites = self.unique_sites_for("fr:puligny-montrachet:white-premier-cru")
-        self.assertEqual(len(sites), 17)
-        self.assertIn("Les Pucelles", sites)
-        self.assertIn("Hameau de Blagny", sites)
-        self.assertFalse(self.unique_sites_for("fr:puligny-montrachet:red-premier-cru"))
+    def test_catalog_contains_exact_puligny_premier_cru_color_matrix(self):
+        white = self.unique_sites_for("fr:puligny-montrachet:white-premier-cru")
+        red = self.unique_sites_for("fr:puligny-montrachet:red-premier-cru")
+        self.assertEqual(len(white), 17)
+        self.assertEqual(len(red), 14)
+        self.assertIn("Les Pucelles", white)
+        self.assertIn("Les Pucelles", red)
+        for name in ("Hameau de Blagny", "La Garenne", "Sous le Puits"):
+            self.assertIn(name, white)
+            self.assertNotIn(name, red)
 
     def test_catalog_contains_all_seeded_volnay_premier_cru_climats(self):
         sites = self.unique_sites_for("fr:volnay:premier-cru")
