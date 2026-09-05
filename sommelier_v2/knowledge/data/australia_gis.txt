@@ -1,0 +1,118 @@
+# Authority: Wine Australia
+# Source: https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications
+# Retrieved: 2026-09-05
+# Each line is a protected Australian geographical indication shown in the official State/Zone, Region, Subregion register table.
+Australia
+South Eastern Australia
+South Australia
+Adelaide
+Barossa
+Barossa Valley
+Eden Valley
+High Eden
+Far North
+Southern Flinders Ranges
+Fleurieu
+Currency Creek
+Kangaroo Island
+Langhorne Creek
+McLaren Vale
+Southern Fleurieu
+Limestone Coast
+Coonawarra
+Mount Benson
+Mount Gambier
+Padthaway
+Robe
+Wrattonbully
+Lower Murray
+Riverland
+Mount Lofty Ranges
+Adelaide Hills
+Lenswood
+Piccadilly Valley
+Adelaide Plains
+Clare Valley
+The Peninsulas
+New South Wales
+Big Rivers
+Murray Darling
+Perricoota
+Riverina
+Swan Hill
+Central Ranges
+Cowra
+Mudgee
+Orange
+Hunter Valley
+Hunter
+Broke Fordwich
+Pokolbin
+Upper Hunter Valley
+Northern Rivers
+Hastings River
+Northern Slopes
+New England Australia
+South Coast
+Shoalhaven Coast
+Southern Highlands
+Southern New South Wales
+Canberra District
+Gundagai
+Hilltops
+Tumbarumba
+Western Plains
+Western Australia
+Central Western Australia
+Eastern Plains - Inland and North of Western Australia
+Greater Perth
+Peel
+Perth Hills
+Swan District
+Swan Valley
+South West Australia
+Blackwood Valley
+Geographe
+Great Southern
+Albany
+Denmark
+Frankland River
+Mount Barker
+Porongurup
+Manjimup
+Margaret River
+Pemberton
+West Australian South East Coastal
+Queensland
+Granite Belt
+South Burnett
+Victoria
+Central Victoria
+Bendigo
+Goulburn Valley
+Nagambie Lakes
+Heathcote
+Strathbogie Ranges
+Upper Goulburn
+Gippsland
+North East Victoria
+Alpine Valleys
+Beechworth
+Glenrowan
+King Valley
+Rutherglen
+North West Victoria
+Port Phillip
+Geelong
+Macedon Ranges
+Mornington Peninsula
+Sunbury
+Yarra Valley
+Western Victoria
+Grampians
+Great Western
+Henty
+Pyrenees
+Tasmania
+Northern Territory
+Australian Capital Territory
