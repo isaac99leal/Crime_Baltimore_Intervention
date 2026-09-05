@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sommelier_v2/knowledge/data/named_sites_expansion_2026_germany_rlp.json
+          git add sommelier_v2/knowledge/data/named_sites_expansion_2026_germany_rlp.json || true
           git add sommelier_v2/knowledge/data/named_sites_expansion_2026_austria_noe.json
           git add sommelier_v2/knowledge/data/vineyard_registry_dach_sync_manifest.json
           if git diff --cached --quiet; then
