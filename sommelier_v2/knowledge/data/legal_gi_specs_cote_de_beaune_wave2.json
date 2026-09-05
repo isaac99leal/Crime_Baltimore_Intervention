@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0",
+  "notes": "Reviewed strict specifications for Aloxe-Corton, Pernand-Vergelesses and Santenay. White and red wines are modeled separately at standard and Premier Cru level. Conditional white fermentable-sugar relief to 4 g/L is conservatively fail-closed at the unconditional 3 g/L ceiling. Red accessory white grapes remain mixed-planting exceptions rather than ordinary cellar blend choices.",
+  "sources": {
+    "aloxe_masaa_2011": {
+      "authority": "Ministère de l'agriculture / Journal officiel",
+      "title": "Cahier des charges de l'AOC Aloxe-Corton homologué par le décret n°2011-1369 du 24 octobre 2011",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-302391de-0e09-4b5c-95d4-ddadcaf4ebeb/telechargement",
+      "checked": "2026-09-05",
+      "scope": "Effective published specification: white/red still wines; 14 Premier Cru climats; composition, maturity, yields, analytical limits, elevage through 15 June and consumer release from 30 June N+1."
+    },
+    "pernand_bivb_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne / Journal officiel",
+      "title": "Cahier des charges de l'AOC Pernand-Vergelesses homologué par le décret n°2011-1790 du 5 décembre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20249.pdf",
+      "checked": "2026-09-05",
+      "scope": "Effective published specification: white/red still wines; 8 Premier Cru climats with a color-specific climat matrix; standard release 31 March and Premier Cru release 30 June N+1."
+    },
+    "santenay_bivb_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne / Journal officiel",
+      "title": "Cahier des charges de l'AOC Santenay homologué par le décret n°2011-1765 du 2 décembre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20265.pdf",
+      "checked": "2026-09-05",
+      "scope": "Effective published specification: white/red still wines; 12 Premier Cru climats; composition, maturity, yields, analytical limits, elevage through 15 March and consumer release from 31 March N+1."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:aloxe-corton:white-standard",
+      "country": "France", "appellation": "Aloxe-Corton",
+      "aliases": ["Aloxe Corton", "Aloxe-Corton AOC", "Aloxe-Corton AOP"],
+      "variant": "white standard", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "grape_constraints": [
+        {"grape": "Chardonnay", "min_pct": 70, "max_pct": 100},
+        {"grape": "Pinot Blanc", "min_pct": 0, "max_pct": 30}
+      ],
+      "min_must_sugar_g_l": 178.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 57.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["aloxe_masaa_2011"]
+    },
+    {
+      "id": "fr:aloxe-corton:red-standard",
+      "country": "France", "appellation": "Aloxe-Corton",
+      "aliases": ["Aloxe Corton", "Aloxe-Corton AOC", "Aloxe-Corton AOP"],
+      "variant": "red standard", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 180.0, "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 50.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["aloxe_masaa_2011"],
+      "notes": "Conservative 100% Pinot Noir positive path; Chardonnay, Pinot Blanc and Pinot Gris are co-planted accessory exceptions only."
+    },
+    {
+      "id": "fr:aloxe-corton:white-premier-cru",
+      "country": "France", "appellation": "Aloxe-Corton",
+      "variant": "white premier cru", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "grape_constraints": [
+        {"grape": "Chardonnay", "min_pct": 70, "max_pct": 100},
+        {"grape": "Pinot Blanc", "min_pct": 0, "max_pct": 30}
+      ],
+      "min_must_sugar_g_l": 187.0, "min_potential_alcohol_pct": 11.5,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 55.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["aloxe_masaa_2011"]
+    },
+    {
+      "id": "fr:aloxe-corton:red-premier-cru",
+      "country": "France", "appellation": "Aloxe-Corton",
+      "variant": "red premier cru", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 189.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["aloxe_masaa_2011"]
+    },
+
+    {
+      "id": "fr:pernand-vergelesses:white-standard",
+      "country": "France", "appellation": "Pernand-Vergelesses",
+      "aliases": ["Pernand Vergelesses", "Pernand-Vergelesses AOC", "Pernand-Vergelesses AOP"],
+      "variant": "white standard", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_must_sugar_g_l": 178.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 57.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 3, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 3, "earliest_release_day": 31,
+      "source_ids": ["pernand_bivb_2011"],
+      "notes": "Pinot Gris is a documented accessory variety but is not promoted into the ordinary authoritative positive path."
+    },
+    {
+      "id": "fr:pernand-vergelesses:red-standard",
+      "country": "France", "appellation": "Pernand-Vergelesses",
+      "aliases": ["Pernand Vergelesses", "Pernand-Vergelesses AOC", "Pernand-Vergelesses AOP"],
+      "variant": "red standard", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 180.0, "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 50.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 3, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 3, "earliest_release_day": 31,
+      "source_ids": ["pernand_bivb_2011"]
+    },
+    {
+      "id": "fr:pernand-vergelesses:white-premier-cru",
+      "country": "France", "appellation": "Pernand-Vergelesses",
+      "variant": "white premier cru", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_must_sugar_g_l": 187.0, "min_potential_alcohol_pct": 11.5,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 55.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["pernand_bivb_2011"]
+    },
+    {
+      "id": "fr:pernand-vergelesses:red-premier-cru",
+      "country": "France", "appellation": "Pernand-Vergelesses",
+      "variant": "red premier cru", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 189.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["pernand_bivb_2011"]
+    },
+
+    {
+      "id": "fr:santenay:white-standard",
+      "country": "France", "appellation": "Santenay",
+      "aliases": ["Santenay AOC", "Santenay AOP"],
+      "variant": "white standard", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_must_sugar_g_l": 178.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 57.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 3, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 3, "earliest_release_day": 31,
+      "source_ids": ["santenay_bivb_2011"]
+    },
+    {
+      "id": "fr:santenay:red-standard",
+      "country": "France", "appellation": "Santenay",
+      "aliases": ["Santenay AOC", "Santenay AOP"],
+      "variant": "red standard", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 180.0, "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 50.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 3, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 3, "earliest_release_day": 31,
+      "source_ids": ["santenay_bivb_2011"]
+    },
+    {
+      "id": "fr:santenay:white-premier-cru",
+      "country": "France", "appellation": "Santenay",
+      "variant": "white premier cru", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_must_sugar_g_l": 187.0, "min_potential_alcohol_pct": 11.5,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 55.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 3, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 3, "earliest_release_day": 31,
+      "source_ids": ["santenay_bivb_2011"]
+    },
+    {
+      "id": "fr:santenay:red-premier-cru",
+      "country": "France", "appellation": "Santenay",
+      "variant": "red premier cru", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 189.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 3, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 3, "earliest_release_day": 31,
+      "source_ids": ["santenay_bivb_2011"]
+    }
+  ]
+}
