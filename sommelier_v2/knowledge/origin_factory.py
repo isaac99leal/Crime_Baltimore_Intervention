@@ -2,7 +2,8 @@
 
 All new v2 generators should construct origin metadata through this factory.
 Protected-origin claims use sourced legal specifications when available and fail
-closed when grape rules are absent or violated.
+closed when grape rules are absent or violated. Named-site identity is evaluated
+separately from the legal right to put that site name on a protected-origin label.
 """
 from __future__ import annotations
 
@@ -13,6 +14,7 @@ from .catalog import normalize_name
 from .expanded_catalog import NamedSite, WorldWineKnowledgeCatalog
 from .legal_rules import LegalAwareRegionGrapeRulebook
 from .regional_rules import OriginConstraintError, OriginDecision, RegionGrapeRulebook
+from .site_claims import SiteClaimRegistry
 from .vineyard_engine import SiteRegistry
 
 
@@ -44,6 +46,9 @@ class ConstrainedOrigin:
     site: NamedSite | None
     site_claim_eligible: bool
     decision: OriginDecision
+    site_claim_status: str = "site_claim_not_requested"
+    site_claim_rule_id: str | None = None
+    site_claim_evidence: tuple[str, ...] = ()
 
 
 class WineOriginFactory:
@@ -52,10 +57,12 @@ class WineOriginFactory:
         *,
         catalog: WorldWineKnowledgeCatalog | None = None,
         rulebook: RegionGrapeRulebook | None = None,
+        site_claims: SiteClaimRegistry | None = None,
     ) -> None:
         self.catalog = catalog or WorldWineKnowledgeCatalog()
         self.rulebook = rulebook or LegalAwareRegionGrapeRulebook(catalog=self.catalog)
         self.sites = SiteRegistry(self.catalog.named_sites)
+        self.site_claims = site_claims or SiteClaimRegistry()
 
     def create(self, request: OriginRequest) -> ConstrainedOrigin:
         if request.vintage_year < 1800 or request.vintage_year > 2200:
@@ -74,8 +81,15 @@ class WineOriginFactory:
         appellation = request.appellation
         if site is not None and appellation is None:
             appellation = site.parent or site.region
-        if site is not None and request.appellation and site.parent and normalize_name(site.parent) != normalize_name(request.appellation):
-            raise OriginConstraintError(f"Site {site.name} is tied to {site.parent}; it cannot be attached to {request.appellation}.")
+        if (
+            site is not None
+            and request.appellation
+            and site.parent
+            and normalize_name(site.parent) != normalize_name(request.appellation)
+        ):
+            raise OriginConstraintError(
+                f"Site {site.name} is tied to {site.parent}; it cannot be attached to {request.appellation}."
+            )
 
         kwargs = dict(
             country=request.country,
@@ -93,9 +107,12 @@ class WineOriginFactory:
         decision = self.rulebook.evaluate(**kwargs)
         decision.require()
 
-        site_claim = bool(site) and request.label_scope.casefold() == "regulated_gi"
-        if site is not None and site.site_type == "block" and not site.owner:
-            site_claim = False
+        site_claim = self.site_claims.evaluate(
+            site=site,
+            origin_decision=decision,
+            appellation=appellation,
+            wine_variant=request.wine_variant,
+        )
 
         return ConstrainedOrigin(
             country=request.country,
@@ -106,8 +123,11 @@ class WineOriginFactory:
             canonical_grapes=decision.canonical_grapes,
             label_scope=request.label_scope,
             site=site,
-            site_claim_eligible=site_claim,
+            site_claim_eligible=site_claim.eligible,
             decision=decision,
+            site_claim_status=site_claim.status,
+            site_claim_rule_id=site_claim.rule_id,
+            site_claim_evidence=site_claim.evidence,
         )
 
     def declassification_options(self, request: OriginRequest) -> tuple[OriginDecision, ...]:
