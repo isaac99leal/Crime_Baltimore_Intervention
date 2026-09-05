@@ -4,7 +4,9 @@ These presets are model inputs. They are not claims about any real producer or w
 """
 from __future__ import annotations
 
+import base64
 import json
+import zlib
 from dataclasses import fields
 from pathlib import Path
 from typing import Any, TypeVar
@@ -24,8 +26,13 @@ from .schema import (
     YeastProgram,
 )
 
-DATA_PATH = Path(__file__).resolve().parent / "data" / "simulation_priors.json"
+DATA_PATH = Path(__file__).resolve().parent / "data" / "simulation_priors.zlib.b64"
 T = TypeVar("T")
+
+
+def _load_document(path: Path) -> dict[str, Any]:
+    compressed = base64.b64decode(path.read_text(encoding="ascii"))
+    return json.loads(zlib.decompress(compressed).decode("utf-8"))
 
 
 def _range(value: Any, *, unit: str = "") -> NumericRange:
@@ -123,7 +130,7 @@ class SimulationPriors:
 
     def __init__(self, path: Path | None = None) -> None:
         self.path = path or DATA_PATH
-        doc = json.loads(self.path.read_text(encoding="utf-8"))
+        doc = _load_document(self.path)
         self.schema_version = str(doc.get("schema_version", ""))
         self.purpose = str(doc.get("purpose", ""))
 
