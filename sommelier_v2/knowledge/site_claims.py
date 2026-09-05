@@ -1,0 +1,225 @@
+"""Fail-closed legal claim evaluation for named vineyard/site labels.
+
+Named-site identity and protected-origin eligibility are separate evidence axes.
+This registry only permits a site name when an explicit claim rule matches the
+site and the parent wine has already passed the strict legal specification layer.
+"""
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from pathlib import Path
+
+from .catalog import normalize_name
+from .expanded_catalog import NamedSite
+from .regional_rules import OriginDecision
+
+DATA_PATH = Path(__file__).resolve().parent / "data" / "site_claim_rules_seed.json"
+
+
+@dataclass(frozen=True)
+class SiteClaimRule:
+    id: str
+    country: str
+    parent_appellation: str
+    site_type: str
+    required_site_legal_status: str
+    required_site_source_ids: tuple[str, ...]
+    allowed_wine_variants: tuple[str, ...]
+    source_ids: tuple[str, ...]
+    claim_kind: str
+    notes: str = ""
+
+
+@dataclass(frozen=True)
+class SiteClaimDecision:
+    eligible: bool
+    status: str
+    site_id: str | None
+    rule_id: str | None = None
+    issues: tuple[str, ...] = ()
+    warnings: tuple[str, ...] = ()
+    evidence: tuple[str, ...] = ()
+
+
+class SiteClaimRegistry:
+    """Evaluate whether a known site name can be used as a legal label claim."""
+
+    def __init__(self, data_path: Path | None = None) -> None:
+        path = data_path or DATA_PATH
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        self.sources = dict(doc.get("sources", {}))
+        self.rules: list[SiteClaimRule] = []
+
+        seen: set[str] = set()
+        for row in doc.get("rules", []):
+            rule_id = str(row.get("id") or "").strip()
+            if not rule_id:
+                raise ValueError("Site-claim rule is missing an id")
+            if rule_id in seen:
+                raise ValueError(f"Duplicate site-claim rule id: {rule_id}")
+            seen.add(rule_id)
+
+            source_ids = tuple(str(v) for v in row.get("source_ids", []))
+            missing = [source_id for source_id in source_ids if source_id not in self.sources]
+            if missing:
+                raise ValueError(f"{rule_id} references unknown claim sources: {missing}")
+
+            self.rules.append(
+                SiteClaimRule(
+                    id=rule_id,
+                    country=str(row.get("country") or ""),
+                    parent_appellation=str(row.get("parent_appellation") or ""),
+                    site_type=str(row.get("site_type") or ""),
+                    required_site_legal_status=str(
+                        row.get("required_site_legal_status") or ""
+                    ),
+                    required_site_source_ids=tuple(
+                        str(v) for v in row.get("required_site_source_ids", [])
+                    ),
+                    allowed_wine_variants=tuple(
+                        str(v) for v in row.get("allowed_wine_variants", [])
+                    ),
+                    source_ids=source_ids,
+                    claim_kind=str(row.get("claim_kind") or "named_site"),
+                    notes=str(row.get("notes") or ""),
+                )
+            )
+
+    @staticmethod
+    def _same(left: str | None, right: str | None) -> bool:
+        return normalize_name(left or "") == normalize_name(right or "")
+
+    @staticmethod
+    def _variant_matches(rule: SiteClaimRule, wine_variant: str | None) -> bool:
+        if not rule.allowed_wine_variants:
+            return True
+        requested = normalize_name(wine_variant or "")
+        return any(
+            requested == normalize_name(allowed)
+            for allowed in rule.allowed_wine_variants
+        )
+
+    def _source_evidence(self, rule: SiteClaimRule) -> tuple[str, ...]:
+        evidence: list[str] = []
+        for source_id in rule.source_ids:
+            source = self.sources.get(source_id, {})
+            url = str(source.get("url") or "").strip()
+            evidence.append(f"site_claim_rule:{rule.id}:{source_id}")
+            if url:
+                evidence.append(f"source_url:{url}")
+        return tuple(evidence)
+
+    def evaluate(
+        self,
+        *,
+        site: NamedSite | None,
+        origin_decision: OriginDecision,
+        appellation: str | None,
+        wine_variant: str | None = None,
+    ) -> SiteClaimDecision:
+        if site is None:
+            return SiteClaimDecision(
+                eligible=False,
+                status="site_claim_not_requested",
+                site_id=None,
+            )
+
+        if origin_decision.label_scope.casefold() != "regulated_gi":
+            return SiteClaimDecision(
+                eligible=False,
+                status="site_claim_requires_regulated_gi",
+                site_id=site.id,
+                issues=("A named-site legal label claim requires a regulated GI context.",),
+            )
+        if not origin_decision.eligible:
+            return SiteClaimDecision(
+                eligible=False,
+                status="parent_origin_not_eligible",
+                site_id=site.id,
+                issues=("The parent protected-origin claim is not eligible.",),
+            )
+
+        # Only the strict reviewed legal layer can support a positive named-site
+        # claim. A legacy regional allow-list or machine composition pass is not
+        # enough, even when it would otherwise return an eligible origin.
+        if origin_decision.status != "appellation_eligible_sourced_spec":
+            return SiteClaimDecision(
+                eligible=False,
+                status="strict_parent_spec_required_for_site_claim",
+                site_id=site.id,
+                issues=(
+                    "The parent origin has not passed a reviewed strict legal specification.",
+                ),
+            )
+
+        parent = appellation or site.parent
+        candidates = [
+            rule
+            for rule in self.rules
+            if self._same(rule.country, site.country)
+            and self._same(rule.parent_appellation, parent)
+            and self._same(rule.site_type, site.site_type)
+        ]
+        if not candidates:
+            return SiteClaimDecision(
+                eligible=False,
+                status="site_claim_rule_unverified",
+                site_id=site.id,
+                issues=(
+                    "The site is documented, but no positive legal label-claim rule is verified for this site type and parent appellation.",
+                ),
+            )
+
+        site_sources = {str(source_id) for source_id in site.source_ids}
+        mismatch_reasons: list[str] = []
+        for rule in candidates:
+            if rule.required_site_legal_status and not self._same(
+                rule.required_site_legal_status, site.legal_status
+            ):
+                mismatch_reasons.append(
+                    f"{rule.id}: site legal status {site.legal_status!r} does not match the verified rule."
+                )
+                continue
+            if rule.required_site_source_ids and not set(
+                rule.required_site_source_ids
+            ).issubset(site_sources):
+                mismatch_reasons.append(
+                    f"{rule.id}: required site-identity evidence is missing."
+                )
+                continue
+            if not self._variant_matches(rule, wine_variant):
+                allowed = ", ".join(rule.allowed_wine_variants)
+                mismatch_reasons.append(
+                    f"{rule.id}: this claim is restricted to wine variant(s): {allowed}."
+                )
+                continue
+
+            return SiteClaimDecision(
+                eligible=True,
+                status="site_claim_eligible_verified_rule",
+                site_id=site.id,
+                rule_id=rule.id,
+                warnings=(rule.notes,) if rule.notes else (),
+                evidence=self._source_evidence(rule),
+            )
+
+        return SiteClaimDecision(
+            eligible=False,
+            status="site_claim_rule_conditions_not_met",
+            site_id=site.id,
+            issues=tuple(mismatch_reasons) or (
+                "A site-claim rule exists, but its conditions are not met.",
+            ),
+        )
+
+    def stats(self) -> dict[str, int]:
+        parents = {
+            (normalize_name(rule.country), normalize_name(rule.parent_appellation))
+            for rule in self.rules
+        }
+        return {
+            "verified_site_claim_rules": len(self.rules),
+            "verified_site_claim_parent_appellations": len(parents),
+            "verified_site_claim_sources": len(self.sources),
+        }
