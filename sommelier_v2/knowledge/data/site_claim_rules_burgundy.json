@@ -26,6 +26,26 @@
       "authority": "Ministère de l'Agriculture",
       "title": "Cahier des charges de l'AOC Saint-Aubin modifié par décret du 2 décembre 2013",
       "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-ebbf3fef-7ba9-449c-bbeb-75e54f694efb"
+    },
+    "pouilly_fuisse_masa_2020": {
+      "authority": "Ministère de l'Agriculture et de l'Alimentation",
+      "title": "Cahier des charges de l'AOC Pouilly-Fuissé homologué en 2020",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-4cfb89bd-e375-438d-90ff-d88fb1a54e0a"
+    },
+    "mercurey_masa_2025": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOC Mercurey homologué par arrêté du 1er septembre 2025",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-84e3b2df-7c1c-489f-8058-fc3b3babba25"
+    },
+    "givry_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Givry AOP current product specification",
+      "url": "https://www.inao.gouv.fr/produit/givry-7704"
+    },
+    "montagny_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Montagny AOP current product specification",
+      "url": "https://www.inao.gouv.fr/produit/montagny-7868"
     }
   },
   "rules": [
@@ -88,6 +108,54 @@
       "source_ids": ["saint_aubin_masa_2013_current"],
       "claim_kind": "premier_cru_climat_name",
       "notes": "The published Saint-Aubin specification explicitly permits the listed Premier Cru climat names for both white and red still wines. Generic lieux-dits are not promoted by this rule."
+    },
+    {
+      "id": "siteclaim:fr:pouilly-fuisse:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Pouilly-Fuissé",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_pouilly_fuisse"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["pouilly_fuisse_masa_2020"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The current Pouilly-Fuissé specification authorizes the 22 listed Premier Cru climat names."
+    },
+    {
+      "id": "siteclaim:fr:mercurey:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Mercurey",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_mercurey"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["mercurey_masa_2025"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The 2025 Mercurey specification authorizes 33 Premier Cru climats for white and red wine. This rule promotes the 32 official climat identities currently present in the project seed; Clos du Château de Montaigu remains a tracked site-registry coverage gap."
+    },
+    {
+      "id": "siteclaim:fr:givry:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Givry",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_givry"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["givry_inao_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The current Givry specification authorizes the listed Premier Cru climat names for white and red wine."
+    },
+    {
+      "id": "siteclaim:fr:montagny:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Montagny",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_montagny"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["montagny_inao_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The current Montagny specification authorizes the 49 listed Premier Cru climat names for white wine."
     }
   ]
 }
