@@ -1,6 +1,8 @@
 import environmentalData from '../data/research/environmental_profiles.json';
 import vintageData from '../data/research/vintage_observations.json';
 import { researchProfileById, researchSourceById } from './research';
+import type { ReferencePlace } from './reference';
+import type { WineProfile } from './types';
 
 export type PlaceMatrixModifiers = {
   scale: string;
@@ -102,6 +104,77 @@ export function findVintageObservation(id: string): VintageObservation | undefin
 
 export function vintageObservationsForRegion(region: string): VintageObservation[] {
   return vintageObservations.filter((vintage) => vintage.region === region).sort((a, b) => b.year - a.year);
+}
+
+function normalized(value: string): string {
+  return value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
+const placeMatchers: Array<{ profileId: string; country: string; terms: string[] }> = [
+  { profileId: 'env-fr-meursault', country: 'France', terms: ['meursault'] },
+  { profileId: 'env-fr-sauternes', country: 'France', terms: ['sauternes'] },
+  { profileId: 'env-fr-champagne', country: 'France', terms: ['champagne'] },
+  { profileId: 'env-it-barolo', country: 'Italy', terms: ['barolo'] },
+  { profileId: 'env-es-rioja-alta', country: 'Spain', terms: ['rioja alta'] },
+  { profileId: 'env-es-rioja-alavesa', country: 'Spain', terms: ['rioja alavesa'] },
+  { profileId: 'env-es-rioja-oriental', country: 'Spain', terms: ['rioja oriental', 'rioja baja'] },
+  { profileId: 'env-us-napa-valley', country: 'United States', terms: ['napa valley', 'rutherford', 'oakville', 'st. helena', 'st helena', 'los carneros'] },
+  {
+    profileId: 'env-fr-bourgogne-cote', country: 'France',
+    terms: ['cote de nuits', 'cote de beaune', 'gevrey-chambertin', 'morey-saint-denis', 'chambolle-musigny',
+      'vosne-romanee', 'nuits-saint-georges', 'aloxe-corton', 'corton', 'pommard', 'volnay', 'puligny-montrachet',
+      'chassagne-montrachet', 'beaune', 'savigny-les-beaune', 'pernand-vergelesses', 'monthelie', 'saint-aubin'],
+  },
+];
+
+export function environmentalProfileForPlace(place: ReferencePlace): EnvironmentalProfile | undefined {
+  const haystack = normalized([place.name, ...place.path].join(' | '));
+  for (const matcher of placeMatchers) {
+    if (place.country !== matcher.country) continue;
+    if (matcher.terms.some((term) => haystack.includes(normalized(term)))) return environmentalProfileById.get(matcher.profileId);
+  }
+  return undefined;
+}
+
+export function vintageObservationForPlace(place: ReferencePlace, year: number): VintageObservation | undefined {
+  const environment = environmentalProfileForPlace(place);
+  if (environment) {
+    const exact = vintageObservations.find((vintage) => vintage.environmentProfileId === environment.id && vintage.year === year);
+    if (exact) return exact;
+  }
+  const haystack = normalized([place.name, ...place.path].join(' | '));
+  const fallbackRegion = haystack.includes('bordeaux') ? 'Bordeaux' : undefined;
+  return fallbackRegion ? vintageObservations.find((vintage) => vintage.region === fallbackRegion && vintage.year === year) : undefined;
+}
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.max(min, Math.min(max, value));
+}
+
+export function applyResearchMatrices(
+  base: WineProfile,
+  environment?: EnvironmentalProfile,
+  vintage?: VintageObservation,
+): WineProfile {
+  const result = { ...base };
+  if (environment) {
+    const matrix = environment.matrixModifiers;
+    result.acidity = clamp(result.acidity + matrix.acidity * 0.65, 1, 5);
+    result.tannin = clamp(result.tannin + matrix.tannin * 0.65, 0.5, 5);
+    result.body = clamp(result.body + matrix.body * 0.65, 1, 5);
+    result.fruitIntensity = clamp(result.fruitIntensity + matrix.fruitIntensity * 0.65, 1, 5);
+    result.earthIntensity = clamp(result.earthIntensity + matrix.earthIntensity * 0.65, 0.5, 5);
+    if (result.alcohol !== undefined) result.alcohol = clamp(result.alcohol + matrix.alcohol * 0.9, 5, 22);
+  }
+  if (vintage) {
+    const matrix = vintage.matrixModifiers;
+    result.acidity = clamp(result.acidity + matrix.acidity * 0.65, 1, 5);
+    result.tannin = clamp(result.tannin + (matrix.tanninRipeness * 0.45 + matrix.concentration * 0.25) * 0.65, 0.5, 5);
+    result.body = clamp(result.body + (matrix.concentration * 0.55 + matrix.ripeness * 0.25) * 0.65, 1, 5);
+    result.fruitIntensity = clamp(result.fruitIntensity + (matrix.ripeness * 0.40 + matrix.concentration * 0.40) * 0.65, 1, 5);
+    if (result.alcohol !== undefined) result.alcohol = clamp(result.alcohol + matrix.ripeness * 0.65, 5, 22);
+  }
+  return result;
 }
 
 const placeMatrixNumericKeys: Array<keyof Omit<PlaceMatrixModifiers, 'scale' | 'derived' | 'confidence'>> = [
