@@ -205,9 +205,10 @@ class WorldWineKnowledgeCatalog:
         self._load_piwi()
         self._load_commercial()
         self._load_eambrosia()
-        seed_sites = _load_sites(DATA_DIR / "named_sites_seed.json")
-        supplement_sites = _load_sites(DATA_DIR / "named_sites_supplement.json")
-        self.named_sites = _dedupe_sites([*seed_sites, *supplement_sites])
+        site_rows: list[NamedSite] = []
+        for path in sorted(DATA_DIR.glob("named_sites_*.json"), key=lambda item: item.name):
+            site_rows.extend(_load_sites(path))
+        self.named_sites = _dedupe_sites(site_rows)
         self._merge_grape_universe()
 
     def _load_area(self) -> None:
@@ -296,10 +297,6 @@ class WorldWineKnowledgeCatalog:
             for name in [grape.name, *grape.aliases]:
                 by_alias[normalize_name(name)] = grape
 
-        # Adelaide uses a prime spelling but may still contain a name that is an alias
-        # in a separate genetic registry. We only auto-merge when the existing v2 alias
-        # graph already knows that equivalence; otherwise the census name remains an
-        # identity-level record pending genetic reconciliation.
         for obs in self.world_area:
             key = normalize_name(obs.prime_name)
             grape = by_alias.get(key)
