@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive legal label-claim rule for all 55 Chassagne-Montrachet Premier Cru climats. The effective specification explicitly permits the listed climat names for white or red Premier Cru wines.",
+  "sources": {
+    "chassagne_masaa_2011_claim": {
+      "authority": "Ministère de l'agriculture / Journal officiel",
+      "title": "Cahier des charges de l'AOC Chassagne-Montrachet homologué par décret n°2011-1753",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-0703ae3c-1410-4bc8-9ac0-97f4132558c4/telechargement",
+      "checked": "2026-09-05"
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:chassagne-montrachet:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Chassagne-Montrachet",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_chassagne_current"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["chassagne_masaa_2011_claim"],
+      "claim_kind": "premier_cru_climat_name",
+      "allowed_site_names": [
+        "Abbaye de Morgeot", "Blanchot dessus", "Bois de Chassagne", "Cailleret", "Champs Jendreau", "Chassagne", "Chassagne du Clos Saint-Jean", "Clos Chareau", "Clos Pitois", "Clos Saint-Jean", "Dent de Chien", "En Cailleret", "En Remilly", "En Virondot", "Ez Crets", "Ez Crottes", "Francemont", "Guerchère", "La Boudriotte", "La Cardeuse", "La Chapelle", "La Grande Borne", "La Grande Montagne", "La Maltroie", "La Romanée", "La Roquemaure", "Les Baudines", "Les Boirettes", "Les Bondues", "Les Brussonnes", "Les Champs gain", "Les Chaumées", "Les Chaumes", "Les Chenevottes", "Les Combards", "Les Commes", "Les Embazées", "Les Fairendes", "Les Grandes Ruchottes", "Les Grands Clos", "Les Macherelles", "Les Murées", "Les Pasquelles", "Les Petites Fairendes", "Les Petits Clos", "Les Places", "Les Rebichets", "Les Vergers", "Morgeot", "Petingeret", "Tête du Clos", "Tonton Marcel", "Vide Bourse", "Vigne Blanche", "Vigne Derrière"
+      ],
+      "notes": "The effective specification states that Chassagne-Montrachet Premier Cru followed by any listed climat may be white or red."
+    }
+  ]
+}
