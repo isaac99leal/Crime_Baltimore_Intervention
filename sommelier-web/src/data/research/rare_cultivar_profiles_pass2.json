@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Second rare-cultivar pass spanning France, Greece and Kyrgyzstan. Identity, pedigree and area/phenology facts retain their source context. Historical area or trial observations are not treated as current commercial acreage.",
+  "profiles": [
+    {
+      "id": "cultivar-fr-romorantin-plantgrape",
+      "name": "Romorantin",
+      "aliases": ["Romorantin B", "Romorantin Blanc", "Ramorantin", "Daner"],
+      "country": "France",
+      "region": "Loire / Cour-Cheverny",
+      "color": "white",
+      "researchStatus": "rare-current-commercial-cultivar",
+      "generationStatus": "reference-only",
+      "historicalStatus": {
+        "cultivatedAreaFranceHaByYear": {"1958":680,"1968":581,"1979":271,"1988":156,"2000":231,"2008":74,"2018":79},
+        "legalAnchor": "Cour-Cheverny PDO uses Romorantin B as its sole principal wine grape variety in the cited product-specification publication"
+      },
+      "identity": {
+        "geneticParentage": "Pinot × Gouais Blanc family cross reported by French technical sources",
+        "vivcNumber": 10185,
+        "certifiedFrenchClones": [466,873,928,929],
+        "conservatory": "approximately 50 clones planted in Loir-et-Cher in 2007"
+      },
+      "phenology": {
+        "budburstRelativeToChasselasDays": 1,
+        "maturityRelativeToChasselas": "approximately 2.5–3 weeks after Chasselas; mid-season"
+      },
+      "diseaseAndClimate": {
+        "greyRot": "moderately susceptible",
+        "grapeMoths": "moderately susceptible"
+      },
+      "viticulture": {
+        "bearing": "erect",
+        "fertility": "fairly fertile and productive",
+        "pruning": "can be pruned long or short",
+        "site": "French technical record recommends adapted, early terroirs"
+      },
+      "researchNotes": [
+        "Historical area series is explicitly time-stamped; 79 ha is the 2018 French figure in the current Plantgrape record, not a 2026 acreage claim.",
+        "Sensory claims from generic secondary sources are not promoted into the structural matrix without separate evidence."
+      ],
+      "sourceRefs": ["fr-plantgrape-romorantin-2026-pass20", "eu-cour-cheverny-romorantin-pass20"]
+    },
+    {
+      "id": "cultivar-gr-limniona-recovery",
+      "name": "Limniona",
+      "aliases": ["Lemniona"],
+      "country": "Greece",
+      "region": "Thessaly — Karditsa / Tyrnavos / Mesenicolas context",
+      "color": "red",
+      "researchStatus": "recovered-indigenous-commercial-cultivar",
+      "generationStatus": "reference-only",
+      "historicalStatus": {
+        "recovery": "national wine-body source states the quality potential was identified when only a few vines remained, followed by research and microvinification",
+        "currentDistribution": "now cultivated in multiple Greek areas, with some plantings still experimental according to Wines of Greece"
+      },
+      "identity": {
+        "distinctFrom": ["Limnio"],
+        "fpsCountryOfOrigin": "Greece",
+        "fpsSpecies": "Vitis vinifera",
+        "officialClone": "ENTAV-INRA 013VNB",
+        "helleniferaSelectionProgram": "more than 10 old vineyards visited; 13 Limniona clones selected; experimental field established"
+      },
+      "diseaseAndClimate": {
+        "drought": "Hellenifera reports drought resistance in its clonal/agronomic profile"
+      },
+      "viticulture": {
+        "vigour": "high",
+        "productivity": "high",
+        "cluster": "medium-sized grapes with large berries in Hellenifera profile"
+      },
+      "researchNotes": [
+        "Limniona must never normalize to Limnio; UC Davis FPS explicitly treats them as separate Greek varieties.",
+        "Wines of Greece sensory and ageing descriptions are source observations, not universal numeric tasting-matrix values."
+      ],
+      "sourceRefs": ["gr-winesofgreece-limniona-pass20", "gr-hellenifera-limniona-clone-pass20", "us-ucd-fps-limniona-pass20"]
+    },
+    {
+      "id": "cultivar-kg-ak-dzhuzyum-soviet",
+      "name": "Ak-Dzhuzyum",
+      "aliases": ["Ak Dzhuzyum", "Ak-Dzuzhum", "Ак-джузюм", "Ак джузюм"],
+      "country": "Kyrgyzstan",
+      "region": "Chüy Valley / Kyrgyz SSR historical trials",
+      "color": "white",
+      "researchStatus": "historical-bred-wine-cultivar-current-status-unresolved",
+      "generationStatus": "reference-only",
+      "historicalStatus": {
+        "bredYear": 1950,
+        "breedingInstitution": "Kyrgyz Research Institute of Agriculture",
+        "stateTestingAcceptedYear": 1979,
+        "historicalPlantingContext": ["experimental farm of the Kyrgyz agricultural research institute", "Lenin wine sovkhoz, Alamedin district, Chüy Valley"],
+        "currentCommercialStatus": "unresolved — historical Soviet distribution must not be presented as current acreage"
+      },
+      "identity": {
+        "pedigree": "Madeleine Angevine × Pinot Noir",
+        "breedingNumber": "II1-51",
+        "authors": ["E. P. Sosina", "E. I. Fedoruk", "T. S. Lyubinskaya"],
+        "vivcNumberReportedInVIVCDerivedReference": 5706,
+        "nameMeaning": "historical source glosses the Kyrgyz name as 'white grape'"
+      },
+      "phenology": {
+        "ripening": "early wine grape",
+        "historicalTechnicalMaturity": "end of August",
+        "historicalVegetativePeriodDays": 121,
+        "historicalActiveTemperatureSumC": [2600,2700]
+      },
+      "diseaseAndClimate": {
+        "winterHardiness": "historical source: medium; trial conditions used protected/covered culture",
+        "fungalDiseaseAndPestResistance": "historical source describes relative resistance"
+      },
+      "viticulture": {
+        "growth": "medium",
+        "historicalYieldCentnersPerHaMax": 325,
+        "historicalAverageClusterMassG": 360,
+        "historicalFruitfulShootsPct": 70,
+        "historicalHarvestJuiceSugarPct": 18.4,
+        "historicalHarvestAcidityGPerL": 6.2,
+        "historicalUses": ["dry wine", "fortified wine", "non-alcoholic beverages"]
+      },
+      "researchNotes": [
+        "The user's spelling Ak-Dzuzhum is preserved as a search alias; Ak-Dzhuzyum is used as the working Latin transliteration because it matches the available ampelographic transcription.",
+        "The detailed 1984 observations describe historical Kyrgyz trial conditions and are not projected onto modern vineyards.",
+        "Current Kyrgyz planting status requires new primary or institutional evidence before generation-safe use."
+      ],
+      "sourceRefs": ["kg-ak-dzhuzyum-soviet-ampelography-pass20", "ua-magarach-ak-dzhuzyum-collection-pass20"]
+    }
+  ],
+  "historicalVarietyResearchQueue": [],
+  "queuePolicy": "Queue membership does not establish synonymy, genetics, current commercial planting, legal wine use, or generation safety."
+}
