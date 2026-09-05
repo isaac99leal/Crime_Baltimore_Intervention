@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  canonicalCloneToken,
   findWillametteBlocks,
   findWillametteSite,
   validateWillametteMicroSites,
@@ -47,17 +48,19 @@ describe('Willamette vineyard micro-site research', () => {
     expect(blockG).toMatchObject({ acres: 3.89, clone: '777', rootstock: '3309' });
   });
 
-  it('does not collapse Lingua Franca Block 3 into one clone identity', () => {
+  it('does not collapse Lingua Franca Block 3 into one clone identity or erase source qualifiers', () => {
     const lingua = findWillametteSite('us-or-lingua-franca-estate');
     const block3 = lingua?.blockObservations?.filter((observation) => observation.block === '3') ?? [];
-    expect(new Set(block3.map((observation) => observation.clone))).toEqual(new Set(['PN777', 'PN115']));
+    expect(new Set(block3.map((observation) => canonicalCloneToken(observation.clone)))).toEqual(new Set(['PN777', 'PN115']));
+    expect(block3.some((observation) => observation.clone.includes('selected rows'))).toBe(true);
+    expect(block3.some((observation) => observation.clone.includes('component'))).toBe(true);
     expect(block3.every((observation) => Boolean(observation.evidenceContext))).toBe(true);
   });
 
   it('turns contradictory Knudsen Block 12 producer records into an explicit data-quality issue rather than picking a winner', () => {
     const knudsen = findWillametteSite('us-or-knudsen-vineyards');
     const block12 = knudsen?.blockObservations?.filter((observation) => observation.block === '12') ?? [];
-    expect(new Set(block12.map((observation) => observation.clone))).toEqual(new Set(['4407', '828']));
+    expect(new Set(block12.map((observation) => canonicalCloneToken(observation.clone)))).toEqual(new Set(['4407', '828']));
     expect(new Set(block12.map((observation) => observation.plantedYear))).toEqual(new Set([2012, 2010]));
     expect(knudsen?.dataQualityFlags?.some((flag) => flag.id === 'knudsen-block12-clone-planting-conflict')).toBe(true);
   });
