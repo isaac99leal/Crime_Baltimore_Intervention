@@ -1,4 +1,5 @@
 import guestData from '../data/guest_archetypes.json';
+import { ageInventoryConditionOneWeek } from './bottleCondition';
 import { wineById, wineCatalog } from './catalog';
 import { menuDishes, scorePairing } from './pairing';
 import type {
@@ -244,6 +245,7 @@ export function advanceWeek(state: GameState): { state: GameState; overhead: num
   const maintenance = state.equipment.reduce((sum, item) => sum + item.maintenance * item.level, 0);
   const overhead = 900 + payroll + maintenance + Math.round((state.week - 1) * 55);
   const cash = state.cash - overhead;
+  const bottleAgeing = ageInventoryConditionOneWeek(state);
   return {
     overhead,
     state: {
@@ -251,6 +253,8 @@ export function advanceWeek(state: GameState): { state: GameState; overhead: num
       week: state.week + 1,
       cash,
       reputation: clamp(state.reputation + (cash < 0 ? -4 : 0), 0, 100),
+      inventory: bottleAgeing.inventory,
+      wineList: bottleAgeing.quarantined > 0 ? { ...state.wineList, dirty: true } : state.wineList,
       restaurant: { ...state.restaurant, managementTrust: clamp(state.restaurant.managementTrust + (cash < 0 ? -3 : 0.4), 0, 100) },
       time: { available: 62, committed: 42, service: 38, admin: 4, study: 0, relationships: 0, training: 0 },
     },
