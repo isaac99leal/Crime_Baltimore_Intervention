@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Mexican wine GI identity pass from the official IMPI protection record. Identity and protection date are reference data only; cultivar, production and labeling rules require the declaration/specification to be separately extracted.",
+  "count": 1,
+  "groups": [
+    {
+      "country": "Mexico",
+      "sourceRef": "mx-impi-queretaro-wine-gi-2025-pass21",
+      "defaultLegalClass": "IG",
+      "fields": ["name", "legalClass", "level", "parent", "aliases", "registrationDate", "location"],
+      "records": [
+        ["Vinos de la Región Vitivinícola de Querétaro", "IG", "protected-geographical-indication", null, ["Región Vitivinícola de Querétaro", "Vinos de Querétaro"], "2025-03-10", "Querétaro, Mexico"]
+      ]
+    }
+  ]
+}
