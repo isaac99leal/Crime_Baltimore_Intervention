@@ -1,0 +1,108 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f4efe8;
+  background: #100e0d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; background: radial-gradient(circle at top, #2b211d 0, #171311 38%, #0f0d0c 100%); }
+button, input { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .45; }
+
+.app-shell { width: min(1500px, 100%); margin: 0 auto; padding: 28px clamp(16px, 3vw, 48px) 36px; }
+.topbar { display: flex; justify-content: space-between; gap: 32px; align-items: end; padding: 24px 0 18px; border-bottom: 1px solid #4b3a34; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { margin-bottom: 0; font-family: Georgia, serif; font-size: clamp(2.6rem, 5vw, 5rem); font-weight: 500; letter-spacing: -.04em; }
+h2 { font-family: Georgia, serif; font-weight: 500; font-size: clamp(1.7rem, 3vw, 2.5rem); margin-bottom: 16px; }
+h3 { margin-bottom: 6px; font-size: 1rem; }
+p { color: #cdbfb5; line-height: 1.6; }
+.eyebrow { margin-bottom: 6px; color: #c99e72; text-transform: uppercase; letter-spacing: .16em; font-size: .72rem; font-weight: 750; }
+
+.stat-strip { display: grid; grid-template-columns: repeat(4, minmax(90px, 1fr)); gap: 10px; min-width: min(620px, 55vw); }
+.stat { padding: 12px 14px; border: 1px solid #4a3c36; background: #1b1715; border-radius: 10px; }
+.stat span, .metric span { display: block; color: #9f9289; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 3px; }
+.stat strong { font-size: .98rem; }
+
+.nav-tabs { display: flex; gap: 7px; padding: 16px 0 24px; overflow-x: auto; }
+.nav-tabs button, .controls button, .answer-grid button, .danger { border: 1px solid #4a3c36; background: #1b1715; color: #d9cec5; border-radius: 9px; padding: 10px 14px; white-space: nowrap; }
+.nav-tabs button:hover, .controls button:hover, .answer-grid button:hover { border-color: #9b6f56; }
+.nav-tabs button.active { color: #fff7ef; background: #6e2431; border-color: #934051; }
+
+main { min-height: 620px; }
+.page-grid { display: grid; grid-template-columns: minmax(320px, .78fr) minmax(460px, 1.35fr); gap: 18px; }
+.panel { background: rgba(27, 23, 21, .94); border: 1px solid #443631; border-radius: 16px; padding: clamp(18px, 2.5vw, 30px); box-shadow: 0 18px 45px rgba(0, 0, 0, .18); }
+.section-heading { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+.badge { border: 1px solid #4a3c36; border-radius: 999px; padding: 7px 10px; color: #cdbfb5; font-size: .78rem; white-space: nowrap; }
+
+.brief-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0; }
+.brief-grid > div { padding: 13px; border-radius: 10px; background: #151210; border: 1px solid #382e2a; }
+.brief-grid .wide { grid-column: 1 / -1; }
+dt { color: #8e8078; font-size: .7rem; text-transform: uppercase; letter-spacing: .09em; margin-bottom: 5px; }
+dd { margin: 0; line-height: 1.45; }
+.instruction { border-left: 2px solid #8b644e; padding-left: 14px; font-size: .92rem; }
+
+.wine-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.wine-card, .market-card { border: 1px solid #3d312d; border-radius: 12px; padding: 16px; background: #151210; }
+.wine-card p, .market-card p { margin-bottom: 10px; font-size: .88rem; }
+.wine-meta, .profile-row, .buy-row { display: flex; justify-content: space-between; gap: 10px; color: #d9c7bb; font-size: .82rem; }
+.aromas { color: #9f9289 !important; min-height: 2.5em; }
+.primary { border: 1px solid #a34b5c; background: #7b2938; color: #fff7ef; border-radius: 9px; padding: 9px 13px; font-weight: 700; }
+.primary:hover { background: #8d3041; }
+.primary.large { padding: 12px 18px; }
+.result-card { margin-top: 20px; padding: 16px; border-radius: 12px; background: #211b18; border: 1px solid #5c493f; }
+.result-card strong { font-size: 1.15rem; }
+.result-card .primary { display: block; margin-top: 14px; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 14px 10px; border-bottom: 1px solid #382f2b; vertical-align: middle; }
+th { color: #8f827a; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; }
+td small { display: block; color: #8f827a; margin-top: 3px; }
+.controls { display: flex; flex-wrap: wrap; gap: 6px; }
+.controls button { padding: 6px 9px; font-size: .78rem; }
+.status { display: inline-flex; padding: 5px 8px; border-radius: 999px; background: #332b27; color: #9c8f87; font-size: .75rem; }
+.status.on { background: #243328; color: #b8d0bd; }
+
+.market-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.market-card .country { color: #c99e72; text-transform: uppercase; letter-spacing: .08em; font-size: .68rem; }
+.profile-row { justify-content: flex-start; flex-wrap: wrap; margin: 12px 0; }
+.profile-row span { padding: 4px 7px; background: #241d1a; border-radius: 6px; }
+.buy-row { align-items: center; margin-top: 12px; }
+.buy-row .primary { font-size: .76rem; }
+
+.tasting-layout { grid-template-columns: 1fr 1fr; }
+.glass-mark { width: 150px; height: 150px; margin: 30px auto; border: 2px solid #74424d; border-radius: 50%; display: grid; place-items: center; color: #9d4052; font-size: 7rem; box-shadow: inset 0 0 55px rgba(122, 41, 56, .28); }
+.answer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.answer-grid button { padding: 18px; white-space: normal; }
+
+.metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0 24px; }
+.metric { background: #151210; border: 1px solid #382e2a; border-radius: 10px; padding: 14px; }
+.metric strong { font-size: 1.25rem; }
+.notice { margin-top: 14px; color: #e2c7ac; }
+.progress-block { margin: 20px 0; }
+.progress-block > div:first-child { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.progress-track { height: 8px; background: #302824; border-radius: 99px; overflow: hidden; }
+.progress-track div { height: 100%; background: linear-gradient(90deg, #6e2431, #c18a5d); }
+hr { border: 0; border-top: 1px solid #3f332e; margin: 26px 0; }
+.danger { color: #e0aaa7; border-color: #683a38; }
+
+footer { padding: 24px 4px 0; color: #786e68; font-size: .76rem; }
+
+@media (max-width: 980px) {
+  .topbar { align-items: start; flex-direction: column; }
+  .stat-strip { width: 100%; min-width: 0; }
+  .page-grid, .tasting-layout { grid-template-columns: 1fr; }
+  .market-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .app-shell { padding-top: 12px; }
+  .stat-strip { grid-template-columns: 1fr 1fr; }
+  .wine-list, .market-grid, .answer-grid, .metric-grid { grid-template-columns: 1fr; }
+  .brief-grid { grid-template-columns: 1fr; }
+  .brief-grid .wide { grid-column: auto; }
+  .section-heading { flex-direction: column; }
+}
