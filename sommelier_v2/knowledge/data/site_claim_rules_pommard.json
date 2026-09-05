@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive protected label-claim rule for only the 28 Pommard Premier Cru climats enumerated by the homologated specification. Secondary or contradictory site listings do not qualify.",
+  "sources": {
+    "pommard_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Pommard homologué par le décret n°2011-1510 du 10 novembre 2011",
+      "url": "https://www.bourgogne-wines.com/our-wines-our-terroir/all-bourgogne-wines/gallery_files/site/321/19990/20251.pdf",
+      "checked": "2026-09-05",
+      "scope": "The effective specification enumerates 28 Premier Cru climat names and permits their use with Premier Cru production conditions."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:pommard:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Pommard",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["pommard_bivb_spec_2011"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["pommard_bivb_spec_2011"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "Only the homologated 28-name climat set is eligible. Conflicting secondary listings remain fail-closed."
+    }
+  ]
+}
