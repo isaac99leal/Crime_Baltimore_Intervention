@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.1",
+  "notes": "The 40 Premier Cru climat identities enumerated by the current 2025 Chablis specification. Each remains a physical site identity. Principal cover-name relationships are legal label rules and are represented separately rather than as aliases.",
+  "sources": {
+    "chablis_masaa_2025": {
+      "authority": "Ministère de l'agriculture et de la souveraineté alimentaire",
+      "title": "Cahier des charges de l'appellation d'origine contrôlée Chablis homologué par l'arrêté du 10 septembre 2025",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-567c3bd8-0c51-425b-a397-05e3b4b23cf0/telechargement",
+      "checked": "2026-09-05",
+      "effective_from": "2025-09-12",
+      "scope": "Official 40-name Premier Cru climat list and 17 grouped principal-name relationships."
+    }
+  },
+  "groups": [
+    {
+      "country": "France",
+      "region": "Chablis",
+      "parent": "Chablis",
+      "commune": "Chablis",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["chablis_masaa_2025"],
+      "notes": "Official Premier Cru climat identity under the current 2025 specification. Exact-site and authorized cover-name label eligibility are evaluated separately.",
+      "names": [
+        "Beauroy",
+        "Côte de Savant",
+        "Troesmes",
+        "Berdiot",
+        "Chaume de Talvat",
+        "Côte de Jouan",
+        "Côte de Léchet",
+        "Côte de Vaubarousse",
+        "Fourchaume",
+        "Côte de Fontenay",
+        "L'Homme Mort",
+        "Vaulorent",
+        "Vaupulent",
+        "Les Beauregards",
+        "Côte de Cuisy",
+        "Les Fourneaux",
+        "Côte des Prés-Girots",
+        "Morein",
+        "Mont de Milieu",
+        "Montée de Tonnerre",
+        "Chapelot",
+        "Côte de Bréchain",
+        "Pied d'Aloup",
+        "Montmains",
+        "Butteaux",
+        "Forêts",
+        "Vaillons",
+        "Beugnons",
+        "Chatains",
+        "les Épinottes",
+        "Les Lys",
+        "Mélinots",
+        "Roncières",
+        "Sécher",
+        "Vau de Vey",
+        "Vaux Ragons",
+        "Vau Ligneau",
+        "Vaucoupin",
+        "Vosgros",
+        "Vaugiraut"
+      ]
+    }
+  ]
+}
