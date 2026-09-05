@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive label-claim rules for named sites. A site in named_sites_seed.json is not claimable unless a rule here matches and the parent protected-origin claim has already passed the strict legal specification layer. These rules authorize only the named geographical unit itself, not an additional 'vigna'/vineyard toponym, ownership claim, or producer-defined block name unless a future rule says so explicitly.",
+  "sources": {
+    "masaf_barolo_2026": {
+      "authority": "Ministero dell'agricoltura, della sovranità alimentare e delle foreste",
+      "title": "Barolo D.O.C.G. - Disciplinare consolidato allegato al Provvedimento 4 marzo 2026",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24322"
+    },
+    "masaf_barbaresco_2026": {
+      "authority": "Ministero dell'agricoltura, della sovranità alimentare e delle foreste",
+      "title": "Barbaresco D.O.C.G. - Disciplinare consolidato allegato al Provvedimento 4 marzo 2026",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24323"
+    },
+    "chianti_classico_code_2023": {
+      "authority": "Consorzio Vino Chianti Classico",
+      "title": "Production Code of Chianti Classico DOCG",
+      "url": "https://www.chianticlassico.com/wp-content/uploads/2024/01/Production-Code-2023.pdf"
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:it:barolo:mga",
+      "country": "Italy",
+      "parent_appellation": "Barolo DOCG",
+      "site_type": "MGA",
+      "required_site_legal_status": "official_additional_geographical_mention",
+      "required_site_source_ids": ["barolo_enoteca_mga"],
+      "allowed_wine_variants": [],
+      "source_ids": ["masaf_barolo_2026"],
+      "claim_kind": "additional_geographical_mention",
+      "notes": "Authorizes the listed MGA name with eligible Barolo/Barolo Riserva. It does not authorize a separate 'vigna' toponym, whose conditions are not modeled here."
+    },
+    {
+      "id": "siteclaim:it:barbaresco:mga",
+      "country": "Italy",
+      "parent_appellation": "Barbaresco DOCG",
+      "site_type": "MGA",
+      "required_site_legal_status": "official_additional_geographical_mention",
+      "required_site_source_ids": ["barbaresco_enoteca_mga"],
+      "allowed_wine_variants": [],
+      "source_ids": ["masaf_barbaresco_2026"],
+      "claim_kind": "additional_geographical_mention",
+      "notes": "Authorizes the listed MGA name with eligible Barbaresco/Barbaresco Riserva. It does not authorize a separate 'vigna' toponym, whose conditions are not modeled here."
+    },
+    {
+      "id": "siteclaim:it:chianti-classico:uga:gran-selezione",
+      "country": "Italy",
+      "parent_appellation": "Chianti Classico DOCG",
+      "site_type": "UGA",
+      "required_site_legal_status": "official_additional_geographical_unit",
+      "required_site_source_ids": ["chianti_classico_uga"],
+      "allowed_wine_variants": ["gran selezione", "gran_selezione"],
+      "source_ids": ["chianti_classico_code_2023"],
+      "claim_kind": "additional_geographical_unit",
+      "notes": "Current UGA label use is restricted to the Gran Selezione type. This rule does not model the separate 85% origin composition rule for mixed-UGA lots; a future lot-level provenance model must enforce it before mixed lots can claim a UGA."
+    }
+  ]
+}
