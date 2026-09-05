@@ -17,8 +17,11 @@ type GuestArchetype = {
   description: string;
   price_ceiling: number[];
   adventure_level: number[];
+  wine_knowledge?: number[];
+  patience?: number[];
   preferred_regions: string[];
   conversation_hints: string[];
+  celebrations?: string[];
   frequency: number;
 };
 
@@ -64,11 +67,65 @@ export function createInitialGame(): GameState {
       bottles: index < 4 ? 6 : 3,
       listed: true,
       listPrice: wine.suggestedPrice,
+      lotId: `opening-${index + 1}`,
+      bin: `A-${String(index + 1).padStart(2, '0')}`,
+      storageZone: index < 6 ? 'service-cellar' : 'reserve-cellar',
+      receivedWeek: 1,
+      condition: 100,
+      par: index < 4 ? 6 : 3,
+      offMenu: false,
+      btg: index === 3 || index === 7,
+      btgPrice: Math.max(10, Math.round(wine.suggestedPrice / 4.2)),
+      btgPourMl: 150,
+      openBottleMl: 0,
     })),
     serviceCount: 0,
     lifetimeRevenue: 0,
     tastingCorrect: 0,
     tastingTotal: 0,
+    btgSales: 0,
+    cogs: 0,
+    shrinkage: 0,
+    restaurant: {
+      name: 'Northline',
+      concept: 'Seasonal contemporary dining',
+      seats: 74,
+      managementTrust: 55,
+      beverageTarget: 0.31,
+      rentShare: 0.08,
+      storageCapacity: 850,
+      offsiteCapacity: 600,
+    },
+    wineList: {
+      revision: 1,
+      dirty: false,
+      lastPrintedWeek: 1,
+      pages: 18,
+      reprintSpend: 0,
+      philosophy: 'Balanced classic and discovery list with disciplined pricing and useful depth.',
+    },
+    suppliers: [
+      { id: 'north-coast-portfolio', name: 'North Coast Portfolio', specialty: 'France, Germany, grower Champagne', relationship: 38, reliability: 84, exclusivity: 42, paymentTermsDays: 30, allocationAccess: 22, lastContactWeek: 1, notes: ['Responds to clean depletion reports and steady placements.'] },
+      { id: 'meridian-selections', name: 'Meridian Selections', specialty: 'Italy, Spain, Portugal', relationship: 46, reliability: 78, exclusivity: 35, paymentTermsDays: 30, allocationAccess: 28, lastContactWeek: 1, notes: ['Values staff education and producer dinner support.'] },
+      { id: 'field-and-cellar', name: 'Field & Cellar', specialty: 'Domestic, emerging regions, small growers', relationship: 51, reliability: 73, exclusivity: 24, paymentTermsDays: 14, allocationAccess: 18, lastContactWeek: 1, notes: ['Flexible on mixed cases; limited quantities on cult wines.'] },
+    ],
+    allocations: [],
+    staff: [
+      { id: 'maya', name: 'Maya Chen', role: 'captain', wage: 23, wineKnowledge: 42, service: 78, sales: 64, morale: 74, trainingHours: 0 },
+      { id: 'jonah', name: 'Jonah Reed', role: 'server', wage: 18, wineKnowledge: 31, service: 67, sales: 57, morale: 70, trainingHours: 0 },
+      { id: 'ines', name: 'Inés Duarte', role: 'bartender', wage: 21, wineKnowledge: 48, service: 72, sales: 69, morale: 76, trainingHours: 0 },
+    ],
+    equipment: [
+      { id: 'cellar-cooling', name: 'Cellar cooling and monitoring', category: 'storage', level: 1, maxLevel: 5, baseCost: 900, maintenance: 28, benefit: 'Reduces storage risk and unlocks deeper long-term inventory.' },
+      { id: 'preservation', name: 'BTG preservation system', category: 'preservation', level: 1, maxLevel: 5, baseCost: 650, maintenance: 18, benefit: 'Reduces open-bottle waste and supports more ambitious BTG selections.' },
+      { id: 'service-kit', name: 'Service and decanting kit', category: 'service', level: 1, maxLevel: 4, baseCost: 320, maintenance: 8, benefit: 'Improves service consistency for fragile, mature, and sparkling bottles.' },
+      { id: 'inventory-software', name: 'Inventory and list publishing system', category: 'software', level: 1, maxLevel: 4, baseCost: 480, maintenance: 14, benefit: 'Reduces admin time, bin errors, and menu/list mismatch.' },
+    ],
+    certifications: [
+      { id: 'court-service', school: 'Court of Cellar & Service', title: 'Professional Service Diploma', level: 0, maxLevel: 4, progress: 0, examFee: 350, studyHoursRequired: 40, reputationBonus: 4, earningMultiplier: 1.04 },
+      { id: 'wine-studies', school: 'Institute of Wine Studies', title: 'Wine Theory & Trade Diploma', level: 0, maxLevel: 4, progress: 0, examFee: 425, studyHoursRequired: 52, reputationBonus: 5, earningMultiplier: 1.05 },
+    ],
+    time: { available: 62, committed: 42, service: 38, admin: 4, study: 0, relationships: 0, training: 0 },
   };
 }
 
@@ -80,20 +137,36 @@ export function buyWine(state: GameState, wineId: string, quantity = 3): GameSta
   const current = state.inventory.find((item) => item.wineId === wineId);
   const inventory = current
     ? state.inventory.map((item) => item.wineId === wineId ? { ...item, bottles: item.bottles + quantity } : item)
-    : [...state.inventory, { wineId, bottles: quantity, listed: false, listPrice: wine.suggestedPrice }];
+    : [...state.inventory, {
+      wineId,
+      bottles: quantity,
+      listed: false,
+      listPrice: wine.suggestedPrice,
+      lotId: `week-${state.week}-${wineId}`,
+      bin: `NEW-${state.week}`,
+      storageZone: 'service-cellar' as const,
+      receivedWeek: state.week,
+      condition: 100,
+      par: quantity,
+      offMenu: true,
+      btg: false,
+      openBottleMl: 0,
+    }];
   return { ...state, cash: state.cash - totalCost, inventory };
 }
 
 export function toggleListing(state: GameState, wineId: string): GameState {
   return {
     ...state,
-    inventory: state.inventory.map((item) => item.wineId === wineId ? { ...item, listed: !item.listed } : item),
+    wineList: { ...state.wineList, dirty: true },
+    inventory: state.inventory.map((item) => item.wineId === wineId ? { ...item, listed: !item.listed, offMenu: item.listed } : item),
   };
 }
 
 export function changePrice(state: GameState, wineId: string, delta: number): GameState {
   return {
     ...state,
+    wineList: { ...state.wineList, dirty: true },
     inventory: state.inventory.map((item) => item.wineId === wineId
       ? { ...item, listPrice: Math.max(10, Math.round(item.listPrice + delta)) }
       : item),
@@ -114,6 +187,8 @@ export function generateServiceScenario(): ServiceScenario {
   const archetype = pickArchetype();
   const [budgetMin, budgetMax] = numericRange(archetype.price_ceiling, [60, 250]);
   const [adventureMin, adventureMax] = numericRange(archetype.adventure_level, [0.3, 0.6]);
+  const [knowledgeMin, knowledgeMax] = numericRange(archetype.wine_knowledge, [0.2, 0.6]);
+  const [patienceMin, patienceMax] = numericRange(archetype.patience, [0.4, 0.8]);
   const ceiling = randomBetween(budgetMin, budgetMax);
   const guest: Guest = {
     id: `${archetype.id}-${Date.now()}-${Math.random()}`,
@@ -123,6 +198,9 @@ export function generateServiceScenario(): ServiceScenario {
     preferredRegions: archetype.preferred_regions,
     hint: randomFrom(archetype.conversation_hints),
     adventure: randomBetween(adventureMin, adventureMax),
+    wineKnowledge: randomBetween(knowledgeMin, knowledgeMax),
+    patience: randomBetween(patienceMin, patienceMax),
+    occasion: archetype.celebrations?.length ? randomFrom(archetype.celebrations) : undefined,
   };
   return { guest, dish: randomFrom(dishes) };
 }
@@ -165,10 +243,11 @@ export function recommendWine(state: GameState, scenario: ServiceScenario, wineI
   let score = 34 + attributeFit(wine, rule);
   if (rule.ideal_grapes?.includes(wine.grape)) score += 27;
   if (rule.avoid_grapes?.includes(wine.grape)) score -= 32;
-  if (scenario.guest.preferredRegions.some((region) => [wine.region, wine.country].includes(region))) score += 10;
+  if (scenario.guest.preferredRegions.some((region) => [wine.region, wine.country, wine.appellation].includes(region))) score += 10;
   if (item.listPrice <= scenario.guest.budget) score += 12;
   else score -= Math.min(35, ((item.listPrice - scenario.guest.budget) / scenario.guest.budget) * 45);
   if (scenario.guest.adventure > 0.7 && wine.prestige < 70) score += 6;
+  if ((scenario.guest.wineKnowledge ?? 0) > 0.75 && wine.prestige > 78) score += 4;
   score = Math.round(clamp(score, 0, 100));
 
   const tipRate = 0.06 + (score / 100) * 0.12;
@@ -190,6 +269,7 @@ export function recommendWine(state: GameState, scenario: ServiceScenario, wineI
     xp: state.xp + Math.max(1, Math.round(score / 12)),
     serviceCount: state.serviceCount + 1,
     lifetimeRevenue: state.lifetimeRevenue + revenue,
+    cogs: state.cogs + wine.cost,
     inventory: state.inventory.map((candidate) => candidate.wineId === wineId
       ? { ...candidate, bottles: candidate.bottles - 1 }
       : candidate),
@@ -198,7 +278,9 @@ export function recommendWine(state: GameState, scenario: ServiceScenario, wineI
 }
 
 export function advanceWeek(state: GameState): { state: GameState; overhead: number } {
-  const overhead = 1300 + (state.week - 1) * 80;
+  const payroll = Math.round(state.staff.reduce((sum, member) => sum + member.wage * 28, 0));
+  const maintenance = state.equipment.reduce((sum, item) => sum + item.maintenance * item.level, 0);
+  const overhead = 900 + payroll + maintenance + Math.round((state.week - 1) * 55);
   const cash = state.cash - overhead;
   return {
     overhead,
@@ -207,6 +289,8 @@ export function advanceWeek(state: GameState): { state: GameState; overhead: num
       week: state.week + 1,
       cash,
       reputation: clamp(state.reputation + (cash < 0 ? -4 : 0), 0, 100),
+      restaurant: { ...state.restaurant, managementTrust: clamp(state.restaurant.managementTrust + (cash < 0 ? -3 : 0.4), 0, 100) },
+      time: { available: 62, committed: 42, service: 38, admin: 4, study: 0, relationships: 0, training: 0 },
     },
   };
 }
