@@ -15,6 +15,13 @@ import {
   type AgeingArchetype,
   type BottleAgeResult,
 } from './ageing';
+import {
+  generationProductCandidates,
+  productResolutionRuleById,
+  resolveWineProduct,
+  type ProductResolution,
+  type ProductResolutionRule,
+} from './productResolver';
 import type { WineDefinition, WineProfile } from './types';
 
 const MODEL_CURRENT_YEAR = 2026;
@@ -136,9 +143,8 @@ function vintageHorizon(archetype: AgeingArchetype, grape: RawGrape): number {
   return Math.max(byStyle[archetype], grapeFloor);
 }
 
-function vintageFor(place: ReferencePlace, grape: RawGrape, random: () => number): number {
+function vintageFor(grape: RawGrape, archetype: AgeingArchetype, random: () => number): number {
   const latestCommercialVintage = 2025;
-  const archetype = ageingArchetype(place.country, [place.name, ...place.path].join(' / '), grape.color);
   const horizon = vintageHorizon(archetype, grape);
   const archivalTail = random() < 0.035 && horizon >= 80;
   const age = archivalTail
@@ -173,12 +179,51 @@ function growingSeasonNote(
   return 'No source-backed year-specific growing-season record is loaded for this bottle. Bottle age is modeled without inventing historical weather.';
 }
 
+function selectedAgeingRules(place: ReferencePlace, product?: ProductResolutionRule) {
+  const designationRules = ageingRulesForDesignation(place.name);
+  if (!product) return designationRules;
+  const ids = new Set(product.ageingRuleIds ?? []);
+  return designationRules.filter((rule) => ids.has(rule.id));
+}
+
+function provenanceAssessment(
+  environment: EnvironmentalProfile | undefined,
+  observation: VintageObservation | undefined,
+  productResolution: ProductResolution | undefined,
+): { risk: number; flags: string[] } {
+  let risk = 0.05;
+  const flags: string[] = [];
+  if (!environment) {
+    risk += 0.15;
+    flags.push('place environment not yet hand-researched');
+  }
+  if (!observation) {
+    risk += 0.12;
+    flags.push('vintage growing-season detail not yet sourced');
+  }
+  if (!productResolution || productResolution.status !== 'resolved') {
+    risk += 0.28;
+    flags.push('exact product unresolved');
+  } else {
+    if (!productResolution.exactProductGenerationSafe) {
+      risk += 0.20;
+      flags.push('product regulation extraction incomplete');
+    }
+    if (!productResolution.historicalComplianceVerified) {
+      risk += 0.10;
+      flags.push('historical legal version not yet verified');
+    }
+  }
+  return { risk: clamp(risk, 0, 1), flags };
+}
+
 function generatedNotes(
   place: ReferencePlace,
   grape: RawGrape,
   vintage: number,
   aromas: string[],
   age: BottleAgeResult,
+  productResolution?: ProductResolution,
   environment?: EnvironmentalProfile,
   observation?: VintageObservation,
   authorityRating?: AuthorityVintageRating,
@@ -187,13 +232,21 @@ function generatedNotes(
   const matrixContext = environment
     ? ` Research model includes the sourced ${environment.name} place layer${soils.length ? ` (${soils.slice(0, 3).join(', ')})` : ''}${observation ? ` plus the sourced ${vintage} vintage layer` : ''}.`
     : observation ? ` Research model includes a sourced ${vintage} regional vintage layer.` : '';
-  const ageingRules = ageingRulesForDesignation(place.name);
-  const ageingSummary = ageingRules.length
-    ? `Sourced current ageing rules exist for: ${ageingRules.map((rule) => rule.productLevel).join(', ')}. This fictional bottle is not asserted to qualify for a specific level unless the product-generation layer explicitly selects and validates it.`
-    : 'No designation-specific legal ageing rule is currently attached to this generated product.';
-  const historicalIdentity = vintage < 1936
-    ? `The ${vintage} harvest predates many modern GI/AOC systems. The displayed place is a modern geographic reference/equivalent; the engine does not assert that today's designation law or label wording applied in ${vintage}.`
-    : `The engine keeps modern designation identity separate from historical legal-version research. Current rules are not silently projected backward into ${vintage}.`;
+  const product = productResolution?.rule;
+  const ageingRules = selectedAgeingRules(place, product);
+  const ageingSummary = product
+    ? ageingRules.length
+      ? `Exact resolved product: ${product.productName}. Attached sourced legal-ageing rule(s): ${ageingRules.map((rule) => rule.productLevel).join(', ')}.`
+      : `Exact resolved product: ${product.productName}. No separate legal-ageing record is attached to this product yet; product-level minima in the resolver remain separate from bottle-age simulation.`
+    : 'No exact product was selected from the researched product resolver; designation-level ageing rules are not treated as proof that this bottle qualifies for a specific category.';
+  const historicalIdentity = productResolution?.legalEraStatus === 'product-resolved-historical-law-unverified'
+    ? `The product identity resolves as ${product?.productName ?? 'a researched product'}, but the exact legal rule version for harvest ${vintage} is not yet versioned. Current-law fields are not asserted as historical fact.`
+    : vintage < 1936
+      ? `The ${vintage} harvest predates many modern GI/AOC systems. The displayed place is a modern geographic reference/equivalent; the engine does not assert that today's designation law or label wording applied in ${vintage}.`
+      : `The engine keeps modern designation identity separate from historical legal-version research. Current rules are not silently projected backward into ${vintage}.`;
+  const productResolutionNote = productResolution?.status === 'resolved'
+    ? `${product?.productName}: ${product?.generationStatus}. ${productResolution.historicalComplianceVerified ? 'Historical/current legal-era match is explicitly versioned.' : 'Exact historical legal-era compliance is not yet verified.'}${productResolution.issues.length ? ` Open issues: ${productResolution.issues.join(' ')}` : ''}`
+    : 'Exact product unresolved; simulation uses only the validated designation/grape layers.';
 
   return {
     identity: `${vintage} ${grape.name} from ${place.country} / ${place.path.join(' / ')}. Geography and grape identity come from the curated reference layer; producer and cuvée are fictional.`,
@@ -205,6 +258,7 @@ function generatedNotes(
     ageEvolution: `${age.explanation} Emerging age-linked notes: ${age.emergingAromas.join(', ')}.${age.fadingAromas.length ? ` Receding primary families: ${age.fadingAromas.join(', ')}.` : ''}`,
     legalAgeing: ageingSummary,
     historicalIdentity,
+    productResolution: productResolutionNote,
   };
 }
 
@@ -214,15 +268,30 @@ export function generateWine(seed: string): WineDefinition {
   const place = pick(usablePlaces, random);
   const grape = grapeForPlace(place, random);
   if (!grape) throw new Error(`Could not generate a normalized grape for ${place.name}.`);
-  const vintage = vintageFor(place, grape, random);
+
+  const productCandidates = generationProductCandidates(place, grape);
+  const selectedProduct = productCandidates.length ? pick(productCandidates, random) : undefined;
+  const archetype = selectedProduct?.ageingArchetype ?? ageingArchetype(place.country, [place.name, ...place.path].join(' / '), grape.color);
+  const vintage = vintageFor(grape, archetype, random);
+  const designationText = [place.name, ...place.path].join(' / ');
+  const productResolution = selectedProduct
+    ? resolveWineProduct({
+      country: place.country,
+      designation: designationText,
+      vintage,
+      color: grape.color,
+      grape: grape.name,
+      requestedTerms: selectedProduct.matchTerms[0],
+    })
+    : undefined;
+
   const producer = producerName(place.country, random);
-  // Old-vine terminology is no longer assigned randomly. It requires a documented/simulated vine-age record and jurisdictional rule.
+  // Old-vine terminology is not assigned randomly. It requires a documented/simulated vine-age record plus a jurisdictional rule.
   const cuvees = ['Tradition', 'Reserve', 'Selection', 'Estate', 'Parcelle', 'Classico', 'Single Vineyard'];
   const cuvee = pick(cuvees, random);
   const environment = environmentalProfileForPlace(place);
   const vintageObservation = vintageObservationForPlace(place, vintage);
   const authorityRating = authorityVintageRatingForPlace(place, vintage);
-  const archetype = ageingArchetype(place.country, [place.name, ...place.path].join(' / '), grape.color);
   const storageQuality = clamp(0.82 + random() * 0.17 - Math.max(0, MODEL_CURRENT_YEAR - vintage - 60) * 0.0005, 0.55, 0.99);
   const placeVintageProfile = applyResearchMatrices(profileFor(grape, random), environment, vintageObservation);
   const age = modelBottleAge(placeVintageProfile, vintage, MODEL_CURRENT_YEAR, archetype, storageQuality);
@@ -233,17 +302,17 @@ export function generateWine(seed: string): WineDefinition {
     ...age.emergingAromas,
   ])].slice(0, 10);
   const prestigeBase = place.priceTier === 'ultra_luxury' ? 88 : place.priceTier === 'luxury' ? 80 : place.priceTier === 'premium' ? 70 : place.priceTier === 'budget' ? 42 : 58;
-  const archiveBonus = clamp(age.yearsSinceVintage / 8, 0, 18);
-  const prestige = Math.round(clamp(prestigeBase + archiveBonus + (random() - 0.5) * 18, 25, 99));
-  const scarcityMultiplier = 1 + clamp(age.yearsSinceVintage / 50, 0, 4.5);
-  const cost = Math.max(7, Math.round((9 + prestige * prestige * 0.009 * (0.75 + random() * 0.65)) * scarcityMultiplier));
+  const prestige = Math.round(clamp(prestigeBase + (random() - 0.5) * 18, 25, 98));
+  const cost = Math.max(7, Math.round(9 + prestige * prestige * 0.009 * (0.75 + random() * 0.65)));
   const suggestedPrice = Math.max(cost + 12, Math.round(cost * (2.1 + random() * 1.1)));
   const vineyard = place.kind === 'vineyard' ? place.name : undefined;
   const appellation = place.kind !== 'region' ? place.name : undefined;
   const vintageYieldFactor = vintageObservation ? clamp(1 + vintageObservation.matrixModifiers.yield * 0.25, 0.75, 1.25) : 1;
-  const survivalFactor = clamp(1 - age.yearsSinceVintage / 260, 0.08, 1);
-  const productionCases = Math.max(1, Math.round((15000 * Math.pow(1 - prestige / 110, 2) + random() * 600) * vintageYieldFactor * survivalFactor));
-  const ageingRuleIds = ageingRulesForDesignation(place.name).map((rule) => rule.id);
+  const productionCases = Math.max(80, Math.round((15000 * Math.pow(1 - prestige / 110, 2) + random() * 600) * vintageYieldFactor));
+  const legalAgeingRuleIds = selectedProduct
+    ? selectedProduct.ageingRuleIds ?? []
+    : ageingRulesForDesignation(place.name).map((rule) => rule.id);
+  const provenance = provenanceAssessment(environment, vintageObservation, productResolution);
 
   return {
     id: `world-${seed}`,
@@ -258,23 +327,30 @@ export function generateWine(seed: string): WineDefinition {
     vintage,
     classification: place.classification ?? place.classificationTiers[0],
     color: grape.color,
-    style: `${grape.color ?? 'wine'} / style pending product-rule resolution`,
+    style: selectedProduct?.family ?? `${grape.color ?? 'wine'} / still`,
     cost,
     suggestedPrice,
     prestige,
-    rarity: Math.round(clamp(25 + prestige * 0.65 + random() * 20 + age.yearsSinceVintage * 0.08, 1, 100)),
+    rarity: Math.round(clamp(25 + prestige * 0.65 + random() * 20, 1, 100)),
     productionCases,
     profile: age.profile,
     aromas,
-    notes: generatedNotes(place, grape, vintage, aromas, age, environment, vintageObservation, authorityRating),
-    story: `${producer} is a fictional producer generated inside the real reference framework of ${place.country} / ${place.path.join(' / ')}.`,
+    notes: generatedNotes(place, grape, vintage, aromas, age, productResolution, environment, vintageObservation, authorityRating),
+    story: `${producer} is a fictional producer generated inside the real reference framework of ${place.country} / ${place.path.join(' / ')}.${selectedProduct ? ` Product model: ${selectedProduct.productName}.` : ''}`,
     fictional: true,
     dataConfidence: 'derived',
     referencePath: [place.country, ...place.path],
     agePhase: age.phase,
     ageYears: age.yearsSinceVintage,
     storageQuality,
-    legalAgeingRuleIds: ageingRuleIds,
+    legalAgeingRuleIds,
+    productRuleId: selectedProduct?.id,
+    productName: selectedProduct?.productName,
+    productResolutionStatus: productResolution?.status ?? 'unresolved',
+    legalEraStatus: productResolution?.legalEraStatus,
+    productSourceIds: productResolution?.provenanceSourceIds ?? [],
+    provenanceRisk: provenance.risk,
+    provenanceFlags: provenance.flags,
   };
 }
 
@@ -283,7 +359,7 @@ export function generateWineBook(seed: string, count = 10000): WineDefinition[] 
   const signatures = new Set<string>();
   for (let i = 0; wines.length < count && i < count * 4; i += 1) {
     const wine = generateWine(`${seed}-${i}`);
-    const signature = `${wine.country}|${wine.referencePath?.join('|')}|${wine.grape}|${wine.producer}|${wine.vintage}|${wine.cuvee}`;
+    const signature = `${wine.country}|${wine.referencePath?.join('|')}|${wine.grape}|${wine.producer}|${wine.vintage}|${wine.cuvee}|${wine.productRuleId ?? ''}`;
     if (!signatures.has(signature)) {
       signatures.add(signature);
       wines.push(wine);
@@ -296,5 +372,7 @@ export function validateGeneratedWine(wine: WineDefinition): boolean {
   if (!wine.referencePath?.length) return false;
   const path = wine.referencePath.slice(1);
   const place = referenceAppellations.find((candidate) => candidate.country === wine.country && candidate.path.join('|') === path.join('|'));
-  return Boolean(place && findGrape(wine.grape) && placeAllowsGrape(place, wine.grape));
+  if (!place || !findGrape(wine.grape) || !placeAllowsGrape(place, wine.grape)) return false;
+  if (wine.productRuleId && !productResolutionRuleById.has(wine.productRuleId)) return false;
+  return true;
 }
