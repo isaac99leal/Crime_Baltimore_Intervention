@@ -10,14 +10,19 @@ import {
 describe('expanded authority designation registry', () => {
   it('locks the authority registry tranches to their researched sizes', () => {
     const report = validateExpandedDesignationRegistry();
-    expect(expandedDesignationPassCount).toBe(3);
-    expect(expandedDesignationRecords).toHaveLength(559);
+    expect(expandedDesignationPassCount).toBe(4);
+    expect(expandedDesignationRecords).toHaveLength(589);
     expect(report.countsByCountry.Australia).toBe(114);
     expect(report.countsByCountry.Argentina).toBe(121);
     expect(report.countsByCountry.Georgia).toBe(32);
     expect(report.countsByCountry['New Zealand']).toBe(22);
     expect(report.countsByCountry.Chile).toBe(118);
     expect(report.countsByCountry['South Africa']).toBe(152);
+    expect(report.countsByCountry.Japan).toBe(5);
+    expect(report.countsByCountry.Moldova).toBe(5);
+    expect(report.countsByCountry.Brazil).toBe(13);
+    expect(report.countsByCountry['United Kingdom']).toBe(6);
+    expect(report.countsByCountry.India).toBe(1);
     expect(report.issues).toEqual([]);
   });
 
@@ -58,14 +63,30 @@ describe('expanded authority designation registry', () => {
     expect(findExpandedDesignation('South Africa', 'Rietrivier VS')[0]?.name).toBe('Rietrivier FS');
   });
 
-  it('preserves same-name Argentine origins when jurisdiction or legal class differs', () => {
+  it('preserves same-name Argentine and Brazilian origins by legal class', () => {
     expect(findExpandedDesignation('Argentina', 'Luján de Cuyo')).toHaveLength(2);
     expect(new Set(findExpandedDesignation('Argentina', 'Luján de Cuyo').map((record) => record.legalClass))).toEqual(new Set(['IG', 'DOC']));
     expect(findExpandedDesignation('Argentina', 'Rivadavia')).toHaveLength(2);
+    expect(findExpandedDesignation('Brazil', 'Vale dos Vinhedos')).toHaveLength(2);
+    expect(new Set(findExpandedDesignation('Brazil', 'Vale dos Vinhedos').map((record) => record.legalClass))).toEqual(new Set(['IP', 'DO']));
+  });
+
+  it('adds current Japanese and Moldovan wine GIs without importing non-wine names', () => {
+    expect(findExpandedDesignation('Japan', 'Nagano')[0]?.registrationDate).toBe('2021-06-30');
+    expect(findExpandedDesignation('Japan', '北海道')[0]?.name).toBe('Hokkaido');
+    expect(findExpandedDesignation('Moldova', 'Codru')[0]?.legalClass).toBe('PGI');
+    expect(findExpandedDesignation('Moldova', 'Ciumai')[0]?.legalClass).toBe('PDO');
+    expect(findExpandedDesignation('Moldova', 'Divin')).toHaveLength(0);
+  });
+
+  it('separates registered UK wine names from pending applications and preserves India registration identity', () => {
+    expect(findExpandedDesignation('United Kingdom', 'Sussex')[0]?.legalClass).toBe('PDO');
+    expect(findExpandedDesignation('United Kingdom', 'The Crouch Valley')).toHaveLength(0);
+    expect(findExpandedDesignation('India', 'Nashik Valley Wine')[0]?.registrationNumber).toBe('123');
   });
 
   it('keeps every registry identity reference-only until product rules are separately researched', () => {
-    for (const country of ['Georgia', 'New Zealand', 'Chile', 'South Africa']) {
+    for (const country of ['Georgia', 'New Zealand', 'Chile', 'South Africa', 'Japan', 'Moldova', 'Brazil', 'United Kingdom', 'India']) {
       expect(designationsForCountry(country).every((record) => record.generationStatus === 'reference-only')).toBe(true);
     }
   });
