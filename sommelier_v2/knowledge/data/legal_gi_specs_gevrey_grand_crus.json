@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.0",
+  "notes": "Reviewed effective specifications for the nine Gevrey-Chambertin Grand Cru AOCs. July 2026 national-opposition procedures are pending and are not treated as current law. Accessory Chardonnay, Pinot Blanc and Pinot Gris are omitted from ordinary blend authorization because the effective rules confine them to mixed plantings within parcels.",
+  "sources": {
+    "inao_chambertin_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/chambertin-7717",
+      "checked": "2026-09-05",
+      "scope": "Current Chambertin AOP record and effective 2011 specification; 2026 modification remains in national opposition procedure."
+    },
+    "inao_chambertin_clos_de_beze_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/chambertin-clos-de-beze-7718",
+      "checked": "2026-09-05",
+      "scope": "Current Chambertin-Clos de Bèze AOP record and effective specification; 2026 modification remains pending."
+    },
+    "inao_chapelle_chambertin_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/chapelle-chambertin-7719",
+      "checked": "2026-09-05",
+      "scope": "Current Chapelle-Chambertin AOP record and effective 2011 specification; 2026 modification remains pending."
+    },
+    "inao_charmes_chambertin_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/charmes-chambertin-7720",
+      "checked": "2026-09-05",
+      "scope": "Current Charmes-Chambertin AOP record and effective 2011 specification; 2026 modification remains pending."
+    },
+    "inao_griotte_chambertin_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/griotte-chambertin-7721",
+      "checked": "2026-09-05",
+      "scope": "Current Griotte-Chambertin AOP record and effective 2011 specification; 2026 modification remains pending."
+    },
+    "inao_latricieres_chambertin_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/latricieres-chambertin-7722",
+      "checked": "2026-09-05",
+      "scope": "Current Latricières-Chambertin AOP record and effective 2011 specification; 2026 modification remains pending."
+    },
+    "inao_mazis_chambertin_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/mazis-chambertin-7723",
+      "checked": "2026-09-05",
+      "scope": "Current Mazis-Chambertin AOP record and effective 2011 specification; 2026 modification remains pending."
+    },
+    "inao_mazoyeres_chambertin_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/mazoyeres-chambertin-7724",
+      "checked": "2026-09-05",
+      "scope": "Current Mazoyères-Chambertin AOP record and effective 2011 specification; 2026 modification remains pending."
+    },
+    "inao_ruchottes_chambertin_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/produit/ruchottes-chambertin-7725",
+      "checked": "2026-09-05",
+      "scope": "Current Ruchottes-Chambertin AOP record and effective 2011 specification; 2026 modification remains pending."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:chambertin:grand-cru",
+      "country": "France",
+      "appellation": "Chambertin",
+      "aliases": ["Chambertin AOC", "Chambertin AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["inao_chambertin_current"],
+      "notes": "Conservative 100% Pinot Noir positive path. Accessory varieties remain limited to parcel-level mixed plantings and are not ordinary cellar blend choices."
+    },
+    {
+      "id": "fr:chambertin-clos-de-beze:grand-cru",
+      "country": "France",
+      "appellation": "Chambertin-Clos de Bèze",
+      "aliases": ["Chambertin Clos de Bèze", "Chambertin-Clos de Beze", "Chambertin Clos de Beze", "Chambertin-Clos de Bèze AOC", "Chambertin-Clos de Bèze AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 42.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["inao_chambertin_clos_de_beze_current"],
+      "notes": "Conservative 100% Pinot Noir positive path. The legal ability of some Clos de Bèze wine to use the Chambertin appellation is not generalized into reverse aliasing."
+    },
+    {
+      "id": "fr:chapelle-chambertin:grand-cru",
+      "country": "France",
+      "appellation": "Chapelle-Chambertin",
+      "aliases": ["Chapelle Chambertin", "Chapelle-Chambertin AOC", "Chapelle-Chambertin AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 45.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["inao_chapelle_chambertin_current"]
+    },
+    {
+      "id": "fr:charmes-chambertin:grand-cru",
+      "country": "France",
+      "appellation": "Charmes-Chambertin",
+      "aliases": ["Charmes Chambertin", "Charmes-Chambertin AOC", "Charmes-Chambertin AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 45.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["inao_charmes_chambertin_current"]
+    },
+    {
+      "id": "fr:griotte-chambertin:grand-cru",
+      "country": "France",
+      "appellation": "Griotte-Chambertin",
+      "aliases": ["Griotte Chambertin", "Griotte-Chambertin AOC", "Griotte-Chambertin AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 45.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["inao_griotte_chambertin_current"]
+    },
+    {
+      "id": "fr:latricieres-chambertin:grand-cru",
+      "country": "France",
+      "appellation": "Latricières-Chambertin",
+      "aliases": ["Latricieres-Chambertin", "Latricières Chambertin", "Latricieres Chambertin", "Latricières-Chambertin AOC", "Latricières-Chambertin AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 45.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["inao_latricieres_chambertin_current"]
+    },
+    {
+      "id": "fr:mazis-chambertin:grand-cru",
+      "country": "France",
+      "appellation": "Mazis-Chambertin",
+      "aliases": ["Mazis Chambertin", "Mazis-Chambertin AOC", "Mazis-Chambertin AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 45.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["inao_mazis_chambertin_current"]
+    },
+    {
+      "id": "fr:mazoyeres-chambertin:grand-cru",
+      "country": "France",
+      "appellation": "Mazoyères-Chambertin",
+      "aliases": ["Mazoyeres-Chambertin", "Mazoyères Chambertin", "Mazoyeres Chambertin", "Mazoyères-Chambertin AOC", "Mazoyères-Chambertin AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 45.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["inao_mazoyeres_chambertin_current"],
+      "notes": "Conservative positive path. Any cross-label relationship with Charmes-Chambertin is not modeled as an alias because the protected origins remain distinct records."
+    },
+    {
+      "id": "fr:ruchottes-chambertin:grand-cru",
+      "country": "France",
+      "appellation": "Ruchottes-Chambertin",
+      "aliases": ["Ruchottes Chambertin", "Ruchottes-Chambertin AOC", "Ruchottes-Chambertin AOP"],
+      "variant": "grand cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_potential_alcohol_pct": 11.5,
+      "max_yield_hl_ha": 45.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "release_year_offset": 1,
+      "source_ids": ["inao_ruchottes_chambertin_current"]
+    }
+  ]
+}
