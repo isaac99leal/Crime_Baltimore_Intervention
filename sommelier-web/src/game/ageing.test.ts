@@ -24,8 +24,8 @@ const base: WineProfile = {
 describe('legal ageing, old-vine terminology and bottle evolution', () => {
   it('keeps legal rules source-backed and separate from sensory ageing', () => {
     const report = validateAgeingResearch();
-    expect(legalAgeingRules.length).toBeGreaterThanOrEqual(13);
-    expect(oldVineDefinitions.length).toBeGreaterThanOrEqual(7);
+    expect(legalAgeingRules.length).toBeGreaterThanOrEqual(16);
+    expect(oldVineDefinitions.length).toBeGreaterThanOrEqual(8);
     expect(report.issues).toEqual([]);
   });
 
@@ -39,6 +39,9 @@ describe('legal ageing, old-vine terminology and bottle evolution', () => {
     expect(champagne.find((rule) => rule.productLevel === 'Vintage Champagne')?.requirements.minimumTotalMonths).toBe(36);
     expect(rioja.find((rule) => rule.productLevel === 'Gran Reserva red')?.requirements.minimumTotalMonths).toBe(60);
     expect(rioja.find((rule) => rule.productLevel === 'Reserva red')?.requirements.minimumBottleMonths).toBe(6);
+    expect(rioja.find((rule) => rule.productLevel === 'Espumoso de Calidad de Rioja')?.requirements.minimumBottleAgeingMonths).toBe(15);
+    expect(rioja.find((rule) => rule.productLevel === 'Espumoso Reserva')?.requirements.minimumBottleAgeingMonths).toBe(24);
+    expect(rioja.find((rule) => rule.productLevel === 'Espumoso Gran Añada')?.requirements.minimumBottleAgeingMonths).toBe(36);
     expect(brunello.find((rule) => rule.productLevel === 'Riserva')?.requirements.minimumBottleMonths).toBe(6);
     expect(port.find((rule) => rule.productLevel === 'Colheita')?.requirements.minimumCaskYears).toBe(7);
     expect(madeira.find((rule) => rule.productLevel === 'Canteiro')?.requirements.minimumCaskYears).toBe(2);
@@ -46,12 +49,19 @@ describe('legal ageing, old-vine terminology and bottle evolution', () => {
 
   it('treats old-vine labels as jurisdictional definitions rather than a generic marketing toggle', () => {
     const global = oldVineRulesForScope('France').find((rule) => rule.id === 'oldvine-oiv-global-2024');
+    const rioja = oldVineRulesForScope('Rioja DOCa').find((rule) => rule.id === 'oldvine-es-rioja-vinedo-singular-current');
     const barossa = oldVineRulesForScope('Barossa');
     const ancestor = barossa.find((rule) => rule.id === 'oldvine-au-barossa-ancestor');
     const southAfrica = oldVineRulesForScope('South Africa').find((rule) => rule.id === 'oldvine-za-certified-heritage');
 
     expect(global && qualifiesForOldVineRule(global, 35)).toBe(true);
     expect(global && qualifiesForOldVineRule(global, 34)).toBe(false);
+    expect(rioja && qualifiesForOldVineRule(rioja, 35)).toBe(true);
+    expect(rioja?.requirements.manualHarvest).toBe(true);
+    expect(rioja?.requirements.maximumRedYieldKgHa).toBe(5000);
+    expect(rioja?.requirements.maximumWhiteYieldKgHa).toBe(6922);
+    expect(rioja?.requirements.maximumProcessingYieldPct).toBe(65);
+    expect(rioja?.requirements.secondTastingRequiredAssessment).toBe('Excellent');
     expect(ancestor && qualifiesForOldVineRule(ancestor, 125)).toBe(true);
     expect(ancestor && qualifiesForOldVineRule(ancestor, 124)).toBe(false);
     expect(southAfrica?.requirements.plantingDateShownOnSeal).toBe(true);
