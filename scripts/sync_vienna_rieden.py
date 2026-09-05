@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """Materialize all 140 official Vienna Weinbaurieden from the city regulation.
 
-The source is the Magistrat der Stadt Wien regulation that entered into force
-2016-07-01. It enumerates vineyard land by district, cadastral municipality
-(Katastralgemeinde), Riede, and parcel numbers. The regulation contains more
-administrative Riede headings than named Rieden because some named Rieden span
-more than one cadastral municipality. This sync therefore treats the regulated
-Riede name as the site identity and preserves every district/KG occurrence.
+The Magistrat der Stadt Wien regulation entered into force 2016-07-01 and
+enumerates vineyard land by district, Katastralgemeinde (KG), Riede, and parcel
+numbers. Its fixed-column text contains 145 administrative Riede headings. The
+City's official Riedenkarte contains 140 Weinbaurieden because five named sites
+continue across KG boundaries.
 
-The sync records site identity and legal parent context only. It does not
-manufacture parcel geometry or site-level terroir attributes from parcel lists.
+Those five cross-KG continuations are explicit below. Same-spelling homonyms in
+other districts/KGs remain separate. This prevents both over-merging and
+under-merging while preserving every legal source occurrence.
+
+The sync records site identity and legal parent context only. It does not infer
+parcel geometry, area, ownership, soil, slope, elevation, or permitted grapes.
 """
 from __future__ import annotations
 
@@ -46,6 +49,29 @@ def _identity(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", value.casefold().replace("ß", "ss")).strip()
 
 
+# The City/Landwirtschaftskammer 2016 parcel maps show these Rieden crossing KG
+# boundaries. Five administrative duplicates are consolidated, reconciling the
+# regulation's 145 Riede headings with the City's published 140-Rieden total.
+#
+# Deliberately NOT merged:
+# - Mitterberg in Heiligenstadt vs Mitterberg in Neustift/Salmannsdorf
+# - Neuberg in Kalksburg vs Neuberg in Neustift/Salmannsdorf
+# - Rothen in Heiligenstadt vs Rothen in Stammersdorf
+# - Sätzen in Stammersdorf vs Sätzen in Liesing
+CROSS_KG_GROUPS: dict[tuple[str, int, str], str] = {
+    ("hungerberg", 19, "grinzing"): "hungerberg-grinzing-unterdobling",
+    ("hungerberg", 19, "unterdobling"): "hungerberg-grinzing-unterdobling",
+    ("mitterberg", 19, "neustift am walde"): "mitterberg-neustift-salmannsdorf",
+    ("mitterberg", 19, "salmannsdorf"): "mitterberg-neustift-salmannsdorf",
+    ("neuberg", 19, "neustift am walde"): "neuberg-neustift-salmannsdorf",
+    ("neuberg", 19, "salmannsdorf"): "neuberg-neustift-salmannsdorf",
+    ("hackenberg", 19, "obersievering"): "hackenberg-sievering",
+    ("hackenberg", 19, "untersievering"): "hackenberg-sievering",
+    ("reisberg", 23, "kalksburg"): "reisberg-kalksburg-rodaun",
+    ("reisberg", 23, "rodaun"): "reisberg-kalksburg-rodaun",
+}
+
+
 def _download(url: str, attempts: int = 4) -> bytes:
     error: Exception | None = None
     for attempt in range(attempts):
@@ -75,6 +101,15 @@ def _pdf_text(payload: bytes) -> str:
         return result.stdout
 
 
+def _group_token(district: int, kg: str, name: str) -> str:
+    name_key = _identity(name)
+    kg_key = _identity(kg)
+    cross = CROSS_KG_GROUPS.get((name_key, district, kg_key))
+    if cross:
+        return f"cross:{district}:{cross}"
+    return f"local:{district}:{kg_key}:{name_key}"
+
+
 def _records(payload: bytes) -> tuple[list[dict[str, object]], int, int]:
     text = _pdf_text(payload)
     district: int | None = None
@@ -82,8 +117,6 @@ def _records(payload: bytes) -> tuple[list[dict[str, object]], int, int]:
     occurrences: list[tuple[int, str, str]] = []
 
     district_re = re.compile(r"(?:im|Im)\s+(\d{1,2})\.\s+Wiener\s+Gemeindebezirk")
-    # Most district sections use lettered sub-headings such as
-    # "a) in der KG Schönbrunn:". The optional prefix is source layout only.
     kg_re = re.compile(r"^\s*(?:[a-z]\)\s*)?in\s+der\s+KG\s+(.+?):\s*$", re.IGNORECASE)
     riede_re = re.compile(r"^\s*Riede\s+(.+?)\s*$", re.IGNORECASE)
 
@@ -105,36 +138,45 @@ def _records(payload: bytes) -> tuple[list[dict[str, object]], int, int]:
             raise ValueError(f"Riede {name!r} appeared without district/KG context")
         occurrences.append((district, kg, name))
 
-    # Administrative headings are not the site identity. A named Riede can
-    # cross KG boundaries. Group by normalized legal Riede name and retain all
-    # source occurrences so the current city total can be checked exactly.
     grouped: dict[str, list[tuple[int, str, str]]] = defaultdict(list)
     for occurrence in occurrences:
-        grouped[_identity(occurrence[2])].append(occurrence)
+        grouped[_group_token(*occurrence)].append(occurrence)
 
-    if len(grouped) != 140:
+    if len(occurrences) != 145 or len(grouped) != 140:
         duplicate_groups = {
-            key: [(district, kg, name) for district, kg, name in rows]
-            for key, rows in grouped.items() if len(rows) > 1
+            key: rows for key, rows in grouped.items() if len(rows) > 1
         }
         raise ValueError(
-            f"Vienna regulation parser found {len(grouped)} named Rieden from "
-            f"{len(occurrences)} administrative Riede headings; expected exactly 140; "
+            f"Vienna parser found {len(occurrences)} administrative Riede headings "
+            f"and {len(grouped)} legal site identities; expected 145 and 140; "
             f"duplicate_groups={duplicate_groups}"
         )
 
+    merged_groups = [rows for rows in grouped.values() if len(rows) > 1]
+    if len(merged_groups) != 5:
+        raise ValueError(f"Expected exactly five cross-KG Vienna Rieden, found {len(merged_groups)}")
+
     records: list[dict[str, object]] = []
-    for key, source_rows in grouped.items():
+    for token, source_rows in grouped.items():
         source_spellings = {name for _, _, name in source_rows}
         if len(source_spellings) != 1:
-            raise ValueError(f"Normalized Vienna Riede {key!r} has conflicting spellings: {sorted(source_spellings)}")
+            raise ValueError(f"Vienna identity {token!r} has conflicting spellings: {sorted(source_spellings)}")
         name = next(iter(source_spellings))
         districts = sorted({district for district, _, _ in source_rows})
         kgs = sorted({kg for _, kg, _ in source_rows})
+        if len(districts) != 1:
+            raise ValueError(f"Cross-district site merge is forbidden: {token} -> {districts}")
+        district_value = districts[0]
         kg_text = "; ".join(kgs)
-        district_text = "; ".join(str(value) for value in districts)
+
+        if token.startswith("cross:"):
+            canonical = token.split(":", 2)[2]
+            site_id = f"site:austria:wien:{district_value:02d}:ried:{canonical}"
+        else:
+            site_id = f"site:austria:wien:{district_value:02d}:{_slug(kgs[0])}:ried:{_slug(name)}"
+
         records.append({
-            "id": f"site:austria:wien:ried:{_slug(name)}",
+            "id": site_id,
             "name": name,
             "country": "Austria",
             "region": "Wien",
@@ -147,13 +189,17 @@ def _records(payload: bytes) -> tuple[list[dict[str, object]], int, int]:
             "source_ids": ["wien_rieden_regulation_2016"],
             "effective_from": "2016-07-01",
             "notes": (
-                "Magistrat der Stadt Wien legal Riedenkarte identity; "
-                f"district(s) {district_text}; Katastralgemeinde(n) {kg_text}. "
-                "Parcel-level delineation is present in the source regulation."
+                f"Magistrat der Stadt Wien legal Riedenkarte identity; district {district_value}; "
+                f"Katastralgemeinde(n) {kg_text}. Parcel-level delineation is present in the "
+                "official source; no geometry is reconstructed in this record."
             ),
         })
 
-    return sorted(records, key=lambda row: (str(row["name"]).casefold(), str(row["commune"]))), len(occurrences), sum(1 for rows in grouped.values() if len(rows) > 1)
+    return (
+        sorted(records, key=lambda row: (str(row["name"]).casefold(), str(row["commune"]))),
+        len(occurrences),
+        len(merged_groups),
+    )
 
 
 def _write(path: Path, document: dict[str, object]) -> None:
@@ -163,14 +209,16 @@ def _write(path: Path, document: dict[str, object]) -> None:
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     checked = datetime.now(timezone.utc).date().isoformat()
-    records, heading_count, multi_kg_count = _records(_download(REGULATION_URL))
+    records, heading_count, cross_kg_count = _records(_download(REGULATION_URL))
     document = {
         "schema_version": "2.0",
         "generated": checked,
         "notes": (
             "All 140 Vienna Weinbaurieden materialized from the official 2016 city regulation. "
-            "The regulation has 145 administrative Riede headings because some named Rieden cross cadastral boundaries. "
-            "Names and district/Katastralgemeinde coverage are legal-source facts; parcel geometry is not reconstructed here."
+            "The regulation contains 145 administrative Riede headings; five cross-KG "
+            "continuations are consolidated using the official parcel-map context. Same-name "
+            "homonyms outside those five mappings remain separate. No site physical attributes "
+            "are inferred here."
         ),
         "sources": {
             "wien_rieden_regulation_2016": {
@@ -191,7 +239,7 @@ def main() -> None:
         "generated": datetime.now(timezone.utc).isoformat(),
         "vienna_rieden_materialized": len(records),
         "vienna_regulation_ried_headings": heading_count,
-        "vienna_multi_kg_rieden": multi_kg_count,
+        "vienna_cross_kg_rieden": cross_kg_count,
         "source_effective_from": "2016-07-01",
         "output": str(OUT.relative_to(ROOT)),
     }
