@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "notes": "National wine-grape classification evidence. A record does not establish commercial acreage or GI/appellation authorization.",
+  "sources": {
+    "fr_legifrance_2026_07_23": {
+      "authority": "Journal officiel de la République française / Légifrance",
+      "title": "Arrêté du 23 juillet 2026 établissant la liste des variétés classées de vigne à raisins de cuve",
+      "effective_from": "2026-07-26",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054484059"
+    },
+    "fr_franceagrimer_2026_09_03": {
+      "authority": "FranceAgriMer",
+      "title": "Catalogue officiel des variétés de vigne - Liste A",
+      "as_of": "2026-09-03",
+      "url": "https://www.franceagrimer.fr/bois-et-plants-de-vigne-catalogue-officiel-des-varietes-de-vigne"
+    }
+  },
+  "records": [
+    {"country":"France","variety":"Elaris","berry_color":"white","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Florisia","berry_color":"white","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Orellis","berry_color":"white","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Serelis","berry_color":"white","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Taranis","berry_color":"black","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Valpesia","berry_color":"black","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Bouquet 3159","berry_color":"white","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Bouquet 3160","berry_color":"black","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Bouquet 3176","berry_color":"black","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Bouquet 3179","berry_color":"black","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Bouquet 3196","berry_color":"black","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Calardis blanc","berry_color":"white","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":true,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Bonne Vituaigne","berry_color":"white","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":false,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Cacaboué","berry_color":"white","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":false,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Gueuche noir","berry_color":"black","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":false,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Pougnet","berry_color":"black","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":false,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Ribier noir","berry_color":"black","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":false,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]},
+    {"country":"France","variety":"Guouais blanc","berry_color":"white","status":"classified_wine_grape_metropolitan","effective_from":"2026-07-26","marked_asterisk_in_2026_order":false,"source_ids":["fr_legifrance_2026_07_23","fr_franceagrimer_2026_09_03"]}
+  ]
+}
