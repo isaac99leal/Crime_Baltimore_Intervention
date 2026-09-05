@@ -1,20 +1,20 @@
 {
   "schema_version": "1.1",
-  "notes": "All 55 Chassagne-Montrachet Premier Cru climat identities from the effective specification and current BIVB appellation inventory. Ordinary lieux-dits are not included in this tranche.",
+  "notes": "Current Chassagne-Montrachet named-site inventory. The 55 Premier Cru climats and 46 ordinary lieux-dits are separate identity classes; ordinary lieux-dits are not automatically legal Premier Cru claims. Same-name identities such as Les Chaumes remain distinct through typed collision handling.",
   "sources": {
     "bourgogne_chassagne_current": {
       "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
-      "title": "Chassagne-Montrachet appellation page and current climat inventory",
+      "title": "Chassagne-Montrachet appellation page and current climat/lieu-dit inventory",
       "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/chassagne-montrachet,2458,9253.html",
       "checked": "2026-09-05",
-      "scope": "Current BIVB page lists 55 Premiers Crus climats and states that Chassagne-Montrachet and Chassagne-Montrachet Premier Cru may be followed by the climat of origin."
+      "scope": "Current BIVB page lists 55 Premiers Crus climats and 46 ordinary lieux-dits."
     },
     "chassagne_bivb_spec_2011": {
       "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
       "title": "Cahier des charges de l'AOC Chassagne-Montrachet homologué par le décret n°2011-1753",
       "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20208.pdf",
       "checked": "2026-09-05",
-      "scope": "Effective specification explicitly enumerates the protected climat names."
+      "scope": "Effective specification explicitly enumerates the protected Premier Cru climat names."
     }
   },
   "groups": [
@@ -84,6 +84,64 @@
         "Vide Bourse",
         "Vigne Blanche",
         "Vigne Derrière"
+      ]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "commune": "Chassagne-Montrachet",
+      "parent": "Chassagne-Montrachet",
+      "site_type": "lieu_dit",
+      "legal_status": "official_appellation_lieu_dit",
+      "source_ids": ["bourgogne_chassagne_current"],
+      "notes": "Current ordinary lieu-dit identity. This evidence does not itself authorize a Premier Cru claim.",
+      "names": [
+        "Blanchot Dessous",
+        "Bouchon de Corvée",
+        "Champ Derrière",
+        "Champs de Morjot",
+        "Clos Bernot",
+        "Dessous les Mues",
+        "En Journoblot",
+        "En l'Ormeau",
+        "En Pimont",
+        "Fontaine Sot",
+        "La Bergerie",
+        "La Canière",
+        "La Canotte",
+        "La Goujonne",
+        "La Platière",
+        "La Têtière",
+        "Le Clos Reland",
+        "Le Concis du Champs",
+        "Le Parterre",
+        "Le Poirier du Clos",
+        "Les Battaudes",
+        "Les Benoites",
+        "Les Beuttes",
+        "Les Chambres",
+        "Les Charnières",
+        "Les Chaumes",
+        "Les Chênes",
+        "Les Encégnières",
+        "Les Essarts",
+        "Les Grandes Terres",
+        "Les Houillères",
+        "Les Lombardes",
+        "Les Masures",
+        "Les Meix Goudard",
+        "Les Morichots",
+        "Les Mouchottes",
+        "Les Perclos",
+        "Les Pierres",
+        "Les Plantes Momières",
+        "Les Voillenots Dessous",
+        "Plante du Gaie",
+        "Plante Saint Aubin",
+        "Pot Bois",
+        "Puits Merdreaux",
+        "Sur Matronge",
+        "Voillenot Dessous"
       ]
     }
   ]
