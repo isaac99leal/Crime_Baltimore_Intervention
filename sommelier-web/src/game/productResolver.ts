@@ -1,6 +1,7 @@
 import productData from '../data/research/product_resolution_rules.json';
 import productDataPass2 from '../data/research/product_resolution_rules_pass2.json';
 import productDataPass3 from '../data/research/product_resolution_rules_pass3.json';
+import productDataPass4 from '../data/research/product_resolution_rules_pass4.json';
 import { legalAgeingRules, type AgeingArchetype } from './ageing';
 import { findGrape, type RawGrape, type ReferencePlace } from './reference';
 import { researchProfileById, type ResearchProfile } from './research';
@@ -23,6 +24,7 @@ export type ProductPracticeRule = {
 
 export type ProductResolutionRule = {
   id: string;
+  supersedesRuleIds?: string[];
   profileId?: string;
   country: string;
   designation: string;
@@ -70,6 +72,7 @@ const files = [
   productData as unknown as ProductResolutionFile,
   productDataPass2 as unknown as ProductResolutionFile,
   productDataPass3 as unknown as ProductResolutionFile,
+  productDataPass4 as unknown as ProductResolutionFile,
 ];
 export const productResolutionMethod = files.map((candidate) => candidate.method).join(' ');
 export const productResolutionPassCount = files.length;
@@ -218,6 +221,23 @@ function legalEra(rule: ProductResolutionRule, vintage?: number): { status: Lega
   return { status: 'product-resolved-historical-law-unverified', verified: false };
 }
 
+function canSupersedeAtVintage(rule: ProductResolutionRule, vintage?: number): boolean {
+  if (!rule.supersedesRuleIds?.length) return false;
+  if (vintage === undefined) return true;
+  if (rule.effectiveFromYear !== undefined && vintage < rule.effectiveFromYear) return false;
+  if (rule.effectiveThroughYear !== undefined && vintage > rule.effectiveThroughYear) return false;
+  return true;
+}
+
+function removeSupersededCandidates<T extends { rule: ProductResolutionRule }>(candidates: T[], vintage?: number): T[] {
+  const superseded = new Set<string>();
+  for (const candidate of candidates) {
+    if (!canSupersedeAtVintage(candidate.rule, vintage)) continue;
+    for (const id of candidate.rule.supersedesRuleIds ?? []) superseded.add(id);
+  }
+  return candidates.filter((candidate) => !superseded.has(candidate.rule.id));
+}
+
 function provenanceFor(rule: ProductResolutionRule): string[] {
   const sourceIds = new Set<string>();
   const profile = profileForRule(rule);
@@ -239,9 +259,12 @@ export function productRulesForDesignation(country: string, designation: string,
 
 export function resolveWineProduct(request: ProductResolutionRequest): ProductResolution {
   const termsText = requestedText(request.requestedTerms);
-  const candidates = productRulesForDesignation(request.country, request.designation, request.color)
-    .map((rule) => ({ rule, score: termScore(rule, termsText), issues: compositionIssues(rule, request) }))
-    .filter((candidate) => candidate.issues.length === 0);
+  const candidates = removeSupersededCandidates(
+    productRulesForDesignation(request.country, request.designation, request.color)
+      .map((rule) => ({ rule, score: termScore(rule, termsText), issues: compositionIssues(rule, request) }))
+      .filter((candidate) => candidate.issues.length === 0),
+    request.vintage,
+  );
 
   if (!candidates.length) {
     return {
@@ -316,16 +339,20 @@ export function resolveWineProduct(request: ProductResolutionRequest): ProductRe
 
 export function generationProductCandidates(place: ReferencePlace, grape: RawGrape): ProductResolutionRule[] {
   const designationText = [place.name, ...place.path].join(' / ');
-  return productResolutionRules.filter((rule) => {
-    if (rule.generationStatus !== 'generation-safe') return false;
-    if (rule.requiresBlend) return false;
-    if (!designationMatches(rule, place.country, designationText)) return false;
-    if (!colorMatches(rule, grape.color)) return false;
-    const request: ProductResolutionRequest = { country: place.country, designation: designationText, grape: grape.name, color: grape.color };
-    if (compositionIssues(rule, request).length) return false;
-    const profile = profileForRule(rule);
-    return Boolean(profile && profile.generationStatus === 'candidate');
-  });
+  const candidates = productResolutionRules
+    .filter((rule) => rule.generationStatus === 'generation-safe')
+    .filter((rule) => !rule.requiresBlend)
+    .filter((rule) => designationMatches(rule, place.country, designationText))
+    .filter((rule) => colorMatches(rule, grape.color))
+    .map((rule) => ({ rule }));
+  return removeSupersededCandidates(candidates)
+    .map((candidate) => candidate.rule)
+    .filter((rule) => {
+      const request: ProductResolutionRequest = { country: place.country, designation: designationText, grape: grape.name, color: grape.color };
+      if (compositionIssues(rule, request).length) return false;
+      const profile = profileForRule(rule);
+      return Boolean(profile && profile.generationStatus === 'candidate');
+    });
 }
 
 export function productWinemakingLegality(
@@ -361,6 +388,10 @@ export function validateProductResolver() {
     if (rule.profileId && !profile) issues.push(`Unknown research profile ${rule.profileId} in ${rule.id}`);
     if (rule.generationStatus === 'generation-safe' && (!profile || profile.generationStatus !== 'candidate')) issues.push(`Generation-safe product lacks candidate profile: ${rule.id}`);
     if (rule.requiresBlend && (!rule.composition || rule.composition.length < 2)) issues.push(`Blend-required product lacks multi-grape composition: ${rule.id}`);
+    for (const supersededId of rule.supersedesRuleIds ?? []) {
+      if (supersededId === rule.id) issues.push(`Product rule supersedes itself: ${rule.id}`);
+      if (!productResolutionRuleById.has(supersededId)) issues.push(`Unknown superseded product rule ${supersededId} in ${rule.id}`);
+    }
     for (const ageingId of rule.ageingRuleIds ?? []) if (!legalAgeingRules.some((candidate) => candidate.id === ageingId)) issues.push(`Unknown ageing rule ${ageingId} in ${rule.id}`);
     for (const constraint of rule.composition ?? []) if (!findGrape(constraint.grape)) unresolvedGrapes.add(constraint.grape);
     for (const practice of [...(rule.requiredPractices ?? []), ...(rule.permittedPractices ?? []), ...(rule.prohibitedPractices ?? [])]) {
