@@ -15,15 +15,15 @@ type GuestArchetype = {
   id: string;
   name: string;
   description: string;
-  price_ceiling: [number, number];
-  adventure_level: [number, number];
+  price_ceiling: number[];
+  adventure_level: number[];
   preferred_regions: string[];
   conversation_hints: string[];
   frequency: number;
 };
 
 type PairRule = {
-  ideal_wine_attributes?: Record<string, [number, number]>;
+  ideal_wine_attributes?: Record<string, number[]>;
   ideal_grapes?: string[];
   avoid_grapes?: string[];
   notes?: string;
@@ -46,6 +46,11 @@ const dishes: Dish[] = [
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
 const randomFrom = <T,>(items: T[]): T => items[Math.floor(Math.random() * items.length)];
 const randomBetween = (min: number, max: number) => min + Math.random() * (max - min);
+
+function numericRange(values: number[] | undefined, fallback: [number, number]): [number, number] {
+  if (!values || values.length < 2) return fallback;
+  return [values[0], values[1]];
+}
 
 export function createInitialGame(): GameState {
   return {
@@ -107,7 +112,9 @@ function pickArchetype(): GuestArchetype {
 
 export function generateServiceScenario(): ServiceScenario {
   const archetype = pickArchetype();
-  const ceiling = randomBetween(archetype.price_ceiling[0], archetype.price_ceiling[1]);
+  const [budgetMin, budgetMax] = numericRange(archetype.price_ceiling, [60, 250]);
+  const [adventureMin, adventureMax] = numericRange(archetype.adventure_level, [0.3, 0.6]);
+  const ceiling = randomBetween(budgetMin, budgetMax);
   const guest: Guest = {
     id: `${archetype.id}-${Date.now()}-${Math.random()}`,
     name: archetype.name,
@@ -115,19 +122,31 @@ export function generateServiceScenario(): ServiceScenario {
     budget: Math.max(35, Math.round(ceiling)),
     preferredRegions: archetype.preferred_regions,
     hint: randomFrom(archetype.conversation_hints),
-    adventure: randomBetween(archetype.adventure_level[0], archetype.adventure_level[1]),
+    adventure: randomBetween(adventureMin, adventureMax),
   };
   return { guest, dish: randomFrom(dishes) };
 }
 
+function profileValueForRule(wine: WineDefinition, ruleKey: string): number | undefined {
+  const map: Record<string, keyof WineDefinition['profile']> = {
+    acidity: 'acidity',
+    tannin: 'tannin',
+    body: 'body',
+    sweetness: 'sweetness',
+    fruit_intensity: 'fruitIntensity',
+    earth_intensity: 'earthIntensity',
+  };
+  const profileKey = map[ruleKey];
+  return profileKey ? wine.profile[profileKey] : undefined;
+}
+
 function attributeFit(wine: WineDefinition, rule: PairRule): number {
-  const attrs = rule.ideal_wine_attributes ?? {};
-  const profile = wine.profile as unknown as Record<string, number>;
-  const entries = Object.entries(attrs);
+  const entries = Object.entries(rule.ideal_wine_attributes ?? {});
   if (!entries.length) return 0;
-  const matches = entries.filter(([name, [min, max]]) => {
-    const value = profile[name];
-    return typeof value === 'number' && value >= min && value <= max;
+  const matches = entries.filter(([name, range]) => {
+    if (range.length < 2) return false;
+    const value = profileValueForRule(wine, name);
+    return typeof value === 'number' && value >= range[0] && value <= range[1];
   }).length;
   return (matches / entries.length) * 22;
 }
