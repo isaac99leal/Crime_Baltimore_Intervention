@@ -1,4 +1,4 @@
-"""Main game class — state machine and game loop."""
+"""Main game class — unified state machine and Pygame loop."""
 
 import pygame
 from somm_simulator.config import (
@@ -7,19 +7,20 @@ from somm_simulator.config import (
 from somm_simulator.engine.scene_manager import SceneManager
 from somm_simulator.engine.save_system import SaveSystem
 
-# Import all scenes
-from somm_simulator.scenes.main_menu import MainMenuScene
+from somm_simulator.scenes.unified_main_menu import UnifiedMainMenuScene
 from somm_simulator.scenes.new_game import NewGameScene
-from somm_simulator.scenes.hub import HubScene
+from somm_simulator.scenes.unified_hub import UnifiedHubScene
 from somm_simulator.scenes.wine_market import WineMarketScene
 from somm_simulator.scenes.cellar import CellarScene
 from somm_simulator.scenes.service import ServiceScene
 from somm_simulator.scenes.blind_tasting import BlindTastingScene
 from somm_simulator.scenes.week_summary import WeekSummaryScene
+from sommelier_v2.unified_game import UnifiedGameState
+from sommelier_v2.wine_registry import SommelierWorldRegistry
 
 
 class Game:
-    """Top-level game controller."""
+    """Top-level controller for the unified Pygame + v2 simulation."""
 
     def __init__(self):
         pygame.init()
@@ -28,13 +29,48 @@ class Game:
         self.clock = pygame.time.Clock()
         self.running = True
         self.save_system = SaveSystem()
+        self.unified_state: UnifiedGameState | None = None
         self.scene_manager = SceneManager(self)
         self._register_scenes()
 
+    def bind_career(
+        self,
+        player,
+        restaurant,
+        *,
+        saved_state: dict | None = None,
+        replace_existing: bool = False,
+    ) -> UnifiedGameState:
+        if (
+            self.unified_state is None
+            or replace_existing
+            or self.unified_state.player is not player
+            or self.unified_state.restaurant is not restaurant
+        ):
+            registry = (
+                None
+                if self.unified_state is None or replace_existing
+                else self.unified_state.wine_registry
+            )
+            self.unified_state = UnifiedGameState.create(
+                player=player,
+                restaurant=restaurant,
+                wine_registry=registry,
+                saved_state=saved_state,
+            )
+        else:
+            self.unified_state.sync_from_legacy()
+            if saved_state:
+                self.unified_state.restore_v2(saved_state)
+        return self.unified_state
+
+    @property
+    def wine_registry(self) -> SommelierWorldRegistry | None:
+        return self.unified_state.wine_registry if self.unified_state else None
+
     def run(self):
-        """Main game loop."""
         while self.running:
-            dt = self.clock.tick(FPS) / 1000.0  # Delta time in seconds
+            dt = self.clock.tick(FPS) / 1000.0
             self._handle_events()
             self._update(dt)
             self._draw()
@@ -58,11 +94,10 @@ class Game:
         pygame.display.flip()
 
     def _register_scenes(self):
-        """Register all game scenes."""
         sm = self.scene_manager
-        sm.register("main_menu", MainMenuScene(self))
+        sm.register("main_menu", UnifiedMainMenuScene(self))
         sm.register("new_game", NewGameScene(self))
-        sm.register("hub", HubScene(self))
+        sm.register("hub", UnifiedHubScene(self))
         sm.register("market", WineMarketScene(self))
         sm.register("cellar", CellarScene(self))
         sm.register("service", ServiceScene(self))

@@ -12,6 +12,7 @@ from typing import Mapping, Sequence
 from .eu_promotions import EuLegalPromotionRegistry
 from .legal_specs import LegalSpecRegistry, LegalWineSpec
 from .machine_legal_constraints import MachineLegalConstraintRegistry
+from .national_overrides import NationalAwareLegalSpecRegistry
 from .regional_rules import OriginDecision, RegionGrapeRulebook
 
 
@@ -19,13 +20,15 @@ class LegalAwareRegionGrapeRulebook(RegionGrapeRulebook):
     def __init__(
         self,
         *args,
-        legal_specs: LegalSpecRegistry | None = None,
+        legal_specs: LegalSpecRegistry | NationalAwareLegalSpecRegistry | None = None,
         machine_constraints: MachineLegalConstraintRegistry | None = None,
         eu_promotions: EuLegalPromotionRegistry | None = None,
         **kwargs,
     ) -> None:
         super().__init__(*args, **kwargs)
-        self.legal_specs = legal_specs or LegalSpecRegistry()
+        # Default production path applies effective national-source precedence.
+        # Tests/private callers that pass an explicit registry retain full control.
+        self.legal_specs = legal_specs or NationalAwareLegalSpecRegistry()
         self.machine_constraints = machine_constraints or MachineLegalConstraintRegistry()
         self.eu_promotions = eu_promotions or EuLegalPromotionRegistry(self.machine_constraints)
 

@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "notes": "National regulator precedence/cross-check layer. Effective records may patch executable fields. Pending/proposed records are retained for awareness but never applied as current law.",
+  "sources": {
+    "national_it_barolo_masaf_2026": {
+      "authority": "Ministero dell'agricoltura, della sovranità alimentare e delle foreste (MASAF)",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24322",
+      "checked": "2026-09-05",
+      "status": "current_consolidated_national_spec"
+    },
+    "national_it_barbaresco_masaf_2026": {
+      "authority": "Ministero dell'agricoltura, della sovranità alimentare e delle foreste (MASAF)",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24323",
+      "checked": "2026-09-05",
+      "status": "current_consolidated_national_spec"
+    },
+    "national_it_morellino_masaf_2026": {
+      "authority": "Ministero dell'agricoltura, della sovranità alimentare e delle foreste (MASAF)",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24070",
+      "checked": "2026-09-05",
+      "status": "current_consolidated_national_spec"
+    },
+    "national_es_rioja_current": {
+      "authority": "Consejo Regulador DOCa Rioja",
+      "url": "https://riojawine.com/es/doca-rioja/denominacion-de-origen-calificada/",
+      "checked": "2026-09-05",
+      "status": "current_official_regulator_detail"
+    },
+    "national_fr_champagne_inao_effective_2025": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://inao.gouv.fr/produit/champagne-21054",
+      "checked": "2026-09-05",
+      "status": "effective_2025_homologated_spec"
+    },
+    "national_fr_champagne_inao_pending_2026": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://inao.gouv.fr/produit/champagne-21054",
+      "checked": "2026-09-05",
+      "status": "2026_national_opposition_procedure_pending"
+    }
+  },
+  "overrides": [
+    {
+      "spec_id": "it:barolo:standard",
+      "country": "Italy",
+      "status": "effective",
+      "source_ids": ["national_it_barolo_masaf_2026"],
+      "fields": {"max_yield_t_ha": 8.0, "min_potential_alcohol_pct": 12.5}
+    },
+    {
+      "spec_id": "it:barolo:riserva",
+      "country": "Italy",
+      "status": "effective",
+      "source_ids": ["national_it_barolo_masaf_2026"],
+      "fields": {"max_yield_t_ha": 8.0, "min_potential_alcohol_pct": 12.5}
+    },
+    {
+      "spec_id": "it:barbaresco:standard",
+      "country": "Italy",
+      "status": "effective",
+      "source_ids": ["national_it_barbaresco_masaf_2026"],
+      "fields": {"min_total_aging_months": 24, "min_wood_aging_months": 9}
+    },
+    {
+      "spec_id": "it:barbaresco:riserva",
+      "country": "Italy",
+      "status": "effective",
+      "source_ids": ["national_it_barbaresco_masaf_2026"],
+      "fields": {"min_total_aging_months": 48, "min_wood_aging_months": 9}
+    },
+    {
+      "spec_id": "it:morellino-di-scansano:standard",
+      "country": "Italy",
+      "status": "effective",
+      "source_ids": ["national_it_morellino_masaf_2026"],
+      "fields": {"max_yield_t_ha": 9.0, "grape_to_wine_yield_pct": 70.0, "min_potential_alcohol_pct": 12.0, "min_final_alcohol_pct": 12.5}
+    },
+    {
+      "spec_id": "it:morellino-di-scansano:superiore",
+      "country": "Italy",
+      "status": "effective",
+      "source_ids": ["national_it_morellino_masaf_2026"],
+      "fields": {"max_yield_t_ha": 8.0, "grape_to_wine_yield_pct": 70.0, "min_potential_alcohol_pct": 12.5, "min_final_alcohol_pct": 13.0}
+    },
+    {
+      "spec_id": "it:morellino-di-scansano:riserva",
+      "country": "Italy",
+      "status": "effective",
+      "source_ids": ["national_it_morellino_masaf_2026"],
+      "fields": {"max_yield_t_ha": 8.0, "grape_to_wine_yield_pct": 70.0, "min_potential_alcohol_pct": 12.5, "min_final_alcohol_pct": 13.0}
+    },
+    {
+      "spec_id": "es:rioja:red-crianza",
+      "country": "Spain",
+      "status": "effective",
+      "source_ids": ["national_es_rioja_current"],
+      "fields": {"min_total_aging_months": 24, "min_wood_aging_months": 12}
+    },
+    {
+      "spec_id": "es:rioja:red-reserva",
+      "country": "Spain",
+      "status": "effective",
+      "source_ids": ["national_es_rioja_current"],
+      "fields": {"min_total_aging_months": 36, "min_wood_aging_months": 12, "min_bottle_aging_months": 6}
+    },
+    {
+      "spec_id": "es:rioja:red-gran-reserva",
+      "country": "Spain",
+      "status": "effective",
+      "source_ids": ["national_es_rioja_current"],
+      "fields": {"min_total_aging_months": 60, "min_wood_aging_months": 24, "min_bottle_aging_months": 24}
+    },
+    {
+      "spec_id": "fr:champagne:non-vintage",
+      "country": "France",
+      "status": "effective",
+      "source_ids": ["national_fr_champagne_inao_effective_2025"],
+      "fields": {"min_total_aging_months": 15, "required_method": "traditional method"}
+    },
+    {
+      "spec_id": "fr:champagne:vintage",
+      "country": "France",
+      "status": "effective",
+      "source_ids": ["national_fr_champagne_inao_effective_2025"],
+      "fields": {"min_total_aging_months": 36, "required_method": "traditional method"}
+    },
+    {
+      "spec_id": "fr:champagne:non-vintage",
+      "country": "France",
+      "status": "pending_not_effective",
+      "source_ids": ["national_fr_champagne_inao_pending_2026"],
+      "fields": {"vineyard_adaptation_max_pct": 10.0},
+      "notes": "The 2026 INAO modification request is in national opposition procedure. Do not apply it as current law."
+    },
+    {
+      "spec_id": "fr:champagne:vintage",
+      "country": "France",
+      "status": "pending_not_effective",
+      "source_ids": ["national_fr_champagne_inao_pending_2026"],
+      "fields": {"vineyard_adaptation_max_pct": 10.0},
+      "notes": "The 2026 INAO modification request is in national opposition procedure. Do not apply it as current law."
+    }
+  ]
+}
