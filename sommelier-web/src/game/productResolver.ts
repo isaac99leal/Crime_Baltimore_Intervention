@@ -317,6 +317,7 @@ export function strictProductWinemakingLegalCheck(rule: ProductResolutionRule) {
 
 export function validateProductResolver() {
   const issues: string[] = [];
+  const unresolvedGrapes = new Set<string>();
   const ids = new Set<string>();
   for (const rule of productResolutionRules) {
     if (ids.has(rule.id)) issues.push(`Duplicate product rule id: ${rule.id}`);
@@ -326,7 +327,7 @@ export function validateProductResolver() {
     if (rule.profileId && !profile) issues.push(`Unknown research profile ${rule.profileId} in ${rule.id}`);
     if (rule.generationStatus === 'generation-safe' && (!profile || profile.generationStatus !== 'candidate')) issues.push(`Generation-safe product lacks candidate profile: ${rule.id}`);
     for (const ageingId of rule.ageingRuleIds ?? []) if (!legalAgeingRules.some((candidate) => candidate.id === ageingId)) issues.push(`Unknown ageing rule ${ageingId} in ${rule.id}`);
-    for (const constraint of rule.composition ?? []) if (!findGrape(constraint.grape)) issues.push(`Unknown grape ${constraint.grape} in ${rule.id}`);
+    for (const constraint of rule.composition ?? []) if (!findGrape(constraint.grape)) unresolvedGrapes.add(constraint.grape);
     for (const practice of [...(rule.requiredPractices ?? []), ...(rule.permittedPractices ?? []), ...(rule.prohibitedPractices ?? [])]) {
       const decision = winemakingDecisionById.get(practice.decisionId);
       if (!decision) {
@@ -344,5 +345,6 @@ export function validateProductResolver() {
     countries: new Set(productResolutionRules.map((rule) => rule.country)).size,
     designations: new Set(productResolutionRules.map((rule) => `${rule.country}|${rule.designation}`)).size,
     issues,
+    unresolvedGrapes: [...unresolvedGrapes].sort(),
   };
 }
