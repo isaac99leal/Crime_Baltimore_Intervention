@@ -1,0 +1,438 @@
+{
+  "source": {
+    "publisher": "Wine Economics Research Centre, University of Adelaide",
+    "title": "Database of Regional, National and Global Winegrape Bearing Areas by Variety, 2000 to 2023",
+    "authors": [
+      "Kym Anderson",
+      "Signe Nelgen",
+      "Germán Puga"
+    ],
+    "edition": "December 2025",
+    "url": "https://economics.adelaide.edu.au/wine-economics/databases",
+    "retrievedAt": "2026-09-05T00:45:56.583225+00:00",
+    "note": "Statistical planting geography is not automatically an appellation or legal GI."
+  },
+  "count": 60,
+  "records": [
+    {
+      "name": "Albania",
+      "area2000": null,
+      "area2010": null,
+      "area2016": null,
+      "area2023": 8400.0
+    },
+    {
+      "name": "Algeria",
+      "area2000": 30200.0,
+      "area2010": 30200.0,
+      "area2016": 8300.0,
+      "area2023": 2324.0
+    },
+    {
+      "name": "Argentina",
+      "area2000": 197418.1585,
+      "area2010": 213372.3381,
+      "area2016": 206342.2307,
+      "area2023": 206953.4404
+    },
+    {
+      "name": "Armenia",
+      "area2000": 11205.7551,
+      "area2010": 11205.7551,
+      "area2016": 14705.0,
+      "area2023": 9537.8629
+    },
+    {
+      "name": "Australia",
+      "area2000": 130602.2,
+      "area2010": 151788.3,
+      "area2016": 141667.7107,
+      "area2023": 144973.402
+    },
+    {
+      "name": "Austria",
+      "area2000": 96992.3,
+      "area2010": 45533.18,
+      "area2016": 45438.86,
+      "area2023": 43791.0
+    },
+    {
+      "name": "Belgium",
+      "area2000": null,
+      "area2010": null,
+      "area2016": null,
+      "area2023": 1235.69
+    },
+    {
+      "name": "Brazil",
+      "area2000": 52839.8596,
+      "area2010": 49411.9908,
+      "area2016": 33205.034,
+      "area2023": 49807.5505
+    },
+    {
+      "name": "Bulgaria",
+      "area2000": 95997.184,
+      "area2010": 56133.0,
+      "area2016": 52974.31,
+      "area2023": 53686.0
+    },
+    {
+      "name": "Cambodia",
+      "area2000": null,
+      "area2010": null,
+      "area2016": 10.0,
+      "area2023": 10.0
+    },
+    {
+      "name": "Canada",
+      "area2000": 8498.4,
+      "area2010": 10096.4653,
+      "area2016": 12600.1,
+      "area2023": 13580.142
+    },
+    {
+      "name": "Chile",
+      "area2000": 113965.5,
+      "area2010": 111524.96,
+      "area2016": 145872.58,
+      "area2023": 129016.54
+    },
+    {
+      "name": "China",
+      "area2000": null,
+      "area2010": 29544.9336,
+      "area2016": 178000.0,
+      "area2023": 71200.0044
+    },
+    {
+      "name": "Croatia",
+      "area2000": 59448.37,
+      "area2010": 20754.0,
+      "area2016": 11746.0,
+      "area2023": 16239.0
+    },
+    {
+      "name": "Cyprus",
+      "area2000": 18281.6901,
+      "area2010": 8608.0,
+      "area2016": 7852.5,
+      "area2023": 7096.702
+    },
+    {
+      "name": "Czechia",
+      "area2000": 11331.2078,
+      "area2010": 16242.0,
+      "area2016": 13600.0,
+      "area2023": 17700.1726
+    },
+    {
+      "name": "Ethiopia",
+      "area2000": null,
+      "area2010": 169.17,
+      "area2016": 169.17,
+      "area2023": 169.17
+    },
+    {
+      "name": "France",
+      "area2000": 864845.98,
+      "area2010": 835553.8624,
+      "area2016": 814882.0661,
+      "area2023": 858469.8255
+    },
+    {
+      "name": "Georgia",
+      "area2000": 37419.0,
+      "area2010": 48001.0882,
+      "area2016": 48000.0,
+      "area2023": 48643.0
+    },
+    {
+      "name": "Germany",
+      "area2000": 104233.0,
+      "area2010": 102135.0136,
+      "area2016": 94501.0,
+      "area2023": 101577.0
+    },
+    {
+      "name": "Greece",
+      "area2000": 50915.25,
+      "area2010": 54389.6,
+      "area2016": 50845.0,
+      "area2023": 51954.0
+    },
+    {
+      "name": "Hungary",
+      "area2000": 86886.0826,
+      "area2010": 69715.0684,
+      "area2016": 63880.5338,
+      "area2023": 55555.8002
+    },
+    {
+      "name": "India",
+      "area2000": null,
+      "area2010": null,
+      "area2016": 2700.0,
+      "area2023": 3240.0
+    },
+    {
+      "name": "Israel",
+      "area2000": 4851.3758,
+      "area2010": 4851.3758,
+      "area2016": 5000.0,
+      "area2023": 6500.0
+    },
+    {
+      "name": "Italy",
+      "area2000": 636662.37,
+      "area2010": 625700.05,
+      "area2016": 604551.0,
+      "area2023": 650443.0
+    },
+    {
+      "name": "Japan",
+      "area2000": null,
+      "area2010": 3715.0,
+      "area2016": 3868.61,
+      "area2023": 6466.4
+    },
+    {
+      "name": "Kazakhstan",
+      "area2000": null,
+      "area2010": 6938.1985,
+      "area2016": 6938.1985,
+      "area2023": 6938.1986
+    },
+    {
+      "name": "South Korea",
+      "area2000": 5400.0,
+      "area2010": 5400.0,
+      "area2016": 5400.0,
+      "area2023": 4050.0
+    },
+    {
+      "name": "Lebanon",
+      "area2000": null,
+      "area2010": null,
+      "area2016": 4000.0,
+      "area2023": 4000.0
+    },
+    {
+      "name": "Lithuania",
+      "area2000": null,
+      "area2010": null,
+      "area2016": null,
+      "area2023": 100.0
+    },
+    {
+      "name": "Luxembourg",
+      "area2000": 1348.0,
+      "area2010": 1304.0,
+      "area2016": 1300.0,
+      "area2023": 1249.04
+    },
+    {
+      "name": "Mexico",
+      "area2000": null,
+      "area2010": 5465.0,
+      "area2016": 5465.0,
+      "area2023": 6831.25
+    },
+    {
+      "name": "Missing 9",
+      "area2000": 80220.805,
+      "area2010": null,
+      "area2016": null,
+      "area2023": null
+    },
+    {
+      "name": "Moldova",
+      "area2000": 89844.0,
+      "area2010": 89844.0,
+      "area2016": 82600.0,
+      "area2023": 82599.9997
+    },
+    {
+      "name": "Morocco",
+      "area2000": 49600.0,
+      "area2010": 49000.0,
+      "area2016": 17590.0,
+      "area2023": 6684.1999
+    },
+    {
+      "name": "Myanmar",
+      "area2000": null,
+      "area2010": 75.13,
+      "area2016": 70.0,
+      "area2023": 70.0
+    },
+    {
+      "name": "New Zealand",
+      "area2000": 9942.1,
+      "area2010": 31963.8,
+      "area2016": 35463.4058,
+      "area2023": 41990.77
+    },
+    {
+      "name": "North Macedonia",
+      "area2000": null,
+      "area2010": null,
+      "area2016": 24777.0,
+      "area2023": 30211.0
+    },
+    {
+      "name": "Norway",
+      "area2000": null,
+      "area2010": null,
+      "area2016": 12.5,
+      "area2023": 35.0
+    },
+    {
+      "name": "Peru",
+      "area2000": null,
+      "area2010": 3831.0,
+      "area2016": 3831.0,
+      "area2023": 3831.0
+    },
+    {
+      "name": "Poland",
+      "area2000": null,
+      "area2010": null,
+      "area2016": null,
+      "area2023": 990.7753
+    },
+    {
+      "name": "Portugal",
+      "area2000": 205002.91,
+      "area2010": 163521.97,
+      "area2016": 182649.0,
+      "area2023": 188780.0004
+    },
+    {
+      "name": "Romania",
+      "area2000": 222172.6348,
+      "area2010": 170292.0,
+      "area2016": 182762.0,
+      "area2023": 178149.6637
+    },
+    {
+      "name": "Russia",
+      "area2000": 56332.2868,
+      "area2010": 25628.0,
+      "area2016": 50794.0,
+      "area2023": 56420.17
+    },
+    {
+      "name": "Serbia",
+      "area2000": 68998.954,
+      "area2010": 68998.954,
+      "area2016": 22014.0,
+      "area2023": 6497.688
+    },
+    {
+      "name": "Slovakia",
+      "area2000": 15580.4113,
+      "area2010": 12636.73,
+      "area2016": 7748.0,
+      "area2023": 11662.0
+    },
+    {
+      "name": "Slovenia",
+      "area2000": 23471.789,
+      "area2010": 16354.14,
+      "area2016": 15988.7371,
+      "area2023": 14321.7099
+    },
+    {
+      "name": "South Africa",
+      "area2000": 93655.6413,
+      "area2010": 101016.2008,
+      "area2016": 95775.3355,
+      "area2023": 90783.39
+    },
+    {
+      "name": "Spain",
+      "area2000": 1181805.8,
+      "area2010": 1028258.0,
+      "area2016": 883558.088,
+      "area2023": 928105.0
+    },
+    {
+      "name": "Sweden",
+      "area2000": null,
+      "area2010": null,
+      "area2016": null,
+      "area2023": 193.0
+    },
+    {
+      "name": "Switzerland",
+      "area2000": 15041.5,
+      "area2010": 14819.55,
+      "area2016": 14792.7996,
+      "area2023": 14605.6577
+    },
+    {
+      "name": "Taiwan",
+      "area2000": 2832.802,
+      "area2010": 2832.802,
+      "area2016": 148.63,
+      "area2023": 148.63
+    },
+    {
+      "name": "Thailand",
+      "area2000": null,
+      "area2010": 148.8192,
+      "area2016": 207.5634,
+      "area2023": 207.5634
+    },
+    {
+      "name": "Tunisia",
+      "area2000": 16835.7468,
+      "area2010": 16835.7468,
+      "area2016": 3400.0,
+      "area2023": 5236.0
+    },
+    {
+      "name": "Turkey",
+      "area2000": null,
+      "area2010": 12855.875,
+      "area2016": 13703.5247,
+      "area2023": 13703.5247
+    },
+    {
+      "name": "Turkmenistan",
+      "area2000": null,
+      "area2010": null,
+      "area2016": null,
+      "area2023": 19749.0
+    },
+    {
+      "name": "Ukraine",
+      "area2000": null,
+      "area2010": 52292.6,
+      "area2016": 25166.0,
+      "area2023": 15099.9082
+    },
+    {
+      "name": "United Kingdom",
+      "area2000": 873.0,
+      "area2010": 1198.0,
+      "area2016": 1839.0,
+      "area2023": 4209.0
+    },
+    {
+      "name": "United States",
+      "area2000": 175710.2084,
+      "area2010": 227948.6282,
+      "area2016": 239631.5241,
+      "area2023": 235527.0864
+    },
+    {
+      "name": "Uruguay",
+      "area2000": 8879.994,
+      "area2010": 7657.0,
+      "area2016": 6743.3636,
+      "area2023": 5905.52
+    }
+  ]
+}
