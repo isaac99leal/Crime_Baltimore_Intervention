@@ -26,6 +26,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install PDF table extractor
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
       - name: Materialize official DACH vineyard registries
         run: python scripts/sync_vineyard_registry_dach.py
       - name: Validate expanded registry
@@ -36,7 +40,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sommelier_v2/knowledge/data/named_sites_expansion_2026_germany_rlp.json || true
+          git add sommelier_v2/knowledge/data/named_sites_expansion_2026_germany_rlp.json
           git add sommelier_v2/knowledge/data/named_sites_expansion_2026_austria_noe.json
           git add sommelier_v2/knowledge/data/vineyard_registry_dach_sync_manifest.json
           if git diff --cached --quiet; then
