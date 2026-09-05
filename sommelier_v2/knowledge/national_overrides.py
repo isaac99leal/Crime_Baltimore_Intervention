@@ -1,6 +1,6 @@
 """National-source precedence and cross-checks for strict wine specifications.
 
-EU registry attachments remain valuable provenance.  When a current national
+EU registry attachments remain valuable provenance. When a current national
 regulator publishes a newer consolidated rule or a more detailed national
 requirement, this layer can confirm or replace specific executable fields. Draft
 or opposition-stage changes are recorded but never applied as current law.
@@ -15,11 +15,14 @@ DATA_PATH = Path(__file__).resolve().parent / "data" / "national_legal_overrides
 
 _ALLOWED_FIELDS = {
     "max_yield_t_ha",
+    "max_yield_hl_ha",
     "grape_to_wine_yield_pct",
     "min_potential_alcohol_pct",
     "min_final_alcohol_pct",
     "min_total_acidity_g_l",
     "min_dry_extract_g_l",
+    "max_residual_sugar_g_l",
+    "max_malic_acid_g_l",
     "min_total_aging_months",
     "min_wood_aging_months",
     "min_bottle_aging_months",
@@ -90,7 +93,10 @@ class NationalLegalOverrideRegistry:
                 for source_id in row.get("source_ids", ())
             )
             return NationalOverrideDecision(
-                spec.id, False, "national_change_recorded_not_effective", evidence=evidence
+                spec.id,
+                False,
+                "national_change_recorded_not_effective",
+                evidence=evidence,
             )
         confirmed: list[str] = []
         changed: list[str] = []
@@ -149,9 +155,15 @@ class NationalLegalOverrideRegistry:
 class NationalAwareLegalSpecRegistry:
     """Facade over LegalSpecRegistry that applies current national precedence."""
 
-    def __init__(self, base_registry=None, *, override_registry: NationalLegalOverrideRegistry | None = None):
+    def __init__(
+        self,
+        base_registry=None,
+        *,
+        override_registry: NationalLegalOverrideRegistry | None = None,
+    ):
         if base_registry is None:
             from .legal_specs import LegalSpecRegistry
+
             base_registry = LegalSpecRegistry()
         self.base = base_registry
         self.overrides = override_registry or NationalLegalOverrideRegistry()
