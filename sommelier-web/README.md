@@ -33,15 +33,11 @@ The global designation target is exhaustive but not yet complete. EU/eAmbrosia a
 
 ## Vintage and ageing
 
-The old universal 45-year generation cap has been removed. The new model separates:
-
-1. harvest/vintage evidence;
-2. historical legal regime;
-3. mandatory legal ageing before release;
-4. bottle age and storage condition;
-5. style-specific sensory evolution.
+The old universal 45-year generation cap has been removed. The new model separates harvest/vintage evidence, historical legal regime, mandatory legal ageing before release, bottle age/storage condition, and style-specific sensory evolution.
 
 The historical authority ledger already reaches 1756 for documented Port archive entries. A historical archive entry proves documentary evidence at the stated level; it does not create fake rainfall, vintage scores or modern DOP law for that year.
+
+The current age archetype model is deliberately broad. Exact products such as Vintage Port versus Tawny/Colheita Port, dry Tokaj versus Tokaji Aszú, or a generic Rioja red versus a legally qualified Gran Reserva must resolve through product-specific rules before their final ageing and winemaking path can be considered authoritative.
 
 ## Winemaking
 
