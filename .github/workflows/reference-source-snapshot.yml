@@ -22,6 +22,16 @@ jobs:
       - run: python -m pip install --disable-pip-version-check requests openpyxl beautifulsoup4
       - name: Fetch and inspect authoritative sources
         run: |
+          cat > "$RUNNER_TEMP/openssl-legacy.cnf" <<'EOF'
+          openssl_conf = openssl_init
+          [openssl_init]
+          ssl_conf = ssl_sect
+          [ssl_sect]
+          system_default = system_default_sect
+          [system_default_sect]
+          Options = UnsafeLegacyServerConnect,UnsafeLegacyRenegotiation
+          EOF
+          export OPENSSL_CONF="$RUNNER_TEMP/openssl-legacy.cnf"
           python - <<'PY'
           import json
           import pathlib
@@ -35,7 +45,7 @@ jobs:
           OUT = pathlib.Path('reference-snapshot')
           OUT.mkdir(exist_ok=True)
           session = requests.Session()
-          session.headers.update({'User-Agent': 'SommelierGameReferenceSync/0.1 (+GitHub Actions)'})
+          session.headers.update({'User-Agent': 'SommelierGameReferenceSync/0.2 (+GitHub Actions)'})
 
           binary_sources = {
               'adelaide_varieties.xlsx': 'https://economics.adelaide.edu.au/wine-economics/ua/media/476/varieties_2000_to_2023.xlsx',
@@ -48,101 +58,111 @@ jobs:
               'generatedAt': datetime.now(timezone.utc).isoformat(),
               'sources': {},
               'workbooks': {},
+              'errors': [],
           }
 
           for filename, url in binary_sources.items():
-              response = session.get(url, timeout=90)
-              response.raise_for_status()
-              path = OUT / filename
-              path.write_bytes(response.content)
-              summary['sources'][filename] = {'url': url, 'bytes': len(response.content)}
-              workbook = load_workbook(path, read_only=True, data_only=True)
-              sheet_summary = {}
-              for sheet in workbook.worksheets:
-                  preview = []
-                  for row in sheet.iter_rows(min_row=1, max_row=min(12, sheet.max_row), values_only=True):
-                      preview.append([value for value in row[:18]])
-                  sheet_summary[sheet.title] = {
-                      'maxRow': sheet.max_row,
-                      'maxColumn': sheet.max_column,
-                      'preview': preview,
-                  }
-              summary['workbooks'][filename] = sheet_summary
+              try:
+                  response = session.get(url, timeout=120)
+                  response.raise_for_status()
+                  path = OUT / filename
+                  path.write_bytes(response.content)
+                  summary['sources'][filename] = {'url': url, 'bytes': len(response.content)}
+                  workbook = load_workbook(path, read_only=True, data_only=True)
+                  sheet_summary = {}
+                  for sheet in workbook.worksheets:
+                      preview = []
+                      for row in sheet.iter_rows(min_row=1, max_row=min(15, sheet.max_row), values_only=True):
+                          preview.append([value for value in row[:24]])
+                      sheet_summary[sheet.title] = {
+                          'maxRow': sheet.max_row,
+                          'maxColumn': sheet.max_column,
+                          'preview': preview,
+                      }
+                  summary['workbooks'][filename] = sheet_summary
+              except Exception as exc:
+                  summary['errors'].append({'source': filename, 'url': url, 'error': repr(exc)})
 
           ttb_url = 'https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas'
-          ttb_response = session.get(ttb_url, timeout=90)
-          ttb_response.raise_for_status()
-          (OUT / 'ttb-established-avas.html').write_text(ttb_response.text, encoding='utf-8')
-          soup = BeautifulSoup(ttb_response.text, 'html.parser')
           avas = []
-          for table in soup.find_all('table'):
-              for row in table.find_all('tr'):
-                  cells = row.find_all(['th', 'td'])
-                  if not cells:
-                      continue
-                  name = ' '.join(cells[0].stripped_strings).strip()
-                  if not name or name.lower() in {'ava name', 'american viticultural area'}:
-                      continue
-                  if re.fullmatch(r'[A-Z ]+', name) and len(name) < 40:
-                      continue
-                  if any(char.isalpha() for char in name):
-                      avas.append(name.replace('*', '').replace('◊', '').strip())
-          avas = list(dict.fromkeys(avas))
-          (OUT / 'ttb-avas.json').write_text(json.dumps({
-              'source': ttb_url,
-              'retrievedAt': summary['generatedAt'],
-              'count': len(avas),
-              'avas': avas,
-          }, ensure_ascii=False, indent=2), encoding='utf-8')
-          summary['sources']['ttb'] = {'url': ttb_url, 'parsedAvas': len(avas)}
+          try:
+              ttb_response = session.get(ttb_url, timeout=90)
+              ttb_response.raise_for_status()
+              (OUT / 'ttb-established-avas.html').write_text(ttb_response.text, encoding='utf-8')
+              soup = BeautifulSoup(ttb_response.text, 'html.parser')
+              for table in soup.find_all('table'):
+                  for row in table.find_all('tr'):
+                      cells = row.find_all(['th', 'td'])
+                      if not cells:
+                          continue
+                      name = ' '.join(cells[0].stripped_strings).strip()
+                      if not name or name.lower() in {'ava name', 'american viticultural area'}:
+                          continue
+                      if re.fullmatch(r'[A-Z ]+', name) and len(name) < 40:
+                          continue
+                      if any(char.isalpha() for char in name):
+                          avas.append(name.replace('*', '').replace('◊', '').strip())
+              avas = list(dict.fromkeys(avas))
+              (OUT / 'ttb-avas.json').write_text(json.dumps({
+                  'source': ttb_url,
+                  'retrievedAt': summary['generatedAt'],
+                  'count': len(avas),
+                  'avas': avas,
+              }, ensure_ascii=False, indent=2), encoding='utf-8')
+              summary['sources']['ttb'] = {'url': ttb_url, 'parsedAvas': len(avas)}
+          except Exception as exc:
+              summary['errors'].append({'source': 'ttb', 'url': ttb_url, 'error': repr(exc)})
 
           eambrosia_url = 'https://webgate.ec.europa.eu/eambrosia-api/api/v1/geographical-indications'
+          all_gis = []
           try:
-              response = session.get(eambrosia_url, timeout=180)
-              response.raise_for_status()
-              all_gis = response.json()
-          except Exception:
-              all_gis = []
-              # The service can time out for a full export. Use modification-date windows as a fallback.
-              windows = [(1900, 2015)] + [(year, year + 1) for year in range(2015, 2027)]
-              seen = set()
-              for start, end in windows:
-                  params = {
-                      'modifiedOnFrom': f'{start}-01-01T00:00:00.000Z',
-                      'modifiedOnTo': f'{end}-01-01T00:00:00.000Z',
-                  }
-                  part = session.get(eambrosia_url, params=params, timeout=120)
-                  part.raise_for_status()
-                  for gi in part.json():
-                      key = gi.get('giIdentifier')
-                      if key and key not in seen:
-                          seen.add(key)
-                          all_gis.append(gi)
-          wines = [gi for gi in all_gis if gi.get('productType') == 'WINE' and not gi.get('removedFlag')]
-          compact = [{
-              'giIdentifier': gi.get('giIdentifier'),
-              'protectedNames': gi.get('protectedNames'),
-              'fileNumber': gi.get('fileNumber'),
-              'countries': gi.get('countries'),
-              'giType': gi.get('giType'),
-              'status': gi.get('status'),
-              'euProtectionDate': gi.get('euProtectionDate'),
-              'modificationDate': gi.get('modificationDate'),
-              'legalInstrument': gi.get('legalInstrument'),
-          } for gi in wines]
-          (OUT / 'eambrosia-wine-gis.json').write_text(json.dumps({
-              'source': eambrosia_url,
-              'retrievedAt': summary['generatedAt'],
-              'count': len(compact),
-              'records': compact,
-          }, ensure_ascii=False, indent=2), encoding='utf-8')
-          summary['sources']['eambrosia'] = {'url': eambrosia_url, 'wineRecords': len(compact), 'allGiRecords': len(all_gis)}
+              try:
+                  response = session.get(eambrosia_url, timeout=180)
+                  response.raise_for_status()
+                  all_gis = response.json()
+              except Exception:
+                  windows = [(1900, 2015)] + [(year, year + 1) for year in range(2015, 2027)]
+                  seen = set()
+                  for start, end in windows:
+                      params = {
+                          'modifiedOnFrom': f'{start}-01-01T00:00:00.000Z',
+                          'modifiedOnTo': f'{end}-01-01T00:00:00.000Z',
+                      }
+                      part = session.get(eambrosia_url, params=params, timeout=120)
+                      part.raise_for_status()
+                      for gi in part.json():
+                          key = gi.get('giIdentifier')
+                          if key and key not in seen:
+                              seen.add(key)
+                              all_gis.append(gi)
+              wines = [gi for gi in all_gis if gi.get('productType') == 'WINE' and not gi.get('removedFlag')]
+              compact = [{
+                  'giIdentifier': gi.get('giIdentifier'),
+                  'protectedNames': gi.get('protectedNames'),
+                  'fileNumber': gi.get('fileNumber'),
+                  'countries': gi.get('countries'),
+                  'giType': gi.get('giType'),
+                  'status': gi.get('status'),
+                  'euProtectionDate': gi.get('euProtectionDate'),
+                  'modificationDate': gi.get('modificationDate'),
+                  'legalInstrument': gi.get('legalInstrument'),
+              } for gi in wines]
+              (OUT / 'eambrosia-wine-gis.json').write_text(json.dumps({
+                  'source': eambrosia_url,
+                  'retrievedAt': summary['generatedAt'],
+                  'count': len(compact),
+                  'records': compact,
+              }, ensure_ascii=False, indent=2), encoding='utf-8')
+              summary['sources']['eambrosia'] = {'url': eambrosia_url, 'wineRecords': len(compact), 'allGiRecords': len(all_gis)}
+          except Exception as exc:
+              summary['errors'].append({'source': 'eambrosia', 'url': eambrosia_url, 'error': repr(exc)})
 
           (OUT / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding='utf-8')
           print(json.dumps({
               'ttbAvas': len(avas),
-              'eambrosiaWineGis': len(compact),
+              'eambrosiaWineGis': summary.get('sources', {}).get('eambrosia', {}).get('wineRecords', 0),
               'workbooks': list(summary['workbooks']),
+              'errors': summary['errors'],
           }, indent=2))
           PY
       - uses: actions/upload-artifact@v4
