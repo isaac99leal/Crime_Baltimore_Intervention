@@ -172,7 +172,15 @@ class GevreyVineyardLawTests(unittest.TestCase):
         ):
             values = self.valid_inputs()
             values[field] = value
+            if field == "retained_buds_per_vine":
+                values["fruiting_shoots_per_vine"] = 9
             self.assertIs(self.registry.assess(**values).satisfied, False)
+
+    def test_extra_retained_bud_is_allowed_when_observed_fruiting_shoots_comply(self) -> None:
+        values = self.valid_inputs()
+        values["retained_buds_per_vine"] = 9
+        values["fruiting_shoots_per_vine"] = 8
+        self.assertIs(self.registry.assess(**values).satisfied, True)
 
     def test_foule_half_meter_boundary_is_strict(self) -> None:
         values = self.valid_inputs()
