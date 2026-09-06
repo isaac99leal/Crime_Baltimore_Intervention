@@ -2,6 +2,7 @@
 
 from .aging import modified_archetype, state_at_age
 from .catalog import SOURCES, WineKnowledgeCatalog, normalize_name
+from .decision_runtime import DecisionRuntimeApplication, DecisionRuntimeError, DecisionRuntimeInputs, DecisionRuntimeResult, OXYGEN_MANAGEMENT_PRIORS, apply_winemaking_decisions
 from .eu_promotions import EuCompositionDecision, EuLegalPromotionRegistry, VerificationLevel
 from .expanded_catalog import CommercialObservation, NamedSite, PiwiRecord, VarietyAreaObservation, WorldWineKnowledgeCatalog
 from .fermentation_chemistry import NutrientTimingEffect, ProcessChemistryAssessment, assess_process_chemistry, initial_microbiological_risk, molecular_so2_mg_l, nutrient_timing_effect, post_fermentation_microbiological_risk, white_juice_solids_risk
@@ -39,7 +40,8 @@ __all__ = [
     "SOURCES", "AlcoholicFermentationParams", "AuthorityVintageRating", "BaseVineyardEngine",
     "BlendComponent", "ChemistryEvidenceRecord", "ChemistryEvidenceSource", "ChemistryEvidenceStats",
     "CommercialObservation", "ConstrainedOrigin", "DailyWeather", "DecisionAuthorityAssessment",
-    "DecisionEvidenceSource", "DecisionOption", "EuCompositionDecision", "EuLegalPromotionRegistry",
+    "DecisionEvidenceSource", "DecisionOption", "DecisionRuntimeApplication", "DecisionRuntimeError",
+    "DecisionRuntimeInputs", "DecisionRuntimeResult", "EuCompositionDecision", "EuLegalPromotionRegistry",
     "FermentationConstraintError", "FermentationPlan", "FermentationResult", "FermentationState",
     "FinishedWineAssembler", "FinishedWineConstraintError", "GrapeConstraint", "HarvestMustConstraintError",
     "HarvestMustPlan", "HarvestMustProfile", "HistoricalVintageArchive", "HistoricalVintageError",
@@ -51,11 +53,11 @@ __all__ = [
     "MachineLegalConstraintRegistry", "MalolacticParams", "MalolacticState", "MicroSiteObservation",
     "ModelEvidenceLink", "MustComposition", "NamedSite", "NationalAwareLegalSpecRegistry",
     "NationalLegalOverrideRegistry", "NationalOverrideDecision", "NutrientAddition", "NutrientTimingEffect",
-    "OriginConstraintError", "OriginDecision", "OriginRequest", "PackagingAssessment",
-    "PackagingConstraintError", "PackagingPlan", "PiwiRecord", "ProcessChemistryAssessment",
-    "ProcessChemistryEvidenceError", "ProcessChemistryEvidenceRegistry", "ProvenanceSlice",
-    "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "SimulationPriors", "SiteDataQualityFlag",
-    "SiteRegistry", "SiteResearchError", "SiteResearchRecord", "SiteResearchRegistry",
+    "OXYGEN_MANAGEMENT_PRIORS", "OriginConstraintError", "OriginDecision", "OriginRequest",
+    "PackagingAssessment", "PackagingConstraintError", "PackagingPlan", "PiwiRecord",
+    "ProcessChemistryAssessment", "ProcessChemistryEvidenceError", "ProcessChemistryEvidenceRegistry",
+    "ProvenanceSlice", "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "SimulationPriors",
+    "SiteDataQualityFlag", "SiteRegistry", "SiteResearchError", "SiteResearchRecord", "SiteResearchRegistry",
     "SiteResearchSource", "SiteResearchStats", "SmokeMarkerAssessment", "SmokeMarkerResult",
     "SmokeTaintConstraintError", "TradeFieldPolicy", "TradeObservationConflict", "TradeResearchError",
     "TradeResearchRegistry", "TradeResearchStats", "TradeSourceRecord", "TradeTechnicalObservation",
@@ -63,8 +65,8 @@ __all__ = [
     "VineyardOutcome", "VintageDayState", "VintageModelParams", "VintageOutcome", "WineKnowledgeCatalog",
     "WineOriginFactory", "WinemakingDecision", "WinemakingDecisionError", "WinemakingDecisionRegistry",
     "WinemakingDecisionStats", "WineryLot", "WineryProvenanceError", "WineryProvenanceLedger",
-    "WorldWineKnowledgeCatalog", "assess_packaging", "assess_process_chemistry", "assess_smoke_markers",
-    "initial_microbiological_risk", "initial_state", "load_historical_vintages",
+    "WorldWineKnowledgeCatalog", "apply_winemaking_decisions", "assess_packaging", "assess_process_chemistry",
+    "assess_smoke_markers", "initial_microbiological_risk", "initial_state", "load_historical_vintages",
     "load_legacy_vintage_knowledge", "load_process_chemistry_evidence", "load_site_research",
     "load_trade_research", "load_winemaking_decisions", "modified_archetype", "molecular_so2_mg_l",
     "must_from_vineyard", "normalize_name", "nutrient_timing_effect",
