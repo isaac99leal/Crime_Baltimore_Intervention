@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.1",
+  "notes": "Official Premier Cru climat identities for Aloxe-Corton, Pernand-Vergelesses and Santenay from their effective published specifications. Claim eligibility and color restrictions are evaluated separately.",
+  "sources": {
+    "bourgogne_aloxe_2011": {
+      "authority": "Ministère de l'agriculture / Journal officiel",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-302391de-0e09-4b5c-95d4-ddadcaf4ebeb/telechargement",
+      "checked": "2026-09-05",
+      "scope": "Effective Aloxe-Corton specification listing 14 Premier Cru climats."
+    },
+    "bourgogne_pernand_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne / Journal officiel",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20249.pdf",
+      "checked": "2026-09-05",
+      "scope": "Effective Pernand-Vergelesses specification listing 8 Premier Cru climats and their color matrix."
+    },
+    "bourgogne_santenay_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne / Journal officiel",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20265.pdf",
+      "checked": "2026-09-05",
+      "scope": "Effective Santenay specification listing 12 Premier Cru climats."
+    }
+  },
+  "groups": [
+    {
+      "country": "France", "region": "Bourgogne", "parent": "Aloxe-Corton",
+      "site_type": "climat", "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat", "source_ids": ["bourgogne_aloxe_2011"],
+      "notes": "Official Aloxe-Corton Premier Cru climat.",
+      "names": [
+        "Clos des Maréchaudes", "Clos du Chapitre", "La Coutière", "La Maréchaude",
+        "La Toppe au Vert", "Les Chaillots", "Les Fournières", "Les Guérets",
+        "Les Maréchaudes", "Les Moutottes", "Les Paulands", "Les Petites Folières",
+        "Les Valozières", "Les Vercots"
+      ]
+    },
+    {
+      "country": "France", "region": "Bourgogne", "commune": "Pernand-Vergelesses",
+      "parent": "Pernand-Vergelesses", "site_type": "climat", "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat", "source_ids": ["bourgogne_pernand_2011"],
+      "notes": "Official Pernand-Vergelesses Premier Cru climat; color eligibility is encoded separately.",
+      "names": [
+        "Clos Berthet", "Creux de la Net", "En Caradeux", "Ile des Vergelesses",
+        "Les Fichots", "Sous Frétille", "Vergelesses", "Village de Pernand"
+      ]
+    },
+    {
+      "country": "France", "region": "Bourgogne", "parent": "Santenay",
+      "site_type": "climat", "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat", "source_ids": ["bourgogne_santenay_2011"],
+      "notes": "Official Santenay Premier Cru climat.",
+      "names": [
+        "Beauregard", "Beaurepaire", "Clos Faubard", "Clos Rousseau",
+        "Clos de Tavannes", "Clos des Mouches", "Grand Clos Rousseau", "La Comme",
+        "La Maladière", "Les Gravières", "Les Gravières-Clos de Tavannes", "Passetemps"
+      ]
+    }
+  ]
+}
