@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive Premier Cru climat-claim authority for Fixin and Vougeot. These rules do not replace strict parent-appellation validation.",
+  "sources": {
+    "fixin_masa_2024_current": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOC Fixin homologué par arrêté du 19 novembre 2024",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-5ae322f4-9fc0-4255-8b45-7f40385e17f6/telechargement"
+    },
+    "vougeot_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Vougeot current product record",
+      "url": "https://www.inao.gouv.fr/node/664"
+    },
+    "vougeot_inao_cdc": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Cahier des charges de l'AOC Vougeot",
+      "url": "https://extranet.inao.gouv.fr/fichier/PNOCDCVougeot.pdf"
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:fixin:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Fixin",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bivb_fixin"],
+      "allowed_wine_variants": ["premier cru", "white premier cru", "red premier cru"],
+      "source_ids": ["fixin_masa_2024_current"],
+      "claim_kind": "premier_cru_climat_name",
+      "allowed_site_names": ["Clos de la Perrière", "Clos Napoléon", "Clos du Chapitre", "Les Meix Bas", "Arvelets", "Hervelets"],
+      "notes": "The current Fixin specification authorizes these six Premier Cru climat names for wines meeting the Premier Cru production conditions. Parent Fixin eligibility remains a separate strict legal decision."
+    },
+    {
+      "id": "siteclaim:fr:vougeot:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Vougeot",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["inao_vougeot_current", "inao_vougeot_cdc_2010"],
+      "allowed_wine_variants": ["premier cru", "white premier cru", "red premier cru"],
+      "source_ids": ["vougeot_inao_current", "vougeot_inao_cdc"],
+      "claim_kind": "premier_cru_climat_name",
+      "allowed_site_names": ["Les Crâs", "Le Clos Blanc", "Les Petits Vougeots", "Clos de la Perrière"],
+      "notes": "Vougeot permits Premier Cru in red and white. The four named climat claims are kept distinct from the separate Clos de Vougeot Grand Cru origin."
+    }
+  ]
+}
