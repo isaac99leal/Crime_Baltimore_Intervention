@@ -138,7 +138,7 @@ class VineyardLegalConstraintRegistry:
                     raise ValueError(f"{constraint_id} pruning rules must be an object")
                 for raw_style, raw_systems in pruning_raw.items():
                     style = _token(str(raw_style))
-                    if style not in {"red", "white"} or not isinstance(raw_systems, dict):
+                    if style not in {"red", "white", "rose"} or not isinstance(raw_systems, dict):
                         raise ValueError(f"{constraint_id} has invalid pruning style: {raw_style}")
                     for raw_system, raw_max_buds in raw_systems.items():
                         system = _token(str(raw_system))
@@ -182,7 +182,7 @@ class VineyardLegalConstraintRegistry:
                 for raw_style, raw_limit in crop_load_raw.items():
                     style = _token(str(raw_style))
                     limit = float(raw_limit)
-                    if style not in {"red", "white"} or not 0 < limit <= 100000:
+                    if style not in {"red", "white", "rose"} or not 0 < limit <= 100000:
                         raise ValueError(
                             f"{constraint_id} has invalid parcel crop-load rule: {raw_style}={raw_limit}"
                         )
