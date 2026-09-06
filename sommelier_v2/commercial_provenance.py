@@ -14,10 +14,13 @@ import math
 from .domain import (
     BeverageProgram,
     InventoryLot,
+    InventoryPackagingSnapshot,
     InventoryProvenanceComponent,
     WineRecord,
 )
 from .inventory import InventoryManager
+from .knowledge.bottling_lot import BottledLotManifest
+from .knowledge.packaging import PackagingAssessment
 from .knowledge.winery_provenance import (
     LotMovement,
     WineryLot,
@@ -97,6 +100,23 @@ def inventory_provenance_components(
     return tuple(components)
 
 
+def packaging_snapshot_from_assessment(
+    assessment: PackagingAssessment,
+) -> InventoryPackagingSnapshot:
+    """Translate immutable packaging evidence into a serializable business snapshot."""
+    return InventoryPackagingSnapshot(
+        oxygen_assessment_complete=assessment.oxygen_assessment_complete,
+        ageing_oxygen_modifier=assessment.ageing_oxygen_modifier,
+        prebottling_oxygen_risk_index=assessment.prebottling_oxygen_risk_index,
+        closure_oxygen_exposure_prior=assessment.closure_oxygen_exposure_prior,
+        molecular_so2_before_packaging_mg_l=assessment.molecular_so2_before_packaging_mg_l,
+        tartrate_test_status=assessment.tartrate_test_status,
+        tartrate_physical_instability_risk=assessment.tartrate_physical_instability_risk,
+        warnings=tuple(assessment.warnings),
+        evidence_record_ids=tuple(assessment.evidence_record_ids),
+    )
+
+
 def provenance_fingerprint(source: WineryLot) -> str:
     """Return a deterministic SHA-256 fingerprint for one physical lot lineage."""
     components = inventory_provenance_components(source)
@@ -136,7 +156,7 @@ def _is_bottled_stage(stage: str) -> bool:
     )
 
 
-def dispatch_winery_lot_to_inventory(
+def _dispatch_packaged_lot(
     *,
     ledger: WineryProvenanceLedger,
     program: BeverageProgram,
@@ -146,19 +166,13 @@ def dispatch_winery_lot_to_inventory(
     bottles: int,
     unit_cost: float,
     dispatch_reference: str,
-    supplier_id: str = "",
-    bottle_ml: int = 750,
-    glass_ml: int = 150,
-    open_bottle_life_days: int = 3,
-    require_bottled_stage: bool = True,
+    supplier_id: str,
+    bottle_ml: int,
+    glass_ml: int,
+    open_bottle_life_days: int,
+    require_bottled_stage: bool,
+    packaging_snapshot: InventoryPackagingSnapshot | None,
 ) -> CommercialDispatchResult:
-    """Atomically move packaged wine from winery custody into restaurant inventory.
-
-    The source must carry discrete bottle metadata; a stage label alone is not
-    enough to create sealed commercial inventory. ``require_bottled_stage=False``
-    only relaxes the stage-name check for imported legacy package records. It
-    never waives bottle-count/fill-size validation.
-    """
     if not source_winery_lot_id.strip():
         raise CommercialProvenanceError("source_winery_lot_id is required")
     if not inventory_lot_id.strip():
@@ -173,6 +187,8 @@ def dispatch_winery_lot_to_inventory(
         raise CommercialProvenanceError("glass_ml must be a positive integer")
     if glass_ml > bottle_ml:
         raise CommercialProvenanceError("glass_ml cannot exceed bottle_ml")
+    if isinstance(open_bottle_life_days, bool) or not isinstance(open_bottle_life_days, int) or open_bottle_life_days <= 0:
+        raise CommercialProvenanceError("open_bottle_life_days must be a positive integer")
     try:
         unit_cost_f = float(unit_cost)
     except (TypeError, ValueError) as exc:
@@ -230,6 +246,7 @@ def dispatch_winery_lot_to_inventory(
         source_dispatch_reference=dispatch_reference,
         provenance_fingerprint=fingerprint,
         provenance_components=components,
+        packaging_snapshot=packaging_snapshot,
     )
 
     manager = InventoryManager(program)
@@ -251,4 +268,109 @@ def dispatch_winery_lot_to_inventory(
         dispatched_volume_l=dispatched_volume_l,
         acquisition_cost=acquisition_cost,
         provenance_fingerprint=fingerprint,
+    )
+
+
+def dispatch_winery_lot_to_inventory(
+    *,
+    ledger: WineryProvenanceLedger,
+    program: BeverageProgram,
+    source_winery_lot_id: str,
+    inventory_lot_id: str,
+    wine: WineRecord,
+    bottles: int,
+    unit_cost: float,
+    dispatch_reference: str,
+    supplier_id: str = "",
+    bottle_ml: int = 750,
+    glass_ml: int = 150,
+    open_bottle_life_days: int = 3,
+    require_bottled_stage: bool = True,
+) -> CommercialDispatchResult:
+    """Move a packaged lot into inventory when packaging chemistry is unavailable.
+
+    This is the compatibility path for imported or legacy packaged stock. It
+    preserves physical provenance and bottle format but leaves
+    ``InventoryLot.packaging_snapshot`` unknown. It never fabricates a chemistry
+    record from the stage name, producer, closure, or bottle format.
+    """
+    return _dispatch_packaged_lot(
+        ledger=ledger,
+        program=program,
+        source_winery_lot_id=source_winery_lot_id,
+        inventory_lot_id=inventory_lot_id,
+        wine=wine,
+        bottles=bottles,
+        unit_cost=unit_cost,
+        dispatch_reference=dispatch_reference,
+        supplier_id=supplier_id,
+        bottle_ml=bottle_ml,
+        glass_ml=glass_ml,
+        open_bottle_life_days=open_bottle_life_days,
+        require_bottled_stage=require_bottled_stage,
+        packaging_snapshot=None,
+    )
+
+
+def dispatch_bottled_manifest_to_inventory(
+    *,
+    ledger: WineryProvenanceLedger,
+    program: BeverageProgram,
+    manifest: BottledLotManifest,
+    inventory_lot_id: str,
+    wine: WineRecord,
+    bottles: int,
+    unit_cost: float,
+    dispatch_reference: str,
+    supplier_id: str = "",
+    glass_ml: int = 150,
+    open_bottle_life_days: int = 3,
+) -> CommercialDispatchResult:
+    """Dispatch simulator-bottled wine while preserving its packaging assessment.
+
+    The manifest must still identify the exact immutable packaged lot held by the
+    ledger. A stale or cross-attached manifest fails before either winery or
+    restaurant inventory mutates.
+    """
+    source_id = manifest.lot.id
+    try:
+        source = ledger.lots[source_id]
+    except KeyError as exc:
+        raise CommercialProvenanceError(
+            f"Bottling manifest source lot {source_id!r} is not present in the winery ledger."
+        ) from exc
+    if source != manifest.lot:
+        raise CommercialProvenanceError(
+            "Bottling manifest does not match the immutable packaged lot stored in the ledger."
+        )
+    if manifest.bottle_count != source.bottle_count or manifest.bottle_ml != source.bottle_ml:
+        raise CommercialProvenanceError(
+            "Bottling manifest package count/format does not match the physical winery lot."
+        )
+    tolerance = max(0.001, source.volume_l * 1e-8)
+    if abs(manifest.filled_volume_l - source.volume_l) > tolerance:
+        raise CommercialProvenanceError(
+            "Bottling manifest filled volume does not match the physical packaged lot."
+        )
+
+    snapshot = (
+        packaging_snapshot_from_assessment(manifest.packaging_assessment)
+        if manifest.packaging_assessment is not None
+        else None
+    )
+    return _dispatch_packaged_lot(
+        ledger=ledger,
+        program=program,
+        source_winery_lot_id=source_id,
+        inventory_lot_id=inventory_lot_id,
+        wine=wine,
+        bottles=bottles,
+        unit_cost=unit_cost,
+        dispatch_reference=dispatch_reference,
+        supplier_id=supplier_id,
+        bottle_ml=manifest.bottle_ml,
+        glass_ml=glass_ml,
+        open_bottle_life_days=open_bottle_life_days,
+        require_bottled_stage=True,
+        packaging_snapshot=snapshot,
     )

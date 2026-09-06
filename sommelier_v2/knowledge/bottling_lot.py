@@ -30,6 +30,7 @@ class BottledLotManifest:
     packaging_oxygen_assessment_complete: bool
     tartrate_test_status: str
     packaging_warnings: tuple[str, ...]
+    packaging_assessment: PackagingAssessment | None = None
 
 
 def _is_bottled_stage(stage: str) -> bool:
@@ -124,4 +125,5 @@ def bottle_winery_lot(
         packaging_warnings=(assessment.warnings if assessment is not None else (
             "Packaging assessment was explicitly waived; bottle chemistry/stability state is unverified.",
         )),
+        packaging_assessment=assessment,
     )

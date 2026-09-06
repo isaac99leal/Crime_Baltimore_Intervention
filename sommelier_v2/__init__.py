@@ -10,8 +10,10 @@ from .catalog import CatalogIndex, load_catalog, load_default_catalog, load_lega
 from .commercial_provenance import (
     CommercialDispatchResult,
     CommercialProvenanceError,
+    dispatch_bottled_manifest_to_inventory,
     dispatch_winery_lot_to_inventory,
     inventory_provenance_components,
+    packaging_snapshot_from_assessment,
     provenance_fingerprint,
 )
 from .domain import (
@@ -20,6 +22,7 @@ from .domain import (
     EquipmentAsset,
     GuestProfile,
     InventoryLot,
+    InventoryPackagingSnapshot,
     InventoryProvenanceComponent,
     MenuPlacement,
     OpenBottleState,
@@ -35,6 +38,7 @@ from .generation import (
     WineProductionConstraintError,
     WineReleaseConstraintError,
 )
+from .knowledge.bottle_lifecycle import age_inventory_lot
 from .knowledge.bottling_lot import BottledLotManifest, BottlingLotConstraintError, bottle_winery_lot
 from .knowledge.finished_wine import FinishedWineAssembler, FinishedWineConstraintError, ValidatedWineRecord
 from .knowledge.winery_provenance import ProvenanceSlice, WineryLot, WineryProvenanceError, WineryProvenanceLedger
@@ -60,6 +64,7 @@ __all__ = [
     "GeneratedWine",
     "GuestProfile",
     "InventoryLot",
+    "InventoryPackagingSnapshot",
     "InventoryProvenanceComponent",
     "LEGAL_SNAPSHOT_AS_OF_YEAR",
     "MenuPlacement",
@@ -80,11 +85,14 @@ __all__ = [
     "WineryLot",
     "WineryProvenanceError",
     "WineryProvenanceLedger",
+    "age_inventory_lot",
     "bottle_winery_lot",
+    "dispatch_bottled_manifest_to_inventory",
     "dispatch_winery_lot_to_inventory",
     "inventory_provenance_components",
     "load_catalog",
     "load_default_catalog",
     "load_legacy_catalog",
+    "packaging_snapshot_from_assessment",
     "provenance_fingerprint",
 ]

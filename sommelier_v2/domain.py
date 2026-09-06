@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
+import math
 from typing import Iterable
 
 
@@ -120,9 +121,50 @@ class InventoryProvenanceComponent:
             raise ValueError("provenance component requires grape and country")
 
 
+@dataclass(frozen=True)
+class InventoryPackagingSnapshot:
+    """Serializable packaging chemistry/stability state attached to bottle inventory."""
+
+    oxygen_assessment_complete: bool
+    ageing_oxygen_modifier: float
+    prebottling_oxygen_risk_index: float | None = None
+    closure_oxygen_exposure_prior: float | None = None
+    molecular_so2_before_packaging_mg_l: float = 0.0
+    tartrate_test_status: str = "unknown"
+    tartrate_physical_instability_risk: float | None = None
+    warnings: tuple[str, ...] = ()
+    evidence_record_ids: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if not math.isfinite(self.ageing_oxygen_modifier) or not 0.1 <= self.ageing_oxygen_modifier <= 10.0:
+            raise ValueError("ageing_oxygen_modifier must be finite and within 0.1..10")
+        for name, value in (
+            ("prebottling_oxygen_risk_index", self.prebottling_oxygen_risk_index),
+            ("closure_oxygen_exposure_prior", self.closure_oxygen_exposure_prior),
+            ("tartrate_physical_instability_risk", self.tartrate_physical_instability_risk),
+        ):
+            if value is not None and (not math.isfinite(value) or not 0.0 <= value <= 1.0):
+                raise ValueError(f"{name} must be finite and within 0..1 when supplied")
+        if (
+            not math.isfinite(self.molecular_so2_before_packaging_mg_l)
+            or not 0.0 <= self.molecular_so2_before_packaging_mg_l <= 300.0
+        ):
+            raise ValueError("molecular_so2_before_packaging_mg_l must be finite and within 0..300")
+        status = self.tartrate_test_status.strip().casefold()
+        if status not in {"unknown", "tested_stable", "tested_unstable"}:
+            raise ValueError("unsupported tartrate_test_status")
+        if self.oxygen_assessment_complete and (
+            self.prebottling_oxygen_risk_index is None
+            or self.closure_oxygen_exposure_prior is None
+        ):
+            raise ValueError(
+                "complete packaging oxygen assessment requires both oxygen risk and closure exposure values"
+            )
+
+
 @dataclass
 class InventoryLot:
-    """A purchasable lot, including BTG and physical provenance state.
+    """A purchasable lot, including BTG, provenance, and packaging state.
 
     ``open_bottle_ml`` and ``opened_day`` remain as compatibility fields for old
     saves and callers. When ``open_bottles`` is populated, the per-bottle queue is
@@ -154,6 +196,7 @@ class InventoryLot:
     source_dispatch_reference: str = ""
     provenance_fingerprint: str = ""
     provenance_components: tuple[InventoryProvenanceComponent, ...] = ()
+    packaging_snapshot: InventoryPackagingSnapshot | None = None
 
     @property
     def available_sealed_bottles(self) -> int:
