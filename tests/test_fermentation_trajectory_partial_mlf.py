@@ -12,9 +12,11 @@ from sommelier_v2.knowledge.fermentation_engine import (
     temperature_control_target,
 )
 from sommelier_v2.knowledge.fermentation_process import (
+    FermentationConstraintError,
     FermentationPlan,
     MustComposition,
     run_fermentation,
+    validate_plan,
 )
 
 
@@ -75,8 +77,9 @@ class FermentationTrajectoryAndPartialMlfTests(unittest.TestCase):
     def test_default_mlf_target_preserves_complete_behavior(self):
         self.assertAlmostEqual(MalolacticParams().target_malic_g_l, 0.10)
 
-    def test_process_orchestration_uses_partial_mlf_target(self):
-        must = MustComposition(
+    @staticmethod
+    def process_must() -> MustComposition:
+        return MustComposition(
             volume_l=500.0,
             sugar_g_l=40.0,
             yan_mg_l=250.0,
@@ -86,6 +89,8 @@ class FermentationTrajectoryAndPartialMlfTests(unittest.TestCase):
             temp_c=24.0,
             free_so2_mg_l=0.0,
         )
+
+    def test_process_orchestration_reports_partial_target_not_full_completion(self):
         plan = FermentationPlan(
             malolactic=True,
             malolactic_params=MalolacticParams(
@@ -94,10 +99,38 @@ class FermentationTrajectoryAndPartialMlfTests(unittest.TestCase):
             ),
             mlf_start_temp_c=20.0,
         )
-        result = run_fermentation(must, plan)
+        result = run_fermentation(self.process_must(), plan)
         self.assertTrue(result.alcoholic_completed)
-        self.assertTrue(result.malolactic_completed)
+        self.assertTrue(result.malolactic_target_reached)
+        self.assertFalse(result.malolactic_fully_completed)
+        self.assertFalse(result.malolactic_completed)
+        self.assertAlmostEqual(result.mlf_target_malic_g_l or 0.0, 1.2)
         self.assertAlmostEqual(result.final_malic_acid_g_l, 1.2, places=9)
+        self.assertIn("_mlf_partial_target_reached", result.status)
+
+    def test_complete_mlf_still_reports_full_completion(self):
+        plan = FermentationPlan(
+            malolactic=True,
+            malolactic_params=MalolacticParams(
+                base_malic_rate_g_l_day=1.0,
+                target_malic_g_l=0.10,
+            ),
+            mlf_start_temp_c=20.0,
+        )
+        result = run_fermentation(self.process_must(), plan)
+        self.assertTrue(result.malolactic_target_reached)
+        self.assertTrue(result.malolactic_fully_completed)
+        self.assertTrue(result.malolactic_completed)
+        self.assertLessEqual(result.final_malic_acid_g_l, 0.10 + 1e-9)
+        self.assertIn("_mlf_complete", result.status)
+
+    def test_mlf_target_above_initial_malic_is_invalid(self):
+        plan = FermentationPlan(
+            malolactic=True,
+            malolactic_params=MalolacticParams(target_malic_g_l=3.0),
+        )
+        with self.assertRaises(FermentationConstraintError):
+            validate_plan(self.process_must(), plan)
 
 
 if __name__ == "__main__":
