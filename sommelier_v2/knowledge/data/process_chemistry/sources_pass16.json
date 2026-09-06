@@ -1,0 +1,11 @@
+{
+  "updatedAt": "2026-09-05",
+  "policy": "Technical chemistry/sensory source pass. Published thresholds and risk tables remain source-backed context; simulation outputs are separately marked derived and cultivar/matrix specific.",
+  "sources": [
+    {"id":"awri-smoke-taint-current-2026","publisher":"Australian Wine Research Institute","title":"Smoke taint","url":"https://www.awri.com.au/industry_support/winemaking_resources/smoke-taint/","jurisdiction":"technical / Australia","kind":"research-institute-technical-resource","accessed":"2026-09-05"},
+    {"id":"awri-smoke-aged-wine-2025","publisher":"Australian Wine Research Institute","title":"Technical Note — New data allows prediction of smoke characters in aged wine","url":"https://www.awri.com.au/information_services/technical_review/technical-notes/technical-note-new-data-allows-prediction-of-smoke-characters-in-aged-wine/","jurisdiction":"technical / Australia","kind":"research-institute-technical-note","accessed":"2026-09-05"},
+    {"id":"awri-white-juice-solids-2026","publisher":"Australian Wine Research Institute","title":"Winemaking treatment — varying grape solids in white wine fermentation","url":"https://www.awri.com.au/industry_support/winemaking_resources/winemaking-practices/winemaking-treatment-varying-grape-solids-in-white-wine-fermentation/","jurisdiction":"technical / Australia","kind":"research-institute-winemaking-resource","accessed":"2026-09-05"},
+    {"id":"awri-so2-revisited-2026","publisher":"Australian Wine Research Institute","title":"Revisiting sulfur dioxide use","url":"https://www.awri.com.au/industry_support/winemaking_resources/fining-stabilities/microbiological/avoidance/sulfur_dioxide/","jurisdiction":"technical / Australia","kind":"research-institute-stability-resource","accessed":"2026-09-05"},
+    {"id":"awri-brett-faq-current-2026","publisher":"Australian Wine Research Institute","title":"Brettanomyces FAQ","url":"https://www.awri.com.au/industry_support/winemaking_resources/frequently_asked_questions/brettanomyces-faq/","jurisdiction":"technical / Australia","kind":"research-institute-microbial-resource","accessed":"2026-09-05"}
+  ]
+}
