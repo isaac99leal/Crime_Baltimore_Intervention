@@ -1,0 +1,28 @@
+{
+  "schema_version": "2.0",
+  "generated": "2026-09-06",
+  "notes": "Marsannay named-site identity tranche from the current BIVB appellation sheet. These are the 16 explicitly listed principal climats, not an assertion that the list is exhaustive. The current AOC specification has no general geographic-denomination provision, so these physical identities do not themselves authorize label claims.",
+  "sources": {
+    "bivb_marsannay_current": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/79294/79728.pdf",
+      "checked": "2026-09-06",
+      "scope": "Current BIVB Marsannay appellation sheet listing 16 principal climats across the appellation.",
+      "evidence_class": "authoritative_industry_appellation_registry"
+    }
+  },
+  "groups": [
+    {
+      "id_prefix": "site:france:bourgogne:marsannay:climat",
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Marsannay",
+      "site_type": "climat",
+      "classification": "Village climat",
+      "legal_status": "documented_named_site",
+      "source_ids": ["bivb_marsannay_current"],
+      "names": "Champs Perdrix|Le Clos|Aux Genelières|Au Champ Salomon|Les Favières|Le Clos de Jeu|Les Grasses Têtes|Le Boivin|La Charme aux Prêtres|Les Échezots|Les Longeroies|Clos du Roy|Les Récilles|Les Vignes Marie|Saint-Jacques|Le Chapitre"
+    }
+  ],
+  "records": []
+}
