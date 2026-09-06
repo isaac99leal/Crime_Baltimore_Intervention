@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Second historical-vintage pass. Store sourced growing-season observations first; derived matrices remain bounded and explicitly non-authoritative.",
+  "observations": [
+    {
+      "id":"vintage-it-chianti-classico-2021","environmentProfileId":"env-it-chianti-classico","country":"Italy","region":"Chianti Classico","year":2021,
+      "growingSeason":{"spring":"spring rains supported canopy development and built water reserves; brief below-average temperatures after Easter slowed cooler sites","summer":"dry with only sporadic August rain; water reserves prevented major drought stress; temperatures stayed broadly normal without excessive heatwaves","lateSeason":"high daytime temperatures with markedly cooler nights from late August","diseasePressure":"no meaningful powdery- or downy-mildew pressure reported","sangioveseHarvestStart":"around 2021-09-20","harvestDuration":"about one month","fruitHealth":"healthy, high-quality fruit"},
+      "styleEffects":["good structure","fine ripe tannins","strong aromatic profile","balanced freshness from diurnal variation"],
+      "matrixModifiers":{"derived":true,"confidence":5,"acidity":0.20,"ripeness":0.30,"concentration":0.15,"tanninRipeness":0.30,"aromaticFreshness":0.30,"diseasePressure":-0.35,"yield":0.00,"ageability":0.25,"botrytisSuitability":0.00},
+      "sourceRefs":["it-chianti-classico-vintage-2021"]
+    },
+    {
+      "id":"vintage-it-chianti-classico-2025","environmentProfileId":"env-it-chianti-classico","country":"Italy","region":"Chianti Classico","year":2025,
+      "growingSeason":{"winter":"harsh prolonged winter supported full dormancy","spring":"stable temperatures, frequent but not excessive rain, no late frost, uniform budding","summer":"well balanced; no prolonged heatwave; heat spikes at end of June and after mid-August; July mild and breezy with strong diurnal variation","waterStatus":"good reserves retained into veraison","diseasePressure":"spring rain did not create critical mould problems when managed promptly","septemberFruit":"healthy uniform Sangiovese bunches","productionHectolitres":265000},
+      "styleEffects":["clear aromatic profiles","well-textured tannins without excess","freshness identified as a likely signature","balanced development across the season"],
+      "matrixModifiers":{"derived":true,"confidence":5,"acidity":0.25,"ripeness":0.25,"concentration":0.10,"tanninRipeness":0.30,"aromaticFreshness":0.35,"diseasePressure":-0.20,"yield":0.10,"ageability":0.25,"botrytisSuitability":0.00},
+      "sourceRefs":["it-chianti-classico-vintage-2025"]
+    },
+    {
+      "id":"vintage-it-brunello-montalcino-2021","environmentProfileId":"env-it-brunello-montalcino","country":"Italy","region":"Montalcino","year":2021,
+      "growingSeason":{"earlySeason":"very hot March caused early budding","hazards":["April spring frost","extremely dry March, July and September"],"cropEffects":["spring frost delayed the vegetative-production cycle","significantly reduced yields in some sites"],"temperature":"moderately warm overall with marked diurnal variation","ripening":"returned to a normal trajectory after early disruption"},
+      "styleEffects":["site selection and frost exposure materially affected crop volume","dry conditions supported concentration where water status remained balanced","diurnal range supported freshness during ripening"],
+      "matrixModifiers":{"derived":true,"confidence":4,"acidity":0.15,"ripeness":0.20,"concentration":0.30,"tanninRipeness":0.20,"aromaticFreshness":0.20,"diseasePressure":-0.15,"yield":-0.35,"ageability":0.30,"botrytisSuitability":0.00},
+      "sourceRefs":["it-brunello-vintage-2021"]
+    },
+    {
+      "id":"vintage-za-stellenbosch-2021","environmentProfileId":"env-za-stellenbosch","country":"South Africa","region":"Stellenbosch","year":2021,
+      "growingSeason":{"seasonTiming":"roughly two weeks later than normal because of unusually cool conditions","winter":"colder and wetter than the previous season with replenished water resources","spring":"cold and wet, causing homogeneous but delayed budbreak; coastal disease-control timing was more demanding","summer":"moderate temperatures, slow ripening and almost no characteristic heatwaves","harvest":"extended late harvest under lower day and night temperatures","stellenboschCrop":"smaller crop","fruitQuality":"outstanding quality grapes; industry report cited good ageing potential"},
+      "styleEffects":["slower ripening","strong color and flavor development","high natural acidity and low pH where vineyards were managed effectively","good ageing potential in Stellenbosch wines"],
+      "matrixModifiers":{"derived":true,"confidence":4,"acidity":0.40,"ripeness":0.15,"concentration":0.35,"tanninRipeness":0.25,"aromaticFreshness":0.35,"diseasePressure":0.10,"yield":-0.20,"ageability":0.40,"botrytisSuitability":0.00},
+      "sourceRefs":["za-wosa-harvest-2021"]
+    }
+  ],
+  "authorityRatings": []
+}

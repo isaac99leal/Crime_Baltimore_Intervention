@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Authority year ledgers are evidence indexes. Listed years may have detailed authority notes available, but year inclusion is not converted into a score. Omitted years are not automatically bad; they may simply lack an archive entry for this product family.",
+  "archives": [
+    {
+      "id":"archive-pt-vintage-port-1756-2017",
+      "country":"Portugal",
+      "modernGeographicReference":"Porto / Douro",
+      "productFamily":"Vintage Port and historically documented Vintage/Single-Quinta declarations",
+      "recordStatus":"authority-archive-detail-available",
+      "earliestYear":1756,
+      "latestYear":2017,
+      "years":[2017,2016,2011,2007,2003,2000,1997,1994,1992,1991,1989,1987,1985,1983,1982,1980,1978,1977,1975,1970,1967,1966,1963,1960,1958,1955,1950,1948,1947,1945,1942,1935,1934,1931,1927,1924,1922,1920,1917,1912,1911,1908,1904,1900,1897,1896,1894,1892,1890,1887,1884,1881,1878,1875,1873,1872,1870,1868,1865,1863,1861,1860,1858,1854,1853,1851,1850,1847,1844,1842,1840,1834,1830,1827,1822,1821,1820,1815,1812,1811,1810,1806,1802,1798,1797,1796,1790,1786,1784,1781,1780,1779,1775,1765,1756],
+      "historicalIdentityNote":"The archive spans legal and commercial regimes predating current DOP terminology. Use the modern Porto/Douro reference for geography while storing the historical designation/regulatory regime separately.",
+      "declarationNote":"An archive year does not mean every Port shipper declared a Vintage. The authority notes explicitly distinguish general declarations, split vintages, off-vintages and Single Quinta declarations in some years.",
+      "sourceRefs":["pt-ivdp-vintage-port-archive-2026"]
+    },
+    {
+      "id":"archive-ca-ontario-vintage-reports-2001-2025",
+      "country":"Canada",
+      "modernGeographicReference":"Ontario VQA",
+      "productFamily":"Ontario wine vintage reports",
+      "recordStatus":"authority-report-available",
+      "earliestYear":2001,
+      "latestYear":2025,
+      "years":[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+      "sourceRefs":["ca-on-owaa-vintage-reports-2001-2025"]
+    },
+    {
+      "id":"archive-fr-champagne-matu-monitoring-1956-present",
+      "country":"France",
+      "modernGeographicReference":"Champagne",
+      "productFamily":"Champagne harvest/ripeness monitoring",
+      "recordStatus":"monitoring-system-confirmed-detail-not-yet-ingested",
+      "earliestYear":1956,
+      "latestYear":2026,
+      "years":[],
+      "historicalIdentityNote":"The MATU network has operated since 1956, but this record does not assert that each annual commune/grape dataset has been ingested. Individual years remain pending until the underlying annual records are captured.",
+      "sourceRefs":["fr-champagne-matu-1956-2026","fr-champagne-aoc-history-2025"]
+    }
+  ],
+  "evidenceStatuses": [
+    "structured-growing-season-ingested",
+    "authority-archive-detail-available",
+    "authority-report-available",
+    "documentary-bottle-or-harvest-evidence",
+    "monitoring-system-confirmed-detail-not-yet-ingested",
+    "unknown"
+  ]
+}

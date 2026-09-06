@@ -1,0 +1,27 @@
+{
+  "schemaVersion":1,
+  "updatedAt":"2026-09-05",
+  "method":"Second authority year-ledger pass. These records establish documentary coverage, not quality scores or fabricated season weather.",
+  "archives":[
+    {
+      "id":"archive-za-harvest-reports-2002-2026",
+      "country":"South Africa",
+      "modernGeographicReference":"South Africa Wine of Origin / national harvest context",
+      "productFamily":"South African winegrape harvest reports",
+      "recordStatus":"authority-report-available",
+      "earliestYear":2002,
+      "latestYear":2026,
+      "years":[2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],
+      "historicalIdentityNote":"The report series is national/industry harvest evidence. It must not be applied uniformly to every South African district or ward; detailed regional chronology requires year-specific extraction.",
+      "sourceRefs":["za-sawis-harvest-report-archive-2002-2026"]
+    }
+  ],
+  "evidenceStatuses":[
+    "structured-growing-season-ingested",
+    "authority-archive-detail-available",
+    "authority-report-available",
+    "documentary-bottle-or-harvest-evidence",
+    "monitoring-system-confirmed-detail-not-yet-ingested",
+    "unknown"
+  ]
+}
