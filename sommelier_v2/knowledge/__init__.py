@@ -2,6 +2,7 @@
 
 from .aging import modified_archetype, state_at_age
 from .catalog import SOURCES, WineKnowledgeCatalog, normalize_name
+from .cellar_pipeline import CellarHandoffInputs, CellarPipelineConstraintError, CellarPipelinePlan, CellarPipelineResult, run_cellar_pipeline
 from .decision_runtime import DecisionRuntimeApplication, DecisionRuntimeError, DecisionRuntimeInputs, DecisionRuntimeResult, OXYGEN_MANAGEMENT_PRIORS, apply_winemaking_decisions
 from .eu_promotions import EuCompositionDecision, EuLegalPromotionRegistry, VerificationLevel
 from .expanded_catalog import CommercialObservation, NamedSite, PiwiRecord, VarietyAreaObservation, WorldWineKnowledgeCatalog
@@ -40,12 +41,13 @@ VineyardEngine = LegalVineyardEngine
 
 __all__ = [
     "SOURCES", "AlcoholicFermentationParams", "AuthorityVintageRating", "BaseVineyardEngine",
-    "BatonnageEvent", "BlendComponent", "CapManagementEvent", "ChemistryEvidenceRecord",
-    "ChemistryEvidenceSource", "ChemistryEvidenceStats", "CommercialObservation", "ConstrainedOrigin",
-    "DailyWeather", "DecisionAuthorityAssessment", "DecisionEvidenceSource", "DecisionOption",
-    "DecisionRuntimeApplication", "DecisionRuntimeError", "DecisionRuntimeInputs", "DecisionRuntimeResult",
-    "EuCompositionDecision", "EuLegalPromotionRegistry", "ExtractionConstraintError", "ExtractionPlan",
-    "ExtractionPoint", "ExtractionResult", "FermentationConstraintError", "FermentationPlan",
+    "BatonnageEvent", "BlendComponent", "CapManagementEvent", "CellarHandoffInputs",
+    "CellarPipelineConstraintError", "CellarPipelinePlan", "CellarPipelineResult",
+    "ChemistryEvidenceRecord", "ChemistryEvidenceSource", "ChemistryEvidenceStats", "CommercialObservation",
+    "ConstrainedOrigin", "DailyWeather", "DecisionAuthorityAssessment", "DecisionEvidenceSource",
+    "DecisionOption", "DecisionRuntimeApplication", "DecisionRuntimeError", "DecisionRuntimeInputs",
+    "DecisionRuntimeResult", "EuCompositionDecision", "EuLegalPromotionRegistry", "ExtractionConstraintError",
+    "ExtractionPlan", "ExtractionPoint", "ExtractionResult", "FermentationConstraintError", "FermentationPlan",
     "FermentationResult", "FermentationState", "FinishedWineAssembler", "FinishedWineConstraintError",
     "GrapeConstraint", "HarvestMustConstraintError", "HarvestMustPlan", "HarvestMustProfile",
     "HistoricalVintageArchive", "HistoricalVintageError", "HistoricalVintageObservation",
@@ -76,9 +78,9 @@ __all__ = [
     "load_legacy_vintage_knowledge", "load_process_chemistry_evidence", "load_site_research",
     "load_trade_research", "load_winemaking_decisions", "modified_archetype", "molecular_so2_mg_l",
     "must_from_vineyard", "normalize_name", "nutrient_timing_effect",
-    "post_fermentation_microbiological_risk", "run_alcoholic_fermentation", "run_fermentation",
-    "run_malolactic", "simulate_extraction", "simulate_maturation", "simulate_vintage", "state_at_age",
-    "step_alcoholic_fermentation", "step_malolactic", "supported_smoke_guide_cultivars",
+    "post_fermentation_microbiological_risk", "run_alcoholic_fermentation", "run_cellar_pipeline",
+    "run_fermentation", "run_malolactic", "simulate_extraction", "simulate_maturation", "simulate_vintage",
+    "state_at_age", "step_alcoholic_fermentation", "step_malolactic", "supported_smoke_guide_cultivars",
     "temperature_control_target", "validate_harvest_must_plan", "validate_must", "validate_plan",
     "vintage_stats", "white_juice_solids_risk",
 ]
