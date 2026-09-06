@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Second Willamette micro-site pass. Stable producer-published blocks are stored as exact blocks. Where the same block identifier has materially conflicting clone or planting-year claims across producer pages/vintages, the records remain source-context observations and are explicitly flagged for reconciliation rather than overwritten.",
+  "sites": [
+    {
+      "id": "us-or-knudsen-vineyards",
+      "name": "Knudsen Vineyards",
+      "parentRegion": "Willamette Valley",
+      "ava": "Dundee Hills",
+      "siteSoils": ["Jory"],
+      "sourceRefs": [
+        "us-or-knudsen-parallels-2022-pass21",
+        "us-or-knudsen-snapshot-2021-pass21",
+        "us-or-knudsen-founders-2019-pass21",
+        "us-or-knudsen-snapshot-2022-pass21",
+        "us-or-knudsen-talking-blocks-current-pass21"
+      ],
+      "blocks": [
+        {"block":"9","variety":"Pinot Noir","clone":"777","rootstock":"Riparia","plantedYear":2006,"elevationFtRange":[755,840],"spacing":"5 x 5 ft","evidenceContext":"2022 Parallels"},
+        {"block":"13","variety":"Pinot Noir","clone":"667","rootstock":"3309","plantedYear":2012,"elevationFtRange":[700,775],"aspect":"E","spacing":"5 x 5 ft","evidenceContext":"2019/2021/2022 Snapshot"},
+        {"block":"15","variety":"Pinot Noir","clone":"667","rootstock":"Riparia","plantedYear":2001,"elevationFtRange":[680,770],"spacing":"5 x 5 ft","evidenceContext":"2019 Founders"},
+        {"block":"17","variety":"Pinot Noir","clone":"115","rootstock":"3309","plantedYear":2000,"elevationFtRange":[590,705],"aspect":"SE","spacing":"5 x 3.3 ft","evidenceContext":"2022 Parallels"},
+        {"block":"25","variety":"Pinot Noir","clone":"Pommard","rootstock":"3309","plantedYear":2008,"elevationFtRange":[705,780],"spacing":"5 x 5 ft","evidenceContext":"2019 Founders"},
+        {"block":"27","variety":"Chardonnay","clone":"95","rootstock":"3309","plantedYear":1995,"elevationFtRange":[705,760],"aspect":"SE","spacing":"5 x 3.3 ft","evidenceContext":"2019 Founders"}
+      ],
+      "blockObservations": [
+        {"block":"12","variety":"Pinot Noir","clone":"4407","rootstock":"Riparia","plantedYear":2012,"elevationFtRange":[740,825],"aspect":"E","spacing":"5 x 5 ft","evidenceContext":"2019 Snapshot page and 2021 Snapshot page"},
+        {"block":"12","variety":"Pinot Noir","clone":"828","rootstock":"Riparia","plantedYear":2010,"elevationFtRange":[740,825],"spacing":"5 x 5 ft","evidenceContext":"2019 Founders Series page"},
+        {"block":"12","variety":"Pinot Noir","clone":"828","rootstock":"Riparia","plantedYear":2012,"elevationFtRange":[740,825],"aspect":"E","spacing":"5 x 5 ft","evidenceContext":"2022 Snapshot page and current Talking Blocks summary"}
+      ],
+      "dataQualityFlags": [
+        {
+          "id":"knudsen-block12-clone-planting-conflict",
+          "severity":"material",
+          "fieldSet":["clone","plantedYear"],
+          "detail":"Producer-published pages disagree on Block 12: 4407/2012, 828/2010, and 828/2012 all appear in different product/page contexts. Do not promote a single canonical block identity until reconciled with the producer or a current vineyard map."
+        }
+      ],
+      "vintageTechnicalObservations": [
+        {"vintage":2019,"wine":"Snapshot Pinot Noir","alcoholPct":13.8,"brix":23.5,"pH":3.62,"totalAcidityGPerL":5.5,"newFrenchOakPct":30,"ageingMonths":17,"cases":100},
+        {"vintage":2021,"wine":"Snapshot Pinot Noir","alcoholPct":13.8,"brix":23.5,"pH":3.629,"totalAcidityGPerL":5.5,"newFrenchOakPct":28,"ageingMonths":16,"cases":100,"bottled":"2023-02","released":"2023-06"},
+        {"vintage":2022,"wine":"Snapshot Pinot Noir","alcoholPct":13.8,"brix":23.3,"pH":3.69,"totalAcidityGPerL":5.5,"newFrenchOakPct":28,"ageingMonths":16,"cases":190,"bottled":"2024-02","released":"2024-03"},
+        {"vintage":2022,"wine":"Parallels Pinot Noir","alcoholPct":13.8,"brix":23.2,"pH":3.65,"totalAcidityGPerL":5.5,"newFrenchOakPct":28,"ageingMonths":16,"cases":190,"bottled":"2024-02","released":"2024-09"}
+      ]
+    },
+    {
+      "id": "us-or-blakeslee-vineyard",
+      "name": "Blakeslee Vineyard Estate",
+      "parentRegion": "Willamette Valley",
+      "ava": "Chehalem Mountains",
+      "aspectContext": "north/south slope with vineyard crown east-west",
+      "farming": ["dry farmed", "LIVE Certified since 2012 harvest", "producer states 100% sustainably farmed"],
+      "siteSoils": ["Laurelwood volcanic loess surface soil", "hard clay subsoil"],
+      "sourceRefs": ["us-or-blakeslee-block-map-pass21"],
+      "blocks": [
+        {"block":"1","variety":"Pinot Noir","clone":"Dijon 115","rootstock":"3309","plantedYear":1996,"acres":2.66,"soil":"Laurelwood"},
+        {"block":"2","variety":"Pinot Noir","clone":"115","rootstock":"3309","plantedYear":1997,"acres":2.69,"soil":"Laurelwood"},
+        {"block":"3A","variety":"Pinot Noir","clone":"Dijon 777","rootstock":"3309","plantedYear":1997,"acres":1.42,"soil":"Laurelwood","history":"planted Dijon 115 in 1997; grafted to Dijon 777 in 2012"},
+        {"block":"3B","variety":"Chardonnay","clone":"Dijon 76 & 96","rootstock":"3309","plantedYear":1997,"acres":0.91,"soil":"Laurelwood","history":"planted Dijon 115 Pinot Noir in 1997; grafted to Chardonnay Dijon 76 and 96 in 2012"},
+        {"block":"4","variety":"Pinot Noir","clone":"Pommard","rootstock":"101-14","plantedYear":2000,"acres":2.33,"soil":"Laurelwood"},
+        {"block":"5","variety":"Pinot Noir","clone":"Pommard","rootstock":"101-14","plantedYear":2000,"acres":2.16,"soil":"Laurelwood"}
+      ]
+    },
+    {
+      "id": "us-or-iota-pelos-sandberg-vineyard",
+      "name": "Pelos Sandberg Vineyard / iOTA Cellars",
+      "parentRegion": "Willamette Valley",
+      "ava": "Eola-Amity Hills",
+      "plantedAcresAsOf2014": 14.5,
+      "farming": ["non-irrigated", "VSP trained"],
+      "sourceRefs": ["us-or-iota-block-map-pass21"],
+      "blocks": [
+        {"block":"Yiayia","variety":"Pinot Noir","clone":"Pommard","rootstock":"4453M","plantedYear":2002,"acres":3,"soil":"volcanic; loamy reddish brown with loose basalt","elevationFtRange":[320,400],"aspect":"W","spacing":"7 x 4 ft","vinesPerAcre":1555,"training":"VSP / Guyot bilateral cane"},
+        {"block":"Pappou","variety":"Pinot Noir","clone":"Pommard","rootstock":"4453M","plantedYear":2002,"acres":2,"soil":"marine sedimentary; shallow brown topsoil over gold/white siltstone with scattered basalt","elevationFtRange":[320,400],"aspect":"W","spacing":"7 x 4 ft","vinesPerAcre":1555,"training":"VSP / Guyot bilateral cane"},
+        {"block":"unnamed-southwest-2006","variety":"Pinot Noir","clone":"Dijon 777","rootstock":"4453M","plantedYear":2006,"acres":3.1,"soil":"sedimentary","elevationFtRange":[300,370],"aspect":"SW","spacing":"7 x 3 ft","vinesPerAcre":2074,"training":"VSP / Guyot unilateral cane","evidenceContext":"additional block details in producer interactive page; block name requires UI/source reconciliation"},
+        {"block":"Oscar","variety":"Pinot Noir","clone":"Dijon 667","rootstock":"4453M","plantedYear":2006,"acres":1,"soil":"sedimentary with siltstone and basalt fragments","elevationFtRange":[330,380],"aspect":"W","spacing":"80 in x 40 in","vinesPerAcre":1960}
+      ],
+      "researchNotes": [
+        "The producer page states eight current blocks, but this pass only promotes blocks whose map text was captured with enough identity detail. The unnamed 2006 3.1-acre record remains explicitly unresolved rather than receiving an invented block name."
+      ]
+    }
+  ]
+}
