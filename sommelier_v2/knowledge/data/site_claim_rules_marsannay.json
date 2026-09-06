@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "notes": "Current Marsannay smaller-geographic-unit naming authority. The cahier permits a cadastral lieu-dit name only when it also appears on the harvest declaration. BIVB site identity alone therefore never authorizes the claim.",
+  "sources": {
+    "marsannay_masa_2020_lieu_dit_label": {
+      "authority": "Ministère de l'Agriculture",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-8fa6b7fc-47fa-4091-8d6c-4610b85767b5/telechargement",
+      "checked": "2026-09-06",
+      "scope": "Marsannay cahier des charges, presentation and labeling rule permitting a smaller geographic unit only when it is a cadastral lieu-dit and appears on the harvest declaration."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:marsannay:white-red:cadastral-lieu-dit",
+      "country": "France",
+      "parent_appellation": "Marsannay",
+      "site_type": "lieu_dit",
+      "required_site_legal_status": "official_appellation_lieu_dit",
+      "required_site_source_ids": ["bivb_marsannay"],
+      "allowed_wine_variants": ["white", "red"],
+      "required_claim_evidence": [
+        "cadastral_lieu_dit_confirmed",
+        "harvest_declaration_site_confirmed"
+      ],
+      "source_ids": ["marsannay_masa_2020_lieu_dit_label"],
+      "claim_kind": "cadastral_lieu_dit",
+      "notes": "Positive label authority requires the physical BIVB-listed Marsannay identity plus explicit lot-level evidence that the name is cadastral and appears on the harvest declaration."
+    },
+    {
+      "id": "siteclaim:fr:marsannay:rose:cadastral-lieu-dit",
+      "country": "France",
+      "parent_appellation": "Marsannay",
+      "site_type": "lieu_dit",
+      "required_site_legal_status": "official_appellation_lieu_dit",
+      "required_site_source_ids": ["bivb_marsannay_rose"],
+      "allowed_wine_variants": ["rose"],
+      "required_claim_evidence": [
+        "cadastral_lieu_dit_confirmed",
+        "harvest_declaration_site_confirmed"
+      ],
+      "source_ids": ["marsannay_masa_2020_lieu_dit_label"],
+      "claim_kind": "cadastral_lieu_dit",
+      "notes": "Marsannay Rosé named-site label authority is documentary, not inferred from the BIVB site list. Both cadastral status and harvest-declaration use must be supplied for the lot."
+    }
+  ]
+}

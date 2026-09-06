@@ -7,12 +7,16 @@ A physical site and the name legally claimed on the label are normally identical
 but some specifications explicitly allow a principal or cover name for wine from
 other sites in a defined group. Those substitutions are permitted only through an
 explicit ``cover_name_groups`` rule and never through generic alias inference.
+Some rules also depend on lot-specific documentary facts (for example cadastral
+status plus a harvest declaration); those facts must be supplied explicitly and
+are never inferred from site identity.
 """
 from __future__ import annotations
 
 import json
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Sequence
 
 from .catalog import normalize_name
 from .expanded_catalog import NamedSite
@@ -38,6 +42,7 @@ class SiteClaimRule:
     allowed_wine_variants: tuple[str, ...]
     source_ids: tuple[str, ...]
     claim_kind: str
+    required_claim_evidence: tuple[str, ...] = ()
     allowed_site_names: tuple[str, ...] = ()
     excluded_site_names: tuple[str, ...] = ()
     cover_name_groups: tuple[tuple[str, tuple[str, ...]], ...] = ()
@@ -100,6 +105,14 @@ class SiteClaimRegistry:
             if missing:
                 raise ValueError(f"{rule_id} references unknown claim sources: {missing}")
 
+            required_claim_evidence = tuple(
+                str(value).strip()
+                for value in row.get("required_claim_evidence", [])
+                if str(value).strip()
+            )
+            if len(set(required_claim_evidence)) != len(required_claim_evidence):
+                raise ValueError(f"{rule_id} contains duplicate required claim evidence tokens")
+
             allowed_site_names = tuple(str(v) for v in row.get("allowed_site_names", []))
             excluded_site_names = tuple(str(v) for v in row.get("excluded_site_names", []))
             overlap = {
@@ -151,6 +164,7 @@ class SiteClaimRegistry:
                     allowed_wine_variants=tuple(str(v) for v in row.get("allowed_wine_variants", [])),
                     source_ids=source_ids,
                     claim_kind=str(row.get("claim_kind") or "named_site"),
+                    required_claim_evidence=required_claim_evidence,
                     allowed_site_names=allowed_site_names,
                     excluded_site_names=excluded_site_names,
                     cover_name_groups=tuple(cover_name_groups),
@@ -215,6 +229,7 @@ class SiteClaimRegistry:
         appellation: str | None,
         wine_variant: str | None = None,
         claimed_site_name: str | None = None,
+        claim_evidence: Sequence[str] = (),
     ) -> SiteClaimDecision:
         if site is None:
             return SiteClaimDecision(False, "site_claim_not_requested", None)
@@ -272,6 +287,9 @@ class SiteClaimRegistry:
             )
 
         site_sources = {str(source_id) for source_id in site.source_ids}
+        provided_claim_evidence = {
+            str(value).strip() for value in claim_evidence if str(value).strip()
+        }
         mismatch_reasons: list[str] = []
         for rule in candidates:
             if rule.required_site_legal_status and not self._same(rule.required_site_legal_status, site.legal_status):
@@ -281,6 +299,15 @@ class SiteClaimRegistry:
                 continue
             if rule.required_site_source_ids and not set(rule.required_site_source_ids).issubset(site_sources):
                 mismatch_reasons.append(f"{rule.id}: required site-identity evidence is missing.")
+                continue
+            missing_claim_evidence = [
+                token for token in rule.required_claim_evidence
+                if token not in provided_claim_evidence
+            ]
+            if missing_claim_evidence:
+                mismatch_reasons.append(
+                    f"{rule.id}: required lot-specific claim evidence is missing: {', '.join(missing_claim_evidence)}."
+                )
                 continue
             if not self._variant_matches(rule, wine_variant):
                 allowed = ", ".join(rule.allowed_wine_variants)
@@ -304,6 +331,9 @@ class SiteClaimRegistry:
                 continue
 
             evidence = list(self._source_evidence(rule))
+            evidence.extend(
+                f"claim_evidence:{token}" for token in rule.required_claim_evidence
+            )
             if not self._same(site.name, requested_claim):
                 evidence.append(f"physical_site:{site.name}")
                 evidence.append(f"authorized_cover_claim:{requested_claim}")
@@ -334,6 +364,9 @@ class SiteClaimRegistry:
             "verified_site_claim_rules": len(self.rules),
             "verified_site_claim_parent_appellations": len(parents),
             "verified_site_claim_sources": len(self.sources),
+            "verified_site_claim_rules_with_evidence_requirements": sum(
+                bool(rule.required_claim_evidence) for rule in self.rules
+            ),
             "verified_site_cover_name_groups": sum(
                 len(rule.cover_name_groups) for rule in self.rules
             ),

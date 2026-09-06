@@ -35,6 +35,7 @@ class OriginRequest:
     producer: str | None = None
     experimental: bool = False
     wine_variant: str | None = None
+    site_claim_evidence: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -125,6 +126,7 @@ class WineOriginFactory:
             appellation=appellation,
             wine_variant=request.wine_variant,
             claimed_site_name=request.claimed_site_name,
+            claim_evidence=request.site_claim_evidence,
         )
         if site is not None and site_claim.eligible:
             self.sites.validate_ownership(site, request.producer)
