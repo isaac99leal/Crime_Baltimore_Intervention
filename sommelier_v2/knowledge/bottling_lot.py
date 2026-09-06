@@ -8,6 +8,7 @@ closure name.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import math
 
 from .packaging import PackagingAssessment
 from .winery_provenance import WineryLot, WineryProvenanceError, WineryProvenanceLedger
@@ -65,8 +66,8 @@ def bottle_winery_lot(
         loss_l = float(bottling_loss_l)
     except (TypeError, ValueError) as exc:
         raise BottlingLotConstraintError("bottling_loss_l must be numeric") from exc
-    if loss_l < 0.0:
-        raise BottlingLotConstraintError("bottling_loss_l cannot be negative")
+    if not math.isfinite(loss_l) or loss_l < 0.0:
+        raise BottlingLotConstraintError("bottling_loss_l must be finite and non-negative")
     if require_packaging_assessment and packaging_assessment is None:
         raise BottlingLotConstraintError(
             "An explicit PackagingAssessment is required before physical bottling."
@@ -76,9 +77,9 @@ def bottle_winery_lot(
         source = ledger.lots[source_lot_id]
     except KeyError as exc:
         raise BottlingLotConstraintError(f"Unknown winery source lot: {source_lot_id}") from exc
-    if _is_bottled_stage(source.stage):
+    if _is_bottled_stage(source.stage) or source.bottle_count is not None:
         raise BottlingLotConstraintError(
-            f"Source lot {source_lot_id!r} is already in a bottled/packaged stage."
+            f"Source lot {source_lot_id!r} is already in a bottled/packaged state."
         )
 
     filled_volume_l = (bottle_count * bottle_ml) / 1000.0
@@ -96,12 +97,16 @@ def bottle_winery_lot(
             stage="bottled",
             input_volume_l=input_volume_l,
             output_volume_l=filled_volume_l,
+            bottle_count=bottle_count,
+            bottle_ml=bottle_ml,
         )
     except WineryProvenanceError as exc:
         raise BottlingLotConstraintError(str(exc)) from exc
 
     if abs(bottled.volume_l - filled_volume_l) > max(0.001, filled_volume_l * 1e-8):
         raise BottlingLotConstraintError("Bottled lot volume does not match physical bottle fill volume.")
+    if bottled.bottle_count != bottle_count or bottled.bottle_ml != bottle_ml:
+        raise BottlingLotConstraintError("Bottled lot package metadata does not match bottling manifest.")
 
     assessment = packaging_assessment
     return BottledLotManifest(
