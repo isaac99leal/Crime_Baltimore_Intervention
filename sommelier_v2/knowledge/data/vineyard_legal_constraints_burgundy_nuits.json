@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "notes": "Executable Nuits-Saint-Georges vineyard-management law from the current 2025 ministry specification homologated 24 December 2024. The two-year Guyot-double cordon-establishment exception remains unmodeled rather than generalized.",
+  "constraints": [
+    {
+      "id": "vineyardlaw:fr:nuits-saint-georges:current",
+      "country": "France",
+      "appellation": "Nuits-Saint-Georges",
+      "min_vine_density_per_ha": 9000,
+      "irrigation_prohibited": true,
+      "allowed_planting_patterns": ["rows", "foule"],
+      "max_row_spacing_m": 1.25,
+      "min_vine_spacing_m": 0.50,
+      "min_foule_vine_spacing_m_exclusive": 0.50,
+      "pruning_max_buds_by_style_and_system": {
+        "white": {
+          "cordon_royat": 10,
+          "bilateral_cordon": 10,
+          "guyot_simple": 8
+        },
+        "red": {
+          "cordon_royat": 8,
+          "bilateral_cordon": 8,
+          "gobelet": 8,
+          "eventail": 8,
+          "guyot_simple": 8
+        }
+      },
+      "pruning_unmodeled_exception_systems": ["guyot_double"],
+      "allowed_support_systems_unless_gobelet": ["trellis", "stake"],
+      "required_support_for_foule": "stake",
+      "min_trellised_canopy_height_to_row_spacing_ratio": 0.60,
+      "max_parcel_crop_load_kg_ha_by_style": {
+        "white": 10500,
+        "red": 9000
+      },
+      "dead_missing_vine_yield_reduction_threshold": 0.20,
+      "dead_missing_vine_threshold_source_ids": ["nuits_masa_2025"],
+      "dead_missing_vine_remedy_source_ids": ["fr_code_rural_d645_4"],
+      "source_ids": ["nuits_masa_2025"],
+      "notes": "Rows require >=9,000 vines/ha, <=1.25 m row spacing and >=0.50 m vine spacing; foule uses >0.50 m spacing and stakes. White cordon pruning is capped at 10 buds and white Guyot simple at 8; ordinary red pruning is capped at 8 buds for the encoded systems. Trellised canopy height is >=0.6 times row spacing. Parcel crop load is <=10,500 kg/ha white and <=9,000 kg/ha red. Irrigation is prohibited. The 20% dead/missing-vine trigger feeds the national D.645-4 proportional-yield remedy."
+    }
+  ]
+}
