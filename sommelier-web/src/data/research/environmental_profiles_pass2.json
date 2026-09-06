@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Second place-specific environmental pass. Factual climate, geology and soil statements are source-backed. Matrix values are bounded simulation-derived modifiers relative to the grape baseline.",
+  "profiles": [
+    {
+      "id":"env-fr-gevrey-chambertin","researchProfileId":"fr-gevrey-chambertin-aop","country":"France","name":"Gevrey-Chambertin","scope":"appellation",
+      "climate":{"classification":"Côte de Nuits continental-influenced mesoclimate","viticulturalEffects":["slope and elevation separate Premier Cru from many village sites","upper-slope sites emphasize drainage and cooler exposure"]},
+      "soils":[{"name":"upper-slope brown limestone soils","depth":"rather shallow","elevationM":[280,380],"distribution":"Premier Cru upper Côte"},{"name":"brown calcic and limey soils","distribution":"lower village-appellation vineyards"}],
+      "topography":{"premierCruElevationM":[280,380]},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.30,"tannin":0.35,"body":0.15,"alcohol":-0.05,"fruitIntensity":0.05,"earthIntensity":0.40,"aromaticFreshness":0.30,"droughtStress":0.05,"diseasePressure":0.10,"frostRisk":0.25,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-bivb-gevrey-terroir-2024"]
+    },
+    {
+      "id":"env-fr-pauillac","researchProfileId":"fr-pauillac-aop","country":"France","name":"Pauillac","scope":"appellation",
+      "climate":{"classification":"maritime Médoc climate","influences":["Gironde estuary","Atlantic maritime moderation"],"viticulturalEffects":["long ripening season","site drainage is central to Cabernet Sauvignon performance"]},
+      "soils":[{"name":"Garonne gravel with sand and clay","components":["gravel","sand","clay"],"drainage":"exceptional on gravel rises","viticulturalEffects":["deep rooting","water regulation","Cabernet Sauvignon structure and concentration"]}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.10,"tannin":0.45,"body":0.35,"alcohol":0.10,"fruitIntensity":0.20,"earthIntensity":0.30,"aromaticFreshness":0.10,"droughtStress":0.15,"diseasePressure":0.15,"frostRisk":0.05,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-bordeaux-pauillac-terroir-2026"]
+    },
+    {
+      "id":"env-fr-pomerol","researchProfileId":"fr-pomerol-aop","country":"France","name":"Pomerol","scope":"appellation",
+      "climate":{"classification":"maritime Right Bank Bordeaux climate","influences":["Isle/Dordogne river system","plateau topography"]},
+      "soils":[{"name":"clay-gravel plateau","components":["clay","gravel"]},{"name":"sandy gravel","components":["sand","gravel"]},{"name":"iron-rich subsoil","components":["iron oxide / crasse de fer"],"distribution":"important plateau subsoil feature"}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.00,"tannin":0.20,"body":0.35,"alcohol":0.15,"fruitIntensity":0.30,"earthIntensity":0.35,"aromaticFreshness":0.05,"droughtStress":0.00,"diseasePressure":0.15,"frostRisk":0.05,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-bordeaux-pomerol-terroir-2026"]
+    },
+    {
+      "id":"env-fr-saint-emilion","researchProfileId":"fr-saint-emilion-grand-cru-aop","country":"France","name":"Saint-Émilion","scope":"appellation-complex",
+      "climate":{"classification":"maritime Right Bank Bordeaux climate with strong mesoclimate diversity","influences":["limestone plateau","slopes and valleys","Dordogne plain"]},
+      "soils":[{"name":"asteriated limestone plateau","components":["asteriated limestone"]},{"name":"clay-limestone hills and valleys","components":["clay","limestone"]},{"name":"silt-clay gravel terrace","components":["silt","clay","gravel"]},{"name":"sandy-gravel Dordogne plain","components":["sand","gravel"]}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":3,"acidity":0.10,"tannin":0.20,"body":0.25,"alcohol":0.10,"fruitIntensity":0.20,"earthIntensity":0.30,"aromaticFreshness":0.15,"droughtStress":0.00,"diseasePressure":0.15,"frostRisk":0.05,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-bordeaux-saint-emilion-terroir-2026"]
+    },
+    {
+      "id":"env-it-brunello-montalcino","researchProfileId":"it-brunello-di-montalcino-docg","country":"Italy","name":"Montalcino / Brunello di Montalcino","scope":"appellation-environment",
+      "climate":{"classification":"Mediterranean with occasional continental influence","annualRainfallMm":700,"rainfallSeasonality":["spring","late autumn"],"influences":["Tyrrhenian Sea about 40 km away","Apennines about 100 km away","Mount Amiata protection"],"hazards":["hail and storms moderated in part by Mount Amiata"],"viticulturalEffects":["many clear days support gradual full ripening","microclimates vary strongly with altitude and exposure"]},
+      "soils":[{"name":"lower loose deposits","distribution":"lower elevations"},{"name":"stony marl-limestone-derived hillside soils","components":["marl","limestone","stones"],"distribution":"higher hillsides"}],
+      "topography":{"elevationM":[120,650],"snowPossibleAboveM":400},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.10,"tannin":0.40,"body":0.30,"alcohol":0.20,"fruitIntensity":0.20,"earthIntensity":0.35,"aromaticFreshness":0.10,"droughtStress":0.25,"diseasePressure":-0.05,"frostRisk":0.00,"botrytisSuitability":0.00},
+      "sourceRefs":["it-brunello-territory-2026"]
+    },
+    {
+      "id":"env-it-chianti-classico","researchProfileId":"it-chianti-classico-docg","country":"Italy","name":"Chianti Classico","scope":"appellation-environment",
+      "climate":{"classification":"continental Tuscan hill climate","winterNotes":"low to very low winter temperatures, often below 4-5°C","summerNotes":"dry, hot summers can exceed 35°C","annualRainfallMm":[800,900],"rainfallSeasonality":["late autumn","spring"],"viticulturalEffects":["marked diurnal variation from elevation","hilly terrain creates complex local water movement"]},
+      "soils":[{"name":"clayey shale / marl shield","components":["marl","stratified clay","alberese-type limestone material","fine sand-lime"]},{"name":"shallow brown vineyard soils","textures":["clayey-sandy","pebbly with moderate clay"],"fertility":"low organic matter and limited assimilable phosphorus"}],
+      "topography":{"averageElevationM":200,"typicalUpperMedianElevationM":600},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.20,"tannin":0.30,"body":0.20,"alcohol":0.15,"fruitIntensity":0.15,"earthIntensity":0.30,"aromaticFreshness":0.20,"droughtStress":0.30,"diseasePressure":0.00,"frostRisk":0.15,"botrytisSuitability":0.00},
+      "sourceRefs":["it-chianti-classico-production-code-2023","it-chianti-classico-uga-2026"]
+    },
+    {
+      "id":"env-it-valpolicella","researchProfileId":"it-amarone-della-valpolicella-docg","country":"Italy","name":"Valpolicella / Amarone","scope":"appellation-environment",
+      "climate":{"classification":"continental to sub-continental with local sub-Mediterranean mesoclimates","annualRainfallMm":[900,1100],"influences":["Lake Garda temperature moderation","Lessini Mountains","north-south valleys","Föhn and Sirocco winds"],"hazards":["summer hail","heavy rainfall events"],"viticulturalEffects":["hills are cooler at summer night than lowlands","valley breezes and mountain winds create strong site variation"]},
+      "soils":[{"name":"Adige alluvial plain","components":["alluvium","gravel","calcareous subsoil"],"depth":"very deep"},{"name":"Lessini stream alluvium","components":["gravel","calcareous skeleton"],"drainage":"good"},{"name":"marly limestone hills","components":["Biancone limestone","Scaglia Rossa","marl"],"activeLimestonePct":[10,20]},{"name":"volcanic basalt-derived hills","components":["basalt","clay-textured surface"],"activeLimestonePct":[0,3],"drainage":"good"}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.05,"tannin":0.20,"body":0.30,"alcohol":0.20,"fruitIntensity":0.25,"earthIntensity":0.25,"aromaticFreshness":0.10,"droughtStress":0.05,"diseasePressure":0.15,"frostRisk":0.05,"botrytisSuitability":0.00},
+      "sourceRefs":["it-valpolicella-soils-2026","it-valpolicella-climate-2026","it-valpolicella-classico-2026","it-amarone-method-2026"]
+    },
+    {
+      "id":"env-gr-santorini","researchProfileId":"gr-santorini-pdo","country":"Greece","name":"Santorini","scope":"pdo-environment",
+      "climate":{"classification":"hot dry Mediterranean island climate","influences":["Aegean Sea","morning mist and dew","cool northerly Meltemi winds"],"hazards":["extreme wind","hydric stress","very low rainfall"],"viticulturalEffects":["wind lowers growing-season temperatures and suppresses rot","morning moisture is important during drought","basket training shelters fruit"]},
+      "soils":[{"name":"volcanic sandy Santorini soil","components":["basalt","volcanic ash","sand","pumice","andesite","other volcanic rocks"],"clay":"very low","organicMatter":"very low","phylloxera":"historically absent because of sandy volcanic conditions","waterBehavior":"porous pumice/volcanic material captures limited moisture"}],
+      "topography":{"elevationM":[0,300],"trainingSystems":["kouloura basket","low koulouraki"]},
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":5,"acidity":0.55,"tannin":-0.35,"body":0.30,"alcohol":0.30,"fruitIntensity":0.10,"earthIntensity":0.35,"aromaticFreshness":0.35,"droughtStress":0.90,"diseasePressure":-0.60,"frostRisk":-0.70,"botrytisSuitability":-0.40},
+      "sourceRefs":["gr-santorini-pdo-terroir-2026","gr-santorini-region-2026"]
+    },
+    {
+      "id":"env-nz-marlborough","country":"New Zealand","name":"Marlborough","scope":"gi-region",
+      "climate":{"classification":"cool high-sunshine, low-rainfall maritime-influenced climate","viticulturalEffects":["large ripening-period diurnal range retains acidity","Wairau includes warmer early-ripening stony sites and sea-breeze-cooled sites","Awatere is cooler, drier and windier","Southern Valleys become cooler and drier southward"]},
+      "soils":[{"name":"Wairau old riverbed and riverbank soils","components":["gravel","alluvium","stones"],"drainage":"free-draining"},{"name":"Southern Valleys heavier clay soils","components":["clay"],"texture":"heavier than Wairau"},{"name":"Awatere varied elevated valley soils","effects":["lower-yielding sites","cooler aromatic expression"]}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":4,"acidity":0.45,"tannin":-0.10,"body":-0.05,"alcohol":-0.10,"fruitIntensity":0.30,"earthIntensity":0.00,"aromaticFreshness":0.55,"droughtStress":0.20,"diseasePressure":-0.05,"frostRisk":0.15,"botrytisSuitability":0.00},
+      "sourceRefs":["nz-marlborough-terroir-2026"]
+    },
+    {
+      "id":"env-za-stellenbosch","country":"South Africa","name":"Stellenbosch","scope":"wine-of-origin-district",
+      "climate":{"classification":"Mediterranean coastal-zone climate","influences":["Atlantic and Indian Ocean maritime systems","cooling sea breezes","Cape Doctor southeaster"],"rainfallSeasonality":"mainly May-August","viticulturalEffects":["coastal influence moderates summer temperature","wind can cool and dry vine canopies","mesoclimate varies strongly with slope and distance from sea"]},
+      "soils":[{"name":"weathered granite-associated red/yellow-brown soils","distribution":["Bottelary","Stellenbosch Mountain","Helderberg","Simonsberg footslopes"],"properties":["highly weathered","acidic","well-drained","good water-retention capacity"]},{"name":"Cape sandstone/granite/shale mosaic","components":["sandstone","granite","shale"],"variation":"strong over short distances"}],
+      "matrixModifiers":{"scale":"-1 to +1 relative to grape baseline","derived":true,"confidence":3,"acidity":0.05,"tannin":0.25,"body":0.25,"alcohol":0.20,"fruitIntensity":0.30,"earthIntensity":0.20,"aromaticFreshness":0.10,"droughtStress":0.25,"diseasePressure":-0.05,"frostRisk":-0.30,"botrytisSuitability":0.00},
+      "sourceRefs":["za-wosa-soils-2026","za-wosa-climate-2026"]
+    }
+  ]
+}

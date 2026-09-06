@@ -1,0 +1,43 @@
+{
+  "schemaVersion":1,
+  "updatedAt":"2026-09-05",
+  "method":"Current Chile Decree 464 legal-version pass. The July 14, 2026 consolidated SAG text is stored as a dated framework alongside earlier research rather than silently overwriting historical rules.",
+  "profiles":[
+    {
+      "id":"cl-wine-do-framework-2026","country":"Chile","name":"Chile wine denomination-of-origin framework — Decree 464 current 2026 version","recordType":"legal-framework","legalClass":"Decree 464 / Denominación de Origen","hierarchy":["Chile"],"researchCompleteness":5,"generationStatus":"framework-only",
+      "products":["wine with denomination of origin"],
+      "classificationTerms":["Región","Subregión","Zona","Área","Secano Interior","Andes","Entre Cordilleras","Costa","Embotellado en Origen"],
+      "productionRules":{
+        "effectiveVersionDate":"2026-07-14",
+        "minimumGeographicOriginPct":75,
+        "maximumOtherOriginOrOtherVarietiesPct":25,
+        "tableGrapesInOtherOriginAllowance":false,
+        "bottlingTerritory":"Chile",
+        "singleNamedVarietyMinPct":75,
+        "multipleNamedVarietiesRequireAllWineFromNamedVarieties":true,
+        "multipleNamedVarietiesPercentagesDisplayed":true,
+        "vintageClaimMinPct":75,
+        "multiOriginSameVariety":{"maximumNamedRegionsOrSubregions":3,"minorComponentMinPct":15,"descendingOrder":true,"mayMixRegionAndSubregionNames":false,"effectiveFrom":"2026-07-14"},
+        "supplementaryGeographicTerms":{"terms":["Andes","Entre Cordilleras","Costa"],"minimumQualifyingVolumePct":85,"declaredToSAG":true,"producedAndBottledInChile":true},
+        "embotelladoEnOrigen":{"doRequired":true,"producerOwnershipOrTenureRequirement":true,"vineyardsAndPackagingPlantWithinNamedGeographicArea":true,"continuousVinificationPackagingAgeingByWinery":true}
+      },
+      "supplementaryTermAreas":{
+        "Andes":["Vicuña","Paiguano","Monte Patria","Río Hurtado","Salamanca","Illapel","Santa María","Calle Larga","San Esteban","Santiago","Pirque","Puente Alto","Buin","Requínoa","Rengo","Machalí","San Fernando","Chimbarongo","Romeral","Molina","San Clemente","Colbún"],
+        "Entre Cordilleras":["Punitaqui","Hijuelas","Panquehue","Catemu","Llaillay","San Felipe","Isla de Maipo","Talagante","Melipilla","Alhué","María Pinto","Colina","Calera de Tango","Til Til","Lampa","Rancagua","Peumo","Coltauco","Nancagua","Santa Cruz","Palmilla","Peralillo","Marchigüe","La Estrella","Rauco","Sagrada Familia","Talca","Pencahue","San Rafael","San Javier","Villa Alegre","Parral","Retiro","Linares","Longaví","Cauquenes","Chillán","Quillón","Yumbel","Mulchén","Traiguén"],
+        "Costa":["La Serena","Ovalle","Zapallar","Quillota","San Juan","Santo Domingo","Cartagena","Algarrobo","Valle del Marga-Marga","Lolol","Litueche","Paredones","Pumanque","Vichuquén","Empedrado","Curepto","Portezuelo","Coelemu","Valle de Casablanca"]
+      },
+      "researchNotes":["Article 3(b)'s complete labelable variety table is embedded as images in the SAG normative rendering and remains an explicit extraction task; this framework does not fabricate the missing list.","The 75% origin, 75% variety and 75% vintage thresholds are separate legal tests and must not be collapsed into one generic '75% rule'.","The July 14, 2026 multi-origin amendment is time-sensitive and must not be projected backward onto earlier vintages/labels."],
+      "sourceRefs":["cl-sag-decree-464-2026"]
+    },
+    {
+      "id":"cl-secano-interior-special-do-2026","country":"Chile","name":"Secano Interior","recordType":"special-origin-designation","legalClass":"Denominación de Origen especial — Decreto 464 Art. 3 bis","hierarchy":["Chile","Secano Interior"],"researchCompleteness":4,"generationStatus":"reference-only",
+      "products":["wine from specified dry-farmed areas/communes"],"authorizedGrapes":["País","Cinsault"],"principalGrapes":["País","Cinsault"],
+      "classificationTerms":["Secano Interior"],
+      "productionRules":{"exclusiveVarieties":["País","Cinsault"],"paisInternationalSynonymsInDecree":["Mission","Criolla"],"drylandOriginRequired":true,"minimumGeographicOriginPct":75,"singleNamedVarietyMinPct":75,"vintageClaimMinPct":75},
+      "eligibleNamedAreas":["Rauco","Romeral","Molina","Sagrada Familia","Talca","Pencahue","San Clemente","San Rafael","San Javier","Villa Alegre","Parral","Linares","Cauquenes","Chillán","Quillón","Portezuelo","Coelemu","Yumbel"],
+      "eligibleAdditionalCommunes":["Bulnes","Curepto","Florida","Ninhue","Ñiquén","Quirihue","Ránquil","San Nicolás","San Carlos","Treguaco","Hualqui","Nacimiento","Los Ángeles","Laja","San Rosendo","Santa Juana","Tomé"],
+      "researchNotes":["Eligibility is not simply administrative location: the grapes must come from the dryland areas of the specified divisions.","The special origin can be followed by the corresponding qualifying subregion, zone, area or eligible commune under the decree; these are not modeled as a fictitious independent geographic hierarchy."],
+      "sourceRefs":["cl-sag-decree-464-2026"]
+    }
+  ]
+}

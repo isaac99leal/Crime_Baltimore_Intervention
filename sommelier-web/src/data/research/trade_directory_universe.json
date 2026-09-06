@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Planning index for importer/distributor discovery at global scale. Counts are directory listing slots observed in Harpers product categories, not unique verified companies and not wine-data authority. Category counts can drift as the directory changes, so later live-page observations are retained separately instead of overwriting the index snapshot.",
+  "sourceRef": "trade-directory-harpers-uk-pass23",
+  "indexSnapshot": [
+    {"market":"Argentina","listed":36},
+    {"market":"Australia","listed":58},
+    {"market":"Austria","listed":16},
+    {"market":"Brazil","listed":5},
+    {"market":"Bulgaria","listed":2},
+    {"market":"Canada","listed":3},
+    {"market":"Chile","listed":44},
+    {"market":"France","listed":196},
+    {"market":"Georgia","listed":4},
+    {"market":"Germany","listed":22},
+    {"market":"Greece","listed":9},
+    {"market":"Hungary","listed":9},
+    {"market":"India","listed":2},
+    {"market":"Israel","listed":1},
+    {"market":"Italy","listed":133},
+    {"market":"Japan","listed":2},
+    {"market":"Kosovo","listed":1},
+    {"market":"Lebanon","listed":8},
+    {"market":"Macedonia","listed":1},
+    {"market":"Madeira","listed":3},
+    {"market":"Moldova","listed":3},
+    {"market":"New Zealand","listed":46},
+    {"market":"Peru","listed":1},
+    {"market":"Portugal","listed":32},
+    {"market":"Romania","listed":6},
+    {"market":"Slovenia","listed":3},
+    {"market":"South Africa","listed":57},
+    {"market":"Spain","listed":88},
+    {"market":"Switzerland","listed":3},
+    {"market":"Thailand","listed":2},
+    {"market":"Turkey","listed":5},
+    {"market":"United Kingdom","listed":50},
+    {"market":"Uruguay","listed":3},
+    {"market":"USA","listed":32}
+  ],
+  "liveCategorySnapshots": [
+    {
+      "market":"Australia",
+      "observedListed":56,
+      "sourceUrl":"https://www.harpers-directory.com/products/agents-importers-distributors-australia",
+      "observationDate":"2026-09-05",
+      "note":"Live category page differed from the 58-entry aggregate product index snapshot; both are retained as directory-version evidence."
+    },
+    {
+      "market":"USA",
+      "observedListed":30,
+      "sourceUrl":"https://www.harpers-directory.com/products/agents-importers-distributors-usa",
+      "observationDate":"2026-09-05",
+      "note":"A current crawl displayed 30 companies while nearby directory snapshots have shown 32 or 33; do not treat directory counts as immutable."
+    }
+  ],
+  "guardrails": [
+    "Listing count does not equal unique importer count because businesses can appear in multiple country categories.",
+    "A directory listing is a discovery lead only and cannot establish wine, vineyard, legal, historical, genetic or technical facts.",
+    "Every candidate must be individually verified before source promotion.",
+    "Portfolio and technical-sheet availability must be inspected on the candidate's own site before observation ingestion."
+  ]
+}

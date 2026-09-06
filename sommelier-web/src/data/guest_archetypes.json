@@ -1,0 +1,174 @@
+{
+  "archetypes": [
+    {
+      "id": "collector",
+      "name": "The Collector",
+      "description": "Deeply knowledgeable wine enthusiast seeking rare and allocated bottles. Has an extensive personal cellar and attends wine auctions.",
+      "wine_knowledge": [0.8, 1.0],
+      "patience": [0.5, 0.8],
+      "generosity": [0.6, 0.9],
+      "price_ceiling": [500, 5000],
+      "price_floor": [100, 300],
+      "adventure_level": [0.3, 0.7],
+      "preferred_regions": ["Burgundy", "Bordeaux", "Piedmont", "Champagne", "Rhône"],
+      "conversation_hints": [
+        "mentions recent auction purchases",
+        "asks about your allocation list",
+        "name-drops specific vineyards and vintages",
+        "compares vintages knowledgeably",
+        "wants to see the reserve list",
+        "asks about provenance and storage conditions"
+      ],
+      "frequency": 0.08
+    },
+    {
+      "id": "business",
+      "name": "The Business Dinner",
+      "description": "Hosting clients or colleagues at an important dinner. Wants to appear knowledgeable and generous without overthinking it.",
+      "wine_knowledge": [0.3, 0.6],
+      "patience": [0.3, 0.6],
+      "generosity": [0.7, 1.0],
+      "price_ceiling": [200, 1000],
+      "price_floor": [80, 200],
+      "adventure_level": [0.1, 0.4],
+      "preferred_regions": ["Bordeaux", "Napa Valley", "Champagne", "Brunello di Montalcino"],
+      "conversation_hints": [
+        "wants something 'impressive' for the table",
+        "asks what you'd recommend for a special occasion",
+        "glances at the check discreetly",
+        "defers to you as the expert",
+        "wants recognizable names their guests will appreciate",
+        "asks for Champagne to start"
+      ],
+      "frequency": 0.20
+    },
+    {
+      "id": "couple",
+      "name": "The Couple",
+      "description": "Celebrating a milestone — anniversary, birthday, engagement. Wants a romantic, memorable wine experience.",
+      "wine_knowledge": [0.1, 0.5],
+      "patience": [0.6, 0.9],
+      "generosity": [0.5, 0.8],
+      "price_ceiling": [80, 300],
+      "price_floor": [30, 60],
+      "adventure_level": [0.3, 0.7],
+      "preferred_regions": [],
+      "conversation_hints": [
+        "mentions anniversary or birthday",
+        "asks for 'something special'",
+        "wants to know the story behind the wine",
+        "interested in pairing suggestions for the full menu",
+        "asks about Champagne or sparkling to celebrate",
+        "wants a wine they can remember this night by"
+      ],
+      "celebrations": ["anniversary", "birthday", "engagement", "promotion", "graduation"],
+      "frequency": 0.25
+    },
+    {
+      "id": "snob",
+      "name": "The Wine Snob",
+      "description": "Has extensive but sometimes inaccurate knowledge. Tests the sommelier's expertise aggressively. Rewards competence with respect and big orders.",
+      "wine_knowledge": [0.6, 0.9],
+      "patience": [0.2, 0.5],
+      "generosity": [0.3, 0.7],
+      "price_ceiling": [200, 800],
+      "price_floor": [100, 200],
+      "adventure_level": [0.2, 0.5],
+      "preferred_regions": ["Burgundy", "Bordeaux", "Champagne", "Piedmont", "Tuscany"],
+      "conversation_hints": [
+        "corrects your pronunciation (sometimes incorrectly)",
+        "asks trick questions about vintages",
+        "mentions their own cellar collection",
+        "dismisses your first suggestion",
+        "asks about specific producers to test you",
+        "quotes critic scores"
+      ],
+      "frequency": 0.08
+    },
+    {
+      "id": "adventurer",
+      "name": "The Adventurer",
+      "description": "Passionate about discovering unusual wines from lesser-known regions. Values authenticity and story over prestige scores.",
+      "wine_knowledge": [0.4, 0.8],
+      "patience": [0.7, 1.0],
+      "generosity": [0.5, 0.8],
+      "price_ceiling": [60, 250],
+      "price_floor": [20, 40],
+      "adventure_level": [0.8, 1.0],
+      "preferred_regions": ["Greece", "Georgia", "Lebanon", "Alto Adige", "Jura", "Canary Islands", "Slovenia", "Croatia", "Sicily"],
+      "conversation_hints": [
+        "asks about natural or minimal-intervention wines",
+        "wants something they've never tried before",
+        "interested in indigenous grape varieties",
+        "asks about the winemaker's philosophy",
+        "excited by orange wines, pet-nat, or amphora-aged wines",
+        "wants the most unusual thing on your list"
+      ],
+      "frequency": 0.12
+    },
+    {
+      "id": "budget",
+      "name": "The Value Seeker",
+      "description": "Appreciates good wine but is genuinely budget-conscious. Not cheap — just wants the best QPR on the list.",
+      "wine_knowledge": [0.2, 0.6],
+      "patience": [0.5, 0.8],
+      "generosity": [0.4, 0.6],
+      "price_ceiling": [40, 100],
+      "price_floor": [0, 20],
+      "adventure_level": [0.3, 0.6],
+      "preferred_regions": [],
+      "conversation_hints": [
+        "asks about by-the-glass options",
+        "looks at prices before descriptions",
+        "appreciates when you suggest hidden gems at good prices",
+        "asks if any half bottles are available",
+        "wants to split a bottle with the table",
+        "asks which wines are the best value"
+      ],
+      "frequency": 0.15
+    },
+    {
+      "id": "newcomer",
+      "name": "The Newcomer",
+      "description": "First time at a fine dining restaurant or new to wine entirely. Needs patient, jargon-free guidance.",
+      "wine_knowledge": [0.0, 0.2],
+      "patience": [0.6, 0.9],
+      "generosity": [0.5, 0.8],
+      "price_ceiling": [40, 120],
+      "price_floor": [0, 20],
+      "adventure_level": [0.2, 0.5],
+      "preferred_regions": [],
+      "conversation_hints": [
+        "admits they don't know much about wine",
+        "asks 'what's good?' without being more specific",
+        "says they usually drink beer or cocktails",
+        "worried about choosing the 'wrong' wine",
+        "intimidated by the wine list size",
+        "asks if you have anything 'not too dry'"
+      ],
+      "frequency": 0.10
+    },
+    {
+      "id": "critic",
+      "name": "The Critic",
+      "description": "Restaurant or wine critic dining anonymously. Every detail of service, list depth, and wine condition will be evaluated and published.",
+      "wine_knowledge": [0.7, 1.0],
+      "patience": [0.3, 0.6],
+      "generosity": [0.5, 0.7],
+      "price_ceiling": [150, 500],
+      "price_floor": [50, 100],
+      "adventure_level": [0.5, 0.8],
+      "preferred_regions": [],
+      "conversation_hints": [
+        "takes notes discreetly on their phone",
+        "asks unusually detailed questions about the wine program",
+        "orders wines from different sections of the list",
+        "seems to be evaluating the glassware and service tempo",
+        "asks about your wine storage conditions",
+        "requests to see the full wine list, not the abbreviated version"
+      ],
+      "is_critic": true,
+      "frequency": 0.02
+    }
+  ]
+}

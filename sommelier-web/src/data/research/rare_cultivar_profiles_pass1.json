@@ -1,0 +1,37 @@
+{
+  "schemaVersion":1,
+  "updatedAt":"2026-09-05",
+  "method":"Rare, endangered and historically eroded indigenous-cultivar research. Official National Wine Agency descriptions establish historical/viticultural context; names in the research queue are identities requiring further VIVC/national synonym and genetic normalization before generation. Historical scarcity does not by itself prove present commercial area.",
+  "profiles":[
+    {
+      "id":"rare-ge-kisi","name":"Kisi","country":"Georgia","region":"Kakheti","color":"white","researchStatus":"deep-reference","generationStatus":"reference-only",
+      "historicalStatus":{"summary":"Official Georgian source describes Kisi as having become nearly extinct by around 2000 before renewed plantings.","drivers":["Soviet-era preference for Rkatsiteli","vineyard decline after the collapse of the Soviet Union"],"survivorEvidence":"Official source notes surviving old vines, including 50–60 year-old vines in the Telavi area, alongside renewed planting."},
+      "phenology":{"budbreak":"late","ripeningRelative":"before Rkatsiteli"},
+      "diseaseAndClimate":{"frost":"relatively resistant in official description","drought":"relatively resistant in official description","downyMildew":"relatively resistant in official description","powderyMildew":"susceptible","blackRot":"susceptible"},
+      "researchNotes":["Do not infer that all Kisi is the Magraani local form; the PDO specification's historical description of Magraani material is not treated as genetic proof of a distinct variety."],
+      "sourceRefs":["ge-nwa-white-varieties-2026","ge-nwa-kisi-magraani-spec-2026"]
+    },
+    {
+      "id":"rare-ge-ojaleshi","name":"Ojaleshi","country":"Georgia","region":"Samegrelo","color":"red","researchStatus":"deep-reference","generationStatus":"reference-only",
+      "historicalStatus":{"summary":"Official Georgian source describes Ojaleshi as an old western Georgian variety historically grown in maghlari/tree-trained systems and heavily reduced by fungal diseases and phylloxera.","publishedSnapshot":{"year":2004,"areaHa":141,"familyHoldingAreaHa":137}},
+      "viticulture":{"historicTraining":"maghlari / high-trained on trees","ripening":"late","fungalDiseaseSensitivity":"sensitive in official description"},
+      "researchNotes":["The 2004 area figure is a historical snapshot, not a current planted-area claim."],
+      "sourceRefs":["ge-nwa-red-varieties-2026","ge-nwa-winemaking-regions-2026"]
+    },
+    {
+      "id":"rare-ge-jani","name":"Jani","country":"Georgia","region":"Guria","color":"red","researchStatus":"deep-reference","generationStatus":"reference-only",
+      "historicalStatus":{"summary":"Official Georgian source describes Jani as a native Gurian variety that was formerly more widespread and is now rare."},
+      "viticulture":{"yieldTonnesPerHaOfficialRange":[2.2,3.5],"ripening":"very late; official source describes November ripening","diseaseContext":"official variety description records disease sensitivities requiring exact field extraction before numerical resistance scoring"},
+      "researchNotes":["The exceptionally low published yield is retained as an official variety observation and must not be generalized to every site or vintage."],
+      "sourceRefs":["ge-nwa-red-varieties-2026","ge-nwa-winemaking-regions-2026"]
+    }
+  ],
+  "historicalVarietyResearchQueue":[
+    {"region":"Guria","names":["Chkhaveri","Jani","Mtevandidi","Skhilatubani","Sakmiela"]},
+    {"region":"Samegrelo","names":["Ojaleshi","Godaaturi","Chvitiluri","Chechipeshi"]},
+    {"region":"Abkhazia","names":["Amlakhu","Avasikhva","Kaghighi","Agshibi","Akabuli","Absuaj","Lakoaj","Khapshira","Khunaliji"]},
+    {"region":"Adjara","names":["Brola","Khopaturi","Klarjuli","Mekrenchkhi","Burdzghala","Kviristava","Shvashura","Jineshi","Satsuri","Batomura"]},
+    {"region":"Racha-Lechkhumi","names":["Tsulukidze Tetra","Tsolikouri","Aleksandrouli","Mujuretuli","Rachuli Dzelshavi","Usakhelouri","Orbeluri"]}
+  ],
+  "queuePolicy":"A name in the queue means an official regional source attests historical/local relevance. It does not establish prime-variety identity, synonym equivalence, current commercial planting, product legality or sensory profile. Those require cultivar-level normalization and additional sources."
+}

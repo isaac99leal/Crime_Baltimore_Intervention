@@ -1,0 +1,22 @@
+{
+  "updatedAt": "2026-09-04",
+  "policy": "Third environmental/vintage pass. Preserve official regional climate, geology, soil, elevation and harvest observations separately from derived simulation matrices.",
+  "sources": [
+    {"id":"de-mosel-terroir-2026","publisher":"Deutsches Weininstitut (Wines of Germany)","title":"Mosel wine-growing region: climate, soils, slopes and varieties","url":"https://www.winesofgermany.com/our-regions/growing-area/72/mosel","jurisdiction":"Germany","kind":"national-wine-body","accessed":"2026-09-04"},
+    {"id":"de-mosel-vintage-2023","publisher":"Deutsches Weininstitut","title":"Vintage 2023 in the German wine-growing regions — Mosel","url":"https://www.winesofgermany.com/fileadmin/DWI/Regionen/PDF/PM_Vintage_2023_in_in_the_German_Winegrowing_Regions.pdf","jurisdiction":"Germany","kind":"national-wine-body-harvest-report","accessed":"2026-09-04"},
+    {"id":"de-mosel-vintage-2025","publisher":"Deutsches Weininstitut","title":"The 2025 vintage in the 13 German wine-growing regions — Mosel","url":"https://www.winesofgermany.com/news-media/news/news/1575/the-2025-vintage-in-the-13-wine-growing-regions","jurisdiction":"Germany","kind":"national-wine-body-harvest-report","accessed":"2026-09-04"},
+
+    {"id":"at-kamptal-terroir-2026","publisher":"Austrian Wine Marketing Board","title":"Kamptal regional overview: loess, primary rock and Heiligenstein","url":"https://www.austrianwine.com/fileadmin/user_upload/AVZ_Newcomer_WEB.pdf","jurisdiction":"Austria","kind":"national-wine-body","accessed":"2026-09-04"},
+    {"id":"at-kamptal-soils-2026","publisher":"Austrian Wine Marketing Board","title":"Grüner Veltliner and soil — Kamptal soil types","url":"https://www.austrianwine.com/fileadmin/user_upload/PDF/AVZs/WG15_GV_Verkostung-WEB.pdf","jurisdiction":"Austria","kind":"national-wine-body","accessed":"2026-09-04"},
+    {"id":"at-wachau-terroir-education","publisher":"Austrian Wine Marketing Board","title":"Wachau Loibenberg: Pannonian climate, elevation, gneiss and loess","url":"https://www.austrianwine.com/fileadmin/user_upload/AVZ_Flight_Verkostung_London_END_WEB_2_.pdf","jurisdiction":"Austria","kind":"national-wine-body-education","accessed":"2026-09-04"},
+
+    {"id":"hu-tokaj-terroir-2024","publisher":"Wines of Hungary","title":"Tokaj Wine Region — official regional guide and map","url":"https://winesofhungary.hu/media/uploads/publications_and_maps/tokaj_wine_region.pdf","jurisdiction":"Hungary","kind":"national-wine-body","accessed":"2026-09-04"},
+
+    {"id":"ar-mendoza-uco-terroir-2022","publisher":"Wines of Argentina","title":"Mendoza wine regions and Uco Valley geographical-indication profiles","url":"https://api.winesofargentina.org/uploads/web/regiones/cuyo/mendoza/pdf/pdf-viejos/-PROVINCE-MENDOZA-ENG.pdf","jurisdiction":"Argentina","kind":"national-wine-body","accessed":"2026-09-04"},
+    {"id":"ar-harvest-2022","publisher":"Wines of Argentina","title":"The 2022 Harvest in Argentina","url":"https://api.winesofargentina.org/uploads/2022/09/3xzXdsdFdO_RepCosecha2022_ING.pdf","jurisdiction":"Argentina","kind":"national-wine-body-harvest-report","accessed":"2026-09-04"},
+
+    {"id":"au-barossa-terroir-2026","publisher":"Wine Australia","title":"Barossa Valley — climate, soils and regional profile","url":"https://www.wineaustralia.com/market-insights/regions-and-varieties/south-australia-wines/barossa","jurisdiction":"Australia","kind":"national-regional-wine-body","accessed":"2026-09-04"},
+    {"id":"au-barossa-terroir-research-2023","publisher":"Wine Australia / University of Adelaide","title":"Understanding the drivers of terroir in the Barossa Valley","url":"https://www.wineaustralia.com/research_and_innovation/projects/understanding-the-drivers-of-terroir-in","jurisdiction":"Australia","kind":"research-program","accessed":"2026-09-04"},
+    {"id":"au-margaret-river-terroir-2026","publisher":"Wine Australia","title":"Margaret River — climate, soils and regional profile","url":"https://www.wineaustralia.com/market-insights/regions-and-varieties/western-australia-wines/margaret-river","jurisdiction":"Australia","kind":"national-regional-wine-body","accessed":"2026-09-04"}
+  ]
+}

@@ -1,0 +1,145 @@
+name: Wine Reference Source Snapshot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - revamp/sommelier-web-v2
+    paths:
+      - '.github/workflows/reference-source-snapshot.yml'
+      - 'sommelier-web/scripts/build_official_reference.py'
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: revamp/sommelier-web-v2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check requests openpyxl beautifulsoup4
+      - name: Fetch authoritative source snapshots
+        run: |
+          cat > "$RUNNER_TEMP/openssl-legacy.cnf" <<'EOF'
+          openssl_conf = openssl_init
+          [openssl_init]
+          ssl_conf = ssl_sect
+          [ssl_sect]
+          system_default = system_default_sect
+          [system_default_sect]
+          Options = UnsafeLegacyServerConnect,UnsafeLegacyRenegotiation
+          EOF
+          export OPENSSL_CONF="$RUNNER_TEMP/openssl-legacy.cnf"
+          python - <<'PY'
+          import json
+          import pathlib
+          import re
+          from datetime import datetime, timezone
+
+          import requests
+          from bs4 import BeautifulSoup
+          from openpyxl import load_workbook
+
+          OUT = pathlib.Path('reference-snapshot')
+          OUT.mkdir(exist_ok=True)
+          session = requests.Session()
+          session.headers.update({'User-Agent': 'SommelierGameReferenceSync/0.3 (+GitHub Actions)'})
+
+          binary_sources = {
+              'adelaide_varieties.xlsx': 'https://economics.adelaide.edu.au/wine-economics/ua/media/476/varieties_2000_to_2023.xlsx',
+              'adelaide_origin_colour.xlsx': 'https://economics.adelaide.edu.au/wine-economics/ua/media/455/origin_and_colour_2000_to_2023_0.xlsx',
+              'adelaide_national.xlsx': 'https://economics.adelaide.edu.au/wine-economics/ua/media/452/national_2000_to_2023_0.xlsx',
+              'adelaide_regional_2023.xlsx': 'https://economics.adelaide.edu.au/wine-economics/ua/media/467/regional_2023.xlsx',
+          }
+
+          summary = {
+              'generatedAt': datetime.now(timezone.utc).isoformat(),
+              'sources': {},
+              'workbooks': {},
+              'errors': [],
+          }
+
+          for filename, url in binary_sources.items():
+              try:
+                  response = session.get(url, timeout=120)
+                  response.raise_for_status()
+                  path = OUT / filename
+                  path.write_bytes(response.content)
+                  summary['sources'][filename] = {'url': url, 'bytes': len(response.content)}
+                  workbook = load_workbook(path, read_only=True, data_only=True)
+                  summary['workbooks'][filename] = {
+                      sheet.title: {'maxRow': sheet.max_row, 'maxColumn': sheet.max_column}
+                      for sheet in workbook.worksheets
+                  }
+              except Exception as exc:
+                  summary['errors'].append({'source': filename, 'url': url, 'error': repr(exc)})
+
+          ttb_url = 'https://www.ttb.gov/regulated-commodities/beverage-alcohol/wine/established-avas'
+          try:
+              response = session.get(ttb_url, timeout=90)
+              response.raise_for_status()
+              (OUT / 'ttb-established-avas.html').write_text(response.text, encoding='utf-8')
+              summary['sources']['ttb'] = {'url': ttb_url, 'bytes': len(response.content)}
+          except Exception as exc:
+              summary['errors'].append({'source': 'ttb', 'url': ttb_url, 'error': repr(exc)})
+
+          eambrosia_url = 'https://webgate.ec.europa.eu/eambrosia-api/api/v1/geographical-indications'
+          all_gis = []
+          try:
+              try:
+                  response = session.get(eambrosia_url, timeout=180)
+                  response.raise_for_status()
+                  all_gis = response.json()
+              except Exception:
+                  windows = [(1900, 2015)] + [(year, year + 1) for year in range(2015, 2027)]
+                  seen = set()
+                  for start, end in windows:
+                      params = {
+                          'modifiedOnFrom': f'{start}-01-01T00:00:00.000Z',
+                          'modifiedOnTo': f'{end}-01-01T00:00:00.000Z',
+                      }
+                      part = session.get(eambrosia_url, params=params, timeout=120)
+                      part.raise_for_status()
+                      for gi in part.json():
+                          key = gi.get('giIdentifier')
+                          if key and key not in seen:
+                              seen.add(key)
+                              all_gis.append(gi)
+              wines = [gi for gi in all_gis if gi.get('productType') == 'WINE' and not gi.get('removedFlag')]
+              (OUT / 'eambrosia-wine-gis.json').write_text(json.dumps({
+                  'source': eambrosia_url,
+                  'retrievedAt': summary['generatedAt'],
+                  'count': len(wines),
+                  'records': wines,
+              }, ensure_ascii=False), encoding='utf-8')
+              summary['sources']['eambrosia'] = {'url': eambrosia_url, 'wineRecords': len(wines), 'allGiRecords': len(all_gis)}
+          except Exception as exc:
+              summary['errors'].append({'source': 'eambrosia', 'url': eambrosia_url, 'error': repr(exc)})
+
+          (OUT / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding='utf-8')
+          if summary['errors']:
+              print(json.dumps(summary['errors'], indent=2))
+          PY
+      - name: Normalize source data for the game
+        run: python sommelier-web/scripts/build_official_reference.py reference-snapshot sommelier-web/src/data/official
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wine-reference-source-snapshot
+          path: reference-snapshot/
+          retention-days: 7
+      - name: Commit normalized reference indices
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sommelier-web/src/data/official/
+          if git diff --cached --quiet; then
+            echo "No normalized reference changes."
+          else
+            git commit -m "Refresh authoritative wine reference indices"
+            git push origin HEAD:revamp/sommelier-web-v2
+          fi

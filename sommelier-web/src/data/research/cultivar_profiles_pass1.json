@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Cultivar identity and breeding data are source-backed. The Bundessortenamt PIWI list is preserved as an official German production-cultivar list declared fungus-resistant by applicants; JKI breeder/research observations supply pedigrees, resistance loci, viticulture and enological observations. Resistance is never treated as immunity.",
+  "piwiRegistry": {
+    "jurisdiction": "Germany",
+    "asOf": "2024-03-01",
+    "totalProductionCultivars": 119,
+    "declaredPiwiCount": 36,
+    "declarationBasis": "declared fungus-resistant production cultivars according to applicant information",
+    "sourceRefs": ["bsa-rebe-2024"],
+    "cultivars": ["Accent","Allegro","Aromera","Baron","Bolero","Bronner","Cabernet Blanc","Cabernet Cantor","Cabernet Carbon","Cabernet Carol","Cabernet Cortis","Cabertin","Calandro","Calardis Blanc","Donauriesling","Felicia","Helios","Hibernal","Johanniter","Merzling","Monarch","Muscaris","Orion","Phoenix","Pinotin","Piroso","Prinzipal","Prior","Reberger","Regent","Rondo","Saphira","Sauvitage","Solaris","Souvignier Gris","Villaris"]
+  },
+  "profiles": [
+    {
+      "id":"cultivar-regent-jki","name":"Regent","color":"red","generationStatus":"reference-only","pedigree":"Diana × Chambourcin","crossingYear":1967,"nationalRegistrationYear":1997,
+      "resistance":{"powderyMildew":"medium-high","downyMildew":"medium","botrytis":"medium","loci":{"powderyMildew":["Ren3","Ren9"],"downyMildew":["Rpv3.1"]}},
+      "viticulture":{"growth":"medium to vigorous; low side-shoot formation","cluster":"loose; medium; approximately 130 g","observedYieldTPerHaApprox":11.5},
+      "enology":{"observations":["deep red colour","full-bodied structure","balanced tannins and aromas","dark cherry, blackberry, blueberry and cocoa reported in JKI breeder trials","also suitable for rosé or sparkling production"]},
+      "sourceRefs":["bsa-rebe-2024","jki-grapevine-catalog-2022"]
+    },
+    {
+      "id":"cultivar-calardis-blanc-jki","name":"Calardis Blanc","color":"white","generationStatus":"reference-only","pedigree":"Calardis Musqué × Seyve Villard 39-639","crossingYear":1993,"nationalRegistrationYear":2020,
+      "resistance":{"powderyMildew":"medium-high","downyMildew":"high","botrytis":"medium-high","blackRot":"medium-high","loci":{"powderyMildew":["Ren3","Ren9"],"downyMildew":["Rpv3.1","Rpv3.2"],"blackRot":["Rgb"]}},
+      "viticulture":{"growth":"upright; low side-shoot formation; slight tendency to double shoots","cluster":"medium-sized and loose, similar to Riesling","observedYieldTPerHaApprox":16,"researchNotes":["JKI reports low sunburn damage even in dry/hot trial years; this is a breeder-site observation, not a universal climate guarantee."]},
+      "enology":{"observations":["passion fruit, blood orange and freshly cut apple reported in JKI trials","spicy bouquet","lively acidity","identified by JKI as suitable for sparkling base wine"]},
+      "sourceRefs":["bsa-rebe-2024","jki-grapevine-catalog-2022"]
+    },
+    {
+      "id":"cultivar-felicia-jki","name":"Felicia","color":"white","generationStatus":"reference-only","pedigree":"Sirius × Vidal Blanc","crossingYear":1984,"nationalRegistrationYear":2020,
+      "resistance":{"powderyMildew":"medium-high","downyMildew":"medium","botrytis":"medium-high","blackRot":"medium-high","loci":{"powderyMildew":["Ren3","Ren9"],"downyMildew":["Rpv3.1","Rpv3.3"],"blackRot":["Rgb"]}},
+      "viticulture":{"growth":"vigorous; medium side-shoot formation","cluster":"large and loose; large berries","observedYieldTPerHaApprox":15},
+      "enology":{"observations":["light, fine-fruited wine style in JKI trials","green apple, apricot and banana","occasional discreet Muscat character","pronounced/harmonious acidity","JKI notes blending potential"]},
+      "sourceRefs":["bsa-rebe-2024","jki-grapevine-catalog-2022"]
+    },
+    {
+      "id":"cultivar-phoenix-jki","name":"Phoenix","color":"white","generationStatus":"reference-only","pedigree":"Bacchus × Vidal Blanc","crossingYear":1964,"nationalRegistrationYear":1992,
+      "resistance":{"powderyMildew":"medium-high","downyMildew":"medium","botrytis":"medium","loci":{"powderyMildew":["Ren3","Ren9"],"downyMildew":["Rpv3.1"]}},
+      "viticulture":{"growth":"upright with favourable wood ripening","observedYieldTPerHaApprox":15,"traits":["early ripening","high winter-frost resistance reported by JKI","berries can split under wet weather near ripeness"]},
+      "enology":{"observations":["discreet Muscat note","full-bodied","ripe/balanced acidity in JKI trials"]},
+      "sourceRefs":["bsa-rebe-2024","jki-grapevine-catalog-2022"]
+    },
+    {
+      "id":"cultivar-villaris-jki","name":"Villaris","color":"white","generationStatus":"reference-only","pedigree":"Sirius × Vidal Blanc","crossingYear":1984,"nationalRegistrationYear":2011,
+      "resistance":{"powderyMildew":"medium-high","downyMildew":"medium-high","botrytis":"medium","loci":{"powderyMildew":["Ren3","Ren9"],"downyMildew":["Rpv3.1","Rpv3.3"]}},
+      "viticulture":{"growth":"vigorous and upright; low-to-medium side-shoot formation","observedYieldTPerHaApprox":13,"traits":["early ripening; JKI reports slightly earlier average ripening than Müller-Thurgau"]},
+      "enology":{"observations":["often relatively low acidity in JKI trials","white-Pinot-like mild wine style"]},
+      "sourceRefs":["bsa-rebe-2024","jki-grapevine-catalog-2022"]
+    },
+    {
+      "id":"cultivar-calandro-jki","name":"Calandro","color":"red","generationStatus":"reference-only","pedigree":"Domina × Regent","crossingYear":1984,"nationalRegistrationYear":2011,
+      "resistance":{"powderyMildew":"medium-high","downyMildew":"medium","botrytis":"low","loci":{"powderyMildew":["Ren3","Ren9"],"downyMildew":["Rpv3.1"]}},
+      "viticulture":{"growth":"medium to vigorous; low side-shoot formation","cluster":"compact; medium; approximately 150 g","observedYieldTPerHaApprox":14.5},
+      "enology":{"observations":["colour-intense structured red wine in JKI trials","complex/high tannin structure","berry and smoky notes","JKI notes barrique-ageing suitability and need for maturation"]},
+      "sourceRefs":["bsa-rebe-2024","jki-grapevine-catalog-2022"]
+    },
+    {
+      "id":"cultivar-reberger-jki","name":"Reberger","color":"red","generationStatus":"reference-only","pedigree":"Regent × Lemberger","crossingYear":1986,"nationalRegistrationYear":2011,
+      "resistance":{"powderyMildew":"medium-high","downyMildew":"low","botrytis":"medium","loci":{"powderyMildew":["Ren3","Ren9"]}},
+      "viticulture":{"growth":"medium to vigorous; low side-shoot formation","cluster":"loose; medium; approximately 120 g","observedYieldTPerHaApprox":11,"researchNotes":["JKI explicitly reports downy-mildew susceptibility comparable to classical varieties and recommends intensive foliage treatment; PIWI identity must not override this profile."]},
+      "enology":{"observations":["full-bodied and smooth in JKI trials","sour cherry, plum, blueberry, elderberry and raspberry reported","vanilla, tobacco, cloves and dark chocolate reported in developed wines"]},
+      "sourceRefs":["bsa-rebe-2024","jki-grapevine-catalog-2022"]
+    }
+  ]
+}

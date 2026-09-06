@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Legal ageing and old-vine terminology are stored as source-backed rules. Sensory consequences are modeled separately and marked derived. Historical legal versions should be added with effective dates rather than overwriting current rules.",
+  "ageingRules": [
+    {
+      "id":"age-fr-champagne-nv-current",
+      "country":"France","designation":"Champagne","productLevel":"Non-vintage Champagne","ruleType":"minimum-cellar-ageing","legal":true,"effective":"current",
+      "requirements":{"minimumTotalMonths":15,"minimumLeesMonths":15,"releaseBasis":"minimum maturation in producer cellar before release"},
+      "mechanisms":["yeast autolysis","slow oxidation during lees maturation"],
+      "sourceRefs":["champagne-maturation-2026"]
+    },
+    {
+      "id":"age-fr-champagne-vintage-current",
+      "country":"France","designation":"Champagne","productLevel":"Vintage Champagne","ruleType":"minimum-cellar-ageing","legal":true,"effective":"current",
+      "requirements":{"minimumTotalMonths":36,"minimumLeesMonths":36,"releaseBasis":"minimum cellar maturation for vintage cuvée"},
+      "mechanisms":["yeast autolysis","slow oxidation during lees maturation"],
+      "sourceRefs":["champagne-maturation-2026"]
+    },
+    {
+      "id":"age-es-rioja-crianza-red-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Crianza red","ruleType":"minimum-ageing","legal":true,"effective":"current",
+      "requirements":{"minimumTotalMonths":24,"minimumOakMonths":12,"oakContainerLitres":225},
+      "sourceRefs":["rioja-classification-ageing-2026"]
+    },
+    {
+      "id":"age-es-rioja-crianza-white-rose-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Crianza white/rosé","ruleType":"minimum-ageing","legal":true,"effective":"current",
+      "requirements":{"minimumTotalMonths":24,"minimumOakMonths":6,"oakContainerLitres":225},
+      "sourceRefs":["rioja-classification-ageing-2026"]
+    },
+    {
+      "id":"age-es-rioja-reserva-red-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Reserva red","ruleType":"minimum-ageing","legal":true,"effective":"current",
+      "requirements":{"minimumTotalMonths":36,"minimumOakMonths":12,"minimumBottleMonths":6,"oakContainerLitres":225},
+      "sourceRefs":["rioja-classification-ageing-2026"]
+    },
+    {
+      "id":"age-es-rioja-reserva-white-rose-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Reserva white/rosé","ruleType":"minimum-ageing","legal":true,"effective":"current",
+      "requirements":{"minimumTotalMonths":24,"minimumOakMonths":6,"oakContainerLitres":225},
+      "sourceRefs":["rioja-classification-ageing-2026"]
+    },
+    {
+      "id":"age-es-rioja-gran-reserva-red-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Gran Reserva red","ruleType":"minimum-ageing","legal":true,"effective":"current",
+      "requirements":{"minimumTotalMonths":60,"minimumOakMonths":24,"minimumBottleMonths":24,"oakContainerLitres":225},
+      "sourceRefs":["rioja-classification-ageing-2026"]
+    },
+    {
+      "id":"age-es-rioja-sparkling-generic-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Espumoso de Calidad de Rioja","ruleType":"traditional-method-bottle-ageing","legal":true,"effective":"current",
+      "requirements":{"traditionalMethod":true,"minimumBottleAgeingMonths":15},
+      "mechanisms":["secondary fermentation in bottle","lees contact"],
+      "sourceRefs":["es-rioja-classification-2026","es-rioja-specification-2022"]
+    },
+    {
+      "id":"age-es-rioja-sparkling-reserva-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Espumoso Reserva","ruleType":"traditional-method-bottle-ageing","legal":true,"effective":"current",
+      "requirements":{"traditionalMethod":true,"minimumBottleAgeingMonths":24},
+      "mechanisms":["secondary fermentation in bottle","extended lees contact","autolytic development"],
+      "sourceRefs":["es-rioja-classification-2026","es-rioja-specification-2022"]
+    },
+    {
+      "id":"age-es-rioja-sparkling-gran-anada-current",
+      "country":"Spain","designation":"Rioja DOCa","productLevel":"Espumoso Gran Añada","ruleType":"traditional-method-bottle-ageing","legal":true,"effective":"current",
+      "requirements":{"traditionalMethod":true,"minimumBottleAgeingMonths":36,"manualHarvest":true},
+      "mechanisms":["secondary fermentation in bottle","longer lees contact","autolytic development"],
+      "sourceRefs":["es-rioja-classification-2026","es-rioja-specification-2022"]
+    },
+    {
+      "id":"age-it-brunello-current",
+      "country":"Italy","designation":"Brunello di Montalcino DOCG","productLevel":"Brunello di Montalcino","ruleType":"minimum-ageing-and-release","legal":true,"effective":"current",
+      "requirements":{"minimumOakMonths":24,"minimumBottleMonths":4,"release":"1 January of the fifth year after harvest"},
+      "sourceRefs":["brunello-rules-ageing-2026"]
+    },
+    {
+      "id":"age-it-brunello-riserva-current",
+      "country":"Italy","designation":"Brunello di Montalcino DOCG","productLevel":"Riserva","ruleType":"minimum-ageing-and-release","legal":true,"effective":"current",
+      "requirements":{"minimumOakMonths":24,"minimumBottleMonths":6,"release":"one year later than Brunello normale"},
+      "sourceRefs":["brunello-rules-ageing-2026"]
+    },
+    {
+      "id":"age-pt-port-colheita-current",
+      "country":"Portugal","designation":"Porto / Port","productLevel":"Colheita","ruleType":"minimum-cask-ageing","legal":true,"effective":"current",
+      "requirements":{"minimumCaskYears":7,"singleHarvest":true},
+      "mechanisms":["oxidative cask ageing","evaporation and concentration"],
+      "sourceRefs":["ivdp-port-special-categories-2026"]
+    },
+    {
+      "id":"age-pt-port-age-indication-current",
+      "country":"Portugal","designation":"Porto / Port","productLevel":"Tawny/White with indication of age","ruleType":"age-indication-category","legal":true,"effective":"current",
+      "requirements":{"ageIndicationsYears":[10,20,30,40],"style":"wood matured"},
+      "mechanisms":["oxidative cask ageing","progressive concentration","dried-fruit and spice development"],
+      "sourceRefs":["ivdp-port-special-categories-2026","ivdp-port-ageing-styles-2026"]
+    },
+    {
+      "id":"age-pt-madeira-estufagem-current",
+      "country":"Portugal","designation":"Madeira DOP","productLevel":"Estufagem","ruleType":"process-and-release","legal":true,"effective":"current",
+      "requirements":{"minimumHeatingMonths":3,"temperatureC":[45,50],"minimumPostHeatingRestDays":90,"earliestSale":"31 October of the second year following harvest"},
+      "mechanisms":["controlled heating","oxidative maturation"],
+      "sourceRefs":["ivbam-madeira-vinification-ageing-2026"]
+    },
+    {
+      "id":"age-pt-madeira-canteiro-current",
+      "country":"Portugal","designation":"Madeira DOP","productLevel":"Canteiro","ruleType":"minimum-cask-ageing-and-release","legal":true,"effective":"current",
+      "requirements":{"minimumCaskYears":2,"earliestSale":"after at least 3 years counted from 1 January following harvest"},
+      "mechanisms":["oxidative cask ageing","warm-loft maturation"],
+      "sourceRefs":["ivbam-madeira-vinification-ageing-2026"]
+    }
+  ],
+  "oldVineDefinitions": [
+    {
+      "id":"oldvine-oiv-global-2024","scope":"international-reference","term":"Old grapevine","effectiveFrom":"2024-10-18","legalOrCertification":"intergovernmental-definition",
+      "requirements":{"minimumPlantAgeYears":35,"documentationRequired":true,"graftConnectionUndisturbedYears":35},
+      "sourceRefs":["oiv-old-vine-703-2024"]
+    },
+    {
+      "id":"oldvine-oiv-vineyard-global-2024","scope":"international-reference","term":"Old vineyard","effectiveFrom":"2024-10-18","legalOrCertification":"intergovernmental-definition",
+      "requirements":{"minimumShareOldVinesPct":85,"minimumPlantAgeYears":35,"continuousLegallyDelimitedBlock":true,"eligibleForLegalCertification":true},
+      "sourceRefs":["oiv-old-vine-703-2024"]
+    },
+    {
+      "id":"oldvine-es-rioja-vinedo-singular-current","scope":"Rioja DOCa","term":"Viñedo Singular","legalOrCertification":"DOCa certified smaller-geographical-unit/product classification; not a generic old-vine synonym",
+      "requirements":{"minimumPlantAgeYears":35,"manualHarvest":true,"maximumRedYieldKgHa":5000,"maximumWhiteYieldKgHa":6922,"maximumProcessingYieldPct":65,"sameWineryProductionAgeingStorageBottling":true,"minimumExclusiveProductionControlYears":10,"doubleQualitativeTasting":true,"secondTastingRequiredAssessment":"Excellent","exclusiveGrapeOrigin":true},
+      "sourceRefs":["es-rioja-vinedo-singular-2026"]
+    },
+    {
+      "id":"oldvine-za-certified-heritage","scope":"South Africa","term":"Certified Heritage Vineyard","legalOrCertification":"private-sector certification with documented planting date",
+      "requirements":{"minimumPlantAgeYears":35,"plantingDateShownOnSeal":true},
+      "sourceRefs":["south-africa-old-vine-project-2026"]
+    },
+    {
+      "id":"oldvine-au-barossa-old-vine","scope":"Barossa","term":"Barossa Old Vine","legalOrCertification":"regional charter","requirements":{"minimumPlantAgeYears":35},"sourceRefs":["barossa-old-vine-charter-2026"]
+    },
+    {
+      "id":"oldvine-au-barossa-survivor","scope":"Barossa","term":"Barossa Survivor Vine","legalOrCertification":"regional charter","requirements":{"minimumPlantAgeYears":70},"sourceRefs":["barossa-old-vine-charter-2026"]
+    },
+    {
+      "id":"oldvine-au-barossa-centenarian","scope":"Barossa","term":"Barossa Centenarian Vine","legalOrCertification":"regional charter","requirements":{"minimumPlantAgeYears":100},"sourceRefs":["barossa-old-vine-charter-2026"]
+    },
+    {
+      "id":"oldvine-au-barossa-ancestor","scope":"Barossa","term":"Barossa Ancestor Vine","legalOrCertification":"regional charter","requirements":{"minimumPlantAgeYears":125},"sourceRefs":["barossa-old-vine-charter-2026"]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-09-05T00:45:56.583225+00:00",
+  "policy": "Reference identity and geography are factual source data. Statistical regions are not relabelled as legal appellations. Generated producers/cuvees remain fictional.",
+  "counts": {
+    "varieties": 1997,
+    "countries": 60,
+    "statisticalPlaces": 613,
+    "ttbAvas": 280,
+    "eambrosiaWineGis": 1665
+  },
+  "sourceSnapshotErrors": []
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Current-law overlay pass for South African WO geography, post-2025 Jerez product-law changes, and current IVDP Port category/certification rules. These records supersede older current-law assumptions only where an explicit effective date or current authority source is present.",
+  "profiles": [
+    {
+      "id": "za-wine-origin-framework-feb2026",
+      "country": "South Africa",
+      "name": "South African Wine of Origin — February 2026 production-area framework",
+      "recordType": "legal-framework",
+      "legalClass": "Wine of Origin Scheme",
+      "hierarchy": ["South Africa"],
+      "researchCompleteness": 5,
+      "generationStatus": "framework-only",
+      "products": ["Wine of Origin certified wine"],
+      "classificationTerms": ["geographical unit", "overarching geographical unit", "overarching region", "region", "subregion", "district", "ward"],
+      "productionRules": {
+        "productionAreaSnapshot": "2026-02",
+        "schemeCurrentIndexDate": "2025-06-04",
+        "productionAreaHierarchy": ["geographical unit", "overarching geographical unit", "overarching region", "region", "subregion", "district", "ward"],
+        "indexedProductionAreaIdentities": 152,
+        "certificationScope": ["origin", "vintage year", "variety"],
+        "identityDoesNotImplyProductRules": true
+      },
+      "researchNotes": [
+        "The February 2026 SAWIS production-area table is the current identity snapshot used by the structured designation registry.",
+        "All 152 production-area identities remain reference-only; the WO identity table does not itself establish cultivar, style or product-specific winemaking legality.",
+        "Still Bay is represented as a district with Goukou River Valley as a ward in the February 2026 snapshot; obsolete names are not carried forward from older WO booklets unless separately versioned."
+      ],
+      "sourceRefs": ["za-sawis-production-areas-feb2026", "za-sawis-wine-law-2026"]
+    },
+    {
+      "id": "es-jerez-current-amendment-2025",
+      "country": "Spain",
+      "name": "Jerez-Xérès-Sherry — current post-2025 Union-amendment framework",
+      "recordType": "appellation-legal-era-overlay",
+      "legalClass": "DOP — category 1 wine and category 3 liqueur wine",
+      "hierarchy": ["Spain", "Andalucía", "Marco de Jerez", "Jerez-Xérès-Sherry"],
+      "researchCompleteness": 5,
+      "generationStatus": "reference-only",
+      "products": ["Fino", "Fino Viejo", "Amontillado", "Oloroso", "Palo Cortado", "Pale Dry", "Pale Cream", "Medium", "Cream", "Pedro Ximénez", "Moscatel", "Dulce"],
+      "authorizedGrapes": ["Palomino", "Listán Blanco", "Pedro Ximénez", "Moscatel de Alejandría", "Beba", "Perruno", "Vigiriega"],
+      "principalGrapes": ["Palomino", "Pedro Ximénez", "Moscatel de Alejandría"],
+      "classificationTerms": ["Fino Viejo", "VOS", "VORS", "Añada", "Criaderas y Solera", "Jerez Superior", "Reserva"],
+      "productionRules": {
+        "effectiveFrom": "2025-08-24",
+        "wineCategory1Allowed": true,
+        "liqueurWineCategory3Allowed": true,
+        "fortificationUniversallyRequired": false,
+        "maxGrapeYieldKgPerHa": 11428,
+        "maxWineLitresPer100KgGrapes": 70,
+        "fino": {
+          "sanlucarDeBarramedaAgeingAllowedCurrent": false,
+          "transitionExistingBiologicalAgeingStockThrough": "2030-12-31",
+          "minimumAverageAgeYears": 2
+        },
+        "finoViejo": {"minimumAverageAgeYears": 7},
+        "qualifiedAgeYears": {"VOS": 20, "VORS": 30},
+        "reserva": {
+          "normallyRestrictedToCategory3LiqueurWine": true,
+          "preExistingTrademarkExceptionForCategory1": true
+        }
+      },
+      "researchNotes": [
+        "The approved 2025 Union amendment means fortification can no longer be treated as a universal requirement for every current Jerez generoso product.",
+        "Fino and related generic product terms therefore require an explicit wine-category/process choice before a simulator can assert fortification.",
+        "Manzanilla-Sanlúcar de Barrameda remains a separate DOP and is not folded into Jerez-Xérès-Sherry."
+      ],
+      "sourceRefs": ["es-jerez-spec-2023-consolidated", "es-jerez-union-amendment-2025"]
+    },
+    {
+      "id": "pt-port-current-category-certification-2026",
+      "country": "Portugal",
+      "name": "Porto / Port — current category, bottling and certification framework",
+      "recordType": "appellation-product-certification-framework",
+      "legalClass": "DOP",
+      "hierarchy": ["Portugal", "Douro Demarcated Region", "Porto / Port"],
+      "researchCompleteness": 5,
+      "generationStatus": "reference-only",
+      "products": ["Vintage", "Late Bottled Vintage", "Crusted", "Colheita", "Tawny with indication of age", "Very Very Old"],
+      "classificationTerms": ["Vintage", "LBV", "Crusted", "Colheita", "10 Years", "20 Years", "30 Years", "40 Years", "50 Years", "Very Very Old"],
+      "productionRules": {
+        "Vintage": {
+          "singleHarvest": true,
+          "certificationWindow": "January through June of the second year after harvest",
+          "mayEnterMarketFrom": "1 May of the second year after harvest",
+          "bottlingDeadline": "30 July of the third year after harvest"
+        },
+        "LBV": {
+          "singleHarvest": true,
+          "preBottlingAgeYears": [4, 6],
+          "bottlingDeadline": "31 December of the sixth year after harvest"
+        },
+        "Colheita": {"singleHarvest": true, "minimumWoodAgeYears": 7},
+        "AgeIndication": {
+          "multiYearBlend": true,
+          "woodAged": true,
+          "permittedAgeIndicationsYears": [10, 20, 30, 40, 50],
+          "veryVeryOldMinimumAgeYears": 80,
+          "veryVeryOldDisplaysNumericAge": false
+        },
+        "currentProductAnalytical": {"redPortTotalSo2MgPerLMax": 150, "whitePortTotalSo2MgPerLMax": 160}
+      },
+      "researchNotes": [
+        "This pass strengthens category, bottling and certification facts but intentionally does not promote Port to procedural generation-safe status.",
+        "A full procedural Port model still requires complete current grape, benefício, fortification and certification constraints."
+      ],
+      "sourceRefs": ["pt-ivdp-port-special-categories-2026", "pt-ivdp-port-commercialization-2026", "pt-ivdp-port-product-specifications-2026"]
+    }
+  ]
+}

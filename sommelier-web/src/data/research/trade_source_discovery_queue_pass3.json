@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Third trade-discovery tranche. Names are taken from current specialist distributor/importer network pages and remain directory leads until their own official sites, portfolios and technical resources are inspected.",
+  "groups": [
+    {
+      "sourceRef":"trade-network-natural-wine-authority-pass23",
+      "candidates":[
+        "Grassroots Wine","The Natural Wine Company","Good Omens","Selection Sauvage","Alluvial Wines","Beaune Imports","Black Lamb Wine","Bondle","Convivium Imports","Cul Sec Imports","Danch & Granger Selections","DNS Wines","Élevage","Ethica Wines","Farm Wine Imports","Floraison Selections","Fog Wine Co.","Fox Beverages","Fuji Industries","Garber & Co","Gran Fondo Wine","Hudson Wine Brokers","Kysela Pere et Fils","Lucidity Wine Merchants","Martine's Wines","Merchants of Thirst","North Berkeley Imports","Planet Wine","Revel Wine","Rock Paper Scissors Wine Imports","Roni Selects","Selezioni","Springboard Wine Company","Sylvester Rovine Selections","The Organic Cellar","The Soil Expedition Co.","Terra Firma Wine Company","Veritas Imports","VeroVino","VinIberia Selections","Vintage '59 Imports","Winemonger","Ghvinos Wine Group","Spartina Imports","Cerda Llanos y Cia","Progress Wine Group","Arash Selects","Terroir Selections","Villalobos Wines Selection","Handcrafted Wines and Spirits","Chartrand Imports","Mucci Imports","Saperavi Brothers Wine Merchant","SelectioNaturel","Oz Wine Company","Vineyard Road","Northeast Wine Co.","Jeffrey Alpert Selections","Citadella Imports","Neki Selection","Skin Contact Wines","Amuninni","Avant Garde Wine & Spirits","Bowler Wine","Chambers Street Wines","Coeur Wine Company","Critical Mass Selections","Direct Import Vines","Filomena Selections","Field Blend Selections","French Libation","Grand Cru Selections","La Maison & Velier","Little Peacock Imports","Massanois","MFW Wine Co.","M.S. Walker","AP Wine Imports","Weygandt Selections","Ruff Mix Wines","Grain de Sail Wines","8000 Vintages Selections","Omniwines Distribution","Jenny & Francois Selections","Polaner Selections","Remarkable Liquids","Rosenthal Wine Merchant","Savio Soares Selections","Selections de la Viña","Skurnik Wines & Spirits","Southport Wines","Steep Hill","T. Edward Wines and Spirits","The Artisan Collection","The Little Wine Company","Verity Wine Partners","Vineyard Brands","Vom Boden","Waterfront Wines","Winebow","Wine Dogs Imports","Wine for the World","Wine Mc2","Wine Universe","Artisan Beverage Group","Rooted Selections","PDX Wines","Pascal Schildt","The Wine Brothers","Dionysus Imports","Henderson Selections","Pangea Selections","Volker Wine Co.","Artisanal Cellars","Williams Corner Wine","Beso Imports","Bianco-Rosso Imports","Kily Import","Natty Wine","Vidalco International","Dadaist"
+      ]
+    },
+    {
+      "sourceRef":"trade-network-pdxwine-pass23",
+      "candidates":[
+        "Rosenthal Wine Merchant","The Rare Wine Co.","Diamond Wine Importers","Louis/Dressner Selections","De Maison Selections","The Piedmont Guy","Bowler Wine","José Pastor Selections","PortoVino","Haus Alpenz","La Luz Selections","Marc De Grazia Selections","Patrick Allen Selections","Brazos Wine Imports","Georgian Wine House","Paris Wine Company"
+      ]
+    }
+  ],
+  "promotionPolicy":"Discovery records remain non-authoritative until the candidate's official web presence is verified, its portfolio structure is mapped, technical-resource depth is scored, and individual observations are normalized with field-level provenance."
+}

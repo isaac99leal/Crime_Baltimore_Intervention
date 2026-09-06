@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Authority-register expansion for five additional countries. Records establish current protected wine-name identity, legal class, geography and registration metadata where published. They remain reference-only and do not imply cultivar, yield, ageing or process legality.",
+  "count": 30,
+  "groups": [
+    {
+      "country": "Japan",
+      "sourceRef": "jp-nta-wine-gi-register-2026-pass19",
+      "defaultLegalClass": "GI",
+      "fields": ["name", "legalClass", "level", "parent", "aliases", "registrationDate", "location"],
+      "records": [
+        ["Yamanashi", "GI wine", "national-liquor-gi", null, ["山梨"], "2013-07-16", "Yamanashi Prefecture"],
+        ["Hokkaido", "GI wine", "national-liquor-gi", null, ["北海道"], "2018-06-28", "Hokkaido Prefecture"],
+        ["Yamagata", "GI wine", "national-liquor-gi", null, ["山形"], "2021-06-30", "Yamagata Prefecture"],
+        ["Osaka", "GI wine", "national-liquor-gi", null, ["大阪"], "2021-06-30", "Osaka Prefecture"],
+        ["Nagano", "GI wine", "national-liquor-gi", null, ["長野"], "2021-06-30", "Nagano Prefecture"]
+      ]
+    },
+    {
+      "country": "Moldova",
+      "sourceRef": "md-agepi-wine-gi-register-pass19",
+      "defaultLegalClass": null,
+      "fields": ["name", "legalClass", "level", "parent", "aliases", "location"],
+      "records": [
+        ["Codru", "PGI", "protected-geographical-indication", null, ["CODRU"], "Central Moldova"],
+        ["Ștefan Vodă", "PGI", "protected-geographical-indication", null, ["Stefan Voda", "ŞTEFAN VODĂ"], "Southeastern Moldova"],
+        ["Valul lui Traian", "PGI", "protected-geographical-indication", null, ["VALUL LUI TRAIAN"], "Southern / southwestern Moldova"],
+        ["Ciumai", "PDO", "protected-designation-of-origin", null, ["CIUMAI", "ЧУМАЙ"], "Moldova"],
+        ["Romănești", "PDO", "protected-designation-of-origin", null, ["Romanesti", "ROMĂNEȘTI"], "Moldova"]
+      ]
+    },
+    {
+      "country": "Brazil",
+      "sourceRef": "br-inpi-beverage-gi-register-2026-pass19",
+      "defaultLegalClass": null,
+      "fields": ["name", "legalClass", "level", "parent", "aliases", "registrationNumber", "registrationDate", "location"],
+      "records": [
+        ["Altos de Pinto Bandeira", "DO", "denominação-de-origem", null, [], "BR412021000003-4", "2022-11-29", "Rio Grande do Sul"],
+        ["Altos Montes", "IP", "indicação-de-procedência", null, [], "BR402012000002-0", "2012-12-11", "Rio Grande do Sul"],
+        ["Bituruna", "IP", "indicação-de-procedência", null, [], "BR402021000001-1", "2022-10-18", "Paraná"],
+        ["Campanha Gaúcha", "IP", "indicação-de-procedência", null, [], "BR402017000009-1", "2025-05-27", "Rio Grande do Sul"],
+        ["Farroupilha", "IP", "indicação-de-procedência", null, [], "BR402014000006-9", "2015-07-14", "Rio Grande do Sul"],
+        ["Monte Belo", "IP", "indicação-de-procedência", null, ["Região de Monte Belo"], "BR402012000006-3", "2013-10-01", "Rio Grande do Sul"],
+        ["Pinto Bandeira", "IP", "indicação-de-procedência", null, [], "IG200803", "2010-07-13", "Rio Grande do Sul"],
+        ["Santa Catarina", "IP", "indicação-de-procedência", null, [], "BR402020000008-6", "2021-06-29", "Santa Catarina"],
+        ["Sul de Minas", "IP", "indicação-de-procedência", null, [], "BR402023000001-7", "2025-02-11", "Minas Gerais"],
+        ["Vale do São Francisco", "IP", "indicação-de-procedência", null, [], "BR402020000021-3", "2022-11-01", "Pernambuco / Bahia"],
+        ["Vale dos Vinhedos", "IP", "indicação-de-procedência", null, [], "IG200002", "2002-11-19", "Rio Grande do Sul"],
+        ["Vale dos Vinhedos", "DO", "denominação-de-origem", null, [], "IG201008", "2012-09-25", "Rio Grande do Sul"],
+        ["Vales da Uva Goethe", "DO", "denominação-de-origem", null, ["Vale da Uva Goethe"], "IG201009", "2025-06-10", "Santa Catarina"]
+      ]
+    },
+    {
+      "country": "United Kingdom",
+      "sourceRef": "gb-defra-wine-gi-register-2026-pass19",
+      "defaultLegalClass": null,
+      "fields": ["name", "legalClass", "level", "parent", "aliases", "registrationDate", "location"],
+      "records": [
+        ["English", "PDO", "protected-designation-of-origin", null, [], "2021-03-10", "England"],
+        ["English Regional", "PGI", "protected-geographical-indication", null, [], "2021-03-10", "England"],
+        ["Welsh", "PDO", "protected-designation-of-origin", null, [], "2021-03-10", "Wales"],
+        ["Welsh Regional", "PGI", "protected-geographical-indication", null, [], "2021-03-10", "Wales"],
+        ["Darnibole", "PDO", "protected-designation-of-origin", null, [], "2021-03-10", "Cornwall, England"],
+        ["Sussex", "PDO", "protected-designation-of-origin", null, [], "2022-07-05", "Sussex, England"]
+      ]
+    },
+    {
+      "country": "India",
+      "sourceRef": "in-ipindia-nashik-wine-gi-pass19",
+      "defaultLegalClass": "GI",
+      "fields": ["name", "legalClass", "level", "parent", "aliases", "registrationNumber", "registrationDate", "location"],
+      "records": [
+        ["Nashik Valley Wine", "GI", "registered-geographical-indication", null, [], "123", "2010-08-04", "Maharashtra"]
+      ]
+    }
+  ]
+}

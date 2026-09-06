@@ -1,0 +1,12 @@
+{
+  "updatedAt":"2026-09-05",
+  "policy":"Georgia PDO and endangered/rare indigenous-cultivar pass. Use National Wine Agency product specifications for legal requirements and its official variety/region pages for historical and viticultural context.",
+  "sources":[
+    {"id":"ge-nwa-kisi-magraani-spec-2026","publisher":"National Wine Agency of Georgia","title":"Kisi Magraani PDO product specification","url":"https://wine.gov.ge/En/Wine/1026","jurisdiction":"Georgia / Kakheti / Magraani","kind":"official-product-specification","accessed":"2026-09-05"},
+    {"id":"ge-nwa-khvanchkara-spec-2026","publisher":"National Wine Agency of Georgia","title":"Khvanchkara PDO product specification","url":"https://wine.gov.ge/En/Files/Download/15308","jurisdiction":"Georgia / Racha / Khvanchkara","kind":"official-product-specification","accessed":"2026-09-05"},
+    {"id":"ge-nwa-pdo-zegaani-okureshi-2022","publisher":"National Wine Agency of Georgia","title":"Zegaani and Okureshi Usakhelouri PDO registrations","url":"https://wine.gov.ge/En/News/34935","jurisdiction":"Georgia","kind":"official-registration-announcement","accessed":"2026-09-05"},
+    {"id":"ge-nwa-white-varieties-2026","publisher":"National Wine Agency of Georgia","title":"Georgian white wine grape varieties","url":"https://wine.gov.ge/En/VarietyWhite","jurisdiction":"Georgia","kind":"official-cultivar-reference","accessed":"2026-09-05"},
+    {"id":"ge-nwa-red-varieties-2026","publisher":"National Wine Agency of Georgia","title":"Georgian red wine grape varieties","url":"https://wine.gov.ge/En/VarietyRed","jurisdiction":"Georgia","kind":"official-cultivar-reference","accessed":"2026-09-05"},
+    {"id":"ge-nwa-winemaking-regions-2026","publisher":"National Wine Agency of Georgia","title":"Viticulture and winemaking regions of Georgia","url":"https://wine.gov.ge/En/WineMakingRegions","jurisdiction":"Georgia","kind":"official-regional-reference","accessed":"2026-09-05"}
+  ]
+}

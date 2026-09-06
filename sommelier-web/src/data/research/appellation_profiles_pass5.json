@@ -1,0 +1,52 @@
+{
+  "schemaVersion":1,
+  "updatedAt":"2026-09-05",
+  "method":"Deep Georgian PDO pass. Exact product specifications are separated from registry identity. Analytical, viticultural and process rules are retained as published; ambiguous translated fields remain notes rather than silently normalized.",
+  "profiles":[
+    {
+      "id":"ge-kisi-magraani-pdo","country":"Georgia","name":"Kisi Magraani","recordType":"protected-designation","legalClass":"PDO","hierarchy":["Georgia","Kakheti","Akhmeta Municipality","Magraani micro-zone","Kisi Magraani"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["white dry wine","amber dry wine"],"authorizedGrapes":["Kisi"],"principalGrapes":["Kisi"],"aliases":["Magraani’s Kisi","Maghraani Kisi"],
+      "registration":{"number":981,"date":"2021-05-31"},
+      "communes":["Magraani","Pichkhovani","Argokhi","Babaneuri"],
+      "productionRules":{
+        "grapeComposition":"100% Kisi (specification synonym: Kisi Magraani); other varieties prohibited",
+        "maxYieldTonnesPerHa":8,"maxWineLitresPerTonneGrapes":650,
+        "minimumGrapeSugarPctWhiteDry":19,"minimumGrapeSugarPctAmberDry":20,
+        "white":{"actualAlcoholMinPct":11,"totalAlcoholMaxPct":15,"residualSugarMaxGPerL":4,"titratableAcidityYoungMinGPerL":5,"titratableAcidityAgedMinGPerL":4.3,"volatileAcidityMaxGPerL":1.0,"totalSo2MaxMgL":200,"sugarFreeExtractMinGPerL":16,"fermentationTemperatureMaxC":20,"fermentation":"grape juice/free-run after pressing and sedimentation","mustMaceration":"permitted before fermentation and/or at the beginning","optionalWoodAgeingMinimumMonthsIfUsed":6},
+        "amber":{"actualAlcoholMinPct":12,"totalAlcoholMaxPct":15,"residualSugarMaxGPerL":4,"titratableAcidityMinGPerL":3.5,"volatileAcidityMaxGPerL":1.2,"totalSo2MaxMgL":150,"sugarFreeExtractMinGPerL":22,"qvevriRequired":true,"fermentationTemperatureMaxC":28,"capMixingTimesPerDay":[4,5],"postFermentationSkinContactUntil":"1 February of the year following harvest","optionalWoodAgeingMinimumMonthsIfUsed":6},
+        "maximumConsumerBottleCapacityLitres":5
+      },
+      "viticulture":{"elevationMeters":[400,800],"rowSpacingMeters":[1.0,2.5],"vineSpacingMeters":[0.8,1.5],"stemHeightCm":[70,90],"trainingAndPruning":["one-sided","Georgian two-sided","one-sided cordon","two-sided cordon","free"]},
+      "terroir":{"aspect":"southern and south-western Caucasus Range slopes","climate":"moderately continental and comparatively humid, with hot summers and long cold winters","annualSunshineHoursGreaterThan":2050,"meanAnnualTemperatureC":[12.2,12.4],"annualPrecipitationMm":[750,850]},
+      "styleNotes":["Official specification describes young white wine with meadow-flower, apple, pear, peach and citrus tones and aged white with dry-grass/dried-fruit development.","Official specification describes young amber wine with apple, pear and peach, developing almond and dried-apricot notes with age."],
+      "researchNotes":["The specification records a local survival history for Kisi Magraani and states that low yield limited its spread during the communist period.","The specification records 1940s scientific-institute work distinguishing the Magraani form; this historical statement is preserved as source history, not genetic proof of a distinct cultivar."],
+      "sourceRefs":["ge-nwa-kisi-magraani-spec-2026","ge-nwa-white-varieties-2026"]
+    },
+    {
+      "id":"ge-khvanchkara-pdo","country":"Georgia","name":"Khvanchkara","recordType":"protected-designation","legalClass":"PDO","hierarchy":["Georgia","Racha-Lechkhumi","Ambrolauri / Khvanchkara micro-zone","Khvanchkara"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["red naturally semi-sweet wine"],"authorizedGrapes":["Aleksandrouli","Mujuretuli"],"principalGrapes":["Aleksandrouli","Mujuretuli"],
+      "registration":{"number":1,"date":"2005-07-14"},
+      "productionRules":{"exclusiveGrapes":true,"otherVarietiesProhibited":true,"actualAlcoholMinPct":11,"residualSugarGPerL":[30,45],"finishedExtractMinGPerL":22,"grapeSugarMinPct":24,"maxYieldTonnesPerHa":7,"maxWineLitresPerTonneGrapes":650,"maxWineLitresPerHa":4550,"transportContainerMaxKg":40,"polyethyleneBagTransportProhibited":true},
+      "viticulture":{"elevationMeters":[450,750],"rowSpacingMeters":[1,2.5],"vineSpacingMeters":[0.8,1.5],"stemHeightCm":[60,90],"trainingAndPruning":["one-sided","Georgian two-sided","free trellis"]},
+      "terroir":{"river":"Rioni","setting":"slopes on both sides of the Rioni in Racha","soilFamilies":["humus-carbonate clay soils","rocky humus-carbonate soils","humus soils","deluvial-proluvial light-clay soils","alluvial rocky/clay soils"],"geologyAndTextureNote":"the PDO specification differentiates six soil variants by village rather than one generic Khvanchkara soil"},
+      "styleNotes":["red, naturally semi-sweet; official product specification describes a fine, velvety style tied to Aleksandrouli and Mujuretuli and local conditions"],
+      "historicalNotes":["The specification traces Kipiani Wine to the 1870s and records the name Khvanchkara from 1930.","The specification states that before 1942 the local semi-sweet production lacked modern stabilization and fermentation could stop in autumn/winter cold and restart with spring warmth."],
+      "researchNotes":["The English specification contains an ambiguous translated acidity line; it is intentionally not normalized into a volatile-acidity maximum without a clearer legal text."],
+      "sourceRefs":["ge-nwa-khvanchkara-spec-2026","ge-nwa-winemaking-regions-2026"]
+    },
+    {
+      "id":"ge-zegaani-pdo","country":"Georgia","name":"Zegaani","recordType":"protected-designation","legalClass":"PDO","hierarchy":["Georgia","Kakheti","Gurjaani Municipality","Zegaani"],"researchCompleteness":2,"generationStatus":"reference-only",
+      "products":["red dry qvevri organic wine"],"authorizedGrapes":["Saperavi"],"principalGrapes":["Saperavi"],
+      "productionRules":{"grapeComposition":"100% Saperavi from the Zegaani micro-zone","qvevri":true,"organicDesignationInRegistrationAnnouncement":true},
+      "researchNotes":["Registration announcement establishes identity, grape and broad process. Full analytical/viticultural product specification must be extracted before generation."],
+      "sourceRefs":["ge-nwa-pdo-zegaani-okureshi-2022"]
+    },
+    {
+      "id":"ge-okureshi-usakhelouri-pdo","country":"Georgia","name":"Okureshi’s Usakhelouri","recordType":"protected-designation","legalClass":"PDO","hierarchy":["Georgia","Racha-Lechkhumi","Tsageri Municipality","Okureshi micro-zone","Okureshi’s Usakhelouri"],"researchCompleteness":2,"generationStatus":"reference-only",
+      "products":["red dry wine","red naturally semi-dry wine","red naturally semi-sweet wine"],"authorizedGrapes":["Usakhelouri"],"principalGrapes":["Usakhelouri"],
+      "productionRules":{"grapeComposition":"100% Usakhelouri from the registered micro-zone"},
+      "researchNotes":["Registration announcement establishes three sugar-category identities. Full product specification remains required for exact analytical and process legality."],
+      "sourceRefs":["ge-nwa-pdo-zegaani-okureshi-2022"]
+    }
+  ]
+}

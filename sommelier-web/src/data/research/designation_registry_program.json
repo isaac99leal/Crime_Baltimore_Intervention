@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "goal": "Every legally recognized wine geographical indication, appellation, denomination of origin, viticultural area and equivalent protected origin system globally, without a fame or size threshold.",
+  "policy": [
+    "Never infer a legal GI from statistical planting geography.",
+    "Never omit a designation because it is commercially small or obscure.",
+    "Prefer the authority in the country of origin; treaty registers are reconciliation sources.",
+    "Store registration/effective dates and superseded legal versions when available.",
+    "A registry identity record does not imply that grapes, yields, ageing, styles or production rules are fully modeled.",
+    "Subzones, wards, districts, communes, climats, MGAs, crus and formally regulated named sites belong in the hierarchy when legally or officially defined.",
+    "Historical bottles must distinguish the designation/law actually in force at harvest from a modern geographic equivalent."
+  ],
+  "registries": [
+    {
+      "id":"eu-eambrosia-wine","system":"EU PDO/PGI wine","countries":["Austria","Belgium","Bulgaria","Croatia","Cyprus","Czechia","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Ireland","Italy","Latvia","Lithuania","Luxembourg","Malta","Netherlands","Poland","Portugal","Romania","Slovakia","Slovenia","Spain","Sweden"],
+      "coverage":"full-registry-index","ingestionStatus":"live-index","localIndex":"src/data/official/eambrosia-wine-gis.json","notes":"Product specifications and historical legal versions still require per-GI extraction."
+    },
+    {
+      "id":"us-ttb-avas","system":"American Viticultural Areas","countries":["United States"],"coverage":"full-registry-index","ingestionStatus":"live-index","localIndex":"src/data/official/ttb-avas.json","notes":"AVA defines geography; it must not be treated as an EU-style grape/style prescription."
+    },
+    {"id":"au-wine-gi-register","system":"Australian wine GIs and protected terms","countries":["Australia"],"coverage":"national-register-indexed","ingestionStatus":"live-index","localIndex":"src/data/research/designation_registry_records_pass1.json","sourceRefs":["au-wineaustralia-gi-register-2026"],"notes":"114 hierarchy records are indexed locally; Wine Australia's textual GI determinations remain legally controlling, and product/grape rules are separate."},
+    {"id":"nz-iponz-wine-gi","system":"New Zealand wine geographical indications","countries":["New Zealand"],"coverage":"national-register-indexed","ingestionStatus":"live-index","localIndex":"src/data/research/designation_registry_records_pass1.json","sourceRefs":["nz-iponz-gi-register-2026"],"notes":"Registered and enduring wine GI identities are indexed; individual legal/product detail remains a separate research layer."},
+    {"id":"jp-nta-wine-gi","system":"Japanese liquor geographical indications - wine subset","countries":["Japan"],"coverage":"national-register","ingestionStatus":"authority-identified","sourceRefs":["jp-nta-liquor-gi-register-2026"]},
+    {"id":"ge-national-wine-agency-pdo","system":"Georgian protected designations of origin","countries":["Georgia"],"coverage":"national-register-indexed","ingestionStatus":"live-index","localIndex":"src/data/research/designation_registry_records_pass1.json","sourceRefs":["ge-nwa-pdo-register-2026"],"notes":"All 32 PDO wine identities announced by the National Wine Agency in April 2025 are indexed; product specifications are progressively extracted."},
+    {"id":"ar-inv-ig-doc","system":"Argentine wine IG and DOC","countries":["Argentina"],"coverage":"national-register-indexed","ingestionStatus":"live-index","localIndex":"src/data/research/designation_registry_records_pass1.json","sourceRefs":["ar-inv-origin-register-2025"],"notes":"121 protected IG/DOC register rows from the September 2025 INV list are indexed, preserving same-name records by jurisdiction/legal class."},
+    {"id":"cl-sag-wine-do","system":"Chilean viticultural zones / wine denominations of origin","countries":["Chile"],"coverage":"national-regulation-indexed","ingestionStatus":"live-index","localIndex":"src/data/research/designation_registry_records_pass2.json","sourceRefs":["cl-sag-decree-464-2026"],"notes":"118 region/subregion/zone/area identities from the current July 14, 2026 Decree 464 hierarchy are indexed. Secano Interior and Andes/Entre Cordilleras/Costa are modeled as separate legal labeling rules rather than falsely inserted as ordinary parent geographies."},
+    {"id":"za-wine-origin","system":"South African Wine of Origin","countries":["South Africa"],"coverage":"national-scheme","ingestionStatus":"authority-identified","sourceRefs":["za-sawis-origin-scheme-2016"],"notes":"Must ingest current geographical units, regions, districts and wards from current legal/certification records, not rely only on the older scheme booklet."},
+    {"id":"ca-ontario-vqa","system":"Ontario VQA appellations and sub-appellations","countries":["Canada"],"coverage":"province-partial","ingestionStatus":"authority-identified","sourceRefs":["ca-on-owaa-appellations-2026","ca-on-owaa-wine-standards-2026"]},
+    {"id":"ca-bc-wine-gi","system":"British Columbia wine geographical indications","countries":["Canada"],"coverage":"province-partial","ingestionStatus":"authority-identified","sourceRefs":["ca-bc-wines-quality-regulation-2026"]},
+    {"id":"br-inpi-wine-gi","system":"Brazilian IP/DO geographical indications - wine subset","countries":["Brazil"],"coverage":"national-ip-register","ingestionStatus":"authority-identified","sourceRefs":["br-inpi-gi-register-2026","br-inpi-gi-specifications-2026"]},
+    {"id":"mx-impi-wine-gi","system":"Mexican DO/IG - wine subset","countries":["Mexico"],"coverage":"national-ip-register","ingestionStatus":"authority-identified","sourceRefs":["mx-impi-gi-do-register-2025"]},
+    {"id":"uk-defra-wine-gi","system":"UK protected wine names","countries":["United Kingdom"],"coverage":"national-register","ingestionStatus":"authority-identified","sourceRefs":["uk-defra-wine-gi-register-2026"],"notes":"The same register also contains treaty-protected foreign wine names useful for reconciliation."}
+  ],
+  "requiredRecordDepth": [
+    "identity and protected spelling/transliteration",
+    "legal system and protection class",
+    "registration, effective, amendment and repeal dates",
+    "hierarchy and parent/child geography",
+    "official boundary definition and geometry when available",
+    "wine/product categories and colors/styles",
+    "authorized, principal and prohibited grapes",
+    "blend percentages and origin percentages",
+    "viticultural rules: density, training, pruning, irrigation, yield, harvest restrictions",
+    "minimum/maximum analytical parameters",
+    "winemaking practices required/permitted/prohibited",
+    "enrichment, acidification/deacidification, sweetening and fortification rules",
+    "pressing, extraction, fermentation and vessel requirements when specified",
+    "ageing and release rules by level/style",
+    "traditional terms and reserved label indications",
+    "old-vine/vine-age rules if any",
+    "named subzones, communes, crus, climats, MGAs, wards or vineyards when formal",
+    "soil, geology, topography and climate",
+    "historical vintage observations and authority assessments",
+    "historical legal version applicable to each vintage"
+  ]
+}

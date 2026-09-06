@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Second trade-observation tranche focused on commercially documented niche cultivars, old mixed plantings, exact vineyard context and winemaking. Importer material establishes producer/wine observations only; cultivar identity, synonymy and protected-origin law remain separately corroborated.",
+  "observations": [
+    {
+      "id":"tradeobs-bowler-cazin-romorantin-2023",
+      "tradeSourceId":"trade-bowler",
+      "sourceUrl":"https://www.bowlerwine.com/wine-or-spirit/cour-cheverny-cuvee-renaissance/2023",
+      "producer":"Cazin","wine":"Cour-Cheverny Cuvée Renaissance","vintage":2023,"country":"France","region":"Loire","vineyard":null,
+      "fields":{"varietyComposition":"100% Romorantin","vineAgeYearsRange":[40,90],"harvestMethod":"hand harvested","pressing":"direct pressed","fermentationVessel":"stainless steel tank","yeastStrategy":"native yeasts","malolactic":"does not undergo malolactic fermentation","maturationVessel":"used 300 L barrels","lees":"aged on lees","bottlingDate":"approximately one year after harvest","filtration":"unfiltered","farmingPractice":"Sustainable"},
+      "evidenceChannel":"importer-vintage-wine-page","sourceRef":"trade-bowler-techsheets-pass20"
+    },
+    {
+      "id":"tradeobs-jenny-francois-estezargues-cinsault-2024",
+      "tradeSourceId":"trade-jenny-francois",
+      "sourceUrl":"https://www.jennyandfrancois.com/wines/france/les-vignerons-d%E2%80%99-estezargue/",
+      "producer":"Les Vignerons d’Estézargues","wine":"Les Grandes Vignes Rouge","vintage":2024,"country":"France","region":"Rhône","vineyard":null,
+      "fields":{"varietyComposition":"100% Cinsault","vineAgeYears":50,"soilDescription":"red clay-based and stone-strewn","maceration":"10–15 days around 20 °C","yeastStrategy":"no external yeast","maturationVessel":"enamel-lined tanks","filtration":"unfiltered","fining":"unfined"},
+      "evidenceChannel":"importer-producer-page-with-vintage-tech-sheet","sourceRef":"trade-jenny-francois-pass22"
+    },
+    {
+      "id":"tradeobs-jenny-francois-bloomer-cayuga-petnat",
+      "tradeSourceId":"trade-jenny-francois",
+      "sourceUrl":"https://www.jennyandfrancois.com/wines/usa/bloomer-creek/",
+      "producer":"Bloomer Creek","wine":"Tanzen Dame Pet Nat","vintage":null,"country":"United States","region":"Finger Lakes, New York","vineyard":null,
+      "fields":{"varieties":["Riesling","Cayuga White"],"varietyComposition":"50% Riesling, 50% Cayuga White","vineAgeYears":18,"yieldTonsPerAcre":3,"soilDescription":"silt loam derived from shale naturally high in lime","harvestMethod":"manual harvest","fermentationVessel":"55-gallon stainless steel tanks","sparklingMethod":"fermentation finishes in bottle; disgorged","filtration":"unfiltered","fining":"unfined","sulfurClaim":"zero sulfur addition"},
+      "evidenceChannel":"importer-wine-tech-sheet","sourceRef":"trade-jenny-francois-pass22"
+    },
+    {
+      "id":"tradeobs-jenny-francois-stavek-baco-noir",
+      "tradeSourceId":"trade-jenny-francois",
+      "sourceUrl":"https://www.jennyandfrancois.com/wines/czech-republic/richard-stavek/",
+      "producer":"Richard Stávek","wine":"Baco Noir wine","vintage":null,"country":"Czech Republic","region":"Moravia","vineyard":null,
+      "fields":{"varietyComposition":"100% Baco Noir","productionQuantityBottles":450,"vineAgeYears":50,"yieldHlPerHa":20,"soilDescription":"loam with sandstone subsoil","harvestMethod":"hand harvested","wholeClusterPct":100,"fermentationVessel":"800 L wood tanks","maceration":"carbonic fermentation about one week","yeastStrategy":"indigenous yeast","maturationVessel":"400 L barrels","filtration":"unfiltered","fining":"unfined","sulfurClaim":"zero sulfur addition"},
+      "evidenceChannel":"importer-wine-tech-sheet","sourceRef":"trade-jenny-francois-pass22"
+    },
+    {
+      "id":"tradeobs-josepastor-bichi-listan",
+      "tradeSourceId":"trade-jose-pastor",
+      "sourceUrl":"https://www.josepastorselections.com/bichi.html",
+      "producer":"Bichi","wine":"Listan","vintage":null,"country":"Mexico","region":"Baja California","vineyard":"Tecate vineyard",
+      "fields":{"varietyComposition":"100% Mission","producerSynonymClaim":"Mission, also known as Listán Prieto or País","vineAgeYears":105,"elevationM":800,"soilDescription":"sandy-loam","destemming":"destemmed by hand","fermentationVessel":"concrete lagar","maceration":"25 days on skins","maturationVessel":"stainless steel tank","ageingMonths":12,"filtration":"unfiltered","fining":"unfined"},
+      "evidenceChannel":"importer-producer-wine-page","sourceRef":"trade-jose-pastor-pass22"
+    },
+    {
+      "id":"tradeobs-josepastor-elmontanista-corte-blancas",
+      "tradeSourceId":"trade-jose-pastor",
+      "sourceUrl":"https://www.josepastorselections.com/el-montantildeista.html",
+      "producer":"El Montañista","wine":"Corte de Blancas","vintage":null,"country":"Argentina","region":"Calingasta Valley, San Juan","vineyard":"Paraje Hilario",
+      "fields":{"varieties":["Torrontés Sanjuanino","Torrontés Mendocino","Malvasia","Maticha"],"vineAgeYears":80,"elevationM":1500,"soilDescription":"quartz-rich colluvial rocks","harvestMethod":"hand harvested","destemming":"destemmed","maceration":"skin maceration through alcoholic fermentation","fermentationVessel":"concrete","yeastStrategy":"spontaneous fermentation","pressing":"free-run juice; not pressed","ageingMonths":7,"maturationVessel":"concrete","flor":"veil of flor formed during élevage"},
+      "evidenceChannel":"importer-producer-wine-page","sourceRef":"trade-jose-pastor-pass22"
+    },
+    {
+      "id":"tradeobs-josepastor-elmontanista-viejas-tintas",
+      "tradeSourceId":"trade-jose-pastor",
+      "sourceUrl":"https://www.josepastorselections.com/el-montantildeista.html",
+      "producer":"El Montañista","wine":"Viejas Tintas","vintage":null,"country":"Argentina","region":"Calingasta Valley, San Juan","vineyard":"Paraje Hilario",
+      "fields":{"varieties":["Barbera","Bonarda","Greco Nero","Rabosso Veronese","Cardin","Freisa"],"vineAgeYears":80,"elevationM":1500,"soilDescription":"quartz-rich colluvial rocks"},
+      "evidenceChannel":"importer-producer-wine-page","sourceRef":"trade-jose-pastor-pass22"
+    },
+    {
+      "id":"tradeobs-josepastor-envinate-benje-blanco",
+      "tradeSourceId":"trade-jose-pastor",
+      "sourceUrl":"https://www.josepastorselections.com/envinate.html",
+      "producer":"Envínate","wine":"Benje Blanco","vintage":null,"country":"Spain","region":"Tenerife, Canary Islands","vineyard":"old parcels around Santiago del Teide",
+      "fields":{"varietyComposition":"100% Listán Blanco","vineAgeDescriptor":"old vines","harvestMethod":"hand harvested","fermentationVessel":["old French oak foudre","concrete tank"],"yeastStrategy":"native yeasts","fermentationTemperature":"without temperature control","maceration":"a portion macerates with skins","flor":"a portion develops under flor","filtration":"unfiltered","fining":"unfined"},
+      "evidenceChannel":"importer-producer-wine-page","sourceRef":"trade-jose-pastor-pass22"
+    },
+    {
+      "id":"tradeobs-josepastor-candelario-blanco",
+      "tradeSourceId":"trade-jose-pastor",
+      "sourceUrl":"https://www.josepastorselections.com/michael-candelario.html",
+      "producer":"Michael Candelario","wine":"Candelario Blanco","vintage":null,"country":"Spain","region":"La Palma, Canary Islands","vineyard":"family parcels",
+      "fields":{"varieties":["Listán Blanco","Albillo Criollo","Vijariego Blanco"],"vineAgeYearsRange":[6,200],"elevationMRange":[800,1450],"aspect":"northeastern exposure","soilDescription":"volcanic basalt clay soils with red stones","harvestMethod":"hand harvested","wholeClusterStrategy":"whole-cluster pressed","fermentationVessel":"used French oak barrels after settling in stainless steel","yeastStrategy":"naturally occurring yeasts","malolactic":"completed in used French oak barrels","lees":"fine lees","ageingMonths":9,"filtration":"unfiltered","fining":"unfined"},
+      "evidenceChannel":"importer-producer-page-with-tech-sheet","sourceRef":"trade-jose-pastor-pass22"
+    },
+    {
+      "id":"tradeobs-josepastor-nanclares-tinto",
+      "tradeSourceId":"trade-jose-pastor",
+      "sourceUrl":"https://www.josepastorselections.com/nanclares-y-prieto.html",
+      "producer":"Nanclares y Prieto","wine":"Tinto","vintage":null,"country":"Spain","region":"Rías Baixas, Galicia","vineyard":"8 plots in Salnés and Condado",
+      "fields":{"varieties":["Mencía","Caiño","Espadeiro","Sousón","Brancellao"],"vineAgeYearsRange":[15,95],"soilDescription":"sandy decomposed granite, clay and alluvial soils","harvestMethod":"hand harvested","wholeClusterPct":100,"capManagement":"foot-trodden","maceration":"21 days","maturationVessel":{"usedFrenchOakPct":73,"stainlessSteelPct":27},"ageingMonths":11,"lees":"rests on lees","batonnage":"weekly for first 3 months"},
+      "evidenceChannel":"importer-producer-page-with-tech-sheet-and-vintage-reports","sourceRef":"trade-jose-pastor-pass22"
+    },
+    {
+      "id":"tradeobs-massanois-caruso-minini-inzolia",
+      "tradeSourceId":"trade-massanois",
+      "sourceUrl":"https://massanois.com/wp-content/uploads/Caruso-e-Minini-Zoli-ENG.pdf",
+      "producer":"Caruso & Minini","wine":"Zolì Inzolia","vintage":null,"country":"Italy","region":"Sicily","vineyard":"Salemi area",
+      "fields":{"varietyComposition":"100% Inzolia","elevationM":35,"soilDescription":"calcareous-clayey","aspect":"North","trainingSystem":"Espalier","vineDensityPerHa":3500,"harvestMethod":"hand harvesting","harvestDate":"September","fermentationVessel":"steel fermenters","fermentationTemperature":"16–18 °C for 20 days after cryomaceration","maceration":"4–12 hours cryomaceration at 4 °C","maturationVessel":"steel tanks","ageingMonths":4,"alcoholPct":12.5,"productionQuantityBottles":25000},
+      "evidenceChannel":"importer-hosted-producer-tech-sheet-pdf","sourceRef":"trade-massanois-pass22"
+    }
+  ]
+}

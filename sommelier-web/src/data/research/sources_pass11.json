@@ -1,0 +1,10 @@
+{
+  "updatedAt": "2026-09-04",
+  "policy": "Historical vintage archive pass. An authority archive year means documentary evidence exists for that harvest/product family; it does not automatically imply a universal declaration, identical producer practice, or a numeric quality score.",
+  "sources": [
+    {"id":"pt-ivdp-vintage-port-archive-2026","publisher":"Instituto dos Vinhos do Douro e do Porto (IVDP)","title":"Vinhos do Porto - Vintages","url":"https://www.ivdp.pt/pt/vinhos/vinhos-do-porto/vintages/","jurisdiction":"Portugal / Porto-Douro","kind":"regulator-historical-vintage-archive","accessed":"2026-09-04"},
+    {"id":"ca-on-owaa-vintage-reports-2001-2025","publisher":"Ontario Wine Appellation Authority","title":"Vintage Reports 2001-2025","url":"https://vqaontario.ca/media-resources/vintage-reports/","jurisdiction":"Canada / Ontario","kind":"regulator-vintage-report-archive","accessed":"2026-09-04"},
+    {"id":"fr-champagne-matu-1956-2026","publisher":"Comité Champagne","title":"MATU ripeness-monitoring network and commune/grape harvest-date process","url":"https://www.champagne.fr/en/champagne-frequently-asked-questions","jurisdiction":"France / Champagne","kind":"official-vintage-monitoring-history","accessed":"2026-09-04"},
+    {"id":"fr-champagne-aoc-history-2025","publisher":"Comité Champagne","title":"The Champagne appellation - key legal dates and current provisions","url":"https://www.champagne.fr/system/files/2025-09/FICHE%20AOC%20CHAMPAGNE%20EN%202025.pdf","jurisdiction":"France / Champagne","kind":"official-appellation-history","accessed":"2026-09-04"}
+  ]
+}

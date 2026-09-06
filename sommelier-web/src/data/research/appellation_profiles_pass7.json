@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Special-wine and current Wine of Origin research pass. Legal/product facts are source-backed; historical applicability remains separately versioned.",
+  "profiles": [
+    {
+      "id": "es-jerez-product-matrix-2024",
+      "country": "Spain",
+      "name": "Jerez-Xérès-Sherry — detailed product matrix",
+      "recordType": "appellation-product-matrix",
+      "legalClass": "DOP / vinos de licor",
+      "hierarchy": ["Spain", "Andalucía", "Marco de Jerez", "Jerez-Xérès-Sherry"],
+      "researchCompleteness": 5,
+      "generationStatus": "candidate",
+      "products": ["Fino", "Amontillado", "Oloroso", "Palo Cortado", "Pale Dry", "Pale Cream", "Medium", "Cream", "Pedro Ximénez", "Moscatel", "Dulce"],
+      "authorizedGrapes": ["Palomino", "Listán Blanco", "Pedro Ximénez", "Moscatel de Alejandría", "Beba", "Perruno", "Vigiriega"],
+      "principalGrapes": ["Palomino", "Pedro Ximénez", "Moscatel de Alejandría"],
+      "classificationTerms": ["Fino Viejo", ">12 años", ">15 años", "VOS", "VORS", "Añada", "Criaderas y Solera", "Jerez Superior"],
+      "productionRules": {
+        "maxWineLitresPer100KgGrapes": 70,
+        "generosoMinimumAverageAgeYears": 2,
+        "sweetNaturalMinimumOxidativeAgeYears": 2,
+        "finoViejoMinimumAverageAgeYears": 7,
+        "qualifiedAgeYears": {"moreThan12": 12, "moreThan15": 15, "VOS": 20, "VORS": 30},
+        "ageingSystems": ["criaderas y solera", "añada"],
+        "standardAgeingVessel": "oak bota",
+        "standardAgeingVesselCapacityLitresMax": 1000,
+        "dryVinification": "complete alcoholic fermentation for base wine used for generosos",
+        "sweetVinification": "must or fermenting must fortified to prevent or stop fermentation",
+        "asoleo": "traditional optional pre-vinification sun-drying especially associated with sweet wines",
+        "fortificationAlcohol": {"origin":"vitivinicultural", "neutralMinAbvPct":96, "wineOrRaisinAlcoholAbvPct":[95,96]},
+        "naturalSweetComposition": {"Pedro Ximénez":{"minPctPassifiedPedroXimenezMust":85}, "Moscatel":{"minPctMoscatelMust":85}},
+        "analytical": {
+          "Fino":{"alcoholPct":[15,17],"sugarGPerLMax":4},
+          "Amontillado":{"alcoholPct":[16,22],"sugarGPerLMax":4},
+          "Oloroso":{"alcoholPct":[17,22],"sugarGPerLMax":4},
+          "Palo Cortado":{"alcoholPct":[17,22],"sugarGPerLMax":4},
+          "Pale Dry":{"alcoholPct":[15,22],"sugarGPerL":[4,45],"upperExclusive":true},
+          "Pale Cream":{"alcoholPct":[15,22],"sugarGPerL":[50,115],"upperExclusive":true},
+          "Medium":{"alcoholPct":[15,22],"sugarGPerL":[4,115],"upperExclusive":true},
+          "Cream":{"alcoholPct":[15,22],"sugarGPerL":[115,140]},
+          "Pedro Ximénez":{"alcoholPct":[15,22],"sugarGPerLMin":212},
+          "Moscatel":{"alcoholPct":[15,22],"sugarGPerLMin":160},
+          "Dulce":{"alcoholPct":[15,22],"sugarGPerLMin":160}
+        },
+        "ageingMechanisms": {
+          "Fino":"exclusively biological ageing under flor",
+          "Amontillado":"biological phase followed by oxidative phase",
+          "Palo Cortado":"predominantly oxidative after disappearance of initial flor",
+          "Oloroso":"exclusively oxidative after disappearance of initial flor"
+        }
+      },
+      "geography": {
+        "municipalities": ["Jerez de la Frontera", "El Puerto de Santa María", "Sanlúcar de Barrameda", "Trebujena", "Chipiona", "Rota", "Puerto Real", "Chiclana de la Frontera", "Lebrija", "San José del Valle"],
+        "formalSmallerUnits": "pagos",
+        "jerezSuperior": "separate council list of vineyards considered capable of superior-quality grapes on agrogeological and climatic grounds"
+      },
+      "styleNotes": [
+        "The consolidated specification defines sensory requirements by product, including biological-ageing aromas for Fino and oxidative/nut/wood characters for oxidative categories.",
+        "Qualified-age generosos may reach up to 9 g/L sugar under the specification's acidity condition; this exception must not be applied to ordinary dry generosos."
+      ],
+      "researchNotes": [
+        "The 2025 Consejo annual report lists seven authorized white varieties; Beba, Perruno and Vigiriega were added in 2022 and remain minor.",
+        "Manzanilla-Sanlúcar de Barrameda is a separate DOP and must not be flattened into Jerez-Xérès-Sherry even though the systems are closely related."
+      ],
+      "sourceRefs": ["es-jerez-spec-2024-consolidated", "es-jerez-memoria-2025"]
+    },
+    {
+      "id": "pt-port-product-matrix-2026",
+      "country": "Portugal",
+      "name": "Porto / Port — special-category matrix",
+      "recordType": "appellation-product-matrix",
+      "legalClass": "DOP",
+      "hierarchy": ["Portugal", "Douro Demarcated Region", "Porto / Port"],
+      "researchCompleteness": 4,
+      "generationStatus": "reference-only",
+      "products": ["Ruby", "Ruby Reserva", "Late Bottled Vintage", "Vintage", "Single Quinta Vintage", "Crusted", "Tawny", "Tawny Reserva", "Tawny 10 Years", "Tawny 20 Years", "Tawny 30 Years", "Tawny 40 Years", "Tawny 50 Years", "Very Very Old", "Colheita", "White", "White Reserva", "White with age indication", "Garrafeira"],
+      "classificationTerms": ["Vintage", "LBV", "Crusted", "Colheita", "10 Years", "20 Years", "30 Years", "40 Years", "50 Years", "Very Very Old", "Reserva", "Unfiltered", "Bottle Matured"],
+      "productionRules": {
+        "LBV":{"singleHarvest":true,"preBottlingAgeYears":[4,6],"bottlingDeadline":"31 December of the sixth year after harvest"},
+        "Vintage":{"singleHarvest":true,"bottleAged":true,"bottledYearsAfterHarvest":[2,3],"bottlingDeadline":"30 July of the third year after harvest"},
+        "Crusted":{"multiHarvestBlend":true,"minimumBottleAgeBeforeSaleYears":3},
+        "Colheita":{"singleHarvest":true,"minimumWoodAgeYears":7},
+        "AgeIndication":{"multiYearBlend":true,"woodAged":true,"permittedAgeIndicationsYears":[10,20,30,40,50],"veryVeryOldMinimumAgeYears":80,"veryVeryOldDisplaysNumericAge":false},
+        "labelVintageRequiredFor":["Vintage","Late Bottled Vintage","Colheita"],
+        "bottlingYearRequiredFor":["Colheita","Garrafeira","Port with indication of age"]
+      },
+      "serviceResearch": {
+        "recommendedServingTemperatureC":{"Vintage/LBV/Crusted":[12,14],"Tawny/AgedTawny/Colheita":[10,14]},
+        "officialAfterOpeningGuidance":{"VintageDays":[1,2],"LBVFilteredDays":[15,20],"LBVUnfilteredDays":[1,2],"CrustedDays":[1,2],"RubyReserveWeeks":[3,4],"AgedTawnyMonths":[1,4],"ColheitaMonths":[1,4]}
+      },
+      "researchNotes": [
+        "This matrix promotes category, ageing, bottling and service facts but intentionally remains reference-only until the complete current grape, benefício and fortification/certification rule set is extracted.",
+        "Age indication is a sensory/age-profile designation of a multi-year wood-aged blend, not a literal arithmetic age of every component."
+      ],
+      "sourceRefs": ["pt-ivdp-port-special-categories-2026", "pt-ivdp-port-definitions-2026", "pt-ivdp-port-market-guide-2026", "pt-ivdp-port-label-guide-2026"]
+    },
+    {
+      "id": "hu-tokaj-product-matrix-2026",
+      "country": "Hungary",
+      "name": "Tokaj PDO — specialty-wine product matrix",
+      "recordType": "appellation-product-matrix",
+      "legalClass": "PDO",
+      "hierarchy": ["Hungary", "Tokaj Wine Region", "Tokaj"],
+      "researchCompleteness": 5,
+      "generationStatus": "candidate",
+      "products": ["white wine", "late-harvest wine", "dry Szamorodni", "sweet Szamorodni", "Aszú", "Aszú 6 puttonyos", "Eszencia", "Fordítás", "Máslás"],
+      "authorizedGrapes": ["Furmint", "Hárslevelű", "Sárgamuskotály", "Kövérszőlő", "Kabar", "Zéta"],
+      "principalGrapes": ["Furmint", "Hárslevelű", "Sárgamuskotály"],
+      "classificationTerms": ["Szamorodni", "Aszú", "6 puttonyos", "Eszencia", "Fordítás", "Máslás", "late harvest"],
+      "productionRules": {
+        "lateHarvest":{"minimumResidualSugarGPerL":45,"compulsoryProcess":null},
+        "drySzamorodni":{"maximumResidualSugarGPerL":9,"minimumWoodAgeMonths":6,"process":"bunches containing both aszú and healthy berries are processed together"},
+        "sweetSzamorodni":{"minimumResidualSugarGPerL":45,"minimumWoodAgeMonths":6,"process":"bunches containing both aszú and healthy berries are processed together"},
+        "Aszu":{"minimumResidualSugarGPerL":120,"minimumActualAlcoholPct":9,"minimumTotalPotentialAlcoholPct":19,"minimumWoodAgeMonths":18,"berries":"Botrytis-affected shrivelled berries individually selected by hand","macerationBase":"must, partially fermented must, fermenting must or wine of the same vintage","earliestRelease":"1 January of the third year after harvest","sixPuttonyosMinimumResidualSugarGPerL":150},
+        "Eszencia":{"minimumResidualSugarGPerL":45,"maximumLitresPer100KgAszuBerries":6,"process":"free-run juice exuded under the berries' own weight, without pressing, followed by minimal fermentation"},
+        "Forditas":{"minimumResidualSugarGPerL":45,"minimumWoodAgeMonths":6,"process":"pressed aszú dough is refilled with must, partially fermented must, fermenting must or wine of the same vintage"},
+        "Maslas":{"minimumResidualSugarGPerL":45,"minimumWoodAgeMonths":6,"process":"lees of Aszú or Szamorodni are topped with must, partially fermented must or fermenting new wine"},
+        "AszuPlusForditasPlusEszenciaMaximumLitresPer100KgAszuBerries":220,
+        "protectedOriginBottling":"Tokaj PDO wines bottled within the delimited product-specification area"
+      },
+      "researchNotes": [
+        "Current Aszú rules use a 120 g/L minimum residual sugar; the optional expression 6 puttonyos requires at least 150 g/L.",
+        "Historical puttonyos systems and pre-2020 product-law versions must remain separately versioned rather than projected from these current rules."
+      ],
+      "sourceRefs": ["hu-tokaj-wines-current-2026", "hu-tokaj-cellar-current-2026", "hu-tokaj-bottle-current-2026"]
+    },
+    {
+      "id": "za-wine-origin-current-framework-2026",
+      "country": "South Africa",
+      "name": "South African Wine of Origin — current production-area framework",
+      "recordType": "legal-framework",
+      "legalClass": "Wine of Origin Scheme",
+      "hierarchy": ["South Africa"],
+      "researchCompleteness": 4,
+      "generationStatus": "framework-only",
+      "products": ["Wine of Origin certified wine"],
+      "classificationTerms": ["geographical unit", "overarching region", "region", "subregion", "district", "ward"],
+      "productionRules": {
+        "authority":"SAWIS administers the Wine of Origin system",
+        "productionAreaHierarchy":["geographical unit","overarching region","region","subregion","district","ward"],
+        "currentProductionAreaSource":"June 2024 official production-area table, cross-checked against current SAWIS production-area page"
+      },
+      "researchNotes": [
+        "The current SAWIS site remains the authority for production areas and maps. The June 2024 table contains a materially expanded hierarchy compared with the old 2009 WO booklet.",
+        "SAWIS publishes annual vine-age, cultivar-by-region, irrigation and trellising datasets; those are time-stamped statistical layers and must not be confused with WO legal identity.",
+        "Full current production-area identity ingestion is a separate structured registry pass so wards and districts remain individually addressable."
+      ],
+      "sourceRefs": ["za-sawis-production-areas-2024", "za-sawis-production-areas-page-2026", "za-sawis-vine-status-2025"]
+    }
+  ]
+}

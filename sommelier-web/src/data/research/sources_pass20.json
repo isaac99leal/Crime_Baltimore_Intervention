@@ -1,0 +1,114 @@
+{
+  "updatedAt": "2026-09-05",
+  "policy": "Cultivar identity and trade-sheet enrichment pass. Official/genetic/ampelographic sources control cultivar identity. Importer/distributor/producer technical material may enrich vineyard and cellar facts but cannot independently establish protected-origin law, legal boundaries, prime cultivar identity, synonymy or historical weather.",
+  "sources": [
+    {
+      "id": "fr-plantgrape-romorantin-2026-pass20",
+      "publisher": "Plantgrape / Institut Français de la Vigne et du Vin",
+      "title": "Romorantin B — wine grape variety technical record",
+      "url": "https://www.plantgrape.fr/en/varieties/fruit-varieties/241/export",
+      "jurisdiction": "France",
+      "kind": "official-national-cultivar-technical-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "eu-cour-cheverny-romorantin-pass20",
+      "publisher": "European Union / Cour-Cheverny PDO product specification publication",
+      "title": "Cour-Cheverny PDO — principal wine grape variety Romorantin B",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52019XC1210(02)",
+      "jurisdiction": "France — Loire",
+      "kind": "official-product-specification-publication",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "gr-winesofgreece-limniona-pass20",
+      "publisher": "Wines of Greece",
+      "title": "Limniona / Lemniona variety profile",
+      "url": "https://winesofgreece.org/varieties/limniona/",
+      "jurisdiction": "Greece",
+      "kind": "national-wine-body-cultivar-profile",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "gr-hellenifera-limniona-clone-pass20",
+      "publisher": "Hellenifera",
+      "title": "Limniona N — clonal and agronomic profile ENTAV-INRA 013VNB",
+      "url": "https://www.hellenifera.gr/en/varieties/limniona-6235ee8b57b17",
+      "jurisdiction": "Greece",
+      "kind": "national-clonal-selection-program-profile",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-ucd-fps-limniona-pass20",
+      "publisher": "UC Davis Foundation Plant Services",
+      "title": "Grape Variety: Limniona",
+      "url": "https://fps.ucdavis.edu/FGRfamilies.cfm?varietyid=4735",
+      "jurisdiction": "United States / international reference",
+      "kind": "grape-registry-reference",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "kg-ak-dzhuzyum-soviet-ampelography-pass20",
+      "publisher": "Ampelography of the USSR (1984), digitized/transcribed by Vinograd.info",
+      "title": "Ak-Dzhuzyum — domestic wine-grape variety record",
+      "url": "https://vinograd.info/sorta/vinnye/ak-dzhuzyum.html",
+      "jurisdiction": "Kyrgyzstan / former USSR",
+      "kind": "historical-ampelographic-transcription",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "ua-magarach-ak-dzhuzyum-collection-pass20",
+      "publisher": "Institute Magarach collection listing, digitized by Vinograd.info",
+      "title": "Magarach grape collection list — Ak dzhuzyum accession",
+      "url": "https://vinograd.info/spravka/spravka/spisok-sortov-vinograda-instituta-magarach.html",
+      "jurisdiction": "Former USSR / Kyrgyz accession",
+      "kind": "ampelographic-collection-index",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "trade-skurnik-techsheets-pass20",
+      "publisher": "Skurnik Wines & Spirits",
+      "title": "Producer portfolio and technical-sheet library",
+      "url": "https://www.skurnik.com/",
+      "jurisdiction": "United States trade",
+      "kind": "importer-distributor-tech-sheet-index",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "trade-european-cellars-techsheets-pass20",
+      "publisher": "European Cellars",
+      "title": "Producer portfolio, vineyard details and technical-sheet downloads",
+      "url": "https://www.europeancellars.com/",
+      "jurisdiction": "United States trade",
+      "kind": "importer-tech-sheet-index",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "trade-rare-wine-co-techsheets-pass20",
+      "publisher": "The Rare Wine Co.",
+      "title": "Wholesale producer portfolio and technical specifications",
+      "url": "https://www.rarewineco.com/wholesale/",
+      "jurisdiction": "United States trade",
+      "kind": "importer-merchant-tech-sheet-index",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "trade-kermit-lynch-techsheets-pass20",
+      "publisher": "Kermit Lynch Wine Merchant",
+      "title": "Importer producer technical sheets and vineyard dossiers",
+      "url": "https://kermitlynch.com/",
+      "jurisdiction": "United States trade",
+      "kind": "importer-tech-sheet-index",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "trade-bowler-techsheets-pass20",
+      "publisher": "Bowler Wine",
+      "title": "Importer/distributor wine records and technical-sheet library",
+      "url": "https://www.bowlerwine.com/",
+      "jurisdiction": "United States trade",
+      "kind": "importer-distributor-tech-sheet-index",
+      "accessed": "2026-09-05"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion":1,
+  "updatedAt":"2026-09-05",
+  "method":"Fourth environmental pass. Georgian micro-zone climate, topography and soil facts come from official PDO specifications. Matrix modifiers are conservative derived simulation values, not published measurements.",
+  "profiles":[
+    {
+      "id":"env-ge-kisi-magraani","researchProfileId":"ge-kisi-magraani-pdo","country":"Georgia","name":"Kisi Magraani micro-zone","scope":"PDO micro-zone",
+      "climate":{"classification":"moderately continental, comparatively humid","summer":"hot","winter":"long and cold","annualSunshineHoursGreaterThan":2050,"meanAnnualTemperatureC":[12.2,12.4],"annualPrecipitationMm":[750,850],"climateMechanisms":["southern and south-western slope exposure","Caucasus Range branches influence local airflow and shelter"]},
+      "soils":[{"name":"Magraani micro-zone soil mosaic","note":"PDO specification treats local soil variation as part of the delimited micro-zone; full pedological subunit table remains a field-extraction target rather than being generalized."}],
+      "topography":{"elevationMeters":[400,800],"aspect":["south","south-west"],"setting":"Caucasus Range slopes and river gorges around Machareuli, Babaneuristskali and Magraanistskali"},
+      "matrixModifiers":{"scale":"-1 to +1 relative expression","derived":true,"confidence":3,"acidity":0.12,"tannin":0.02,"body":0.08,"alcohol":0.05,"fruitIntensity":0.08,"earthIntensity":0.10,"aromaticFreshness":0.12,"droughtStress":0.02,"diseasePressure":0.10,"frostRisk":0.14,"botrytisSuitability":0.03},
+      "sourceRefs":["ge-nwa-kisi-magraani-spec-2026"]
+    },
+    {
+      "id":"env-ge-khvanchkara","researchProfileId":"ge-khvanchkara-pdo","country":"Georgia","name":"Khvanchkara micro-zone","scope":"PDO micro-zone",
+      "climate":{"setting":"Rioni river-valley slopes in Racha","relativeHumidityAnnualPct":[75,76],"snowCover":"typically mid-December into the second half of March in the specification","airflow":"eastern and western winds prevail along the Rioni valley; mountain-valley airflow intensifies in some micro-areas"},
+      "soils":[
+        {"name":"humus-carbonate clay","distribution":"Khvanchkara, Sadmeli, Pirveli Tola, Chkvishi and related villages in the PDO soil table"},
+        {"name":"rocky humus-carbonate clay","distribution":"Kvatskhuti, Saketsia, Bugeuli, Abanoeti, Gori and related sectors"},
+        {"name":"humus soil","distribution":"Tsesi, Bostana, Chorjo, Baji and Ina sectors"},
+        {"name":"deluvial-proluvial light clay","distribution":"Bugeuli, Khimshi, Dzirageuli and Gori sectors"},
+        {"name":"alluvial rocky and clay soil","distribution":"Tsesi sector"}
+      ],
+      "topography":{"elevationMeters":[450,750],"river":"Rioni","setting":"southern Lechkhumi and northern Racha slopes surrounding the river valley"},
+      "matrixModifiers":{"scale":"-1 to +1 relative expression","derived":true,"confidence":4,"acidity":0.14,"tannin":0.05,"body":0.10,"alcohol":0.03,"fruitIntensity":0.12,"earthIntensity":0.15,"aromaticFreshness":0.14,"droughtStress":-0.08,"diseasePressure":0.12,"frostRisk":0.08,"botrytisSuitability":0.02},
+      "sourceRefs":["ge-nwa-khvanchkara-spec-2026"]
+    }
+  ]
+}

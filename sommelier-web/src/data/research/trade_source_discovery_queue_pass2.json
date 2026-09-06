@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Network-discovery queue built from producer/distributor/importer partner pages. Queue membership means the business was named by a trade-network source and should be examined. It does not mean its website, portfolio quality, or technical-sheet depth has already been verified.",
+  "groups": [
+    {
+      "sourceRef": "trade-network-natural-wine-co-pass22",
+      "candidates": [
+        "Bowler Wine","Jenny & Francois","Jose Pastor Selections","Lelarge-Pugeot","Louis/Dressner Selections","Mary Taylor Wine","Paris Wine Co.","PortoVino","Rosenthal Wine Merchant","Selectionaturel","Sete Wine","Stork Wine Company","Vinum USA","Vom Boden","Zev Rovine"
+      ]
+    },
+    {
+      "sourceRef": "trade-network-pm-pass22",
+      "candidates": [
+        "Black Lamb","Bon Vivant Imports","Borderland Spirits","Camille Rivière Selection","Critical Mass Selections","Eklektikon","Heavy Métl","Jeffrey Alpert Selections","Jenny & Francois Selections","José Pastor Selections","Louis/Dressner Selections","MFW Wine Co.","PM Spirits","Scuola di Vino","Selection Massale","SelectioNaturel","Steven Graf Wine","Terrestrial Wine Co.","Tess Bryant Selections","Vinotas Selections","Zev Rovine Selections"
+      ]
+    },
+    {
+      "sourceRef": "trade-network-brick-mortar-pass22",
+      "candidates": [
+        "AHD Vintners","Veritas Wine Selections","Rootstock Wine Co.","SoilAir Selections","Lieu Dit","Curated Selections","EDV International","Mexcor","Flora/Fauna","Vermont Wine Merchants","Springboard Wine Company","Craft Wine & Spirits","Metro Cellars","ACE Wine & Spirits","Avant Partir","Acme Wine Company","Mystic Vine","Easterly Wines","Arborway Imports","ECM de Vinos","Prometheus Wine Exports","Tramontane","Maitre de Chai","Roberson Wines","Odin Wine Co."
+      ]
+    },
+    {
+      "sourceRef": "trade-network-hundred-suns-pass22",
+      "candidates": [
+        "Grassroots Wine Wholesalers","Vinifera","Garber and Co.","Craft Wines","Bon Vin Selections","Linara Wines","Highroads Wine and Spirits","Veritas Selections","Summit/George’s Distributing","Quench Fine Wines","Vine Street Imports","Vias Wine Imports, Ltd.","Muse Fine Wine","Kellogg Selections","Rootstock Wines","Roanoke Valley Wine Company"
+      ]
+    },
+    {
+      "sourceRef": "trade-network-skurnik-pass22",
+      "candidates": [
+        "Specialty Imports","Johnson Brothers Maverick","Arkansas Wine & Spirits","Grassroots Wine","Prestige-Ledroit"
+      ]
+    }
+  ],
+  "promotionPolicy": {
+    "directory-lead": "named by a trade-network source only",
+    "website-verified": "official business website and wine-trade role verified",
+    "portfolio-structured": "producer/wine portfolio can be systematically traversed",
+    "tech-sheet-capable": "technical sheets or sufficiently detailed producer/wine pages are available",
+    "observation-ingested": "one or more normalized field-level observations have been captured"
+  }
+}

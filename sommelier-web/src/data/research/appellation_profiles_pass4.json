@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Fourth hand-research profile pass. This pass adds product-resolution anchors where authoritative process/ageing evidence exists but full product specifications are still incomplete.",
+  "profiles": [
+    {
+      "id": "pt-madeira-dop",
+      "country": "Portugal",
+      "name": "Madeira",
+      "recordType": "appellation",
+      "legalClass": "DOP",
+      "hierarchy": ["Portugal", "Madeira", "Madeira DOP"],
+      "researchCompleteness": 3,
+      "generationStatus": "reference-only",
+      "products": ["fortified wine"],
+      "classificationTerms": ["Estufagem", "Canteiro"],
+      "productionRules": {
+        "estufagemMinimumHeatingMonths": 3,
+        "estufagemTemperatureC": [45, 50],
+        "estufagemMinimumPostHeatingRestDays": 90,
+        "canteiroMinimumCaskYears": 2
+      },
+      "styleNotes": [
+        "Estufagem and Canteiro are materially different heat/oxidative maturation routes and must not be collapsed into generic barrel ageing.",
+        "Long-lived Madeira requires a dedicated oxidative-fortified bottle-age trajectory rather than the structured-red/white decay model."
+      ],
+      "researchNotes": [
+        "This record is intentionally reference-only until exact permitted grapes, sweetness/product categories, age indications, vintage/Frasqueira/Colheita terminology, analytical limits, and historical legal versions are extracted from authoritative Madeira specifications.",
+        "The resolver may identify Canteiro or Estufagem as researched process identities but may not claim full bottle-generation legality from this record alone."
+      ],
+      "sourceRefs": ["ivbam-madeira-vinification-ageing-2026"]
+    }
+  ]
+}

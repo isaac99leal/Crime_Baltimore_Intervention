@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Hand-researched overlay. Legal and certification facts must cite an official sourceRef. Descriptive fields are deliberately conservative when a primary source has not yet been captured.",
+  "profiles": [
+    {
+      "id":"fr-champagne-aop","country":"France","name":"Champagne","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Champagne"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["traditional-method sparkling wine"],
+      "authorizedGrapes":["Pinot Noir","Chardonnay","Meunier","Arbane","Petit Meslier","Pinot Blanc","Pinot Gris","Chardonnay Rose"],
+      "principalGrapes":["Pinot Noir","Chardonnay","Meunier"],
+      "subregions":["Montagne de Reims","Vallée de la Marne","Côte des Blancs","Côte des Bar"],
+      "productionRules":{"secondaryFermentation":"in bottle","minimumCellarMonthsNonVintage":15,"minimumCellarMonthsVintage":36,"harvest":"manual","yieldPolicy":"annual maximum set before harvest"},
+      "styles":["non-vintage","vintage","Blanc de Blancs","Blanc de Noirs","rosé","Brut Nature","Extra Brut","Brut","Extra Dry","Sec","Demi-Sec","Doux"],
+      "terroir":{"climate":"cool northern French climate with continental and oceanic influence","soils":["chalk","limestone","marl","clay"]},
+      "styleNotes":["Pinot Noir contributes body and structure","Chardonnay contributes freshness and ageing capacity","Meunier contributes fruit and roundness","lees ageing develops autolytic and mature tertiary aromas"],
+      "researchNotes":["Chardonnay Rose returned to the authorized list in 2025 according to Comité Champagne.","The current legal file must remain versioned because Champagne specifications continue to be amended."],
+      "sourceRefs":["fr-inao-champagne-2025","fr-champagne-grapes-2026","fr-champagne-ageing-2026"]
+    },
+    {
+      "id":"fr-chablis-aop","country":"France","name":"Chablis","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bourgogne","Chablisien","Chablis"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry still white wine"],"authorizedGrapes":["Chardonnay"],"principalGrapes":["Chardonnay"],
+      "classificationTerms":["Chablis","Chablis Premier Cru"],
+      "premierCruClimats":["Mont de Milieu","Montée de Tonnerre","Chapelot","Pied d'Aloup","Côte de Bréchain","Fourchaume","Vaupulent","Côte de Fontenay","L'Homme Mort","Vaulorent","Vaillons","Chatains","Sécher","Beugnons","Les Lys","Mélinots","Roncières","Les Épinottes","Montmains","Forêts","Butteaux","Côte de Léchet","Beauroy","Troesmes","Côte de Savant","Vau Ligneau","Vau de Vey","Vaux Ragons","Vaucoupin","Vosgros","Vaugiraut","Les Fourneaux","Morein","Côte des Prés-Girots","Côte de Vaubarousse","Berdiot","Chaume de Talvat"],
+      "terroir":{"geography":"slopes around the Serein valley in northern Burgundy","soilResearchStatus":"separate Chablis terroir source still to be added to provenance registry"},
+      "styleNotes":["dry, high-acid white wine","mineral and fresh profile","can gain aromatic complexity and finesse with age"],
+      "researchNotes":["INAO describes Chablis as capable of reaching plenitude around 8–10 years; treat this as a descriptive benchmark, not a hard drinking window."],
+      "sourceRefs":["fr-inao-chablis-2025","fr-inao-chablis-1er-2026"]
+    },
+    {
+      "id":"fr-pauillac-aop","country":"France","name":"Pauillac","recordType":"appellation","legalClass":"AOP/AOC","hierarchy":["France","Bordeaux","Médoc","Pauillac"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["dry still red wine"],"authorizedGrapes":["Cabernet Sauvignon","Cabernet Franc","Merlot","Petit Verdot"],"principalGrapes":["Cabernet Sauvignon","Merlot"],
+      "classificationTerms":["1855 Grand Cru Classé"],
+      "terroir":{"climate":"temperate oceanic, moderated by Atlantic and Gironde waters","soils":["deep gravel mounds with varying sand content"]},
+      "styleNotes":["structured and ageworthy","Cabernet Sauvignon commonly gives cassis, mint and cedar notes","Merlot adds rounder red and black fruit","Petit Verdot can contribute dark fruit and coffee-like notes"],
+      "researchNotes":["INAO states Pauillac contains 18 classified growths from the 1855 classification, including three first growths.","Full current 2026 specification still needs field-level extraction for maximum yield and analytical minima."],
+      "sourceRefs":["fr-inao-pauillac-2026"]
+    },
+
+    {
+      "id":"it-barolo-docg","country":"Italy","name":"Barolo","recordType":"appellation","legalClass":"DOCG/DOP","hierarchy":["Italy","Piemonte","Langhe","Barolo"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry still red wine"],"authorizedGrapes":["Nebbiolo"],"principalGrapes":["Nebbiolo"],
+      "classificationTerms":["Barolo","Barolo Riserva","Menzione Geografica Aggiuntiva","Vigna"],
+      "productionRules":{"grapeComposition":"100% Nebbiolo","mgaSystem":true,"vignaToponymPermittedWithConditions":true},
+      "styleNotes":["high-structure Nebbiolo intended for substantial ageing","MGA and vineyard naming must be tied to legally delimited areas and naming rules"],
+      "researchNotes":["The 2026 consolidated specification explicitly covers Barolo, Riserva, MGA-labelled wines and conditional use of vigna plus a toponym.","The existing legacy project already contains extensive MGA material; this overlay should become the legal anchor for that hierarchy."],
+      "sourceRefs":["it-masaf-barolo-2026"]
+    },
+    {
+      "id":"it-chianti-classico-docg","country":"Italy","name":"Chianti Classico","recordType":"appellation","legalClass":"DOCG/DOP","hierarchy":["Italy","Toscana","Chianti Classico"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry still red wine"],"authorizedGrapes":["Sangiovese","Colorino","Canaiolo","Ciliegiolo","Mammolo","Pugnitello","Malvasia Nera","Foglia Tonda","Sanforte"],"principalGrapes":["Sangiovese"],
+      "classificationTerms":["Annata","Riserva","Gran Selezione","Unità Geografica Aggiuntiva"],
+      "productionRules":{"annataAndRiservaSangioveseMinPct":80,"annataAndRiservaOtherRedMaxPct":20,"granSelezioneFutureSangioveseMinPct":90,"granSelezioneFutureNativeRedMaxPct":10},
+      "researchNotes":["The 2023 specification makes the 90% Sangiovese / 10% named native-red rule for Gran Selezione effective from the fifth harvest after approval; until then compliant vineyards under the general 80/20 rule remain eligible.","Generation must therefore be vintage-aware when applying the Gran Selezione blend rule."],
+      "sourceRefs":["it-masaf-chianti-classico-2023"]
+    },
+    {
+      "id":"it-brunello-di-montalcino-docg","country":"Italy","name":"Brunello di Montalcino","recordType":"appellation","legalClass":"DOCG/DOP","hierarchy":["Italy","Toscana","Montalcino","Brunello di Montalcino"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry still red wine"],"authorizedGrapes":["Sangiovese"],"principalGrapes":["Sangiovese"],
+      "classificationTerms":["Brunello di Montalcino","Riserva"],
+      "productionRules":{"grapeComposition":"100% Sangiovese (locally called Brunello)","maxGrapeYieldTonnesPerHa":8,"grapeToWineYieldPct":68,"minimumOakYears":2,"minimumBottleMonths":4,"minimumBottleMonthsRiserva":6,"release":"1 January of the fifth year after harvest; Riserva one year later","minimumAlcoholPct":12.5},
+      "styleNotes":["dry, robust, harmonious Sangiovese","garnet development with age","suited to long ageing and structured food"],
+      "researchNotes":["Production is confined to the historic municipality of Montalcino.","A separate terroir-source pass will add the official 2025 geo-viticultural mapping rather than relying on generic north/south stereotypes."],
+      "sourceRefs":["it-brunello-consorzio-2026"]
+    },
+    {
+      "id":"it-amarone-della-valpolicella-docg","country":"Italy","name":"Amarone della Valpolicella","recordType":"appellation","legalClass":"DOCG/DOP","hierarchy":["Italy","Veneto","Valpolicella","Amarone della Valpolicella"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry red wine from dried grapes"],"authorizedGrapes":["Corvina Veronese","Corvinone","Rondinella"],"principalGrapes":["Corvina Veronese","Corvinone","Rondinella"],
+      "classificationTerms":["Amarone della Valpolicella","Classico","Valpantena","Riserva"],
+      "productionRules":{"corvinaOrCorvinonePct":[45,95],"rondinellaPct":[5,30],"otherAuthorizedMaxTotalPct":25,"grapeDrying":true,"typicalDryingDays":[100,120]},
+      "styleNotes":["dry, high-alcohol, concentrated red wine","grape drying increases concentration of sugars and polyphenols","long wood ageing supports extended bottle evolution"],
+      "researchNotes":["The full list and individual caps for additional permitted varieties must be extracted before blend generation is marked safe."],
+      "sourceRefs":["it-amarone-masaf","it-amarone-consorzio-2026"]
+    },
+    {
+      "id":"it-franciacorta-docg","country":"Italy","name":"Franciacorta","recordType":"appellation","legalClass":"DOCG/DOP","hierarchy":["Italy","Lombardia","Franciacorta"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["traditional-method sparkling wine"],"authorizedGrapes":["Chardonnay","Pinot Noir","Pinot Blanc","Erbamat"],"principalGrapes":["Chardonnay","Pinot Noir"],
+      "classificationTerms":["Franciacorta","Satèn","Rosé","Millesimato","Riserva"],
+      "productionRules":{"secondaryFermentation":"in bottle","handHarvest":true,"pinotBiancoMaxPct":50,"erbamatMaxPct":10,"rosePinotNeroMinPct":35,"roseChardonnayMaxPct":65,"satenChardonnayMinPct":50,"minimumLeesMonths":18,"minimumLeesMonthsRose":24,"minimumLeesMonthsSaten":24,"minimumLeesMonthsMillesimato":30,"minimumLeesMonthsRiserva":60},
+      "styleNotes":["fine persistent mousse","fresh and savory profile","bottle fermentation drives autolytic complexity"],
+      "sourceRefs":["it-franciacorta-regulations-2026"]
+    },
+
+    {
+      "id":"es-rioja-doca","country":"Spain","name":"Rioja","recordType":"appellation","legalClass":"DOCa/DOP","hierarchy":["Spain","Rioja"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["red wine","white wine","rosé wine","quality sparkling wine"],
+      "authorizedGrapes":["Tempranillo","Garnacha Tinta","Graciano","Mazuelo","Maturana Tinta","Viura","Garnacha Blanca","Malvasía","Tempranillo Blanco","Maturana Blanca","Turruntés","Chardonnay","Sauvignon Blanc","Verdejo"],"principalGrapes":["Tempranillo","Viura"],
+      "subregions":["Rioja Alta","Rioja Alavesa","Rioja Oriental"],
+      "classificationTerms":["Genérico","Crianza","Reserva","Gran Reserva","Vino de Zona","Vino de Municipio","Viñedo Singular","Espumoso de Calidad","Espumoso Reserva","Espumoso Gran Añada"],
+      "productionRules":{"redMaxYieldKgHa":6500,"whiteMaxYieldKgHa":9000,"singularRedMaxYieldKgHa":5000,"singularWhiteMaxYieldKgHa":6922,"crianzaRedTotalMonths":24,"crianzaRedOakMonths":12,"reservaRedTotalMonths":36,"reservaRedOakMonths":12,"reservaRedBottleMonths":6,"granReservaRedTotalMonths":60,"granReservaRedOakMonths":24,"granReservaRedBottleMonths":24},
+      "researchNotes":["Viñedo Singular rules are materially stricter than the generic DOCa yield rules and require a delimited, technically justified site.","Ageing categories differ for white/rosé and sparkling wines; generation must branch by color and product category."],
+      "sourceRefs":["es-rioja-spec-2024","es-rioja-classification-2026"]
+    },
+    {
+      "id":"es-jerez-xeres-sherry-dop","country":"Spain","name":"Jerez-Xérès-Sherry","recordType":"appellation","legalClass":"DOP","hierarchy":["Spain","Andalucía","Marco de Jerez","Jerez-Xérès-Sherry"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["fortified wine"],"principalGrapes":["Palomino","Pedro Ximénez","Moscatel"],
+      "classificationTerms":["Generoso","Fino","Amontillado","Oloroso","Palo Cortado","Pedro Ximénez","Moscatel","Cream","Medium","Pale Cream"],
+      "productionRules":{"fortified":true,"minimumAverageAgeYearsGeneroso":2,"dynamicAgeing":"criaderas y solera used for many categories"},
+      "styleNotes":["biological ageing under flor defines Fino-family development","oxidative ageing defines Oloroso-family development","mixed biological and oxidative trajectories create intermediate styles"],
+      "researchNotes":["The current DOP specification is the authority for exact allowed varieties by wine type, fortification parameters, sugar categories and ageing terminology; those tables need a dedicated extraction pass."],
+      "sourceRefs":["es-jerez-spec"]
+    },
+    {
+      "id":"es-ribera-del-duero-dop","country":"Spain","name":"Ribera del Duero","recordType":"appellation","legalClass":"DOP","hierarchy":["Spain","Castilla y León","Ribera del Duero"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["red wine","rosé/clarete","white wine"],"authorizedGrapes":["Tempranillo","Cabernet Sauvignon","Merlot","Malbec","Garnacha Tinta","Albillo Mayor"],"principalGrapes":["Tempranillo","Albillo Mayor"],
+      "terroir":{"elevationMeters":[720,1100]},
+      "classificationTerms":["Crianza","Reserva","Gran Reserva"],
+      "productionRules":{"crianzaRedTotalMonths":24,"crianzaRedOakMonths":12,"crianzaRoseWhiteTotalMonths":18,"crianzaRoseWhiteOakMonths":6},
+      "researchNotes":["The official council reports a high-altitude vineyard range and substantial old-vine/bush-vine holdings; use these as regional distribution inputs, not universal bottle claims.","Full blend percentage rules need extraction from the current product specification before generation-safe status."],
+      "sourceRefs":["es-ribera-official-2023"]
+    },
+    {
+      "id":"es-priorat-doq","country":"Spain","name":"Priorat","recordType":"appellation","legalClass":"DOCa/DOQ/DOP","hierarchy":["Spain","Catalunya","Priorat"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["red wine","white wine"],"authorizedGrapes":["Garnacha Tinta","Cariñena","Garnacha Peluda","Tempranillo","Picapoll Negre","Cabernet Sauvignon","Cabernet Franc","Pinot Noir","Merlot","Syrah","Garnacha Blanca","Macabeo","Pedro Ximénez","Chenin Blanc","Moscatel de Alejandría","Moscatel de Grano Menudo","Xarel-lo","Picapoll Blanc","Viognier"],"principalGrapes":["Garnacha Tinta","Cariñena"],
+      "subregions":["Bellmunt del Priorat","Gratallops","El Lloar","La Morera de Montsant","Porrera","Poboleda","Scala Dei","Torroja del Priorat","La Vilella Alta","La Vilella Baixa","Masos de Falset","Solanes del Molar"],
+      "classificationTerms":["Vi de la DOQ Priorat","Vi de Vila","Vi de Paratge","Vinya Classificada","Gran Vinya Classificada"],
+      "terroir":{"elevationMeters":[100,750],"slopeNotes":"many vineyards exceed 15% slope; some sites approach 60%"},
+      "researchNotes":["The 'Noms de la Terra' hierarchy is a place-identity hierarchy with traceability controls, not merely an ageing hierarchy.","The council identifies 12 village growing zones and 459 named paratges in its classification project."],
+      "sourceRefs":["es-priorat-varieties","es-mapa-priorat-2022"]
+    },
+
+    {
+      "id":"pt-vinho-verde-do","country":"Portugal","name":"Vinho Verde","recordType":"appellation","legalClass":"DO/DOP","hierarchy":["Portugal","Minho","Vinho Verde"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["still white","still red","still rosé","sparkling","wine spirit","pomace spirit","wine vinegar"],
+      "authorizedGrapes":["Alvarinho","Arinto","Avesso","Azal","Batoca","Cainho","Cascal","Diagalves","Esganinho","Esganoso","Fernão Pires","Folgasão","Gouveio","Lameiro","Loureiro","Malvasia Fina","Malvasia Rei","Pintosa","São Mamede","Semillon","Sercial","Tália","Trajadura","Alicante Bouschet","Alvarelhão","Amaral","Baga","Borraçal","Doçal","Doce","Espadeiro","Espadeiro Mole","Grand Noir","Labrusco","Mourisco","Padeiro","Pedral","Pical","Rabo de Anho","Sezão","Touriga Nacional","Trincadeira","Verdelho Tinto","Verdial Tinto","Vinhão"],
+      "principalGrapes":["Alvarinho","Loureiro","Arinto","Avesso","Vinhão"],
+      "subregions":["Monção e Melgaço","Amarante","Ave","Baião","Basto","Cávado","Lima","Paiva","Sousa"],
+      "researchNotes":["Subregional labels have their own permitted-grape subsets; the generator must not treat the general DO list as valid for every named subregion.","Certification also depends on yield, process, laboratory and sensory requirements."],
+      "sourceRefs":["pt-vinho-verde-varieties-2026","pt-vinho-verde-do-2026"]
+    },
+    {
+      "id":"pt-porto-dop","country":"Portugal","name":"Porto / Port","recordType":"appellation","legalClass":"DOP","hierarchy":["Portugal","Douro","Porto"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["fortified wine"],
+      "classificationTerms":["Ruby","Ruby Reserva","Late Bottled Vintage","Vintage","Single Quinta Vintage","Crusted","Tawny","Tawny Reserva","Tawny 10 Years","Tawny 20 Years","Tawny 30 Years","Tawny 40 Years","Tawny 50 Years","Colheita","White","White Reserva","White with age indication","Garrafeira"],
+      "productionRules":{"fortified":true,"garrafeiraWoodYears":[4,8],"garrafeiraGlassYearsMin":15,"tawnyReserveWoodYearsMin":6,"whiteReserveWoodYearsMin":6},
+      "styleNotes":["Ruby-family wines prioritize fruit preservation and reductive bottle development","Tawny-family wines are driven by extended oxidative wood maturation","Colheita is a single-harvest aged tawny style","Vintage and unfiltered LBV can continue developing substantially in bottle"],
+      "researchNotes":["Exact grape lists and beneficio/fortification parameters require a separate IVDP regulation extraction before bottle generation is marked safe."],
+      "sourceRefs":["pt-port-categories-2026","pt-port-intro-2026"]
+    },
+
+    {
+      "id":"at-wachau-dac","country":"Austria","name":"Wachau DAC","recordType":"appellation","legalClass":"DAC","hierarchy":["Austria","Niederösterreich","Wachau DAC"],"researchCompleteness":5,"generationStatus":"candidate",
+      "products":["dry still white wine","limited red regional wine"],
+      "classificationTerms":["Gebietswein","Ortswein","Riedenwein","Steinfeder","Federspiel","Smaragd"],
+      "authorizedGrapes":["Grüner Veltliner","Riesling","Weissburgunder","Grauburgunder","Chardonnay","Neuburger","Muskateller","Sauvignon Blanc","Traminer","Frühroter Veltliner","Müller-Thurgau","Muskat Ottonel","Roter Veltliner","Gemischter Satz","Pinot Noir","Sankt Laurent","Zweigelt"],
+      "principalGrapes":["Grüner Veltliner","Riesling"],
+      "productionRules":{"handHarvest":true,"riedenweinAuthorizedGrapes":["Grüner Veltliner","Riesling"],"riedenweinChaptalisation":false,"ortsweinOakTone":"little or none","riedenweinOakTone":"little or none"},
+      "researchNotes":["Authorized varieties narrow as geographic precision increases: Riedenwein is limited to Grüner Veltliner and Riesling.","Steinfeder/Federspiel/Smaragd coexist with DAC origin levels and should be modeled as a distinct traditional-style axis."],
+      "sourceRefs":["at-wachau-dac"]
+    },
+    {
+      "id":"at-kamptal-dac","country":"Austria","name":"Kamptal DAC","recordType":"appellation","legalClass":"DAC","hierarchy":["Austria","Niederösterreich","Kamptal DAC"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["dry still white wine"],"authorizedGrapes":["Grüner Veltliner","Riesling"],"principalGrapes":["Grüner Veltliner","Riesling"],
+      "classificationTerms":["Kamptal DAC","Kamptal DAC Reserve"],
+      "productionRules":{"classicMinimumAlcoholPct":12,"reserveMinimumAlcoholPct":13,"classicWoodTone":"none","reserveWoodTone":"subtle permitted"},
+      "styleNotes":["Classic Grüner Veltliner emphasizes fresh fruit and fine spice","Classic Riesling emphasizes aromatic, mineral elegance","Reserve is denser and longer with subtle wood or botrytis notes permitted"],
+      "researchNotes":["A current Austrian legal-text pass should replace the older technical summary before hard-coding all modern origin tiers."],
+      "sourceRefs":["at-kamptal-dac"]
+    },
+
+    {
+      "id":"au-barossa-valley-gi","country":"Australia","name":"Barossa Valley","recordType":"geographical-indication","legalClass":"Australian GI","hierarchy":["Australia","South Australia","Barossa","Barossa Valley"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["wine"],
+      "researchNotes":["The GI was entered in the Register of Protected Names on 15 August 1997.","Legal identity and boundary are verified, but grape/style/soil claims need a separate Wine Australia regional research pass before this overlay changes generation behavior."],
+      "sourceRefs":["au-wineaustralia-barossa"]
+    },
+
+    {
+      "id":"nz-marlborough-gi","country":"New Zealand","name":"Marlborough","recordType":"geographical-indication","legalClass":"Wine GI","hierarchy":["New Zealand","Marlborough"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["wine"],"registration":{"ipNumber":1004,"registered":"2018-02-26","renewalDue":"2032-07-27"},
+      "researchNotes":["Boundary identity is verified by IPONZ. Grape and subregional style claims require separate regional evidence and should not be inferred from market reputation alone."],
+      "sourceRefs":["nz-iponz-marlborough","nz-iponz-register-2026"]
+    },
+    {
+      "id":"nz-central-otago-gi","country":"New Zealand","name":"Central Otago","recordType":"geographical-indication","legalClass":"Wine GI","hierarchy":["New Zealand","Otago","Central Otago"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["wine"],"registration":{"ipNumber":1007,"registered":"2018-10-29","renewalDue":"2032-07-27"},"subregions":["Bannockburn"],
+      "researchNotes":["IPONZ recognizes Bannockburn as a GI wholly or partly within Central Otago; do not create unofficial nested subregions until individually researched."],
+      "sourceRefs":["nz-iponz-central-otago","nz-iponz-register-2026"]
+    },
+    {
+      "id":"nz-bannockburn-gi","country":"New Zealand","name":"Bannockburn","recordType":"geographical-indication","legalClass":"Wine GI","hierarchy":["New Zealand","Otago","Central Otago","Bannockburn"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["wine"],"registration":{"ipNumber":1028,"registered":"2022-02-01"},
+      "researchNotes":["Bannockburn is formally registered and lies within the Central Otago GI. A later research pass should extract the applicant evidence on physical environment, soils, climate and reputation."],
+      "sourceRefs":["nz-iponz-bannockburn"]
+    },
+    {
+      "id":"nz-martinborough-gi","country":"New Zealand","name":"Martinborough","recordType":"geographical-indication","legalClass":"Wine GI","hierarchy":["New Zealand","Wellington","Wairarapa","Martinborough"],"researchCompleteness":3,"generationStatus":"reference-only",
+      "products":["wine"],"registration":{"ipNumber":1011,"registered":"2018-02-26","renewalDue":"2032-07-27"},
+      "researchNotes":["Legal GI identity is verified. Soil, climate, varietal distribution and style will be added only from the registered evidence or other authoritative regional material."],
+      "sourceRefs":["nz-iponz-martinborough","nz-iponz-register-2026"]
+    },
+
+    {
+      "id":"za-wine-of-origin-framework","country":"South Africa","name":"Wine of Origin framework","recordType":"legal-framework","legalClass":"Wine of Origin","hierarchy":["South Africa"],"researchCompleteness":4,"generationStatus":"framework-only",
+      "classificationTerms":["Overarching Geographical Unit","Geographical Unit","Overarching Region","Region","Sub-Region","District","Ward"],
+      "productionRules":{"certificationIncludes":["origin traceability","vineyard inspection","cellar monitoring","official analysis","tasting","label approval"]},
+      "researchNotes":["Geographical units, regions, districts and wards are legally distinct origin units. The generator must preserve their hierarchy rather than flatten every South African place to 'region'.","North West was added as a geographical unit in 2023 according to the 2025 national wine directory."],
+      "sourceRefs":["za-wosa-wo-2025"]
+    },
+    {
+      "id":"cl-wine-do-framework","country":"Chile","name":"Chilean wine denomination-of-origin framework","recordType":"legal-framework","legalClass":"DO zoning under Decreto 464","hierarchy":["Chile"],"researchCompleteness":5,"generationStatus":"framework-only",
+      "classificationTerms":["Región Vitícola","Subregión","Zona","Área","Secano Interior","Andes","Entre Cordilleras","Costa"],
+      "productionRules":{"minimumGeographicOriginPct":75,"minimumVintagePctWhenStated":75,"supplementalAndesEntreCordillerasCostaOriginPct":85,"certificationCanCover":["grape origin","wine geographic origin","variety","vintage","estate bottling"]},
+      "researchNotes":["The current Decreto 464 version is dated 14 July 2026 and should be treated as time-sensitive law.","Generation must model Chilean DO labels as percentage claims, not assume 100% origin/variety/vintage when a label names them."],
+      "sourceRefs":["cl-sag-do-2026","cl-sag-certification-2026"]
+    },
+    {
+      "id":"ar-alto-agrelo-ig","country":"Argentina","name":"Alto Agrelo","recordType":"geographical-indication","legalClass":"IG","hierarchy":["Argentina","Mendoza","Luján de Cuyo","Agrelo","Alto Agrelo"],"researchCompleteness":2,"generationStatus":"reference-only",
+      "products":["wine"],"registration":{"recognized":"2025-07-16","published":"2025-07-23","resolution":"INV 27/2025"},
+      "researchNotes":["The INV formally recognized, protected and registered Alto Agrelo as an Argentine geographical indication in July 2025.","This pass intentionally records legal identity only; cultivar composition, elevations, soils and style require separate primary research."],
+      "sourceRefs":["ar-inv-alto-agrelo-2025"]
+    },
+
+    {
+      "id":"ge-kakheti-pdo","country":"Georgia","name":"Kakheti","recordType":"appellation","legalClass":"PDO","hierarchy":["Georgia","Kakheti","Kakheti PDO"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["dry amber wine"],"authorizedGrapes":["Rkatsiteli","Kakhuri Mtsvane"],"principalGrapes":["Rkatsiteli","Kakhuri Mtsvane"],
+      "styleNotes":["traditional skin-contact/fermentation-with-must amber profile","fruit aromas with a firm, textural palate"],
+      "researchNotes":["Georgia's national wine body listed 30 registered PDO wine appellations as of April 2025; the research library should eventually model all of them individually."],
+      "sourceRefs":["ge-wines-georgia-pdo-2025"]
+    },
+    {
+      "id":"ge-kindzmarauli-pdo","country":"Georgia","name":"Kindzmarauli","recordType":"appellation","legalClass":"PDO","hierarchy":["Georgia","Kakheti","Kindzmarauli"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["naturally semi-sweet red wine"],"authorizedGrapes":["Saperavi"],"principalGrapes":["Saperavi"],
+      "styleNotes":["dark garnet color","full, velvety fruit profile","naturally semi-sweet"],
+      "sourceRefs":["ge-wines-georgia-pdo-2025"]
+    },
+    {
+      "id":"ge-akhasheni-pdo","country":"Georgia","name":"Akhasheni","recordType":"appellation","legalClass":"PDO","hierarchy":["Georgia","Kakheti","Akhasheni"],"researchCompleteness":4,"generationStatus":"candidate",
+      "products":["naturally semi-sweet red wine"],"authorizedGrapes":["Saperavi"],"principalGrapes":["Saperavi"],
+      "styleNotes":["dark pomegranate color","velvety sweetness","fruit-driven Saperavi profile"],
+      "sourceRefs":["ge-wines-georgia-pdo-2025"]
+    }
+  ]
+}
