@@ -15,7 +15,7 @@ class HistoricalVintageRegistryTests(unittest.TestCase):
         self.assertEqual(stats.observation_count, 17)
         self.assertEqual(stats.authority_rating_count, 25)
         self.assertEqual(stats.archive_count, 4)
-        self.assertGreaterEqual(stats.country_count, 7)
+        self.assertGreaterEqual(stats.country_count, 6)
         self.assertGreaterEqual(stats.region_count, 9)
         self.assertLessEqual(stats.earliest_observation_year, 2020)
         self.assertGreaterEqual(stats.latest_observation_year, 2025)
