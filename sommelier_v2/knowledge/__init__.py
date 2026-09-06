@@ -18,11 +18,13 @@ from .legal_vineyard_engine import LegalVineyardEngine
 from .machine_legal_constraints import MachineConstraintDecision, MachineLegalConstraint, MachineLegalConstraintRegistry
 from .national_overrides import NationalAwareLegalSpecRegistry, NationalLegalOverrideRegistry, NationalOverrideDecision
 from .origin_factory import ConstrainedOrigin, OriginRequest, WineOriginFactory
+from .packaging import PackagingAssessment, PackagingConstraintError, PackagingPlan, assess_packaging
 from .priors import SimulationPriors
 from .process_chemistry_evidence import ChemistryEvidenceRecord, ChemistryEvidenceSource, ChemistryEvidenceStats, MODEL_EVIDENCE_LINKS, ModelEvidenceLink, ProcessChemistryEvidenceError, ProcessChemistryEvidenceRegistry, load_process_chemistry_evidence
 from .regional_rules import OriginConstraintError, OriginDecision, RegionGrapeRulebook, RegionRule
 from .schema import *  # noqa: F401,F403 - package intentionally exposes schema types
 from .site_research import MicroSiteObservation, SiteDataQualityFlag, SiteResearchError, SiteResearchRecord, SiteResearchRegistry, SiteResearchSource, SiteResearchStats, load_site_research
+from .smoke_taint import SmokeMarkerAssessment, SmokeMarkerResult, SmokeTaintConstraintError, assess_smoke_markers, supported_smoke_guide_cultivars
 from .trade_research import TradeFieldPolicy, TradeObservationConflict, TradeResearchError, TradeResearchRegistry, TradeResearchStats, TradeSourceRecord, TradeTechnicalObservation, load_trade_research
 from .vineyard_engine import SiteRegistry, VineyardBlock, VineyardEngine as BaseVineyardEngine, VineyardOutcome
 from .vintage import load_legacy_vintage_knowledge, vintage_stats
@@ -46,21 +48,24 @@ __all__ = [
     "MachineLegalConstraintRegistry", "MalolacticParams", "MalolacticState", "MicroSiteObservation",
     "ModelEvidenceLink", "MustComposition", "NamedSite", "NationalAwareLegalSpecRegistry",
     "NationalLegalOverrideRegistry", "NationalOverrideDecision", "NutrientAddition", "NutrientTimingEffect",
-    "OriginConstraintError", "OriginDecision", "OriginRequest", "PiwiRecord", "ProcessChemistryAssessment",
+    "OriginConstraintError", "OriginDecision", "OriginRequest", "PackagingAssessment",
+    "PackagingConstraintError", "PackagingPlan", "PiwiRecord", "ProcessChemistryAssessment",
     "ProcessChemistryEvidenceError", "ProcessChemistryEvidenceRegistry", "ProvenanceSlice",
     "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "SimulationPriors", "SiteDataQualityFlag",
     "SiteRegistry", "SiteResearchError", "SiteResearchRecord", "SiteResearchRegistry",
-    "SiteResearchSource", "SiteResearchStats", "TradeFieldPolicy", "TradeObservationConflict",
-    "TradeResearchError", "TradeResearchRegistry", "TradeResearchStats", "TradeSourceRecord",
-    "TradeTechnicalObservation", "ValidatedWineRecord", "VarietyAreaObservation", "VerificationLevel",
-    "VineyardBlock", "VineyardEngine", "VineyardOutcome", "VintageDayState", "VintageModelParams",
-    "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory", "WineryLot", "WineryProvenanceError",
-    "WineryProvenanceLedger", "WorldWineKnowledgeCatalog", "assess_process_chemistry",
-    "initial_microbiological_risk", "initial_state", "load_historical_vintages",
-    "load_legacy_vintage_knowledge", "load_process_chemistry_evidence", "load_site_research",
-    "load_trade_research", "modified_archetype", "molecular_so2_mg_l", "must_from_vineyard",
-    "normalize_name", "nutrient_timing_effect", "post_fermentation_microbiological_risk",
-    "run_alcoholic_fermentation", "run_fermentation", "run_malolactic", "simulate_vintage",
-    "state_at_age", "step_alcoholic_fermentation", "step_malolactic", "validate_harvest_must_plan",
+    "SiteResearchSource", "SiteResearchStats", "SmokeMarkerAssessment", "SmokeMarkerResult",
+    "SmokeTaintConstraintError", "TradeFieldPolicy", "TradeObservationConflict", "TradeResearchError",
+    "TradeResearchRegistry", "TradeResearchStats", "TradeSourceRecord", "TradeTechnicalObservation",
+    "ValidatedWineRecord", "VarietyAreaObservation", "VerificationLevel", "VineyardBlock",
+    "VineyardEngine", "VineyardOutcome", "VintageDayState", "VintageModelParams", "VintageOutcome",
+    "WineKnowledgeCatalog", "WineOriginFactory", "WineryLot", "WineryProvenanceError",
+    "WineryProvenanceLedger", "WorldWineKnowledgeCatalog", "assess_packaging",
+    "assess_process_chemistry", "assess_smoke_markers", "initial_microbiological_risk", "initial_state",
+    "load_historical_vintages", "load_legacy_vintage_knowledge", "load_process_chemistry_evidence",
+    "load_site_research", "load_trade_research", "modified_archetype", "molecular_so2_mg_l",
+    "must_from_vineyard", "normalize_name", "nutrient_timing_effect",
+    "post_fermentation_microbiological_risk", "run_alcoholic_fermentation", "run_fermentation",
+    "run_malolactic", "simulate_vintage", "state_at_age", "step_alcoholic_fermentation",
+    "step_malolactic", "supported_smoke_guide_cultivars", "validate_harvest_must_plan",
     "validate_must", "validate_plan", "vintage_stats", "white_juice_solids_risk",
 ]
