@@ -43,6 +43,11 @@ class AlcoholicFermentationParams:
     extraction_scale: float = 1.0
     whole_cluster_fraction: float = 0.0
     oxygen_management_index: float = 0.5
+    # Orchestration-layer process priors. These remain bounded 0..1 and are
+    # supplied explicitly from must condition / cellar decisions.
+    must_microbiological_risk: float = 0.0
+    juice_solids_risk: float = 0.0
+    nutrient_timing_risk: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -139,12 +144,17 @@ def _risk_state(state: FermentationState, p: AlcoholicFermentationParams) -> tup
     stalled = clamp(
         0.42 * low_n + 0.24 * cold + 0.28 * hot
         + 0.25 * ethanol_pressure * remaining
+        + 0.10 * clamp(p.juice_solids_risk)
+        + 0.07 * clamp(p.must_microbiological_risk)
+        + 0.05 * clamp(p.nutrient_timing_risk)
         + (0.18 if state.biomass_g_l < 0.10 and remaining > 0.1 else 0.0)
     )
     h2s = clamp(
         0.65 * low_n
         + 0.20 * clamp((16.0 - state.temp_c) / 8.0)
         + 0.15 * clamp(0.25 - p.oxygen_management_index, 0.0, 0.25) / 0.25
+        + 0.16 * clamp(p.juice_solids_risk)
+        + 0.10 * clamp(p.nutrient_timing_risk)
     )
     return stalled, h2s
 
@@ -191,11 +201,20 @@ def step_alcoholic_fermentation(
     pressure = max(0.0, state.pressure_bar + pressure_gain)
 
     # VA is deliberately small in healthy fermentation and rises under hot,
-    # nutrient-limited or oxygen-mismanaged conditions.
+    # nutrient-limited, oxygen-mismanaged, compromised-fruit, or poorly timed
+    # nutrient conditions. These additions are bounded simulation priors.
     low_n = clamp((100.0 - state.yan_mg_l) / 100.0)
     hot = clamp((state.temp_c - 29.0) / 7.0)
     oxygen_extreme = abs(clamp(params.oxygen_management_index) - 0.45) / 0.55
-    va_gain = consumed * (0.00005 + 0.00016 * low_n + 0.00012 * hot + 0.00005 * oxygen_extreme)
+    va_gain = consumed * (
+        0.00005
+        + 0.00016 * low_n
+        + 0.00012 * hot
+        + 0.00005 * oxygen_extreme
+        + 0.00010 * clamp(params.must_microbiological_risk)
+        + 0.00008 * clamp(params.nutrient_timing_risk)
+        + 0.00004 * clamp(params.juice_solids_risk)
+    )
     va = state.volatile_acidity_g_l + va_gain
 
     anthocyanin = state.anthocyanin_extraction
