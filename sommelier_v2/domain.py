@@ -101,9 +101,28 @@ class OpenBottleState:
             raise ValueError("opened_day cannot be negative")
 
 
+@dataclass(frozen=True)
+class InventoryProvenanceComponent:
+    """Normalized physical provenance carried into commercial inventory."""
+
+    volume_pct: float
+    grape: str
+    country: str
+    origins: tuple[str, ...]
+    vintage: int | None
+    block_ids: tuple[str, ...] = ()
+    source_lot_ids: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if self.volume_pct <= 0.0 or self.volume_pct > 100.0 + 1e-9:
+            raise ValueError("provenance component volume_pct must be within (0, 100]")
+        if not self.grape.strip() or not self.country.strip():
+            raise ValueError("provenance component requires grape and country")
+
+
 @dataclass
 class InventoryLot:
-    """A purchasable lot, including BTG open-bottle state.
+    """A purchasable lot, including BTG and physical provenance state.
 
     ``open_bottle_ml`` and ``opened_day`` remain as compatibility fields for old
     saves and callers. When ``open_bottles`` is populated, the per-bottle queue is
@@ -131,6 +150,10 @@ class InventoryLot:
     opened_day: int | None = None
     open_bottle_life_days: int = 3
     open_bottles: list[OpenBottleState] = field(default_factory=list)
+    source_winery_lot_id: str = ""
+    source_dispatch_reference: str = ""
+    provenance_fingerprint: str = ""
+    provenance_components: tuple[InventoryProvenanceComponent, ...] = ()
 
     @property
     def available_sealed_bottles(self) -> int:
