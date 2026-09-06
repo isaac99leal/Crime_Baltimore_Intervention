@@ -31,6 +31,8 @@ class DecisionRuntimeInputs:
     """Explicit measurements/priors required by qualitative decision labels."""
 
     partial_whole_cluster_fraction: float | None = None
+    partial_mlf_target_malic_g_l: float | None = None
+    fermentation_temperature_schedule: tuple[tuple[float, float], ...] = ()
     juice_turbidity_ntu: float | None = None
     prebottling_dissolved_oxygen_mg_l: float | None = None
     closure_oxygen_exposure_prior: float | None = None
@@ -80,6 +82,20 @@ def _validate_runtime_inputs(inputs: DecisionRuntimeInputs) -> None:
         0.0 < inputs.partial_whole_cluster_fraction < 1.0
     ):
         raise DecisionRuntimeError("partial_whole_cluster_fraction must be strictly between 0 and 1")
+    if inputs.partial_mlf_target_malic_g_l is not None and not (
+        0.0 <= inputs.partial_mlf_target_malic_g_l <= 20.0
+    ):
+        raise DecisionRuntimeError("partial_mlf_target_malic_g_l must be within 0..20")
+    prior_hour = -1.0
+    for point in inputs.fermentation_temperature_schedule:
+        if len(point) != 2:
+            raise DecisionRuntimeError("Each fermentation temperature point must be (hour, target_temp_c)")
+        hour, target = float(point[0]), float(point[1])
+        if hour < 0.0 or hour <= prior_hour:
+            raise DecisionRuntimeError("Fermentation temperature schedule hours must be non-negative and strictly increasing")
+        if not -5.0 <= target <= 55.0:
+            raise DecisionRuntimeError("Fermentation temperature targets must be within -5..55 C")
+        prior_hour = hour
     if inputs.juice_turbidity_ntu is not None and not (0.0 <= inputs.juice_turbidity_ntu <= 5000.0):
         raise DecisionRuntimeError("juice_turbidity_ntu must be within 0..5000")
     if inputs.prebottling_dissolved_oxygen_mg_l is not None and not (
@@ -217,15 +233,45 @@ def apply_winemaking_decisions(
                 applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied derived simulator oxygen-management prior {prior:g}."))
             continue
 
+        if decision.id == "fermentation-temperature-trajectory":
+            schedule = runtime_inputs.fermentation_temperature_schedule
+            if not schedule:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "A temperature-trajectory choice requires explicit time/temperature control points; no schedule is inferred from the qualitative label."))
+            else:
+                p = current_plan.alcoholic_params
+                current_plan = replace(
+                    current_plan,
+                    alcoholic_params=replace(p, temperature_schedule=tuple(schedule)),
+                )
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied {len(schedule)} explicit fermentation temperature control point(s)."))
+            continue
+
         if decision.id == "mlf":
             if option.id == "blocked":
                 current_plan = replace(current_plan, malolactic=False)
                 applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", "Disabled malolactic fermentation."))
             elif option.id == "complete":
-                current_plan = replace(current_plan, malolactic=True)
-                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", "Enabled the current complete-MLF engine."))
+                current_plan = replace(
+                    current_plan,
+                    malolactic=True,
+                    malolactic_params=replace(current_plan.malolactic_params, target_malic_g_l=0.10),
+                )
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", "Enabled MLF with the complete-MLF target of 0.10 g/L malic acid."))
             else:
-                applications.append(DecisionRuntimeApplication(decision.id, option.id, "runtime_not_implemented", "The current MLF engine is binary and cannot represent a controlled partial MLF without a target-malate state."))
+                target = runtime_inputs.partial_mlf_target_malic_g_l
+                if target is None:
+                    applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Partial MLF requires an explicit target malic-acid concentration; no percentage is inferred from the word partial."))
+                elif not 0.10 < target < current_must.malic_acid_g_l:
+                    raise DecisionRuntimeError(
+                        "partial_mlf_target_malic_g_l must be >0.10 g/L and below the must's initial malic acid"
+                    )
+                else:
+                    current_plan = replace(
+                        current_plan,
+                        malolactic=True,
+                        malolactic_params=replace(current_plan.malolactic_params, target_malic_g_l=target),
+                    )
+                    applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Enabled partial MLF to explicit target {target:g} g/L malic acid."))
             continue
 
         if decision.id == "filtration":
