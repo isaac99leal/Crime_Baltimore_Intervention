@@ -27,6 +27,7 @@ from .packaging import PackagingAssessment, PackagingConstraintError, PackagingP
 from .priors import SimulationPriors
 from .process_chemistry_evidence import ChemistryEvidenceRecord, ChemistryEvidenceSource, ChemistryEvidenceStats, MODEL_EVIDENCE_LINKS, ModelEvidenceLink, ProcessChemistryEvidenceError, ProcessChemistryEvidenceRegistry, load_process_chemistry_evidence
 from .regional_rules import OriginConstraintError, OriginDecision, RegionGrapeRulebook, RegionRule
+from .release_runtime import ReleaseRuntimeConstraintError, ReleaseRuntimeInputs, validate_cellar_release
 from .schema import *  # noqa: F401,F403 - package intentionally exposes schema types
 from .site_research import MicroSiteObservation, SiteDataQualityFlag, SiteResearchError, SiteResearchRecord, SiteResearchRegistry, SiteResearchSource, SiteResearchStats, load_site_research
 from .smoke_taint import SmokeMarkerAssessment, SmokeMarkerResult, SmokeTaintConstraintError, assess_smoke_markers, supported_smoke_guide_cultivars
@@ -63,16 +64,16 @@ __all__ = [
     "OXYGEN_MANAGEMENT_PRIORS", "OriginConstraintError", "OriginDecision", "OriginRequest",
     "OxygenAddition", "PackagingAssessment", "PackagingConstraintError", "PackagingPlan", "PiwiRecord",
     "ProcessChemistryAssessment", "ProcessChemistryEvidenceError", "ProcessChemistryEvidenceRegistry",
-    "ProvenanceSlice", "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "SimulationPriors",
-    "SiteDataQualityFlag", "SiteRegistry", "SiteResearchError", "SiteResearchRecord", "SiteResearchRegistry",
-    "SiteResearchSource", "SiteResearchStats", "SmokeMarkerAssessment", "SmokeMarkerResult",
-    "SmokeTaintConstraintError", "ToppingEvent", "TradeFieldPolicy", "TradeObservationConflict",
-    "TradeResearchError", "TradeResearchRegistry", "TradeResearchStats", "TradeSourceRecord",
-    "TradeTechnicalObservation", "ValidatedWineRecord", "VarietyAreaObservation", "VerificationLevel",
-    "VineyardBlock", "VineyardEngine", "VineyardOutcome", "VintageDayState", "VintageModelParams",
-    "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory", "WinemakingDecision",
-    "WinemakingDecisionError", "WinemakingDecisionRegistry", "WinemakingDecisionStats", "WineryLot",
-    "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",
+    "ProvenanceSlice", "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "ReleaseRuntimeConstraintError",
+    "ReleaseRuntimeInputs", "SimulationPriors", "SiteDataQualityFlag", "SiteRegistry", "SiteResearchError",
+    "SiteResearchRecord", "SiteResearchRegistry", "SiteResearchSource", "SiteResearchStats",
+    "SmokeMarkerAssessment", "SmokeMarkerResult", "SmokeTaintConstraintError", "ToppingEvent",
+    "TradeFieldPolicy", "TradeObservationConflict", "TradeResearchError", "TradeResearchRegistry",
+    "TradeResearchStats", "TradeSourceRecord", "TradeTechnicalObservation", "ValidatedWineRecord",
+    "VarietyAreaObservation", "VerificationLevel", "VineyardBlock", "VineyardEngine", "VineyardOutcome",
+    "VintageDayState", "VintageModelParams", "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory",
+    "WinemakingDecision", "WinemakingDecisionError", "WinemakingDecisionRegistry", "WinemakingDecisionStats",
+    "WineryLot", "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",
     "apply_winemaking_decisions", "assess_packaging", "assess_process_chemistry", "assess_smoke_markers",
     "initial_microbiological_risk", "initial_state", "load_historical_vintages",
     "load_legacy_vintage_knowledge", "load_process_chemistry_evidence", "load_site_research",
@@ -81,6 +82,6 @@ __all__ = [
     "post_fermentation_microbiological_risk", "run_alcoholic_fermentation", "run_cellar_pipeline",
     "run_fermentation", "run_malolactic", "simulate_extraction", "simulate_maturation", "simulate_vintage",
     "state_at_age", "step_alcoholic_fermentation", "step_malolactic", "supported_smoke_guide_cultivars",
-    "temperature_control_target", "validate_harvest_must_plan", "validate_must", "validate_plan",
-    "vintage_stats", "white_juice_solids_risk",
+    "temperature_control_target", "validate_cellar_release", "validate_harvest_must_plan", "validate_must",
+    "validate_plan", "vintage_stats", "white_juice_solids_risk",
 ]
