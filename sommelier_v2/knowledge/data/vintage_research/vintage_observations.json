@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Vintage observations store sourced growing-season facts and authority assessments. Matrix modifiers are explicitly simulation-derived and bounded to -1..+1. Legacy unsourced VINTAGE_QUALITY scores are not imported into this layer.",
+  "observations": [
+    {
+      "id":"vintage-fr-champagne-2021","environmentProfileId":"env-fr-champagne","country":"France","region":"Champagne","year":2021,
+      "growingSeason":{"hazards":["12-day frost period","hail","persistent spring/summer rain","mildew"],"harvestStart":"2021-09-06","harvestWindowEnd":"2021-09-27","cropEffects":["about 30% yield loss attributed to frost","additional 25-30% loss attributed to mildew","500 ha affected by hail, with roughly half of that area fully lost"],"heterogeneity":"large parcel- and variety-level differences in yield and maturity"},
+      "styleEffects":["high site-selection importance","freshness and acidity favored where fruit reached maturity","quantity was a larger problem than a blanket quality failure"],
+      "matrixModifiers":{"derived":true,"confidence":4,"acidity":0.25,"ripeness":-0.10,"concentration":0.05,"tanninRipeness":-0.10,"aromaticFreshness":0.25,"diseasePressure":0.80,"yield":-0.75,"ageability":0.00,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-champagne-harvest-2021"]
+    },
+    {
+      "id":"vintage-fr-champagne-2022","environmentProfileId":"env-fr-champagne","country":"France","region":"Champagne","year":2022,
+      "growingSeason":{"conditions":["sunny and dry summer","timely rainfall supported maturation","rapid but comparatively calm growing season"],"harvestStart":"2022-08-20","fruitHealth":"excellent sanitary condition","mustPotentialAlcohol":"average above 10% vol","acidity":"reported as holding well","commercialYieldKgHa":12000},
+      "styleEffects":["ripe solar profile without loss of useful acidity","healthy fruit and strong volume","high potential for vintage-quality base wines"],
+      "matrixModifiers":{"derived":true,"confidence":4,"acidity":0.10,"ripeness":0.45,"concentration":0.30,"tanninRipeness":0.20,"aromaticFreshness":0.10,"diseasePressure":-0.40,"yield":0.50,"ageability":0.35,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-champagne-harvest-2022"]
+    },
+    {
+      "id":"vintage-fr-bourgogne-2021","environmentProfileId":"env-fr-bourgogne-cote","country":"France","region":"Bourgogne","year":2021,
+      "growingSeason":{"hazards":["historic April frost","cool wet conditions after frost","unpredictable summer weather","localized rain"],"flowering":"rapid and favorable after warmth returned in June","stillWineHarvestStart":"2021-09-18","harvestEnd":"early October","cropEffects":["very low yields after frost"]},
+      "styleEffects":["traditional rather than very early harvest timing","fresh profiles favored","quality and ripeness varied strongly by site and frost exposure"],
+      "matrixModifiers":{"derived":true,"confidence":4,"acidity":0.40,"ripeness":-0.20,"concentration":0.05,"tanninRipeness":-0.15,"aromaticFreshness":0.35,"diseasePressure":0.50,"yield":-0.80,"ageability":0.00,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-bivb-vintage-2021"]
+    },
+    {
+      "id":"vintage-fr-bourgogne-2022","environmentProfileId":"env-fr-bourgogne-cote","country":"France","region":"Bourgogne","year":2022,
+      "growingSeason":{"conditions":["mild dry winter","April frost episodes","warm spring with rapid phenology","hot dry summer","multiple heatwaves","general rainfall deficit","useful June rain and mid-August showers"],"harvestWindow":"mid-August for earliest Crémant through third week of September for later northern sectors","fruitHealth":"reported as excellent","volumeHectolitresApprox":1750000,"volumeVs2021":"about 75% higher"},
+      "styleEffects":["strong balance despite heat","good color extraction","healthy fruit","combination of quality and generous volume"],
+      "matrixModifiers":{"derived":true,"confidence":4,"acidity":0.00,"ripeness":0.45,"concentration":0.35,"tanninRipeness":0.35,"aromaticFreshness":0.00,"diseasePressure":-0.30,"yield":0.50,"ageability":0.35,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-bivb-vintage-2022"]
+    },
+    {
+      "id":"vintage-fr-bordeaux-2020","country":"France","region":"Bordeaux","year":2020,
+      "growingSeason":{"conditions":["very early vine cycle","ideal summer conditions","favorable harvest conditions"],"redHarvest":"Merlot began in early September on early sites; broader Merlot harvest around 20 September followed by Cabernets"},
+      "styleEffects":["balanced reds with fine tannins","precise fresh dry whites","strong balance among alcohol, acidity and tannin"],
+      "publishedDrinkWindowYears":[15,25],
+      "matrixModifiers":{"derived":true,"confidence":4,"acidity":0.10,"ripeness":0.35,"concentration":0.25,"tanninRipeness":0.35,"aromaticFreshness":0.15,"diseasePressure":0.00,"yield":0.00,"ageability":0.50,"botrytisSuitability":0.10},
+      "sourceRefs":["fr-bordeaux-vintage-2020"]
+    },
+    {
+      "id":"vintage-fr-bordeaux-2021","country":"France","region":"Bordeaux","year":2021,
+      "growingSeason":{"hazards":["severe 7-8 April frost","additional May frost","cool relatively low-sun summer","late-June and July rain with mildew pressure"],"lateSeason":"dry, moderately warm days and cool nights from late August into autumn","harvestTiming":"roughly 15 days later than 2020 for the first harvest wave","productionHectolitres":3770000,"productionVs2020Pct":-14,"productionVsTenYearAveragePct":-20},
+      "styleEffects":["fresh aromatic supple reds","excellent vivid dry whites","strong noble-rot conditions for surviving sweet-wine parcels","high acidity and aromatic definition"],
+      "matrixModifiers":{"derived":true,"confidence":5,"acidity":0.45,"ripeness":-0.05,"concentration":0.00,"tanninRipeness":-0.05,"aromaticFreshness":0.45,"diseasePressure":0.50,"yield":-0.55,"ageability":0.10,"botrytisSuitability":0.65},
+      "sourceRefs":["fr-bordeaux-vintage-2021"]
+    },
+    {
+      "id":"vintage-fr-bordeaux-2022","country":"France","region":"Bordeaux","year":2022,
+      "growingSeason":{"conditions":["record heat and drought from spring","early April frost","June hail","welcome rain from late August"],"harvestTiming":"historically early","berrySize":"small","fruitHealth":"excellent at harvest"},
+      "styleEffects":["exceptional silky balanced reds","fully ripe tannins","concentrated fruit without blanket heaviness","aromatic intense dry whites","useful retained freshness"],
+      "matrixModifiers":{"derived":true,"confidence":5,"acidity":0.00,"ripeness":0.55,"concentration":0.55,"tanninRipeness":0.45,"aromaticFreshness":0.10,"diseasePressure":-0.20,"yield":-0.25,"ageability":0.45,"botrytisSuitability":0.00},
+      "sourceRefs":["fr-bordeaux-vintage-2022"]
+    },
+    {
+      "id":"vintage-us-napa-2021","environmentProfileId":"env-us-napa-valley","country":"United States","region":"Napa Valley","year":2021,
+      "growingSeason":{"cropEffects":["low yields"],"berryCharacter":"small berries with intense flavor concentration","authorityAssessment":"exceptional quality wines expected"},
+      "styleEffects":["concentrated fruit","high flavor intensity","lower production"],
+      "matrixModifiers":{"derived":true,"confidence":2,"acidity":0.00,"ripeness":0.30,"concentration":0.45,"tanninRipeness":0.25,"aromaticFreshness":0.05,"diseasePressure":0.00,"yield":-0.45,"ageability":0.30,"botrytisSuitability":0.00},
+      "sourceRefs":["us-napa-vintage-2021"]
+    },
+    {
+      "id":"vintage-us-napa-2022","environmentProfileId":"env-us-napa-valley","country":"United States","region":"Napa Valley","year":2022,
+      "growingSeason":{"rainfallInchesByMonth":{"Nov":1.59,"Dec":8.26,"Jan":0.36,"Feb":0.25,"Mar":1.01,"Apr":2.33,"May":0.13,"Jun":0.38,"Jul":0.00,"Aug":0.05,"Sep":1.13,"Oct":0.00},"chartPeriodRainfallInches":15.49,"phenologyTrackedFor":["Pinot Noir / Los Carneros","Chardonnay / Los Carneros","Cabernet Franc / Rutherford","Cabernet Sauvignon / Rutherford","Merlot / Rutherford","Sauvignon Blanc / St. Helena"]},
+      "matrixModifiers":{"derived":true,"confidence":2,"acidity":-0.05,"ripeness":0.20,"concentration":0.20,"tanninRipeness":0.15,"aromaticFreshness":0.00,"diseasePressure":-0.10,"yield":-0.10,"ageability":0.15,"botrytisSuitability":0.00},
+      "sourceRefs":["us-napa-vintage-2022"]
+    },
+    {
+      "id":"vintage-us-napa-2023","environmentProfileId":"env-us-napa-valley","country":"United States","region":"Napa Valley","year":2023,
+      "growingSeason":{"rainfallInchesByMonth":{"Nov":1.34,"Dec":9.78,"Jan":12.76,"Feb":4.75,"Mar":9.82,"Apr":0.24,"May":0.69,"Jun":0.00,"Jul":0.00,"Aug":0.00,"Sep":0.15,"Oct":0.53},"chartPeriodRainfallInches":40.06,"phenologyTrackedFor":["Pinot Noir / Los Carneros","Chardonnay / Los Carneros","Cabernet Franc / Rutherford","Cabernet Sauvignon / Rutherford","Merlot / Oak Knoll District","Sauvignon Blanc / Oak Knoll District"]},
+      "matrixModifiers":{"derived":true,"confidence":2,"acidity":0.10,"ripeness":0.00,"concentration":0.00,"tanninRipeness":0.00,"aromaticFreshness":0.10,"diseasePressure":0.05,"yield":0.10,"ageability":0.05,"botrytisSuitability":0.00},
+      "sourceRefs":["us-napa-vintage-2023"]
+    }
+  ],
+  "authorityRatings": [
+    {"region":"Rioja DOCa","year":2025,"rating":"Excellent","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2024,"rating":"Good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2023,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2022,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2021,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2020,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2019,"rating":"Excellent","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2018,"rating":"Good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2017,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2016,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2015,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2014,"rating":"Good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2013,"rating":"Good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2012,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2011,"rating":"Excellent","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2010,"rating":"Excellent","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2009,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2008,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2007,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2006,"rating":"Very good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2005,"rating":"Excellent","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2004,"rating":"Excellent","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2003,"rating":"Good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2002,"rating":"Good","sourceRefs":["es-rioja-vintages-2026"]},
+    {"region":"Rioja DOCa","year":2001,"rating":"Excellent","sourceRefs":["es-rioja-vintages-2026"]}
+  ]
+}
