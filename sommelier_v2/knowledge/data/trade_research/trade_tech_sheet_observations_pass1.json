@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Seed records proving the importer/distributor tech-sheet normalization path. Every observation is scoped to the producer, wine/vineyard and vintage or document context stated by the trade source. These records do not create legal or cultivar authority.",
+  "observations": [
+    {
+      "id": "tradeobs-skurnik-bedrock-katushas-2024",
+      "tradeSourceId": "trade-skurnik",
+      "sourceUrl": "https://www.skurnik.com/sku/zinfandel-katushas-vineyard-bedrock-wine-co-5/",
+      "producer": "Bedrock Wine Co.",
+      "wine": "Zinfandel 'Katushas' Vineyard",
+      "vintage": 2024,
+      "country": "United States",
+      "region": "California",
+      "vineyard": "Katushas' Vineyard",
+      "fields": {
+        "varietyComposition": "100% Zinfandel",
+        "vineyardPlantedYear": 1915,
+        "farmingPractice": "Practicing Organic",
+        "soilDescription": "Fine Sandy Tokay Loam",
+        "yeastStrategy": "native yeast fermentation",
+        "ageingMonths": 9,
+        "newOakPct": 25,
+        "alcoholPct": 14.5
+      },
+      "evidenceChannel": "importer-wine-page-with-tech-sheet-resource",
+      "sourceRef": "trade-skurnik-techsheets-pass20"
+    },
+    {
+      "id": "tradeobs-europeancellars-jose-gil-producer-current",
+      "tradeSourceId": "trade-european-cellars",
+      "sourceUrl": "https://www.europeancellars.com/producer/jose-gil/",
+      "producer": "Jose Gil",
+      "wine": null,
+      "vintage": null,
+      "country": "Spain",
+      "region": "Rioja",
+      "fields": {
+        "estateSizeHa": 11,
+        "elevationMRange": [540,600],
+        "vineAgeYearsRange": [5,130],
+        "farmingPractice": "Sustainable",
+        "varieties": ["Tempranillo","Garnacha","Jaen","Viura","Garnacha Blanca","Palomino"],
+        "harvestMethod": "hand harvested",
+        "wholeClusterStrategy": "whole-cluster or partially destemmed",
+        "yeastStrategy": "natural yeast fermentation",
+        "maceration": "gentle maceration",
+        "maturationVessel": "225–300 L French oak barrels"
+      },
+      "evidenceChannel": "importer-producer-page",
+      "sourceRef": "trade-european-cellars-techsheets-pass20"
+    },
+    {
+      "id": "tradeobs-bowler-bellande-willamette-2024",
+      "tradeSourceId": "trade-bowler",
+      "sourceUrl": "https://www.bowlerwine.com/wine-or-spirit/pinot-noir-willamette-valley/2024",
+      "producer": "Bellande",
+      "wine": "Pinot Noir Willamette Valley",
+      "vintage": 2024,
+      "country": "United States",
+      "region": "Oregon",
+      "fields": {
+        "varietyComposition": "100% Pinot Noir",
+        "farmingPractice": "organic vineyard sources stated by importer",
+        "vineyardSources": [
+          "Finnigan Hill Vineyard — Chehalem Mountains AVA, majority of blend",
+          "Cassin Vineyards — McMinnville AVA",
+          "Nemarniki Vineyard — Chehalem Mountains AVA",
+          "Johan Vineyard — Van Duzer Corridor AVA, biodynamically farmed"
+        ],
+        "yeastStrategy": "native yeast fermentation",
+        "maturationVessel": "neutral French oak",
+        "ageingMonths": 8,
+        "fining": "unfined",
+        "filtration": "unfiltered"
+      },
+      "evidenceChannel": "importer-distributor-wine-page-with-tech-sheet-resource",
+      "sourceRef": "trade-bowler-techsheets-pass20"
+    },
+    {
+      "id": "tradeobs-europeancellars-vinedos-alcohuaz-current",
+      "tradeSourceId": "trade-european-cellars",
+      "sourceUrl": "https://www.europeancellars.com/producer/vinedos-de-alcohuaz/",
+      "producer": "Viñedos de Alcohuaz",
+      "wine": null,
+      "vintage": null,
+      "country": "Chile",
+      "region": "Elqui Valley",
+      "fields": {
+        "estateSizeHa": 20,
+        "elevationMRange": [1720,2206],
+        "vineAgeYearsRange": [9,14],
+        "farmingPractice": "Sustainable",
+        "varieties": ["Syrah","Garnacha","Malbec","Petite Syrah","Petit Verdot","Cariñena","Touriga Nacional","Roussanne","Marsanne"],
+        "harvestMethod": "hand harvested",
+        "fermentationVessel": "stone lagars",
+        "capManagement": "manual pigeage",
+        "maturationVessel": "concrete eggs and French oak foudres"
+      },
+      "evidenceChannel": "importer-producer-page-with-wine-tech-sheet-library",
+      "sourceRef": "trade-european-cellars-techsheets-pass20"
+    },
+    {
+      "id": "tradeobs-europeancellars-dominio-del-aguila-current",
+      "tradeSourceId": "trade-european-cellars",
+      "sourceUrl": "https://www.europeancellars.com/producer/dominio-del-aguila/",
+      "producer": "Dominio del Águila",
+      "wine": null,
+      "vintage": null,
+      "country": "Spain",
+      "region": "Ribera del Duero",
+      "fields": {
+        "estateSizeHa": 66,
+        "elevationMRange": [800,900],
+        "vineAgeYearsRange": [60,150],
+        "vineAgeUpperBoundOpenEnded": true,
+        "farmingPractice": "Certified organic",
+        "varieties": ["Tempranillo","Garnacha","Bobal","Tempranillo Gris","Cariñena","Bruñal","Albillo"],
+        "harvestMethod": "hand harvested",
+        "yeastStrategy": "natural yeast fermentation",
+        "wholeClusterStrategy": "direct pressing or whole-cluster depending on wine",
+        "fermentationVessel": ["barrel","concrete vats","stainless steel tanks"],
+        "maturationVessel": "primarily French oak with a small percentage of American oak"
+      },
+      "evidenceChannel": "importer-producer-page-with-tech-sheet-library",
+      "sourceRef": "trade-european-cellars-techsheets-pass20"
+    }
+  ]
+}
