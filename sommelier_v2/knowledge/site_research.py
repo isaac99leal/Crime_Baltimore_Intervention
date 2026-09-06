@@ -155,6 +155,7 @@ class SiteResearchRegistry:
             "parentRegion",
             "ava",
             "sourceRefs",
+            "sourceRef",
             "blocks",
             "zones",
             "blockObservations",
@@ -164,6 +165,7 @@ class SiteResearchRegistry:
             "dataQualityFlags",
         }
     )
+    STRUCTURAL_OBSERVATION_KEYS = frozenset({"sourceRefs", "sourceRef"})
 
     def __init__(self, data_dir: Path = DATA_DIR) -> None:
         self.data_dir = data_dir
@@ -205,6 +207,47 @@ class SiteResearchRegistry:
                 all_sources[source_id] = source
         self._all_sources = all_sources
 
+    def _validated_refs(
+        self,
+        refs: tuple[str, ...],
+        *,
+        context: str,
+        referenced_source_ids: set[str],
+    ) -> tuple[str, ...]:
+        if not refs:
+            raise SiteResearchError(f"{context} has no source references")
+        for source_ref in refs:
+            if source_ref not in self._all_sources:
+                raise SiteResearchError(f"{context} references unknown source {source_ref}")
+            referenced_source_ids.add(source_ref)
+        return refs
+
+    def _observation_refs(
+        self,
+        value: Mapping[str, Any],
+        *,
+        site_refs: tuple[str, ...],
+        context: str,
+        referenced_source_ids: set[str],
+    ) -> tuple[str, ...]:
+        specific_refs: tuple[str, ...] = ()
+        raw_refs = value.get("sourceRefs")
+        if isinstance(raw_refs, list):
+            specific_refs = tuple(str(ref) for ref in raw_refs if str(ref).strip())
+        elif raw_refs is not None:
+            raise SiteResearchError(f"{context}.sourceRefs must be a list")
+        raw_ref = value.get("sourceRef")
+        if raw_ref is not None:
+            one = str(raw_ref).strip()
+            if one:
+                specific_refs = specific_refs + (one,)
+        refs = tuple(dict.fromkeys(specific_refs)) if specific_refs else site_refs
+        return self._validated_refs(
+            refs,
+            context=context,
+            referenced_source_ids=referenced_source_ids,
+        )
+
     def _load_sites(self) -> None:
         records: list[SiteResearchRecord] = []
         seen: set[str] = set()
@@ -223,15 +266,17 @@ class SiteResearchRegistry:
                     raise SiteResearchError(f"Missing or duplicate site id {site_id!r}")
                 name = str(raw.get("name", "")).strip()
                 parent_region = str(raw.get("parentRegion", "")).strip()
-                source_refs = tuple(str(ref) for ref in raw.get("sourceRefs", []))
-                if not name or not parent_region or not source_refs:
-                    raise SiteResearchError(f"Incomplete site identity/provenance for {site_id}")
-                for source_ref in source_refs:
-                    if source_ref not in self._all_sources:
-                        raise SiteResearchError(
-                            f"Site {site_id} references unknown source {source_ref}"
-                        )
-                    referenced_source_ids.add(source_ref)
+                raw_site_refs = raw.get("sourceRefs", [])
+                if not isinstance(raw_site_refs, list):
+                    raise SiteResearchError(f"{site_id}.sourceRefs must be a list")
+                source_refs = tuple(str(ref) for ref in raw_site_refs if str(ref).strip())
+                if not name or not parent_region:
+                    raise SiteResearchError(f"Incomplete site identity for {site_id}")
+                source_refs = self._validated_refs(
+                    source_refs,
+                    context=f"Site {site_id}",
+                    referenced_source_ids=referenced_source_ids,
+                )
 
                 ava_raw = raw.get("ava")
                 ava = str(ava_raw).strip() if ava_raw is not None else None
@@ -247,6 +292,18 @@ class SiteResearchRegistry:
                             raise SiteResearchError(
                                 f"{site_id}.{raw_key}[{ordinal}] must be a nonempty object"
                             )
+                        context = f"{site_id}.{raw_key}[{ordinal}]"
+                        observation_refs = self._observation_refs(
+                            value,
+                            site_refs=source_refs,
+                            context=context,
+                            referenced_source_ids=referenced_source_ids,
+                        )
+                        observation_fields = {
+                            key: item
+                            for key, item in value.items()
+                            if key not in self.STRUCTURAL_OBSERVATION_KEYS
+                        }
                         observations.append(
                             MicroSiteObservation(
                                 site_id=site_id,
@@ -255,8 +312,8 @@ class SiteResearchRegistry:
                                 ava=ava,
                                 kind=kind,
                                 ordinal=ordinal,
-                                fields=_freeze(value),
-                                source_refs=source_refs,
+                                fields=_freeze(observation_fields),
+                                source_refs=observation_refs,
                             )
                         )
 
