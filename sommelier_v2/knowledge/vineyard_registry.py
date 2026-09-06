@@ -18,6 +18,16 @@ from .expanded_catalog import WorldWineKnowledgeCatalog as _BaseWorldWineKnowled
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
 
+# These source classes carry stable source-defined record identities. Two rows
+# with the same displayed vineyard name can still be different cadastral/legal
+# units, so their explicit source IDs outrank a name-only semantic key.
+RECORD_IDENTITY_EVIDENCE_CLASSES = frozenset(
+    {
+        "official_state_vineyard_registry_wfs",
+        "official_vineyard_register_snapshot_pdf",
+    }
+)
+
 
 @dataclass(frozen=True)
 class NamedSiteSource:
@@ -300,6 +310,18 @@ def _semantic_key(site: _BaseNamedSite) -> tuple[str, str, str, str, str]:
     )
 
 
+def _has_source_defined_identity(
+    site: _BaseNamedSite,
+    sources: Mapping[str, NamedSiteSource],
+) -> bool:
+    """Return whether a source explicitly makes the record ID identity-bearing."""
+    return any(
+        sources.get(source_id) is not None
+        and sources[source_id].evidence_class in RECORD_IDENTITY_EVIDENCE_CLASSES
+        for source_id in site.source_ids
+    )
+
+
 def _merge_identity_evidence(existing: NamedSite, donor: NamedSite) -> NamedSite:
     """Keep canonical identity facts while adding non-conflicting donor evidence."""
     kwargs: dict[str, object] = {
@@ -356,38 +378,50 @@ class WorldWineKnowledgeCatalog(_BaseWorldWineKnowledgeCatalog):
             expansion_paths
         )
 
-        by_semantic_key: dict[tuple[str, str, str, str, str], NamedSite] = {}
+        source_registry = dict(sources)
+        for source_id, source in _load_canonical_source_ledger().items():
+            source_registry.setdefault(source_id, source)
+
+        # Canonical records define the preferred identity when an imported donor
+        # describes the same ordinary named site. Source-defined registry rows are
+        # different: their explicit IDs are part of the evidence and must survive
+        # even when two records share a human-readable semantic key.
+        by_identity_key: dict[tuple[object, ...], NamedSite] = {}
+
+        def identity_key(site: NamedSite) -> tuple[object, ...]:
+            if _has_source_defined_identity(site, source_registry):
+                return ("source-record", site.id)
+            return ("semantic", *_semantic_key(site))
+
         for raw in self.named_sites:
             site = _promote(raw)
-            key = _semantic_key(site)
-            existing = by_semantic_key.get(key)
+            key = identity_key(site)
+            existing = by_identity_key.get(key)
             if existing is None:
-                by_semantic_key[key] = site
+                by_identity_key[key] = site
             else:
-                by_semantic_key[key] = _merge_identity_evidence(existing, site)
+                by_identity_key[key] = _merge_identity_evidence(existing, site)
 
         for donor in expansion:
-            key = _semantic_key(donor)
-            existing = by_semantic_key.get(key)
+            key = identity_key(donor)
+            existing = by_identity_key.get(key)
             if existing is None:
-                by_semantic_key[key] = donor
+                by_identity_key[key] = donor
             else:
-                by_semantic_key[key] = _merge_identity_evidence(existing, donor)
+                by_identity_key[key] = _merge_identity_evidence(existing, donor)
 
         self.named_sites = sorted(
-            by_semantic_key.values(),
+            by_identity_key.values(),
             key=lambda row: (
                 row.country,
                 row.region,
                 row.parent or "",
                 row.site_type,
                 row.name.casefold(),
+                row.id,
             ),
         )
 
-        source_registry = dict(sources)
-        for source_id, source in _load_canonical_source_ledger().items():
-            source_registry.setdefault(source_id, source)
         self.named_site_sources = source_registry
         self.named_site_bulk_sources = bulk_sources
         self._named_site_expansion_source_ids = expansion_source_ids
