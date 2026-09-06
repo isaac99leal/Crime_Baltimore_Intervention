@@ -37,7 +37,7 @@ from .vineyard_engine import SiteRegistry, VineyardBlock, VineyardEngine as Base
 from .vintage import load_legacy_vintage_knowledge, vintage_stats
 from .vintage_engine import DailyWeather, VintageDayState, VintageModelParams, VintageOutcome, simulate_vintage
 from .winemaking_decisions import DecisionAuthorityAssessment, DecisionEvidenceSource, DecisionOption, WinemakingDecision, WinemakingDecisionError, WinemakingDecisionRegistry, WinemakingDecisionStats, load_winemaking_decisions
-from .winery_provenance import ProvenanceSlice, WineryLot, WineryProvenanceError, WineryProvenanceLedger
+from .winery_provenance import LotBalance, LotMovement, ProvenanceSlice, WineryLot, WineryProvenanceError, WineryProvenanceLedger
 
 VineyardEngine = LegalVineyardEngine
 
@@ -57,8 +57,8 @@ __all__ = [
     "HistoricalVintageRegistry", "HistoricalVintageSignal", "HistoricalVintageStats",
     "JurisdictionLabelValidator", "LabelClaimDecision", "LabelClaims", "LegalAwareRegionGrapeRulebook",
     "LegalPracticeAssessment", "LegalPracticeBridge", "LegalSourceRecord", "LegalSourceRegistry",
-    "LegalSpecDecision", "LegalSpecRegistry", "LegalVineyardEngine", "LegalWineSpec",
-    "MODEL_EVIDENCE_LINKS", "MachineConstraintDecision", "MachineLegalConstraint",
+    "LegalSpecDecision", "LegalSpecRegistry", "LegalVineyardEngine", "LegalWineSpec", "LotBalance",
+    "LotMovement", "MODEL_EVIDENCE_LINKS", "MachineConstraintDecision", "MachineLegalConstraint",
     "MachineLegalConstraintRegistry", "MalolacticParams", "MalolacticState", "MaturationConstraintError",
     "MaturationInput", "MaturationPlan", "MaturationResult", "MaturationState", "MicroSiteObservation",
     "ModelEvidenceLink", "MustComposition", "NamedSite", "NationalAwareLegalSpecRegistry",
