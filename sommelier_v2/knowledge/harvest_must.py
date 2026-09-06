@@ -40,6 +40,7 @@ class HarvestMustPlan:
     must_temp_c: float = 18.0
     free_so2_mg_l: float = 5.0
     solids_pct: float | None = None
+    measured_juice_turbidity_ntu: float | None = None
     measured_yan_mg_l: float | None = None
     fallback_yan_mg_l: float | None = None
     initial_biomass_g_l: float = 0.12
@@ -96,6 +97,8 @@ def validate_harvest_must_plan(plan: HarvestMustPlan) -> None:
     _bounded("initial_ethanol_pct", plan.initial_ethanol_pct, 0.0, 25.0)
     if plan.solids_pct is not None:
         _bounded("solids_pct", plan.solids_pct, 0.0, 60.0)
+    if plan.measured_juice_turbidity_ntu is not None:
+        _bounded("measured_juice_turbidity_ntu", plan.measured_juice_turbidity_ntu, 0.0, 5000.0)
     if plan.measured_yan_mg_l is not None:
         _bounded("measured_yan_mg_l", plan.measured_yan_mg_l, 0.0, 1200.0)
     if plan.fallback_yan_mg_l is not None:
@@ -242,6 +245,11 @@ def must_from_vineyard(
         solids_pct=solids,
         botrytis_fraction=botrytis,
         rot_fraction=rot,
+        juice_turbidity_ntu=plan.measured_juice_turbidity_ntu,
+        fruit_integrity_index=fruit_integrity,
+        source_microbiological_risk=microbial_risk,
+        source_oxidation_risk=oxidation_risk,
+        source_extraction_potential=extraction_potential,
     )
 
     if microbial_risk >= 0.60:

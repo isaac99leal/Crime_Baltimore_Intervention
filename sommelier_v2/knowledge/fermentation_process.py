@@ -4,11 +4,22 @@ This module wraps the lower-level hourly alcoholic-fermentation and daily MLF
 models with hard input bounds and explicit process plans. It prevents chemically
 nonsensical states such as negative sugar, impossible target residual sugar, or a
 sweet-wine target with no arrest mechanism.
+
+The process layer also carries must condition, juice clarification, nutrient
+strategy, and post-fermentation protection into the simulation. These are
+bounded priors and evidence-facing risk mechanics, not analytical diagnoses.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
 
+from .fermentation_chemistry import (
+    NUTRIENT_KINDS,
+    assess_process_chemistry,
+    clamp as chemistry_clamp,
+    nutrient_timing_effect,
+    white_juice_solids_risk,
+)
 from .fermentation_engine import (
     AlcoholicFermentationParams,
     FermentationState,
@@ -41,6 +52,12 @@ class MustComposition:
     solids_pct: float = 2.0
     botrytis_fraction: float = 0.0
     rot_fraction: float = 0.0
+    # Optional measured/derived process context. None means unknown, not zero.
+    juice_turbidity_ntu: float | None = None
+    fruit_integrity_index: float | None = None
+    source_microbiological_risk: float | None = None
+    source_oxidation_risk: float | None = None
+    source_extraction_potential: float | None = None
 
 
 @dataclass(frozen=True)
@@ -67,6 +84,12 @@ class FermentationPlan:
     mlf_max_days: float = 120.0
     mlf_start_temp_c: float = 20.0
 
+    # Post-fermentation protection is explicit. None gives no molecular-SO2
+    # protection credit even when the must had an earlier SO2 addition.
+    post_fermentation_free_so2_mg_l: float | None = None
+    post_fermentation_so2_delay_days: float = 0.0
+    sterile_packaging: bool = False
+
 
 @dataclass(frozen=True)
 class FermentationResult:
@@ -86,6 +109,15 @@ class FermentationResult:
     malolactic_completed: bool
     stuck: bool
     warnings: tuple[str, ...] = ()
+    initial_microbiological_risk: float = 0.0
+    juice_solids_risk: float = 0.0
+    nutrient_timing_risk: float = 0.0
+    post_fermentation_microbiological_risk: float = 0.0
+    molecular_so2_mg_l: float | None = None
+    peak_h2s_risk: float = 0.0
+    peak_stuck_risk: float = 0.0
+    source_oxidation_risk: float | None = None
+    source_extraction_potential: float | None = None
 
 
 ALLOWED_ARREST_METHODS = {
@@ -118,6 +150,16 @@ def validate_must(must: MustComposition) -> None:
     _bounded("solids_pct", must.solids_pct, 0.0, 60.0)
     _bounded("botrytis_fraction", must.botrytis_fraction, 0.0, 1.0)
     _bounded("rot_fraction", must.rot_fraction, 0.0, 1.0)
+    if must.juice_turbidity_ntu is not None:
+        _bounded("juice_turbidity_ntu", must.juice_turbidity_ntu, 0.0, 5000.0)
+    for name, value in (
+        ("fruit_integrity_index", must.fruit_integrity_index),
+        ("source_microbiological_risk", must.source_microbiological_risk),
+        ("source_oxidation_risk", must.source_oxidation_risk),
+        ("source_extraction_potential", must.source_extraction_potential),
+    ):
+        if value is not None:
+            _bounded(name, value, 0.0, 1.0)
 
 
 def validate_plan(must: MustComposition, plan: FermentationPlan) -> None:
@@ -136,11 +178,21 @@ def validate_plan(must: MustComposition, plan: FermentationPlan) -> None:
         raise FermentationConstraintError("MLF cannot be scheduled after a process that sterile-filters the wine.")
     if plan.mlf_max_days <= 0 or plan.mlf_max_days > 365:
         raise FermentationConstraintError("mlf_max_days must be >0 and <=365")
+    if plan.post_fermentation_free_so2_mg_l is not None:
+        _bounded(
+            "post_fermentation_free_so2_mg_l",
+            plan.post_fermentation_free_so2_mg_l,
+            0.0,
+            300.0,
+        )
+    _bounded("post_fermentation_so2_delay_days", plan.post_fermentation_so2_delay_days, 0.0, 365.0)
 
     total_nutrient = 0.0
     for addition in plan.nutrient_additions:
         _bounded("nutrient addition hour", addition.hour, 0.0, plan.max_hours)
         _bounded("nutrient YAN addition", addition.yan_mg_l, 0.0, 300.0)
+        if addition.kind.strip().casefold() not in NUTRIENT_KINDS:
+            raise FermentationConstraintError(f"Unsupported nutrient kind {addition.kind!r}")
         total_nutrient += addition.yan_mg_l
     if total_nutrient > 600.0:
         raise FermentationConstraintError("Total modeled nutrient addition above 600 mg/L YAN is outside the supported process envelope.")
@@ -151,26 +203,82 @@ def validate_plan(must: MustComposition, plan: FermentationPlan) -> None:
     _bounded("vessel_pressure_retention", p.vessel_pressure_retention, 0.0, 1.0)
     _bounded("oxygen_management_index", p.oxygen_management_index, 0.0, 1.0)
     _bounded("whole_cluster_fraction", p.whole_cluster_fraction, 0.0, 1.0)
+    _bounded("must_microbiological_risk", p.must_microbiological_risk, 0.0, 1.0)
+    _bounded("juice_solids_risk", p.juice_solids_risk, 0.0, 1.0)
+    _bounded("nutrient_timing_risk", p.nutrient_timing_risk, 0.0, 1.0)
     if p.sugar_g_l_per_abv_pct <= 10 or p.sugar_g_l_per_abv_pct >= 30:
         raise FermentationConstraintError("Sugar-to-ethanol conversion must remain within 10..30 g/L sugar per %ABV.")
 
 
-def _planned_params(plan: FermentationPlan) -> AlcoholicFermentationParams:
+def _initial_microbiological_risk(must: MustComposition) -> float:
+    if must.source_microbiological_risk is not None:
+        return must.source_microbiological_risk
+    from .fermentation_chemistry import initial_microbiological_risk
+
+    return initial_microbiological_risk(
+        ph=must.ph,
+        rot_fraction=must.rot_fraction,
+        botrytis_fraction=must.botrytis_fraction,
+        free_so2_mg_l=must.free_so2_mg_l,
+    )
+
+
+def _planned_params(
+    plan: FermentationPlan,
+    must: MustComposition,
+    *,
+    initial_microbiological_risk: float,
+    juice_solids_risk: float,
+) -> AlcoholicFermentationParams:
     p = plan.alcoholic_params
-    return p if p.style == plan.style else replace(p, style=plan.style)
+    if p.style != plan.style:
+        p = replace(p, style=plan.style)
+    extraction_scale = p.extraction_scale
+    if must.source_extraction_potential is not None:
+        # The vineyard-derived extraction potential modifies, rather than
+        # replaces, the winemaker's extraction-scale choice.
+        extraction_scale *= 0.55 + 0.90 * must.source_extraction_potential
+    return replace(
+        p,
+        extraction_scale=extraction_scale,
+        must_microbiological_risk=chemistry_clamp(initial_microbiological_risk),
+        juice_solids_risk=chemistry_clamp(juice_solids_risk),
+    )
 
 
-def _apply_due_nutrients(state: FermentationState, additions: tuple[NutrientAddition, ...], applied: set[int]) -> FermentationState:
+def _apply_due_nutrients(
+    state: FermentationState,
+    additions: tuple[NutrientAddition, ...],
+    applied: set[int],
+    *,
+    initial_sugar_g_l: float,
+    current_timing_risk: float,
+) -> tuple[FermentationState, float, tuple[str, ...]]:
     yan = state.yan_mg_l
     changed = False
+    risk = current_timing_risk
+    warnings: list[str] = []
     for index, addition in enumerate(additions):
         if index in applied:
             continue
         if state.hour + 1e-9 >= addition.hour:
+            effect = nutrient_timing_effect(
+                kind=addition.kind,
+                yan_mg_l=addition.yan_mg_l,
+                ethanol_pct=state.ethanol_pct,
+                sugar_g_l=state.sugar_g_l,
+                initial_sugar_g_l=initial_sugar_g_l,
+            )
             yan += addition.yan_mg_l
+            risk = chemistry_clamp(
+                risk + effect.residual_nitrogen_risk * (1.0 - risk)
+            )
+            if effect.warning:
+                warnings.append(effect.warning)
             applied.add(index)
             changed = True
-    return replace(state, yan_mg_l=yan) if changed else state
+    updated = replace(state, yan_mg_l=yan) if changed else state
+    return updated, risk, tuple(warnings)
 
 
 def _complete_to_target(state: FermentationState, target_sugar_g_l: float, params: AlcoholicFermentationParams) -> FermentationState:
@@ -198,9 +306,21 @@ def _complete_to_target(state: FermentationState, target_sugar_g_l: float, param
 
 def run_fermentation(must: MustComposition, plan: FermentationPlan) -> FermentationResult:
     validate_plan(must, plan)
-    params = _planned_params(plan)
+    initial_micro = _initial_microbiological_risk(must)
+    solids_risk = white_juice_solids_risk(
+        plan.style,
+        must.juice_turbidity_ntu,
+        must.solids_pct,
+    )
+    params = _planned_params(
+        plan,
+        must,
+        initial_microbiological_risk=initial_micro,
+        juice_solids_risk=solids_risk,
+    )
     additions = tuple(sorted(plan.nutrient_additions, key=lambda a: a.hour))
     applied: set[int] = set()
+    nutrient_timing_risk = 0.0
 
     current = initial_state(
         sugar_g_l=must.sugar_g_l,
@@ -214,16 +334,38 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
     arrested = False
     stuck = False
     warnings: list[str] = []
+    nutrient_warning_set: set[str] = set()
+
+    if initial_micro >= 0.55:
+        warnings.append("Must condition enters fermentation with elevated modeled microbial risk.")
+    if solids_risk >= 0.50:
+        warnings.append("White-juice solids/turbidity state increases modeled fermentation risk.")
 
     while current.hour < plan.max_hours:
-        current = _apply_due_nutrients(current, additions, applied)
+        current, nutrient_timing_risk, nutrient_warnings = _apply_due_nutrients(
+            current,
+            additions,
+            applied,
+            initial_sugar_g_l=must.sugar_g_l,
+            current_timing_risk=nutrient_timing_risk,
+        )
+        for warning in nutrient_warnings:
+            if warning not in nutrient_warning_set:
+                nutrient_warning_set.add(warning)
+                warnings.append(warning)
+
         if current.sugar_g_l <= plan.target_residual_sugar_g_l + 0.05:
             current = _complete_to_target(current, plan.target_residual_sugar_g_l, params)
             arrested = plan.target_residual_sugar_g_l > 2.0
             history.append(current)
             break
 
-        next_state = step_alcoholic_fermentation(current, params, dt_hours=min(plan.dt_hours, plan.max_hours - current.hour))
+        step_params = replace(params, nutrient_timing_risk=nutrient_timing_risk)
+        next_state = step_alcoholic_fermentation(
+            current,
+            step_params,
+            dt_hours=min(plan.dt_hours, plan.max_hours - current.hour),
+        )
 
         if plan.target_residual_sugar_g_l > 2.0 and next_state.sugar_g_l < plan.target_residual_sugar_g_l:
             consumed = max(0.0, current.sugar_g_l - plan.target_residual_sugar_g_l)
@@ -247,7 +389,7 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
             break
         if current.finished:
             if current.sugar_g_l <= plan.target_residual_sugar_g_l + 0.05:
-                current = _complete_to_target(current, plan.target_residual_sugar_g_l, params)
+                current = _complete_to_target(current, plan.target_residual_sugar_g_l, step_params)
                 history[-1] = current
             else:
                 warnings.append("The kinetic model stopped above the requested residual-sugar target.")
@@ -311,6 +453,28 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
         status += "_mlf_complete" if mlf_completed else "_mlf_incomplete"
 
     final_va = mlf_history[-1].volatile_acidity_g_l if mlf_history else current.volatile_acidity_g_l
+    chemistry = assess_process_chemistry(
+        style=plan.style,
+        ph=must.ph,
+        free_so2_mg_l=must.free_so2_mg_l,
+        post_fermentation_free_so2_mg_l=plan.post_fermentation_free_so2_mg_l,
+        post_fermentation_so2_delay_days=plan.post_fermentation_so2_delay_days,
+        final_yan_mg_l=max(0.0, current.yan_mg_l),
+        rot_fraction=must.rot_fraction,
+        botrytis_fraction=must.botrytis_fraction,
+        solids_pct=must.solids_pct,
+        juice_turbidity_ntu=must.juice_turbidity_ntu,
+        nutrient_timing_risk=nutrient_timing_risk,
+        sterile_packaging=plan.sterile_packaging,
+        source_microbiological_risk=must.source_microbiological_risk,
+    )
+    for warning in chemistry.warnings:
+        if warning not in warnings:
+            warnings.append(warning)
+
+    peak_h2s = max((state.h2s_risk for state in history), default=0.0)
+    peak_stuck = max((state.stuck_risk for state in history), default=0.0)
+
     return FermentationResult(
         status=status,
         alcoholic_history=tuple(history),
@@ -328,4 +492,13 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
         malolactic_completed=mlf_completed,
         stuck=stuck,
         warnings=tuple(warnings),
+        initial_microbiological_risk=chemistry.initial_microbiological_risk,
+        juice_solids_risk=chemistry.juice_solids_risk,
+        nutrient_timing_risk=chemistry.nutrient_timing_risk,
+        post_fermentation_microbiological_risk=chemistry.post_fermentation_microbiological_risk,
+        molecular_so2_mg_l=chemistry.molecular_so2_mg_l,
+        peak_h2s_risk=peak_h2s,
+        peak_stuck_risk=peak_stuck,
+        source_oxidation_risk=must.source_oxidation_risk,
+        source_extraction_potential=must.source_extraction_potential,
     )

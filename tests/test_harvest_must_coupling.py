@@ -3,6 +3,7 @@ from __future__ import annotations
 import unittest
 from types import SimpleNamespace
 
+from sommelier_v2.knowledge.fermentation_process import FermentationPlan, run_fermentation
 from sommelier_v2.knowledge.harvest_must import (
     HarvestMustConstraintError,
     HarvestMustPlan,
@@ -61,6 +62,10 @@ class HarvestMustCouplingTests(unittest.TestCase):
         self.assertLess(profile.usable_tonnes, source.total_grape_tonnes)
         self.assertLess(profile.must_volume_l, source.total_grape_tonnes * 680.0)
         self.assertGreater(profile.fruit_integrity_index, 0.0)
+        self.assertEqual(profile.must.fruit_integrity_index, profile.fruit_integrity_index)
+        self.assertEqual(profile.must.source_microbiological_risk, profile.microbial_risk_index)
+        self.assertEqual(profile.must.source_oxidation_risk, profile.oxidation_risk_index)
+        self.assertEqual(profile.must.source_extraction_potential, profile.extraction_potential_index)
 
     def test_yan_is_never_silently_invented(self):
         with self.assertRaises(HarvestMustConstraintError):
@@ -113,6 +118,47 @@ class HarvestMustCouplingTests(unittest.TestCase):
         self.assertGreater(dirty_profile.oxidation_risk_index, clean_profile.oxidation_risk_index)
         self.assertLess(dirty_profile.fruit_integrity_index, clean_profile.fruit_integrity_index)
         self.assertLess(dirty_profile.extraction_potential_index, clean_profile.extraction_potential_index)
+
+        clean_ferment = run_fermentation(
+            clean_profile.must,
+            FermentationPlan(max_hours=1200.0),
+        )
+        dirty_ferment = run_fermentation(
+            dirty_profile.must,
+            FermentationPlan(max_hours=1200.0),
+        )
+        self.assertGreater(
+            dirty_ferment.initial_microbiological_risk,
+            clean_ferment.initial_microbiological_risk,
+        )
+        self.assertGreater(
+            dirty_ferment.final_volatile_acidity_g_l,
+            clean_ferment.final_volatile_acidity_g_l,
+        )
+        self.assertEqual(
+            dirty_ferment.source_oxidation_risk,
+            dirty_profile.oxidation_risk_index,
+        )
+        self.assertEqual(
+            dirty_ferment.source_extraction_potential,
+            dirty_profile.extraction_potential_index,
+        )
+
+    def test_measured_white_turbidity_survives_harvest_handoff(self):
+        profile = must_from_vineyard(
+            outcome(grape="Chardonnay"),
+            HarvestMustPlan(
+                style="white",
+                measured_yan_mg_l=180.0,
+                measured_juice_turbidity_ntu=350.0,
+            ),
+        )
+        self.assertEqual(profile.must.juice_turbidity_ntu, 350.0)
+        result = run_fermentation(
+            profile.must,
+            FermentationPlan(style="white", max_hours=1200.0),
+        )
+        self.assertGreater(result.juice_solids_risk, 0.0)
 
     def test_label_failure_does_not_destroy_physical_fruit(self):
         profile = must_from_vineyard(
