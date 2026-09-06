@@ -30,9 +30,6 @@ class LegalVineyardEngine(BaseVineyardEngine):
         site_claims: SiteClaimRegistry | None = None,
         vineyard_constraints: VineyardLegalConstraintRegistry | None = None,
     ) -> None:
-        # Use the canonical enriched named-vineyard registry, not the legacy world
-        # catalog. This makes the default legal vineyard engine see the same site
-        # identities exposed by sommelier_v2.knowledge.WorldWineKnowledgeCatalog.
         catalog = catalog or WorldWineKnowledgeCatalog()
         rulebook = rulebook or LegalAwareRegionGrapeRulebook(catalog=catalog)
         super().__init__(catalog=catalog, rulebook=rulebook, sites=sites)
@@ -99,6 +96,7 @@ class LegalVineyardEngine(BaseVineyardEngine):
                 appellation=spec.appellation,
                 variant=spec.variant,
                 vine_density_per_ha=block.vine_density_per_ha,
+                irrigation_mm_per_week=block.irrigation_mm_per_week,
             )
             if vineyard_law.satisfied is False:
                 label_eligible = False
