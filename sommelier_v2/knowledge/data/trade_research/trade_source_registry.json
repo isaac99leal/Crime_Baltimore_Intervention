@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Research ingestion registry for high-value importer/distributor/merchant websites. It records how trade material may be used and which claims require stronger authority. This is not a web crawler embedded in the game runtime; it is a provenance contract for bulk research passes.",
+  "fieldPolicy": {
+    "tradeSheetMayEstablish": [
+      "producerIdentity", "wineIdentity", "vintage", "vineyardName", "namedBlockOrParcel", "vineAgeOrPlantingYear",
+      "clone", "rootstock", "vineSpacing", "rowSpacing", "trainingSystem", "pruning", "farmingPractice", "certificationClaim",
+      "soilDescription", "elevation", "aspect", "slope", "harvestDate", "harvestMethod", "sorting", "destemming", "wholeClusterPct",
+      "fermentationVessel", "fermentationTemperature", "yeastStrategy", "maceration", "capManagement", "pressing", "malolactic",
+      "lees", "batonnage", "maturationVessel", "barrelSize", "oakOrigin", "newOakPct", "ageingMonths", "filtration", "fining",
+      "sulfurClaim", "alcoholPct", "residualSugar", "totalAcidity", "pH", "productionQuantity", "bottlingDate", "closure"
+    ],
+    "requiresPrimaryOrSpecialistCorroboration": [
+      "protectedOriginLegalStatus", "GI boundary", "authorizedGrapeLegality", "yieldLaw", "mandatoryAgeingLaw", "labelLaw",
+      "primeCultivarIdentity", "cultivarSynonymy", "geneticParentage", "mutationIdentity", "historicalWeather", "officialVintageRating"
+    ],
+    "sensoryPolicy": "Producer/importer tasting notes are observations about a wine or release, never universal cultivar/site constants."
+  },
+  "sources": [
+    {
+      "id": "trade-skurnik",
+      "name": "Skurnik Wines & Spirits",
+      "baseUrl": "https://www.skurnik.com/",
+      "sourceRef": "trade-skurnik-techsheets-pass20",
+      "role": ["importer", "distributor"],
+      "trustTier": "trade-curated",
+      "discovery": ["producer pages", "SKU pages", "Tech Sheets section", "shelf talkers"],
+      "versionKeyFields": ["producer", "wine", "vintage", "sku"],
+      "strengths": ["current vintage tech sheets", "vineyard source", "farming", "winemaking", "SKU/version traceability"],
+      "caveats": ["trade copy can summarize producer claims", "appellation display is not a legal product specification"]
+    },
+    {
+      "id": "trade-european-cellars",
+      "name": "European Cellars",
+      "baseUrl": "https://www.europeancellars.com/",
+      "sourceRef": "trade-european-cellars-techsheets-pass20",
+      "role": ["importer"],
+      "trustTier": "trade-curated",
+      "discovery": ["producer pages", "Downloads sections", "producer profiles", "wine tech sheets"],
+      "versionKeyFields": ["producer", "wine", "vintage"],
+      "strengths": ["vine age", "elevation", "estate size", "variety lists", "cellar summary", "site-specific downloads"],
+      "caveats": ["producer portfolio facts may span vintages", "old-vine ranges must retain producer/site context"]
+    },
+    {
+      "id": "trade-rare-wine-co",
+      "name": "The Rare Wine Co.",
+      "baseUrl": "https://www.rarewineco.com/wholesale/",
+      "sourceRef": "trade-rare-wine-co-techsheets-pass20",
+      "role": ["importer", "merchant"],
+      "trustTier": "trade-curated",
+      "discovery": ["wholesale producer pages", "Get the Tech Specs resources"],
+      "versionKeyFields": ["producer", "wine", "vintage"],
+      "strengths": ["specialist European estates", "fortified and historical categories", "producer-specific technical data"],
+      "caveats": ["merchant historical narratives require corroboration before becoming historical fact"]
+    },
+    {
+      "id": "trade-kermit-lynch",
+      "name": "Kermit Lynch Wine Merchant",
+      "baseUrl": "https://kermitlynch.com/",
+      "sourceRef": "trade-kermit-lynch-techsheets-pass20",
+      "role": ["importer", "merchant"],
+      "trustTier": "trade-curated",
+      "discovery": ["producer pages", "technical PDF archive", "vineyard dossiers"],
+      "versionKeyFields": ["producer", "wineOrVineyard", "documentDate"],
+      "strengths": ["vineyard geometry", "vine age", "soil", "exposure", "elevation", "viticultural practice"],
+      "caveats": ["legacy PDFs may be old snapshots", "historical sheet values must not overwrite current producer data"]
+    },
+    {
+      "id": "trade-bowler",
+      "name": "Bowler Wine",
+      "baseUrl": "https://www.bowlerwine.com/",
+      "sourceRef": "trade-bowler-techsheets-pass20",
+      "role": ["importer", "distributor"],
+      "trustTier": "trade-curated",
+      "discovery": ["wine pages", "producer pages", "Tech Sheet PDF", "Shelf Talker PDF"],
+      "versionKeyFields": ["producer", "wine", "vintage", "sku"],
+      "strengths": ["current wine-specific vinification", "vineyard blend sources", "farming type", "SKU traceability"],
+      "caveats": ["portfolio/product-line labels are trade metadata, not origin law"]
+    }
+  ],
+  "conflictPolicy": {
+    "sameVintageSameField": "retain every observation, rank by evidence channel, and open a conflict if normalized values disagree materially",
+    "differentVintage": "version by vintage; never call normal vintage change an error",
+    "undatedVsDated": "dated record wins for that vintage/date but the undated record remains a producer-level observation",
+    "legalConflict": "quarantine trade claim and defer to current regulator/product specification",
+    "cultivarConflict": "quarantine synonym/identity claim and defer to VIVC/national genetic or registration evidence"
+  }
+}

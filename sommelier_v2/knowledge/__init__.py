@@ -19,6 +19,7 @@ from .origin_factory import ConstrainedOrigin, OriginRequest, WineOriginFactory
 from .priors import SimulationPriors
 from .regional_rules import OriginConstraintError, OriginDecision, RegionGrapeRulebook, RegionRule
 from .schema import *  # noqa: F401,F403 - package intentionally exposes schema types
+from .trade_research import TradeFieldPolicy, TradeObservationConflict, TradeResearchError, TradeResearchRegistry, TradeResearchStats, TradeSourceRecord, TradeTechnicalObservation, load_trade_research
 from .vineyard_engine import SiteRegistry, VineyardBlock, VineyardEngine as BaseVineyardEngine, VineyardOutcome
 from .vintage import load_legacy_vintage_knowledge, vintage_stats
 from .vintage_engine import DailyWeather, VintageDayState, VintageModelParams, VintageOutcome, simulate_vintage
@@ -39,13 +40,14 @@ __all__ = [
     "MustComposition", "NamedSite", "NationalAwareLegalSpecRegistry", "NationalLegalOverrideRegistry",
     "NationalOverrideDecision", "NutrientAddition", "OriginConstraintError", "OriginDecision",
     "OriginRequest", "PiwiRecord", "ProvenanceSlice", "RegionGrapeRulebook", "RegionRule",
-    "ReleaseDecision", "SimulationPriors", "SiteRegistry", "ValidatedWineRecord",
-    "VarietyAreaObservation", "VerificationLevel", "VineyardBlock", "VineyardEngine",
-    "VineyardOutcome", "VintageDayState", "VintageModelParams", "VintageOutcome",
-    "WineKnowledgeCatalog", "WineOriginFactory", "WineryLot", "WineryProvenanceError",
-    "WineryProvenanceLedger", "WorldWineKnowledgeCatalog", "initial_state",
-    "load_legacy_vintage_knowledge", "modified_archetype", "must_from_vineyard", "normalize_name",
-    "run_alcoholic_fermentation", "run_fermentation", "run_malolactic", "simulate_vintage",
-    "state_at_age", "step_alcoholic_fermentation", "step_malolactic", "validate_harvest_must_plan",
-    "validate_must", "validate_plan", "vintage_stats",
+    "ReleaseDecision", "SimulationPriors", "SiteRegistry", "TradeFieldPolicy",
+    "TradeObservationConflict", "TradeResearchError", "TradeResearchRegistry", "TradeResearchStats",
+    "TradeSourceRecord", "TradeTechnicalObservation", "ValidatedWineRecord", "VarietyAreaObservation",
+    "VerificationLevel", "VineyardBlock", "VineyardEngine", "VineyardOutcome", "VintageDayState",
+    "VintageModelParams", "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory",
+    "WineryLot", "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",
+    "initial_state", "load_legacy_vintage_knowledge", "load_trade_research", "modified_archetype",
+    "must_from_vineyard", "normalize_name", "run_alcoholic_fermentation", "run_fermentation",
+    "run_malolactic", "simulate_vintage", "state_at_age", "step_alcoholic_fermentation",
+    "step_malolactic", "validate_harvest_must_plan", "validate_must", "validate_plan", "vintage_stats",
 ]

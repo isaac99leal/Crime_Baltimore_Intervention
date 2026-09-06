@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Fifth normalized trade-tech observation pass. This tranche emphasizes within-cultivar process contrasts for Cretan and Attic indigenous varieties plus historical commercial evidence for Timorasso. These records are wine/producer observations, never universal cultivar recipes.",
+  "observations": [
+    {
+      "id": "tradeobs-diamond-douloufakis-liatiko-amphora",
+      "tradeSourceId": "trade-diamond",
+      "sourceUrl": "https://www.diamondwineimporters.com/portfolio/douloufakis-winery-101119/liatiko-amphora-102471/",
+      "producer": "Douloufakis Winery",
+      "wine": "Liatiko Amphora",
+      "vintage": null,
+      "country": "Greece",
+      "region": "Crete",
+      "fields": {
+        "varietyComposition": "100% Liatiko",
+        "estateVineyardAreaHa": 20,
+        "soilDescription": "hillside clay-loam with high limestone content",
+        "harvestMethod": "hand harvested",
+        "destemming": "destemmed",
+        "crushing": "crushed",
+        "fermentationVessel": "250–300 L pythi amphora",
+        "yeastStrategy": "native yeast fermentation",
+        "macerationMonths": 3,
+        "sulfurClaim": "no added sulfur during three-month amphora fermentation/extraction; minimal sulfur at bottling",
+        "lees": "two months on lees in amphora after racking off skins",
+        "maturationVessel": ["pythi amphora", "used barrels"],
+        "ageingMonthsUsedBarrel": 5,
+        "fining": "none",
+        "filtration": "none"
+      },
+      "evidenceChannel": "importer-wine-page-with-product-sheet",
+      "sourceRef": "trade-diamond-pass24"
+    },
+    {
+      "id": "tradeobs-diamond-douloufakis-liatiko",
+      "tradeSourceId": "trade-diamond",
+      "sourceUrl": "https://www.diamondwineimporters.com/portfolio/douloufakis-winery-101119/liatiko-134373/",
+      "producer": "Douloufakis Winery",
+      "wine": "Liatiko",
+      "vintage": null,
+      "country": "Greece",
+      "region": "Crete",
+      "fields": {
+        "varietyComposition": "100% Liatiko",
+        "estateVineyardAreaHa": 20,
+        "soilDescription": "hillside clay-loam with high limestone content",
+        "harvestMethod": "hand harvested",
+        "coldSoakDaysRange": [7, 10],
+        "fermentationVessel": "stainless steel tanks",
+        "fermentationTemperature": "controlled",
+        "malolactic": "in stainless steel tank",
+        "maturationBlend": [
+          "50% for 12 months in 1,500 L and 3,000 L French oak barrels",
+          "30% for 12 months in 225 L barriques",
+          "20% in stainless steel tanks"
+        ],
+        "ageingMonthsOakComponents": 12
+      },
+      "evidenceChannel": "importer-wine-page-with-product-sheet",
+      "sourceRef": "trade-diamond-pass24"
+    },
+    {
+      "id": "tradeobs-diamond-douloufakis-vidiano",
+      "tradeSourceId": "trade-diamond",
+      "sourceUrl": "https://www.diamondwineimporters.com/portfolio/douloufakis-winery-101119/vidiano-102474/",
+      "producer": "Douloufakis Winery",
+      "wine": "Vidiano",
+      "vintage": null,
+      "country": "Greece",
+      "region": "Crete",
+      "fields": {
+        "varietyComposition": "100% Vidiano",
+        "estateVineyardAreaHa": 20,
+        "soilDescription": "hillside clay-loam with high limestone content",
+        "harvestMethod": "hand harvested",
+        "coldMaceratedFruitPct": 10,
+        "coldMacerationHours": 24,
+        "fermentationVessel": "stainless steel tanks",
+        "fermentationTemperature": "cold",
+        "lees": "a couple of months on lees in stainless steel before bottling",
+        "maturationVessel": "stainless steel"
+      },
+      "evidenceChannel": "importer-wine-page-with-product-sheet",
+      "sourceRef": "trade-diamond-pass24"
+    },
+    {
+      "id": "tradeobs-diamond-douloufakis-vidiano-aspros-lagos",
+      "tradeSourceId": "trade-diamond",
+      "sourceUrl": "https://www.diamondwineimporters.com/portfolio/douloufakis-winery-101119/vidiano-aspros-lagos-140102/",
+      "producer": "Douloufakis Winery",
+      "wine": "Vidiano Aspros Lagos",
+      "vintage": null,
+      "country": "Greece",
+      "region": "Crete",
+      "fields": {
+        "varietyComposition": "100% Vidiano",
+        "estateVineyardAreaHa": 20,
+        "soilDescription": "hillside clay-loam with high limestone content",
+        "harvestMethod": "hand harvested",
+        "fermentationVessel": "225 L French oak and Acacia barriques",
+        "batonnageMonths": 3,
+        "lees": "fine lees in barrique",
+        "maturationVessel": "used French oak and Acacia barriques",
+        "ageingMonths": 5,
+        "maturationWoodSharePct": {"Acacia":30,"FrenchOak":70}
+      },
+      "evidenceChannel": "importer-wine-page-with-product-sheet",
+      "sourceRef": "trade-diamond-pass24"
+    },
+    {
+      "id": "tradeobs-diamond-mylonas-assyrtiko-attika",
+      "tradeSourceId": "trade-diamond",
+      "sourceUrl": "https://www.diamondwineimporters.com/portfolio/mylonas-winery-126217/assyrtiko-140150/",
+      "producer": "Mylonas Winery",
+      "wine": "Assyrtiko",
+      "vintage": null,
+      "country": "Greece",
+      "region": "Attika",
+      "fields": {
+        "varietyComposition": "100% Assyrtiko",
+        "assyrtikoVineyardAreaHa": 2.5,
+        "vineAgeYearsMinimum": 25,
+        "soilDescription": "mineral-rich limestone soil",
+        "harvestMethod": "hand picked by ripeness",
+        "destemming": "destemmed",
+        "macerationHours": 8,
+        "fermentationVessel": "small stainless steel tanks",
+        "fermentationTemperature": "controlled",
+        "ageingMonths": 3,
+        "lees": "fine lees in stainless steel",
+        "batonnage": "frequent stirring"
+      },
+      "evidenceChannel": "importer-wine-page-with-product-sheet",
+      "sourceRef": "trade-diamond-pass24"
+    },
+    {
+      "id": "tradeobs-diamond-douloufakis-femina-malvasia",
+      "tradeSourceId": "trade-diamond",
+      "sourceUrl": "https://www.diamondwineimporters.com/portfolio/douloufakis-winery-101119/femina-malvasia-140105/",
+      "producer": "Douloufakis Winery",
+      "wine": "Femina Malvasia",
+      "vintage": null,
+      "country": "Greece",
+      "region": "Crete",
+      "fields": {
+        "varietyComposition": "100% Malvasia di Candia Aromatica",
+        "estateVineyardAreaHa": 20,
+        "soilDescription": "hillside clay-loam with high limestone content",
+        "harvestMethod": "hand harvested",
+        "fermentationVessel": "stainless steel tanks",
+        "fermentationTemperature": "cold",
+        "lees": "racked off lees after fermentation",
+        "maturationVessel": "stainless steel",
+        "ageingDuration": "short tank ageing before fresh bottling"
+      },
+      "evidenceChannel": "importer-wine-page-with-product-sheet",
+      "sourceRef": "trade-diamond-pass24"
+    },
+    {
+      "id": "tradeobs-vias-broglia-timorasso-2018-project",
+      "tradeSourceId": "trade-vias",
+      "sourceUrl": "https://viaswine.com/wp-content/uploads/Broglia-presentation-2021-1.pdf",
+      "producer": "Broglia",
+      "wine": "Timorasso",
+      "vintage": 2018,
+      "country": "Italy",
+      "region": "Piedmont",
+      "fields": {
+        "varietyComposition": "100% Timorasso",
+        "firstProducerVintage": true,
+        "plannedProductionQuantityBottles": 7000,
+        "fermentationVessel": "stainless steel tanks",
+        "maturationVessel": "stainless steel tanks",
+        "commercialProjectAnnouncementDate": "2019-09"
+      },
+      "evidenceChannel": "importer-producer-presentation-historical-project-record",
+      "sourceRef": "trade-vias-pass24"
+    }
+  ]
+}
