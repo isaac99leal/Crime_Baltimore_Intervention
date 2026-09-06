@@ -35,6 +35,7 @@ from .generation import (
     WineProductionConstraintError,
     WineReleaseConstraintError,
 )
+from .knowledge.bottling_lot import BottledLotManifest, BottlingLotConstraintError, bottle_winery_lot
 from .knowledge.finished_wine import FinishedWineAssembler, FinishedWineConstraintError, ValidatedWineRecord
 from .knowledge.winery_provenance import ProvenanceSlice, WineryLot, WineryProvenanceError, WineryProvenanceLedger
 from .simulation import RestaurantSimulation
@@ -46,6 +47,8 @@ __all__ = [
     "AuthoritativeCatalogItem",
     "AuthoritativeCatalogReport",
     "BeverageProgram",
+    "BottledLotManifest",
+    "BottlingLotConstraintError",
     "CareerState",
     "CatalogIndex",
     "CommercialDispatchResult",
@@ -77,6 +80,7 @@ __all__ = [
     "WineryLot",
     "WineryProvenanceError",
     "WineryProvenanceLedger",
+    "bottle_winery_lot",
     "dispatch_winery_lot_to_inventory",
     "inventory_provenance_components",
     "load_catalog",
