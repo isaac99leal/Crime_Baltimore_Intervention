@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0",
-  "notes": "Executable vineyard-law constraints that are directly observable in VineyardBlock. Row-spacing and within-row-spacing limits are source-verified for both appellations but are not promoted here because VineyardBlock does not yet carry those physical measurements.",
+  "schema_version": "1.1",
+  "notes": "Executable vineyard-law constraints directly observable in VineyardBlock. Fixin and Vougeot density, irrigation and spacing rules are sourced from the same reviewed legal authorities as their strict wine specifications. Plantation en foule remains distinct from conventional rows: row-spacing limits apply only to row-planted parcels, while minimum vine-to-vine spacing applies to both rows and foule.",
   "constraints": [
     {
       "id": "vineyardlaw:fr:fixin:current",
@@ -8,9 +8,12 @@
       "appellation": "Fixin",
       "min_vine_density_per_ha": 9000,
       "irrigation_prohibited": true,
+      "allowed_planting_patterns": ["rows", "foule"],
+      "max_row_spacing_m": 1.25,
+      "min_vine_spacing_m": 0.50,
       "effective_from": "2024-11-21",
       "source_ids": ["fixin_masa_2024_legal"],
-      "notes": "Current Fixin specification requires at least 9,000 vines/ha and prohibits irrigation. It also requires row spacing <=1.25 m and within-row spacing >=0.50 m; those dimensions remain unexecuted until the block schema records them. The current specification states no special transitional measures."
+      "notes": "Current Fixin specification requires at least 9,000 vines/ha, prohibits irrigation, limits conventional row spacing to 1.25 m, and requires at least 0.50 m between vines. Plantation en foule is allowed and is therefore not assigned an invented row spacing. The current specification states no special transitional measures."
     },
     {
       "id": "vineyardlaw:fr:vougeot:current",
@@ -18,8 +21,11 @@
       "appellation": "Vougeot",
       "min_vine_density_per_ha": 9000,
       "irrigation_prohibited": true,
+      "allowed_planting_patterns": ["rows", "foule"],
+      "max_row_spacing_m": 1.25,
+      "min_vine_spacing_m": 0.50,
       "source_ids": ["vougeot_inao_2011_current", "vougeot_masa_2011_cdc"],
-      "notes": "The current INAO product record links the homologated Vougeot specification requiring at least 9,000 vines/ha and prohibiting irrigation. The specification also requires row spacing <=1.25 m and within-row spacing >=0.50 m. Its historical density transition expired before the simulation era represented here and is not generalized into a current exception."
+      "notes": "The current INAO-linked Vougeot specification requires at least 9,000 vines/ha, prohibits irrigation, limits conventional row spacing to 1.25 m, and requires at least 0.50 m between vines. Plantation en foule remains an allowed physical pattern rather than being forced into a row geometry. The historical density transition is not generalized into a current exception."
     }
   ]
 }
