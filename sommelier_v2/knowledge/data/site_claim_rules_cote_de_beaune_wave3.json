@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive Premier Cru climat label-claim rules for Auxey-Duresses, Monthélie and Maranges. Each effective specification permits the listed climat names for both white and red Premier Cru wines.",
+  "sources": {
+    "auxey_claim_2011": {
+      "authority": "INAO / Journal officiel",
+      "url": "https://www.inao.gouv.fr/produit/auxey-duresses-premier-cru-les-duresses-blanc-9538",
+      "checked": "2026-09-05"
+    },
+    "monthelie_claim_2011": {
+      "authority": "INAO / Journal officiel",
+      "url": "https://inao.gouv.fr/produit/monthelie-premier-cru-sur-la-velle-blanc-9455",
+      "checked": "2026-09-05"
+    },
+    "maranges_claim_2011": {
+      "authority": "INAO / Journal officiel",
+      "url": "https://www.inao.gouv.fr/produit/maranges-premier-cru-clos-de-la-fussiere-rouge-9129",
+      "checked": "2026-09-05"
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:auxey-duresses:premier-cru-climat",
+      "country": "France", "parent_appellation": "Auxey-Duresses", "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_auxey_2011"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["auxey_claim_2011"], "claim_kind": "premier_cru_climat_name",
+      "notes": "The effective Auxey-Duresses specification permits all nine listed Premier Cru climats for white or red wine."
+    },
+    {
+      "id": "siteclaim:fr:monthelie:premier-cru-climat",
+      "country": "France", "parent_appellation": "Monthélie", "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_monthelie_2011"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["monthelie_claim_2011"], "claim_kind": "premier_cru_climat_name",
+      "notes": "The effective Monthélie specification permits all fifteen listed Premier Cru climats for white or red wine."
+    },
+    {
+      "id": "siteclaim:fr:maranges:premier-cru-climat",
+      "country": "France", "parent_appellation": "Maranges", "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_maranges_2011"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["maranges_claim_2011"], "claim_kind": "premier_cru_climat_name",
+      "notes": "The effective Maranges specification permits all seven listed Premier Cru climats for white or red wine."
+    }
+  ]
+}
