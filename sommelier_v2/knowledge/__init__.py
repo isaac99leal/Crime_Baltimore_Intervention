@@ -2,6 +2,7 @@
 
 from .aging import modified_archetype, state_at_age
 from .bottle_lifecycle import BottleAgingPlan, BottleAgingResult, BottleLifecycleConstraintError, age_cellar_wine
+from .bottling_lot import BottledLotManifest, BottlingLotConstraintError, bottle_winery_lot
 from .catalog import SOURCES, WineKnowledgeCatalog, normalize_name
 from .cellar_pipeline import CellarHandoffInputs, CellarPipelineConstraintError, CellarPipelinePlan, CellarPipelineResult, run_cellar_pipeline
 from .decision_runtime import DecisionRuntimeApplication, DecisionRuntimeError, DecisionRuntimeInputs, DecisionRuntimeResult, OXYGEN_MANAGEMENT_PRIORS, apply_winemaking_decisions
@@ -44,8 +45,8 @@ VineyardEngine = LegalVineyardEngine
 
 __all__ = [
     "SOURCES", "AlcoholicFermentationParams", "AuthorityVintageRating", "BaseVineyardEngine",
-    "BatonnageEvent", "BlendComponent", "BottleAgingPlan", "BottleAgingResult",
-    "BottleLifecycleConstraintError", "CapManagementEvent", "CellarHandoffInputs",
+    "BatonnageEvent", "BlendComponent", "BottleAgingPlan", "BottleAgingResult", "BottledLotManifest",
+    "BottleLifecycleConstraintError", "BottlingLotConstraintError", "CapManagementEvent", "CellarHandoffInputs",
     "CellarPipelineConstraintError", "CellarPipelinePlan", "CellarPipelineResult",
     "ChemistryEvidenceRecord", "ChemistryEvidenceSource", "ChemistryEvidenceStats", "CommercialObservation",
     "ConstrainedOrigin", "DailyWeather", "DecisionAuthorityAssessment", "DecisionEvidenceSource",
@@ -78,13 +79,14 @@ __all__ = [
     "WinemakingDecision", "WinemakingDecisionError", "WinemakingDecisionRegistry", "WinemakingDecisionStats",
     "WineryLot", "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",
     "age_cellar_wine", "apply_winemaking_decisions", "assess_packaging", "assess_process_chemistry",
-    "assess_smoke_markers", "initial_microbiological_risk", "initial_state", "load_historical_vintages",
-    "load_legacy_vintage_knowledge", "load_process_chemistry_evidence", "load_site_research",
-    "load_trade_research", "load_winemaking_decisions", "lot_from_harvest_must", "modified_archetype",
-    "molecular_so2_mg_l", "must_from_vineyard", "normalize_name", "nutrient_timing_effect",
-    "post_fermentation_microbiological_risk", "run_alcoholic_fermentation", "run_cellar_pipeline",
-    "run_fermentation", "run_malolactic", "simulate_extraction", "simulate_maturation", "simulate_vintage",
-    "state_at_age", "step_alcoholic_fermentation", "step_malolactic", "supported_smoke_guide_cultivars",
-    "temperature_control_target", "validate_cellar_release", "validate_harvest_must_plan", "validate_must",
-    "validate_plan", "vintage_stats", "white_juice_solids_risk",
+    "assess_smoke_markers", "bottle_winery_lot", "initial_microbiological_risk", "initial_state",
+    "load_historical_vintages", "load_legacy_vintage_knowledge", "load_process_chemistry_evidence",
+    "load_site_research", "load_trade_research", "load_winemaking_decisions", "lot_from_harvest_must",
+    "modified_archetype", "molecular_so2_mg_l", "must_from_vineyard", "normalize_name",
+    "nutrient_timing_effect", "post_fermentation_microbiological_risk", "run_alcoholic_fermentation",
+    "run_cellar_pipeline", "run_fermentation", "run_malolactic", "simulate_extraction",
+    "simulate_maturation", "simulate_vintage", "state_at_age", "step_alcoholic_fermentation",
+    "step_malolactic", "supported_smoke_guide_cultivars", "temperature_control_target",
+    "validate_cellar_release", "validate_harvest_must_plan", "validate_must", "validate_plan",
+    "vintage_stats", "white_juice_solids_risk",
 ]

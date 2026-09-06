@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import hashlib
 import json
+import math
 
 from .domain import (
     BeverageProgram,
@@ -20,7 +21,6 @@ from .inventory import InventoryManager
 from .knowledge.winery_provenance import (
     LotMovement,
     WineryLot,
-    WineryProvenanceError,
     WineryProvenanceLedger,
 )
 
@@ -103,6 +103,8 @@ def provenance_fingerprint(source: WineryLot) -> str:
     payload = {
         "source_winery_lot_id": source.id,
         "stage": source.stage,
+        "bottle_count": source.bottle_count,
+        "bottle_ml": source.bottle_ml,
         "components": [
             {
                 "volume_pct": round(item.volume_pct, 9),
@@ -150,12 +152,12 @@ def dispatch_winery_lot_to_inventory(
     open_bottle_life_days: int = 3,
     require_bottled_stage: bool = True,
 ) -> CommercialDispatchResult:
-    """Atomically move bottled wine from winery custody into restaurant inventory.
+    """Atomically move packaged wine from winery custody into restaurant inventory.
 
-    The physical source is checked before the commercial receipt. Restaurant
-    receipt is then preflighted without mutating program cash/inventory. Only
-    after every validation succeeds is the winery source consumed and the
-    restaurant receipt committed.
+    The source must carry discrete bottle metadata; a stage label alone is not
+    enough to create sealed commercial inventory. ``require_bottled_stage=False``
+    only relaxes the stage-name check for imported legacy package records. It
+    never waives bottle-count/fill-size validation.
     """
     if not source_winery_lot_id.strip():
         raise CommercialProvenanceError("source_winery_lot_id is required")
@@ -171,8 +173,12 @@ def dispatch_winery_lot_to_inventory(
         raise CommercialProvenanceError("glass_ml must be a positive integer")
     if glass_ml > bottle_ml:
         raise CommercialProvenanceError("glass_ml cannot exceed bottle_ml")
-    if unit_cost < 0.0:
-        raise CommercialProvenanceError("unit_cost cannot be negative")
+    try:
+        unit_cost_f = float(unit_cost)
+    except (TypeError, ValueError) as exc:
+        raise CommercialProvenanceError("unit_cost must be numeric") from exc
+    if not math.isfinite(unit_cost_f) or unit_cost_f < 0.0:
+        raise CommercialProvenanceError("unit_cost must be finite and non-negative")
 
     try:
         source = ledger.lots[source_winery_lot_id]
@@ -185,13 +191,28 @@ def dispatch_winery_lot_to_inventory(
         raise CommercialProvenanceError(
             f"Source lot stage {source.stage!r} is not a bottled/packaged commercial stage."
         )
-
-    dispatched_volume_l = (bottles * bottle_ml) / 1000.0
-    available = ledger.available_volume_l(source_winery_lot_id)
-    if dispatched_volume_l > available + 1e-9:
+    if source.bottle_count is None or source.bottle_ml is None:
         raise CommercialProvenanceError(
-            f"Shipment requires {dispatched_volume_l:g} L but source has {available:g} L available."
+            "Source lot lacks physical bottle-count/fill-size metadata; a stage label alone cannot create sealed inventory."
         )
+    if source.bottle_ml != bottle_ml:
+        raise CommercialProvenanceError(
+            f"Requested {bottle_ml} mL bottles do not match source package size {source.bottle_ml} mL."
+        )
+
+    available = ledger.available_volume_l(source_winery_lot_id)
+    unit_l = source.bottle_ml / 1000.0
+    available_bottles_f = available / unit_l
+    available_bottles = round(available_bottles_f)
+    if abs(available_bottles_f - available_bottles) > 1e-8:
+        raise CommercialProvenanceError(
+            "Available packaged volume is not aligned to whole source bottles."
+        )
+    if bottles > available_bottles:
+        raise CommercialProvenanceError(
+            f"Shipment requests {bottles} bottles but only {available_bottles} remain available."
+        )
+    dispatched_volume_l = bottles * unit_l
 
     components = inventory_provenance_components(source)
     fingerprint = provenance_fingerprint(source)
@@ -199,7 +220,7 @@ def dispatch_winery_lot_to_inventory(
         lot_id=inventory_lot_id,
         wine=wine,
         sealed_bottles=bottles,
-        unit_cost=float(unit_cost),
+        unit_cost=unit_cost_f,
         received_day=program.day,
         supplier_id=supplier_id,
         bottle_ml=bottle_ml,

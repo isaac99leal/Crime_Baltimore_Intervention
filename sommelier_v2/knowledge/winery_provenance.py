@@ -7,7 +7,9 @@ those liters normalized into the percentage ledger consumed by label-law rules.
 The ledger is inventory-conserving. Historical lots remain immutable, but each
 stored lot has a mutable available balance. Transfers, blends, external
 dispatches, and discards consume source balances atomically so the same physical
-liters cannot appear in multiple live descendants or destinations.
+liters cannot appear in multiple live descendants or destinations. Once a lot is
+packaged, its package count and fill size are physical constraints rather than
+labels that can be reinterpreted later.
 """
 from __future__ import annotations
 
@@ -47,6 +49,8 @@ class WineryLot:
     volume_l: float
     provenance: tuple[ProvenanceSlice, ...]
     parent_lot_ids: tuple[str, ...] = ()
+    bottle_count: int | None = None
+    bottle_ml: int | None = None
 
     def __post_init__(self) -> None:
         if not self.id.strip():
@@ -65,6 +69,28 @@ class WineryLot:
             raise WineryProvenanceError(
                 f"Provenance liters ({total:.6f}) do not match lot volume ({self.volume_l:.6f})."
             )
+        if (self.bottle_count is None) != (self.bottle_ml is None):
+            raise WineryProvenanceError(
+                "Packaged lots must define both bottle_count and bottle_ml, or neither."
+            )
+        if self.bottle_count is not None and self.bottle_ml is not None:
+            if (
+                isinstance(self.bottle_count, bool)
+                or not isinstance(self.bottle_count, int)
+                or self.bottle_count <= 0
+            ):
+                raise WineryProvenanceError("bottle_count must be a positive integer")
+            if (
+                isinstance(self.bottle_ml, bool)
+                or not isinstance(self.bottle_ml, int)
+                or not 50 <= self.bottle_ml <= 18_000
+            ):
+                raise WineryProvenanceError("bottle_ml must be an integer within 50..18000")
+            packaged_volume_l = (self.bottle_count * self.bottle_ml) / 1000.0
+            if abs(packaged_volume_l - self.volume_l) > tolerance:
+                raise WineryProvenanceError(
+                    "Packaged bottle count and fill size must exactly match lot volume."
+                )
 
     @classmethod
     def from_vineyard(
@@ -121,6 +147,8 @@ class WineryLot:
         new_id: str,
         stage: str,
         output_volume_l: float | None = None,
+        bottle_count: int | None = None,
+        bottle_ml: int | None = None,
     ) -> "WineryLot":
         volume = self.volume_l if output_volume_l is None else float(output_volume_l)
         if volume <= 0 or volume > self.volume_l + 1e-9:
@@ -135,6 +163,8 @@ class WineryLot:
             volume_l=volume,
             provenance=rows,
             parent_lot_ids=(self.id,),
+            bottle_count=bottle_count,
+            bottle_ml=bottle_ml,
         )
 
     @classmethod
@@ -148,6 +178,10 @@ class WineryLot:
     ) -> "WineryLot":
         if not lots:
             raise WineryProvenanceError("At least one source lot is required for a blend.")
+        if any(lot.bottle_count is not None for lot in lots):
+            raise WineryProvenanceError(
+                "Packaged lots cannot enter generic blending; use an explicit unpacking process first."
+            )
         draws = list(draws_l) if draws_l is not None else [lot.volume_l for lot in lots]
         if len(draws) != len(lots):
             raise WineryProvenanceError("draws_l must have one volume for each source lot.")
@@ -319,6 +353,17 @@ class WineryProvenanceLedger:
                 f"Draw from {lot_id} ({draw:g} L) exceeds available volume ({available:g} L)."
             )
 
+    @staticmethod
+    def _validate_packaged_draw(lot: WineryLot, volume_l: float) -> None:
+        if lot.bottle_count is None or lot.bottle_ml is None:
+            return
+        unit_l = lot.bottle_ml / 1000.0
+        units = volume_l / unit_l
+        if abs(units - round(units)) > 1e-8:
+            raise WineryProvenanceError(
+                f"Packaged lot {lot.id} can only move in whole {lot.bottle_ml} mL bottles."
+            )
+
     def _consume(self, lot_id: str, draw_l: float) -> None:
         self._consumed_l[lot_id] = self._consumed_l.get(lot_id, 0.0) + float(draw_l)
 
@@ -330,14 +375,22 @@ class WineryProvenanceLedger:
         stage: str,
         input_volume_l: float | None = None,
         output_volume_l: float | None = None,
+        bottle_count: int | None = None,
+        bottle_ml: int | None = None,
     ) -> WineryLot:
         """Consume a source draw and create one processed descendant.
 
         ``input_volume_l`` defaults to all currently available source wine.
         ``output_volume_l`` defaults to the input volume. A smaller output is an
         explicit processing loss and is recorded in the movement ledger.
+        Packaged source lots cannot use generic transfer because that would erase
+        their discrete-container state.
         """
         source = self._require_lot(source_lot_id)
+        if source.bottle_count is not None:
+            raise WineryProvenanceError(
+                "Packaged lots cannot use generic transfer; use dispatch/discard or an explicit unpacking process."
+            )
         self._require_new_id(new_id)
         available = self.available_volume_l(source_lot_id)
         input_volume = available if input_volume_l is None else float(input_volume_l)
@@ -352,6 +405,8 @@ class WineryProvenanceLedger:
             new_id=new_id,
             stage=stage,
             output_volume_l=output_volume,
+            bottle_count=bottle_count,
+            bottle_ml=bottle_ml,
         )
         movement = LotMovement(
             operation="transfer",
@@ -380,6 +435,10 @@ class WineryProvenanceLedger:
             raise WineryProvenanceError("A source lot may appear only once in one blend operation.")
         self._require_new_id(new_id)
         sources = [self._require_lot(lot_id) for lot_id in source_lot_ids]
+        if any(lot.bottle_count is not None for lot in sources):
+            raise WineryProvenanceError(
+                "Packaged lots cannot enter generic blending; use an explicit unpacking process first."
+            )
         draws = (
             [self.available_volume_l(lot_id) for lot_id in source_lot_ids]
             if draws_l is None
@@ -419,11 +478,12 @@ class WineryProvenanceLedger:
         reason: str = "commercial_dispatch",
     ) -> LotMovement:
         """Move wine out of winery custody without classifying it as physical loss."""
-        self._require_lot(lot_id)
+        lot = self._require_lot(lot_id)
         if not external_reference.strip():
             raise WineryProvenanceError("Dispatch requires a non-empty external reference.")
         volume = float(volume_l)
         self._validate_draw(lot_id, volume)
+        self._validate_packaged_draw(lot, volume)
         movement = LotMovement(
             operation="dispatch",
             source_lot_ids=(lot_id,),
@@ -440,10 +500,11 @@ class WineryProvenanceLedger:
 
     def discard(self, lot_id: str, *, volume_l: float | None = None, reason: str = "") -> LotMovement:
         """Remove wine from live inventory as physical/process loss."""
-        self._require_lot(lot_id)
+        lot = self._require_lot(lot_id)
         available = self.available_volume_l(lot_id)
         volume = available if volume_l is None else float(volume_l)
         self._validate_draw(lot_id, volume)
+        self._validate_packaged_draw(lot, volume)
         movement = LotMovement(
             operation="discard",
             source_lot_ids=(lot_id,),
