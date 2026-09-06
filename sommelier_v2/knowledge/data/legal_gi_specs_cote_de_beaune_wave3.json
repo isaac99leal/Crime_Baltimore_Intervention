@@ -3,25 +3,25 @@
   "notes": "Reviewed strict specifications for Auxey-Duresses, Monthélie and Maranges. White and red wines are modeled separately at standard and Premier Cru level. Conditional white fermentable-sugar relief to 4 g/L is conservatively fail-closed at the unconditional 3 g/L ceiling. Red accessory white grapes remain mixed-planting exceptions rather than ordinary cellar blend choices.",
   "sources": {
     "auxey_bivb_2011": {
-      "authority": "Bureau Interprofessionnel des Vins de Bourgogne / Journal officiel",
-      "title": "Cahier des charges de l'AOC Auxey-Duresses homologué par le décret n°2011-1776 du 5 décembre 2011",
-      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20202.pdf",
+      "authority": "INAO / Journal officiel / Légifrance",
+      "title": "Décret n°2011-1776 du 5 décembre 2011 relatif à l'AOC Auxey-Duresses",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000024928171",
       "checked": "2026-09-05",
-      "scope": "Effective published specification: white/red still wines; 9 Premier Cru climats; color- and level-specific maturity/yields; elevage through 15 June and release from 30 June N+1."
+      "scope": "Homologates the effective specification. Current INAO records continue to point to this cahier; executable composition, maturity, yield, analytical, elevage and release fields were cross-checked against the published specification."
     },
     "monthelie_bivb_2011": {
-      "authority": "Bureau Interprofessionnel des Vins de Bourgogne / Journal officiel",
-      "title": "Cahier des charges de l'AOC Monthélie homologué par le décret n°2011-1827 du 7 décembre 2011",
-      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20243.pdf",
+      "authority": "INAO / Journal officiel / Légifrance",
+      "title": "Décret n°2011-1827 du 7 décembre 2011 relatif à l'AOC Monthélie",
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000024933008/",
       "checked": "2026-09-05",
-      "scope": "Effective published specification: white/red still wines; 15 Premier Cru climats; color- and level-specific maturity/yields; elevage through 15 June and release from 30 June N+1."
+      "scope": "Homologates the effective specification and remains in force. Current INAO records report 15 Premier Cru climats; executable fields were cross-checked against the published specification."
     },
     "maranges_bivb_2011": {
-      "authority": "Bureau Interprofessionnel des Vins de Bourgogne / Journal officiel",
-      "title": "Cahier des charges de l'AOC Maranges homologué par le décret n°2011-1703 du 30 novembre 2011",
-      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20240.pdf",
+      "authority": "INAO / Journal officiel / Légifrance",
+      "title": "Décret n°2011-1703 du 30 novembre 2011 relatif à l'AOC Maranges",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000024892969",
       "checked": "2026-09-05",
-      "scope": "Effective published specification: white/red still wines; 7 Premier Cru climats; white wines age through 15 March and release from 30 March N+1, red wines age through 15 June and release from 30 June N+1."
+      "scope": "Homologates the effective specification. Current INAO records continue to point to this cahier; executable fields including the color-specific elevage and release calendars were cross-checked against the published specification."
     }
   },
   "specs": [
@@ -77,7 +77,6 @@
       "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
       "source_ids": ["auxey_bivb_2011"]
     },
-
     {
       "id": "fr:monthelie:white-standard",
       "country": "France", "appellation": "Monthélie",
@@ -130,7 +129,6 @@
       "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
       "source_ids": ["monthelie_bivb_2011"]
     },
-
     {
       "id": "fr:maranges:white-standard",
       "country": "France", "appellation": "Maranges",
