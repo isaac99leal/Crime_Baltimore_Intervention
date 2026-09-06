@@ -11,6 +11,7 @@ from .finished_wine import FinishedWineAssembler, FinishedWineConstraintError, V
 from .harvest_must import HarvestMustConstraintError, HarvestMustPlan, HarvestMustProfile, must_from_vineyard, validate_harvest_must_plan
 from .historical_vintages import AuthorityVintageRating, HistoricalVintageArchive, HistoricalVintageError, HistoricalVintageObservation, HistoricalVintageRegistry, HistoricalVintageSignal, HistoricalVintageStats, load_historical_vintages
 from .jurisdiction_labels import BlendComponent, JurisdictionLabelValidator, LabelClaimDecision, LabelClaims
+from .legal_practice_bridge import LegalPracticeAssessment, LegalPracticeBridge
 from .legal_rules import LegalAwareRegionGrapeRulebook
 from .legal_sources import LegalSourceRecord, LegalSourceRegistry
 from .legal_specs import GrapeConstraint, LegalSpecDecision, LegalSpecRegistry, LegalWineSpec, ReleaseDecision
@@ -44,16 +45,17 @@ __all__ = [
     "HarvestMustPlan", "HarvestMustProfile", "HistoricalVintageArchive", "HistoricalVintageError",
     "HistoricalVintageObservation", "HistoricalVintageRegistry", "HistoricalVintageSignal",
     "HistoricalVintageStats", "JurisdictionLabelValidator", "LabelClaimDecision", "LabelClaims",
-    "LegalAwareRegionGrapeRulebook", "LegalSourceRecord", "LegalSourceRegistry", "LegalSpecDecision",
-    "LegalSpecRegistry", "LegalVineyardEngine", "LegalWineSpec", "MODEL_EVIDENCE_LINKS",
-    "MachineConstraintDecision", "MachineLegalConstraint", "MachineLegalConstraintRegistry",
-    "MalolacticParams", "MalolacticState", "MicroSiteObservation", "ModelEvidenceLink", "MustComposition",
-    "NamedSite", "NationalAwareLegalSpecRegistry", "NationalLegalOverrideRegistry", "NationalOverrideDecision",
-    "NutrientAddition", "NutrientTimingEffect", "OriginConstraintError", "OriginDecision", "OriginRequest",
-    "PackagingAssessment", "PackagingConstraintError", "PackagingPlan", "PiwiRecord",
-    "ProcessChemistryAssessment", "ProcessChemistryEvidenceError", "ProcessChemistryEvidenceRegistry",
-    "ProvenanceSlice", "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "SimulationPriors",
-    "SiteDataQualityFlag", "SiteRegistry", "SiteResearchError", "SiteResearchRecord", "SiteResearchRegistry",
+    "LegalAwareRegionGrapeRulebook", "LegalPracticeAssessment", "LegalPracticeBridge", "LegalSourceRecord",
+    "LegalSourceRegistry", "LegalSpecDecision", "LegalSpecRegistry", "LegalVineyardEngine", "LegalWineSpec",
+    "MODEL_EVIDENCE_LINKS", "MachineConstraintDecision", "MachineLegalConstraint",
+    "MachineLegalConstraintRegistry", "MalolacticParams", "MalolacticState", "MicroSiteObservation",
+    "ModelEvidenceLink", "MustComposition", "NamedSite", "NationalAwareLegalSpecRegistry",
+    "NationalLegalOverrideRegistry", "NationalOverrideDecision", "NutrientAddition", "NutrientTimingEffect",
+    "OriginConstraintError", "OriginDecision", "OriginRequest", "PackagingAssessment",
+    "PackagingConstraintError", "PackagingPlan", "PiwiRecord", "ProcessChemistryAssessment",
+    "ProcessChemistryEvidenceError", "ProcessChemistryEvidenceRegistry", "ProvenanceSlice",
+    "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "SimulationPriors", "SiteDataQualityFlag",
+    "SiteRegistry", "SiteResearchError", "SiteResearchRecord", "SiteResearchRegistry",
     "SiteResearchSource", "SiteResearchStats", "SmokeMarkerAssessment", "SmokeMarkerResult",
     "SmokeTaintConstraintError", "TradeFieldPolicy", "TradeObservationConflict", "TradeResearchError",
     "TradeResearchRegistry", "TradeResearchStats", "TradeSourceRecord", "TradeTechnicalObservation",
