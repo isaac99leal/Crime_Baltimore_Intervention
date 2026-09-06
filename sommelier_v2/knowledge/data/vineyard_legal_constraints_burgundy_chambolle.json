@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "notes": "Executable Chambolle-Musigny vineyard law using the same machine-observable compliance schema as Fixin/Vougeot. Dead/missing-vine threshold authority is appellation-specific; proportional yield remedy reuses the separately sourced national Code rural D.645-4 rule.",
+  "constraints": [
+    {
+      "id": "vineyardlaw:fr:chambolle-musigny:current",
+      "country": "France",
+      "appellation": "Chambolle-Musigny",
+      "min_vine_density_per_ha": 9000,
+      "irrigation_prohibited": true,
+      "allowed_planting_patterns": ["rows", "foule"],
+      "max_row_spacing_m": 1.25,
+      "min_vine_spacing_m": 0.50,
+      "min_foule_vine_spacing_m_exclusive": 0.50,
+      "pruning_max_buds_by_style_and_system": {
+        "red": {
+          "cordon_royat": 8,
+          "bilateral_cordon": 8,
+          "gobelet": 8,
+          "eventail": 8,
+          "guyot_simple": 8
+        }
+      },
+      "pruning_unmodeled_exception_systems": ["guyot_double"],
+      "allowed_support_systems_unless_gobelet": ["trellis", "stake"],
+      "required_support_for_foule": "stake",
+      "min_trellised_canopy_height_to_row_spacing_ratio": 0.60,
+      "max_parcel_crop_load_kg_ha_by_style": {"red": 9000},
+      "dead_missing_vine_yield_reduction_threshold": 0.20,
+      "dead_missing_vine_threshold_source_ids": ["chambolle_masa_2011_cdc"],
+      "dead_missing_vine_remedy_source_ids": ["fr_code_rural_d645_4"],
+      "effective_from": "2011-11-17",
+      "source_ids": ["chambolle_masa_2011_cdc"],
+      "notes": "Current reviewed Chambolle-Musigny vineyard path. Conventional rows require at least 9,000 vines/ha, row spacing no more than 1.25 m and vine spacing at least 0.50 m; plantation en foule requires spacing strictly greater than 0.50 m and individual stakes. Ordinary red pruning is capped at eight buds per vine for the listed systems. The two-year cordon-establishment Guyot-double exception remains unresolved until establishment/per-cane state is modeled. Extra retained buds require a compliant observed fruiting-shoot count at 11-12 leaves. Trellised canopy height must be at least 0.6 times row spacing. Parcel crop load is capped at 9,000 kg/ha. Irrigation is prohibited. The 20% dead/missing-vine trigger feeds the separate national proportional-yield adjustment."
+    }
+  ]
+}

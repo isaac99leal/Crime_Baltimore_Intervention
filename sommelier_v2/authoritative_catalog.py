@@ -18,7 +18,7 @@ from typing import Mapping, Sequence
 from .domain import WineRecord, WineStyle
 from .generation import ConstrainedWineBuilder, GeneratedWine, WineBuildRequest
 from .knowledge.catalog import normalize_name
-from .knowledge.expanded_catalog import NamedSite, WorldWineKnowledgeCatalog
+from .knowledge.vineyard_registry import NamedSite, WorldWineKnowledgeCatalog
 from .knowledge.legal_specs import LegalSpecRegistry, LegalWineSpec
 from .knowledge.origin_factory import OriginRequest, WineOriginFactory
 

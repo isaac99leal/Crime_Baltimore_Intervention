@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Mapping, Sequence
 
 from .catalog import normalize_name
-from .expanded_catalog import NamedSite, WorldWineKnowledgeCatalog
+from .vineyard_registry import NamedSite, WorldWineKnowledgeCatalog
 from .legal_rules import LegalAwareRegionGrapeRulebook
 from .regional_rules import OriginConstraintError, OriginDecision, RegionGrapeRulebook
 from .site_claims import SiteClaimRegistry

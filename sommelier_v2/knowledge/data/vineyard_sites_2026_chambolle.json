@@ -1,0 +1,56 @@
+{
+  "schema_version": "2.0",
+  "generated": "2026-09-06",
+  "notes": "Current Chambolle-Musigny named-site identity tranche. Premier Cru climats and ordinary BIVB-listed lieux-dits are separate physical/legal identities. Site existence does not itself authorize a label claim.",
+  "sources": {
+    "bivb_chambolle_current": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/chambolle-musigny%2C2458%2C9253.html",
+      "checked": "2026-09-06",
+      "scope": "Current BIVB Chambolle-Musigny appellation page listing 24 Premier Cru climats and 33 ordinary lieux-dits.",
+      "evidence_class": "authoritative_industry_appellation_registry"
+    }
+  },
+  "groups": [
+    {
+      "id_prefix": "site:france:bourgogne:chambolle-musigny:climat",
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Chambolle-Musigny",
+      "commune": "Chambolle-Musigny",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["bivb_chambolle_current"],
+      "names": "Aux Beaux Bruns|Aux Combottes|Aux Echanges|Derrière la Grange|La Combe d'Orveau|Les Amoureuses|Les Baudes|Les Borniques|Les Carrières|Les Chabiots|Les Charmes|Les Chatelots|Les Combottes|Les Cras|Les Fuées|Les Groseilles|Les Gruenchers|Les Hauts Doix|Les Lavrottes|Les Noirots|Les Plantes|Les Sentiers|Les Véroilles"
+    },
+    {
+      "id_prefix": "site:france:bourgogne:chambolle-musigny:lieu-dit",
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Chambolle-Musigny",
+      "commune": "Chambolle-Musigny",
+      "site_type": "lieu_dit",
+      "classification": "Village lieu-dit",
+      "legal_status": "documented_named_site",
+      "source_ids": ["bivb_chambolle_current"],
+      "names": "Aux Croix|Derrière le Four|La Combe d'Orveau|La Taupe|Le Village|Les Argillières|Les Athets|Les Babillères|Les Barottes|Les Bas Doix|Les Bussières|Les Chardannes|Les Clos|Les Clos de l'Orme|Les Condemennes|Les Cras|Les Creux Baissants|Les Danguerrins|Les Drazey|Les Echezeaux|Les Fouchères|Les Fremières|Les Gamaires|Les Guérippes|Les Herbues|Les Jutruots|Les Mal Carrées|Les Maladières|Les Mombies|Les Nazoires|Les Pas de Chat|Les Porlottes|Les Sordes"
+    }
+  ],
+  "records": [
+    {
+      "id": "site:france:bourgogne:chambolle-musigny:climat:les-feusselottes",
+      "name": "Les Feusselottes",
+      "aliases": ["Les Feusselotes"],
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Chambolle-Musigny",
+      "commune": "Chambolle-Musigny",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["bivb_chambolle_current"],
+      "notes": "The current appellation specification and BIVB list expressly recognize both spellings: Les Feusselottes and Les Feusselotes."
+    }
+  ]
+}
