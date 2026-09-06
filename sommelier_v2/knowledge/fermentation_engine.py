@@ -43,11 +43,30 @@ class AlcoholicFermentationParams:
     extraction_scale: float = 1.0
     whole_cluster_fraction: float = 0.0
     oxygen_management_index: float = 0.5
+    # Optional time-indexed active cellar control. Points are (hour, target °C)
+    # and are linearly interpolated. They are explicit simulation inputs, not
+    # inferred from a qualitative label such as "cool fermentation".
+    temperature_schedule: tuple[tuple[float, float], ...] = ()
+    temperature_control_strength_per_h: float = 0.35
     # Orchestration-layer process priors. These remain bounded 0..1 and are
     # supplied explicitly from must condition / cellar decisions.
     must_microbiological_risk: float = 0.0
     juice_solids_risk: float = 0.0
     nutrient_timing_risk: float = 0.0
+
+    def __post_init__(self) -> None:
+        if not 0.0 <= self.temperature_control_strength_per_h <= 1.0:
+            raise ValueError("temperature_control_strength_per_h must be within 0..1")
+        prior_hour = -1.0
+        for point in self.temperature_schedule:
+            if len(point) != 2:
+                raise ValueError("Each temperature_schedule point must be (hour, target_temp_c)")
+            hour, target = float(point[0]), float(point[1])
+            if hour < 0.0 or hour <= prior_hour:
+                raise ValueError("temperature_schedule hours must be non-negative and strictly increasing")
+            if not -5.0 <= target <= 55.0:
+                raise ValueError("temperature_schedule targets must be within -5..55 C")
+            prior_hour = hour
 
 
 @dataclass(frozen=True)
@@ -77,6 +96,14 @@ class MalolacticParams:
     max_ethanol_pct: float = 16.0
     minimum_temp_c: float = 13.0
     maximum_temp_c: float = 27.0
+    # 0.10 g/L preserves the historical "complete MLF" finish criterion.
+    # Higher targets allow an explicit partial-MLF endpoint without inventing a
+    # percentage from the qualitative word "partial".
+    target_malic_g_l: float = 0.10
+
+    def __post_init__(self) -> None:
+        if not 0.0 <= self.target_malic_g_l <= 20.0:
+            raise ValueError("target_malic_g_l must be within 0..20")
 
 
 @dataclass(frozen=True)
@@ -119,6 +146,25 @@ def temperature_activity(temp_c: float, params: AlcoholicFermentationParams) -> 
     width = 7.5 if params.style == "white" else 8.5
     bell = exp(-((temp_c - params.optimum_temp_c) / width) ** 2)
     return clamp(bell, 0.02, 1.0)
+
+
+def temperature_control_target(
+    hour: float,
+    params: AlcoholicFermentationParams,
+) -> float | None:
+    """Return the interpolated active-control target at a fermentation hour."""
+    points = params.temperature_schedule
+    if not points:
+        return None
+    if hour <= points[0][0]:
+        return float(points[0][1])
+    for left, right in zip(points, points[1:]):
+        left_hour, left_temp = float(left[0]), float(left[1])
+        right_hour, right_temp = float(right[0]), float(right[1])
+        if hour <= right_hour:
+            fraction = (hour - left_hour) / max(1e-12, right_hour - left_hour)
+            return left_temp + (right_temp - left_temp) * fraction
+    return float(points[-1][1])
 
 
 def nitrogen_activity(yan_mg_l: float) -> float:
@@ -192,10 +238,16 @@ def step_alcoholic_fermentation(
 
     metabolic_heat = consumed * params.heat_c_per_g_l_sugar
     ambient_term = (params.ambient_temp_c - state.temp_c) * params.ambient_exchange_per_h * dt_hours
+    scheduled_target = temperature_control_target(state.hour, params)
+    control_term = 0.0
     cooling_term = 0.0
-    if params.cooling_setpoint_c is not None and state.temp_c > params.cooling_setpoint_c:
+    if scheduled_target is not None:
+        control_term = (
+            scheduled_target - state.temp_c
+        ) * params.temperature_control_strength_per_h * dt_hours
+    elif params.cooling_setpoint_c is not None and state.temp_c > params.cooling_setpoint_c:
         cooling_term = -(state.temp_c - params.cooling_setpoint_c) * params.cooling_strength_per_h * dt_hours
-    temp = state.temp_c + metabolic_heat + ambient_term + cooling_term
+    temp = state.temp_c + metabolic_heat + ambient_term + cooling_term + control_term
 
     pressure_gain = co2_gain * 0.012 * clamp(params.vessel_pressure_retention)
     pressure = max(0.0, state.pressure_bar + pressure_gain)
@@ -290,10 +342,17 @@ def step_malolactic(
 ) -> MalolacticState:
     if state.finished or dt_days <= 0:
         return state
+    target = params.target_malic_g_l
+    if state.malic_g_l <= target + 1e-9:
+        return replace(state, finished=True)
     activity = malolactic_activity(state, params)
     bacteria = clamp(state.bacterial_activity + 0.08 * activity * (1.0 - state.bacterial_activity) * dt_days)
-    malic_used = min(state.malic_g_l, params.base_malic_rate_g_l_day * activity * (0.35 + bacteria) * dt_days)
-    malic = max(0.0, state.malic_g_l - malic_used)
+    remaining_to_target = max(0.0, state.malic_g_l - target)
+    malic_used = min(
+        remaining_to_target,
+        params.base_malic_rate_g_l_day * activity * (0.35 + bacteria) * dt_days,
+    )
+    malic = max(target, state.malic_g_l - malic_used)
     lactic = state.lactic_g_l + malic_used * 0.90
     va = state.volatile_acidity_g_l + malic_used * 0.004 * (1.0 + clamp((state.temp_c - 23.0) / 5.0))
     completion = clamp(1.0 - malic / max(0.01, state.malic_g_l if state.day == 0 else state.malic_g_l + malic_used))
@@ -314,7 +373,7 @@ def step_malolactic(
         volatile_acidity_g_l=va,
         completion=completion,
         stalled_risk=stalled,
-        finished=malic <= 0.10,
+        finished=malic <= target + 1e-9,
     )
 
 

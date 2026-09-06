@@ -6,7 +6,7 @@ from .decision_runtime import DecisionRuntimeApplication, DecisionRuntimeError, 
 from .eu_promotions import EuCompositionDecision, EuLegalPromotionRegistry, VerificationLevel
 from .expanded_catalog import CommercialObservation, NamedSite, PiwiRecord, VarietyAreaObservation, WorldWineKnowledgeCatalog
 from .fermentation_chemistry import NutrientTimingEffect, ProcessChemistryAssessment, assess_process_chemistry, initial_microbiological_risk, molecular_so2_mg_l, nutrient_timing_effect, post_fermentation_microbiological_risk, white_juice_solids_risk
-from .fermentation_engine import AlcoholicFermentationParams, FermentationState, MalolacticParams, MalolacticState, initial_state, run_alcoholic_fermentation, run_malolactic, step_alcoholic_fermentation, step_malolactic
+from .fermentation_engine import AlcoholicFermentationParams, FermentationState, MalolacticParams, MalolacticState, initial_state, run_alcoholic_fermentation, run_malolactic, step_alcoholic_fermentation, step_malolactic, temperature_control_target
 from .fermentation_process import FermentationConstraintError, FermentationPlan, FermentationResult, MustComposition, NutrientAddition, run_fermentation, validate_must, validate_plan
 from .finished_wine import FinishedWineAssembler, FinishedWineConstraintError, ValidatedWineRecord
 from .harvest_must import HarvestMustConstraintError, HarvestMustPlan, HarvestMustProfile, must_from_vineyard, validate_harvest_must_plan
@@ -72,6 +72,7 @@ __all__ = [
     "must_from_vineyard", "normalize_name", "nutrient_timing_effect",
     "post_fermentation_microbiological_risk", "run_alcoholic_fermentation", "run_fermentation",
     "run_malolactic", "simulate_vintage", "state_at_age", "step_alcoholic_fermentation",
-    "step_malolactic", "supported_smoke_guide_cultivars", "validate_harvest_must_plan",
-    "validate_must", "validate_plan", "vintage_stats", "white_juice_solids_risk",
+    "step_malolactic", "supported_smoke_guide_cultivars", "temperature_control_target",
+    "validate_harvest_must_plan", "validate_must", "validate_plan", "vintage_stats",
+    "white_juice_solids_risk",
 ]

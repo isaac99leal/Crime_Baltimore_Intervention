@@ -108,6 +108,11 @@ class FermentationResult:
     alcoholic_completed: bool
     malolactic_completed: bool
     stuck: bool
+    # MLF target state is separate from full MLF completion. A partial target can
+    # be reached successfully while malolactic_completed remains False.
+    malolactic_target_reached: bool = False
+    malolactic_fully_completed: bool = False
+    mlf_target_malic_g_l: float | None = None
     warnings: tuple[str, ...] = ()
     initial_microbiological_risk: float = 0.0
     juice_solids_risk: float = 0.0
@@ -178,6 +183,15 @@ def validate_plan(must: MustComposition, plan: FermentationPlan) -> None:
         raise FermentationConstraintError("MLF cannot be scheduled after a process that sterile-filters the wine.")
     if plan.mlf_max_days <= 0 or plan.mlf_max_days > 365:
         raise FermentationConstraintError("mlf_max_days must be >0 and <=365")
+    if plan.malolactic:
+        mlf_target = plan.malolactic_params.target_malic_g_l
+        # Complete-MLF default remains valid for wines already at <=0.10 g/L.
+        if mlf_target > must.malic_acid_g_l + 1e-9 and not (
+            mlf_target <= 0.10 + 1e-9 and must.malic_acid_g_l <= 0.10 + 1e-9
+        ):
+            raise FermentationConstraintError(
+                "MLF target malic acid cannot exceed the must's initial malic acid."
+            )
     if plan.post_fermentation_free_so2_mg_l is not None:
         _bounded(
             "post_fermentation_free_so2_mg_l",
@@ -417,13 +431,17 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
     mlf_history: list[MalolacticState] = []
     final_malic = must.malic_acid_g_l
     final_lactic = 0.0
-    mlf_completed = False
+    mlf_target = plan.malolactic_params.target_malic_g_l if plan.malolactic else None
+    mlf_target_reached = False
+    mlf_fully_completed = False
 
     if plan.malolactic:
+        assert mlf_target is not None
         if not alcoholic_completed:
             warnings.append("MLF was not started because alcoholic fermentation did not complete.")
-        elif must.malic_acid_g_l <= 0.10:
-            mlf_completed = True
+        elif must.malic_acid_g_l <= mlf_target + 1e-9:
+            mlf_target_reached = True
+            mlf_fully_completed = must.malic_acid_g_l <= 0.10 + 1e-9
         else:
             mlf = MalolacticState(
                 day=0.0,
@@ -446,11 +464,19 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
                         break
             final_malic = mlf.malic_g_l
             final_lactic = mlf.lactic_g_l
-            mlf_completed = mlf.finished
+            mlf_target_reached = mlf.finished
+            mlf_fully_completed = mlf.finished and mlf.malic_g_l <= 0.10 + 1e-9
+
+    # Backward-compatible field: malolactic_completed continues to mean full
+    # MLF, not merely successful arrival at a deliberately partial target.
+    mlf_completed = mlf_fully_completed
 
     status = "stuck" if stuck else "arrested" if arrested else "dry_complete" if dry else "incomplete"
     if plan.malolactic and alcoholic_completed:
-        status += "_mlf_complete" if mlf_completed else "_mlf_incomplete"
+        if mlf_target is not None and mlf_target > 0.10 + 1e-9:
+            status += "_mlf_partial_target_reached" if mlf_target_reached else "_mlf_partial_incomplete"
+        else:
+            status += "_mlf_complete" if mlf_fully_completed else "_mlf_incomplete"
 
     final_va = mlf_history[-1].volatile_acidity_g_l if mlf_history else current.volatile_acidity_g_l
     chemistry = assess_process_chemistry(
@@ -491,6 +517,9 @@ def run_fermentation(must: MustComposition, plan: FermentationPlan) -> Fermentat
         alcoholic_completed=alcoholic_completed,
         malolactic_completed=mlf_completed,
         stuck=stuck,
+        malolactic_target_reached=mlf_target_reached,
+        malolactic_fully_completed=mlf_fully_completed,
+        mlf_target_malic_g_l=mlf_target,
         warnings=tuple(warnings),
         initial_microbiological_risk=chemistry.initial_microbiological_risk,
         juice_solids_risk=chemistry.juice_solids_risk,

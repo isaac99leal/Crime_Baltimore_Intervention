@@ -73,7 +73,26 @@ class DecisionRuntimeTests(unittest.TestCase):
         )
         self.assertIn("derived simulator", protected.applications[0].note)
 
-    def test_mlf_blocked_and_complete_map_but_partial_does_not_fake_target(self):
+    def test_temperature_trajectory_requires_explicit_schedule(self):
+        unresolved = apply_winemaking_decisions(
+            {"fermentation-temperature-trajectory": "controlled-ramp"},
+            must=self.must(),
+            fermentation_plan=FermentationPlan(),
+        )
+        self.assertEqual(unresolved.applications[0].status, "requires_measurement")
+        self.assertEqual(unresolved.fermentation_plan.alcoholic_params.temperature_schedule, ())
+
+        schedule = ((0.0, 18.0), (72.0, 24.0), (144.0, 26.0))
+        applied = apply_winemaking_decisions(
+            {"fermentation-temperature-trajectory": "controlled-ramp"},
+            must=self.must(),
+            fermentation_plan=FermentationPlan(),
+            runtime_inputs=DecisionRuntimeInputs(fermentation_temperature_schedule=schedule),
+        )
+        self.assertEqual(applied.fermentation_plan.alcoholic_params.temperature_schedule, schedule)
+        self.assertEqual(applied.applications[0].status, "applied")
+
+    def test_mlf_blocked_complete_and_partial_targets(self):
         blocked = apply_winemaking_decisions(
             {"mlf": "blocked"},
             must=self.must(),
@@ -87,13 +106,40 @@ class DecisionRuntimeTests(unittest.TestCase):
             fermentation_plan=FermentationPlan(malolactic=False),
         )
         self.assertTrue(complete.fermentation_plan.malolactic)
+        self.assertAlmostEqual(complete.fermentation_plan.malolactic_params.target_malic_g_l, 0.10)
+
+        unresolved = apply_winemaking_decisions(
+            {"mlf": "partial"},
+            must=self.must(),
+            fermentation_plan=FermentationPlan(),
+        )
+        self.assertEqual(unresolved.applications[0].status, "requires_measurement")
 
         partial = apply_winemaking_decisions(
             {"mlf": "partial"},
             must=self.must(),
             fermentation_plan=FermentationPlan(),
+            runtime_inputs=DecisionRuntimeInputs(partial_mlf_target_malic_g_l=1.25),
         )
-        self.assertEqual(partial.applications[0].status, "runtime_not_implemented")
+        self.assertTrue(partial.fermentation_plan.malolactic)
+        self.assertAlmostEqual(partial.fermentation_plan.malolactic_params.target_malic_g_l, 1.25)
+        self.assertEqual(partial.applications[0].status, "applied")
+
+    def test_partial_mlf_rejects_nonpartial_target(self):
+        with self.assertRaises(DecisionRuntimeError):
+            apply_winemaking_decisions(
+                {"mlf": "partial"},
+                must=self.must(),
+                fermentation_plan=FermentationPlan(),
+                runtime_inputs=DecisionRuntimeInputs(partial_mlf_target_malic_g_l=0.10),
+            )
+        with self.assertRaises(DecisionRuntimeError):
+            apply_winemaking_decisions(
+                {"mlf": "partial"},
+                must=self.must(),
+                fermentation_plan=FermentationPlan(),
+                runtime_inputs=DecisionRuntimeInputs(partial_mlf_target_malic_g_l=2.5),
+            )
 
     def test_sterile_filtration_enables_sterile_packaging_credit(self):
         result = apply_winemaking_decisions(
@@ -202,6 +248,17 @@ class DecisionRuntimeTests(unittest.TestCase):
                 must=self.must(),
                 fermentation_plan=FermentationPlan(),
                 runtime_inputs=DecisionRuntimeInputs(closure_oxygen_exposure_prior=1.2),
+            )
+
+    def test_invalid_temperature_schedule_fails(self):
+        with self.assertRaises(DecisionRuntimeError):
+            apply_winemaking_decisions(
+                {"fermentation-temperature-trajectory": "controlled-ramp"},
+                must=self.must(),
+                fermentation_plan=FermentationPlan(),
+                runtime_inputs=DecisionRuntimeInputs(
+                    fermentation_temperature_schedule=((24.0, 20.0), (12.0, 22.0))
+                ),
             )
 
 
