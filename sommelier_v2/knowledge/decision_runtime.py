@@ -19,6 +19,7 @@ from .extraction_process import CapManagementEvent, ExtractionPlan
 from .fermentation_process import FermentationPlan, MustComposition
 from .legal_practice_bridge import LegalPracticeBridge
 from .legal_specs import LegalWineSpec
+from .maturation_process import BatonnageEvent, MaturationPlan, OxygenAddition, ToppingEvent
 from .packaging import PackagingPlan
 from .winemaking_decisions import WinemakingDecisionRegistry
 
@@ -41,6 +42,19 @@ class DecisionRuntimeInputs:
     cap_management_events: tuple[tuple[float, float], ...] = ()
     press_wine_blend_fraction: float | None = None
     press_severity: float | None = None
+
+    # Élevage inputs. Names never manufacture these physical values.
+    maturation_duration_days: float | None = None
+    vessel_oxygen_transfer_mg_l_month: float | None = None
+    headspace_oxygen_exposure_mg_l_month: float | None = None
+    evaporation_fraction_per_month: float | None = None
+    oak_contact_fraction: float | None = None
+    oak_extraction_prior: float | None = None
+    lees_contact_until_day: float | None = None
+    batonnage_events: tuple[tuple[float, float], ...] = ()
+    topping_events: tuple[tuple[float, float], ...] = ()
+    microoxygenation_additions: tuple[tuple[float, float], ...] = ()
+
     juice_turbidity_ntu: float | None = None
     prebottling_dissolved_oxygen_mg_l: float | None = None
     closure_oxygen_exposure_prior: float | None = None
@@ -62,6 +76,7 @@ class DecisionRuntimeResult:
     axis_effects: Mapping[str, float]
     applications: tuple[DecisionRuntimeApplication, ...]
     extraction_plan: ExtractionPlan = ExtractionPlan()
+    maturation_plan: MaturationPlan = MaturationPlan(duration_days=0.0)
 
     @property
     def unresolved(self) -> tuple[DecisionRuntimeApplication, ...]:
@@ -81,9 +96,36 @@ OXYGEN_MANAGEMENT_PRIORS = MappingProxyType(
     }
 )
 
+_OAK_NEW_PERCENTAGE_RANGES = MappingProxyType(
+    {
+        "zero": (0.0, 0.0),
+        "low": (0.01, 0.25),
+        "medium": (0.26, 0.60),
+        "high": (0.61, 1.0),
+    }
+)
+
 
 def _confirmation_key(decision_id: str, option_id: str) -> str:
     return f"{decision_id}:{option_id}"
+
+
+def _validate_event_points(
+    points: tuple[tuple[float, float], ...],
+    *,
+    name: str,
+    second_high: float,
+) -> None:
+    prior = -1.0
+    for point in points:
+        if len(point) != 2:
+            raise DecisionRuntimeError(f"Each {name} point must contain exactly two values")
+        day, second = float(point[0]), float(point[1])
+        if day < 0.0 or day < prior:
+            raise DecisionRuntimeError(f"{name} days must be non-negative and ordered")
+        if not 0.0 <= second <= second_high:
+            raise DecisionRuntimeError(f"{name} second value must be within 0..{second_high:g}")
+        prior = day
 
 
 def _validate_runtime_inputs(inputs: DecisionRuntimeInputs) -> None:
@@ -115,22 +157,31 @@ def _validate_runtime_inputs(inputs: DecisionRuntimeInputs) -> None:
         and inputs.maceration_end_hour < inputs.maceration_start_hour
     ):
         raise DecisionRuntimeError("maceration_end_hour cannot precede maceration_start_hour")
-    prior_cap_hour = -1.0
-    for point in inputs.cap_management_events:
-        if len(point) != 2:
-            raise DecisionRuntimeError("Each cap-management point must be (hour, intensity)")
-        hour, intensity = float(point[0]), float(point[1])
-        if hour < 0.0 or hour < prior_cap_hour:
-            raise DecisionRuntimeError("Cap-management event hours must be non-negative and ordered")
-        if not 0.0 <= intensity <= 1.0:
-            raise DecisionRuntimeError("Cap-management event intensity must be within 0..1")
-        prior_cap_hour = hour
+    _validate_event_points(inputs.cap_management_events, name="cap-management", second_high=1.0)
     if inputs.press_wine_blend_fraction is not None and not (
         0.0 <= inputs.press_wine_blend_fraction <= 1.0
     ):
         raise DecisionRuntimeError("press_wine_blend_fraction must be within 0..1")
     if inputs.press_severity is not None and not 0.0 <= inputs.press_severity <= 1.0:
         raise DecisionRuntimeError("press_severity must be within 0..1")
+
+    if inputs.maturation_duration_days is not None and not 0.0 <= inputs.maturation_duration_days <= 20_000.0:
+        raise DecisionRuntimeError("maturation_duration_days must be within 0..20000")
+    for name, value, high in (
+        ("vessel_oxygen_transfer_mg_l_month", inputs.vessel_oxygen_transfer_mg_l_month, 20.0),
+        ("headspace_oxygen_exposure_mg_l_month", inputs.headspace_oxygen_exposure_mg_l_month, 20.0),
+        ("evaporation_fraction_per_month", inputs.evaporation_fraction_per_month, 0.25),
+        ("oak_contact_fraction", inputs.oak_contact_fraction, 1.0),
+        ("oak_extraction_prior", inputs.oak_extraction_prior, 1.0),
+    ):
+        if value is not None and not 0.0 <= value <= high:
+            raise DecisionRuntimeError(f"{name} must be within 0..{high:g}")
+    if inputs.lees_contact_until_day is not None and inputs.lees_contact_until_day < 0.0:
+        raise DecisionRuntimeError("lees_contact_until_day must be non-negative")
+    _validate_event_points(inputs.batonnage_events, name="bâtonnage", second_high=1.0)
+    _validate_event_points(inputs.topping_events, name="topping", second_high=1.0)
+    _validate_event_points(inputs.microoxygenation_additions, name="micro-oxygenation", second_high=20.0)
+
     if inputs.juice_turbidity_ntu is not None and not (0.0 <= inputs.juice_turbidity_ntu <= 5000.0):
         raise DecisionRuntimeError("juice_turbidity_ntu must be within 0..5000")
     if inputs.prebottling_dissolved_oxygen_mg_l is not None and not (
@@ -170,6 +221,59 @@ def _apply_axis_effects(
         axis_totals[axis] = max(-1.0, min(1.0, axis_totals.get(axis, 0.0) + float(value)))
 
 
+def _maturation_seed(
+    plan: MaturationPlan,
+    inputs: DecisionRuntimeInputs,
+) -> tuple[dict[str, object], list[str]]:
+    values: dict[str, object] = {
+        "duration_days": plan.duration_days,
+        "step_days": plan.step_days,
+        "vessel_label": plan.vessel_label,
+        "vessel_oxygen_transfer_mg_l_month": plan.vessel_oxygen_transfer_mg_l_month,
+        "headspace_oxygen_exposure_mg_l_month": plan.headspace_oxygen_exposure_mg_l_month,
+        "evaporation_fraction_per_month": plan.evaporation_fraction_per_month,
+        "oak_contact_fraction": plan.oak_contact_fraction,
+        "oak_extraction_prior": plan.oak_extraction_prior,
+        "oak_context_labels": plan.oak_context_labels,
+        "lees_contact_until_day": plan.lees_contact_until_day,
+        "batonnage_events": plan.batonnage_events,
+        "topping_events": plan.topping_events,
+        "oxygen_additions": plan.oxygen_additions,
+        "oxygen_reaction_fraction_per_day": plan.oxygen_reaction_fraction_per_day,
+        "so2_consumption_prior_mg_per_mg_oxygen": plan.so2_consumption_prior_mg_per_mg_oxygen,
+    }
+    if inputs.maturation_duration_days is not None:
+        values["duration_days"] = inputs.maturation_duration_days
+    if inputs.vessel_oxygen_transfer_mg_l_month is not None:
+        values["vessel_oxygen_transfer_mg_l_month"] = inputs.vessel_oxygen_transfer_mg_l_month
+    if inputs.headspace_oxygen_exposure_mg_l_month is not None:
+        values["headspace_oxygen_exposure_mg_l_month"] = inputs.headspace_oxygen_exposure_mg_l_month
+    if inputs.evaporation_fraction_per_month is not None:
+        values["evaporation_fraction_per_month"] = inputs.evaporation_fraction_per_month
+    if inputs.oak_contact_fraction is not None:
+        values["oak_contact_fraction"] = inputs.oak_contact_fraction
+    if inputs.oak_extraction_prior is not None:
+        values["oak_extraction_prior"] = inputs.oak_extraction_prior
+    if inputs.lees_contact_until_day is not None:
+        values["lees_contact_until_day"] = inputs.lees_contact_until_day
+    if inputs.batonnage_events:
+        values["batonnage_events"] = tuple(
+            BatonnageEvent(day=float(day), intensity=float(intensity))
+            for day, intensity in inputs.batonnage_events
+        )
+    if inputs.topping_events:
+        values["topping_events"] = tuple(
+            ToppingEvent(day=float(day), ullage_reduction_fraction=float(fraction))
+            for day, fraction in inputs.topping_events
+        )
+    if inputs.microoxygenation_additions:
+        values["oxygen_additions"] = tuple(
+            OxygenAddition(day=float(day), oxygen_mg_l=float(oxygen))
+            for day, oxygen in inputs.microoxygenation_additions
+        )
+    return values, list(plan.oak_context_labels)
+
+
 def apply_winemaking_decisions(
     selections: Mapping[str, str],
     *,
@@ -177,6 +281,7 @@ def apply_winemaking_decisions(
     fermentation_plan: FermentationPlan,
     packaging_plan: PackagingPlan = PackagingPlan(),
     extraction_plan: ExtractionPlan = ExtractionPlan(),
+    maturation_plan: MaturationPlan = MaturationPlan(duration_days=0.0),
     runtime_inputs: DecisionRuntimeInputs = DecisionRuntimeInputs(),
     protected_designation: bool = False,
     legal_spec: LegalWineSpec | None = None,
@@ -199,6 +304,7 @@ def apply_winemaking_decisions(
     current_plan = fermentation_plan
     current_packaging = packaging_plan
     current_extraction = extraction_plan
+    maturation_values, oak_context_labels = _maturation_seed(maturation_plan, runtime_inputs)
     axis_effects = {axis: 0.0 for axis in registry.axes}
     applications: list[DecisionRuntimeApplication] = []
 
@@ -352,6 +458,85 @@ def apply_winemaking_decisions(
                     applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Enabled partial MLF to explicit target {target:g} g/L malic acid."))
             continue
 
+        if decision.id == "maturation-duration":
+            if runtime_inputs.maturation_duration_days is None:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Maturation duration requires an explicit number of days; short/moderate/long does not create one."))
+            else:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied explicit maturation duration {runtime_inputs.maturation_duration_days:g} days."))
+            continue
+
+        if decision.id == "maturation-vessel":
+            maturation_values["vessel_label"] = option.id
+            if runtime_inputs.vessel_oxygen_transfer_mg_l_month is None:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Vessel identity is recorded, but no oxygen-transfer value is inferred from the vessel label."))
+            else:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Recorded vessel {option.id} with explicit oxygen transfer {runtime_inputs.vessel_oxygen_transfer_mg_l_month:g} mg/L/month."))
+            continue
+
+        if decision.id == "lees-contact":
+            if option.id == "none":
+                maturation_values["lees_contact_until_day"] = 0.0
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", "Set lees-contact endpoint to day 0."))
+            elif runtime_inputs.lees_contact_until_day is None:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Lees-contact selection requires an explicit endpoint in days; short/extended does not create a duration."))
+            else:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied explicit lees-contact endpoint day {runtime_inputs.lees_contact_until_day:g}."))
+            continue
+
+        if decision.id == "batonnage":
+            if option.id == "none":
+                maturation_values["batonnage_events"] = ()
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", "Cleared scheduled bâtonnage events."))
+            elif not runtime_inputs.batonnage_events:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Bâtonnage selection requires explicit event days and intensities; frequency is not inferred from occasional/frequent."))
+            else:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied {len(runtime_inputs.batonnage_events)} explicit bâtonnage event(s)."))
+            continue
+
+        if decision.id == "oak-new-percentage":
+            if option.id == "zero":
+                maturation_values["oak_contact_fraction"] = 0.0
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", "Set new-oak contact fraction to 0."))
+            else:
+                fraction = runtime_inputs.oak_contact_fraction
+                if fraction is None:
+                    applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "New-oak category requires an explicit fraction; the category range is not collapsed to a midpoint."))
+                else:
+                    low, high = _OAK_NEW_PERCENTAGE_RANGES[option.id]
+                    if not low <= fraction <= high:
+                        raise DecisionRuntimeError(
+                            f"oak_contact_fraction {fraction:g} is outside the selected {option.id} range {low:g}..{high:g}"
+                        )
+                    applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied explicit oak-contact fraction {fraction:g} within selected {option.id} range."))
+            continue
+
+        if decision.id in {"oak-species", "oak-toast", "oak-age"}:
+            oak_context_labels.append(f"{decision.id}:{option.id}")
+            if runtime_inputs.oak_extraction_prior is None:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Oak context is recorded, but no extraction strength is inferred from species, toast, or barrel-age label."))
+            else:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Recorded {decision.id}={option.id} with explicit oak-extraction prior {runtime_inputs.oak_extraction_prior:g}."))
+            continue
+
+        if decision.id == "topping-ullage":
+            if runtime_inputs.headspace_oxygen_exposure_mg_l_month is None or runtime_inputs.evaporation_fraction_per_month is None:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Ullage strategy requires explicit headspace oxygen exposure and evaporation rate; neither is inferred from the strategy label."))
+            elif option.id == "topped" and not runtime_inputs.topping_events:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "A topped strategy requires explicit topping event days and ullage-reduction fractions."))
+            else:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied explicit ullage/oxygen inputs for {option.id} strategy."))
+            continue
+
+        if decision.id == "micro-oxygenation":
+            if option.id == "none":
+                maturation_values["oxygen_additions"] = ()
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", "Cleared deliberate maturation oxygen additions."))
+            elif not runtime_inputs.microoxygenation_additions:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Micro-oxygenation requires explicit event doses; low/higher does not generate mg/L oxygen."))
+            else:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied {len(runtime_inputs.microoxygenation_additions)} explicit oxygen-addition event(s)."))
+            continue
+
         if decision.id == "filtration":
             if option.id == "sterile":
                 current_plan = replace(current_plan, sterile_packaging=True)
@@ -399,6 +584,9 @@ def apply_winemaking_decisions(
             )
         )
 
+    maturation_values["oak_context_labels"] = tuple(dict.fromkeys(oak_context_labels))
+    current_maturation = MaturationPlan(**maturation_values)
+
     return DecisionRuntimeResult(
         must=current_must,
         fermentation_plan=current_plan,
@@ -406,4 +594,5 @@ def apply_winemaking_decisions(
         axis_effects=MappingProxyType(axis_effects),
         applications=tuple(applications),
         extraction_plan=current_extraction,
+        maturation_plan=current_maturation,
     )
