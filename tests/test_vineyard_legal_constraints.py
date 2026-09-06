@@ -12,11 +12,12 @@ class VineyardLegalConstraintTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.registry = VineyardLegalConstraintRegistry()
 
-    def test_fixin_and_vougeot_density_constraints_resolve(self) -> None:
+    def test_fixin_and_vougeot_constraints_resolve(self) -> None:
         for appellation in ("Fixin", "Vougeot"):
             row = self.registry.resolve(country="France", appellation=appellation)
             self.assertIsNotNone(row)
             self.assertEqual(row.min_vine_density_per_ha, 9000)
+            self.assertIs(row.irrigation_prohibited, True)
             self.assertTrue(row.source_ids)
 
     def test_density_boundary_is_exact(self) -> None:
@@ -25,23 +26,54 @@ class VineyardLegalConstraintTests(unittest.TestCase):
                 country="France",
                 appellation=appellation,
                 vine_density_per_ha=9000,
+                irrigation_mm_per_week=0.0,
             )
             bad = self.registry.assess(
                 country="France",
                 appellation=appellation,
                 vine_density_per_ha=8999,
+                irrigation_mm_per_week=0.0,
             )
             self.assertIs(good.satisfied, True)
             self.assertEqual(good.status, "reviewed_vineyard_constraints_satisfied")
             self.assertIs(bad.satisfied, False)
-            self.assertEqual(bad.status, "vine_density_below_legal_minimum")
+            self.assertEqual(bad.status, "reviewed_vineyard_constraint_violation")
             self.assertTrue(any("9,000" in issue for issue in bad.issues))
+
+    def test_any_positive_irrigation_violates_reviewed_rule(self) -> None:
+        for appellation in ("Fixin", "Vougeot"):
+            dry = self.registry.assess(
+                country="France",
+                appellation=appellation,
+                vine_density_per_ha=9000,
+                irrigation_mm_per_week=0.0,
+            )
+            irrigated = self.registry.assess(
+                country="France",
+                appellation=appellation,
+                vine_density_per_ha=9000,
+                irrigation_mm_per_week=0.01,
+            )
+            self.assertIs(dry.satisfied, True)
+            self.assertIs(irrigated.satisfied, False)
+            self.assertTrue(any("Irrigation is prohibited" in issue for issue in irrigated.issues))
+
+    def test_missing_irrigation_measurement_is_unknown(self) -> None:
+        decision = self.registry.assess(
+            country="France",
+            appellation="Fixin",
+            vine_density_per_ha=9000,
+            irrigation_mm_per_week=None,
+        )
+        self.assertIsNone(decision.satisfied)
+        self.assertEqual(decision.status, "reviewed_vineyard_constraint_unobserved")
 
     def test_unreviewed_origin_is_unknown_not_permission(self) -> None:
         decision = self.registry.assess(
             country="France",
             appellation="Imaginary-Unreviewed-Origin",
             vine_density_per_ha=10000,
+            irrigation_mm_per_week=0.0,
         )
         self.assertIsNone(decision.satisfied)
         self.assertEqual(decision.status, "vineyard_law_not_reviewed")
@@ -78,12 +110,35 @@ class VineyardLegalConstraintTests(unittest.TestCase):
             wine_variant="red standard",
             label_scope="regulated_gi",
             vine_density_per_ha=8999,
+            irrigation_mm_per_week=0.0,
             target_yield_t_ha=4.0,
         )
         result = engine.simulate(block, self.weather(), vintage_year=2026)
         self.assertTrue(result.harvestable)
         self.assertFalse(result.label_eligible)
         self.assertTrue(any("below the sourced Fixin minimum" in issue for issue in result.issues))
+
+    def test_irrigated_vougeot_remains_physical_but_is_declassified(self) -> None:
+        engine = VineyardEngine()
+        block = VineyardBlock(
+            id="vougeot-irrigated",
+            grape="Pinot Noir",
+            area_ha=1.0,
+            planting_year=2000,
+            country="France",
+            region="Bourgogne",
+            appellation="Vougeot",
+            wine_variant="red standard",
+            label_scope="regulated_gi",
+            vine_density_per_ha=9000,
+            irrigation_mm_per_week=1.0,
+            irrigation_allowed=True,
+            target_yield_t_ha=4.0,
+        )
+        result = engine.simulate(block, self.weather(), vintage_year=2026)
+        self.assertTrue(result.harvestable)
+        self.assertFalse(result.label_eligible)
+        self.assertTrue(any("Irrigation is prohibited" in issue for issue in result.issues))
 
 
 if __name__ == "__main__":

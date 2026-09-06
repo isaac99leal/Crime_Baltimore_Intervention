@@ -23,6 +23,7 @@ class VineyardLegalConstraint:
     country: str
     appellation: str
     min_vine_density_per_ha: int | None = None
+    irrigation_prohibited: bool | None = None
     variants: tuple[str, ...] = ()
     effective_from: str | None = None
     effective_to: str | None = None
@@ -83,11 +84,18 @@ class VineyardLegalConstraintRegistry:
                         f"{constraint_id} has unsupported minimum vine density: {density}"
                     )
 
+                irrigation_raw = raw.get("irrigation_prohibited")
+                if irrigation_raw is not None and not isinstance(irrigation_raw, bool):
+                    raise ValueError(
+                        f"{constraint_id} irrigation_prohibited must be boolean or null"
+                    )
+
                 constraint = VineyardLegalConstraint(
                     id=constraint_id,
                     country=str(raw["country"]),
                     appellation=str(raw["appellation"]),
                     min_vine_density_per_ha=density,
+                    irrigation_prohibited=irrigation_raw,
                     variants=tuple(str(value) for value in raw.get("variants", [])),
                     effective_from=str(raw["effective_from"]) if raw.get("effective_from") else None,
                     effective_to=str(raw["effective_to"]) if raw.get("effective_to") else None,
@@ -128,6 +136,7 @@ class VineyardLegalConstraintRegistry:
         country: str,
         appellation: str,
         vine_density_per_ha: int | None,
+        irrigation_mm_per_week: float | None = None,
         variant: str | None = None,
     ) -> VineyardLegalAssessment:
         constraint = self.resolve(country=country, appellation=appellation, variant=variant)
@@ -141,26 +150,44 @@ class VineyardLegalConstraintRegistry:
             )
 
         evidence = tuple(f"source:{source_id}" for source_id in constraint.source_ids)
+        issues: list[str] = []
+        unresolved: list[str] = []
+
         if constraint.min_vine_density_per_ha is not None:
             if vine_density_per_ha is None:
-                return VineyardLegalAssessment(
-                    satisfied=None,
-                    status="vine_density_unobserved",
-                    constraint_id=constraint.id,
-                    warnings=("Vine density is required to assess the reviewed vineyard-law minimum.",),
-                    evidence=evidence,
-                )
-            if vine_density_per_ha < constraint.min_vine_density_per_ha:
-                return VineyardLegalAssessment(
-                    satisfied=False,
-                    status="vine_density_below_legal_minimum",
-                    constraint_id=constraint.id,
-                    issues=(
-                        f"Vine density {vine_density_per_ha:,} vines/ha is below the sourced {constraint.appellation} minimum of {constraint.min_vine_density_per_ha:,} vines/ha.",
-                    ),
-                    evidence=evidence,
+                unresolved.append("Vine density is required to assess the reviewed vineyard-law minimum.")
+            elif vine_density_per_ha < constraint.min_vine_density_per_ha:
+                issues.append(
+                    f"Vine density {vine_density_per_ha:,} vines/ha is below the sourced {constraint.appellation} minimum of {constraint.min_vine_density_per_ha:,} vines/ha."
                 )
 
+        if constraint.irrigation_prohibited is True:
+            if irrigation_mm_per_week is None:
+                unresolved.append(
+                    "Irrigation amount is required to assess the reviewed irrigation prohibition."
+                )
+            elif irrigation_mm_per_week > 1e-9:
+                issues.append(
+                    f"Irrigation is prohibited for sourced {constraint.appellation} vineyard eligibility; configured irrigation is {irrigation_mm_per_week:g} mm/week."
+                )
+
+        if issues:
+            return VineyardLegalAssessment(
+                satisfied=False,
+                status="reviewed_vineyard_constraint_violation",
+                constraint_id=constraint.id,
+                issues=tuple(issues),
+                warnings=tuple(unresolved),
+                evidence=evidence,
+            )
+        if unresolved:
+            return VineyardLegalAssessment(
+                satisfied=None,
+                status="reviewed_vineyard_constraint_unobserved",
+                constraint_id=constraint.id,
+                warnings=tuple(unresolved),
+                evidence=evidence,
+            )
         return VineyardLegalAssessment(
             satisfied=True,
             status="reviewed_vineyard_constraints_satisfied",
@@ -176,5 +203,8 @@ class VineyardLegalConstraintRegistry:
             ),
             "vineyard_density_constraints": sum(
                 row.min_vine_density_per_ha is not None for row in self.constraints
+            ),
+            "vineyard_irrigation_constraints": sum(
+                row.irrigation_prohibited is not None for row in self.constraints
             ),
         }
