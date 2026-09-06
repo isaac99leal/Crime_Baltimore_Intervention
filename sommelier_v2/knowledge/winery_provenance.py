@@ -5,9 +5,9 @@ losses scale every component proportionally. Only at finished-wine assembly are
 those liters normalized into the percentage ledger consumed by label-law rules.
 
 The ledger is inventory-conserving. Historical lots remain immutable, but each
-stored lot has a mutable available balance. Transfers, blends, and discards
-consume source balances atomically so the same physical liters cannot appear in
-multiple live descendants.
+stored lot has a mutable available balance. Transfers, blends, external
+dispatches, and discards consume source balances atomically so the same physical
+liters cannot appear in multiple live descendants or destinations.
 """
 from __future__ import annotations
 
@@ -241,6 +241,7 @@ class LotMovement:
     output_volume_l: float
     loss_volume_l: float
     reason: str = ""
+    external_reference: str = ""
 
     def __post_init__(self) -> None:
         if len(self.source_lot_ids) != len(self.source_draws_l):
@@ -252,6 +253,8 @@ class LotMovement:
         total_input = sum(self.source_draws_l)
         if abs(total_input - self.output_volume_l - self.loss_volume_l) > max(0.001, total_input * 1e-8):
             raise WineryProvenanceError("LotMovement input must equal output plus loss.")
+        if self.operation == "dispatch" and not self.external_reference.strip():
+            raise WineryProvenanceError("Dispatch movement requires an external reference.")
 
 
 class WineryProvenanceLedger:
@@ -407,8 +410,36 @@ class WineryProvenanceLedger:
         self.movements.append(movement)
         return child
 
+    def dispatch(
+        self,
+        lot_id: str,
+        *,
+        volume_l: float,
+        external_reference: str,
+        reason: str = "commercial_dispatch",
+    ) -> LotMovement:
+        """Move wine out of winery custody without classifying it as physical loss."""
+        self._require_lot(lot_id)
+        if not external_reference.strip():
+            raise WineryProvenanceError("Dispatch requires a non-empty external reference.")
+        volume = float(volume_l)
+        self._validate_draw(lot_id, volume)
+        movement = LotMovement(
+            operation="dispatch",
+            source_lot_ids=(lot_id,),
+            source_draws_l=(volume,),
+            output_lot_id=None,
+            output_volume_l=volume,
+            loss_volume_l=0.0,
+            reason=reason,
+            external_reference=external_reference,
+        )
+        self._consume(lot_id, volume)
+        self.movements.append(movement)
+        return movement
+
     def discard(self, lot_id: str, *, volume_l: float | None = None, reason: str = "") -> LotMovement:
-        """Remove wine from live inventory without creating a descendant lot."""
+        """Remove wine from live inventory as physical/process loss."""
         self._require_lot(lot_id)
         available = self.available_volume_l(lot_id)
         volume = available if volume_l is None else float(volume_l)
@@ -432,6 +463,13 @@ class WineryProvenanceLedger:
     def total_recorded_loss_l(self) -> float:
         return sum(movement.loss_volume_l for movement in self.movements)
 
+    def total_dispatched_volume_l(self) -> float:
+        return sum(
+            movement.output_volume_l
+            for movement in self.movements
+            if movement.operation == "dispatch"
+        )
+
     def stats(self) -> dict[str, int | float]:
         return {
             "winery_provenance_lots": len(self.lots),
@@ -439,4 +477,5 @@ class WineryProvenanceLedger:
             "winery_provenance_movements": len(self.movements),
             "winery_provenance_available_l": self.total_available_volume_l(),
             "winery_provenance_recorded_loss_l": self.total_recorded_loss_l(),
+            "winery_provenance_dispatched_l": self.total_dispatched_volume_l(),
         }
