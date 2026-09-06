@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "notes": "Current Marsannay parent production matrix. The red path deliberately keeps accessory white grapes out of the generic cellar-blend positive path; the rosé path admits only the two principal varieties until aggregate accessory-grape constraints can be represented exactly. Conditional white 4 g/L sugar allowance is conservatively omitted.",
+  "sources": {
+    "marsannay_masa_2020_cdc": {
+      "authority": "Ministère de l'Agriculture",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-8fa6b7fc-47fa-4091-8d6c-4610b85767b5/telechargement",
+      "checked": "2026-09-06",
+      "scope": "Published current modified AOC Marsannay cahier des charges: product colors, encépagement, vineyard management, maturity, yields, blending, analytical limits, oenological practices, élevage and market release."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:marsannay:white-standard",
+      "country": "France",
+      "appellation": "Marsannay",
+      "aliases": ["Marsannay AOC", "Marsannay AOP"],
+      "variant": "white standard",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc", "Pinot Gris"],
+      "grape_constraints": [
+        {"grape": "Pinot Gris", "min_pct": 0, "max_pct": 30}
+      ],
+      "max_yield_hl_ha": 57.0,
+      "min_must_sugar_g_l": 178.0,
+      "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 13.5,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["marsannay_masa_2020_cdc"],
+      "notes": "White principal varieties are Chardonnay and Pinot Blanc. Pinot Gris is accessory in the vineyard (<=10% of planting) but may comprise up to 30% of the finished blend. The conditional 4 g/L fermentable-sugar ceiling is not promoted because its total-acidity predicate is not yet represented; the unconditional 3 g/L ceiling is used."
+    },
+    {
+      "id": "fr:marsannay:red-standard",
+      "country": "France",
+      "appellation": "Marsannay",
+      "aliases": ["Marsannay AOC", "Marsannay AOP"],
+      "variant": "red standard",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [
+        {"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}
+      ],
+      "max_yield_hl_ha": 50.0,
+      "min_must_sugar_g_l": 180.0,
+      "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["marsannay_masa_2020_cdc"],
+      "notes": "Conservative positive red path. Chardonnay, Pinot Blanc and Pinot Gris are legal accessories subject to a combined 15% blend ceiling, which the current per-variety constraint model cannot express safely; they therefore are not promoted as generic cellar-blend choices."
+    },
+    {
+      "id": "fr:marsannay:rose-standard",
+      "country": "France",
+      "appellation": "Marsannay",
+      "aliases": ["Marsannay Rosé", "Marsannay Rose", "Marsannay AOC", "Marsannay AOP"],
+      "variant": "rose standard",
+      "wine_style": "rose",
+      "allowed_grapes": ["Pinot Noir", "Pinot Gris"],
+      "max_yield_hl_ha": 60.0,
+      "min_must_sugar_g_l": 180.0,
+      "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.0,
+      "max_residual_sugar_g_l": 3.0,
+      "source_ids": ["marsannay_masa_2020_cdc"],
+      "notes": "Positive rosé path contains only the two principal varieties, Pinot Noir and Pinot Gris. Chardonnay and Pinot Blanc accessories are omitted until their combined <=15% blend ceiling can be represented exactly. The specification sends rosé release to the general Code rural rule rather than the exact white/red 30 June calendar, so no exact Marsannay rosé release date is invented here."
+    }
+  ]
+}
