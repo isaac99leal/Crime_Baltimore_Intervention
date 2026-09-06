@@ -28,7 +28,13 @@ class InventoryManager:
     def __init__(self, program: BeverageProgram):
         self.program = program
 
-    def receive(self, lot: InventoryLot) -> None:
+    def validate_receive(self, lot: InventoryLot) -> float:
+        """Validate a receipt without mutating cash or program inventory.
+
+        The returned value is the acquisition cost that ``receive`` will charge.
+        This preflight is used by cross-system transfers so source inventory is
+        not consumed when the restaurant cannot accept the shipment.
+        """
         if lot.sealed_bottles < 0 or lot.unit_cost < 0:
             raise ValueError("invalid inventory lot")
         if lot.bottle_ml <= 0 or lot.glass_ml <= 0 or lot.glass_ml > lot.bottle_ml:
@@ -43,6 +49,10 @@ class InventoryManager:
         purchase_cost = lot.sealed_bottles * lot.unit_cost
         if purchase_cost > self.program.cash + 1e-9:
             raise ValueError("insufficient cash")
+        return purchase_cost
+
+    def receive(self, lot: InventoryLot) -> None:
+        purchase_cost = self.validate_receive(lot)
         self.program.cash -= purchase_cost
         self.program.inventory[lot.lot_id] = lot
 
