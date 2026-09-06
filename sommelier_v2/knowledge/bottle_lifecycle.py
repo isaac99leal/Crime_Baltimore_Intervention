@@ -1,18 +1,20 @@
 """Bridge packaging state into the continuous bottle-aging model.
 
-Bottle aging is downstream of packaging. The existing packaging layer can only
-quantify oxygen exposure when both pre-bottling dissolved oxygen and closure
-oxygen behavior are supplied explicitly. This bridge therefore fails closed by
-default when packaging oxygen is incomplete.
+Bottle aging is downstream of packaging. The packaging layer can only quantify
+oxygen exposure when the needed measurements/priors are supplied explicitly.
+This bridge therefore fails closed by default when packaging oxygen is incomplete
+and refuses to invent packaging chemistry for commercial inventory that lacks a
+stored bottling snapshot.
 
 Storage, bottle size, and longevity modifiers are explicit simulator inputs.
-They are not inferred from producer identity, bottle format names, appellation,
-or price.
+They are not inferred from producer identity, physical bottle volume, appellation,
+price, or closure name.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
 
+from ..domain import InventoryLot, InventoryPackagingSnapshot
 from .aging import state_at_age
 from .cellar_pipeline import CellarPipelineResult
 from .schema import AgingArchetype, AgingState
@@ -51,6 +53,49 @@ class BottleAgingResult:
     warnings: tuple[str, ...] = ()
 
 
+def _age_from_packaging_state(
+    archetype: AgingArchetype,
+    plan: BottleAgingPlan,
+    *,
+    oxygen_assessment_complete: bool,
+    ageing_oxygen_modifier: float,
+    tartrate_physical_instability_risk: float | None,
+    inherited_warnings: tuple[str, ...] = (),
+) -> BottleAgingResult:
+    if plan.require_complete_packaging_oxygen and not oxygen_assessment_complete:
+        raise BottleLifecycleConstraintError(
+            "Bottle aging requires complete packaging oxygen evidence: both measured pre-bottling "
+            "dissolved oxygen and an explicit closure oxygen-exposure prior are required."
+        )
+
+    warnings = list(inherited_warnings)
+    conditional = not oxygen_assessment_complete
+    if conditional:
+        warnings.append(
+            "Bottle-aging oxygen trajectory is conditional because packaging oxygen assessment is incomplete."
+        )
+    if tartrate_physical_instability_risk is None:
+        warnings.append("Tartrate stability remains unknown during the bottle-aging simulation.")
+    elif tartrate_physical_instability_risk >= 1.0:
+        warnings.append("The bottled wine is test-confirmed tartrate-unstable.")
+
+    state = state_at_age(
+        archetype,
+        plan.age_years,
+        longevity_modifier=plan.longevity_modifier,
+        storage_modifier=plan.storage_modifier,
+        oxygen_modifier=ageing_oxygen_modifier,
+        bottle_size_modifier=plan.bottle_size_modifier,
+    )
+    return BottleAgingResult(
+        state=state,
+        packaging_oxygen_modifier=ageing_oxygen_modifier,
+        packaging_oxygen_complete=oxygen_assessment_complete,
+        conditional_on_incomplete_oxygen=conditional,
+        warnings=tuple(dict.fromkeys(warnings)),
+    )
+
+
 def age_cellar_wine(
     archetype: AgingArchetype,
     cellar: CellarPipelineResult,
@@ -63,36 +108,39 @@ def age_cellar_wine(
     can materially change oxygen exposure.
     """
     packaging = cellar.packaging
-    if plan.require_complete_packaging_oxygen and not packaging.oxygen_assessment_complete:
-        raise BottleLifecycleConstraintError(
-            "Bottle aging requires complete packaging oxygen evidence: both measured pre-bottling "
-            "dissolved oxygen and an explicit closure oxygen-exposure prior are required."
-        )
-
-    warnings: list[str] = []
-    conditional = not packaging.oxygen_assessment_complete
-    if conditional:
-        warnings.append(
-            "Bottle-aging oxygen trajectory is conditional because packaging oxygen assessment is incomplete."
-        )
-    if packaging.tartrate_physical_instability_risk is None:
-        warnings.append("Tartrate stability remains unknown during the bottle-aging simulation.")
-    elif packaging.tartrate_physical_instability_risk >= 1.0:
-        warnings.append("The bottled wine is test-confirmed tartrate-unstable.")
-
-    oxygen_modifier = packaging.ageing_oxygen_modifier
-    state = state_at_age(
+    return _age_from_packaging_state(
         archetype,
-        plan.age_years,
-        longevity_modifier=plan.longevity_modifier,
-        storage_modifier=plan.storage_modifier,
-        oxygen_modifier=oxygen_modifier,
-        bottle_size_modifier=plan.bottle_size_modifier,
+        plan,
+        oxygen_assessment_complete=packaging.oxygen_assessment_complete,
+        ageing_oxygen_modifier=packaging.ageing_oxygen_modifier,
+        tartrate_physical_instability_risk=packaging.tartrate_physical_instability_risk,
+        inherited_warnings=tuple(packaging.warnings),
     )
-    return BottleAgingResult(
-        state=state,
-        packaging_oxygen_modifier=oxygen_modifier,
-        packaging_oxygen_complete=packaging.oxygen_assessment_complete,
-        conditional_on_incomplete_oxygen=conditional,
-        warnings=tuple(warnings),
+
+
+def age_inventory_lot(
+    archetype: AgingArchetype,
+    lot: InventoryLot,
+    plan: BottleAgingPlan,
+) -> BottleAgingResult:
+    """Age commercial bottle inventory from its stored packaging snapshot.
+
+    Missing packaging state is not converted into a neutral oxygen modifier. For
+    legacy/imported stock, callers must first attach an explicit defensible
+    ``InventoryPackagingSnapshot`` or avoid chemistry-conditioned bottle aging.
+    Physical ``lot.bottle_ml`` is retained as fact but is not translated into the
+    plan's bottle-size modifier automatically.
+    """
+    snapshot: InventoryPackagingSnapshot | None = lot.packaging_snapshot
+    if snapshot is None:
+        raise BottleLifecycleConstraintError(
+            "Commercial inventory lot has no packaging chemistry snapshot; bottle-aging oxygen state cannot be inferred."
+        )
+    return _age_from_packaging_state(
+        archetype,
+        plan,
+        oxygen_assessment_complete=snapshot.oxygen_assessment_complete,
+        ageing_oxygen_modifier=snapshot.ageing_oxygen_modifier,
+        tartrate_physical_instability_risk=snapshot.tartrate_physical_instability_risk,
+        inherited_warnings=tuple(snapshot.warnings),
     )
