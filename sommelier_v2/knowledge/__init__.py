@@ -12,6 +12,7 @@ from .fermentation_chemistry import NutrientTimingEffect, ProcessChemistryAssess
 from .fermentation_engine import AlcoholicFermentationParams, FermentationState, MalolacticParams, MalolacticState, initial_state, run_alcoholic_fermentation, run_malolactic, step_alcoholic_fermentation, step_malolactic, temperature_control_target
 from .fermentation_process import FermentationConstraintError, FermentationPlan, FermentationResult, MustComposition, NutrientAddition, run_fermentation, validate_must, validate_plan
 from .finished_wine import FinishedWineAssembler, FinishedWineConstraintError, ValidatedWineRecord
+from .harvest_lot import lot_from_harvest_must
 from .harvest_must import HarvestMustConstraintError, HarvestMustPlan, HarvestMustProfile, must_from_vineyard, validate_harvest_must_plan
 from .historical_vintages import AuthorityVintageRating, HistoricalVintageArchive, HistoricalVintageError, HistoricalVintageObservation, HistoricalVintageRegistry, HistoricalVintageSignal, HistoricalVintageStats, load_historical_vintages
 from .jurisdiction_labels import BlendComponent, JurisdictionLabelValidator, LabelClaimDecision, LabelClaims
@@ -79,8 +80,8 @@ __all__ = [
     "age_cellar_wine", "apply_winemaking_decisions", "assess_packaging", "assess_process_chemistry",
     "assess_smoke_markers", "initial_microbiological_risk", "initial_state", "load_historical_vintages",
     "load_legacy_vintage_knowledge", "load_process_chemistry_evidence", "load_site_research",
-    "load_trade_research", "load_winemaking_decisions", "modified_archetype", "molecular_so2_mg_l",
-    "must_from_vineyard", "normalize_name", "nutrient_timing_effect",
+    "load_trade_research", "load_winemaking_decisions", "lot_from_harvest_must", "modified_archetype",
+    "molecular_so2_mg_l", "must_from_vineyard", "normalize_name", "nutrient_timing_effect",
     "post_fermentation_microbiological_risk", "run_alcoholic_fermentation", "run_cellar_pipeline",
     "run_fermentation", "run_malolactic", "simulate_extraction", "simulate_maturation", "simulate_vintage",
     "state_at_age", "step_alcoholic_fermentation", "step_malolactic", "supported_smoke_guide_cultivars",
