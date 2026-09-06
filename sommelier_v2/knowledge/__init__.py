@@ -38,6 +38,7 @@ from .smoke_taint import SmokeMarkerAssessment, SmokeMarkerResult, SmokeTaintCon
 from .trade_research import TradeFieldPolicy, TradeObservationConflict, TradeResearchError, TradeResearchRegistry, TradeResearchStats, TradeSourceRecord, TradeTechnicalObservation, load_trade_research
 from .vineyard_engine import SiteRegistry, VineyardBlock, VineyardEngine as BaseVineyardEngine, VineyardOutcome
 from .vineyard_legal_constraints import VineyardLegalAssessment, VineyardLegalConstraint, VineyardLegalConstraintRegistry
+from .vineyard_yield_adjustments import VineyardYieldAdjustment, VineyardYieldAdjustmentRegistry, VineyardYieldAdjustmentRule
 from .vintage import load_legacy_vintage_knowledge, vintage_stats
 from .vintage_engine import DailyWeather, VintageDayState, VintageModelParams, VintageOutcome, simulate_vintage
 from .winemaking_decisions import DecisionAuthorityAssessment, DecisionEvidenceSource, DecisionOption, WinemakingDecision, WinemakingDecisionError, WinemakingDecisionRegistry, WinemakingDecisionStats, load_winemaking_decisions
@@ -78,6 +79,7 @@ __all__ = [
     "TradeResearchStats", "TradeSourceRecord", "TradeTechnicalObservation", "ValidatedWineRecord",
     "VarietyAreaObservation", "VerificationLevel", "VineyardBlock", "VineyardEngine", "VineyardLegalAssessment",
     "VineyardLegalConstraint", "VineyardLegalConstraintRegistry", "VineyardOutcome",
+    "VineyardYieldAdjustment", "VineyardYieldAdjustmentRegistry", "VineyardYieldAdjustmentRule",
     "VintageDayState", "VintageModelParams", "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory",
     "WinemakingDecision", "WinemakingDecisionError", "WinemakingDecisionRegistry", "WinemakingDecisionStats",
     "WineryLot", "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",

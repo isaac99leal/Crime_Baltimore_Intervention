@@ -1,6 +1,16 @@
 {
-  "schema_version": "1.1",
-  "notes": "Executable vineyard-law constraints directly observable in VineyardBlock. Fixin and Vougeot density, irrigation and spacing rules are sourced from the same reviewed legal authorities as their strict wine specifications. Plantation en foule remains distinct from conventional rows: row-spacing limits apply only to row-planted parcels, while minimum vine-to-vine spacing applies to both rows and foule.",
+  "schema_version": "1.3",
+  "notes": "Executable Fixin and Vougeot vineyard-law constraints directly observable in VineyardBlock. Boolean compliance rules are kept separate from dead/missing-vine yield adjustments. Conventional row vine spacing uses an inclusive 0.50 m minimum; plantation en foule uses the source's strict greater-than-0.50 m rule. The 20% dead/missing-vine trigger comes from each appellation specification, while the proportional yield remedy comes independently from Code rural D.645-4.",
+  "yield_adjustment_sources": {
+    "fr_code_rural_d645_4": {
+      "authority": "République française / Légifrance",
+      "title": "Code rural et de la pêche maritime, article D.645-4",
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000028240511",
+      "checked": "2026-09-06",
+      "scope": "For AOC vineyard parcels, once the appellation-specific dead/missing-vine threshold is exceeded, the authorized yield entering the claimable AOC volume is reduced proportionally to the percentage of dead or missing vines.",
+      "evidence_class": "national_statutory_rule"
+    }
+  },
   "constraints": [
     {
       "id": "vineyardlaw:fr:fixin:current",
@@ -11,9 +21,22 @@
       "allowed_planting_patterns": ["rows", "foule"],
       "max_row_spacing_m": 1.25,
       "min_vine_spacing_m": 0.50,
+      "min_foule_vine_spacing_m_exclusive": 0.50,
+      "pruning_max_buds_by_style_and_system": {
+        "red": {"cordon_royat": 8, "bilateral_cordon": 8, "gobelet": 8, "eventail": 8, "guyot_simple": 8},
+        "white": {"cordon_royat": 10, "bilateral_cordon": 10, "guyot_simple": 8}
+      },
+      "pruning_unmodeled_exception_systems": ["guyot_double"],
+      "allowed_support_systems_unless_gobelet": ["trellis", "stake"],
+      "required_support_for_foule": "stake",
+      "min_trellised_canopy_height_to_row_spacing_ratio": 0.60,
+      "max_parcel_crop_load_kg_ha_by_style": {"red": 9000, "white": 10500},
+      "dead_missing_vine_yield_reduction_threshold": 0.20,
+      "dead_missing_vine_threshold_source_ids": ["fixin_masa_2024_legal"],
+      "dead_missing_vine_remedy_source_ids": ["fr_code_rural_d645_4"],
       "effective_from": "2024-11-21",
       "source_ids": ["fixin_masa_2024_legal"],
-      "notes": "Current Fixin specification requires at least 9,000 vines/ha, prohibits irrigation, limits conventional row spacing to 1.25 m, and requires at least 0.50 m between vines. Plantation en foule is allowed and is therefore not assigned an invented row spacing. The current specification states no special transitional measures."
+      "notes": "Current Fixin specification. General pruning paths are executable. Fixin also permits Guyot double during the two-year cordon-establishment period with at most five buds on each long cane; that conditional exception remains unresolved until cordon-establishment and per-cane state are modeled. Extra retained buds under otherwise permitted pruning remain conditionally compliant only when fruiting shoots at 11-12 leaves do not exceed the ordinary pruning ceiling. Conventional rows allow vine spacing at 0.50 m; foule requires spacing strictly greater than 0.50 m. The appellation specifies a 20% dead/missing-vine trigger; the quantitative reduction above that trigger is applied separately under Code rural D.645-4."
     },
     {
       "id": "vineyardlaw:fr:vougeot:current",
@@ -24,8 +47,20 @@
       "allowed_planting_patterns": ["rows", "foule"],
       "max_row_spacing_m": 1.25,
       "min_vine_spacing_m": 0.50,
+      "min_foule_vine_spacing_m_exclusive": 0.50,
+      "pruning_max_buds_by_style_and_system": {
+        "red": {"cordon_royat": 8, "bilateral_cordon": 8, "gobelet": 8, "eventail": 8, "guyot_simple": 8},
+        "white": {"cordon_royat": 10, "bilateral_cordon": 10, "guyot_simple": 8}
+      },
+      "allowed_support_systems_unless_gobelet": ["trellis", "stake"],
+      "required_support_for_foule": "stake",
+      "min_trellised_canopy_height_to_row_spacing_ratio": 0.60,
+      "max_parcel_crop_load_kg_ha_by_style": {"red": 9000, "white": 10500},
+      "dead_missing_vine_yield_reduction_threshold": 0.20,
+      "dead_missing_vine_threshold_source_ids": ["vougeot_inao_2011_current", "vougeot_masa_2011_cdc"],
+      "dead_missing_vine_remedy_source_ids": ["fr_code_rural_d645_4"],
       "source_ids": ["vougeot_inao_2011_current", "vougeot_masa_2011_cdc"],
-      "notes": "The current INAO-linked Vougeot specification requires at least 9,000 vines/ha, prohibits irrigation, limits conventional row spacing to 1.25 m, and requires at least 0.50 m between vines. Plantation en foule remains an allowed physical pattern rather than being forced into a row geometry. The historical density transition is not generalized into a current exception."
+      "notes": "Current INAO-linked Vougeot specification. Red vines use the reviewed eight-bud ceiling for the listed short-pruning systems or Guyot simple; white cordon paths permit ten buds and white Guyot simple eight. Extra retained buds require a compliant fruiting-shoot count at 11-12 leaves. Conventional trellised canopy height is at least 0.6 times row spacing; foule requires stakes. Conventional rows allow vine spacing at 0.50 m; foule requires spacing strictly greater than 0.50 m. The appellation specifies a 20% dead/missing-vine trigger; the quantitative reduction above that trigger is applied separately under Code rural D.645-4."
     }
   ]
 }
