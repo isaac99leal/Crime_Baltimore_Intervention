@@ -15,6 +15,7 @@ from dataclasses import dataclass, replace
 from types import MappingProxyType
 from typing import Mapping
 
+from .extraction_process import CapManagementEvent, ExtractionPlan
 from .fermentation_process import FermentationPlan, MustComposition
 from .legal_practice_bridge import LegalPracticeBridge
 from .legal_specs import LegalWineSpec
@@ -33,6 +34,13 @@ class DecisionRuntimeInputs:
     partial_whole_cluster_fraction: float | None = None
     partial_mlf_target_malic_g_l: float | None = None
     fermentation_temperature_schedule: tuple[tuple[float, float], ...] = ()
+    maceration_start_hour: float | None = None
+    maceration_end_hour: float | None = None
+    # Cap-management points are (hour, intensity). The selected decision option
+    # supplies the method label; event frequency/intensity are never inferred.
+    cap_management_events: tuple[tuple[float, float], ...] = ()
+    press_wine_blend_fraction: float | None = None
+    press_severity: float | None = None
     juice_turbidity_ntu: float | None = None
     prebottling_dissolved_oxygen_mg_l: float | None = None
     closure_oxygen_exposure_prior: float | None = None
@@ -53,6 +61,7 @@ class DecisionRuntimeResult:
     packaging_plan: PackagingPlan
     axis_effects: Mapping[str, float]
     applications: tuple[DecisionRuntimeApplication, ...]
+    extraction_plan: ExtractionPlan = ExtractionPlan()
 
     @property
     def unresolved(self) -> tuple[DecisionRuntimeApplication, ...]:
@@ -96,6 +105,32 @@ def _validate_runtime_inputs(inputs: DecisionRuntimeInputs) -> None:
         if not -5.0 <= target <= 55.0:
             raise DecisionRuntimeError("Fermentation temperature targets must be within -5..55 C")
         prior_hour = hour
+    if inputs.maceration_start_hour is not None and inputs.maceration_start_hour < 0.0:
+        raise DecisionRuntimeError("maceration_start_hour must be non-negative")
+    if inputs.maceration_end_hour is not None and inputs.maceration_end_hour < 0.0:
+        raise DecisionRuntimeError("maceration_end_hour must be non-negative")
+    if (
+        inputs.maceration_start_hour is not None
+        and inputs.maceration_end_hour is not None
+        and inputs.maceration_end_hour < inputs.maceration_start_hour
+    ):
+        raise DecisionRuntimeError("maceration_end_hour cannot precede maceration_start_hour")
+    prior_cap_hour = -1.0
+    for point in inputs.cap_management_events:
+        if len(point) != 2:
+            raise DecisionRuntimeError("Each cap-management point must be (hour, intensity)")
+        hour, intensity = float(point[0]), float(point[1])
+        if hour < 0.0 or hour < prior_cap_hour:
+            raise DecisionRuntimeError("Cap-management event hours must be non-negative and ordered")
+        if not 0.0 <= intensity <= 1.0:
+            raise DecisionRuntimeError("Cap-management event intensity must be within 0..1")
+        prior_cap_hour = hour
+    if inputs.press_wine_blend_fraction is not None and not (
+        0.0 <= inputs.press_wine_blend_fraction <= 1.0
+    ):
+        raise DecisionRuntimeError("press_wine_blend_fraction must be within 0..1")
+    if inputs.press_severity is not None and not 0.0 <= inputs.press_severity <= 1.0:
+        raise DecisionRuntimeError("press_severity must be within 0..1")
     if inputs.juice_turbidity_ntu is not None and not (0.0 <= inputs.juice_turbidity_ntu <= 5000.0):
         raise DecisionRuntimeError("juice_turbidity_ntu must be within 0..5000")
     if inputs.prebottling_dissolved_oxygen_mg_l is not None and not (
@@ -141,6 +176,7 @@ def apply_winemaking_decisions(
     must: MustComposition,
     fermentation_plan: FermentationPlan,
     packaging_plan: PackagingPlan = PackagingPlan(),
+    extraction_plan: ExtractionPlan = ExtractionPlan(),
     runtime_inputs: DecisionRuntimeInputs = DecisionRuntimeInputs(),
     protected_designation: bool = False,
     legal_spec: LegalWineSpec | None = None,
@@ -162,6 +198,7 @@ def apply_winemaking_decisions(
     current_must = must
     current_plan = fermentation_plan
     current_packaging = packaging_plan
+    current_extraction = extraction_plan
     axis_effects = {axis: 0.0 for axis in registry.axes}
     applications: list[DecisionRuntimeApplication] = []
 
@@ -246,6 +283,47 @@ def apply_winemaking_decisions(
                 applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied {len(schedule)} explicit fermentation temperature control point(s)."))
             continue
 
+        if decision.id == "cap-management":
+            points = runtime_inputs.cap_management_events
+            if not points:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Cap-management selection requires explicit event hours and intensities; frequency and force are not inferred from the method label."))
+            else:
+                events = tuple(
+                    CapManagementEvent(hour=float(hour), intensity=float(intensity), method=option.id)
+                    for hour, intensity in points
+                )
+                current_extraction = replace(current_extraction, cap_management_events=events)
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied {len(events)} explicit {option.id} cap-management event(s)."))
+            continue
+
+        if decision.id == "maceration-duration":
+            end_hour = runtime_inputs.maceration_end_hour
+            if end_hour is None:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Maceration duration requires an explicit skin-contact end hour; no duration is inferred from short/standard/extended labels."))
+            else:
+                start_hour = 0.0 if runtime_inputs.maceration_start_hour is None else runtime_inputs.maceration_start_hour
+                current_extraction = replace(
+                    current_extraction,
+                    maceration_start_hour=start_hour,
+                    maceration_end_hour=end_hour,
+                )
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied explicit skin-contact window {start_hour:g} to {end_hour:g} fermentation hour(s)."))
+            continue
+
+        if decision.id == "press-fraction":
+            blend_fraction = runtime_inputs.press_wine_blend_fraction
+            severity = runtime_inputs.press_severity
+            if blend_fraction is None or severity is None:
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "requires_measurement", "Press-fraction selection requires explicit press-wine blend fraction and press-severity inputs; neither is inferred from the qualitative option."))
+            else:
+                current_extraction = replace(
+                    current_extraction,
+                    press_wine_blend_fraction=blend_fraction,
+                    press_severity=severity,
+                )
+                applications.append(DecisionRuntimeApplication(decision.id, option.id, "applied", f"Applied explicit press-wine blend fraction {blend_fraction:g} and severity {severity:g}."))
+            continue
+
         if decision.id == "mlf":
             if option.id == "blocked":
                 current_plan = replace(current_plan, malolactic=False)
@@ -327,4 +405,5 @@ def apply_winemaking_decisions(
         packaging_plan=current_packaging,
         axis_effects=MappingProxyType(axis_effects),
         applications=tuple(applications),
+        extraction_plan=current_extraction,
     )
