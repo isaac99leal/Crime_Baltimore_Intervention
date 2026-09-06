@@ -83,8 +83,33 @@ class WineRecord:
 
 
 @dataclass
+class OpenBottleState:
+    """One physically opened bottle and its independent service-age clock.
+
+    ``opened_day=None`` is permitted only for migrated legacy state whose true
+    opening date is unknown. Inventory logic must preserve that uncertainty
+    rather than assigning a fabricated date.
+    """
+
+    remaining_ml: int
+    opened_day: int | None
+
+    def __post_init__(self) -> None:
+        if self.remaining_ml <= 0:
+            raise ValueError("open bottle remaining_ml must be positive")
+        if self.opened_day is not None and self.opened_day < 0:
+            raise ValueError("opened_day cannot be negative")
+
+
+@dataclass
 class InventoryLot:
-    """A purchasable lot, including BTG open-bottle state."""
+    """A purchasable lot, including BTG open-bottle state.
+
+    ``open_bottle_ml`` and ``opened_day`` remain as compatibility fields for old
+    saves and callers. When ``open_bottles`` is populated, the per-bottle queue is
+    authoritative and the inventory manager keeps the legacy aggregate fields in
+    sync.
+    """
 
     lot_id: str
     wine: WineRecord
@@ -105,14 +130,21 @@ class InventoryLot:
     open_bottle_ml: int = 0
     opened_day: int | None = None
     open_bottle_life_days: int = 3
+    open_bottles: list[OpenBottleState] = field(default_factory=list)
 
     @property
     def available_sealed_bottles(self) -> int:
         return max(0, self.sealed_bottles - self.reserved_bottles)
 
     @property
+    def open_volume_ml(self) -> int:
+        if self.open_bottles:
+            return sum(bottle.remaining_ml for bottle in self.open_bottles)
+        return max(0, self.open_bottle_ml)
+
+    @property
     def bottle_equivalents(self) -> float:
-        return self.sealed_bottles + (self.open_bottle_ml / self.bottle_ml)
+        return self.sealed_bottles + (self.open_volume_ml / self.bottle_ml)
 
     @property
     def inventory_cost_value(self) -> float:
