@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "notes": "Narrow supplemental Chambolle-Musigny naming authority. The general 24-climat Premier Cru claim rule already exists canonically in site_claim_rules_burgundy.json; this tranche adds only the alternate legal spelling Les Feusselotes for the physical climat Les Feusselottes. Generic lieux-dits remain fail-closed.",
+  "sources": {
+    "chambolle_masa_2011_cdc": {
+      "authority": "Ministère de l'Agriculture",
+      "title": "Cahier des charges de l'AOC Chambolle-Musigny homologué par décret n° 2011-1545 du 14 novembre 2011",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-a6d08a6a-3210-42d2-8c23-0869f0c8fd25/telechargement"
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:chambolle-musigny:feusselotes-alternate-spelling",
+      "country": "France",
+      "parent_appellation": "Chambolle-Musigny",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bourgogne_chambolle", "bivb_chambolle_current"],
+      "allowed_wine_variants": ["premier cru"],
+      "allowed_site_names": ["Les Feusselottes"],
+      "source_ids": ["chambolle_masa_2011_cdc"],
+      "claim_kind": "premier_cru_climat_alternate_spelling",
+      "cover_name_groups": {
+        "Les Feusselotes": ["Les Feusselottes"]
+      },
+      "notes": "The reviewed Chambolle-Musigny specification recognizes Les Feusselotes as an alternate spelling of the Premier Cru climat represented canonically as Les Feusselottes. This rule does not broaden authority to any other site or lieu-dit."
+    }
+  ]
+}

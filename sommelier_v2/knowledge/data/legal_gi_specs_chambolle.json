@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "notes": "Additional authoritative Chambolle-Musigny legal source used by the vineyard-law and site-claim tranches. The existing canonical parent wine-spec IDs remain in legal_gi_specs_burgundy.json; this document contributes source provenance only and deliberately does not duplicate those specs.",
+  "sources": {
+    "chambolle_masa_2011_cdc": {
+      "authority": "Ministère de l'Agriculture",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-a6d08a6a-3210-42d2-8c23-0869f0c8fd25/telechargement",
+      "checked": "2026-09-06",
+      "scope": "Cahier des charges de l'AOC Chambolle-Musigny homologated by decree no. 2011-1545 of 14 November 2011: red-only product, 24 Premier Cru climats, encépagement, maturity, yields, analytical limits, vineyard rules, élevage and release conditions."
+    }
+  },
+  "specs": []
+}
