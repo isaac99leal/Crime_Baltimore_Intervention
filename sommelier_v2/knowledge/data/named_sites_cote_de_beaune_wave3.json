@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.1",
+  "notes": "Official Premier Cru climat identities for Auxey-Duresses, Monthélie and Maranges from their effective published specifications. Claim eligibility is represented separately.",
+  "sources": {
+    "bourgogne_auxey_2011": {
+      "authority": "INAO / Journal officiel",
+      "url": "https://www.inao.gouv.fr/produit/auxey-duresses-premier-cru-les-duresses-blanc-9538",
+      "checked": "2026-09-05",
+      "scope": "Current INAO product system confirms Auxey-Duresses has 9 Premier Cru climats under decree n°2011-1776."
+    },
+    "bourgogne_monthelie_2011": {
+      "authority": "INAO / Journal officiel",
+      "url": "https://inao.gouv.fr/produit/monthelie-premier-cru-sur-la-velle-blanc-9455",
+      "checked": "2026-09-05",
+      "scope": "Current INAO product system confirms Monthélie has 15 Premier Cru climats under decree n°2011-1827."
+    },
+    "bourgogne_maranges_2011": {
+      "authority": "INAO / Journal officiel",
+      "url": "https://www.inao.gouv.fr/produit/maranges-premier-cru-clos-de-la-fussiere-rouge-9129",
+      "checked": "2026-09-05",
+      "scope": "Current INAO product system and effective decree n°2011-1703 support the official Maranges Premier Cru climat set."
+    }
+  },
+  "groups": [
+    {
+      "country": "France", "region": "Bourgogne", "commune": "Auxey-Duresses",
+      "parent": "Auxey-Duresses", "site_type": "climat", "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat", "source_ids": ["bourgogne_auxey_2011"],
+      "notes": "Official Auxey-Duresses Premier Cru climat.",
+      "names": [
+        "Bas des Duresses", "Climat du Val", "Clos du Val", "La Chapelle",
+        "Les Bréterins", "Les Duresses", "Les Ecussaux", "Les Grands Champs", "Reugne"
+      ]
+    },
+    {
+      "country": "France", "region": "Bourgogne", "commune": "Monthélie",
+      "parent": "Monthélie", "site_type": "climat", "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat", "source_ids": ["bourgogne_monthelie_2011"],
+      "notes": "Official Monthélie Premier Cru climat.",
+      "names": [
+        "Clos des Toisières", "La Taupine", "Le Cas Rougeot", "Le Château Gaillard",
+        "Le Clos Gauthey", "Le Clou des Chênes", "Le Meix Bataille", "Le Village",
+        "Les Barbières", "Les Champs Fulliots", "Les Clous", "Les Duresses",
+        "Les Riottes", "Les Vignes Rondes", "Sur la Velle"
+      ]
+    },
+    {
+      "country": "France", "region": "Bourgogne", "parent": "Maranges",
+      "site_type": "climat", "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat", "source_ids": ["bourgogne_maranges_2011"],
+      "notes": "Official Maranges Premier Cru climat.",
+      "names": [
+        "Clos de la Boutière", "Clos de la Fussière", "La Fussière",
+        "Le Clos des Loyères", "Le Clos des Rois", "Le Croix Moines", "Les Clos Roussots"
+      ]
+    }
+  ]
+}

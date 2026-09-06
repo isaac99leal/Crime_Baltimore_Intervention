@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0",
+  "notes": "Reviewed strict specifications for Auxey-Duresses, Monthélie and Maranges. White and red wines are modeled separately at standard and Premier Cru level. Conditional white fermentable-sugar relief to 4 g/L is conservatively fail-closed at the unconditional 3 g/L ceiling. Red accessory white grapes remain mixed-planting exceptions rather than ordinary cellar blend choices.",
+  "sources": {
+    "auxey_bivb_2011": {
+      "authority": "INAO / Journal officiel / Légifrance",
+      "title": "Décret n°2011-1776 du 5 décembre 2011 relatif à l'AOC Auxey-Duresses",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000024928171",
+      "checked": "2026-09-05",
+      "scope": "Homologates the effective specification. Current INAO records continue to point to this cahier; executable composition, maturity, yield, analytical, elevage and release fields were cross-checked against the published specification."
+    },
+    "monthelie_bivb_2011": {
+      "authority": "INAO / Journal officiel / Légifrance",
+      "title": "Décret n°2011-1827 du 7 décembre 2011 relatif à l'AOC Monthélie",
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000024933008/",
+      "checked": "2026-09-05",
+      "scope": "Homologates the effective specification and remains in force. Current INAO records report 15 Premier Cru climats; executable fields were cross-checked against the published specification."
+    },
+    "maranges_bivb_2011": {
+      "authority": "INAO / Journal officiel / Légifrance",
+      "title": "Décret n°2011-1703 du 30 novembre 2011 relatif à l'AOC Maranges",
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000024892969",
+      "checked": "2026-09-05",
+      "scope": "Homologates the effective specification. Current INAO records continue to point to this cahier; executable fields including the color-specific elevage and release calendars were cross-checked against the published specification."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:auxey-duresses:white-standard",
+      "country": "France", "appellation": "Auxey-Duresses",
+      "aliases": ["Auxey Duresses", "Auxey-Duresses AOC", "Auxey-Duresses AOP"],
+      "variant": "white standard", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_must_sugar_g_l": 178.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 57.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["auxey_bivb_2011"]
+    },
+    {
+      "id": "fr:auxey-duresses:red-standard",
+      "country": "France", "appellation": "Auxey-Duresses",
+      "aliases": ["Auxey Duresses", "Auxey-Duresses AOC", "Auxey-Duresses AOP"],
+      "variant": "red standard", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 180.0, "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 50.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["auxey_bivb_2011"]
+    },
+    {
+      "id": "fr:auxey-duresses:white-premier-cru",
+      "country": "France", "appellation": "Auxey-Duresses",
+      "variant": "white premier cru", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_must_sugar_g_l": 187.0, "min_potential_alcohol_pct": 11.5,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 55.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["auxey_bivb_2011"]
+    },
+    {
+      "id": "fr:auxey-duresses:red-premier-cru",
+      "country": "France", "appellation": "Auxey-Duresses",
+      "variant": "red premier cru", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 189.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["auxey_bivb_2011"]
+    },
+    {
+      "id": "fr:monthelie:white-standard",
+      "country": "France", "appellation": "Monthélie",
+      "aliases": ["Monthelie", "Monthélie AOC", "Monthelie AOC", "Monthélie AOP"],
+      "variant": "white standard", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_must_sugar_g_l": 178.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 57.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["monthelie_bivb_2011"]
+    },
+    {
+      "id": "fr:monthelie:red-standard",
+      "country": "France", "appellation": "Monthélie",
+      "aliases": ["Monthelie", "Monthélie AOC", "Monthelie AOC", "Monthélie AOP"],
+      "variant": "red standard", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 180.0, "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 50.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["monthelie_bivb_2011"]
+    },
+    {
+      "id": "fr:monthelie:white-premier-cru",
+      "country": "France", "appellation": "Monthélie",
+      "variant": "white premier cru", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "min_must_sugar_g_l": 187.0, "min_potential_alcohol_pct": 11.5,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 55.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["monthelie_bivb_2011"]
+    },
+    {
+      "id": "fr:monthelie:red-premier-cru",
+      "country": "France", "appellation": "Monthélie",
+      "variant": "red premier cru", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 189.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["monthelie_bivb_2011"]
+    },
+    {
+      "id": "fr:maranges:white-standard",
+      "country": "France", "appellation": "Maranges",
+      "aliases": ["Maranges AOC", "Maranges AOP"],
+      "variant": "white standard", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay"],
+      "grape_constraints": [{"grape": "Chardonnay", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 178.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 57.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 3, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 3, "earliest_release_day": 30,
+      "source_ids": ["maranges_bivb_2011"]
+    },
+    {
+      "id": "fr:maranges:red-standard",
+      "country": "France", "appellation": "Maranges",
+      "aliases": ["Maranges AOC", "Maranges AOP"],
+      "variant": "red standard", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 180.0, "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5, "max_yield_hl_ha": 50.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["maranges_bivb_2011"]
+    },
+    {
+      "id": "fr:maranges:white-premier-cru",
+      "country": "France", "appellation": "Maranges",
+      "variant": "white premier cru", "wine_style": "white",
+      "allowed_grapes": ["Chardonnay"],
+      "grape_constraints": [{"grape": "Chardonnay", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 187.0, "min_potential_alcohol_pct": 11.5,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 55.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 3, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 3, "earliest_release_day": 30,
+      "source_ids": ["maranges_bivb_2011"]
+    },
+    {
+      "id": "fr:maranges:red-premier-cru",
+      "country": "France", "appellation": "Maranges",
+      "variant": "red premier cru", "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 189.0, "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 14.0, "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 2.0, "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1, "min_elevage_until_month": 6, "min_elevage_until_day": 15,
+      "release_year_offset": 1, "earliest_release_month": 6, "earliest_release_day": 30,
+      "source_ids": ["maranges_bivb_2011"]
+    }
+  ]
+}
