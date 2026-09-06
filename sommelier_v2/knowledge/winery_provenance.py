@@ -74,10 +74,18 @@ class WineryLot:
                 "Packaged lots must define both bottle_count and bottle_ml, or neither."
             )
         if self.bottle_count is not None and self.bottle_ml is not None:
-            if isinstance(self.bottle_count, bool) or self.bottle_count <= 0:
+            if (
+                isinstance(self.bottle_count, bool)
+                or not isinstance(self.bottle_count, int)
+                or self.bottle_count <= 0
+            ):
                 raise WineryProvenanceError("bottle_count must be a positive integer")
-            if isinstance(self.bottle_ml, bool) or not 50 <= self.bottle_ml <= 18_000:
-                raise WineryProvenanceError("bottle_ml must be within 50..18000")
+            if (
+                isinstance(self.bottle_ml, bool)
+                or not isinstance(self.bottle_ml, int)
+                or not 50 <= self.bottle_ml <= 18_000
+            ):
+                raise WineryProvenanceError("bottle_ml must be an integer within 50..18000")
             packaged_volume_l = (self.bottle_count * self.bottle_ml) / 1000.0
             if abs(packaged_volume_l - self.volume_l) > tolerance:
                 raise WineryProvenanceError(
