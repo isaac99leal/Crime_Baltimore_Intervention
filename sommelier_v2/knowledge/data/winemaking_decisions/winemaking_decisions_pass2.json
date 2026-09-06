@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Second cellar-decision pass. Adds process primitives needed for special wines and chemistry-sensitive fermentation/packaging. Numeric matrices are conservative derived simulation effects; sourceRefs support mechanisms, not the exact game coefficient.",
+  "matrixScale": "-1 to +1 relative effect; derived simulation value",
+  "axes": ["acidity","tannin","body","sweetness","fruitIntensity","earthIntensity","aromaticFreshness","oakInfluence","oxidativeDevelopment","reductiveRisk","autolysis","colorExtraction","phenolicExtraction","volatileAcidityRisk","microbialRisk","ageability"],
+  "decisions": [
+    {"id":"tokaj-special-extraction","stage":"special-wine","name":"Tokaj specialty extraction / refill process","requiresDesignationCheck":true,"sourceRefs":["hu-tokaj-wines-current-2026","hu-tokaj-cellar-current-2026"],"options":[
+      {"id":"none","label":"no Tokaj specialty extraction","matrix":{}},
+      {"id":"aszu-berry-maceration","label":"selected aszú berries macerated in same-vintage must/wine","matrix":{"sweetness":0.45,"body":0.25,"fruitIntensity":0.20,"earthIntensity":0.10,"ageability":0.25}},
+      {"id":"eszencia-free-run","label":"Eszencia free-run under berry weight, no pressing","matrix":{"sweetness":0.80,"body":0.35,"fruitIntensity":0.25,"ageability":0.40}},
+      {"id":"forditas-pomace-refill","label":"Fordítás — refill pressed aszú dough","matrix":{"sweetness":0.40,"body":0.20,"earthIntensity":0.15,"ageability":0.15}},
+      {"id":"maslas-lees-refill","label":"Máslás — refill Aszú/Szamorodni lees","matrix":{"sweetness":0.30,"body":0.15,"earthIntensity":0.20,"oxidativeDevelopment":0.10}}
+    ]},
+    {"id":"jerez-cabeceo-sweetening","stage":"blending","name":"Jerez cabeceo / sweetening pathway","requiresDesignationCheck":true,"sourceRefs":["es-jerez-spec-2024-consolidated"],"options":[
+      {"id":"none","label":"no sweetening / dry generoso","matrix":{"sweetness":-0.20}},
+      {"id":"sweet-wine-blend","label":"blend with natural sweet wine","matrix":{"sweetness":0.45,"body":0.15,"fruitIntensity":0.10}},
+      {"id":"concentrated-must","label":"sweetening with permitted concentrated must product","matrix":{"sweetness":0.40,"body":0.10}},
+      {"id":"arrope-vino-color","label":"traditional arrope / vino de color component where permitted","matrix":{"sweetness":0.35,"body":0.15,"oxidativeDevelopment":0.15,"earthIntensity":0.10}}
+    ]},
+    {"id":"white-juice-turbidity","stage":"pre-fermentation","name":"White-juice solids / turbidity target","requiresDesignationCheck":false,"sourceRefs":["awri-white-juice-solids-2026"],"options":[
+      {"id":"very-clear","label":"very clear juice / low solids","matrix":{"aromaticFreshness":0.05,"reductiveRisk":-0.05,"microbialRisk":0.05}},
+      {"id":"moderate-around-100ntu","label":"moderate solids around the AWRI study compromise","matrix":{"fruitIntensity":0.10,"aromaticFreshness":0.08}},
+      {"id":"high-solids","label":"high solids / turbid juice","matrix":{"body":0.08,"reductiveRisk":0.20,"oxidativeDevelopment":0.12,"fruitIntensity":-0.05}}
+    ]},
+    {"id":"fermentation-nutrient-timing","stage":"fermentation","name":"Yeast nutrient strategy and timing","requiresDesignationCheck":false,"sourceRefs":["awri-yan-2026","awri-h2s-2026","awri-brett-faq-current-2026"],"options":[
+      {"id":"none","label":"no nutrient addition","matrix":{"reductiveRisk":0.10,"microbialRisk":0.03}},
+      {"id":"organic-early","label":"early organic/complex nutrient where needed","matrix":{"reductiveRisk":-0.08,"microbialRisk":-0.04,"aromaticFreshness":0.04}},
+      {"id":"dap-early","label":"early DAP where appropriate","matrix":{"reductiveRisk":-0.10,"microbialRisk":-0.03}},
+      {"id":"mixed-managed","label":"measured mixed nutrient program","matrix":{"reductiveRisk":-0.12,"microbialRisk":-0.05,"aromaticFreshness":0.05}},
+      {"id":"dap-late","label":"late DAP after main growth phase","matrix":{"reductiveRisk":0.05,"microbialRisk":0.05,"volatileAcidityRisk":0.03}}
+    ]},
+    {"id":"fermentation-temperature-trajectory","stage":"fermentation","name":"Fermentation temperature trajectory","requiresDesignationCheck":false,"sourceRefs":["awri-fermentation-temperature-2026"],"options":[
+      {"id":"cool-steady","label":"cool steady fermentation","matrix":{"aromaticFreshness":0.15,"phenolicExtraction":-0.10,"fruitIntensity":0.10}},
+      {"id":"controlled-ramp","label":"controlled temperature ramp","matrix":{"phenolicExtraction":0.08,"fruitIntensity":0.05}},
+      {"id":"warm-steady","label":"warm steady fermentation","matrix":{"phenolicExtraction":0.18,"tannin":0.08,"aromaticFreshness":-0.10}},
+      {"id":"heat-spike","label":"uncontrolled high-temperature spike","matrix":{"phenolicExtraction":0.22,"fruitIntensity":-0.18,"aromaticFreshness":-0.20,"volatileAcidityRisk":0.10,"microbialRisk":0.08,"ageability":-0.10}}
+    ]},
+    {"id":"post-fermentation-so2-timing","stage":"post-fermentation","name":"Post-fermentation SO2 timing / Brett risk window","requiresDesignationCheck":false,"sourceRefs":["awri-brett-faq-current-2026","awri-so2-revisited-2026"],"options":[
+      {"id":"prompt-after-mlf","label":"prompt protective addition after completed MLF","matrix":{"microbialRisk":-0.18,"volatileAcidityRisk":-0.08,"oxidativeDevelopment":-0.08}},
+      {"id":"managed-delay","label":"short managed delay","matrix":{}},
+      {"id":"extended-unsulfured","label":"extended unsulfured post-fermentation/MLF window","matrix":{"microbialRisk":0.30,"volatileAcidityRisk":0.12,"oxidativeDevelopment":0.08}}
+    ]},
+    {"id":"smoke-impact-remediation","stage":"pre-fermentation","name":"Smoke-impact mitigation / remediation","requiresDesignationCheck":false,"sourceRefs":["awri-smoke-taint-current-2026"],"options":[
+      {"id":"none","label":"no smoke-specific remediation","matrix":{}},
+      {"id":"vineyard-handling","label":"hand harvest / leaf exclusion / cool fruit handling","matrix":{"fruitIntensity":0.03,"aromaticFreshness":0.05}},
+      {"id":"press-fraction-separation","label":"separate press fractions / gentle extraction","matrix":{"phenolicExtraction":-0.12,"tannin":-0.08,"body":-0.05}},
+      {"id":"activated-carbon","label":"activated-carbon treatment","matrix":{"fruitIntensity":-0.18,"body":-0.08,"aromaticFreshness":-0.08}},
+      {"id":"membrane-separation","label":"membrane / reverse-osmosis style treatment","matrix":{"fruitIntensity":-0.08,"body":-0.04}}
+    ]},
+    {"id":"molecular-so2-target","stage":"pre-bottling","name":"Molecular SO2 protection target","requiresDesignationCheck":true,"sourceRefs":["awri-so2-revisited-2026","awri-brett-faq-current-2026"],"options":[
+      {"id":"low","label":"low molecular SO2 strategy within product law","matrix":{"microbialRisk":0.18,"oxidativeDevelopment":0.08}},
+      {"id":"brett-control-guide","label":"approximately 0.6 mg/L molecular SO2 where appropriate","matrix":{"microbialRisk":-0.18,"oxidativeDevelopment":-0.08}},
+      {"id":"higher-protective","label":"higher protective target within product/legal/sensory limits","matrix":{"microbialRisk":-0.22,"oxidativeDevelopment":-0.12,"reductiveRisk":0.10}}
+    ]}
+  ]
+}
