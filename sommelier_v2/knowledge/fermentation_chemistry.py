@@ -246,12 +246,18 @@ def assess_process_chemistry(
     juice_turbidity_ntu: float | None,
     nutrient_timing_risk: float,
     sterile_packaging: bool,
+    source_microbiological_risk: float | None = None,
 ) -> ProcessChemistryAssessment:
-    initial = initial_microbiological_risk(
+    inferred_initial = initial_microbiological_risk(
         ph=ph,
         rot_fraction=rot_fraction,
         botrytis_fraction=botrytis_fraction,
         free_so2_mg_l=free_so2_mg_l,
+    )
+    initial = (
+        clamp(source_microbiological_risk)
+        if source_microbiological_risk is not None
+        else inferred_initial
     )
     solids = white_juice_solids_risk(style, juice_turbidity_ntu, solids_pct)
     base = clamp(initial + 0.24 * solids + 0.28 * nutrient_timing_risk)
