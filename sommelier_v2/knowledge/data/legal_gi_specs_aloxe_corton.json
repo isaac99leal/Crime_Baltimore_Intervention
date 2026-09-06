@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "notes": "Strict Aloxe-Corton specifications from the effective cahier des charges homologated by decree n°2011-1369. White Chardonnay is principal and Pinot Blanc accessory, limited to 10% of white vineyard plantings and 30% of the finished blend. Red accessory Chardonnay, Pinot Blanc and Pinot Gris are mixed-planting exceptions only, so the positive red market path remains 100% Pinot Noir. Conditional white fermentable-sugar relief to 4 g/L is conservatively fail-closed at the unconditional 3 g/L ceiling.",
+  "sources": {
+    "aloxe_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Aloxe-Corton current product records",
+      "url": "https://www.inao.gouv.fr/produit/aloxe-corton-premier-cru-blanc-8233",
+      "checked": "2026-09-05",
+      "scope": "Current INAO records confirm red and white AOP production and 14 Premier Cru climats."
+    },
+    "aloxe_bivb_spec_2011": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne",
+      "title": "Cahier des charges de l'AOC Aloxe-Corton homologué par le décret n°2011-1369 du 24 octobre 2011",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/19990/20188.pdf",
+      "checked": "2026-09-05",
+      "scope": "Effective homologated specification: 14 climat names, composition, maturity, yield, analytical rules, élevage through 15 June and consumer release from 30 June N+1."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:aloxe-corton:white-standard",
+      "country": "France",
+      "appellation": "Aloxe-Corton",
+      "aliases": ["Aloxe Corton", "Aloxe-Corton AOC", "Aloxe-Corton AOP"],
+      "variant": "white standard",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "grape_constraints": [
+        {"grape": "Chardonnay", "min_pct": 70, "max_pct": 100},
+        {"grape": "Pinot Blanc", "min_pct": 0, "max_pct": 30}
+      ],
+      "min_must_sugar_g_l": 178.0,
+      "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 13.5,
+      "max_yield_hl_ha": 57.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["aloxe_inao_current", "aloxe_bivb_spec_2011"],
+      "notes": "Pinot Blanc is accessory: <=10% of white vineyard planting and <=30% of the finished white blend."
+    },
+    {
+      "id": "fr:aloxe-corton:red-standard",
+      "country": "France",
+      "appellation": "Aloxe-Corton",
+      "variant": "red standard",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 180.0,
+      "min_potential_alcohol_pct": 10.5,
+      "max_total_alcohol_pct": 13.5,
+      "max_yield_hl_ha": 50.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["aloxe_inao_current", "aloxe_bivb_spec_2011"],
+      "notes": "Conservative 100% Pinot Noir positive path. Accessory white varieties are mixed-planting exceptions only, together <=15% per parcel."
+    },
+    {
+      "id": "fr:aloxe-corton:white-premier-cru",
+      "country": "France",
+      "appellation": "Aloxe-Corton",
+      "variant": "white premier cru",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay", "Pinot Blanc"],
+      "grape_constraints": [
+        {"grape": "Chardonnay", "min_pct": 70, "max_pct": 100},
+        {"grape": "Pinot Blanc", "min_pct": 0, "max_pct": 30}
+      ],
+      "min_must_sugar_g_l": 187.0,
+      "min_potential_alcohol_pct": 11.5,
+      "max_total_alcohol_pct": 14.0,
+      "max_yield_hl_ha": 55.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["aloxe_inao_current", "aloxe_bivb_spec_2011"]
+    },
+    {
+      "id": "fr:aloxe-corton:red-premier-cru",
+      "country": "France",
+      "appellation": "Aloxe-Corton",
+      "variant": "red premier cru",
+      "wine_style": "red",
+      "allowed_grapes": ["Pinot Noir"],
+      "grape_constraints": [{"grape": "Pinot Noir", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 189.0,
+      "min_potential_alcohol_pct": 11.0,
+      "max_total_alcohol_pct": 14.0,
+      "max_yield_hl_ha": 48.0,
+      "max_residual_sugar_g_l": 2.0,
+      "max_malic_acid_g_l": 0.4,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 6,
+      "min_elevage_until_day": 15,
+      "release_year_offset": 1,
+      "earliest_release_month": 6,
+      "earliest_release_day": 30,
+      "source_ids": ["aloxe_inao_current", "aloxe_bivb_spec_2011"],
+      "notes": "Conservative 100% Pinot Noir positive path; accessory white grapes remain mixed-planting exceptions."
+    }
+  ]
+}
