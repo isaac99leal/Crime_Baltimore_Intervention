@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import unittest
 
-from sommelier_v2.knowledge.vineyard_registry import WorldWineKnowledgeCatalog
+from sommelier_v2.knowledge.vineyard_registry import (
+    RECORD_IDENTITY_EVIDENCE_CLASSES,
+    WorldWineKnowledgeCatalog,
+)
 from sommelier_v2.knowledge.catalog import normalize_name
 from sommelier_v2.knowledge.site_claims import SiteClaimRegistry
 
@@ -20,18 +23,32 @@ class WorldVineyardRegistryTests(unittest.TestCase):
         self.assertGreaterEqual(stats["named_site_countries"], 4)
         self.assertGreaterEqual(stats["named_sites_with_area"], 1300)
 
-    def test_no_semantic_site_duplicates(self) -> None:
-        keys = [
-            (
+    def test_semantic_homonyms_require_source_defined_record_identity(self) -> None:
+        groups: dict[tuple[str, str, str, str, str], list[object]] = {}
+        for row in self.catalog.named_sites:
+            key = (
                 normalize_name(row.country),
                 normalize_name(row.region),
                 normalize_name(row.parent or ""),
                 normalize_name(row.site_type),
                 normalize_name(row.name),
             )
-            for row in self.catalog.named_sites
-        ]
-        self.assertEqual(len(keys), len(set(keys)))
+            groups.setdefault(key, []).append(row)
+
+        homonyms = [rows for rows in groups.values() if len(rows) > 1]
+        self.assertTrue(homonyms)
+        for rows in homonyms:
+            self.assertEqual(len(rows), len({row.id for row in rows}))
+            for row in rows:
+                evidence_classes = {
+                    self.catalog.named_site_sources[source_id].evidence_class
+                    for source_id in row.source_ids
+                    if source_id in self.catalog.named_site_sources
+                }
+                self.assertTrue(
+                    evidence_classes & RECORD_IDENTITY_EVIDENCE_CLASSES,
+                    msg=f"semantic homonym lacks source-defined identity authority: {row.id}",
+                )
 
     def test_fixin_exact_six_premier_cru_climats(self) -> None:
         rows = self.catalog.sites(country="France", region="Bourgogne", parent="Fixin", site_type="climat")
