@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-05",
+  "method": "Producer/grower-published Willamette micro-site research. A block, parcel, or zone is stored only when the cited source names or quantifies it. These are viticultural observations, not legal AVA subdivisions and not universal sensory rules.",
+  "sites": [
+    {
+      "id": "us-or-terry-family-vineyard",
+      "name": "Terry Family Vineyard",
+      "parentRegion": "Willamette Valley",
+      "ava": "Yamhill-Carlton",
+      "propertyAcres": 57,
+      "plantedAcres": 15,
+      "farming": ["dry farmed", "hand picked", "native-yeast estate winemaking stated by producer"],
+      "siteGeology": ["Willakenzie-type uplifted marine sediment", "surface basalt cobbles on the rocky crest"],
+      "sourceRefs": ["us-or-terry-family-block-map-pass19"],
+      "blocks": [
+        {"block":"1","name":"Pacifica","variety":"Pinot Noir","clone":"667","rootstock":"101-14"},
+        {"block":"2","name":"Wedding Tree","variety":"Pinot Noir","clone":"943","rootstock":"3309"},
+        {"block":"3","name":"Sysiphus","variety":"Pinot Noir","clone":"Pommard","rootstock":"3309"},
+        {"block":"4","name":"Lightning Rod","variety":"Pinot Noir","clone":"777","rootstock":"101-14"},
+        {"block":"5","name":"John J. Kramer","variety":"Chardonnay","clone":"69(76)","rootstock":"101-14"},
+        {"block":"6","name":"Aria","variety":"Chardonnay","clone":"548","rootstock":"101-14"},
+        {"block":"7","name":"Home Oak","variety":"Chardonnay","clone":"46(75)","rootstock":"101-14"},
+        {"block":"8","name":"Mariana","variety":"Chardonnay","clone":"37(95)","rootstock":"101-14"},
+        {"block":"9","name":"Gateway","variety":"Chardonnay","clone":"44(Musque)","rootstock":"101-14"},
+        {"block":"10","name":"Bradie","variety":"Pinot Noir","clone":"115","rootstock":"3309"},
+        {"block":"11","name":"J. Addison","variety":"Pinot Noir","clone":"Coury","rootstock":"101-14"},
+        {"block":"12","name":"Trixie's Pool","variety":"Pinot Noir","clone":"943","rootstock":"3309"},
+        {"block":"13","name":"Christmas Tree","variety":"Pinot Noir","clone":"828","rootstock":"101-14"}
+      ]
+    },
+    {
+      "id": "us-or-open-claim-vineyard",
+      "name": "Open Claim Vineyard",
+      "parentRegion": "Willamette Valley",
+      "locationContext": "southeast of Dallas, Oregon, at the base of Mt. Pisgah",
+      "elevationFt": 470,
+      "plantedAcres": 20.78,
+      "vineSpacingFt": 4,
+      "rowSpacingFt": 6,
+      "vinesPerAcre": 1815,
+      "slopeDegrees": 4,
+      "aspect": "south-facing",
+      "farming": ["dry farmed", "organically farmed"],
+      "siteGeology": ["marine sedimentary soils", "Paleocene parent rock associated with ancient submarine volcanism"],
+      "sourceRefs": ["us-or-open-claim-block-map-pass19"],
+      "blocks": [
+        {"block":"1","name":"Block One","variety":"Chardonnay","rows":78,"acres":2.02,"clone":"95","rootstock":"101-14"},
+        {"block":"2","name":"Block Two","variety":"Chardonnay","rows":43,"acres":0.96,"clone":"76","rootstock":"3309"},
+        {"block":"3","name":"Block Three","variety":"Pinot Noir","rows":37,"acres":1.99,"clone":"LaTache","rootstock":"RG"},
+        {"block":"4","name":"Block Four","variety":"Pinot Noir","rows":59,"acres":2.49,"clone":"Coury","rootstock":"3309"},
+        {"block":"5","name":"Block Five","variety":"Pinot Noir","rows":51,"acres":2.11,"clone":"Wadenswil","rootstock":"3309"},
+        {"block":"6","name":"Block Six","variety":"Pinot Noir","rows":51,"acres":2.06,"clone":"943","rootstock":"44-53"},
+        {"block":"7","name":"Block Seven","variety":"Pinot Noir","rows":45,"acres":1.98,"clone":"777","rootstock":"101-14"},
+        {"block":"8","name":"Block Eight","variety":"Pinot Noir","rows":52,"acres":2.49,"clone":"115","rootstock":"101-14"},
+        {"block":"9","name":"Block Nine","variety":"Pinot Noir","rows":41,"acres":1.99,"clone":"Pommard","rootstock":"3309"},
+        {"block":"10","name":"Block Ten","variety":"Pinot Noir","rows":55,"acres":2.69,"clone":"667","rootstock":"RG"}
+      ]
+    },
+    {
+      "id": "us-or-shea-vineyard",
+      "name": "Shea Vineyard",
+      "parentRegion": "Willamette Valley",
+      "ava": "Yamhill-Carlton",
+      "propertyAcres": 290,
+      "plantedAcres": 155,
+      "vineSpacing": "5 x 7 ft",
+      "vinesPerAcre": 1245,
+      "siteGeology": ["marine sedimentary soil", "fractured sandstone"],
+      "sourceRefs": ["us-or-ken-wright-shea-blocks-pass19", "us-or-shea-vineyard-zones-pass19"],
+      "zones": [
+        {"name":"East Hill","elevationFtRange":[350,600],"aspect":"gentle southeast-facing slopes","pinotNoirAcresApprox":78,"chardonnayAcresApprox":1,"notes":["some oldest vines","shallower marine sedimentary soils","former filbert-orchard area has locally reduced topsoil"]},
+        {"name":"West Hill","aspect":"primarily south and southwest","pinotNoirAcresApprox":52,"chardonnayAcresApprox":2,"notes":["rolling ridgeline","late-day sunlight exposure"]},
+        {"name":"Third Hill","addedToVineyardYear":2013,"aspect":"directly east-facing","pinotNoirAcres":11.5,"chardonnayAcres":3.45,"notes":["marine sedimentary soils over a basalt outcrop","strong late-day wind influence stated by grower"]}
+      ],
+      "blocks": [
+        {"block":"2","zone":"East Hill","variety":"Pinot Noir","clone":"Pommard","rootstock":"3309","plantedYear":1997},
+        {"block":"4","zone":"East Hill","variety":"Pinot Noir","clone":"Pommard","rootstock":"3309","plantedYear":1998},
+        {"block":"7","zone":"East Hill","variety":"Pinot Noir","clone":"Wadenswil","rootstock":"44-53"},
+        {"block":"13","zone":"East Hill","variety":"Pinot Noir","clone":"114","rootstock":"101-14"},
+        {"block":"5","zone":"East Hill","variety":"Pinot Noir","clone":"777","rootstock":"3309"},
+        {"block":"9","zone":"East Hill","variety":"Pinot Noir","clone":"Wadenswil","rootstock":"3309"},
+        {"block":"10","zone":"East Hill","variety":"Pinot Noir","clone":"777","rootstock":"101-14"},
+        {"block":"12","zone":"East Hill","variety":"Pinot Noir","clone":"777","rootstock":"101-14"},
+        {"block":"Third Hill Block 2","zone":"Third Hill","variety":"Pinot Noir","clone":"Pommard","rootstock":"101-14"}
+      ]
+    },
+    {
+      "id": "us-or-hirschy-vineyard",
+      "name": "Hirschy Vineyard",
+      "parentRegion": "Willamette Valley",
+      "ava": "Yamhill-Carlton",
+      "elevationFtRange": [350,375],
+      "aspect": "SE/SW inclination",
+      "siteGeology": ["ancient marine sediments", "Windy Gap soil series", "Dupee soil series"],
+      "sourceRefs": ["us-or-ken-wright-hirschy-blocks-pass19"],
+      "blocks": [
+        {"block":"K","variety":"Pinot Noir","acres":2.5,"clone":"Wadenswil","rootstock":"3309"},
+        {"block":"H","variety":"Pinot Noir","acres":2.43,"clone":"667","rootstock":"3309"},
+        {"block":"E","variety":"Pinot Noir","acres":2.73,"clone":"Pommard","rootstock":"101-14"},
+        {"block":"I","variety":"Pinot Noir","acres":2.28,"clone":"777","rootstock":"101-14"},
+        {"block":"L","variety":"Pinot Noir","acres":0.48,"clone":"Wadenswil","rootstock":"101-14"},
+        {"block":"G","variety":"Pinot Noir","acres":3.89,"clone":"777","rootstock":"3309"}
+      ]
+    },
+    {
+      "id": "us-or-abbott-claim-vineyard",
+      "name": "Abbott Claim Vineyard",
+      "parentRegion": "Willamette Valley",
+      "ava": "Yamhill-Carlton",
+      "plantedYearRange": [2001,2003],
+      "plantedAcres": 15.77,
+      "elevationFtRange": [400,475],
+      "aspect": "south to southeast",
+      "siteGeology": ["ancient marine sediments", "Willakenzie soil series", "Wellsdale soil series"],
+      "sourceRefs": ["us-or-ken-wright-abbott-claim-blocks-pass19"],
+      "blocks": [
+        {"block":"1","variety":"Pinot Noir","clone":"Pommard","rootstock":"Riparia Gloire"},
+        {"block":"3","variety":"Pinot Noir","clone":"777","rootstock":"101-14"},
+        {"block":"4","variety":"Pinot Noir","clone":"115","rootstock":"3309"}
+      ]
+    },
+    {
+      "id": "us-or-lingua-franca-estate",
+      "name": "Lingua Franca Estate Vineyard",
+      "parentRegion": "Willamette Valley",
+      "ava": "Eola-Amity Hills",
+      "aspect": "east-facing",
+      "elevationGainFt": 300,
+      "siteSoils": ["Nekia", "Gelderman", "Jory"],
+      "farming": ["dry farmed", "organic and regenerative principles stated by producer"],
+      "sourceRefs": ["us-or-lingua-franca-block-research-pass19"],
+      "blockObservations": [
+        {"block":"1","variety":"Pinot Noir","clone":"PN777 massal selection","soil":"Gelderman-Jory with large gravels","evidenceContext":"2022 The Plow"},
+        {"block":"2","variety":"Pinot Noir","clone":"PN777","evidenceContext":"2022 Estate Pinot Noir / 2019 The Plow"},
+        {"block":"3","variety":"Pinot Noir","clone":"PN777 selected rows","soil":"Gelderman-Jory; lower section includes in-place sediment veneer near intersecting springs","evidenceContext":"2018/2021 La Belle"},
+        {"block":"3","variety":"Pinot Noir","clone":"PN115 component","evidenceContext":"2022 The Plow","notes":["Block 3 has source-specific material/rows; do not collapse the entire block to one clone"]},
+        {"block":"4","variety":"Pinot Noir","clone":"PN943","evidenceContext":"2022/2024 estate bottlings"},
+        {"block":"6","variety":"Pinot Noir","clone":"Calera","evidenceContext":"2022 The Plow"},
+        {"block":"7","variety":"Pinot Noir","clone":"PN943","evidenceContext":"2021 Petit Géant / 2024 Estate Pinot Noir"},
+        {"block":"8","variety":"Chardonnay","position":"upper block / higher shallow-soil section","soil":"shallow Witzel and Nekia volcanic soils reported for source parcels","evidenceContext":"2022 Inspiras Chardonnay"}
+      ]
+    },
+    {
+      "id": "us-or-freedom-hill-vineyard",
+      "name": "Freedom Hill Vineyard",
+      "parentRegion": "Willamette Valley",
+      "locationContext": "Coast Range south of Dallas, Oregon",
+      "elevationFt": 450,
+      "aspect": "east-facing",
+      "siteGeology": ["ancient marine sediments", "Bellpine soil"],
+      "sourceRefs": ["us-or-ken-wright-freedom-hill-pass19"],
+      "contractedParcels": [
+        {"variety":"Pinot Noir","clone":"667","rootstock":"101-14","acres":2.0},
+        {"variety":"Pinot Noir","clone":"Wadenswil","rootstock":"44-53","acres":2.0},
+        {"variety":"Pinot Noir","clone":"Pommard","rootstock":"44-53","acres":2.15},
+        {"variety":"Pinot Noir","clone":"777","rootstock":"44-53","acres":1.85},
+        {"variety":"Pinot Noir","clone":"777","rootstock":"101-14","acres":1.05},
+        {"variety":"Pinot Noir","clone":"115","rootstock":"3308"},
+        {"variety":"Pinot Noir","clone":"Coury","rootstock":"101-14"},
+        {"variety":"Pinot Blanc","clone":"5","rootstock":"3309"}
+      ]
+    },
+    {
+      "id": "us-or-penner-ash-estate",
+      "name": "Penner-Ash Estate Vineyard",
+      "parentRegion": "Willamette Valley",
+      "ava": "Yamhill-Carlton",
+      "plantedYear": 2003,
+      "plantedAcres": 15,
+      "elevationFtRange": [350,500],
+      "aspect": "southeast-facing hillside",
+      "siteSoils": ["Willakenzie", "Jory"],
+      "sourceRefs": ["us-or-penner-ash-estate-site-pass19"],
+      "cloneBySiteObservations": [
+        {"clone":"114","siteMaterial":"sedimentary soil","producerIntent":"selected by block"},
+        {"clone":"115","siteMaterial":"volcanic soil","producerIntent":"selected by block"},
+        {"clone":"Pommard","siteMaterial":"mixed estate use","producerIntent":"mouthfeel / texture stated by producer"},
+        {"clone":"667","siteMaterial":"used throughout vineyard"},
+        {"clone":"777","siteMaterial":"used throughout vineyard"}
+      ]
+    }
+  ]
+}
