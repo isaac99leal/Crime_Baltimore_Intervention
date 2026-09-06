@@ -1,0 +1,78 @@
+{
+  "updatedAt": "2026-09-05",
+  "policy": "Second Willamette block research and Mexico GI identity pass. Producer block pages may establish source-specific vineyard observations and contradictions; they do not establish AVA law. Mexico GI identity comes from IMPI protection records.",
+  "sources": [
+    {
+      "id": "us-or-knudsen-parallels-2022-pass21",
+      "publisher": "Knudsen Vineyards",
+      "title": "2022 Talking Blocks Parallels Pinot Noir — Blocks 9 and 17",
+      "url": "https://knudsenvineyards.com/2022-knudsen-vineyards-parallels-pinot-noir/",
+      "jurisdiction": "United States — Oregon — Dundee Hills",
+      "kind": "producer-published-block-and-vintage-technical-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-knudsen-snapshot-2021-pass21",
+      "publisher": "Knudsen Vineyards",
+      "title": "2021 Snapshot Pinot Noir — Blocks 12 and 13",
+      "url": "https://knudsenvineyards.com/2021-knudsen-vineyards-snapshot-pinot-noir/",
+      "jurisdiction": "United States — Oregon — Dundee Hills",
+      "kind": "producer-published-block-and-vintage-technical-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-knudsen-founders-2019-pass21",
+      "publisher": "Knudsen Vineyards",
+      "title": "2019 Founders Series — Chardonnay Block 27 and Pinot Noir Blocks 12, 15 and 25",
+      "url": "https://knudsenvineyards.com/2019-founders-series/",
+      "jurisdiction": "United States — Oregon — Dundee Hills",
+      "kind": "producer-published-block-and-vintage-technical-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-knudsen-snapshot-2022-pass21",
+      "publisher": "Knudsen Vineyards",
+      "title": "2022 Snapshot Pinot Noir — Blocks 12 and 13",
+      "url": "https://knudsenvineyards.com/2022-knudsen-vineyards-snapshot-pinot-noir/",
+      "jurisdiction": "United States — Oregon — Dundee Hills",
+      "kind": "producer-published-block-and-vintage-technical-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-knudsen-talking-blocks-current-pass21",
+      "publisher": "Knudsen Vineyards",
+      "title": "Talking Blocks — Crafting With Clones",
+      "url": "https://knudsenvineyards.com/blog/talking-blocks-crafting-with-clones/",
+      "jurisdiction": "United States — Oregon — Dundee Hills",
+      "kind": "producer-published-block-series-summary",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-blakeslee-block-map-pass21",
+      "publisher": "Blakeslee Vineyard Estate",
+      "title": "Interactive Vineyard Map — Blocks 1, 2, 3A, 3B, 4 and 5",
+      "url": "https://blakesleevineyard.com/about-us/",
+      "jurisdiction": "United States — Oregon — Chehalem Mountains",
+      "kind": "producer-published-interactive-block-map",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-iota-block-map-pass21",
+      "publisher": "iOTA Cellars / Pelos Sandberg Vineyard",
+      "title": "Our Vineyard Blocks",
+      "url": "https://www.iotacellars.com/our-vineyard-blocks/",
+      "jurisdiction": "United States — Oregon — Eola-Amity Hills",
+      "kind": "producer-published-interactive-block-map",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "mx-impi-queretaro-wine-gi-2025-pass21",
+      "publisher": "Instituto Mexicano de la Propiedad Industrial (IMPI)",
+      "title": "Declaración General de Protección — Vinos de la Región Vitivinícola de Querétaro",
+      "url": "https://www.gob.mx/impi/acciones-y-programas/declaraciones-generales-de-proteccion-de-indicaciones-geograficas",
+      "jurisdiction": "Mexico — Querétaro",
+      "kind": "official-geographical-indication-protection-record",
+      "accessed": "2026-09-05"
+    }
+  ]
+}

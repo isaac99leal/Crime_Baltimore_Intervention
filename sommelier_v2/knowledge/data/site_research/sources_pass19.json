@@ -1,0 +1,132 @@
+{
+  "updatedAt": "2026-09-05",
+  "policy": "Global designation identities and Willamette micro-site evidence pass. National registers establish protected-name identity only. Vineyard/block records are producer- or grower-published site observations, not AVA law or universal terroir claims.",
+  "sources": [
+    {
+      "id": "jp-nta-wine-gi-register-2026-pass19",
+      "publisher": "National Tax Agency of Japan",
+      "title": "Information on geographical indications protected in Japan — wine GI register",
+      "url": "https://www.nta.go.jp/english/taxes/liquor_administration/geographical/02.htm",
+      "jurisdiction": "Japan",
+      "kind": "official-wine-gi-register",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "md-agepi-wine-gi-register-pass19",
+      "publisher": "State Agency on Intellectual Property of the Republic of Moldova (AGEPI)",
+      "title": "Geographical Indications and Appellations of Origin protected in the Republic of Moldova",
+      "url": "https://agepi.gov.md/en/node/6752",
+      "jurisdiction": "Moldova",
+      "kind": "official-gi-ao-register-summary",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "br-inpi-beverage-gi-register-2026-pass19",
+      "publisher": "Instituto Nacional da Propriedade Industrial (INPI)",
+      "title": "Marcas e Indicações Geográficas — Bebidas",
+      "url": "https://www.gov.br/inpi/pt-br/projetos-estrategicos/combate-a-falsificacao/diretorio-igs/marcas-e-indicacoes-geograficas-bebidas",
+      "jurisdiction": "Brazil",
+      "kind": "official-beverage-gi-register",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "gb-defra-wine-gi-register-2026-pass19",
+      "publisher": "UK Department for Environment, Food & Rural Affairs",
+      "title": "Protected geographical food and drink names — registered United Kingdom wine names",
+      "url": "https://www.gov.uk/protected-food-drink-names?country_of_origin%5B%5D=united-kingdom&register%5B%5D=wines",
+      "jurisdiction": "United Kingdom",
+      "kind": "official-wine-gi-register",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "in-ipindia-nashik-wine-gi-pass19",
+      "publisher": "Intellectual Property India",
+      "title": "GI Application 123 — Nashik Valley Wine",
+      "url": "https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/123",
+      "jurisdiction": "India",
+      "kind": "official-gi-registration-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-terry-family-block-map-pass19",
+      "publisher": "...and... Wine Company / Terry Family Vineyard",
+      "title": "Terry Family Vineyard plot map and block table",
+      "url": "https://www.andwinecompany.com/",
+      "jurisdiction": "United States — Oregon — Yamhill-Carlton",
+      "kind": "producer-published-vineyard-block-map",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-open-claim-block-map-pass19",
+      "publisher": "Open Claim Vineyards",
+      "title": "Open Claim interactive vineyard map",
+      "url": "https://www.openclaimvineyards.com/vineyards",
+      "jurisdiction": "United States — Oregon — Mt. Pisgah, Polk County",
+      "kind": "producer-published-vineyard-block-map",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-ken-wright-shea-blocks-pass19",
+      "publisher": "Ken Wright Cellars",
+      "title": "Shea Vineyard block and clone/rootstock information",
+      "url": "https://kenwrightcellars.com/vineyards/shea/",
+      "jurisdiction": "United States — Oregon — Yamhill-Carlton",
+      "kind": "producer-published-contracted-block-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-shea-vineyard-zones-pass19",
+      "publisher": "Shea Wine Cellars",
+      "title": "Shea Vineyard East Hill, West Hill and Third Hill site descriptions",
+      "url": "https://www.sheawinecellars.com/shea-vineyard/",
+      "jurisdiction": "United States — Oregon — Yamhill-Carlton",
+      "kind": "grower-published-vineyard-zone-description",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-ken-wright-freedom-hill-pass19",
+      "publisher": "Ken Wright Cellars",
+      "title": "Freedom Hill Vineyard contracted parcel clone/rootstock allocation",
+      "url": "https://kenwrightcellars.com/vineyards/freedom-hill/",
+      "jurisdiction": "United States — Oregon — Mt. Pisgah, Polk County / Willamette Valley",
+      "kind": "producer-published-contracted-parcel-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-ken-wright-hirschy-blocks-pass19",
+      "publisher": "Ken Wright Cellars",
+      "title": "Hirschy Vineyard block-level clone, rootstock and acreage record",
+      "url": "https://kenwrightcellars.com/wp-content/uploads/2026/02/Hirschy-Vineyard.pdf",
+      "jurisdiction": "United States — Oregon — Yamhill-Carlton",
+      "kind": "producer-published-contracted-block-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-ken-wright-abbott-claim-blocks-pass19",
+      "publisher": "Ken Wright Cellars",
+      "title": "Abbott Claim Vineyard block map and clone/rootstock record",
+      "url": "https://kenwrightcellars.com/wp-content/uploads/2026/02/2020-Abbott-Claim-Vineyard-Pinot-Noir.pdf",
+      "jurisdiction": "United States — Oregon — Yamhill-Carlton",
+      "kind": "producer-published-contracted-block-record",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-lingua-franca-block-research-pass19",
+      "publisher": "Lingua Franca",
+      "title": "Lingua Franca Estate block-specific Pinot Noir and Chardonnay technical records",
+      "url": "https://www.linguafranca.wine/",
+      "jurisdiction": "United States — Oregon — Eola-Amity Hills",
+      "kind": "producer-published-block-and-technical-records",
+      "accessed": "2026-09-05"
+    },
+    {
+      "id": "us-or-penner-ash-estate-site-pass19",
+      "publisher": "Penner-Ash Wine Cellars",
+      "title": "Penner-Ash Estate Vineyard site, soil and clone-by-block summary",
+      "url": "https://www.pennerash.com/penner-ash-estate-vineyard.html",
+      "jurisdiction": "United States — Oregon — Yamhill-Carlton",
+      "kind": "producer-published-vineyard-site-record",
+      "accessed": "2026-09-05"
+    }
+  ]
+}
