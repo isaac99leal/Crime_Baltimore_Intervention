@@ -1,0 +1,44 @@
+{
+  "schema_version": "2.0",
+  "generated": "2026-09-06",
+  "notes": "Current BIVB Marsannay and Marsannay Rosé named lieu-dit identities. These are physical/appellation-context identities, not automatic label permission. La Combe Vaulon uses the spaced spelling independently present on the BIVB Marsannay Rosé page rather than the concatenated rendering on the general Marsannay page.",
+  "sources": {
+    "bivb_marsannay": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/marsannay,2458,9253.html",
+      "checked": "2026-09-06",
+      "scope": "Current BIVB Marsannay appellation page, named lieux-dits listed for the appellation.",
+      "evidence_class": "authoritative_industry_appellation_registry"
+    },
+    "bivb_marsannay_rose": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB)",
+      "url": "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/marsannay-rose,2458,9253.html",
+      "checked": "2026-09-06",
+      "scope": "Current BIVB Marsannay Rosé appellation page, named lieux-dits listed for the rosé context.",
+      "evidence_class": "authoritative_industry_appellation_registry"
+    }
+  },
+  "groups": [
+    {
+      "id_prefix": "site:france:bourgogne:marsannay:lieu-dit",
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Marsannay",
+      "site_type": "lieu_dit",
+      "legal_status": "official_appellation_lieu_dit",
+      "source_ids": ["bivb_marsannay"],
+      "names": "Au Champ Salomon|Au Champ St-Etienne|Au Larrey|Au Potey|Au Quartier|Au Ravry|Au Ronsoy|Aux Genelières|Aux Grands Bandeaux|Aux Herbues|Aux Journaux|Aux Nagelottes|Bas des Longeroies|Champs Perdrix|Clos de l'Argillère|Clos du Roy|Dessus des Longeroies|En Batayart|En Blungey|En Champy|En Charrière|En Clémongeot|En Combereau|En Grand Bois|En la Croix St-Germain|En la Malcuite|En la Montagne|En la Poulotte|En la Verde|En Monchenevoy|En Mormain|En Pilleul|En Sampagny|En Varangée|En Verdot|Es Clos|La Bretignère|La Chaire à Dieu|La Charme aux Prêtres|La Combe du Pré|La Combe Vaulon|La Croix de Bois|La Friche|La Morisotte|La Plantelle|La Pucine|La Quenicière|Le Boivin|Le Clos de Jeu|Le Désert|Le Dixme|Le Grand Poirier|Le Moisereau|Le Parterre|Le Petits Puits|Le Poiset|Le Village|Les Clos|Les Crais|Les Cras|Les Creux Banots|Les Echezeaux|Les Etalles|Les Favières|Les Finottes|Les Grandes Vignes|Les Grasses Têtes|Les Herbues|Les Mogottes|Les Ouzeloy|Les Plantes|Les Portes|Les Récilles|Les Vaudenelles|Les Vignes Marie|Plante Pitois|Saint-Jacques|Vignes Blanches"
+    },
+    {
+      "id_prefix": "site:france:bourgogne:marsannay:lieu-dit",
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Marsannay",
+      "site_type": "lieu_dit",
+      "legal_status": "official_appellation_lieu_dit",
+      "source_ids": ["bivb_marsannay_rose"],
+      "names": "Au Corcaron|Au Larrey|Aux Avoines|Aux Crais|Aux Longues Pièces|Aux Nagelottes|Aux Perches|Aux Platières|Bargard|Champ Taignerot|Champforey|En Auvonne|En la Brouade|En la Caillée|En la Corrière|En Latte|En Lavaux|En Leautier|En Méchalot|En Pévenelle|En Vigne Ribaude|Es Barres|La Bretignère|La Champagne Haute|La Combe|La Combe Pévenelle|La Combe Vaulon|La Pointure|La Terrasse|La Varangée|Le Boivin|Le Charon|Le Village|Les Combottes|Les Plantes|Les Plantes du Dessus"
+    }
+  ],
+  "records": []
+}
