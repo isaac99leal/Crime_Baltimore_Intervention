@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "notes": "Contradiction-safe enrichment of the existing canonical Gevrey-Chambertin village and Premier Cru spec IDs using their already-registered ministry source.",
+  "sources": {},
+  "specs": [],
+  "amendments": [
+    {
+      "id": "fr:gevrey-chambertin:standard:masa-2011-enrichment",
+      "target_id": "fr:gevrey-chambertin:standard",
+      "set": {
+        "min_must_sugar_g_l": 180.0,
+        "max_total_alcohol_pct": 13.5,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["gevrey_masa_2011_current"],
+      "append_notes": "Exact must-sugar floor, enriched total-alcohol ceiling, élevage-through date and consumer-release date are now machine-executable from the ministry specification."
+    },
+    {
+      "id": "fr:gevrey-chambertin:premier-cru:masa-2011-enrichment",
+      "target_id": "fr:gevrey-chambertin:premier-cru",
+      "set": {
+        "min_must_sugar_g_l": 189.0,
+        "max_total_alcohol_pct": 14.0,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["gevrey_masa_2011_current"],
+      "append_notes": "Exact Premier Cru must-sugar floor, enriched total-alcohol ceiling, élevage-through date and consumer-release date are now machine-executable from the ministry specification."
+    }
+  ]
+}
