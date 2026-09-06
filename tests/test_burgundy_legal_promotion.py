@@ -113,23 +113,28 @@ class BurgundyStrictSpecTests(unittest.TestCase):
             appellation="Chambolle-Musigny",
             variant="premier cru",
         )
+        release_evidence = dict(
+            total_aging_months=0,
+            total_alcohol_pct=14.0,
+            residual_sugar_g_l=1.8,
+            vintage_year=2025,
+            elevage_end_year=2026,
+            elevage_end_month=6,
+            elevage_end_day=15,
+            release_year=2026,
+            release_month=6,
+            release_day=30,
+            require_complete=True,
+        )
         good = self.registry.validate_release(
             spec,
-            total_aging_months=0,
-            residual_sugar_g_l=1.8,
             malic_acid_g_l=0.3,
-            vintage_year=2025,
-            release_year=2026,
-            require_complete=True,
+            **release_evidence,
         )
         bad_malic = self.registry.validate_release(
             spec,
-            total_aging_months=0,
-            residual_sugar_g_l=1.8,
             malic_acid_g_l=0.41,
-            vintage_year=2025,
-            release_year=2026,
-            require_complete=True,
+            **release_evidence,
         )
         self.assertTrue(good.eligible)
         self.assertFalse(bad_malic.eligible)
@@ -238,10 +243,17 @@ class BurgundyBuilderAndCatalogTests(unittest.TestCase):
             ),
             alcohol=13.0,
             wine_yield_hl_ha=45.0,
+            must_sugar_g_l=189.0,
             potential_alcohol_pct=11.8,
+            total_alcohol_pct=14.0,
             residual_sugar_g_l=1.5,
             malic_acid_g_l=0.3,
+            elevage_end_year=2026,
+            elevage_end_month=6,
+            elevage_end_day=15,
             release_year=2026,
+            release_month=6,
+            release_day=30,
         )
         values.update(changes)
         return WineBuildRequest(**values)

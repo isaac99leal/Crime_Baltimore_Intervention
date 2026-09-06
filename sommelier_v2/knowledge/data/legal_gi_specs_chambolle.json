@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0",
-  "notes": "Additional authoritative Chambolle-Musigny legal source used by the vineyard-law and site-claim tranches. The existing canonical parent wine-spec IDs remain in legal_gi_specs_burgundy.json; this document contributes source provenance only and deliberately does not duplicate those specs.",
+  "schema_version": "1.1",
+  "notes": "Additional authoritative Chambolle-Musigny legal source plus contradiction-safe amendments to the existing canonical parent wine-spec IDs. The amendments fill newly verified machine fields without duplicating the specs.",
   "sources": {
     "chambolle_masa_2011_cdc": {
       "authority": "Ministère de l'Agriculture",
@@ -9,5 +9,37 @@
       "scope": "Cahier des charges de l'AOC Chambolle-Musigny homologated by decree no. 2011-1545 of 14 November 2011: red-only product, 24 Premier Cru climats, encépagement, maturity, yields, analytical limits, vineyard rules, élevage and release conditions."
     }
   },
-  "specs": []
+  "specs": [],
+  "amendments": [
+    {
+      "id": "fr:chambolle-musigny:standard:masa-2011-enrichment",
+      "target_id": "fr:chambolle-musigny:standard",
+      "set": {
+        "min_must_sugar_g_l": 180.0,
+        "max_total_alcohol_pct": 13.5,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["chambolle_masa_2011_cdc"],
+      "append_notes": "The ministry cahier supplies the exact must-sugar floor, enriched total-alcohol ceiling, élevage endpoint, and 30 June release gate."
+    },
+    {
+      "id": "fr:chambolle-musigny:premier-cru:masa-2011-enrichment",
+      "target_id": "fr:chambolle-musigny:premier-cru",
+      "set": {
+        "min_must_sugar_g_l": 189.0,
+        "max_total_alcohol_pct": 14.0,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["chambolle_masa_2011_cdc"],
+      "append_notes": "The ministry cahier supplies the exact Premier Cru must-sugar floor, enriched total-alcohol ceiling, élevage endpoint, and 30 June release gate."
+    }
+  ]
 }

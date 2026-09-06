@@ -22,9 +22,148 @@ BURGUNDY_PATH = DATA_DIR / "legal_gi_specs_burgundy.json"
 COTE_DE_NUITS_PATH = DATA_DIR / "legal_gi_specs_cote_de_nuits.json"
 
 
+# Amendments may add newly verified machine fields to an existing canonical spec,
+# but they may never rewrite its identity or silently replace a known legal value.
+# Source IDs and notes have separate additive operations below.
+_AMENDABLE_SPEC_FIELDS = frozenset(
+    {
+        "wine_style",
+        "allowed_grapes",
+        "grape_constraints",
+        "vineyard_adaptation_grapes",
+        "vineyard_adaptation_max_pct",
+        "max_yield_t_ha",
+        "max_yield_hl_ha",
+        "grape_to_wine_yield_pct",
+        "min_must_sugar_g_l",
+        "min_potential_alcohol_pct",
+        "min_final_alcohol_pct",
+        "max_total_alcohol_pct",
+        "min_total_acidity_g_l",
+        "min_dry_extract_g_l",
+        "max_residual_sugar_g_l",
+        "max_malic_acid_g_l",
+        "min_total_aging_months",
+        "min_wood_aging_months",
+        "min_bottle_aging_months",
+        "min_elevage_year_offset",
+        "min_elevage_until_month",
+        "min_elevage_until_day",
+        "release_year_offset",
+        "earliest_release_month",
+        "earliest_release_day",
+        "required_method",
+        "manual_harvest_required",
+        "bottling_in_origin_required",
+        "effective_from",
+        "effective_to",
+    }
+)
+_AMENDMENT_KEYS = frozenset({"id", "target_id", "set", "add_source_ids", "append_notes"})
+_MISSING = object()
+
+
 def _default_data_paths() -> list[Path]:
     """Load every reviewed legal-spec tranche in deterministic filename order."""
     return sorted(DATA_DIR.glob("legal_gi_specs_*.json"), key=lambda path: path.name)
+
+
+def _same_raw_legal_value(existing: object, proposed: object) -> bool:
+    """Compare JSON legal values without treating booleans as numeric 0/1."""
+    if isinstance(existing, bool) or isinstance(proposed, bool):
+        return type(existing) is type(proposed) and existing == proposed
+    if isinstance(existing, (int, float)) and isinstance(proposed, (int, float)):
+        return float(existing) == float(proposed)
+    return existing == proposed
+
+
+def _apply_spec_amendments(
+    raw_specs: list[dict[str, object]],
+    raw_amendments: list[dict[str, object]],
+    sources: Mapping[str, dict[str, object]],
+) -> tuple[str, ...]:
+    """Apply additive, contradiction-safe amendments to canonical raw spec rows.
+
+    An amendment can fill a missing machine field, restate an identical value,
+    append source IDs, and append a note. It cannot alter spec identity or replace
+    a different value already asserted by the canonical row.
+    """
+    by_id = {str(row["id"]): row for row in raw_specs}
+    seen_amendment_ids: set[str] = set()
+    applied: list[str] = []
+
+    for amendment in raw_amendments:
+        amendment_id = str(amendment.get("id") or "")
+        target_id = str(amendment.get("target_id") or "")
+        if not amendment_id:
+            raise ValueError("Legal specification amendment is missing an id")
+        if amendment_id in seen_amendment_ids:
+            raise ValueError(f"Duplicate legal specification amendment id: {amendment_id}")
+        seen_amendment_ids.add(amendment_id)
+        if not target_id:
+            raise ValueError(f"{amendment_id} is missing target_id")
+        target = by_id.get(target_id)
+        if target is None:
+            raise ValueError(f"{amendment_id} targets unknown legal specification: {target_id}")
+
+        unknown_keys = set(amendment) - _AMENDMENT_KEYS
+        if unknown_keys:
+            raise ValueError(
+                f"{amendment_id} has unsupported amendment keys: {sorted(unknown_keys)}"
+            )
+
+        updates = amendment.get("set", {})
+        if not isinstance(updates, Mapping):
+            raise ValueError(f"{amendment_id} set must be an object")
+        for field, proposed in updates.items():
+            field_name = str(field)
+            if field_name not in _AMENDABLE_SPEC_FIELDS:
+                raise ValueError(f"{amendment_id} field is not amendable: {field_name}")
+            if proposed is None or proposed == "":
+                raise ValueError(
+                    f"{amendment_id} cannot amend {field_name} with an unknown value"
+                )
+            existing = target.get(field_name, _MISSING)
+            if existing is _MISSING or existing is None or existing == "":
+                target[field_name] = proposed
+            elif not _same_raw_legal_value(existing, proposed):
+                raise ValueError(
+                    f"{amendment_id} conflicts with {target_id}.{field_name}: "
+                    f"existing={existing!r}, proposed={proposed!r}"
+                )
+
+        add_source_ids = amendment.get("add_source_ids", [])
+        if not isinstance(add_source_ids, list) or any(
+            not isinstance(source_id, str) or not source_id.strip()
+            for source_id in add_source_ids
+        ):
+            raise ValueError(f"{amendment_id} add_source_ids must be a list of source ids")
+        unknown_sources = [source_id for source_id in add_source_ids if source_id not in sources]
+        if unknown_sources:
+            raise ValueError(
+                f"{amendment_id} references unknown legal sources: {unknown_sources}"
+            )
+        existing_sources = target.get("source_ids", [])
+        if not isinstance(existing_sources, list):
+            raise ValueError(f"{target_id} source_ids must be a list before amendment")
+        merged_sources = list(existing_sources)
+        for source_id in add_source_ids:
+            if source_id not in merged_sources:
+                merged_sources.append(source_id)
+        target["source_ids"] = merged_sources
+
+        append_notes = amendment.get("append_notes")
+        if append_notes is not None:
+            if not isinstance(append_notes, str) or not append_notes.strip():
+                raise ValueError(f"{amendment_id} append_notes must be non-empty text")
+            note = append_notes.strip()
+            existing_notes = str(target.get("notes", "")).strip()
+            if note not in existing_notes:
+                target["notes"] = f"{existing_notes} {note}".strip()
+
+        applied.append(amendment_id)
+
+    return tuple(applied)
 
 
 @dataclass(frozen=True)
@@ -147,6 +286,7 @@ class LegalSpecRegistry:
 
         self.sources: dict[str, dict[str, object]] = {}
         raw_specs: list[dict[str, object]] = []
+        raw_amendments: list[dict[str, object]] = []
         seen_spec_ids: set[str] = set()
         for doc in documents:
             for source_id, source in dict(doc.get("sources", {})).items():
@@ -164,7 +304,20 @@ class LegalSpecRegistry:
                 if spec_id in seen_spec_ids:
                     raise ValueError(f"Duplicate legal specification id: {spec_id}")
                 seen_spec_ids.add(spec_id)
-                raw_specs.append(row)
+                raw_specs.append(dict(row))
+            amendments = doc.get("amendments", [])
+            if not isinstance(amendments, list):
+                raise ValueError("Legal specification amendments must be a list")
+            for amendment in amendments:
+                if not isinstance(amendment, dict):
+                    raise ValueError("Legal specification amendment rows must be objects")
+                raw_amendments.append(dict(amendment))
+
+        self.applied_amendment_ids = _apply_spec_amendments(
+            raw_specs,
+            raw_amendments,
+            self.sources,
+        )
 
         self.specs: list[LegalWineSpec] = []
         self._index: dict[tuple[str, str], list[LegalWineSpec]] = {}
@@ -546,6 +699,7 @@ class LegalSpecRegistry:
         return {
             "sourced_legal_wine_specs": len(self.specs),
             "sourced_appellations_with_strict_specs": len(appellations),
+            "legal_spec_amendments_applied": len(self.applied_amendment_ids),
             "legal_specs_with_blend_percentages": sum(bool(s.grape_constraints) for s in self.specs),
             "legal_specs_with_yield_limits": sum(s.max_yield_t_ha is not None for s in self.specs),
             "legal_specs_with_wine_yield_limits": sum(s.max_yield_hl_ha is not None for s in self.specs),
