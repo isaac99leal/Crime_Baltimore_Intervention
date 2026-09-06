@@ -57,6 +57,16 @@ class VineyardBlock:
     rootstock: str | None = None
     training_system: str | None = None
 
+    # Explicit observed viticultural state for legal and research layers. These
+    # measurements are never inferred from the qualitative simulator indices above.
+    pruning_system: str | None = None
+    retained_buds_per_vine: int | None = None
+    fruiting_shoots_per_vine: int | None = None
+    support_system: str | None = None
+    canopy_height_m: float | None = None
+    parcel_crop_load_kg_ha: float | None = None
+    dead_missing_vine_fraction: float | None = None
+
 
 @dataclass(frozen=True)
 class VineyardOutcome:
@@ -175,6 +185,18 @@ class VineyardEngine:
             issues.append("Solar multiplier must be within 0.4..1.8")
         if not 0.2 <= block.wind_multiplier <= 4.0:
             issues.append("Wind multiplier must be within 0.2..4.0")
+
+        if block.retained_buds_per_vine is not None and not 0 <= block.retained_buds_per_vine <= 200:
+            issues.append("Retained buds per vine must be within 0..200")
+        if block.fruiting_shoots_per_vine is not None and not 0 <= block.fruiting_shoots_per_vine <= 200:
+            issues.append("Fruiting shoots per vine must be within 0..200")
+        if block.canopy_height_m is not None and not 0.0 <= block.canopy_height_m <= 6.0:
+            issues.append("Measured canopy height must be within 0..6 m")
+        if block.parcel_crop_load_kg_ha is not None and not 0.0 <= block.parcel_crop_load_kg_ha <= 100000.0:
+            issues.append("Parcel crop load must be within 0..100,000 kg/ha")
+        if block.dead_missing_vine_fraction is not None and not 0.0 <= block.dead_missing_vine_fraction <= 1.0:
+            issues.append("Dead/missing vine fraction must be within 0..1")
+
         if issues:
             raise ValueError("; ".join(issues))
 
