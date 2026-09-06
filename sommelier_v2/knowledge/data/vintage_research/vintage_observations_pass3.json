@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-04",
+  "method": "Third historical-vintage pass. Sourced growing-season chronology is stored independently from bounded derived matrix effects.",
+  "observations": [
+    {
+      "id":"vintage-de-mosel-2023","environmentProfileId":"env-de-mosel","country":"Germany","region":"Mosel","year":2023,
+      "growingSeason":{"winter":"unusually warm; January at Winningen averaged 5.6°C","budburst":"around 2023-04-25 at Winningen","flowering":"began around 2023-06-08","earlySummer":"May and June were mostly dry and warm; hot dry June caused drought stress especially in young vines","midSummer":"July brought sunburn problems, followed by heavy rain from late July","september":"very warm nights reduced cooling and accelerated ripening; some sites gained 3-4 degrees Oechsle per day","harvest":"wide site and variety variability; substantial selection was needed","estimatedMustHectolitres":710000,"estimatedWhiteMustHectolitres":650000},
+      "styleEffects":["Riesling combined pronounced fruit with a strong acidity-sweetness balance","noble rot created opportunities for high-quality sweet wines","site and water-supply differences were unusually important"],
+      "matrixModifiers":{"derived":true,"confidence":5,"acidity":0.30,"ripeness":0.25,"concentration":0.15,"tanninRipeness":0.00,"aromaticFreshness":0.30,"diseasePressure":0.20,"yield":-0.10,"ageability":0.25,"botrytisSuitability":0.50},
+      "sourceRefs":["de-mosel-vintage-2023"]
+    },
+    {
+      "id":"vintage-de-mosel-2025","environmentProfileId":"env-de-mosel","country":"Germany","region":"Mosel","year":2025,
+      "growingSeason":{"lateSummer":"vines were in excellent condition at the end of August and ripeness was about two weeks ahead of the previous year","september":"heavy rain changed grape health rapidly, with strong downstream differences in rainfall","harvest":"earliest start and fastest finish reported for the region; Pinot varieties, sparkling base and Kabinett Riesling were harvested in the first half of September; main Riesling harvest began around 2025-09-19","rieslingMustWeightOechsle":[70,95],"selectionLossesSteepSlopesPct":[50,75],"estimatedMustHectolitres":780000,"volumeVs2024Pct":52,"volumeVsLongTermAveragePct":11},
+      "styleEffects":["very rapid harvest decisions were important","Riesling maturity and health varied strongly by site","selection pressure increased sharply on steep slopes after September rain"],
+      "matrixModifiers":{"derived":true,"confidence":5,"acidity":0.15,"ripeness":0.35,"concentration":0.05,"tanninRipeness":0.00,"aromaticFreshness":0.20,"diseasePressure":0.55,"yield":0.20,"ageability":0.10,"botrytisSuitability":0.30},
+      "sourceRefs":["de-mosel-vintage-2025"]
+    },
+    {
+      "id":"vintage-ar-uco-valley-2022","environmentProfileId":"env-ar-uco-valley","country":"Argentina","region":"Uco Valley","year":2022,
+      "growingSeason":{"winterAndEarlySpring":"very dry, increasing frost risk","earlyFrosts":"major frosts between 2021-10-06 and 2021-10-08 reached about -4°C to -6°C in some places; cooler Uco Valley sectors suffered significant yield reduction","laterFrost":"another frost occurred on 2021-11-17","summer":"December and January were comparatively cool; December rain increased downy-mildew risk; February brought rain, cloud and humidity and slowed red-grape ripening","ucoTemperature":"Gualtallary was cooler than in many other years and accumulated temperatures fell below average during the cloudy February period","march":"warm days created a strong harvest window with slow red-grape ripening and good phenolic development","lateFrost":"a cold front on 2022-03-30 to 2022-03-31 hit higher, cooler Mendoza sectors including the Uco Valley","nationalYieldVs2021Pct":-12,"nationalYieldVs2018Pct":-30},
+      "styleEffects":["fresh expressive wines where disease and harvest timing were managed well","red wines developed fleshy gentle tannins and notable color","Cabernet Franc, Cabernet Sauvignon and Malbec achieved strong potential in successfully harvested sites"],
+      "matrixModifiers":{"derived":true,"confidence":5,"acidity":0.30,"ripeness":0.10,"concentration":0.25,"tanninRipeness":0.25,"aromaticFreshness":0.30,"diseasePressure":0.30,"yield":-0.40,"ageability":0.30,"botrytisSuitability":0.00},
+      "sourceRefs":["ar-harvest-2022"]
+    }
+  ],
+  "authorityRatings": []
+}

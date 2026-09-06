@@ -8,6 +8,7 @@ from .fermentation_engine import AlcoholicFermentationParams, FermentationState,
 from .fermentation_process import FermentationConstraintError, FermentationPlan, FermentationResult, MustComposition, NutrientAddition, run_fermentation, validate_must, validate_plan
 from .finished_wine import FinishedWineAssembler, FinishedWineConstraintError, ValidatedWineRecord
 from .harvest_must import HarvestMustConstraintError, HarvestMustPlan, HarvestMustProfile, must_from_vineyard, validate_harvest_must_plan
+from .historical_vintages import AuthorityVintageRating, HistoricalVintageArchive, HistoricalVintageError, HistoricalVintageObservation, HistoricalVintageRegistry, HistoricalVintageSignal, HistoricalVintageStats, load_historical_vintages
 from .jurisdiction_labels import BlendComponent, JurisdictionLabelValidator, LabelClaimDecision, LabelClaims
 from .legal_rules import LegalAwareRegionGrapeRulebook
 from .legal_sources import LegalSourceRecord, LegalSourceRegistry
@@ -28,12 +29,14 @@ from .winery_provenance import ProvenanceSlice, WineryLot, WineryProvenanceError
 VineyardEngine = LegalVineyardEngine
 
 __all__ = [
-    "SOURCES", "AlcoholicFermentationParams", "BaseVineyardEngine", "BlendComponent",
-    "CommercialObservation", "ConstrainedOrigin", "DailyWeather", "EuCompositionDecision",
-    "EuLegalPromotionRegistry", "FermentationConstraintError", "FermentationPlan",
-    "FermentationResult", "FermentationState", "FinishedWineAssembler", "FinishedWineConstraintError",
-    "GrapeConstraint", "HarvestMustConstraintError", "HarvestMustPlan", "HarvestMustProfile",
-    "JurisdictionLabelValidator", "LabelClaimDecision", "LabelClaims",
+    "SOURCES", "AlcoholicFermentationParams", "AuthorityVintageRating", "BaseVineyardEngine",
+    "BlendComponent", "CommercialObservation", "ConstrainedOrigin", "DailyWeather",
+    "EuCompositionDecision", "EuLegalPromotionRegistry", "FermentationConstraintError",
+    "FermentationPlan", "FermentationResult", "FermentationState", "FinishedWineAssembler",
+    "FinishedWineConstraintError", "GrapeConstraint", "HarvestMustConstraintError",
+    "HarvestMustPlan", "HarvestMustProfile", "HistoricalVintageArchive", "HistoricalVintageError",
+    "HistoricalVintageObservation", "HistoricalVintageRegistry", "HistoricalVintageSignal",
+    "HistoricalVintageStats", "JurisdictionLabelValidator", "LabelClaimDecision", "LabelClaims",
     "LegalAwareRegionGrapeRulebook", "LegalSourceRecord", "LegalSourceRegistry", "LegalSpecDecision",
     "LegalSpecRegistry", "LegalVineyardEngine", "LegalWineSpec", "MachineConstraintDecision",
     "MachineLegalConstraint", "MachineLegalConstraintRegistry", "MalolacticParams", "MalolacticState",
@@ -46,8 +49,9 @@ __all__ = [
     "VerificationLevel", "VineyardBlock", "VineyardEngine", "VineyardOutcome", "VintageDayState",
     "VintageModelParams", "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory",
     "WineryLot", "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",
-    "initial_state", "load_legacy_vintage_knowledge", "load_trade_research", "modified_archetype",
-    "must_from_vineyard", "normalize_name", "run_alcoholic_fermentation", "run_fermentation",
-    "run_malolactic", "simulate_vintage", "state_at_age", "step_alcoholic_fermentation",
-    "step_malolactic", "validate_harvest_must_plan", "validate_must", "validate_plan", "vintage_stats",
+    "initial_state", "load_historical_vintages", "load_legacy_vintage_knowledge",
+    "load_trade_research", "modified_archetype", "must_from_vineyard", "normalize_name",
+    "run_alcoholic_fermentation", "run_fermentation", "run_malolactic", "simulate_vintage",
+    "state_at_age", "step_alcoholic_fermentation", "step_malolactic", "validate_harvest_must_plan",
+    "validate_must", "validate_plan", "vintage_stats",
 ]
