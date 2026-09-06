@@ -1,0 +1,36 @@
+{
+  "schema_version": "2.1",
+  "generated": "2026-09-06",
+  "notes": "Vougeot Premier Cru climat identities. Site identity is separate from protected-origin and site-claim eligibility.",
+  "sources": {
+    "inao_vougeot_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://www.inao.gouv.fr/node/664",
+      "checked": "2026-09-06",
+      "scope": "Current INAO Vougeot product record confirms red/white AOP Vougeot and four Premier Cru climats.",
+      "evidence_class": "national_regulator_product_registry"
+    },
+    "inao_vougeot_cdc_2010": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "url": "https://extranet.inao.gouv.fr/fichier/PNOCDCVougeot.pdf",
+      "checked": "2026-09-06",
+      "scope": "Official cahier des charges listing the four climat names and cadastral lieu-dit correspondences.",
+      "evidence_class": "national_regulator_specification"
+    }
+  },
+  "groups": [
+    {
+      "id_prefix": "site:france:bourgogne:vougeot:climat",
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Vougeot",
+      "commune": "Vougeot",
+      "site_type": "climat",
+      "legal_status": "official_appellation_climat",
+      "classification": "Premier Cru",
+      "source_ids": ["inao_vougeot_current", "inao_vougeot_cdc_2010"],
+      "names": "Les Crâs|Le Clos Blanc|Les Petits Vougeots|Clos de la Perrière"
+    }
+  ],
+  "records": []
+}

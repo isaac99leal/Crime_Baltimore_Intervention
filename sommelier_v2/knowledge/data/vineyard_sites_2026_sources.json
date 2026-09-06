@@ -1,0 +1,43 @@
+{
+  "schema_version": "2.1",
+  "generated": "2026-09-06",
+  "notes": "Research ledger for high-volume named-site sources. Materialized registry identity is distinct from legal label-claim authority.",
+  "bulk_sources_discovered": {
+    "bourgogne_maps_bulk": {
+      "authority": "Bureau Interprofessionnel des Vins de Bourgogne (BIVB) / Bourgogne Maps",
+      "url": "https://bourgogne-maps.fr/",
+      "checked": "2026-09-06",
+      "coverage_note": "BIVB reports 11,541 identified Climats and lieux-dits and 296,663 mapped parcels. The current materialized corpus remains a reviewed subset; lack of a materialized row is not negative evidence that a Bourgogne lieu-dit does not exist.",
+      "ingest_status": "reviewed_subset_materialized"
+    },
+    "rlp_weinbergsrolle": {
+      "authority": "Landwirtschaftskammer Rheinland-Pfalz",
+      "url": "https://www.lwk-rlp.de/weinbau/rebflaechen/weinlagen",
+      "checked": "2026-09-06",
+      "coverage_note": "The live source covers more than 1,600 Einzellagen and registered Gewannen. The materialized data are the official Ernte 2024 register: 1,533 unique six-digit Lagennummer identities. It is historical registry evidence, not a silently current 2026 legal snapshot.",
+      "ingest_status": "materialized_official_2024_snapshot",
+      "materialized_source_id": "rlp_weinlagen_register_2024",
+      "materialized_records": 1533
+    },
+    "noe_rieden_open_data": {
+      "authority": "Land Niederösterreich, Abteilung BD1 - GIS Support",
+      "url": "https://www.noe.gv.at/noe/OGD_Detailseite.html?id=a22e57c2-bbb0-4fb9-a731-b7f675e48476",
+      "checked": "2026-09-06",
+      "coverage_note": "The official OGD WFS yielded 3,342 features and 3,386 distinct Ried/Subried identities. The publisher states that statewide capture is incomplete, so absence from this snapshot is not negative evidence.",
+      "ingest_status": "materialized_current_wfs_snapshot",
+      "materialized_source_id": "noe_rieden_wfs_2026",
+      "materialized_records": 3386
+    },
+    "vienna_rieden": {
+      "authority": "Stadt Wien",
+      "url": "https://www.wien.gv.at/umwelt/weinbaufluren-riedenkarte",
+      "checked": "2026-09-06",
+      "coverage_note": "The official Vienna Riedenkarte and 2016 city regulation contain all 140 Weinbaurieden with parcel-level delimitations. The materialized registry preserves the 140 consolidated vineyard identities.",
+      "ingest_status": "materialized_official_2016_regulation",
+      "materialized_source_id": "wien_rieden_regulation_2016",
+      "materialized_records": 140
+    }
+  },
+  "groups": [],
+  "records": []
+}

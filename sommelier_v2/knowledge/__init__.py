@@ -7,7 +7,8 @@ from .catalog import SOURCES, WineKnowledgeCatalog, normalize_name
 from .cellar_pipeline import CellarHandoffInputs, CellarPipelineConstraintError, CellarPipelinePlan, CellarPipelineResult, run_cellar_pipeline
 from .decision_runtime import DecisionRuntimeApplication, DecisionRuntimeError, DecisionRuntimeInputs, DecisionRuntimeResult, OXYGEN_MANAGEMENT_PRIORS, apply_winemaking_decisions
 from .eu_promotions import EuCompositionDecision, EuLegalPromotionRegistry, VerificationLevel
-from .expanded_catalog import CommercialObservation, NamedSite, PiwiRecord, VarietyAreaObservation, WorldWineKnowledgeCatalog
+from .expanded_catalog import CommercialObservation, PiwiRecord, VarietyAreaObservation
+from .vineyard_registry import NamedSite, NamedSiteSource, SiteOwnershipPeriod, WorldWineKnowledgeCatalog
 from .extraction_process import CapManagementEvent, ExtractionConstraintError, ExtractionPlan, ExtractionPoint, ExtractionResult, simulate_extraction
 from .fermentation_chemistry import NutrientTimingEffect, ProcessChemistryAssessment, assess_process_chemistry, initial_microbiological_risk, molecular_so2_mg_l, nutrient_timing_effect, post_fermentation_microbiological_risk, white_juice_solids_risk
 from .fermentation_engine import AlcoholicFermentationParams, FermentationState, MalolacticParams, MalolacticState, initial_state, run_alcoholic_fermentation, run_malolactic, step_alcoholic_fermentation, step_malolactic, temperature_control_target
@@ -63,13 +64,13 @@ __all__ = [
     "LotMovement", "MODEL_EVIDENCE_LINKS", "MachineConstraintDecision", "MachineLegalConstraint",
     "MachineLegalConstraintRegistry", "MalolacticParams", "MalolacticState", "MaturationConstraintError",
     "MaturationInput", "MaturationPlan", "MaturationResult", "MaturationState", "MicroSiteObservation",
-    "ModelEvidenceLink", "MustComposition", "NamedSite", "NationalAwareLegalSpecRegistry",
+    "ModelEvidenceLink", "MustComposition", "NamedSite", "NamedSiteSource", "NationalAwareLegalSpecRegistry",
     "NationalLegalOverrideRegistry", "NationalOverrideDecision", "NutrientAddition", "NutrientTimingEffect",
     "OXYGEN_MANAGEMENT_PRIORS", "OriginConstraintError", "OriginDecision", "OriginRequest",
     "OxygenAddition", "PackagingAssessment", "PackagingConstraintError", "PackagingPlan", "PiwiRecord",
     "ProcessChemistryAssessment", "ProcessChemistryEvidenceError", "ProcessChemistryEvidenceRegistry",
     "ProvenanceSlice", "RegionGrapeRulebook", "RegionRule", "ReleaseDecision", "ReleaseRuntimeConstraintError",
-    "ReleaseRuntimeInputs", "SimulationPriors", "SiteDataQualityFlag", "SiteRegistry", "SiteResearchError",
+    "ReleaseRuntimeInputs", "SimulationPriors", "SiteDataQualityFlag", "SiteOwnershipPeriod", "SiteRegistry", "SiteResearchError",
     "SiteResearchRecord", "SiteResearchRegistry", "SiteResearchSource", "SiteResearchStats",
     "SmokeMarkerAssessment", "SmokeMarkerResult", "SmokeTaintConstraintError", "ToppingEvent",
     "TradeFieldPolicy", "TradeObservationConflict", "TradeResearchError", "TradeResearchRegistry",
