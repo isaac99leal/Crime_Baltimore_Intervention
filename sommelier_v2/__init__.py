@@ -7,12 +7,20 @@ from .authoritative_catalog import (
     LEGAL_SNAPSHOT_AS_OF_YEAR,
 )
 from .catalog import CatalogIndex, load_catalog, load_default_catalog, load_legacy_catalog
+from .commercial_provenance import (
+    CommercialDispatchResult,
+    CommercialProvenanceError,
+    dispatch_winery_lot_to_inventory,
+    inventory_provenance_components,
+    provenance_fingerprint,
+)
 from .domain import (
     BeverageProgram,
     CareerState,
     EquipmentAsset,
     GuestProfile,
     InventoryLot,
+    InventoryProvenanceComponent,
     MenuPlacement,
     OpenBottleState,
     RelationshipAccount,
@@ -40,6 +48,8 @@ __all__ = [
     "BeverageProgram",
     "CareerState",
     "CatalogIndex",
+    "CommercialDispatchResult",
+    "CommercialProvenanceError",
     "ConstrainedWineBuilder",
     "EquipmentAsset",
     "FinishedWineAssembler",
@@ -47,6 +57,7 @@ __all__ = [
     "GeneratedWine",
     "GuestProfile",
     "InventoryLot",
+    "InventoryProvenanceComponent",
     "LEGAL_SNAPSHOT_AS_OF_YEAR",
     "MenuPlacement",
     "OpenBottleState",
@@ -66,7 +77,10 @@ __all__ = [
     "WineryLot",
     "WineryProvenanceError",
     "WineryProvenanceLedger",
+    "dispatch_winery_lot_to_inventory",
+    "inventory_provenance_components",
     "load_catalog",
     "load_default_catalog",
     "load_legacy_catalog",
+    "provenance_fingerprint",
 ]
