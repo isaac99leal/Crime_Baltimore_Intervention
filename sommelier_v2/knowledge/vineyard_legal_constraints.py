@@ -24,6 +24,9 @@ class VineyardLegalConstraint:
     appellation: str
     min_vine_density_per_ha: int | None = None
     irrigation_prohibited: bool | None = None
+    allowed_planting_patterns: tuple[str, ...] = ()
+    max_row_spacing_m: float | None = None
+    min_vine_spacing_m: float | None = None
     variants: tuple[str, ...] = ()
     effective_from: str | None = None
     effective_to: str | None = None
@@ -90,12 +93,35 @@ class VineyardLegalConstraintRegistry:
                         f"{constraint_id} irrigation_prohibited must be boolean or null"
                     )
 
+                patterns = tuple(str(value).casefold() for value in raw.get("allowed_planting_patterns", []))
+                if any(value not in {"rows", "foule"} for value in patterns):
+                    raise ValueError(
+                        f"{constraint_id} has unsupported planting patterns: {patterns}"
+                    )
+
+                max_row_spacing_raw = raw.get("max_row_spacing_m")
+                max_row_spacing = None if max_row_spacing_raw is None else float(max_row_spacing_raw)
+                if max_row_spacing is not None and not 0.3 <= max_row_spacing <= 6.0:
+                    raise ValueError(
+                        f"{constraint_id} has unsupported maximum row spacing: {max_row_spacing}"
+                    )
+
+                min_vine_spacing_raw = raw.get("min_vine_spacing_m")
+                min_vine_spacing = None if min_vine_spacing_raw is None else float(min_vine_spacing_raw)
+                if min_vine_spacing is not None and not 0.2 <= min_vine_spacing <= 6.0:
+                    raise ValueError(
+                        f"{constraint_id} has unsupported minimum vine spacing: {min_vine_spacing}"
+                    )
+
                 constraint = VineyardLegalConstraint(
                     id=constraint_id,
                     country=str(raw["country"]),
                     appellation=str(raw["appellation"]),
                     min_vine_density_per_ha=density,
                     irrigation_prohibited=irrigation_raw,
+                    allowed_planting_patterns=patterns,
+                    max_row_spacing_m=max_row_spacing,
+                    min_vine_spacing_m=min_vine_spacing,
                     variants=tuple(str(value) for value in raw.get("variants", [])),
                     effective_from=str(raw["effective_from"]) if raw.get("effective_from") else None,
                     effective_to=str(raw["effective_to"]) if raw.get("effective_to") else None,
@@ -137,6 +163,9 @@ class VineyardLegalConstraintRegistry:
         appellation: str,
         vine_density_per_ha: int | None,
         irrigation_mm_per_week: float | None = None,
+        planting_pattern: str | None = None,
+        row_spacing_m: float | None = None,
+        vine_spacing_m: float | None = None,
         variant: str | None = None,
     ) -> VineyardLegalAssessment:
         constraint = self.resolve(country=country, appellation=appellation, variant=variant)
@@ -169,6 +198,37 @@ class VineyardLegalConstraintRegistry:
             elif irrigation_mm_per_week > 1e-9:
                 issues.append(
                     f"Irrigation is prohibited for sourced {constraint.appellation} vineyard eligibility; configured irrigation is {irrigation_mm_per_week:g} mm/week."
+                )
+
+        pattern_key = planting_pattern.casefold() if planting_pattern is not None else None
+        if constraint.allowed_planting_patterns:
+            if pattern_key is None:
+                unresolved.append(
+                    "Planting pattern is required to assess the reviewed row/foule vineyard geometry."
+                )
+            elif pattern_key not in constraint.allowed_planting_patterns:
+                issues.append(
+                    f"Planting pattern {planting_pattern!r} is not among the reviewed {constraint.appellation} patterns {constraint.allowed_planting_patterns}."
+                )
+
+        if constraint.max_row_spacing_m is not None and pattern_key == "rows":
+            if row_spacing_m is None:
+                unresolved.append(
+                    "Row spacing is required for a conventionally row-planted parcel."
+                )
+            elif row_spacing_m > constraint.max_row_spacing_m + 1e-9:
+                issues.append(
+                    f"Row spacing {row_spacing_m:g} m exceeds the sourced {constraint.appellation} maximum of {constraint.max_row_spacing_m:g} m."
+                )
+
+        if constraint.min_vine_spacing_m is not None:
+            if vine_spacing_m is None:
+                unresolved.append(
+                    "Vine-to-vine spacing is required to assess the reviewed vineyard geometry."
+                )
+            elif vine_spacing_m + 1e-9 < constraint.min_vine_spacing_m:
+                issues.append(
+                    f"Vine spacing {vine_spacing_m:g} m is below the sourced {constraint.appellation} minimum of {constraint.min_vine_spacing_m:g} m."
                 )
 
         if issues:
@@ -206,5 +266,14 @@ class VineyardLegalConstraintRegistry:
             ),
             "vineyard_irrigation_constraints": sum(
                 row.irrigation_prohibited is not None for row in self.constraints
+            ),
+            "vineyard_planting_pattern_constraints": sum(
+                bool(row.allowed_planting_patterns) for row in self.constraints
+            ),
+            "vineyard_row_spacing_constraints": sum(
+                row.max_row_spacing_m is not None for row in self.constraints
+            ),
+            "vineyard_vine_spacing_constraints": sum(
+                row.min_vine_spacing_m is not None for row in self.constraints
             ),
         }

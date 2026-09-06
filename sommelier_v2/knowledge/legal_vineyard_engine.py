@@ -97,6 +97,9 @@ class LegalVineyardEngine(BaseVineyardEngine):
                 variant=spec.variant,
                 vine_density_per_ha=block.vine_density_per_ha,
                 irrigation_mm_per_week=block.irrigation_mm_per_week,
+                planting_pattern=block.planting_pattern,
+                row_spacing_m=block.row_spacing_m,
+                vine_spacing_m=block.vine_spacing_m,
             )
             if vineyard_law.satisfied is False:
                 label_eligible = False

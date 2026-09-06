@@ -36,6 +36,9 @@ class VineyardBlock:
     aspect_degrees: float = 180.0
     row_orientation_degrees: float = 0.0
     vine_density_per_ha: int = 4500
+    planting_pattern: str | None = None
+    row_spacing_m: float | None = None
+    vine_spacing_m: float | None = None
     target_yield_t_ha: float = 7.0
     crop_load_index: float = 1.0
     soil_water_capacity_mm: float = 140.0
@@ -150,6 +153,14 @@ class VineyardEngine:
             issues.append("Planting year must be between 1800 and the vintage year")
         if block.vine_density_per_ha < 100 or block.vine_density_per_ha > 30000:
             issues.append("Vine density is outside the supported physical range 100..30,000 vines/ha")
+        if block.planting_pattern is not None and block.planting_pattern.casefold() not in {"rows", "foule"}:
+            issues.append("Planting pattern must be 'rows', 'foule', or unknown")
+        if block.row_spacing_m is not None and not 0.3 <= block.row_spacing_m <= 6.0:
+            issues.append("Row spacing is outside the supported physical range 0.3..6.0 m")
+        if block.vine_spacing_m is not None and not 0.2 <= block.vine_spacing_m <= 6.0:
+            issues.append("Vine spacing is outside the supported physical range 0.2..6.0 m")
+        if block.planting_pattern is not None and block.planting_pattern.casefold() == "foule" and block.row_spacing_m is not None:
+            issues.append("Row spacing is not applicable to a foule-planted block")
         if block.target_yield_t_ha <= 0 or block.target_yield_t_ha > 60:
             issues.append("Target yield is outside the supported range 0..60 t/ha")
         if block.soil_water_capacity_mm <= 10 or block.soil_water_capacity_mm > 600:
@@ -190,8 +201,6 @@ class VineyardEngine:
             vintage_year=vintage_year,
             experimental=block.experimental,
         )
-        # LegalAwareRegionGrapeRulebook adds variant resolution; keep the base
-        # engine independent by testing that capability instead of importing it.
         if block.wine_variant is not None and hasattr(self.rulebook, "resolve_legal_spec"):
             kwargs["wine_variant"] = block.wine_variant
         decision = self.rulebook.evaluate(**kwargs)
