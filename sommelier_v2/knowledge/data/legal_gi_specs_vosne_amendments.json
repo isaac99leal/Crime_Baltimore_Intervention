@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "notes": "Contradiction-safe enrichment of the existing canonical Vosne-Romanee village and Premier Cru spec IDs from the current 2025 ministry specification.",
+  "sources": {},
+  "specs": [],
+  "amendments": [
+    {
+      "id": "fr:vosne-romanee:standard:masa-2025-enrichment",
+      "target_id": "fr:vosne-romanee:standard",
+      "set": {
+        "min_must_sugar_g_l": 180.0,
+        "max_total_alcohol_pct": 13.5,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["vosne_masa_2025"],
+      "append_notes": "Current specification makes the 180 g/L village maturity floor, 13.5% enriched total-alcohol ceiling, elevage through 15 June N+1 and release from 30 June N+1 machine-executable."
+    },
+    {
+      "id": "fr:vosne-romanee:premier-cru:masa-2025-enrichment",
+      "target_id": "fr:vosne-romanee:premier-cru",
+      "set": {
+        "min_must_sugar_g_l": 189.0,
+        "max_total_alcohol_pct": 14.0,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["vosne_masa_2025"],
+      "append_notes": "Current specification makes the 189 g/L Premier Cru maturity floor, 14.0% enriched total-alcohol ceiling, elevage through 15 June N+1 and release from 30 June N+1 machine-executable."
+    }
+  ]
+}
