@@ -2,19 +2,21 @@
 
 The base vineyard engine handles physical block/vintage mechanics. This wrapper
 makes sourced protected-origin specifications the default authority, applies
-strict vineyard/wine-yield and minimum-potential-alcohol limits, and separately
-evaluates whether a named site can be used as a legal label claim.
+strict vineyard/wine-yield and minimum-potential-alcohol limits, applies separately
+sourced machine-observable vineyard-law constraints, and evaluates whether a
+named site can be used as a legal label claim.
 """
 from __future__ import annotations
 
 from dataclasses import replace
 from typing import Iterable
 
-from .expanded_catalog import NamedSite, WorldWineKnowledgeCatalog
 from .legal_rules import LegalAwareRegionGrapeRulebook
 from .regional_rules import RegionGrapeRulebook
 from .site_claims import SiteClaimRegistry
 from .vineyard_engine import VineyardBlock, VineyardEngine as BaseVineyardEngine, VineyardOutcome
+from .vineyard_legal_constraints import VineyardLegalConstraintRegistry
+from .vineyard_registry import NamedSite, WorldWineKnowledgeCatalog
 from .vintage_engine import DailyWeather
 
 
@@ -26,11 +28,18 @@ class LegalVineyardEngine(BaseVineyardEngine):
         rulebook: RegionGrapeRulebook | None = None,
         sites: Iterable[NamedSite] | None = None,
         site_claims: SiteClaimRegistry | None = None,
+        vineyard_constraints: VineyardLegalConstraintRegistry | None = None,
     ) -> None:
+        # Use the canonical enriched named-vineyard registry, not the legacy world
+        # catalog. This makes the default legal vineyard engine see the same site
+        # identities exposed by sommelier_v2.knowledge.WorldWineKnowledgeCatalog.
         catalog = catalog or WorldWineKnowledgeCatalog()
         rulebook = rulebook or LegalAwareRegionGrapeRulebook(catalog=catalog)
         super().__init__(catalog=catalog, rulebook=rulebook, sites=sites)
         self.site_claims = site_claims or SiteClaimRegistry()
+        self.vineyard_constraints = vineyard_constraints or VineyardLegalConstraintRegistry(
+            legal_specs=rulebook.legal_specs if isinstance(rulebook, LegalAwareRegionGrapeRulebook) else None
+        )
 
     def simulate(
         self,
@@ -78,6 +87,25 @@ class LegalVineyardEngine(BaseVineyardEngine):
             issues.append(
                 f"Potential alcohol {result.potential_alcohol_pct:.2f}% is below sourced {spec.appellation} minimum natural alcohol {spec.min_potential_alcohol_pct:.2f}%."
             )
+
+        vineyard_constraint = self.vineyard_constraints.resolve(
+            country=block.country,
+            appellation=spec.appellation,
+            variant=spec.variant,
+        )
+        if vineyard_constraint is not None:
+            vineyard_law = self.vineyard_constraints.assess(
+                country=block.country,
+                appellation=spec.appellation,
+                variant=spec.variant,
+                vine_density_per_ha=block.vine_density_per_ha,
+            )
+            if vineyard_law.satisfied is False:
+                label_eligible = False
+                issues.extend(vineyard_law.issues)
+            elif vineyard_law.satisfied is None:
+                warnings.extend(vineyard_law.warnings)
+
         if spec.grape_to_wine_yield_pct is not None:
             warnings.append(
                 f"Legal grape-to-wine yield ceiling is {spec.grape_to_wine_yield_pct:g}%; enforce it at pressing/vinification, not vineyard harvest."
