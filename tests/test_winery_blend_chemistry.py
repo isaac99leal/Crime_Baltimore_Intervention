@@ -3,7 +3,10 @@ from __future__ import annotations
 import unittest
 from types import SimpleNamespace
 
-from sommelier_v2.knowledge.blend_chemistry import BlendChemistryComponent
+from sommelier_v2.knowledge.blend_chemistry import (
+    BlendChemistryComponent,
+    BlendChemistryConstraintError,
+)
 from sommelier_v2.knowledge.winery_blend_chemistry import (
     WineryBlendChemistryConstraintError,
     blend_winery_lots_with_chemistry,
@@ -118,7 +121,7 @@ class WineryBlendChemistryBridgeTests(unittest.TestCase):
 
     def test_chemistry_failure_is_atomic_for_provenance(self) -> None:
         ledger = self.ledger()
-        with self.assertRaises(Exception):
+        with self.assertRaises(BlendChemistryConstraintError):
             blend_winery_lots_with_chemistry(
                 ledger,
                 ["cab", "merlot"],
