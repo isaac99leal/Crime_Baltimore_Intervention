@@ -81,12 +81,18 @@ class VarietyIdentityShard0006Tests(unittest.TestCase):
             "UNKNOWN",
         )
 
-    def test_known_conflicted_or_underspecified_rows_remain_unknown(self):
-        for source_name in ("Petit Verdot", "Alicante Bouschet", "Catarratto Bianco"):
-            self.assertEqual(
-                self.registry.resolve(source_name, source_id="adelaide_2025").status,
-                "UNKNOWN",
-            )
+    def test_first_class_conflicts_are_r0_and_other_unreviewed_rows_stay_unknown(self):
+        for source_name in ("Petit Verdot", "Catarratto Bianco"):
+            decision = self.registry.resolve(source_name, source_id="adelaide_2025")
+            self.assertEqual(decision.status, "CONFLICT")
+            self.assertEqual(decision.level, "R0")
+            self.assertFalse(decision.identity_confirmed)
+            self.assertIsNone(decision.canonical_id)
+
+        self.assertEqual(
+            self.registry.resolve("Alicante Bouschet", source_id="adelaide_2025").status,
+            "UNKNOWN",
+        )
 
     def test_exact_reviewed_adelaide_r5_population_is_at_least_48(self):
         reviewed = {
