@@ -29,9 +29,11 @@ class VarietyIdentityAuditTests(unittest.TestCase):
 
     def test_known_hard_rows_remain_visible(self):
         names = {row["name"] for row in self.metrics["top_unresolved"]}
-        self.assertIn("Trebbiano Toscano", names)
-        self.assertIn("Alicante Henri Bouschet", names)
+        self.assertNotIn("Trebbiano Toscano", names)
+        self.assertNotIn("Alicante Henri Bouschet", names)
         self.assertIn("Côt", names)
+        self.assertIn("Tribidrag", names)
+        self.assertIn("Catarratto Bianco", names)
 
     def test_unknown_is_not_counted_as_resolved_area(self):
         self.assertLess(
