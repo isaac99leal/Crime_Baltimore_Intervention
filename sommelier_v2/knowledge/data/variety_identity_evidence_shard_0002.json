@@ -1,0 +1,74 @@
+{
+  "snapshot_version": "2026-09-07.5",
+  "scope": "Second additive reviewed botanical identity shard. Source-name identity remains separate from legal origin permission.",
+  "evidence": {
+    "grapegen06-cabernet-franc-1927-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:1927",
+      "source_id": "adelaide_2025",
+      "source_name": "Cabernet Franc",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Cabernet franc names from multiple European national collections to CABERNET FRANC, VIVC 1927. Adelaide's case-only spelling difference does not alter exact_name identity. Botanical identity only."
+    },
+    "grapegen06-chenin-blanc-2527-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:2527",
+      "source_id": "adelaide_2025",
+      "source_name": "Chenin Blanc",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Chenin/Chenin blanc names to CHENIN BLANC, VIVC 2527. Adelaide's exact source name Chenin Blanc is promoted as botanical identity only."
+    },
+    "cnr-vitisgrinzane-barbera-974-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://vitisgrinzane.ipsp.cnr.it/do/364c5c59-4765-497c-9b4f-2d87c728cb7c",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Barbera N. | Vitis Grinzane",
+      "canonical_id": "vivc:974",
+      "source_id": "adelaide_2025",
+      "source_name": "Barbera",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "CNR/IPSP Vitis Grinzane explicitly reports VIVC 974 for Barbera, Vitis vinifera, wine-grape use, and trueness-to-type identification. Botanical identity only."
+    },
+    "cnr-vitisgrinzane-viognier-13106-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://vitisgrinzane.ipsp.cnr.it/do/0cf23c38-d420-43ff-a520-9674461bd654",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Viognier B. | Vitis Grinzane",
+      "canonical_id": "vivc:13106",
+      "source_id": "adelaide_2025",
+      "source_name": "Viognier",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "CNR/IPSP Vitis Grinzane explicitly reports VIVC 13106 for Viognier, Vitis vinifera, wine-grape use, and trueness-to-type identification. Botanical identity only."
+    }
+  },
+  "identities": [
+    {"id": "vivc:1927", "vivc_id": 1927, "prime_name": "CABERNET FRANC", "record_status": "reviewed_cross_registry_identity", "color": "black", "species": "Vitis vinifera", "parentage": null},
+    {"id": "vivc:2527", "vivc_id": 2527, "prime_name": "CHENIN BLANC", "record_status": "reviewed_cross_registry_identity", "color": "white", "species": "Vitis vinifera", "parentage": null},
+    {"id": "vivc:974", "vivc_id": 974, "prime_name": "BARBERA", "record_status": "reviewed_cross_registry_identity", "color": "black", "species": "Vitis vinifera", "parentage": null},
+    {"id": "vivc:13106", "vivc_id": 13106, "prime_name": "VIOGNIER", "record_status": "reviewed_cross_registry_identity", "color": "white", "species": "Vitis vinifera", "parentage": null}
+  ],
+  "links": [
+    {"source_id": "adelaide_2025", "source_name": "Cabernet Franc", "canonical_id": "vivc:1927", "level": "R5", "evidence_ids": ["grapegen06-cabernet-franc-1927-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Chenin Blanc", "canonical_id": "vivc:2527", "level": "R5", "evidence_ids": ["grapegen06-chenin-blanc-2527-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Barbera", "canonical_id": "vivc:974", "level": "R5", "evidence_ids": ["cnr-vitisgrinzane-barbera-974-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Viognier", "canonical_id": "vivc:13106", "level": "R5", "evidence_ids": ["cnr-vitisgrinzane-viognier-13106-2026-09-07"]}
+  ]
+}
