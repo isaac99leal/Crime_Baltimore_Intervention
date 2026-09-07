@@ -59,7 +59,14 @@ class MarsannaySiteIdentityTests(unittest.TestCase):
             )
         )
         self.assertFalse(origin.site_claim_eligible)
-        self.assertEqual(origin.site_claim_status, "site_claim_rule_unverified")
+        self.assertEqual(origin.site_claim_status, "site_claim_pending_homologation")
+        self.assertEqual(
+            origin.site_claim_rule_id,
+            "sitehold:fr:marsannay:pc-2026-red-white-pending-homologation",
+        )
+        self.assertTrue(
+            any(item.startswith("site_claim_hold:") for item in origin.site_claim_evidence)
+        )
 
 
 class MarsannayLegalMatrixTests(unittest.TestCase):
