@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive 2024 Premier Cru climat label-claim rules for Pouilly-Loché and Pouilly-Vinzelles. Generic lieux-dits remain fail-closed.",
+  "sources": {
+    "pouilly_loche_masa_2024": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOP Pouilly-Loché homologué par arrêté du 18 novembre 2024",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-e3cbcf4c-2303-4444-a37e-ec66b3910e6b/telechargement",
+      "checked": "2026-09-07",
+      "scope": "Current homologated specification naming Les Mûres as the Premier Cru climat."
+    },
+    "pouilly_vinzelles_masa_2024": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOP Pouilly-Vinzelles homologué par arrêté du 18 novembre 2024",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-5a8ac97a-e1f0-44bd-87fd-3e0602b468d2/telechargement",
+      "checked": "2026-09-07",
+      "scope": "Current homologated specification naming Les Longeays, Les Pétaux and Les Quarts as Premier Cru climats."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:pouilly-loche:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Pouilly-Loché",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["pouilly_loche_masa_2024"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["pouilly_loche_masa_2024"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "Only the parent-scoped Les Mûres climat identity is promoted by this rule."
+    },
+    {
+      "id": "siteclaim:fr:pouilly-vinzelles:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Pouilly-Vinzelles",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["pouilly_vinzelles_masa_2024"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["pouilly_vinzelles_masa_2024"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "Only the parent-scoped Les Longeays, Les Pétaux and Les Quarts climat identities are promoted by this rule."
+    }
+  ]
+}

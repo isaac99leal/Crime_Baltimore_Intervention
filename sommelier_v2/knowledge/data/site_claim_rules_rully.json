@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive Rully Premier Cru climat label-claim rule. Generic Rully lieux-dits remain fail-closed. The homologated 2011 cahier explicitly authorizes the 23 listed climat names for Premier Cru production in both white and red; current INAO product records corroborate the active protected product names.",
+  "sources": {
+    "rully_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Rully Premier Cru current product records",
+      "url": "https://www.inao.gouv.fr/produit/rully-premier-cru-champs-cloux-blanc-9145",
+      "checked": "2026-09-07",
+      "scope": "Current INAO product records confirm Rully red/white AOP status and active named Premier Cru products."
+    },
+    "rully_cahier_2011": {
+      "authority": "Ministère de l'Agriculture / Bulletin officiel",
+      "title": "Cahier des charges de l'AOC Rully homologué par le décret n° 2011-1704 du 30 novembre 2011",
+      "url": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-0703ae3c-1410-4bc8-9ac0-97f4132558c4/telechargement",
+      "checked": "2026-09-07",
+      "scope": "Direct specification: the AOC may be followed by any of the 23 listed climat names for wines meeting Premier Cru production conditions; Premier Cru named-climat wines are white or red."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:rully:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Rully",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bivb_rully"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["rully_inao_current", "rully_cahier_2011"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The 23 materialized Rully Premier Cru climat identities are claimable for the strict white and red Premier Cru paths. The current canonical identity Clos du Chaigne follows current INAO product nomenclature; the 2011 cahier prints Clos du Chaigne (à Jean de France). Generic Rully lieux-dits are not promoted."
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "snapshot_version": "2026-09-07.6",
+  "scope": "Third additive exact-name botanical identity shard from the European GrapeGen registered-name to VIVC crosswalk. No synonym widening or legal origin permission is implied.",
+  "evidence": {
+    "grapegen06-riesling-10077-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:10077", "source_id": "adelaide_2025", "source_name": "Riesling",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Riesling names to RIESLING WEISS, VIVC 10077. Welschriesling is explicitly a different VIVC identity and is not merged."
+    },
+    "grapegen06-rkatsiteli-10116-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:10116", "source_id": "adelaide_2025", "source_name": "Rkatsiteli",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps Georgian Rkatsiteli and registered spelling variants to RKATSITELI, VIVC 10116. The Adelaide exact source spelling is promoted only."
+    },
+    "grapegen06-monastrell-7915-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:7915", "source_id": "adelaide_2025", "source_name": "Monastrell",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps Spanish Monastrell to MONASTRELL, VIVC 7915. Mourvèdre appears as a separately registered synonym in the source, but no Adelaide Mourvèdre link is created here."
+    },
+    "grapegen06-pinot-blanc-9272-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:9272", "source_id": "adelaide_2025", "source_name": "Pinot Blanc",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Pinot blanc names to PINOT BLANC, VIVC 9272. Pinot Gris, Pinot Noir, Pinot Meunier, and Chardonnay remain separate identities."
+    },
+    "grapegen06-gamay-noir-4377-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:4377", "source_id": "adelaide_2025", "source_name": "Gamay Noir",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen explicitly maps registered Gamay Noir to GAMAY NOIR, VIVC 4377. Teinturier Gamay identities are separately numbered and are not merged."
+    },
+    "grapegen06-garnacha-blanca-4457-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:4457", "source_id": "adelaide_2025", "source_name": "Garnacha Blanca",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps Spanish Garnacha Blanca to GARNACHA BLANCA, VIVC 4457. This is not merged with Garnacha Tinta or other color variants."
+    },
+    "grapegen06-garnacha-peluda-4460-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:4460", "source_id": "adelaide_2025", "source_name": "Garnacha Peluda",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps Spanish Garnacha Peluda to GARNACHA PELUDA, VIVC 4460. It remains distinct from VIVC 4461."
+    },
+    "grapegen06-garnacha-tinta-4461-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:4461", "source_id": "adelaide_2025", "source_name": "Garnacha Tinta",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen explicitly maps Spanish Garnacha Tinta to GARNACHA TINTA, VIVC 4461. This resolves the Adelaide row directly; it does not create an Adelaide source-name link for Grenache."
+    }
+  },
+  "identities": [
+    {"id":"vivc:10077","vivc_id":10077,"prime_name":"RIESLING WEISS","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:10116","vivc_id":10116,"prime_name":"RKATSITELI","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:7915","vivc_id":7915,"prime_name":"MONASTRELL","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:9272","vivc_id":9272,"prime_name":"PINOT BLANC","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4377","vivc_id":4377,"prime_name":"GAMAY NOIR","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4457","vivc_id":4457,"prime_name":"GARNACHA BLANCA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4460","vivc_id":4460,"prime_name":"GARNACHA PELUDA","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4461","vivc_id":4461,"prime_name":"GARNACHA TINTA","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Riesling","canonical_id":"vivc:10077","level":"R5","evidence_ids":["grapegen06-riesling-10077-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Rkatsiteli","canonical_id":"vivc:10116","level":"R5","evidence_ids":["grapegen06-rkatsiteli-10116-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Monastrell","canonical_id":"vivc:7915","level":"R5","evidence_ids":["grapegen06-monastrell-7915-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Pinot Blanc","canonical_id":"vivc:9272","level":"R5","evidence_ids":["grapegen06-pinot-blanc-9272-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Gamay Noir","canonical_id":"vivc:4377","level":"R5","evidence_ids":["grapegen06-gamay-noir-4377-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Garnacha Blanca","canonical_id":"vivc:4457","level":"R5","evidence_ids":["grapegen06-garnacha-blanca-4457-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Garnacha Peluda","canonical_id":"vivc:4460","level":"R5","evidence_ids":["grapegen06-garnacha-peluda-4460-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Garnacha Tinta","canonical_id":"vivc:4461","level":"R5","evidence_ids":["grapegen06-garnacha-tinta-4461-2026-09-07"]}
+  ]
+}

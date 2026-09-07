@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "notes": "Strict 2024 Premier Cru production paths for Pouilly-Loché and Pouilly-Vinzelles. Only the newly homologated Premier Cru paths are promoted here because this Burgundy closeout tranche is intentionally GC/PC-scoped. Manual-harvest transition provisions are not collapsed into an unconditional timeless boolean; they require vintage-aware representation.",
+  "sources": {
+    "pouilly_loche_masa_2024": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOP Pouilly-Loché homologué par arrêté du 18 novembre 2024",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-e3cbcf4c-2303-4444-a37e-ec66b3910e6b/telechargement",
+      "checked": "2026-09-07",
+      "scope": "Current homologated Pouilly-Loché specification, including Premier Cru Les Mûres, Chardonnay-only encépagement, maturity, yield, analytical, élevage and release rules."
+    },
+    "pouilly_vinzelles_masa_2024": {
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOP Pouilly-Vinzelles homologué par arrêté du 18 novembre 2024",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-5a8ac97a-e1f0-44bd-87fd-3e0602b468d2/telechargement",
+      "checked": "2026-09-07",
+      "scope": "Current homologated Pouilly-Vinzelles specification, including Premier Cru Les Longeays, Les Pétaux and Les Quarts, Chardonnay-only encépagement, maturity, yield, analytical, élevage and release rules."
+    },
+    "pouilly_loche_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Pouilly-Loché premier cru les Mûres current product record",
+      "url": "https://www.inao.gouv.fr/produit/pouilly-loche-premier-cru-les-mures-21395",
+      "checked": "2026-09-07",
+      "scope": "Current INAO product record and legal-text chain confirming the 18 November 2024 homologation and active Premier Cru Les Mûres product."
+    },
+    "pouilly_vinzelles_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Pouilly-Vinzelles Premier Cru current product records",
+      "url": "https://www.inao.gouv.fr/produit/pouilly-vinzelles-premier-cru-les-quarts-21393",
+      "checked": "2026-09-07",
+      "scope": "Current INAO product records and legal-text chain confirming the 18 November 2024 homologation and active Premier Cru climat products."
+    }
+  },
+  "specs": [
+    {
+      "id": "fr:pouilly-loche:premier-cru",
+      "country": "France",
+      "appellation": "Pouilly-Loché",
+      "aliases": ["Pouilly-Loché Premier Cru", "Pouilly-Loché 1er Cru"],
+      "variant": "premier cru",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay"],
+      "grape_constraints": [{"grape": "Chardonnay", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 195.0,
+      "min_potential_alcohol_pct": 12.0,
+      "max_total_alcohol_pct": 13.5,
+      "max_yield_hl_ha": 58.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 7,
+      "min_elevage_until_day": 1,
+      "release_year_offset": 1,
+      "earliest_release_month": 7,
+      "earliest_release_day": 15,
+      "source_ids": ["pouilly_loche_masa_2024", "pouilly_loche_inao_current"],
+      "notes": "Strict Premier Cru positive path. The conditional 4 g/L fermentable-sugar allowance is not promoted until its acidity condition is machine-representable. The cahier's transitional/manual-harvest provisions remain outside the timeless boolean field pending vintage-aware practice rules. Named-climat eligibility is evaluated separately by SiteClaimRegistry."
+    },
+    {
+      "id": "fr:pouilly-vinzelles:premier-cru",
+      "country": "France",
+      "appellation": "Pouilly-Vinzelles",
+      "aliases": ["Pouilly-Vinzelles Premier Cru", "Pouilly-Vinzelles 1er Cru"],
+      "variant": "premier cru",
+      "wine_style": "white",
+      "allowed_grapes": ["Chardonnay"],
+      "grape_constraints": [{"grape": "Chardonnay", "min_pct": 100, "max_pct": 100}],
+      "min_must_sugar_g_l": 195.0,
+      "min_potential_alcohol_pct": 12.0,
+      "max_total_alcohol_pct": 13.5,
+      "max_yield_hl_ha": 58.0,
+      "max_residual_sugar_g_l": 3.0,
+      "min_elevage_year_offset": 1,
+      "min_elevage_until_month": 7,
+      "min_elevage_until_day": 1,
+      "release_year_offset": 1,
+      "earliest_release_month": 7,
+      "earliest_release_day": 15,
+      "source_ids": ["pouilly_vinzelles_masa_2024", "pouilly_vinzelles_inao_current"],
+      "notes": "Strict Premier Cru positive path. The conditional 4 g/L fermentable-sugar allowance is not promoted until its acidity condition is machine-representable. The cahier's transitional/manual-harvest provisions remain outside the timeless boolean field pending vintage-aware practice rules. Named-climat eligibility is evaluated separately by SiteClaimRegistry."
+    }
+  ]
+}
