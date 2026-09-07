@@ -1,0 +1,20 @@
+{
+  "handoff_id":"WKV2-ASTRA-2026-09-06-R1",
+  "role":"research_reconciliation_seed_not_canonical",
+  "scope":"Burgundy reconciliation shard index",
+  "part":6,
+  "parts_total":6,
+  "premier_cru_parent_shards":[
+    "ASTRA_BURGUNDY_PC_RECONCILIATION_PART_01.json",
+    "ASTRA_BURGUNDY_PC_RECONCILIATION_PART_02.json",
+    "ASTRA_BURGUNDY_PC_RECONCILIATION_PART_03.json",
+    "ASTRA_BURGUNDY_PC_RECONCILIATION_PART_04.json",
+    "ASTRA_BURGUNDY_PC_RECONCILIATION_PART_05.json"
+  ],
+  "companion_files":[
+    "ASTRA_BURGUNDY_GC_AOCS_RECONCILIATION.json",
+    "ASTRA_BURGUNDY_GC_SUBDENOMS_RECONCILIATION.json",
+    "ASTRA_BURGUNDY_PENDING_CONFLICTS_RECONCILIATION.json"
+  ],
+  "warning":"All files are reconciliation input only. Live repository data and primary legal authorities control canonical state."
+}
