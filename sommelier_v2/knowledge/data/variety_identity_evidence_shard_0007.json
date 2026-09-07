@@ -1,0 +1,142 @@
+{
+  "snapshot_version": "2026-09-07.10",
+  "scope": "Seventh additive exact-name botanical identity shard, prioritized by unresolved planted-area impact and direct GrapeGen registered-name/VIVC mappings.",
+  "evidence": {
+    "grapegen06-montepulciano-7949-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:7949", "source_id": "adelaide_2025", "source_name": "Montepulciano",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Montepulciano names to MONTEPULCIANO, VIVC 7949. Botanical identity only."
+    },
+    "grapegen06-nero-davola-1986-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:1986", "source_id": "adelaide_2025", "source_name": "Nero d'Avola",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Nero d'Avola to CALABRESE, VIVC 1986. The canonical prime-name difference does not create an Adelaide Calabrese source-name link."
+    },
+    "grapegen06-aligote-312-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:312", "source_id": "adelaide_2025", "source_name": "Aligoté",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Aligoté to ALIGOTE, VIVC 312. Accentless Adelaide forms are not created by this assertion."
+    },
+    "grapegen06-touriga-franca-12593-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:12593", "source_id": "adelaide_2025", "source_name": "Touriga Franca",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps Portuguese Touriga Franca to TOURIGA FRANCA, VIVC 12593. It remains distinct from Touriga Nacional and Touriga Fêmea."
+    },
+    "grapegen06-touriga-nacional-12594-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:12594", "source_id": "adelaide_2025", "source_name": "Touriga Nacional",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Touriga nacional to TOURIGA NACIONAL, VIVC 12594. Case-only differences are exact under the resolver."
+    },
+    "grapegen06-alvarinho-15689-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:15689", "source_id": "adelaide_2025", "source_name": "Alvarinho",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps Portuguese Alvarinho to ALVARINHO, VIVC 15689. Albariño is not added to the Adelaide source namespace by this link."
+    },
+    "grapegen06-aglianico-121-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:121", "source_id": "adelaide_2025", "source_name": "Aglianico",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Aglianico to AGLIANICO, VIVC 121. Aglianicone remains a separate identity."
+    },
+    "grapegen06-ancellotta-447-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:447", "source_id": "adelaide_2025", "source_name": "Ancellotta",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Ancellotta to ANCELOTTA, VIVC 447. Canonical spelling is retained separately from the literal Adelaide source spelling."
+    },
+    "grapegen06-furmint-4292-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:4292", "source_id": "adelaide_2025", "source_name": "Furmint",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Furmint to FURMINT, VIVC 4292; CNR/IPSP Vitis Grinzane independently reports the same VIVC number and trueness-to-type identification."
+    },
+    "grapegen06-agiorgitiko-102-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:102", "source_id": "adelaide_2025", "source_name": "Agiorgitiko",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Agiorgitiko to AGIORGITIKO, VIVC 102. Botanical identity only."
+    },
+    "grapegen06-godello-4840-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:4840", "source_id": "adelaide_2025", "source_name": "Godello",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Spanish Godello to GODELHO, VIVC 4840. Gouveio/Godelho synonym expansion is not automatically introduced into Adelaide."
+    },
+    "grapegen06-assyrtiko-726-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:726", "source_id": "adelaide_2025", "source_name": "Assyrtiko",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Assyrtiko to ASSYRTIKO, VIVC 726. Adelaide Asirtiko Red remains a separate unresolved source row."
+    }
+  },
+  "identities": [
+    {"id":"vivc:7949","vivc_id":7949,"prime_name":"MONTEPULCIANO","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:1986","vivc_id":1986,"prime_name":"CALABRESE","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:312","vivc_id":312,"prime_name":"ALIGOTE","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:12593","vivc_id":12593,"prime_name":"TOURIGA FRANCA","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:12594","vivc_id":12594,"prime_name":"TOURIGA NACIONAL","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:15689","vivc_id":15689,"prime_name":"ALVARINHO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:121","vivc_id":121,"prime_name":"AGLIANICO","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:447","vivc_id":447,"prime_name":"ANCELOTTA","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4292","vivc_id":4292,"prime_name":"FURMINT","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:102","vivc_id":102,"prime_name":"AGIORGITIKO","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4840","vivc_id":4840,"prime_name":"GODELHO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:726","vivc_id":726,"prime_name":"ASSYRTIKO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Montepulciano","canonical_id":"vivc:7949","level":"R5","evidence_ids":["grapegen06-montepulciano-7949-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Nero d'Avola","canonical_id":"vivc:1986","level":"R5","evidence_ids":["grapegen06-nero-davola-1986-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Aligoté","canonical_id":"vivc:312","level":"R5","evidence_ids":["grapegen06-aligote-312-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Touriga Franca","canonical_id":"vivc:12593","level":"R5","evidence_ids":["grapegen06-touriga-franca-12593-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Touriga Nacional","canonical_id":"vivc:12594","level":"R5","evidence_ids":["grapegen06-touriga-nacional-12594-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Alvarinho","canonical_id":"vivc:15689","level":"R5","evidence_ids":["grapegen06-alvarinho-15689-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Aglianico","canonical_id":"vivc:121","level":"R5","evidence_ids":["grapegen06-aglianico-121-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Ancellotta","canonical_id":"vivc:447","level":"R5","evidence_ids":["grapegen06-ancellotta-447-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Furmint","canonical_id":"vivc:4292","level":"R5","evidence_ids":["grapegen06-furmint-4292-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Agiorgitiko","canonical_id":"vivc:102","level":"R5","evidence_ids":["grapegen06-agiorgitiko-102-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Godello","canonical_id":"vivc:4840","level":"R5","evidence_ids":["grapegen06-godello-4840-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Assyrtiko","canonical_id":"vivc:726","level":"R5","evidence_ids":["grapegen06-assyrtiko-726-2026-09-07"]}
+  ]
+}
