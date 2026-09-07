@@ -53,11 +53,12 @@ class VarietyIdentityShard0005Tests(unittest.TestCase):
             "UNKNOWN",
         )
 
-    def test_umbrella_catarratto_row_remains_unresolved(self):
-        self.assertEqual(
-            self.registry.resolve("Catarratto Bianco", source_id="adelaide_2025").status,
-            "UNKNOWN",
-        )
+    def test_umbrella_catarratto_row_is_explicit_r0_conflict(self):
+        decision = self.registry.resolve("Catarratto Bianco", source_id="adelaide_2025")
+        self.assertEqual(decision.status, "CONFLICT")
+        self.assertEqual(decision.level, "R0")
+        self.assertFalse(decision.identity_confirmed)
+        self.assertIsNone(decision.canonical_id)
 
 
 if __name__ == "__main__":
