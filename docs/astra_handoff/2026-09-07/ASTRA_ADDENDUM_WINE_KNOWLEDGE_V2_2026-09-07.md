@@ -13,6 +13,51 @@
 
 ---
 
+# R4 LIVE DELTA — 2026-09-07
+
+This section supersedes R3 numerical and queue checkpoints while preserving the older record below.
+
+```yaml
+pr: 78
+branch: foundation/sol-variety-identity-batch1-2026-09-07
+latest_code_head_before_this_documentation_update: 1b3954380c09df267464beea011bb91755d039d1
+reviewed_R5_adelaide_links: 85
+reviewed_R4_adelaide_links: 20
+strong_R4_R5_links: 105
+explicit_R0_conflicts: 3
+adelaide_prime_rows_audited: 1998
+resolved_2023_area_pct: ">79%; use CI audit for exact value"
+latest_evidence_shard: "0018"
+coverage_audit: scripts/variety_identity_audit.py
+ci_named_step: Audit variety identity coverage
+```
+
+Since R3, reviewed strong links added include:
+
+- R4: Muscat of Hamburg -> VIVC 8226; Côt -> 2889; Tribidrag -> 9703; Arinto de Bucelas -> 602; Corvina Veronese -> 2863; Durif -> 3738; Roditis -> 10141; Trousseau -> 12668.
+- R5: Nebbiolo -> 8417; Dornfelder -> 3659; Bical -> 1568; Loureiro -> 6912; Inzolia -> 492.
+
+The first-class R0 queue now also contains:
+
+- `Beba` -> VIVC 22710 in the Portuguese GrapeGen proposition versus VIVC 40846 in the Spanish `Beba / Valenci Blanco` proposition. The country-free Adelaide row is blocked from canonical promotion.
+
+This produces the current audited structural checkpoint of **105 strong source-specific identities plus 3 explicit conflicts**. Do not count R0 rows as resolved hectares.
+
+Important confidence semantics now demonstrated in live data:
+
+```text
+literal registered source proposition -> R5
+reviewed synonym / historical nomenclature / color-code-normalized proposition -> R4
+normalization-only candidate -> R2
+source-backed ambiguity -> R0
+```
+
+Prime-name differences still do not widen the Adelaide namespace. For example, Inzolia may resolve to ANSONICA/VIVC 492 without creating an Adelaide `Ansonica` source assertion; Loureiro may resolve to LOUREIRO BLANCO/VIVC 6912 without creating an Adelaide `Loureiro Blanco` source assertion.
+
+Next work remains acreage-weighted. High-risk rows such as Bordô, Criolla Grande, Cereza, Sultaniye, and other country-sensitive/homonymous names require proposition-level evidence rather than fame-based or spelling-based merging.
+
+---
+
 # R3 LIVE DELTA — 2026-09-07 17:55 ET
 
 This section supersedes older numerical checkpoints below without deleting their history.
