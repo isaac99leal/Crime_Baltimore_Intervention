@@ -226,7 +226,7 @@ class EvidenceResolverTests(unittest.TestCase):
     def test_unseen_and_unreviewed_names_stay_unknown(self):
         r = VarietyIdentityRegistry()
         self.assertEqual(r.resolve("Unseen", source_id="adelaide_2025").status, "UNKNOWN")
-        self.assertEqual(r.resolve("Nebbiolo", source_id="adelaide_2025").status, "UNKNOWN")
+        self.assertEqual(r.resolve("Nebbiolo", source_id="unreviewed-census").status, "UNKNOWN")
 
 
 if __name__ == "__main__":
