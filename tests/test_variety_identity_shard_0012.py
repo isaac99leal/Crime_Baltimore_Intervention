@@ -32,12 +32,12 @@ class VarietyIdentityShard0012Tests(unittest.TestCase):
             )
 
     def test_trebbiano_related_rows_do_not_collapse(self):
-        for source_name in (
-            "Trebbiano Romagnolo",
-            "Trebbiano Giallo",
-            "Trebbiano Modenese",
-            "Trebbiano Spoletino",
-        ):
+        romagnolo = self.registry.resolve("Trebbiano Romagnolo", source_id="adelaide_2025")
+        self.assertTrue(romagnolo.identity_confirmed)
+        self.assertEqual(romagnolo.canonical_id, "vivc:12625")
+        self.assertNotEqual(romagnolo.canonical_id, "vivc:12628")
+
+        for source_name in ("Trebbiano Giallo", "Trebbiano Modenese", "Trebbiano Spoletino"):
             decision = self.registry.resolve(source_name, source_id="adelaide_2025")
             self.assertFalse(decision.identity_confirmed)
             self.assertIsNone(decision.canonical_id)
