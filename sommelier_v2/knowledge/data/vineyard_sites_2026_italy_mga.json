@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "notes": "Current official Barolo and Barbaresco MGA identity tranche from the consolidated MASAF specifications attached to the 4 March 2026 measures. Identity evidence is separate from label-claim authority. Barolo alternate 'o' names are represented as aliases/cover names rather than fabricated additional physical MGAs.",
+  "sources": {
+    "barolo_masaf_2026_mga": {
+      "authority": "Ministero dell'agricoltura, della sovranità alimentare e delle foreste",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24322",
+      "checked": "2026-09-06",
+      "scope": "Barolo DOCG consolidated production specification attached to Provvedimento 4 March 2026, Article 8 current MGA list and vigna/MGA hierarchy.",
+      "evidence_class": "current_official_legal_named_site_list"
+    },
+    "barbaresco_masaf_2026_mga": {
+      "authority": "Ministero dell'agricoltura, della sovranità alimentare e delle foreste",
+      "url": "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/24323",
+      "checked": "2026-09-06",
+      "scope": "Barbaresco DOCG consolidated production specification attached to Provvedimento 4 March 2026, Article 7 current MGA list and vigna/MGA hierarchy.",
+      "evidence_class": "current_official_legal_named_site_list"
+    }
+  },
+  "groups": [
+    {
+      "country": "Italy",
+      "region": "Barolo DOCG",
+      "parent": "Barolo DOCG",
+      "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva",
+      "legal_status": "official_additional_geographical_mention",
+      "source_ids": ["barolo_masaf_2026_mga"],
+      "effective_from": "2026-03-04",
+      "names": [
+        "Albarella", "Annunziata", "Arborina", "Arione", "Ascheri", "Bablino", "Badarina", "Baudana", "Bergera-Pezzole", "Berri", "Bettolotti", "Boiolo", "Borzone", "Boscareto", "Boscatto", "Boschetti", "Brandini", "Brea", "Breri", "Bricco Ambrogio", "Bricco Boschis", "Bricco Chiesa", "Bricco Cogni", "Bricco delle Viole", "Bricco Luciani", "Bricco Manescotto", "Bricco Manzoni", "Bricco Rocca", "Bricco Rocche", "Bricco San Biagio", "Bricco San Giovanni", "Bricco San Pietro", "Bricco Voghera", "Briccolina", "Broglio", "Brunate", "Brunella", "Bussia", "Campasso", "Cannubi", "Canova", "Capalot", "Cappallotto", "Carpegna", "Case Nere", "Castagni", "Castellero", "Castelletto", "Castello", "Cerequio", "Cerrati", "Cerretta", "Cerviano-Merli", "Ciocchini", "Ciocchini-Loschetto", "Codana", "Collaretto", "Colombaro", "Conca", "Corini-Pallaretta", "Costabella", "Coste di Rose", "Coste di Vergne", "Crosia", "Damiano", "del comune di Barolo", "del comune di Castiglione Falletto", "del comune di Cherasco", "del comune di Diano d'Alba", "del comune di Grinzane Cavour", "del comune di La Morra", "del comune di Manforte d'Alba", "del comune di Novello", "del comune di Roddi", "del comune di Serralunga d’Alba", "del comune di Verduno", "Drucà", "Falletto", "Fiasco", "Fontanafredda", "Fossati", "Francia", "Gabutti", "Galina", "Gattera", "Giachini", "Gianetto", "Ginestra", "Gramolere", "Gustava", "La Corte", "La Serra", "La Vigna", "La Volta", "Lazzarito", "Le Coste", "Le Coste di Monforte", "Le Turne", "Lirano", "Liste", "Manocino", "Mantoetto", "Marenca", "Margheria", "Massara", "Meriame", "Monprivato", "Monrobiolo di Bussia", "Montanello", "Monvigliero", "Mosconi", "Neirane", "Ornato", "Paiagallo", "Panerole", "Parafada", "Parussi", "Pernanno", "Perno", "Piantà", "Pira", "Pisapola", "Prabon", "Prapò", "Preda", "Pugnane", "Ravera", "Ravera di Monforte", "Raviole", "Riva Rocca", "Rivassi", "Rive", "Rivette", "Rocche dell’Annunziata", "Rocche dell'Olmo", "Rocche di Castiglione", "Rocchettevino", "Rodasca", "Roere di Santa Maria", "Roggeri", "Roncaglie", "Ruè", "San Bernardo", "San Giacomo", "San Giovanni", "San Lorenzo", "San Lorenzo di Verduno", "San Pietro", "San Ponzio", "San Rocco", "Santa Maria", "Sant’Anna", "Sarmassa", "Scarrone", "Serra", "Serra dei Turchi", "Serradenari", "Silio", "Solanotto", "Sorano", "Sottocastello di Novello", "Teodoro", "Terlo", "Torriglione", "Valentino", "Vignane", "Vignarionda", "Vignolo", "Villero", "Zoccolaio", "Zonchetta", "Zuncai"
+      ]
+    },
+    {
+      "country": "Italy",
+      "region": "Barbaresco DOCG",
+      "parent": "Barbaresco DOCG",
+      "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva",
+      "legal_status": "official_additional_geographical_mention",
+      "source_ids": ["barbaresco_masaf_2026_mga"],
+      "effective_from": "2026-03-04",
+      "names": [
+        "Albesani", "Asili", "Ausario", "Balluri", "Basarin", "Bernadot", "Bordini", "Bricco di Neive", "Bricco di Treiso", "Bric Micca", "Ca' Grossa", "Canova", "Cars", "Casot", "Castellizzano", "Cavanna", "Cole", "Cottà", "Currà", "Faset", "Fausoni", "Ferrere", "Gaia-Principe", "Gallina", "Garassino", "Giacone", "Giacosa", "Manzola", "Marcarini", "Marcorino", "Martinenga", "Meruzzano", "Montaribaldi", "Montefico", "Montersino", "Montestefano", "Muncagota", "Nervo", "Ovello", "Paje'", "Pajore'", "Pora", "Rabaja'", "Rabaja-Bas", "Rio Sordo", "Rivetti", "Rizzi", "Roccalini", "Rocche Massalupo", "Rombone", "Roncaglie", "Roncagliette", "Ronchi", "San Cristoforo", "San Giuliano", "San Stunet", "Secondine", "Serraboella", "Serracapelli", "Serragrilli", "Starderi", "Tre Stelle", "Trifolera", "Valeirano", "Vallegrande", "Vicenziana"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "name": "Altenasso",
+      "country": "Italy", "region": "Barolo DOCG", "parent": "Barolo DOCG", "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva", "legal_status": "official_additional_geographical_mention",
+      "aliases": ["Garblet Suè", "Garbelletto Superiore"], "source_ids": ["barolo_masaf_2026_mga"], "effective_from": "2026-03-04"
+    },
+    {
+      "name": "Bergeisa",
+      "country": "Italy", "region": "Barolo DOCG", "parent": "Barolo DOCG", "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva", "legal_status": "official_additional_geographical_mention",
+      "aliases": ["Bergesia"], "source_ids": ["barolo_masaf_2026_mga"], "effective_from": "2026-03-04"
+    },
+    {
+      "name": "Cannubi Boschis",
+      "country": "Italy", "region": "Barolo DOCG", "parent": "Barolo DOCG", "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva", "legal_status": "official_additional_geographical_mention",
+      "aliases": ["Cannubi"], "source_ids": ["barolo_masaf_2026_mga"], "effective_from": "2026-03-04"
+    },
+    {
+      "name": "Cannubi Muscatel",
+      "country": "Italy", "region": "Barolo DOCG", "parent": "Barolo DOCG", "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva", "legal_status": "official_additional_geographical_mention",
+      "aliases": ["Cannubi"], "source_ids": ["barolo_masaf_2026_mga"], "effective_from": "2026-03-04"
+    },
+    {
+      "name": "Cannubi San Lorenzo",
+      "country": "Italy", "region": "Barolo DOCG", "parent": "Barolo DOCG", "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva", "legal_status": "official_additional_geographical_mention",
+      "aliases": ["Cannubi"], "source_ids": ["barolo_masaf_2026_mga"], "effective_from": "2026-03-04"
+    },
+    {
+      "name": "Cannubi Valletta",
+      "country": "Italy", "region": "Barolo DOCG", "parent": "Barolo DOCG", "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva", "legal_status": "official_additional_geographical_mention",
+      "aliases": ["Cannubi"], "source_ids": ["barolo_masaf_2026_mga"], "effective_from": "2026-03-04"
+    },
+    {
+      "name": "Gallaretto Garretti",
+      "country": "Italy", "region": "Barolo DOCG", "parent": "Barolo DOCG", "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva", "legal_status": "official_additional_geographical_mention",
+      "aliases": ["Gallaretto", "Garretti"], "source_ids": ["barolo_masaf_2026_mga"], "effective_from": "2026-03-04"
+    },
+    {
+      "name": "Mariondino",
+      "country": "Italy", "region": "Barolo DOCG", "parent": "Barolo DOCG", "site_type": "MGA",
+      "classification": "Menzione Geografica Aggiuntiva", "legal_status": "official_additional_geographical_mention",
+      "aliases": ["Monriondino", "Bricco Moriondino"], "source_ids": ["barolo_masaf_2026_mga"], "effective_from": "2026-03-04"
+    }
+  ]
+}
