@@ -69,7 +69,9 @@ class ObservationIdentityTests(unittest.TestCase):
     def test_catalog_exposes_evidence_resolution_separately_from_name_lookup(self):
         c = self.catalog(["Cabernet Sauvignon"])
         self.assertIsNotNone(c.grape("Cabernet Sauvignon"))
-        self.assertFalse(c.resolve_variety_identity("Cabernet Sauvignon").identity_confirmed)
+        decision = c.resolve_variety_identity("Cabernet Sauvignon")
+        self.assertTrue(decision.identity_confirmed)
+        self.assertEqual(decision.canonical_id, "vivc:1929")
 
     def test_all_country_rows_survive_without_fake_country(self):
         c = WorldWineKnowledgeCatalog.__new__(WorldWineKnowledgeCatalog)
@@ -134,10 +136,31 @@ class EvidenceResolverTests(unittest.TestCase):
         self.assertEqual(result.status, "CONFLICT")
         self.assertIsNone(result.canonical_id)
 
-    def test_missing_data_and_real_unverified_passports_stay_unknown(self):
+    def test_first_reviewed_adelaide_links_resolve_exactly(self):
+        r = VarietyIdentityRegistry()
+        expected = {
+            "Cabernet Sauvignon": "vivc:1929",
+            "Syrah": "vivc:11748",
+            "Rondo": "vivc:14308",
+            "Moschofilero": "vivc:8068",
+        }
+        for source_name, canonical_id in expected.items():
+            decision = r.resolve(source_name, source_id="adelaide_2025")
+            self.assertTrue(decision.identity_confirmed, source_name)
+            self.assertEqual(decision.status, "RESOLVED")
+            self.assertEqual(decision.level, "R5")
+            self.assertEqual(decision.canonical_id, canonical_id)
+
+    def test_resolution_remains_source_scoped(self):
+        r = VarietyIdentityRegistry()
+        for source_name in ("Cabernet Sauvignon", "Syrah", "Rondo", "Moschofilero"):
+            self.assertFalse(r.resolve(source_name, source_id="another-census").identity_confirmed)
+
+    def test_unseen_and_unreviewed_names_stay_unknown(self):
         r = VarietyIdentityRegistry()
         self.assertEqual(r.resolve("Unseen", source_id="adelaide_2025").status, "UNKNOWN")
-        self.assertFalse(r.resolve("Cabernet Sauvignon", source_id="adelaide_2025").identity_confirmed)
+        self.assertEqual(r.resolve("Merlot", source_id="adelaide_2025").status, "UNKNOWN")
+        self.assertEqual(r.resolve("Chardonnay", source_id="adelaide_2025").status, "UNKNOWN")
 
 
 if __name__ == "__main__":
