@@ -42,6 +42,22 @@ class BulkVarietyRegistryTests(unittest.TestCase):
             self.assertIsNotNone(row.ttb_status, name)
             self.assertEqual(row.spatial_state_us, "COMMERCIALLY_PLAUSIBLE")
 
+    def test_growth_plausibility_distinguishes_observed_ttb_and_analogue(self):
+        observed = self.registry.assess_country_plausibility("Côt", "Argentina")
+        self.assertEqual(observed.state, "OBSERVED")
+        self.assertFalse(observed.legal_entitlement_inferred)
+
+        us = self.registry.assess_country_plausibility("Assyrtiko", "United States")
+        self.assertEqual(us.state, "COMMERCIALLY_PLAUSIBLE")
+        self.assertFalse(us.legal_entitlement_inferred)
+
+        analogue = self.registry.assess_country_plausibility("Shesh i Zi", "New Zealand")
+        self.assertIn(
+            analogue.state,
+            {"AGRONOMICALLY_PLAUSIBLE", "EXPERIMENTALLY_PLAUSIBLE"},
+        )
+        self.assertFalse(analogue.legal_entitlement_inferred)
+
     def test_observed_country_geography_is_preserved(self):
         malbec = self.by_name["Côt"]
         self.assertIn("Argentina", malbec.observed_countries)
