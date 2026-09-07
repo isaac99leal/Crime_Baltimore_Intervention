@@ -1,0 +1,350 @@
+{
+  "snapshot_version": "2026-09-07.12",
+  "scope": "Reviewed continuation of the Adelaide identity queue. Historical GrapeGen cross-references; no appellation permission.",
+  "evidence": {
+    "astra-batch3-2889-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:2889",
+      "source_id": "adelaide_2025",
+      "source_name": "Côt",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 34,
+      "notes": "Reviewed correction: Côt is the conventional accented spelling of Cot/Malbec. GrapeGen maps Cot and Malbec to 2889; Plantgrape confirms Malbec as the official alternative name for Cot. This source-specific review supersedes the earlier R2 decision without changing general normalization rules.",
+      "supporting_sources": [
+        {
+          "url": "https://www.plantgrape.fr/en/varieties/fruit-varieties/78",
+          "section": "Synonymy",
+          "retrieval_status": "retrieved_text"
+        },
+        {
+          "url": "https://www.vinsdeloire.fr/en/grape-varieties/cot",
+          "section": "Côt, also known as Malbec",
+          "retrieval_status": "search_index_only; direct access returned 403"
+        }
+      ]
+    },
+    "astra-batch3-8193-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:8193",
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat Blanc à Petits Grains",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 41,
+      "notes": "Reviewed source name to registry ID; no automatic family-name or synonym expansion.",
+      "supporting_sources": [
+        {
+          "url": "https://vitisgrinzane.ipsp.cnr.it/do/020cad79-17b0-4070-8a95-83781e97fed3",
+          "section": "Variety number 8193; trueness to type",
+          "retrieval_status": "retrieved_text"
+        }
+      ]
+    },
+    "astra-batch3-8241-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:8241",
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat of Alexandria",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 41,
+      "notes": "Reviewed source name to registry ID; no automatic family-name or synonym expansion."
+    },
+    "astra-batch3-12949-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:12949",
+      "source_id": "adelaide_2025",
+      "source_name": "Verdejo",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 65,
+      "notes": "Reviewed source name to registry ID; no automatic family-name or synonym expansion."
+    },
+    "astra-batch3-9278-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:9278",
+      "source_id": "adelaide_2025",
+      "source_name": "Pinot Meunier",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 48,
+      "notes": "Reviewed source name to registry ID; no automatic family-name or synonym expansion."
+    },
+    "astra-batch3-8141-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:8141",
+      "source_id": "adelaide_2025",
+      "source_name": "Müller-Thurgau",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 41,
+      "notes": "Reviewed source name to registry ID; no automatic family-name or synonym expansion."
+    },
+    "astra-batch3-11480-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:11480",
+      "source_id": "adelaide_2025",
+      "source_name": "Sémillon",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 58,
+      "notes": "Reviewed source name to registry ID; no automatic family-name or synonym expansion."
+    },
+    "astra-batch3-12625-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:12625",
+      "source_id": "adelaide_2025",
+      "source_name": "Trebbiano Romagnolo",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 63,
+      "notes": "Reviewed source name to registry ID; no automatic family-name or synonym expansion."
+    },
+    "astra-batch3-8243-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:8243",
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat Ottonel",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 41,
+      "notes": "Reviewed source name to registry ID; no automatic family-name or synonym expansion."
+    },
+    "astra-batch3-4419-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:4419",
+      "source_id": "adelaide_2025",
+      "source_name": "Garganega",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 25,
+      "notes": "Reviewed source name to registry ID; no automatic family-name or synonym expansion."
+    }
+  },
+  "identities": [
+    {
+      "id": "vivc:8193",
+      "vivc_id": 8193,
+      "prime_name": "MUSCAT A PETITS GRAINS BLANCS",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:8241",
+      "vivc_id": 8241,
+      "prime_name": "MUSCAT OF ALEXANDRIA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:12949",
+      "vivc_id": 12949,
+      "prime_name": "VERDEJO BLANCO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:9278",
+      "vivc_id": 9278,
+      "prime_name": "PINOT MEUNIER",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:8141",
+      "vivc_id": 8141,
+      "prime_name": "MUELLER THURGAU",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:11480",
+      "vivc_id": 11480,
+      "prime_name": "SEMILLON",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:12625",
+      "vivc_id": 12625,
+      "prime_name": "TREBBIANO ROMAGNOLO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:8243",
+      "vivc_id": 8243,
+      "prime_name": "MUSCAT OTTONEL",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:4419",
+      "vivc_id": 4419,
+      "prime_name": "GARGANEGA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    }
+  ],
+  "links": [
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Côt",
+      "canonical_id": "vivc:2889",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-2889-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat Blanc à Petits Grains",
+      "canonical_id": "vivc:8193",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-8193-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat of Alexandria",
+      "canonical_id": "vivc:8241",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-8241-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Verdejo",
+      "canonical_id": "vivc:12949",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-12949-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Pinot Meunier",
+      "canonical_id": "vivc:9278",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-9278-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Müller-Thurgau",
+      "canonical_id": "vivc:8141",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-8141-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Sémillon",
+      "canonical_id": "vivc:11480",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-11480-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Trebbiano Romagnolo",
+      "canonical_id": "vivc:12625",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-12625-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat Ottonel",
+      "canonical_id": "vivc:8243",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-8243-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Garganega",
+      "canonical_id": "vivc:4419",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch3-4419-2026-09-07"
+      ]
+    }
+  ]
+}
