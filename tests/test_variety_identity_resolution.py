@@ -118,8 +118,9 @@ class EvidenceResolverTests(unittest.TestCase):
 
     def test_default_registry_loads_sorted_additive_shards(self):
         r = VarietyIdentityRegistry()
-        self.assertGreaterEqual(len(r.snapshot_versions), 2)
+        self.assertGreaterEqual(len(r.snapshot_versions), 3)
         self.assertIn("2026-09-07.5", r.snapshot_versions)
+        self.assertIn("2026-09-07.6", r.snapshot_versions)
         self.assertEqual(r.snapshot_version, r.snapshot_versions[-1])
 
     def test_review_cannot_be_borrowed_from_another_assertion(self):
@@ -169,6 +170,14 @@ class EvidenceResolverTests(unittest.TestCase):
             "Chenin Blanc": "vivc:2527",
             "Barbera": "vivc:974",
             "Viognier": "vivc:13106",
+            "Riesling": "vivc:10077",
+            "Rkatsiteli": "vivc:10116",
+            "Monastrell": "vivc:7915",
+            "Pinot Blanc": "vivc:9272",
+            "Gamay Noir": "vivc:4377",
+            "Garnacha Blanca": "vivc:4457",
+            "Garnacha Peluda": "vivc:4460",
+            "Garnacha Tinta": "vivc:4461",
         }
         for source_name, canonical_id in expected.items():
             decision = r.resolve(source_name, source_id="adelaide_2025")
@@ -184,6 +193,8 @@ class EvidenceResolverTests(unittest.TestCase):
             "Merlot", "Chardonnay", "Tempranillo", "Airén",
             "Pinot Noir", "Pinot Gris", "Sangiovese", "Sauvignon Blanc",
             "Cabernet Franc", "Chenin Blanc", "Barbera", "Viognier",
+            "Riesling", "Rkatsiteli", "Monastrell", "Pinot Blanc",
+            "Gamay Noir", "Garnacha Blanca", "Garnacha Peluda", "Garnacha Tinta",
         ):
             self.assertFalse(r.resolve(source_name, source_id="another-census").identity_confirmed)
 
@@ -196,15 +207,18 @@ class EvidenceResolverTests(unittest.TestCase):
         self.assertEqual(folded.level, "R2")
         self.assertIsNone(folded.canonical_id)
 
-    def test_synonym_is_not_inferred_from_another_registry_name(self):
+    def test_exact_garnacha_row_does_not_create_grenache_source_alias(self):
         r = VarietyIdentityRegistry()
-        self.assertEqual(r.resolve("Garnacha Tinta", source_id="adelaide_2025").status, "UNKNOWN")
+        tinta = r.resolve("Garnacha Tinta", source_id="adelaide_2025")
+        self.assertTrue(tinta.identity_confirmed)
+        self.assertEqual(tinta.canonical_id, "vivc:4461")
         self.assertEqual(r.resolve("Grenache", source_id="adelaide_2025").status, "UNKNOWN")
+        self.assertEqual(r.resolve("Garnacha Roja (Gris)", source_id="adelaide_2025").status, "UNKNOWN")
 
     def test_unseen_and_unreviewed_names_stay_unknown(self):
         r = VarietyIdentityRegistry()
         self.assertEqual(r.resolve("Unseen", source_id="adelaide_2025").status, "UNKNOWN")
-        self.assertEqual(r.resolve("Pinot Blanc", source_id="adelaide_2025").status, "UNKNOWN")
+        self.assertEqual(r.resolve("Nebbiolo", source_id="adelaide_2025").status, "UNKNOWN")
 
 
 if __name__ == "__main__":
