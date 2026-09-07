@@ -396,6 +396,20 @@ class WorldWineKnowledgeCatalog:
             return rows[0] if len(rows) == 1 else None
         return self.grape_alias_index.get(normalize_name(name_or_alias))
 
+    def operational_variety(self, source_name: str):
+        """Return the simulation-enabled operational record for a source variety."""
+        from .variety_bulk import BulkVarietyRegistry
+        if not hasattr(self, "_bulk_variety_registry"):
+            self._bulk_variety_registry = BulkVarietyRegistry(catalog=self)
+        return self._bulk_variety_registry.record(source_name)
+
+    def assess_variety_country_plausibility(self, source_name: str, target_country: str):
+        """Assess observed/commercial/agronomic planting plausibility without legal inference."""
+        from .variety_bulk import BulkVarietyRegistry
+        if not hasattr(self, "_bulk_variety_registry"):
+            self._bulk_variety_registry = BulkVarietyRegistry(catalog=self)
+        return self._bulk_variety_registry.assess_country_plausibility(source_name, target_country)
+
     def resolve_variety_identity(self, source_name: str, *, source_id: str = "adelaide_2025",
                                  country: str | None = None):
         """Resolve botanical evidence independently of profile/search matching."""

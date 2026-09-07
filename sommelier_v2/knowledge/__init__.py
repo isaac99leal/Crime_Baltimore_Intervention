@@ -40,6 +40,7 @@ from .trade_research import TradeFieldPolicy, TradeObservationConflict, TradeRes
 from .vineyard_engine import SiteRegistry, VineyardBlock, VineyardEngine as BaseVineyardEngine, VineyardOutcome
 from .vineyard_legal_constraints import VineyardLegalAssessment, VineyardLegalConstraint, VineyardLegalConstraintRegistry
 from .vineyard_yield_adjustments import VineyardYieldAdjustment, VineyardYieldAdjustmentRegistry, VineyardYieldAdjustmentRule
+from .variety_bulk import BulkVarietyRegistry, GrowthPlausibilityDecision, OperationalTraitPriors, TTBDesignation, VarietyOperationalRecord
 from .vintage import load_legacy_vintage_knowledge, vintage_stats
 from .vintage_engine import DailyWeather, VintageDayState, VintageModelParams, VintageOutcome, simulate_vintage
 from .winemaking_decisions import DecisionAuthorityAssessment, DecisionEvidenceSource, DecisionOption, WinemakingDecision, WinemakingDecisionError, WinemakingDecisionRegistry, WinemakingDecisionStats, load_winemaking_decisions
@@ -80,7 +81,7 @@ __all__ = [
     "SmokeMarkerAssessment", "SmokeMarkerResult", "SmokeTaintConstraintError", "ToppingEvent",
     "TradeFieldPolicy", "TradeObservationConflict", "TradeResearchError", "TradeResearchRegistry",
     "TradeResearchStats", "TradeSourceRecord", "TradeTechnicalObservation", "ValidatedWineRecord",
-    "VarietyAreaObservation", "VerificationLevel", "VineyardBlock", "VineyardEngine", "VineyardLegalAssessment",
+    "BulkVarietyRegistry", "GrowthPlausibilityDecision", "OperationalTraitPriors", "TTBDesignation", "VarietyOperationalRecord", "VarietyAreaObservation", "VerificationLevel", "VineyardBlock", "VineyardEngine", "VineyardLegalAssessment",
     "VineyardLegalConstraint", "VineyardLegalConstraintRegistry", "VineyardOutcome",
     "VineyardYieldAdjustment", "VineyardYieldAdjustmentRegistry", "VineyardYieldAdjustmentRule",
     "VintageDayState", "VintageModelParams", "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory",
