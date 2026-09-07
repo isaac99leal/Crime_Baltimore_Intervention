@@ -37,11 +37,12 @@ class VarietyIdentityShard0010Tests(unittest.TestCase):
             )
 
     def test_muscat_color_and_family_rows_do_not_collapse(self):
-        for source_name in (
-            "Muscat of Alexandria",
-            "Muscat of Hamburg",
-            "Muscat Blanc à Petits Grains (R)",
-        ):
+        alexandria = self.registry.resolve("Muscat of Alexandria", source_id="adelaide_2025")
+        self.assertTrue(alexandria.identity_confirmed)
+        self.assertEqual(alexandria.canonical_id, "vivc:8241")
+        self.assertNotEqual(alexandria.canonical_id, "vivc:8193")
+
+        for source_name in ("Muscat of Hamburg", "Muscat Blanc à Petits Grains (R)"):
             decision = self.registry.resolve(source_name, source_id="adelaide_2025")
             self.assertFalse(decision.identity_confirmed)
             self.assertIsNone(decision.canonical_id)
