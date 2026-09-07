@@ -1,0 +1,12 @@
+{
+  "handoff_id":"WKV2-ASTRA-2026-09-06-R1",
+  "role":"research_reconciliation_seed_not_canonical",
+  "scope":"Burgundy Premier Cru claims",
+  "part":5,
+  "parts_total":6,
+  "parents":{
+    "Pouilly-Fuissé":["Au Vignerais","Aux Bouthières","Aux Chailloux","Aux Quarts","En France","En Servy","La Frérie","La Maréchaude","Le Clos","Le Clos de Monsieur Noly","Le Clos de Solutré","Le Clos Reyssier","Les Brulés","Les Chevrières","Les Crays","Les Ménétrières","Les Perrières","Les Reisses","Les Vignes Blanches","Pouilly","Sur la Roche","Vers Cras"],
+    "Pouilly-Loché":["Les Mûres"],
+    "Pouilly-Vinzelles":["Les Longeays","Les Pétaux","Les Quarts"]
+  }
+}
