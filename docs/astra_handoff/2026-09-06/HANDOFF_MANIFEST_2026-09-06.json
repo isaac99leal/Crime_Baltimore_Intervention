@@ -1,0 +1,21 @@
+{
+  "handoff_id": "WKV2-ASTRA-2026-09-06-R1",
+  "repository": "isaac99leal/Crime_Baltimore_Intervention",
+  "branch": "claude/somm-simulator-game-KQpS7",
+  "observed_parent_commit": "c278a052215d8f11abf18ccac2e26638a91c3d08",
+  "github_payload_policy": "Git contains the machine handoff and manifest. XLSX research artifacts are checkpoint evidence and should be reconciled, not treated as a parallel architecture.",
+  "artifacts": [
+    {"name":"ASTRA_HANDOFF_WINE_KNOWLEDGE_V2_2026-09-06.md","size_bytes":55512,"sha256":"7b2d275adec46604ac719efa4c46ca91cead3adaa29662010b6265b8d7463118","github_payload":true},
+    {"name":"ASTRA_RECONCILIATION_SEED_WINE_KNOWLEDGE_V2_2026-09-06.json","size_bytes":200339,"sha256":"f249c4353297b3bdb7f2fa9eb3521167c741451cc4d5dbbe4045e8798e44539a","github_payload":false,"note":"local/conversation machine seed; operative architecture summarized in handoff; repository remains canonical"},
+    {"name":"WINE_KNOWLEDGE_V2_CANONICAL_CHECKPOINT_2026-09-06.md","size_bytes":5031,"sha256":"42385470ac22735ada70df6dc4c0dae43f2b6892d8725711880dfba3c8c96b58","github_payload":false},
+    {"name":"VINEYARD_REGISTRY.md","size_bytes":2431,"sha256":"b52b2d2d1a3b1971a0c554e50dc1bb8410c471a77d05086626451af1ca00db23","github_payload":false},
+    {"name":"wine_knowledge_v2_validator.py","size_bytes":10699,"sha256":"74377dba3c9cccc68deed9686c2bb65c095e9ea0d33ab497068f1661c571bf57","github_payload":false},
+    {"name":"wine_knowledge_v2_validator_regression_results.json","size_bytes":3688,"sha256":"7b8347a0ccb1b66697cabf0112c8551bfb3671b8b2ccc5c876b28828f2b2a6c6","github_payload":false},
+    {"name":"Burgundy_GC_PC_Registry_VERIFIED_2026-09-06.xlsx","size_bytes":89789,"sha256":"e49e7a79b701e335cb6d0403c5c69496f4e6e6cd65d80fd2b0273eb2813f6ba4","github_payload":false},
+    {"name":"wine_knowledge_v2_fermentation_engine_v1.xlsx","size_bytes":47368,"sha256":"ddbf308cd46f23289dd4198eb49b357eaada6fcde52b6a019c3f29b60452790a","github_payload":false},
+    {"name":"wine_knowledge_v2_vintage_engine_v1.xlsx","size_bytes":31612,"sha256":"bc6d34420771aea946655f6b48378100f95174278fa48d61934438631f2ae632","github_payload":false},
+    {"name":"wine_knowledge_v2_cross_engine_validator_v1.xlsx","size_bytes":477530,"sha256":"32335b8dc416b1e0bdae9e5ab292739df41312ec91c22aec8f4e41329f1c05bd","github_payload":false},
+    {"name":"wine_knowledge_v2_variety_identity_engine_v1.xlsx","size_bytes":91704,"sha256":"ebf2a4e18c85f7bc411a96a4a6ac7199da323686906a35b124457599c100a970","github_payload":false},
+    {"name":"varieties_2000_to_2023.xlsx","size_bytes":2196584,"sha256":"6dab7397f77864a6dc8394efa26e4632445993ad62af70f1d182c7002f16c61f","github_payload":false}
+  ]
+}
