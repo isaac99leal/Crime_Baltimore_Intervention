@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "notes": "Contradiction-safe enrichment of the existing canonical Nuits-Saint-Georges white/red village and Premier Cru spec IDs from the current 2025 ministry specification homologated 24 December 2024.",
+  "sources": {},
+  "specs": [],
+  "amendments": [
+    {
+      "id": "fr:nuits-saint-georges:white-standard:masa-2025-enrichment",
+      "target_id": "fr:nuits-saint-georges:white-standard",
+      "set": {
+        "min_must_sugar_g_l": 178.0,
+        "max_total_alcohol_pct": 13.5,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["nuits_masa_2025"],
+      "append_notes": "Current 2025 specification makes the 178 g/L white village maturity floor, 13.5% enriched total-alcohol ceiling, elevage through 15 June N+1 and release from 30 June N+1 machine-executable."
+    },
+    {
+      "id": "fr:nuits-saint-georges:red-standard:masa-2025-enrichment",
+      "target_id": "fr:nuits-saint-georges:red-standard",
+      "set": {
+        "min_must_sugar_g_l": 180.0,
+        "max_total_alcohol_pct": 13.5,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["nuits_masa_2025"],
+      "append_notes": "Current 2025 specification makes the 180 g/L red village maturity floor, 13.5% enriched total-alcohol ceiling, elevage through 15 June N+1 and release from 30 June N+1 machine-executable."
+    },
+    {
+      "id": "fr:nuits-saint-georges:white-premier-cru:masa-2025-enrichment",
+      "target_id": "fr:nuits-saint-georges:white-premier-cru",
+      "set": {
+        "min_must_sugar_g_l": 187.0,
+        "max_total_alcohol_pct": 14.0,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["nuits_masa_2025"],
+      "append_notes": "Current 2025 specification makes the 187 g/L white Premier Cru maturity floor, 14.0% enriched total-alcohol ceiling, elevage through 15 June N+1 and release from 30 June N+1 machine-executable."
+    },
+    {
+      "id": "fr:nuits-saint-georges:red-premier-cru:masa-2025-enrichment",
+      "target_id": "fr:nuits-saint-georges:red-premier-cru",
+      "set": {
+        "min_must_sugar_g_l": 189.0,
+        "max_total_alcohol_pct": 14.0,
+        "min_elevage_year_offset": 1,
+        "min_elevage_until_month": 6,
+        "min_elevage_until_day": 15,
+        "earliest_release_month": 6,
+        "earliest_release_day": 30
+      },
+      "add_source_ids": ["nuits_masa_2025"],
+      "append_notes": "Current 2025 specification makes the 189 g/L red Premier Cru maturity floor, 14.0% enriched total-alcohol ceiling, elevage through 15 June N+1 and release from 30 June N+1 machine-executable."
+    }
+  ]
+}
