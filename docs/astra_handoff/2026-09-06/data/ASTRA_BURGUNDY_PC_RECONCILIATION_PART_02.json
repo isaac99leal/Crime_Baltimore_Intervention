@@ -1,0 +1,16 @@
+{
+  "handoff_id":"WKV2-ASTRA-2026-09-06-R1",
+  "role":"research_reconciliation_seed_not_canonical",
+  "scope":"Burgundy Premier Cru claims",
+  "part":2,
+  "parts_total":6,
+  "parents":{
+    "Nuits-Saint-Georges":["Aux Argillas","Aux Boudots","Aux Bousselots","Aux Chaignots","Aux Champs Perdrix","Aux Cras","Aux Murgers","Aux Perdrix","Aux Thorey","Aux Vignerondes","Chaines Carteaux","Château Gris","Clos Arlot","Clos de la Maréchale","Clos des Argillières","Clos des Corvées","Clos des Corvées Pagets","Clos des Forêts Saint-Georges","Clos des Grandes Vignes","Clos des Porrets-Saint-Georges","Clos Saint-Marc","En la Perrière Noblot","La Richemone","Les Argillières","Les Cailles","Les Chaboeufs","Les Crots","Les Damodes","Les Didiers","Les Hauts Pruliers","Les Perrières","Les Porrets-Saint-Georges","Les Poulettes","Les Procès","Les Pruliers","Les Saints-Georges","Les Terres Blanches","Les Vallerots","Les Vaucrains","Roncière","Rue de Chaux"],
+    "Aloxe-Corton":["Clos des Maréchaudes","Clos du Chapitre","La Coutière","La Maréchaude","La Toppe au Vert","Les Chaillots","Les Fournières","Les Guérets","Les Maréchaudes","Les Moutottes","Les Paulands","Les Petites Folières","Les Valozières","Les Vercots"],
+    "Ladoix":["Basses Mourottes","Bois Roussot","En Naget","Hautes Mourottes","La Corvée","La Micaude","Le Clou d'Orge","Le Rognet et Corton","Les Buis","Les Grêchons et Foutrières","Les Joyeuses"],
+    "Pernand-Vergelesses":["Clos Berthet","Creux de la Net","En Caradeux","Ile des Vergelesses","Les Fichots","Sous Frétille","Vergelesses","Village de Pernand"],
+    "Savigny-lès-Beaune":["Les Charnières","Les Talmettes","Les Vergelesses","Bataillière","Basses Vergelesses","Aux Fourneaux","Champ Chevrey","Les Lavières","Aux Gravains","Petits Godeaux","Aux Serpentières","Aux Clous","Aux Guettes","Les Rouvrettes","Les Narbantons","Les Peuillets","Les Marconnets","La Dominode","Les Jarrons","Les Hauts Jarrons","Redrescul","Les Hauts Marconnets"],
+    "Beaune":["A l'Ecu","Aux Coucherias","Aux Cras","Belissand","Blanches Fleurs","Champs Pimont","Clos de l'Ecu","Clos de la Feguine","Clos de la Mousse","Clos des Avaux","Clos des Ursules","Clos du roi","En Genêt","En l'Orme","La Mignotte","Le Bas des Teurons","Le Clos des Mouches","Les Aigrots","Les Avaux","Les Boucherottes","Les Bressandes","Les Cents Vignes","Les Chouacheux","Les Epenotes","Les Fèves","Les Grèves","Les Marconnets","Les Montrevenots","Les Perrières","Les Reversés","Les Sceaux","Les Seurey","Les Sizies","Les Teurons","Les Toussaints","Les Tuvilains","Les Vignes Franches","Montée Rouge","Pertuisots","Sur les Grèves","Sur les Grèves-Clos Sainte-Anne","Clos Saint-Landry"],
+    "Pommard":["Clos Blanc","Clos de la Commaraine","Clos de Verger","Clos des Epeneaux","Derrière Saint-Jean","En Largillière","La Chanière","La Platière","La Refène","Le Clos Micot","Le Village","Les Arvelets","Les Bertins","Les Boucherottes","Les Chanlins-Bas","Les Chaponnières","Les Charmots","Les Combes Dessus","Les Croix Noires","Les Fremiers","Les Grands Epenots","Les Jarolières","Les Petits Epenots","Les Pézerolles","Les Poutures","Les Rugiens Bas","Les Rugiens Hauts","Les Saussilles"]
+  }
+}
