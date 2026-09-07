@@ -1,0 +1,788 @@
+{
+  "snapshot_version": "2026-09-07.13",
+  "scope": "Reviewed Adelaide batch 4. Historical registry mappings and an explicit unresolved Pamid homonym.",
+  "evidence": {
+    "astra-batch4-9703-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:9703",
+      "source_id": "adelaide_2025",
+      "source_name": "Tribidrag",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "page_one_based": 68,
+      "notes": "UC Davis FPS documents the shared identity with Zinfandel and Primitivo; GrapeGen supplies the historical authority ID. This does not merge distinct clones or grant legal label permissions.",
+      "supporting_sources": [
+        {
+          "url": "https://fps.ucdavis.edu/FGRfamilies.cfm?varietyid=1634",
+          "section": "Zinfandel 42.1, comments",
+          "retrieval_status": "retrieved_text"
+        }
+      ]
+    },
+    "astra-batch4-5560-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:5560",
+      "source_id": "adelaide_2025",
+      "source_name": "Isabella",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 29
+    },
+    "astra-batch4-8888-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:8888",
+      "source_id": "adelaide_2025",
+      "source_name": "Palomino Fino",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 33
+    },
+    "astra-batch4-4119-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:4119",
+      "source_id": "adelaide_2025",
+      "source_name": "Fetească Albă",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 22
+    },
+    "astra-batch4-4121-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:4121",
+      "source_id": "adelaide_2025",
+      "source_name": "Fetească Regală",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 23
+    },
+    "astra-batch4-7896-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:7896",
+      "source_id": "adelaide_2025",
+      "source_name": "Moldova",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 38
+    },
+    "astra-batch4-4100-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:4100",
+      "source_id": "adelaide_2025",
+      "source_name": "Fernão Pires",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 22
+    },
+    "astra-batch4-7873-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:7873",
+      "source_id": "adelaide_2025",
+      "source_name": "Listán Prieto",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 34
+    },
+    "astra-batch4-8456-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:8456",
+      "source_id": "adelaide_2025",
+      "source_name": "Negroamaro",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 42
+    },
+    "astra-batch4-5716-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:5716",
+      "source_id": "adelaide_2025",
+      "source_name": "Dimyat",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 19
+    },
+    "astra-batch4-7258-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:7258",
+      "source_id": "adelaide_2025",
+      "source_name": "Malvasia Bianca di Candia",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 35
+    },
+    "astra-batch4-8938-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:8938",
+      "source_id": "adelaide_2025",
+      "source_name": "Parellada",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 45
+    },
+    "astra-batch4-1321-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:1321",
+      "source_id": "adelaide_2025",
+      "source_name": "Bianca",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 9
+    },
+    "astra-batch4-3659-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:3659",
+      "source_id": "adelaide_2025",
+      "source_name": "Dornfelder",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 20
+    },
+    "astra-batch4-6912-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:6912",
+      "source_id": "adelaide_2025",
+      "source_name": "Loureiro",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 34
+    },
+    "astra-batch4-2863-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:2863",
+      "source_id": "adelaide_2025",
+      "source_name": "Corvina Veronese",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 18
+    },
+    "astra-batch4-9080-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:9080",
+      "source_id": "adelaide_2025",
+      "source_name": "Pedro Ximénez",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 46
+    },
+    "astra-batch4-15685-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:15685",
+      "source_id": "adelaide_2025",
+      "source_name": "Trincadeira",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 64
+    },
+    "astra-batch4-11805-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:11805",
+      "source_id": "adelaide_2025",
+      "source_name": "Silvaner",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 59
+    },
+    "astra-batch4-3738-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:3738",
+      "source_id": "adelaide_2025",
+      "source_name": "Durif",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 20
+    },
+    "astra-batch4-12257-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:12257",
+      "source_id": "adelaide_2025",
+      "source_name": "Tannat",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 61
+    },
+    "astra-batch4-8417-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:8417",
+      "source_id": "adelaide_2025",
+      "source_name": "Nebbiolo",
+      "country": null,
+      "relation": "exact_identity",
+      "page_one_based": 42
+    },
+    "astra-batch4-17323-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:17323",
+      "source_id": "adelaide_2025",
+      "source_name": "Pamid",
+      "country": null,
+      "relation": "competing_identity",
+      "page_one_based": 45,
+      "notes": "The same Bulgarian registered name has two different IDs and berry colors. Census name alone does not select one."
+    },
+    "astra-batch4-17324-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:17324",
+      "source_id": "adelaide_2025",
+      "source_name": "Pamid",
+      "country": null,
+      "relation": "competing_identity",
+      "page_one_based": 45,
+      "notes": "The same Bulgarian registered name has two different IDs and berry colors. Census name alone does not select one."
+    }
+  },
+  "identities": [
+    {
+      "id": "vivc:9703",
+      "vivc_id": 9703,
+      "prime_name": "PRIMITIVO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:5560",
+      "vivc_id": 5560,
+      "prime_name": "ISABELLA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "interspecific cross",
+      "parentage": null
+    },
+    {
+      "id": "vivc:8888",
+      "vivc_id": 8888,
+      "prime_name": "PALOMINO FINO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:4119",
+      "vivc_id": 4119,
+      "prime_name": "FETEASCA ALBA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:4121",
+      "vivc_id": 4121,
+      "prime_name": "FETEASCA REGALA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:7896",
+      "vivc_id": 7896,
+      "prime_name": "MOLDOVA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "interspecific cross",
+      "parentage": null
+    },
+    {
+      "id": "vivc:4100",
+      "vivc_id": 4100,
+      "prime_name": "FERNÃO PIRES",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:7873",
+      "vivc_id": 7873,
+      "prime_name": "MISSION",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:8456",
+      "vivc_id": 8456,
+      "prime_name": "NEGRO AMARO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:5716",
+      "vivc_id": 5716,
+      "prime_name": "DIMYAT",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:7258",
+      "vivc_id": 7258,
+      "prime_name": "MALVASIA CANDIDA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:8938",
+      "vivc_id": 8938,
+      "prime_name": "PARELLADA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:1321",
+      "vivc_id": 1321,
+      "prime_name": "BIANCA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "interspecific cross",
+      "parentage": null
+    },
+    {
+      "id": "vivc:3659",
+      "vivc_id": 3659,
+      "prime_name": "DORNFELDER",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:6912",
+      "vivc_id": 6912,
+      "prime_name": "LOUREIRO BLANCO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:2863",
+      "vivc_id": 2863,
+      "prime_name": "CORVINA VERONESE",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:9080",
+      "vivc_id": 9080,
+      "prime_name": "PEDRO XIMENES",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:15685",
+      "vivc_id": 15685,
+      "prime_name": "TRINCADEIRA PRETA",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:11805",
+      "vivc_id": 11805,
+      "prime_name": "SILVANER GRUEN",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:3738",
+      "vivc_id": 3738,
+      "prime_name": "DURIF",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:12257",
+      "vivc_id": 12257,
+      "prime_name": "TANNAT",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:8417",
+      "vivc_id": 8417,
+      "prime_name": "NEBBIOLO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:17323",
+      "vivc_id": 17323,
+      "prime_name": "PAMID BIAL",
+      "record_status": "unresolved_homonym_candidate",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:17324",
+      "vivc_id": 17324,
+      "prime_name": "PAMIDI",
+      "record_status": "unresolved_homonym_candidate",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    }
+  ],
+  "links": [
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Tribidrag",
+      "canonical_id": "vivc:9703",
+      "level": "R4",
+      "evidence_ids": [
+        "astra-batch4-9703-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Isabella",
+      "canonical_id": "vivc:5560",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-5560-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Palomino Fino",
+      "canonical_id": "vivc:8888",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-8888-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Fetească Albă",
+      "canonical_id": "vivc:4119",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-4119-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Fetească Regală",
+      "canonical_id": "vivc:4121",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-4121-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Moldova",
+      "canonical_id": "vivc:7896",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-7896-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Fernão Pires",
+      "canonical_id": "vivc:4100",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-4100-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Listán Prieto",
+      "canonical_id": "vivc:7873",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-7873-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Negroamaro",
+      "canonical_id": "vivc:8456",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-8456-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Dimyat",
+      "canonical_id": "vivc:5716",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-5716-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Malvasia Bianca di Candia",
+      "canonical_id": "vivc:7258",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-7258-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Parellada",
+      "canonical_id": "vivc:8938",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-8938-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Bianca",
+      "canonical_id": "vivc:1321",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-1321-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Dornfelder",
+      "canonical_id": "vivc:3659",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-3659-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Loureiro",
+      "canonical_id": "vivc:6912",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-6912-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Corvina Veronese",
+      "canonical_id": "vivc:2863",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-2863-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Pedro Ximénez",
+      "canonical_id": "vivc:9080",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-9080-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Trincadeira",
+      "canonical_id": "vivc:15685",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-15685-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Silvaner",
+      "canonical_id": "vivc:11805",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-11805-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Durif",
+      "canonical_id": "vivc:3738",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-3738-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Tannat",
+      "canonical_id": "vivc:12257",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-12257-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Nebbiolo",
+      "canonical_id": "vivc:8417",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch4-8417-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Pamid",
+      "canonical_id": "vivc:17323",
+      "level": "R0",
+      "evidence_ids": [
+        "astra-batch4-17323-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Pamid",
+      "canonical_id": "vivc:17324",
+      "level": "R0",
+      "evidence_ids": [
+        "astra-batch4-17324-2026-09-07"
+      ]
+    }
+  ]
+}

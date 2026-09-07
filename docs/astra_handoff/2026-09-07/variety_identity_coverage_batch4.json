@@ -1,0 +1,1147 @@
+{
+  "source_rows": 1998,
+  "level_counts": {
+    "R0": 1,
+    "R1": 1900,
+    "R2": 1,
+    "R3": 0,
+    "R4": 2,
+    "R5": 94
+  },
+  "area_by_census_year": {
+    "2000": {
+      "reported_positive_area_ha": 4936142.267,
+      "resolved_area_ha": 3451121.702,
+      "resolved_percent": 69.9154,
+      "missing_area_rows": 1005
+    },
+    "2010": {
+      "reported_positive_area_ha": 4615761.296,
+      "resolved_area_ha": 3582524.811,
+      "resolved_percent": 77.615,
+      "missing_area_rows": 653
+    },
+    "2016": {
+      "reported_positive_area_ha": 4495080.376,
+      "resolved_area_ha": 3456012.924,
+      "resolved_percent": 76.8843,
+      "missing_area_rows": 447
+    },
+    "2023": {
+      "reported_positive_area_ha": 4537455.448,
+      "resolved_area_ha": 3615292.594,
+      "resolved_percent": 79.6767,
+      "missing_area_rows": 407
+    }
+  },
+  "conflict_count": 1,
+  "conflicts": [
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Pamid",
+      "source_row": 1315,
+      "country": null,
+      "candidate_ids": [
+        "vivc:17323",
+        "vivc:17324"
+      ],
+      "evidence_ids": [
+        "astra-batch4-17323-2026-09-07",
+        "astra-batch4-17324-2026-09-07"
+      ],
+      "conflict_class": "competing_identity_evidence",
+      "status": "open",
+      "generator_policy": "block_identity_promotion"
+    }
+  ],
+  "unresolved_over_10000ha_2023": 8,
+  "unresolved_over_1000ha_2023": 171,
+  "unresolved_queue": [
+    {
+      "observation": {
+        "prime_name": "other",
+        "country": null,
+        "area_2000_ha": null,
+        "area_2010_ha": null,
+        "area_2016_ha": 3149.71004,
+        "area_2023_ha": 159258.7509,
+        "source_id": "adelaide_2025",
+        "source_row": 1986,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "other red",
+        "country": null,
+        "area_2000_ha": 203968.4851,
+        "area_2010_ha": 107100.0133,
+        "area_2016_ha": 188493.9493,
+        "area_2023_ha": 46742.25022,
+        "source_id": "adelaide_2025",
+        "source_row": 1988,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "other white",
+        "country": null,
+        "area_2000_ha": 337810.9118,
+        "area_2010_ha": 130967.4113,
+        "area_2016_ha": 149174.0739,
+        "area_2023_ha": 33511.47784,
+        "source_id": "adelaide_2025",
+        "source_row": 1989,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Catarratto Bianco",
+        "country": null,
+        "area_2000_ha": 50710.7,
+        "area_2010_ha": 34862.63193,
+        "area_2016_ha": 28613.19902,
+        "area_2023_ha": 31125.0,
+        "source_id": "adelaide_2025",
+        "source_row": 355,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Cereza",
+        "country": null,
+        "area_2000_ha": 31113.353,
+        "area_2010_ha": 29934.1788,
+        "area_2016_ha": 28886.6,
+        "area_2023_ha": 24834.0451,
+        "source_id": "adelaide_2025",
+        "source_row": 368,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Douce Noire",
+        "country": null,
+        "area_2000_ha": 18323.43377,
+        "area_2010_ha": 19630.27393,
+        "area_2016_ha": 19732.74792,
+        "area_2023_ha": 17447.72697,
+        "source_id": "adelaide_2025",
+        "source_row": 526,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Criolla Grande",
+        "country": null,
+        "area_2000_ha": 24264.0687,
+        "area_2010_ha": 20744.8013,
+        "area_2016_ha": 15595.6,
+        "area_2023_ha": 12530.9606,
+        "source_id": "adelaide_2025",
+        "source_row": 451,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Bordô",
+        "country": null,
+        "area_2000_ha": null,
+        "area_2010_ha": null,
+        "area_2016_ha": null,
+        "area_2023_ha": 10115.40234,
+        "source_id": "adelaide_2025",
+        "source_row": 230,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Sultaniye",
+        "country": null,
+        "area_2000_ha": 12121.70508,
+        "area_2010_ha": 3412.8606,
+        "area_2016_ha": 5855.949176,
+        "area_2023_ha": 9927.367482,
+        "source_id": "adelaide_2025",
+        "source_row": 1721,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Terbash",
+        "country": null,
+        "area_2000_ha": null,
+        "area_2010_ha": null,
+        "area_2016_ha": null,
+        "area_2023_ha": 9875.0,
+        "source_id": "adelaide_2025",
+        "source_row": 1754,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Petit Verdot",
+        "country": null,
+        "area_2000_ha": 1530.431879,
+        "area_2010_ha": 6541.558401,
+        "area_2016_ha": 8152.705174,
+        "area_2023_ha": 9605.972687,
+        "source_id": "adelaide_2025",
+        "source_row": 1372,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Pedro Giménez",
+        "country": null,
+        "area_2000_ha": 14862.0256,
+        "area_2010_ha": 13501.9026,
+        "area_2016_ha": 15576.09,
+        "area_2023_ha": 9557.7711,
+        "source_id": "adelaide_2025",
+        "source_row": 1342,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Roditis",
+        "country": null,
+        "area_2000_ha": 299.05,
+        "area_2010_ha": 4668.3,
+        "area_2016_ha": 8463.454658,
+        "area_2023_ha": 9060.0,
+        "source_id": "adelaide_2025",
+        "source_row": 1525,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Pamid",
+        "country": null,
+        "area_2000_ha": 22718.0058,
+        "area_2010_ha": 9826.7036,
+        "area_2016_ha": 9961.374101,
+        "area_2023_ha": 8838.749,
+        "source_id": "adelaide_2025",
+        "source_row": 1315,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "CONFLICT",
+        "level": "R0",
+        "canonical_id": null,
+        "candidate_ids": [
+          "vivc:17323",
+          "vivc:17324"
+        ],
+        "evidence_ids": [
+          "astra-batch4-17323-2026-09-07",
+          "astra-batch4-17324-2026-09-07"
+        ],
+        "reason": "Competing identities require review"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Tinto De La Pámpana Blanca",
+        "country": null,
+        "area_2000_ha": null,
+        "area_2010_ha": null,
+        "area_2016_ha": null,
+        "area_2023_ha": 8837.0,
+        "source_id": "adelaide_2025",
+        "source_row": 1799,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Melon",
+        "country": null,
+        "area_2000_ha": 13253.43,
+        "area_2010_ha": 12305.5799,
+        "area_2016_ha": 9550.659707,
+        "area_2023_ha": 8594.1317,
+        "source_id": "adelaide_2025",
+        "source_row": 1090,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Torrontés Riojano",
+        "country": null,
+        "area_2000_ha": 8197.243761,
+        "area_2010_ha": 8937.3835,
+        "area_2016_ha": 8859.47,
+        "area_2023_ha": 7913.9999,
+        "source_id": "adelaide_2025",
+        "source_row": 1806,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Concord",
+        "country": null,
+        "area_2000_ha": 11816.4262,
+        "area_2010_ha": 12237.99963,
+        "area_2016_ha": 10543.63235,
+        "area_2023_ha": 7808.340534,
+        "source_id": "adelaide_2025",
+        "source_row": 428,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Beba",
+        "country": null,
+        "area_2000_ha": 8249.77,
+        "area_2010_ha": 6524.04,
+        "area_2016_ha": 2555.743943,
+        "area_2023_ha": 7484.508312,
+        "source_id": "adelaide_2025",
+        "source_row": 167,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Muscat of Hamburg",
+        "country": null,
+        "area_2000_ha": 7067.648712,
+        "area_2010_ha": 8140.266324,
+        "area_2016_ha": 7645.459016,
+        "area_2023_ha": 7325.199406,
+        "source_id": "adelaide_2025",
+        "source_row": 1202,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Arinto de Bucelas",
+        "country": null,
+        "area_2000_ha": 3965.95,
+        "area_2010_ha": 4482.23,
+        "area_2016_ha": 5409.0,
+        "area_2023_ha": 6440.255,
+        "source_id": "adelaide_2025",
+        "source_row": 96,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Inzolia",
+        "country": null,
+        "area_2000_ha": 9259.16,
+        "area_2010_ha": 6132.51,
+        "area_2016_ha": 4740.059942,
+        "area_2023_ha": 5846.0019,
+        "source_id": "adelaide_2025",
+        "source_row": 799,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Lambrusco Maestri",
+        "country": null,
+        "area_2000_ha": 1512.6315,
+        "area_2010_ha": 2311.5529,
+        "area_2016_ha": 5657.218489,
+        "area_2023_ha": 5589.8618,
+        "source_id": "adelaide_2025",
+        "source_row": 929,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Lambrusco Salamino",
+        "country": null,
+        "area_2000_ha": 4146.86,
+        "area_2010_ha": 5002.82,
+        "area_2016_ha": 6227.639677,
+        "area_2023_ha": 5363.6,
+        "source_id": "adelaide_2025",
+        "source_row": 933,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Falanghina Flegrea",
+        "country": null,
+        "area_2000_ha": null,
+        "area_2010_ha": null,
+        "area_2016_ha": 3634.0,
+        "area_2023_ha": 5353.0,
+        "source_id": "adelaide_2025",
+        "source_row": 595,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Flame Seedless",
+        "country": null,
+        "area_2000_ha": 547.8806695,
+        "area_2010_ha": 55.17,
+        "area_2016_ha": 55.17,
+        "area_2023_ha": 5242.7807,
+        "source_id": "adelaide_2025",
+        "source_row": 614,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Síria",
+        "country": null,
+        "area_2000_ha": 2790.87,
+        "area_2010_ha": 7897.7,
+        "area_2016_ha": 7036.75049,
+        "area_2023_ha": 5217.714,
+        "source_id": "adelaide_2025",
+        "source_row": 1737,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Muscat Blanc à Petits Grains (G)",
+        "country": null,
+        "area_2000_ha": 10442.3673,
+        "area_2010_ha": 8767.2222,
+        "area_2016_ha": 8257.775,
+        "area_2023_ha": 5111.0144,
+        "source_id": "adelaide_2025",
+        "source_row": 1186,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Verdicchio Bianco",
+        "country": null,
+        "area_2000_ha": 5042.84,
+        "area_2010_ha": 3531.578806,
+        "area_2016_ha": 4681.56831,
+        "area_2023_ha": 4701.638851,
+        "source_id": "adelaide_2025",
+        "source_row": 1896,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Blauer Portugieser",
+        "country": null,
+        "area_2000_ha": 11513.6132,
+        "area_2010_ha": 8027.0919,
+        "area_2016_ha": 6590.437849,
+        "area_2023_ha": 4681.077019,
+        "source_id": "adelaide_2025",
+        "source_row": 210,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Vinhao",
+        "country": null,
+        "area_2000_ha": 5900.873382,
+        "area_2010_ha": 3113.433672,
+        "area_2016_ha": 4467.231219,
+        "area_2023_ha": 4482.681,
+        "source_id": "adelaide_2025",
+        "source_row": 1931,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Aspiran Bouschet",
+        "country": null,
+        "area_2000_ha": 432.6726,
+        "area_2010_ha": 2244.8736,
+        "area_2016_ha": 4088.026765,
+        "area_2023_ha": 4471.450548,
+        "source_id": "adelaide_2025",
+        "source_row": 112,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Chelva",
+        "country": null,
+        "area_2000_ha": 10876.97,
+        "area_2010_ha": 6168.0,
+        "area_2016_ha": 5029.354685,
+        "area_2023_ha": 4361.0,
+        "source_id": "adelaide_2025",
+        "source_row": 389,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Bonarda Piemontese",
+        "country": null,
+        "area_2000_ha": 23.44,
+        "area_2010_ha": 5.96,
+        "area_2016_ha": 5926.387399,
+        "area_2023_ha": 4306.0,
+        "source_id": "adelaide_2025",
+        "source_row": 227,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Dolcetto",
+        "country": null,
+        "area_2000_ha": 7197.12248,
+        "area_2010_ha": 6331.32173,
+        "area_2016_ha": 4541.482531,
+        "area_2023_ha": 4264.798464,
+        "source_id": "adelaide_2025",
+        "source_row": 510,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Misket Cherven",
+        "country": null,
+        "area_2000_ha": null,
+        "area_2010_ha": 4159.0,
+        "area_2016_ha": 4349.354218,
+        "area_2023_ha": 4101.0,
+        "source_id": "adelaide_2025",
+        "source_row": 1120,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Ruby Cabernet",
+        "country": null,
+        "area_2000_ha": 7351.242662,
+        "area_2010_ha": 5729.108236,
+        "area_2016_ha": 5294.148827,
+        "area_2023_ha": 4041.996772,
+        "source_id": "adelaide_2025",
+        "source_row": 1577,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Rubired",
+        "country": null,
+        "area_2000_ha": 4152.887216,
+        "area_2010_ha": 4555.550412,
+        "area_2016_ha": 4849.475864,
+        "area_2023_ha": 3897.126283,
+        "source_id": "adelaide_2025",
+        "source_row": 1575,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Kangun",
+        "country": null,
+        "area_2000_ha": 849.8406,
+        "area_2010_ha": 849.8406,
+        "area_2016_ha": null,
+        "area_2023_ha": 3802.5619,
+        "source_id": "adelaide_2025",
+        "source_row": 845,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Fetească Neagră",
+        "country": null,
+        "area_2000_ha": 1214.058,
+        "area_2010_ha": 1719.0,
+        "area_2016_ha": 3247.87286,
+        "area_2023_ha": 3716.542668,
+        "source_id": "adelaide_2025",
+        "source_row": 606,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Gaglioppo",
+        "country": null,
+        "area_2000_ha": 3591.64,
+        "area_2010_ha": 4213.67,
+        "area_2016_ha": 4625.733615,
+        "area_2023_ha": 3674.0,
+        "source_id": "adelaide_2025",
+        "source_row": 661,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Italia",
+        "country": null,
+        "area_2000_ha": 1076.257096,
+        "area_2010_ha": 1463.202352,
+        "area_2016_ha": 5187.514072,
+        "area_2023_ha": 3603.685732,
+        "source_id": "adelaide_2025",
+        "source_row": 806,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Cserszegi Fűszeres",
+        "country": null,
+        "area_2000_ha": 2185.304,
+        "area_2010_ha": 3608.7158,
+        "area_2016_ha": 4299.48605,
+        "area_2023_ha": 3570.5588,
+        "source_id": "adelaide_2025",
+        "source_row": 462,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Sauvignonasse",
+        "country": null,
+        "area_2000_ha": 5452.190174,
+        "area_2010_ha": 4563.194862,
+        "area_2016_ha": 3860.200749,
+        "area_2023_ha": 3532.422882,
+        "source_id": "adelaide_2025",
+        "source_row": 1624,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Marufo",
+        "country": null,
+        "area_2000_ha": 6339.04,
+        "area_2010_ha": 6578.75,
+        "area_2016_ha": 4683.4832,
+        "area_2023_ha": 3392.408,
+        "source_id": "adelaide_2025",
+        "source_row": 1061,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Cortese",
+        "country": null,
+        "area_2000_ha": 3113.45,
+        "area_2010_ha": 2952.6,
+        "area_2016_ha": 2404.984576,
+        "area_2023_ha": 3363.0,
+        "source_id": "adelaide_2025",
+        "source_row": 439,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Gros Manseng",
+        "country": null,
+        "area_2000_ha": 2159.54,
+        "area_2010_ha": 2959.891572,
+        "area_2016_ha": 3059.288694,
+        "area_2023_ha": 3343.7385,
+        "source_id": "adelaide_2025",
+        "source_row": 753,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Zalema",
+        "country": null,
+        "area_2000_ha": 5968.53,
+        "area_2010_ha": 4097.0,
+        "area_2016_ha": 4014.7604,
+        "area_2023_ha": 3329.0,
+        "source_id": "adelaide_2025",
+        "source_row": 1972,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Tinta Barroca",
+        "country": null,
+        "area_2000_ha": 5656.68,
+        "area_2010_ha": 5940.729167,
+        "area_2016_ha": 4925.2693,
+        "area_2023_ha": 3235.4723,
+        "source_id": "adelaide_2025",
+        "source_row": 1775,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    },
+    {
+      "observation": {
+        "prime_name": "Graciano",
+        "country": null,
+        "area_2000_ha": 1959.813,
+        "area_2010_ha": 3122.6754,
+        "area_2016_ha": 2879.492512,
+        "area_2023_ha": 3225.276736,
+        "source_id": "adelaide_2025",
+        "source_row": 728,
+        "country_as_reported": null
+      },
+      "identity": {
+        "status": "UNKNOWN",
+        "level": "R1",
+        "canonical_id": null,
+        "candidate_ids": [],
+        "evidence_ids": [],
+        "reason": "No source-specific identity evidence"
+      }
+    }
+  ],
+  "unresolved_queue_total": 1902,
+  "queue_scope": "Top 50 unresolved rows by reported 2023 hectares; summary counts cover all rows.",
+  "schema_version": "1.0",
+  "snapshot_versions": [
+    "2026-09-07.4",
+    "2026-09-07.5",
+    "2026-09-07.6",
+    "2026-09-07.7",
+    "2026-09-07.8",
+    "2026-09-07.9",
+    "2026-09-07.10",
+    "2026-09-07.11",
+    "2026-09-07.12",
+    "2026-09-07.13"
+  ],
+  "scope": "Global Adelaide source rows only; country observations are not added to global totals.",
+  "interpretation": "Coverage is of reported positive hectares per census year, not distinct botanical varieties. Missing areas remain missing. R0 counts only actual resolver conflicts; unknown evidence is R1.",
+  "input_sha256": {
+    "sommelier_v2/knowledge/data/adelaide_world_varieties_2000_2023.csv": "f3d665d826f605737d69180bc73f7dfdb30609bdadffe0111f0467347a7ac249",
+    "sommelier_v2/knowledge/data/variety_identity_evidence.json": "e36643ae0ba4fabb26dc72903112f084262e9fe795250f24726958e5a56e4274",
+    "sommelier_v2/knowledge/data/variety_identity_evidence_shard_0002.json": "4d689c3ad398b9e8440fb4e10f49e9dec01aa3ee4c06d4f21f3db8e350dbaf02",
+    "sommelier_v2/knowledge/data/variety_identity_evidence_shard_0003.json": "df1fe773c143a799c71bb696cf976d8aba44fe16f89910b8aea900f3e873dedf",
+    "sommelier_v2/knowledge/data/variety_identity_evidence_shard_0004.json": "5c737589b7ffc71f569fa86df322f73d7907975121ea64d5406a172db02ba9f5",
+    "sommelier_v2/knowledge/data/variety_identity_evidence_shard_0005.json": "5341b9abab0c0a2424f051faef2b4b41f10361bdcdd31eb57af0d5601d848a65",
+    "sommelier_v2/knowledge/data/variety_identity_evidence_shard_0006.json": "1856fd31636b6ed4bee65c722e597c54ab0c2cb5604270b5b68d854119030119",
+    "sommelier_v2/knowledge/data/variety_identity_evidence_shard_0007.json": "74fe6730ef0ef958147496a19b133d1c6578d0de4a70d5e3f2368ebaeece60b1",
+    "sommelier_v2/knowledge/data/variety_identity_evidence_shard_0008.json": "ddf82b305fa35d64bf892808ff59b4f31f29463fdd0401a44e75dc23ec61edbd",
+    "sommelier_v2/knowledge/data/variety_identity_evidence_shard_0009.json": "9e7bbf462c8de6115bffd7fbed66da41f4a7bbc4ce4d46075f78a081964f50fc",
+    "sommelier_v2/knowledge/data/variety_identity_evidence_shard_0010.json": "74564ca6378ecb983bbe3a27fb366a0133cf12b2b98f9d14aad9670fd9e67815"
+  }
+}
