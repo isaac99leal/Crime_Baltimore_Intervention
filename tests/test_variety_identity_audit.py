@@ -16,8 +16,8 @@ class VarietyIdentityAuditTests(unittest.TestCase):
 
     def test_current_reviewed_checkpoint_is_at_least_eighty_r5(self):
         self.assertGreaterEqual(self.metrics["resolution_counts"]["R5"], 80)
-        self.assertEqual(self.metrics["resolution_counts"]["R4"], 0)
-        self.assertGreater(self.metrics["resolved_2023_pct"], 67.0)
+        self.assertGreaterEqual(self.metrics["resolution_counts"]["R4"], 2)
+        self.assertGreater(self.metrics["resolved_2023_pct"], 69.0)
 
     def test_unresolved_thresholds_are_measured_not_inferred(self):
         unresolved = self.metrics["unresolved_gt_10000_ha"]
