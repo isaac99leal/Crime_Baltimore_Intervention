@@ -15,8 +15,8 @@ class VarietyIdentityAuditTests(unittest.TestCase):
         self.assertEqual(sum(self.metrics["resolution_counts"].values()), 1998)
 
     def test_current_reviewed_checkpoint_is_at_least_eighty_r5(self):
-        self.assertGreaterEqual(self.metrics["resolution_counts"]["R5"], 82)
-        self.assertGreaterEqual(self.metrics["resolution_counts"]["R4"], 18)
+        self.assertGreaterEqual(self.metrics["resolution_counts"]["R5"], 85)
+        self.assertGreaterEqual(self.metrics["resolution_counts"]["R4"], 20)
         self.assertGreater(self.metrics["resolved_2023_pct"], 79.0)
         self.assertGreaterEqual(self.metrics["resolution_counts"]["R0"], 3)
 
