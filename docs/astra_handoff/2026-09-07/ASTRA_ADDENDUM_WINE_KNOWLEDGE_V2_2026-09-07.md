@@ -13,6 +13,45 @@
 
 ---
 
+# R3 LIVE DELTA — 2026-09-07 17:55 ET
+
+This section supersedes older numerical checkpoints below without deleting their history.
+
+```yaml
+pr: 78
+branch: foundation/sol-variety-identity-batch1-2026-09-07
+latest_documented_head_before_this_update: 11599a71fd51a77156668684ece1991261ca0ef9
+reviewed_R5_adelaide_links: 80
+reviewed_R4_adelaide_links: 12
+strong_R4_R5_links: 92
+explicit_R0_conflicts: 2
+adelaide_prime_rows_audited: 1998
+resolved_2023_area_pct: ">77%"
+coverage_audit: scripts/variety_identity_audit.py
+ci_named_step: Audit variety identity coverage
+```
+
+New evidence shards: `0008` through `0014`.
+
+New R5 exact reviewed rows include Verdejo, Pinot Meunier, Müller-Thurgau, Sémillon, Negroamaro, Pedro Ximénez, Parellada, Tannat, Tinta Barroca, Trincadeira, Rabigato, Pecorino, Passerina, Muscat Blanc à Petits Grains, Fetească Albă, Fetească Regală, Fernão Pires, Muscat Ottonel, Moldova, and Isabella.
+
+New R4 reviewed synonym/nomenclature rows include Mazuelo, Prosecco, Trebbiano Toscano, Alicante Henri Bouschet, Muscat of Alexandria, Douce Noire, Trebbiano Romagnolo, Palomino Fino, Garganega, Listán Prieto, Dimyat, and Malvasia Bianca di Candia.
+
+First-class R0 conflict queue is now implemented in `sommelier_v2/knowledge/data/variety_identity_conflicts.json` and wired into `VarietyIdentityRegistry`:
+
+- `Petit Verdot` -> competing VIVC 12973 / 12974 propositions; block promotion.
+- `Catarratto Bianco` -> umbrella-name/subtype ambiguity; block promotion.
+
+The resolver must emit `CONFLICT / R0` for these exact Adelaide rows, with no canonical ID.
+
+A repeatable hectare-weighted audit now reports R0–R5 row counts, 2023-area coverage, historical-area coverage, unresolved >10k ha rows, unresolved >1k ha count, and top unresolved rows. Do not return to manual or fame-weighted progress reporting.
+
+The next high-impact hard proposition prepared for review is `Côt`: current Plantgrape identifies Cot as the French registered variety and officially permits Malbec as a synonym; independent South American genotype work maps Malbec/Cot to VIVC 2889. Treat it as an R4 candidate until assertion-level provenance is encoded. Tribidrag is also strongly established as identical to Zinfandel/Primitivo by UC Davis FPS, but its canonical-VIVC proposition still needs the same evidence discipline before promotion.
+
+CI discipline remains unchanged: do not append further data to a red exact head. The current stale-regression fixes changed old assumptions so reviewed promotions are not required to remain unresolved forever.
+
+---
+
 # 1. WHY — HUMAN-READABLE
 
 Astra already did the most important safety work on the global grape census: it stopped similar-looking names from silently collapsing into one grape and created a conservative R0–R5 identity resolver. Since then, Burgundy Grand Cru/Premier Cru has been closed at the intended scope and the variety resolver has been converted into a scalable, evidence-sharded system.
