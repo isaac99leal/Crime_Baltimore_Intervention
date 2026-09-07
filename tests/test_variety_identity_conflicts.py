@@ -11,7 +11,7 @@ class VarietyIdentityConflictQueueTests(unittest.TestCase):
         cls.registry = VarietyIdentityRegistry()
 
     def test_conflict_queue_is_source_backed_and_blocks_promotion(self):
-        self.assertGreaterEqual(len(self.registry.conflicts), 2)
+        self.assertGreaterEqual(len(self.registry.conflicts), 3)
         for conflict in self.registry.conflicts:
             self.assertEqual(conflict.generator_policy, "block_identity_promotion")
             self.assertTrue(conflict.evidence_ids)
@@ -35,8 +35,16 @@ class VarietyIdentityConflictQueueTests(unittest.TestCase):
         self.assertIn("umbrella_name_requires_subtype_resolution", decision.reason)
         self.assertFalse(decision.identity_confirmed)
 
+    def test_beba_exposes_cross_country_conflict(self):
+        decision = self.registry.resolve("Beba", source_id="adelaide_2025")
+        self.assertEqual(decision.status, "CONFLICT")
+        self.assertEqual(decision.level, "R0")
+        self.assertEqual(decision.candidate_ids, ("vivc:22710", "vivc:40846"))
+        self.assertFalse(decision.identity_confirmed)
+        self.assertIsNone(decision.canonical_id)
+
     def test_conflicts_remain_source_scoped(self):
-        for source_name in ("Petit Verdot", "Catarratto Bianco"):
+        for source_name in ("Petit Verdot", "Catarratto Bianco", "Beba"):
             self.assertEqual(
                 self.registry.resolve(source_name, source_id="another-census").status,
                 "UNKNOWN",
