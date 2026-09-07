@@ -1,0 +1,87 @@
+{
+  "snapshot_version": "2026-09-07.12",
+  "scope": "Ninth additive exact-name botanical identity shard, prioritizing direct GrapeGen registered-name/VIVC mappings with meaningful commercial area and low nomenclature ambiguity.",
+  "evidence": {
+    "grapegen06-parellada-8938-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:8938", "source_id": "adelaide_2025", "source_name": "Parellada",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Parellada to PARELLADA, VIVC 8938."
+    },
+    "grapegen06-tannat-12257-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:12257", "source_id": "adelaide_2025", "source_name": "Tannat",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Tannat to TANNAT, VIVC 12257. Tanat remains a separate source spelling unless independently reviewed."
+    },
+    "grapegen06-tinta-barroca-12462-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:12462", "source_id": "adelaide_2025", "source_name": "Tinta Barroca",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Tinta Barroca to TINTA BARROCA, VIVC 12462."
+    },
+    "grapegen06-trincadeira-15685-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:15685", "source_id": "adelaide_2025", "source_name": "Trincadeira",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Trincadeira to TRINCADEIRA PRETA, VIVC 15685. The prime-name difference does not create an Adelaide Trincadeira Preta alias."
+    },
+    "grapegen06-rabigato-9857-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:9857", "source_id": "adelaide_2025", "source_name": "Rabigato",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Rabigato to RABIGATO, VIVC 9857. Rabigato Moreno is a separate VIVC identity."
+    },
+    "grapegen06-pecorino-9072-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:9072", "source_id": "adelaide_2025", "source_name": "Pecorino",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Pecorino to PECORINO, VIVC 9072. Pecorello remains a separate identity."
+    },
+    "grapegen06-passerina-6413-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:6413", "source_id": "adelaide_2025", "source_name": "Passerina",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Passerina to PASSERINA, VIVC 6413."
+    }
+  },
+  "identities": [
+    {"id":"vivc:8938","vivc_id":8938,"prime_name":"PARELLADA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:12257","vivc_id":12257,"prime_name":"TANNAT","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:12462","vivc_id":12462,"prime_name":"TINTA BARROCA","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:15685","vivc_id":15685,"prime_name":"TRINCADEIRA PRETA","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:9857","vivc_id":9857,"prime_name":"RABIGATO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:9072","vivc_id":9072,"prime_name":"PECORINO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:6413","vivc_id":6413,"prime_name":"PASSERINA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Parellada","canonical_id":"vivc:8938","level":"R5","evidence_ids":["grapegen06-parellada-8938-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Tannat","canonical_id":"vivc:12257","level":"R5","evidence_ids":["grapegen06-tannat-12257-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Tinta Barroca","canonical_id":"vivc:12462","level":"R5","evidence_ids":["grapegen06-tinta-barroca-12462-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Trincadeira","canonical_id":"vivc:15685","level":"R5","evidence_ids":["grapegen06-trincadeira-15685-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Rabigato","canonical_id":"vivc:9857","level":"R5","evidence_ids":["grapegen06-rabigato-9857-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Pecorino","canonical_id":"vivc:9072","level":"R5","evidence_ids":["grapegen06-pecorino-9072-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Passerina","canonical_id":"vivc:6413","level":"R5","evidence_ids":["grapegen06-passerina-6413-2026-09-07"]}
+  ]
+}
