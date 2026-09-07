@@ -5,6 +5,7 @@ import unittest
 from sommelier_v2.authoritative_catalog import AuthoritativeCatalogGenerator
 from sommelier_v2.knowledge.legal_specs import LegalSpecRegistry
 from sommelier_v2.knowledge.origin_factory import OriginRequest, WineOriginFactory
+from sommelier_v2.knowledge.regional_rules import OriginConstraintError
 
 
 EXPECTED_CLIMATS = {
@@ -169,17 +170,17 @@ class BlagnySiteClaimTests(unittest.TestCase):
             site for site in self.catalog.named_sites
             if site.parent == "Puligny-Montrachet" and site.name == "Hameau de Blagny"
         )
-        origin = self.factory.create(OriginRequest(
-            country="France",
-            region="Bourgogne",
-            appellation="Blagny",
-            grapes={"Pinot Noir": 100},
-            vintage_year=2025,
-            label_scope="regulated_gi",
-            site_id=puligny.id,
-            wine_variant="premier cru",
-        ))
-        self.assertFalse(origin.site_claim_eligible)
+        with self.assertRaises(OriginConstraintError):
+            self.factory.create(OriginRequest(
+                country="France",
+                region="Bourgogne",
+                appellation="Blagny",
+                grapes={"Pinot Noir": 100},
+                vintage_year=2025,
+                label_scope="regulated_gi",
+                site_id=puligny.id,
+                wine_variant="premier cru",
+            ))
 
     def test_standard_blagny_does_not_inherit_premier_cru_site_claim(self):
         site = next(
