@@ -19,6 +19,7 @@ class VarietyIdentityAuditTests(unittest.TestCase):
         self.assertGreaterEqual(self.metrics["resolution_counts"]["R4"], 20)
         self.assertGreater(self.metrics["resolved_2023_pct"], 79.0)
         self.assertGreaterEqual(self.metrics["resolution_counts"]["R0"], 3)
+        self.assertGreaterEqual(self.metrics["resolution_counts"]["R3"], 4)
 
     def test_unresolved_thresholds_are_measured_not_inferred(self):
         unresolved = self.metrics["unresolved_gt_10000_ha"]
