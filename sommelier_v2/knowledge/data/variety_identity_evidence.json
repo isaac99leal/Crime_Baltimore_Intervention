@@ -1,5 +1,5 @@
 {
-  "snapshot_version": "2026-09-07.2",
+  "snapshot_version": "2026-09-07.3",
   "scope": "Reviewed botanical identity crosswalks remain separate from legal origin permission. Direct VIVC passport retrieval was unavailable, so reviewed promotions use curated botanical/genetic-resource registries that explicitly publish the VIVC identifier and exact source identity. Candidate-only VIVC search records are retained for provenance.",
   "evidence": {
     "vivc-search-1929-2026-09-07": {
@@ -84,74 +84,82 @@
       "country": null,
       "relation": "exact_identity",
       "notes": "The European GrapeGen genetic-resources cross-reference maps Greek Moschofilero to MOSCHO FILERO, VIVC 8068. Exact source-name identity is promoted; color and synonym details are not inferred from this crosswalk."
+    },
+    "grapegen06-merlot-7657-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:7657",
+      "source_id": "adelaide_2025",
+      "source_name": "Merlot",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "GrapeGen maps Merlot observations from multiple European national collections to MERLOT NOIR, VIVC 7657. The crosswalk is botanical identity only and does not infer appellation permission or clone identity."
+    },
+    "grapegen06-chardonnay-2455-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:2455",
+      "source_id": "adelaide_2025",
+      "source_name": "Chardonnay",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "GrapeGen maps Chardonnay observations from multiple European national collections to CHARDONNAY BLANC, VIVC 2455. This resolves botanical identity only."
+    },
+    "grapegen06-tempranillo-12350-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:12350",
+      "source_id": "adelaide_2025",
+      "source_name": "Tempranillo",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "GrapeGen maps Tempranillo observations from Spain and other European collections to TEMPRANILLO, VIVC 12350. This resolves botanical identity only; Tempranillo Blanco is a separate identity and is not merged."
+    },
+    "grapegen06-airen-157-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:157",
+      "source_id": "adelaide_2025",
+      "source_name": "Airén",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "GrapeGen maps Spanish Airén to AIREN, VIVC 157. Accent-preserving source identity is retained; folded spellings are not automatically promoted."
     }
   },
   "identities": [
-    {
-      "id": "vivc:1929",
-      "vivc_id": 1929,
-      "prime_name": "CABERNET SAUVIGNON",
-      "record_status": "reviewed_cross_registry_identity",
-      "color": "black",
-      "species": "Vitis vinifera",
-      "parentage": null
-    },
-    {
-      "id": "vivc:11748",
-      "vivc_id": 11748,
-      "prime_name": "SYRAH",
-      "record_status": "reviewed_cross_registry_identity",
-      "color": "black",
-      "species": "Vitis vinifera",
-      "parentage": null
-    },
-    {
-      "id": "vivc:14308",
-      "vivc_id": 14308,
-      "prime_name": "RONDO",
-      "record_status": "reviewed_cross_registry_identity",
-      "color": null,
-      "species": null,
-      "parentage": null
-    },
-    {
-      "id": "vivc:8068",
-      "vivc_id": 8068,
-      "prime_name": "MOSCHOFILERO",
-      "record_status": "reviewed_cross_registry_identity",
-      "color": null,
-      "species": null,
-      "parentage": null
-    }
+    {"id": "vivc:1929", "vivc_id": 1929, "prime_name": "CABERNET SAUVIGNON", "record_status": "reviewed_cross_registry_identity", "color": "black", "species": "Vitis vinifera", "parentage": null},
+    {"id": "vivc:11748", "vivc_id": 11748, "prime_name": "SYRAH", "record_status": "reviewed_cross_registry_identity", "color": "black", "species": "Vitis vinifera", "parentage": null},
+    {"id": "vivc:14308", "vivc_id": 14308, "prime_name": "RONDO", "record_status": "reviewed_cross_registry_identity", "color": null, "species": null, "parentage": null},
+    {"id": "vivc:8068", "vivc_id": 8068, "prime_name": "MOSCHOFILERO", "record_status": "reviewed_cross_registry_identity", "color": null, "species": null, "parentage": null},
+    {"id": "vivc:7657", "vivc_id": 7657, "prime_name": "MERLOT NOIR", "record_status": "reviewed_cross_registry_identity", "color": null, "species": "Vitis vinifera", "parentage": null},
+    {"id": "vivc:2455", "vivc_id": 2455, "prime_name": "CHARDONNAY BLANC", "record_status": "reviewed_cross_registry_identity", "color": null, "species": "Vitis vinifera", "parentage": null},
+    {"id": "vivc:12350", "vivc_id": 12350, "prime_name": "TEMPRANILLO", "record_status": "reviewed_cross_registry_identity", "color": null, "species": "Vitis vinifera", "parentage": null},
+    {"id": "vivc:157", "vivc_id": 157, "prime_name": "AIREN", "record_status": "reviewed_cross_registry_identity", "color": null, "species": "Vitis vinifera", "parentage": null}
   ],
   "links": [
-    {
-      "source_id": "adelaide_2025",
-      "source_name": "Cabernet Sauvignon",
-      "canonical_id": "vivc:1929",
-      "level": "R5",
-      "evidence_ids": ["cnr-vitisgrinzane-cabernet-sauvignon-1929-2026-09-07"]
-    },
-    {
-      "source_id": "adelaide_2025",
-      "source_name": "Syrah",
-      "canonical_id": "vivc:11748",
-      "level": "R5",
-      "evidence_ids": ["cnr-vitisgrinzane-syrah-11748-2026-09-07"]
-    },
-    {
-      "source_id": "adelaide_2025",
-      "source_name": "Rondo",
-      "canonical_id": "vivc:14308",
-      "level": "R5",
-      "evidence_ids": ["grapegen06-rondo-14308-2026-09-07"]
-    },
-    {
-      "source_id": "adelaide_2025",
-      "source_name": "Moschofilero",
-      "canonical_id": "vivc:8068",
-      "level": "R5",
-      "evidence_ids": ["grapegen06-moschofilero-8068-2026-09-07"]
-    }
+    {"source_id": "adelaide_2025", "source_name": "Cabernet Sauvignon", "canonical_id": "vivc:1929", "level": "R5", "evidence_ids": ["cnr-vitisgrinzane-cabernet-sauvignon-1929-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Syrah", "canonical_id": "vivc:11748", "level": "R5", "evidence_ids": ["cnr-vitisgrinzane-syrah-11748-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Rondo", "canonical_id": "vivc:14308", "level": "R5", "evidence_ids": ["grapegen06-rondo-14308-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Moschofilero", "canonical_id": "vivc:8068", "level": "R5", "evidence_ids": ["grapegen06-moschofilero-8068-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Merlot", "canonical_id": "vivc:7657", "level": "R5", "evidence_ids": ["grapegen06-merlot-7657-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Chardonnay", "canonical_id": "vivc:2455", "level": "R5", "evidence_ids": ["grapegen06-chardonnay-2455-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Tempranillo", "canonical_id": "vivc:12350", "level": "R5", "evidence_ids": ["grapegen06-tempranillo-12350-2026-09-07"]},
+    {"source_id": "adelaide_2025", "source_name": "Airén", "canonical_id": "vivc:157", "level": "R5", "evidence_ids": ["grapegen06-airen-157-2026-09-07"]}
   ]
 }
