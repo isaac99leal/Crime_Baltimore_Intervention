@@ -17,6 +17,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from math import isfinite
+from numbers import Real
 
 
 class BlendChemistryConstraintError(ValueError):
@@ -24,6 +25,10 @@ class BlendChemistryConstraintError(ValueError):
 
 
 def _finite(name: str, value: float) -> float:
+    if isinstance(value, bool) or not isinstance(value, Real):
+        raise BlendChemistryConstraintError(
+            f"{name} must be a real numeric value; got {value!r}"
+        )
     number = float(value)
     if not isfinite(number):
         raise BlendChemistryConstraintError(f"{name} must be finite; got {value!r}")
@@ -64,7 +69,7 @@ class BlendChemistryComponent:
     titratable_acidity_g_l: float | None = None
 
     def __post_init__(self) -> None:
-        if not self.source_id.strip():
+        if not isinstance(self.source_id, str) or not self.source_id.strip():
             raise BlendChemistryConstraintError("Blend source_id is required.")
         draw = _finite("draw_l", self.draw_l)
         if draw <= 0 or draw > 10_000_000:
