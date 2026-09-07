@@ -20,6 +20,7 @@ from .catalog import normalize_name
 DATA_DIR = Path(__file__).resolve().parent / "data"
 DATA_PATH = DATA_DIR / "variety_identity_evidence.json"
 DATA_SHARD_GLOB = "variety_identity_evidence_shard_*.json"
+CONFLICT_DATA_PATH = DATA_DIR / "variety_identity_conflicts.json"
 LEVELS = frozenset({"R0", "R1", "R2", "R3", "R4", "R5"})
 
 
@@ -35,6 +36,19 @@ class VarietyIdentityLink:
     canonical_id: str
     level: str
     evidence_ids: tuple[str, ...]
+    country: str | None = None
+
+
+@dataclass(frozen=True)
+class VarietyIdentityConflict:
+    id: str
+    source_id: str
+    source_name: str
+    candidate_ids: tuple[str, ...]
+    evidence_ids: tuple[str, ...]
+    conflict_class: str
+    status: str
+    generator_policy: str
     country: str | None = None
 
 
@@ -69,6 +83,62 @@ class VarietyIdentityRegistry:
         self.evidence: dict[str, dict] = {}
         self.identities: dict[str, dict] = {}
         self.links: list[VarietyIdentityLink] = []
+        self.conflict_evidence: dict[str, dict] = {}
+        self.conflicts: list[VarietyIdentityConflict] = []
+
+        if data_path is None and CONFLICT_DATA_PATH.exists():
+            conflict_doc = json.loads(CONFLICT_DATA_PATH.read_text(encoding="utf-8"))
+            for evidence_id, row in conflict_doc.get("evidence", {}).items():
+                if not evidence_id or evidence_id in self.conflict_evidence:
+                    raise ValueError(f"Duplicate or empty conflict evidence identifier: {evidence_id}")
+                self.conflict_evidence[evidence_id] = row
+
+            seen_conflict_ids: set[str] = set()
+            seen_conflict_keys: set[tuple[str, str, str | None]] = set()
+            for raw in conflict_doc.get("conflicts", []):
+                conflict_id = str(raw.get("id") or "").strip()
+                source_id = str(raw.get("source_id") or "").strip()
+                source_name = str(raw.get("source_name") or "").strip()
+                country = raw.get("country")
+                candidate_ids = tuple(str(v) for v in raw.get("candidate_ids", []))
+                evidence_ids = tuple(str(v) for v in raw.get("evidence_ids", []))
+                if not conflict_id or conflict_id in seen_conflict_ids:
+                    raise ValueError(f"Duplicate or empty variety identity conflict id: {conflict_id}")
+                seen_conflict_ids.add(conflict_id)
+                if not source_id or not exact_name(source_name):
+                    raise ValueError(f"{conflict_id} requires source_id and source_name")
+                if not candidate_ids or any(
+                    not value.startswith("vivc:") or not value[5:].isdigit()
+                    for value in candidate_ids
+                ):
+                    raise ValueError(f"{conflict_id} requires one or more VIVC candidate ids")
+                if not evidence_ids or any(
+                    value not in self.conflict_evidence for value in evidence_ids
+                ):
+                    raise ValueError(f"{conflict_id} requires registered conflict evidence")
+                if raw.get("generator_policy") != "block_identity_promotion":
+                    raise ValueError(f"{conflict_id} must block identity promotion")
+                key = (
+                    source_id,
+                    exact_name(source_name),
+                    exact_name(country) if country is not None else None,
+                )
+                if key in seen_conflict_keys:
+                    raise ValueError(f"Duplicate variety identity conflict key: {key}")
+                seen_conflict_keys.add(key)
+                self.conflicts.append(
+                    VarietyIdentityConflict(
+                        id=conflict_id,
+                        source_id=source_id,
+                        source_name=source_name,
+                        candidate_ids=candidate_ids,
+                        evidence_ids=evidence_ids,
+                        conflict_class=str(raw.get("conflict_class") or "unspecified"),
+                        status=str(raw.get("status") or "open"),
+                        generator_policy="block_identity_promotion",
+                        country=country,
+                    )
+                )
 
         # Evidence identifiers are immutable provenance keys. Duplicate keys
         # across shards are rejected even if their payloads happen to match.
@@ -134,6 +204,33 @@ class VarietyIdentityRegistry:
 
     def resolve(self, source_name: str, *, source_id: str, country: str | None = None) -> VarietyIdentityDecision:
         name = exact_name(source_name)
+        matching_conflicts = [
+            conflict
+            for conflict in self.conflicts
+            if conflict.source_id == source_id
+            and exact_name(conflict.source_name) == name
+            and (
+                conflict.country is None
+                or (country is not None and exact_name(conflict.country) == exact_name(country))
+            )
+            and conflict.status == "open"
+        ]
+        if matching_conflicts:
+            candidate_ids = tuple(
+                sorted({candidate for conflict in matching_conflicts for candidate in conflict.candidate_ids})
+            )
+            evidence_ids = tuple(
+                sorted({evidence for conflict in matching_conflicts for evidence in conflict.evidence_ids})
+            )
+            classes = ", ".join(sorted({conflict.conflict_class for conflict in matching_conflicts}))
+            return VarietyIdentityDecision(
+                "CONFLICT",
+                "R0",
+                candidate_ids=candidate_ids,
+                evidence_ids=evidence_ids,
+                reason=f"Source-backed identity conflict requires review: {classes}",
+            )
+
         # A country-specific assertion cannot be silently widened to global scope.
         scoped = [l for l in self.links if l.source_id == source_id and
                   (l.country is None or (country is not None and exact_name(l.country) == exact_name(country)))]
