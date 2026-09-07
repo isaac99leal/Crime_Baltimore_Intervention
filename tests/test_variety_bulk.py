@@ -53,6 +53,8 @@ class BulkVarietyRegistryTests(unittest.TestCase):
     def test_trait_priors_exist_for_sparse_and_deep_records(self):
         for name in ("Cabernet Sauvignon", "Cereza", "Beba", "Shesh i Zi"):
             row = self.by_name[name]
+            self.assertTrue(row.style_family)
+            self.assertTrue(row.fermentation_archetype)
             self.assertIsNotNone(row.traits.acidity.typical)
             self.assertIsNotNone(row.traits.tannin.typical)
             self.assertIsNotNone(row.traits.body.typical)
@@ -74,6 +76,8 @@ class BulkVarietyRegistryTests(unittest.TestCase):
         self.assertGreater(stats["new_world_observed_names"], 100)
         self.assertGreater(stats["world_area_2023_ha"], 4_000_000)
         self.assertGreater(stats["strong_identity_area_2023_pct"], 70.0)
+        self.assertGreater(stats["legacy_specific_trait_profiles"], 100)
+        self.assertGreater(stats["specific_style_families"], 100)
 
 
 if __name__ == "__main__":
