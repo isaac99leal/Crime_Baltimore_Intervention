@@ -1,6 +1,6 @@
 {
-  "snapshot_version": "2026-09-07.1",
-  "scope": "Candidate discovery only. Full VIVC passport retrieval returned HTTP 403. No botanical links are confirmed.",
+  "snapshot_version": "2026-09-07.2",
+  "scope": "Reviewed botanical identity crosswalks remain separate from legal origin permission. Direct VIVC passport retrieval was unavailable, so reviewed promotions use curated botanical/genetic-resource registries that explicitly publish the VIVC identifier and exact source identity. Candidate-only VIVC search records are retained for provenance.",
   "evidence": {
     "vivc-search-1929-2026-09-07": {
       "authority_type": "botanical_registry",
@@ -9,7 +9,7 @@
       "retrieved_on": "2026-09-07",
       "retrieval_status": "search_title_available_passport_http_403",
       "title": "CABERNET SAUVIGNON",
-      "notes": "Title and record URL observed in search. Passport content and source-name identity relation not verified."
+      "notes": "Title and record URL observed in search. Superseded for identity resolution by reviewed CNR/Vitis Grinzane evidence, but retained as discovery provenance."
     },
     "vivc-search-14308-2026-09-07": {
       "authority_type": "botanical_registry",
@@ -18,7 +18,7 @@
       "retrieved_on": "2026-09-07",
       "retrieval_status": "search_title_available_passport_http_403",
       "title": "RONDO",
-      "notes": "Title and record URL observed in search. Passport content and source-name identity relation not verified."
+      "notes": "Title and record URL observed in search. Superseded for identity resolution by reviewed European GrapeGen evidence, but retained as discovery provenance."
     },
     "vivc-search-8068-2026-09-07": {
       "authority_type": "botanical_registry",
@@ -27,7 +27,63 @@
       "retrieved_on": "2026-09-07",
       "retrieval_status": "search_title_available_passport_http_403",
       "title": "MOSCHOFILERO",
-      "notes": "Title and record URL observed in search. Passport content and source-name identity relation not verified."
+      "notes": "Title and record URL observed in search. Superseded for identity resolution by reviewed European GrapeGen evidence, but retained as discovery provenance."
+    },
+    "cnr-vitisgrinzane-cabernet-sauvignon-1929-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://vitisgrinzane.ipsp.cnr.it/do/34c2d4b9-e937-407a-952c-05e2536e982f",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Cabernet sauvignon N. | Vitis Grinzane",
+      "canonical_id": "vivc:1929",
+      "source_id": "adelaide_2025",
+      "source_name": "Cabernet Sauvignon",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "CNR/IPSP Vitis Grinzane explicitly reports VIVC variety number 1929 for Cabernet sauvignon, wine-grape use, black berry color, France as origin, Vitis vinifera taxonomy, and trueness-to-type identification. This evidence resolves botanical identity only."
+    },
+    "cnr-vitisgrinzane-syrah-11748-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://vitisgrinzane.ipsp.cnr.it/do/d9bd9924-87f8-4384-b028-d56a0285b83e",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Syrah N. | Vitis Grinzane",
+      "canonical_id": "vivc:11748",
+      "source_id": "adelaide_2025",
+      "source_name": "Syrah",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "CNR/IPSP Vitis Grinzane explicitly reports VIVC variety number 11748 for Syrah, wine-grape use, black berry color, France as origin, Vitis vinifera taxonomy, Italian catalogue code 231, and trueness-to-type identification. This evidence resolves botanical identity only."
+    },
+    "grapegen06-rondo-14308-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:14308",
+      "source_id": "adelaide_2025",
+      "source_name": "Rondo",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "The European GrapeGen genetic-resources cross-reference maps Rondo observations from multiple national collections to RONDO, VIVC 14308. Botanical identity only; resistance and pedigree attributes require separately reviewed evidence."
+    },
+    "grapegen06-moschofilero-8068-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e09-4ac9-e053-1705fe0a1c61/ANNEX_2A_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2A",
+      "canonical_id": "vivc:8068",
+      "source_id": "adelaide_2025",
+      "source_name": "Moschofilero",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "The European GrapeGen genetic-resources cross-reference maps Greek Moschofilero to MOSCHO FILERO, VIVC 8068. Exact source-name identity is promoted; color and synonym details are not inferred from this crosswalk."
     }
   },
   "identities": [
@@ -35,16 +91,25 @@
       "id": "vivc:1929",
       "vivc_id": 1929,
       "prime_name": "CABERNET SAUVIGNON",
-      "record_status": "candidate_from_search_title",
-      "color": null,
-      "species": null,
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:11748",
+      "vivc_id": 11748,
+      "prime_name": "SYRAH",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
       "parentage": null
     },
     {
       "id": "vivc:14308",
       "vivc_id": 14308,
       "prime_name": "RONDO",
-      "record_status": "candidate_from_search_title",
+      "record_status": "reviewed_cross_registry_identity",
       "color": null,
       "species": null,
       "parentage": null
@@ -53,7 +118,7 @@
       "id": "vivc:8068",
       "vivc_id": 8068,
       "prime_name": "MOSCHOFILERO",
-      "record_status": "candidate_from_search_title",
+      "record_status": "reviewed_cross_registry_identity",
       "color": null,
       "species": null,
       "parentage": null
@@ -64,28 +129,29 @@
       "source_id": "adelaide_2025",
       "source_name": "Cabernet Sauvignon",
       "canonical_id": "vivc:1929",
-      "level": "R2",
-      "evidence_ids": [
-        "vivc-search-1929-2026-09-07"
-      ]
+      "level": "R5",
+      "evidence_ids": ["cnr-vitisgrinzane-cabernet-sauvignon-1929-2026-09-07"]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Syrah",
+      "canonical_id": "vivc:11748",
+      "level": "R5",
+      "evidence_ids": ["cnr-vitisgrinzane-syrah-11748-2026-09-07"]
     },
     {
       "source_id": "adelaide_2025",
       "source_name": "Rondo",
       "canonical_id": "vivc:14308",
-      "level": "R2",
-      "evidence_ids": [
-        "vivc-search-14308-2026-09-07"
-      ]
+      "level": "R5",
+      "evidence_ids": ["grapegen06-rondo-14308-2026-09-07"]
     },
     {
       "source_id": "adelaide_2025",
       "source_name": "Moschofilero",
       "canonical_id": "vivc:8068",
-      "level": "R2",
-      "evidence_ids": [
-        "vivc-search-8068-2026-09-07"
-      ]
+      "level": "R5",
+      "evidence_ids": ["grapegen06-moschofilero-8068-2026-09-07"]
     }
   ]
 }
