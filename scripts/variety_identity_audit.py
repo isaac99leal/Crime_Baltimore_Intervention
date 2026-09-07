@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import csv
 import json
+import sys
 from pathlib import Path
 
-from sommelier_v2.knowledge.variety_identity import VarietyIdentityRegistry
-
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from sommelier_v2.knowledge.variety_identity import VarietyIdentityRegistry  # noqa: E402
 DEFAULT_CSV = ROOT / "sommelier_v2" / "knowledge" / "data" / "adelaide_world_varieties_2000_2023.csv"
 
 
