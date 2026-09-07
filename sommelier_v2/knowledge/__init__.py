@@ -43,6 +43,7 @@ from .vineyard_yield_adjustments import VineyardYieldAdjustment, VineyardYieldAd
 from .vintage import load_legacy_vintage_knowledge, vintage_stats
 from .vintage_engine import DailyWeather, VintageDayState, VintageModelParams, VintageOutcome, simulate_vintage
 from .winemaking_decisions import DecisionAuthorityAssessment, DecisionEvidenceSource, DecisionOption, WinemakingDecision, WinemakingDecisionError, WinemakingDecisionRegistry, WinemakingDecisionStats, load_winemaking_decisions
+from .winery_blend_chemistry import WineryBlendChemistryConstraintError, WineryBlendChemistryResult, blend_winery_lots_with_chemistry
 from .winery_provenance import LotBalance, LotMovement, ProvenanceSlice, WineryLot, WineryProvenanceError, WineryProvenanceLedger
 
 VineyardEngine = LegalVineyardEngine
@@ -84,10 +85,11 @@ __all__ = [
     "VineyardYieldAdjustment", "VineyardYieldAdjustmentRegistry", "VineyardYieldAdjustmentRule",
     "VintageDayState", "VintageModelParams", "VintageOutcome", "WineKnowledgeCatalog", "WineOriginFactory",
     "WinemakingDecision", "WinemakingDecisionError", "WinemakingDecisionRegistry", "WinemakingDecisionStats",
-    "WineryLot", "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",
+    "WineryBlendChemistryConstraintError", "WineryBlendChemistryResult", "WineryLot",
+    "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",
     "age_cellar_wine", "age_inventory_lot", "apply_winemaking_decisions", "assess_packaging",
-    "assess_process_chemistry", "assess_smoke_markers", "blend_chemistry", "bottle_winery_lot",
-    "initial_microbiological_risk", "initial_state", "load_historical_vintages",
+    "assess_process_chemistry", "assess_smoke_markers", "blend_chemistry", "blend_winery_lots_with_chemistry",
+    "bottle_winery_lot", "initial_microbiological_risk", "initial_state", "load_historical_vintages",
     "load_legacy_vintage_knowledge", "load_process_chemistry_evidence", "load_site_research",
     "load_trade_research", "load_winemaking_decisions", "lot_from_harvest_must", "modified_archetype",
     "molecular_so2_mg_l", "must_from_vineyard", "normalize_name", "nutrient_timing_effect",
