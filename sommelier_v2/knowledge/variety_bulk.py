@@ -120,9 +120,13 @@ class VarietyOperationalRecord:
 class BulkVarietyRegistry:
     """Materialize the full Adelaide universe into operational simulator records."""
 
-    def __init__(self) -> None:
-        self.catalog = WorldWineKnowledgeCatalog()
-        self.identities = VarietyIdentityRegistry()
+    def __init__(
+        self,
+        catalog: WorldWineKnowledgeCatalog | None = None,
+        identities: VarietyIdentityRegistry | None = None,
+    ) -> None:
+        self.catalog = catalog or WorldWineKnowledgeCatalog()
+        self.identities = identities or VarietyIdentityRegistry()
         self.ttb = self._load_ttb()
         self._base_exact = self._build_base_index()
 
