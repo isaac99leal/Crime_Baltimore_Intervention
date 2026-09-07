@@ -101,16 +101,28 @@ class BurgundyPendingClaimHoldTests(unittest.TestCase):
                 )
             )
 
-    def test_monthelie_les_crays_is_not_in_current_canonical_pc_sites(self) -> None:
-        monthelie_names = {
+    def test_monthelie_les_crays_keeps_conflicting_evidence_separate(self) -> None:
+        legal_names = {
             site.name
             for site in self.catalog.named_sites
             if site.parent == "Monthélie"
             and site.site_type == "climat"
             and site.classification == "Premier Cru"
+            and "bourgogne_monthelie_2011" in site.source_ids
         }
-        self.assertEqual(len(monthelie_names), 15)
-        self.assertNotIn("Les Crays", monthelie_names)
+        bivb_names = {
+            site.name
+            for site in self.catalog.named_sites
+            if site.parent == "Monthélie"
+            and site.site_type == "climat"
+            and site.classification == "Premier Cru"
+            and "bivb_monthelie" in site.source_ids
+        }
+
+        self.assertEqual(len(legal_names), 15)
+        self.assertNotIn("Les Crays", legal_names)
+        self.assertEqual(len(bivb_names), 16)
+        self.assertIn("Les Crays", bivb_names)
 
         hold = next(
             hold
@@ -119,6 +131,7 @@ class BurgundyPendingClaimHoldTests(unittest.TestCase):
         )
         self.assertEqual(hold.status, "site_claim_disputed_legal_name")
         self.assertEqual(hold.physical_site_names, ("Les Crays",))
+        self.assertIn("inao_monthelie_current_2026", hold.source_ids)
 
 
 class BurgundyExactClaimNameRegressionTests(unittest.TestCase):
