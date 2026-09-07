@@ -95,6 +95,15 @@ class BulkVarietyRegistryTests(unittest.TestCase):
         self.assertIn(row.traits.confidence, {"low", "medium"})
         self.assertEqual(row.traits.source, "generic_commercial_simulation_prior")
 
+    def test_world_catalog_exposes_operational_layer_directly(self):
+        world = self.registry.catalog
+        record = world.operational_variety("Assyrtiko")
+        self.assertTrue(record.simulation_enabled)
+        self.assertEqual(record.source_name, "Assyrtiko")
+        decision = world.assess_variety_country_plausibility("Assyrtiko", "United States")
+        self.assertEqual(decision.state, "COMMERCIALLY_PLAUSIBLE")
+        self.assertFalse(decision.legal_entitlement_inferred)
+
     def test_stats_report_full_operational_coverage(self):
         stats = self.registry.stats()
         self.assertEqual(stats["operational_adelaide_names"], len(self.records))
