@@ -13,8 +13,8 @@
       "source_id": "adelaide_2025",
       "source_name": "Muscat of Hamburg",
       "country": null,
-      "relation": "exact_identity",
-      "notes": "Vitis Grinzane reports VIVC 8226, trueness-to-type confirmation, and an accession explicitly named Muscat Hamburg. Adelaide's literal row is Muscat of Hamburg; the added preposition is treated as the same exact English source designation for this reviewed record."
+      "relation": "confirmed_synonym",
+      "notes": "Vitis Grinzane reports VIVC 8226, trueness-to-type confirmation, and an accession explicitly named Muscat Hamburg. Adelaide's literal row is Muscat of Hamburg, so the proposition is treated conservatively as a reviewed R4 naming equivalence rather than an exact R5 assertion."
     },
     "vitisgrinzane-cot-malbech-2889-2026-09-07": {
       "authority_type": "botanical_registry",
@@ -46,13 +46,61 @@
     }
   },
   "identities": [
-    {"id":"vivc:8226","vivc_id":8226,"prime_name":"MUSCAT HAMBURG","record_status":"reviewed_botanical_registry_identity","color":"black","species":"Vitis vinifera","parentage":"Schiava Grossa × Muscat of Alexandria"},
-    {"id":"vivc:2889","vivc_id":2889,"prime_name":"COT","record_status":"reviewed_botanical_registry_identity","color":"black","species":"Vitis vinifera","parentage":"Magdeleine noire des Charentes × Prunelard"},
-    {"id":"vivc:9703","vivc_id":9703,"prime_name":"PRIMITIVO","record_status":"reviewed_cross_registry_synonym_identity","color":"black","species":"Vitis vinifera","parentage":null}
+    {
+      "id": "vivc:8226",
+      "vivc_id": 8226,
+      "prime_name": "MUSCAT HAMBURG",
+      "record_status": "reviewed_botanical_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": "Schiava Grossa × Muscat of Alexandria"
+    },
+    {
+      "id": "vivc:2889",
+      "vivc_id": 2889,
+      "prime_name": "COT",
+      "record_status": "reviewed_botanical_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": "Magdeleine noire des Charentes × Prunelard"
+    },
+    {
+      "id": "vivc:9703",
+      "vivc_id": 9703,
+      "prime_name": "PRIMITIVO",
+      "record_status": "reviewed_cross_registry_synonym_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    }
   ],
   "links": [
-    {"source_id":"adelaide_2025","source_name":"Muscat of Hamburg","canonical_id":"vivc:8226","level":"R5","evidence_ids":["vitisgrinzane-muscat-hamburg-8226-2026-09-07"]},
-    {"source_id":"adelaide_2025","source_name":"Côt","canonical_id":"vivc:2889","level":"R4","evidence_ids":["vitisgrinzane-cot-malbech-2889-2026-09-07"]},
-    {"source_id":"adelaide_2025","source_name":"Tribidrag","canonical_id":"vivc:9703","level":"R4","evidence_ids":["ucd-fps-tribidrag-9703-2026-09-07"]}
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat of Hamburg",
+      "canonical_id": "vivc:8226",
+      "level": "R4",
+      "evidence_ids": [
+        "vitisgrinzane-muscat-hamburg-8226-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Côt",
+      "canonical_id": "vivc:2889",
+      "level": "R4",
+      "evidence_ids": [
+        "vitisgrinzane-cot-malbech-2889-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Tribidrag",
+      "canonical_id": "vivc:9703",
+      "level": "R4",
+      "evidence_ids": [
+        "ucd-fps-tribidrag-9703-2026-09-07"
+      ]
+    }
   ]
 }
