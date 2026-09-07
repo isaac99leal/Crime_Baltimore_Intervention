@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "notes": "Positive label-claim rules for named sites. A site in named_sites_seed.json is not claimable unless a rule here matches and the parent protected-origin claim has already passed the strict legal specification layer. These rules authorize only the named geographical unit itself, not an additional 'vigna'/vineyard toponym, ownership claim, or producer-defined block name unless a future rule says so explicitly.",
+  "notes": "Positive label-claim rules for named sites. A site identity is not claimable unless a rule here matches and the parent protected-origin claim has already passed the strict legal specification layer. Barolo and Barbaresco MGA claims require current 2026 MASAF identity evidence; older Enoteca seed evidence alone is no longer sufficient. These rules authorize the MGA itself, not a subordinate 'vigna' toponym unless a future rule verifies all separate traceability conditions.",
   "sources": {
     "masaf_barolo_2026": {
       "authority": "Ministero dell'agricoltura, della sovranità alimentare e delle foreste",
@@ -25,11 +25,18 @@
       "parent_appellation": "Barolo DOCG",
       "site_type": "MGA",
       "required_site_legal_status": "official_additional_geographical_mention",
-      "required_site_source_ids": ["barolo_enoteca_mga"],
+      "required_site_source_ids": ["barolo_masaf_2026_mga"],
       "allowed_wine_variants": [],
       "source_ids": ["masaf_barolo_2026"],
       "claim_kind": "additional_geographical_mention",
-      "notes": "Authorizes the listed MGA name with eligible Barolo/Barolo Riserva. It does not authorize a separate 'vigna' toponym, whose conditions are not modeled here."
+      "cover_name_groups": {
+        "Garblet Suè": ["Altenasso"],
+        "Garbelletto Superiore": ["Altenasso"],
+        "Cannubi": ["Cannubi Boschis", "Cannubi Muscatel", "Cannubi San Lorenzo", "Cannubi Valletta"],
+        "Monriondino": ["Mariondino"],
+        "Bricco Moriondino": ["Mariondino"]
+      },
+      "notes": "Authorizes a current 2026-listed MGA name with eligible Barolo/Barolo Riserva. Explicit Article 8 alternate names are represented through cover-name mappings. It does not authorize a separate 'vigna' toponym, which additionally requires the MGA, separate vinification/conservation, declaration and register traceability, regional-list status, and producer vinification/bottling conditions."
     },
     {
       "id": "siteclaim:it:barbaresco:mga",
@@ -37,11 +44,11 @@
       "parent_appellation": "Barbaresco DOCG",
       "site_type": "MGA",
       "required_site_legal_status": "official_additional_geographical_mention",
-      "required_site_source_ids": ["barbaresco_enoteca_mga"],
+      "required_site_source_ids": ["barbaresco_masaf_2026_mga"],
       "allowed_wine_variants": [],
       "source_ids": ["masaf_barbaresco_2026"],
       "claim_kind": "additional_geographical_mention",
-      "notes": "Authorizes the listed MGA name with eligible Barbaresco/Barbaresco Riserva. It does not authorize a separate 'vigna' toponym, whose conditions are not modeled here."
+      "notes": "Authorizes a current 2026-listed MGA name with eligible Barbaresco/Barbaresco Riserva. It does not authorize a separate 'vigna' toponym, whose additional MGA, separate-vessel, declaration/register/document, regional-list, vinification and bottling conditions are not yet modeled."
     },
     {
       "id": "siteclaim:it:chianti-classico:uga:gran-selezione",
