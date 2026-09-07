@@ -1,0 +1,48 @@
+{
+  "snapshot_version": "2026-09-07.1",
+  "scope": "Source-backed identity conflicts and umbrella-name ambiguities that must block canonical promotion until proposition-level review resolves them.",
+  "evidence": {
+    "grapegen06-petit-verdot-cross-country-conflict-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "source_id": "adelaide_2025",
+      "source_name": "Petit Verdot",
+      "notes": "GrapeGen06 registers the literal name Petit Verdot under VIVC 12973 (VERDOT NOIR) in Switzerland and under VIVC 12974 (VERDOT PETIT) in several other national catalogues. A country-free Adelaide row therefore cannot be promoted safely without reconciliation."
+    },
+    "grapegen06-catarratto-umbrella-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "source_id": "adelaide_2025",
+      "source_name": "Catarratto Bianco",
+      "notes": "GrapeGen06 maps Maltese Catarratto and the Italian compound registered row Catarratto bianco comune / Catarratto bianco lucido to CATARRATTO BIANCO COMUNE, VIVC 2341. The Adelaide literal Catarratto Bianco is less specific than the registered proposition and is kept quarantined pending subtype/source reconciliation."
+    }
+  },
+  "conflicts": [
+    {
+      "id": "varconflict:adelaide_2025:petit-verdot",
+      "source_id": "adelaide_2025",
+      "source_name": "Petit Verdot",
+      "country": null,
+      "candidate_ids": ["vivc:12973", "vivc:12974"],
+      "evidence_ids": ["grapegen06-petit-verdot-cross-country-conflict-2026-09-07"],
+      "conflict_class": "cross_country_homonym_mapping",
+      "status": "open",
+      "generator_policy": "block_identity_promotion"
+    },
+    {
+      "id": "varconflict:adelaide_2025:catarratto-bianco",
+      "source_id": "adelaide_2025",
+      "source_name": "Catarratto Bianco",
+      "country": null,
+      "candidate_ids": ["vivc:2341"],
+      "evidence_ids": ["grapegen06-catarratto-umbrella-2026-09-07"],
+      "conflict_class": "umbrella_name_requires_subtype_resolution",
+      "status": "open",
+      "generator_policy": "block_identity_promotion"
+    }
+  ]
+}
