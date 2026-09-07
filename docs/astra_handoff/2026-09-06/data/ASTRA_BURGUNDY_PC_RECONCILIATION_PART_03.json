@@ -1,0 +1,16 @@
+{
+  "handoff_id":"WKV2-ASTRA-2026-09-06-R1",
+  "role":"research_reconciliation_seed_not_canonical",
+  "scope":"Burgundy Premier Cru claims",
+  "part":3,
+  "parts_total":6,
+  "parents":{
+    "Volnay":["Carelle sous la Chapelle","Champans","Clos de l'Audignac","Clos de la Barre","Clos de la Bousse-d'Or","Clos de la Cave des Ducs","Clos de la Chapelle","Clos de la Rougeotte","Clos des 60 Ouvrées","Clos des Chênes","Clos des Ducs","Clos du Château des Ducs","Clos du Verseuil","En Chevret","Frémiets","Frémiets - Clos de la Rougeotte","La Gigotte","Lassolle","Le Ronceret","Le Village","Les Angles","Les Brouillards","Les Caillerets","Les Lurets","Les Mitans","Pitures Dessus","Robardelle","Santenots","Taille Pieds"],
+    "Monthélie":["Clos des Toisières","La Taupine","Le Cas Rougeot","Le Château Gaillard","Le Clos Gauthey","Le Clou des Chênes","Le Meix Bataille","Le Village","Les Barbières","Les Champs Fulliots","Les Clous","Les Duresses","Les Riottes","Les Vignes Rondes","Sur la Velle"],
+    "Auxey-Duresses":["Bas des Duresses","Climat du Val","Clos du Val","La Chapelle","Les Bréterins","Les Duresses","Les Ecussaux","Les Grands Champs","Reugne"],
+    "Meursault":["Blagny","Charmes","Clos des Perrières","Genevrières","La Jeunellotte","La Pièce sous le Bois","Le Porusot","Les Bouchères","Les Caillerets","Les Cras","Les Gouttes d'Or","Les Plures","Les Ravelles","Les Santenots Blancs","Les Santenots du Milieu","Perrières","Porusot","Sous Blagny","Sous le Dos d'Ane"],
+    "Blagny":["Hameau de Blagny","La Garenne ou sur la Garenne","La Jeunellotte","La Pièce sous le Bois","Sous Blagny","Sous le Dos d'Ane","Sous le Puits"],
+    "Puligny-Montrachet":["Champ Canet","Champ Gain","Clavaillon","Clos de la Garenne","Clos de la Mouchère","Hameau de Blagny","La Garenne","La Truffière","Le Cailleret","Les Chalumaux","Les Combettes","Les Demoiselles","Les Folatières","Les Perrières","Les Pucelles","Les Referts","Sous le Puits"],
+    "Chassagne-Montrachet":["Abbaye de Morgeot","Blanchot dessus","Bois de Chassagne","Cailleret","Champs Jendreau","Chassagne","Chassagne du Clos Saint-Jean","Clos Chareau","Clos Pitois","Clos Saint-Jean","Dent de Chien","En Cailleret","En Remilly","En Virondot","Ez Crets","Ez Crottes","Francemont","Guerchère","La Boudriotte","La Cardeuse","La Chapelle","La Grande Borne","La Grande Montagne","La Maltroie","La Romanée","La Roquemaure","Les Baudines","Les Boirettes","Les Bondues","Les Brussonnes","Les Champs gain","Les Chaumées","Les Chaumes","Les Chenevottes","Les Combards","Les Commes","Les Embazées","Les Fairendes","Les Grandes Ruchottes","Les Grands Clos","Les Macherelles","Les Murées","Les Pasquelles","Les Petites Fairendes","Les Petits Clos","Les Places","Les Rebichets","Les Vergers","Morgeot","Petingeret","Tête du Clos","Tonton Marcel","Vide Bourse","Vigne Blanche","Vigne Derrière"]
+  }
+}
