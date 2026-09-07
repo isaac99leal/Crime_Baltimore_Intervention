@@ -143,6 +143,10 @@ class EvidenceResolverTests(unittest.TestCase):
             "Syrah": "vivc:11748",
             "Rondo": "vivc:14308",
             "Moschofilero": "vivc:8068",
+            "Merlot": "vivc:7657",
+            "Chardonnay": "vivc:2455",
+            "Tempranillo": "vivc:12350",
+            "Airén": "vivc:157",
         }
         for source_name, canonical_id in expected.items():
             decision = r.resolve(source_name, source_id="adelaide_2025")
@@ -153,14 +157,26 @@ class EvidenceResolverTests(unittest.TestCase):
 
     def test_resolution_remains_source_scoped(self):
         r = VarietyIdentityRegistry()
-        for source_name in ("Cabernet Sauvignon", "Syrah", "Rondo", "Moschofilero"):
+        for source_name in (
+            "Cabernet Sauvignon", "Syrah", "Rondo", "Moschofilero",
+            "Merlot", "Chardonnay", "Tempranillo", "Airén",
+        ):
             self.assertFalse(r.resolve(source_name, source_id="another-census").identity_confirmed)
+
+    def test_accent_fold_is_not_promoted_without_exact_source_assertion(self):
+        r = VarietyIdentityRegistry()
+        exact = r.resolve("Airén", source_id="adelaide_2025")
+        folded = r.resolve("Airen", source_id="adelaide_2025")
+        self.assertTrue(exact.identity_confirmed)
+        self.assertEqual(folded.status, "CANDIDATE")
+        self.assertEqual(folded.level, "R2")
+        self.assertIsNone(folded.canonical_id)
 
     def test_unseen_and_unreviewed_names_stay_unknown(self):
         r = VarietyIdentityRegistry()
         self.assertEqual(r.resolve("Unseen", source_id="adelaide_2025").status, "UNKNOWN")
-        self.assertEqual(r.resolve("Merlot", source_id="adelaide_2025").status, "UNKNOWN")
-        self.assertEqual(r.resolve("Chardonnay", source_id="adelaide_2025").status, "UNKNOWN")
+        self.assertEqual(r.resolve("Pinot Noir", source_id="adelaide_2025").status, "UNKNOWN")
+        self.assertEqual(r.resolve("Sauvignon Blanc", source_id="adelaide_2025").status, "UNKNOWN")
 
 
 if __name__ == "__main__":
