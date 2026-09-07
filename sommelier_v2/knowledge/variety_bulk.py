@@ -88,6 +88,8 @@ class OperationalTraitPriors:
 class VarietyOperationalRecord:
     source_name: str
     source_id: str
+    style_family: str
+    fermentation_archetype: str
     identity_status: str
     identity_level: str
     canonical_id: str | None
@@ -254,6 +256,30 @@ class BulkVarietyRegistry:
             confidence="medium" if identity_level in {"R4", "R5"} else "low",
         )
 
+    def _style_family(self, source_name: str, canonical_id: str | None, traits: OperationalTraitPriors) -> tuple[str, str]:
+        legacy = self._legacy_profile(source_name)
+        identity = self.identities.identities.get(canonical_id or "", {})
+        color = str((legacy.color if legacy is not None else None) or identity.get("color") or "").casefold()
+        tannin = float(traits.tannin.typical or 0)
+        body = float(traits.body.typical or 0)
+        aromatic = float(traits.aromatic_intensity.typical or 0)
+
+        if color in {"red", "black", "noir", "blue"}:
+            if tannin >= 3.5 or body >= 4.0:
+                return "red_structured", "red_extractive"
+            if tannin <= 1.8 and body <= 3.0:
+                return "red_light", "red_gentle"
+            return "red_medium", "red_standard"
+        if color in {"white", "blanc", "green", "yellow"}:
+            if aromatic >= 3.2 or "muscat" in normalize_name(source_name):
+                return "white_aromatic", "white_cool_aromatic"
+            if body >= 3.5:
+                return "white_structured", "white_textural"
+            return "white_fresh", "white_cool"
+        if color in {"rose", "rosé", "gris", "pink"}:
+            return "rose_or_gray_skin", "rose_flexible"
+        return "broad_unknown_style", "flexible_unknown"
+
     def record(self, source_name: str) -> VarietyOperationalRecord:
         decision = self.identities.resolve(source_name, source_id="adelaide_2025")
         countries = self._countries_for(source_name)
@@ -279,6 +305,12 @@ class BulkVarietyRegistry:
             decision.level,
             decision.canonical_id or (decision.candidate_ids[0] if len(decision.candidate_ids) == 1 else None),
         )
+        style_family, fermentation_archetype = self._style_family(
+            source_name,
+            decision.canonical_id or (decision.candidate_ids[0] if len(decision.candidate_ids) == 1 else None),
+            traits,
+        )
+
         tags = {
             f"identity:{decision.level}",
             f"spatial_us:{spatial_state_us}",
@@ -294,6 +326,8 @@ class BulkVarietyRegistry:
         return VarietyOperationalRecord(
             source_name=source_name,
             source_id="adelaide_2025",
+            style_family=style_family,
+            fermentation_archetype=fermentation_archetype,
             identity_status=decision.status,
             identity_level=decision.level,
             canonical_id=decision.canonical_id,
@@ -329,6 +363,10 @@ class BulkVarietyRegistry:
             "r3_candidates": sum(row.identity_level == "R3" for row in records),
             "r0_conflicts": sum(row.identity_level == "R0" for row in records),
             "ttb_supported_names": sum(row.ttb_status is not None for row in records),
+            "legacy_specific_trait_profiles": sum(row.traits.source == "legacy_explicit_profile" for row in records),
+            "identity_geography_trait_priors": sum(row.traits.source == "identity_and_geography_simulation_prior" for row in records),
+            "generic_trait_priors": sum(row.traits.source == "generic_commercial_simulation_prior" for row in records),
+            "specific_style_families": sum(row.style_family != "broad_unknown_style" for row in records),
             "new_world_observed_names": sum(bool(row.new_world_observed_countries) for row in records),
             "us_observed_names": sum("United States" in row.observed_countries for row in records),
             "world_area_2023_ha": total_area,
