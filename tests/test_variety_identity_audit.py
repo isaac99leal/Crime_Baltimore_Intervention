@@ -16,8 +16,8 @@ class VarietyIdentityAuditTests(unittest.TestCase):
 
     def test_current_reviewed_checkpoint_is_at_least_eighty_r5(self):
         self.assertGreaterEqual(self.metrics["resolution_counts"]["R5"], 80)
-        self.assertGreaterEqual(self.metrics["resolution_counts"]["R4"], 12)
-        self.assertGreater(self.metrics["resolved_2023_pct"], 77.0)
+        self.assertGreaterEqual(self.metrics["resolution_counts"]["R4"], 15)
+        self.assertGreater(self.metrics["resolved_2023_pct"], 79.0)
 
     def test_unresolved_thresholds_are_measured_not_inferred(self):
         unresolved = self.metrics["unresolved_gt_10000_ha"]
@@ -31,9 +31,10 @@ class VarietyIdentityAuditTests(unittest.TestCase):
         names = {row["name"] for row in self.metrics["top_unresolved"]}
         self.assertNotIn("Trebbiano Toscano", names)
         self.assertNotIn("Alicante Henri Bouschet", names)
-        self.assertIn("Côt", names)
-        self.assertIn("Tribidrag", names)
+        self.assertNotIn("Côt", names)
+        self.assertNotIn("Tribidrag", names)
         self.assertIn("Catarratto Bianco", names)
+        self.assertIn("Criolla Grande", names)
 
     def test_unknown_is_not_counted_as_resolved_area(self):
         self.assertLess(
