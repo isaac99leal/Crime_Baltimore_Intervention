@@ -1,0 +1,74 @@
+{
+  "snapshot_version": "2026-09-07.19",
+  "scope": "Sixteenth additive botanical identity shard. Two exact GrapeGen registered-name links and two conservative R4 canonical-name/component-name links.",
+  "evidence": {
+    "grapegen06-nebbiolo-8417-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e09-4ac9-e053-1705fe0a1c61/ANNEX_2A_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2A",
+      "canonical_id": "vivc:8417",
+      "source_id": "adelaide_2025",
+      "source_name": "Nebbiolo",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Nebbiolo in multiple national catalogues directly to NEBBIOLO, VIVC 8417."
+    },
+    "grapegen06-dornfelder-3659-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:3659",
+      "source_id": "adelaide_2025",
+      "source_name": "Dornfelder",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Dornfelder across multiple national catalogues directly to DORNFELDER, VIVC 3659."
+    },
+    "grapegen06-arinto-de-bucelas-602-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0c-4ac9-e053-1705fe0a1c61/ANNEX_3B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 3B",
+      "canonical_id": "vivc:602",
+      "source_id": "adelaide_2025",
+      "source_name": "Arinto de Bucelas",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen maps Portuguese registered Arinto to ARINTO DE BUCELAS, VIVC 602. Adelaide uses the canonical expanded name rather than the literal registered source proposition, so this is R4."
+    },
+    "grapegen06-corvina-veronese-2863-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e09-4ac9-e053-1705fe0a1c61/ANNEX_2A_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2A",
+      "canonical_id": "vivc:2863",
+      "source_id": "adelaide_2025",
+      "source_name": "Corvina Veronese",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen maps Italian registered Corvina N. to CORVINA VERONESE, VIVC 2863. Adelaide uses the canonical expanded name without the registered color code, so this is R4."
+    }
+  },
+  "identities": [
+    {"id":"vivc:8417","vivc_id":8417,"prime_name":"NEBBIOLO","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:3659","vivc_id":3659,"prime_name":"DORNFELDER","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":"Helfensteiner × Heroldrebe"},
+    {"id":"vivc:602","vivc_id":602,"prime_name":"ARINTO DE BUCELAS","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:2863","vivc_id":2863,"prime_name":"CORVINA VERONESE","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Nebbiolo","canonical_id":"vivc:8417","level":"R5","evidence_ids":["grapegen06-nebbiolo-8417-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Dornfelder","canonical_id":"vivc:3659","level":"R5","evidence_ids":["grapegen06-dornfelder-3659-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Arinto de Bucelas","canonical_id":"vivc:602","level":"R4","evidence_ids":["grapegen06-arinto-de-bucelas-602-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Corvina Veronese","canonical_id":"vivc:2863","level":"R4","evidence_ids":["grapegen06-corvina-veronese-2863-2026-09-07"]}
+  ]
+}

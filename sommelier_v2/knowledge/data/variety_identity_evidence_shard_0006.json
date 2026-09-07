@@ -1,0 +1,120 @@
+{
+  "snapshot_version": "2026-09-07.9",
+  "scope": "Sixth additive exact-name botanical identity shard, prioritized by planted area and conservative source-name matching. Conflicted or broader authority rows remain unresolved.",
+  "evidence": {
+    "grapegen06-xarello-13270-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:13270", "source_id": "adelaide_2025", "source_name": "Xarello",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps the registered Spanish name Xarello to XARELLO, VIVC 13270. The Adelaide source spelling is retained exactly; Xarel·lo punctuation variants are not silently introduced into the Adelaide namespace."
+    },
+    "grapegen06-savatiano-10798-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:10798", "source_id": "adelaide_2025", "source_name": "Savatiano",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Savatiano to SAVVATIANO, VIVC 10798. The canonical double-v spelling does not create a second Adelaide source-name link."
+    },
+    "grapegen06-grillo-5021-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:5021", "source_id": "adelaide_2025", "source_name": "Grillo",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Grillo to GRILLO, VIVC 5021. Botanical identity only."
+    },
+    "grapegen06-zweigelt-13484-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:13484", "source_id": "adelaide_2025", "source_name": "Zweigelt",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Zweigelt to ZWEIGELTREBE BLAU, VIVC 13484. Rotburger and other synonyms are not widened into Adelaide without separate reviewed assertions."
+    },
+    "grapegen06-castelao-9152-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:9152", "source_id": "adelaide_2025", "source_name": "Castelão",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps Portuguese Castelão to PERIQUITA, VIVC 9152. The canonical prime-name difference does not create an Adelaide Periquita alias."
+    },
+    "grapegen06-baga-885-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:885", "source_id": "adelaide_2025", "source_name": "Baga",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Portuguese Baga to BAGA, VIVC 885. Botanical identity only."
+    },
+    "grapegen06-pinotage-9286-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:9286", "source_id": "adelaide_2025", "source_name": "Pinotage",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Pinotage to PINOTAGE, VIVC 9286. Pedigree is not added by this identity crosswalk."
+    },
+    "grapegen06-chasselas-2473-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:2473", "source_id": "adelaide_2025", "source_name": "Chasselas",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Chasselas to CHASSELAS BLANC, VIVC 2473. Red/rose Chasselas source rows remain separate."
+    },
+    "grapegen06-caladoc-1989-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:1989", "source_id": "adelaide_2025", "source_name": "Caladoc",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Caladoc to CALADOC, VIVC 1989. Botanical identity only."
+    },
+    "grapegen06-carmenere-2109-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:2109", "source_id": "adelaide_2025", "source_name": "Carmenère",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Carmenère to CARMENERE, VIVC 2109. Diacritic-folded Carmenere is not automatically promoted in the Adelaide source namespace."
+    }
+  },
+  "identities": [
+    {"id":"vivc:13270","vivc_id":13270,"prime_name":"XARELLO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:10798","vivc_id":10798,"prime_name":"SAVVATIANO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:5021","vivc_id":5021,"prime_name":"GRILLO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:13484","vivc_id":13484,"prime_name":"ZWEIGELTREBE BLAU","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:9152","vivc_id":9152,"prime_name":"PERIQUITA","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:885","vivc_id":885,"prime_name":"BAGA","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:9286","vivc_id":9286,"prime_name":"PINOTAGE","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:2473","vivc_id":2473,"prime_name":"CHASSELAS BLANC","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:1989","vivc_id":1989,"prime_name":"CALADOC","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:2109","vivc_id":2109,"prime_name":"CARMENERE","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Xarello","canonical_id":"vivc:13270","level":"R5","evidence_ids":["grapegen06-xarello-13270-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Savatiano","canonical_id":"vivc:10798","level":"R5","evidence_ids":["grapegen06-savatiano-10798-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Grillo","canonical_id":"vivc:5021","level":"R5","evidence_ids":["grapegen06-grillo-5021-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Zweigelt","canonical_id":"vivc:13484","level":"R5","evidence_ids":["grapegen06-zweigelt-13484-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Castelão","canonical_id":"vivc:9152","level":"R5","evidence_ids":["grapegen06-castelao-9152-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Baga","canonical_id":"vivc:885","level":"R5","evidence_ids":["grapegen06-baga-885-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Pinotage","canonical_id":"vivc:9286","level":"R5","evidence_ids":["grapegen06-pinotage-9286-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Chasselas","canonical_id":"vivc:2473","level":"R5","evidence_ids":["grapegen06-chasselas-2473-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Caladoc","canonical_id":"vivc:1989","level":"R5","evidence_ids":["grapegen06-caladoc-1989-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Carmenère","canonical_id":"vivc:2109","level":"R5","evidence_ids":["grapegen06-carmenere-2109-2026-09-07"]}
+  ]
+}

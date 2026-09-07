@@ -11,6 +11,39 @@ from sommelier_v2.knowledge.schema import GrapeKnowledge
 from sommelier_v2.knowledge.variety_identity import VarietyIdentityRegistry
 
 
+REVIEWED_ADELAIDE_LINKS = {
+    "Cabernet Sauvignon": "vivc:1929",
+    "Syrah": "vivc:11748",
+    "Rondo": "vivc:14308",
+    "Moschofilero": "vivc:8068",
+    "Merlot": "vivc:7657",
+    "Chardonnay": "vivc:2455",
+    "Tempranillo": "vivc:12350",
+    "Airén": "vivc:157",
+    "Pinot Noir": "vivc:9279",
+    "Pinot Gris": "vivc:9275",
+    "Sangiovese": "vivc:10680",
+    "Sauvignon Blanc": "vivc:10790",
+    "Cabernet Franc": "vivc:1927",
+    "Chenin Blanc": "vivc:2527",
+    "Barbera": "vivc:974",
+    "Viognier": "vivc:13106",
+    "Riesling": "vivc:10077",
+    "Rkatsiteli": "vivc:10116",
+    "Monastrell": "vivc:7915",
+    "Pinot Blanc": "vivc:9272",
+    "Gamay Noir": "vivc:4377",
+    "Garnacha Blanca": "vivc:4457",
+    "Garnacha Peluda": "vivc:4460",
+    "Garnacha Tinta": "vivc:4461",
+    "Macabeo": "vivc:13127",
+    "Cinsaut": "vivc:2672",
+    "Saperavi": "vivc:10708",
+    "Grüner Veltliner": "vivc:12930",
+    "Vermentino": "vivc:12989",
+}
+
+
 class ObservationIdentityTests(unittest.TestCase):
     def catalog(self, names, base=()):
         c = WorldWineKnowledgeCatalog.__new__(WorldWineKnowledgeCatalog)
@@ -69,7 +102,9 @@ class ObservationIdentityTests(unittest.TestCase):
     def test_catalog_exposes_evidence_resolution_separately_from_name_lookup(self):
         c = self.catalog(["Cabernet Sauvignon"])
         self.assertIsNotNone(c.grape("Cabernet Sauvignon"))
-        self.assertFalse(c.resolve_variety_identity("Cabernet Sauvignon").identity_confirmed)
+        decision = c.resolve_variety_identity("Cabernet Sauvignon")
+        self.assertTrue(decision.identity_confirmed)
+        self.assertEqual(decision.canonical_id, "vivc:1929")
 
     def test_all_country_rows_survive_without_fake_country(self):
         c = WorldWineKnowledgeCatalog.__new__(WorldWineKnowledgeCatalog)
@@ -106,6 +141,21 @@ class EvidenceResolverTests(unittest.TestCase):
         self.assertEqual(folded.level, "R2")
         self.assertIsNone(folded.canonical_id)
 
+    def test_explicit_data_path_remains_single_document(self):
+        r = self.load(self.document())
+        self.assertEqual(r.snapshot_versions, ("test",))
+        self.assertEqual(r.snapshot_version, "test")
+        self.assertEqual(len(r.identities), 1)
+        self.assertEqual(len(r.links), 1)
+        self.assertEqual(r.resolve("Cabernet Franc", source_id="adelaide_2025").status, "UNKNOWN")
+
+    def test_default_registry_loads_sorted_additive_shards(self):
+        r = VarietyIdentityRegistry()
+        self.assertGreaterEqual(len(r.snapshot_versions), 4)
+        for version in ("2026-09-07.5", "2026-09-07.6", "2026-09-07.7"):
+            self.assertIn(version, r.snapshot_versions)
+        self.assertEqual(r.snapshot_version, r.snapshot_versions[-1])
+
     def test_review_cannot_be_borrowed_from_another_assertion(self):
         d = self.document()
         d["evidence"]["e:1"]["source_name"] = "Another name"
@@ -134,10 +184,52 @@ class EvidenceResolverTests(unittest.TestCase):
         self.assertEqual(result.status, "CONFLICT")
         self.assertIsNone(result.canonical_id)
 
-    def test_missing_data_and_real_unverified_passports_stay_unknown(self):
+    def test_reviewed_adelaide_links_resolve_exactly(self):
+        r = VarietyIdentityRegistry()
+        self.assertEqual(len(REVIEWED_ADELAIDE_LINKS), 29)
+        for source_name, canonical_id in REVIEWED_ADELAIDE_LINKS.items():
+            decision = r.resolve(source_name, source_id="adelaide_2025")
+            self.assertTrue(decision.identity_confirmed, source_name)
+            self.assertEqual(decision.status, "RESOLVED")
+            self.assertEqual(decision.level, "R5")
+            self.assertEqual(decision.canonical_id, canonical_id)
+
+    def test_resolution_remains_source_scoped(self):
+        r = VarietyIdentityRegistry()
+        for source_name in REVIEWED_ADELAIDE_LINKS:
+            self.assertFalse(r.resolve(source_name, source_id="another-census").identity_confirmed)
+
+    def test_accent_fold_is_not_promoted_without_exact_source_assertion(self):
+        r = VarietyIdentityRegistry()
+        exact = r.resolve("Airén", source_id="adelaide_2025")
+        folded = r.resolve("Airen", source_id="adelaide_2025")
+        self.assertTrue(exact.identity_confirmed)
+        self.assertEqual(folded.status, "CANDIDATE")
+        self.assertEqual(folded.level, "R2")
+        self.assertIsNone(folded.canonical_id)
+
+    def test_exact_garnacha_row_does_not_create_grenache_source_alias(self):
+        r = VarietyIdentityRegistry()
+        tinta = r.resolve("Garnacha Tinta", source_id="adelaide_2025")
+        self.assertTrue(tinta.identity_confirmed)
+        self.assertEqual(tinta.canonical_id, "vivc:4461")
+        self.assertEqual(r.resolve("Grenache", source_id="adelaide_2025").status, "UNKNOWN")
+        self.assertEqual(r.resolve("Garnacha Roja (Gris)", source_id="adelaide_2025").status, "UNKNOWN")
+
+    def test_canonical_prime_name_difference_does_not_widen_source_aliases(self):
+        r = VarietyIdentityRegistry()
+        macabeo = r.resolve("Macabeo", source_id="adelaide_2025")
+        self.assertTrue(macabeo.identity_confirmed)
+        self.assertEqual(macabeo.canonical_id, "vivc:13127")
+        self.assertEqual(r.resolve("Viura", source_id="adelaide_2025").status, "UNKNOWN")
+
+    def test_unseen_and_unreviewed_names_stay_unknown(self):
         r = VarietyIdentityRegistry()
         self.assertEqual(r.resolve("Unseen", source_id="adelaide_2025").status, "UNKNOWN")
-        self.assertFalse(r.resolve("Cabernet Sauvignon", source_id="adelaide_2025").identity_confirmed)
+        self.assertEqual(r.resolve("Unreviewed Sentinel", source_id="adelaide_2025").status, "UNKNOWN")
+        nebbiolo = r.resolve("Nebbiolo", source_id="adelaide_2025")
+        self.assertTrue(nebbiolo.identity_confirmed)
+        self.assertEqual(nebbiolo.canonical_id, "vivc:8417")
 
 
 if __name__ == "__main__":

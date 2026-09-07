@@ -1,0 +1,65 @@
+{
+  "snapshot_version": "2026-09-07.21",
+  "scope": "Eighteenth additive botanical identity shard. Exact GrapeGen literal-source mappings are R5; registered propositions with color-code qualifiers are R4.",
+  "evidence": {
+    "grapegen06-bical-1568-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e09-4ac9-e053-1705fe0a1c61/ANNEX_2A_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2A",
+      "canonical_id": "vivc:1568", "source_id": "adelaide_2025", "source_name": "Bical",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen directly maps Portuguese registered Bical to BICAL, VIVC 1568."
+    },
+    "grapegen06-loureiro-6912-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0c-4ac9-e053-1705fe0a1c61/ANNEX_3B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 3B",
+      "canonical_id": "vivc:6912", "source_id": "adelaide_2025", "source_name": "Loureiro",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen directly maps Portuguese registered Loureiro to LOUREIRO BLANCO, VIVC 6912. Prime-name expansion does not create a separate Adelaide Loureiro Blanco source link."
+    },
+    "grapegen06-inzolia-492-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0c-4ac9-e053-1705fe0a1c61/ANNEX_3B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 3B",
+      "canonical_id": "vivc:492", "source_id": "adelaide_2025", "source_name": "Inzolia",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen directly maps registered Inzolia to ANSONICA, VIVC 492. The canonical prime-name difference is retained without alias widening."
+    },
+    "grapegen06-roditis-10141-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:10141", "source_id": "adelaide_2025", "source_name": "Roditis",
+      "country": null, "relation": "confirmed_synonym",
+      "notes": "GrapeGen identifies RODITIS, VIVC 10141, with Greek registered Roditis Rs and Cypriot Rodhidis. Adelaide omits the color code, so the proposition is conservatively R4."
+    },
+    "grapegen06-trousseau-12668-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e09-4ac9-e053-1705fe0a1c61/ANNEX_2A_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2A",
+      "canonical_id": "vivc:12668", "source_id": "adelaide_2025", "source_name": "Trousseau",
+      "country": null, "relation": "confirmed_synonym",
+      "notes": "GrapeGen maps French registered Trousseau N to TROUSSEAU NOIR, VIVC 12668. Adelaide omits the registered color code, so this is R4."
+    }
+  },
+  "identities": [
+    {"id":"vivc:1568","vivc_id":1568,"prime_name":"BICAL","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:6912","vivc_id":6912,"prime_name":"LOUREIRO BLANCO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:492","vivc_id":492,"prime_name":"ANSONICA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:10141","vivc_id":10141,"prime_name":"RODITIS","record_status":"reviewed_cross_registry_identity","color":"rose","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:12668","vivc_id":12668,"prime_name":"TROUSSEAU NOIR","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Bical","canonical_id":"vivc:1568","level":"R5","evidence_ids":["grapegen06-bical-1568-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Loureiro","canonical_id":"vivc:6912","level":"R5","evidence_ids":["grapegen06-loureiro-6912-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Inzolia","canonical_id":"vivc:492","level":"R5","evidence_ids":["grapegen06-inzolia-492-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Roditis","canonical_id":"vivc:10141","level":"R4","evidence_ids":["grapegen06-roditis-10141-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Trousseau","canonical_id":"vivc:12668","level":"R4","evidence_ids":["grapegen06-trousseau-12668-2026-09-07"]}
+  ]
+}

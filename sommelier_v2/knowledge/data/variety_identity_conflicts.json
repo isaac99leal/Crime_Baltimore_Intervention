@@ -1,0 +1,107 @@
+{
+  "snapshot_version": "2026-09-07.3",
+  "scope": "Source-backed identity conflicts and umbrella-name ambiguities that must block canonical promotion until proposition-level review resolves them.",
+  "evidence": {
+    "grapegen06-petit-verdot-cross-country-conflict-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "source_id": "adelaide_2025",
+      "source_name": "Petit Verdot",
+      "notes": "GrapeGen06 registers the literal name Petit Verdot under VIVC 12973 (VERDOT NOIR) in Switzerland and under VIVC 12974 (VERDOT PETIT) in several other national catalogues. A country-free Adelaide row therefore cannot be promoted safely without reconciliation."
+    },
+    "grapegen06-catarratto-umbrella-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "source_id": "adelaide_2025",
+      "source_name": "Catarratto Bianco",
+      "notes": "GrapeGen06 maps Maltese Catarratto and the Italian compound registered row Catarratto bianco comune / Catarratto bianco lucido to CATARRATTO BIANCO COMUNE, VIVC 2341. The Adelaide literal Catarratto Bianco is less specific than the registered proposition and is kept quarantined pending subtype/source reconciliation."
+    },
+    "grapegen06-beba-cross-country-conflict-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e09-4ac9-e053-1705fe0a1c61/ANNEX_2A_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "source_id": "adelaide_2025",
+      "source_name": "Beba",
+      "notes": "GrapeGen06 maps Portuguese registered Beba to BEBA, VIVC 22710, but maps the Spanish registered proposition Beba / Valenci Blanco to BEBA, VIVC 40846. The country-free Adelaide Beba row therefore has contradictory authority mappings and must remain blocked."
+    },
+    "grapegen06-pamid-multi-identity-conflict-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e09-4ac9-e053-1705fe0a1c61/ANNEX_2A_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "source_id": "adelaide_2025",
+      "source_name": "Pamid",
+      "notes": "GrapeGen06 maps the Bulgarian registered name Pamid to both PAMID BIAL, VIVC 17323, and PAMIDI, VIVC 17324. The country-free Adelaide row cannot be canonically promoted until this duplicate registered-name proposition is reconciled."
+    }
+  },
+  "conflicts": [
+    {
+      "id": "varconflict:adelaide_2025:petit-verdot",
+      "source_id": "adelaide_2025",
+      "source_name": "Petit Verdot",
+      "country": null,
+      "candidate_ids": [
+        "vivc:12973",
+        "vivc:12974"
+      ],
+      "evidence_ids": [
+        "grapegen06-petit-verdot-cross-country-conflict-2026-09-07"
+      ],
+      "conflict_class": "cross_country_homonym_mapping",
+      "status": "open",
+      "generator_policy": "block_identity_promotion"
+    },
+    {
+      "id": "varconflict:adelaide_2025:catarratto-bianco",
+      "source_id": "adelaide_2025",
+      "source_name": "Catarratto Bianco",
+      "country": null,
+      "candidate_ids": [
+        "vivc:2341"
+      ],
+      "evidence_ids": [
+        "grapegen06-catarratto-umbrella-2026-09-07"
+      ],
+      "conflict_class": "umbrella_name_requires_subtype_resolution",
+      "status": "open",
+      "generator_policy": "block_identity_promotion"
+    },
+    {
+      "id": "varconflict:adelaide_2025:beba",
+      "source_id": "adelaide_2025",
+      "source_name": "Beba",
+      "country": null,
+      "candidate_ids": [
+        "vivc:22710",
+        "vivc:40846"
+      ],
+      "evidence_ids": [
+        "grapegen06-beba-cross-country-conflict-2026-09-07"
+      ],
+      "conflict_class": "cross_country_homonym_mapping",
+      "status": "open",
+      "generator_policy": "block_identity_promotion"
+    },
+    {
+      "id": "varconflict:adelaide_2025:pamid",
+      "source_id": "adelaide_2025",
+      "source_name": "Pamid",
+      "country": null,
+      "candidate_ids": [
+        "vivc:17323",
+        "vivc:17324"
+      ],
+      "evidence_ids": [
+        "grapegen06-pamid-multi-identity-conflict-2026-09-07"
+      ],
+      "conflict_class": "same_catalogue_multi_identity_mapping",
+      "status": "open",
+      "generator_policy": "block_identity_promotion"
+    }
+  ]
+}

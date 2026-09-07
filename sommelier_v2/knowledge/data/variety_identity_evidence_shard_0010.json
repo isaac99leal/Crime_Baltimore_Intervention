@@ -1,0 +1,87 @@
+{
+  "snapshot_version": "2026-09-07.13",
+  "scope": "Tenth additive exact-name botanical identity shard, targeting high-area direct GrapeGen registered-name mappings across vinifera and explicitly interspecific commercial rows.",
+  "evidence": {
+    "grapegen06-muscat-blanc-petits-grains-8193-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:8193", "source_id": "adelaide_2025", "source_name": "Muscat Blanc à Petits Grains",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Muscat blanc à petits grains to MUSCAT A PETITS GRAINS BLANCS, VIVC 8193. Color mutations remain separate identities."
+    },
+    "grapegen06-feteasca-alba-4119-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:4119", "source_id": "adelaide_2025", "source_name": "Fetească Albă",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Fetească albă to FETEASCA ALBA, VIVC 4119."
+    },
+    "grapegen06-feteasca-regala-4121-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:4121", "source_id": "adelaide_2025", "source_name": "Fetească Regală",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Fetească regală to FETEASCA REGALA, VIVC 4121. It remains distinct from Fetească Albă and Fetească Neagră."
+    },
+    "grapegen06-fernao-pires-4100-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:4100", "source_id": "adelaide_2025", "source_name": "Fernão Pires",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Fernão Pires to FERNÃO PIRES, VIVC 4100. Fernão Pires Rosado remains separate."
+    },
+    "grapegen06-muscat-ottonel-8243-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:8243", "source_id": "adelaide_2025", "source_name": "Muscat Ottonel",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Muscat Ottonel to MUSCAT OTTONEL, VIVC 8243. Other Muscat identities are not collapsed."
+    },
+    "grapegen06-moldova-7896-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:7896", "source_id": "adelaide_2025", "source_name": "Moldova",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Moldova to MOLDOVA, VIVC 7896 and classifies it as an interspecific cross. Botanical identity only."
+    },
+    "grapegen06-isabella-5560-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:5560", "source_id": "adelaide_2025", "source_name": "Isabella",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Isabella to ISABELLA, VIVC 5560 and classifies it as an interspecific cross. This does not imply GI authorization."
+    }
+  },
+  "identities": [
+    {"id":"vivc:8193","vivc_id":8193,"prime_name":"MUSCAT A PETITS GRAINS BLANCS","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4119","vivc_id":4119,"prime_name":"FETEASCA ALBA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4121","vivc_id":4121,"prime_name":"FETEASCA REGALA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4100","vivc_id":4100,"prime_name":"FERNÃO PIRES","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:8243","vivc_id":8243,"prime_name":"MUSCAT OTTONEL","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:7896","vivc_id":7896,"prime_name":"MOLDOVA","record_status":"reviewed_cross_registry_identity","color":"black","species":"interspecific cross","parentage":null},
+    {"id":"vivc:5560","vivc_id":5560,"prime_name":"ISABELLA","record_status":"reviewed_cross_registry_identity","color":"black","species":"interspecific cross","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Muscat Blanc à Petits Grains","canonical_id":"vivc:8193","level":"R5","evidence_ids":["grapegen06-muscat-blanc-petits-grains-8193-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Fetească Albă","canonical_id":"vivc:4119","level":"R5","evidence_ids":["grapegen06-feteasca-alba-4119-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Fetească Regală","canonical_id":"vivc:4121","level":"R5","evidence_ids":["grapegen06-feteasca-regala-4121-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Fernão Pires","canonical_id":"vivc:4100","level":"R5","evidence_ids":["grapegen06-fernao-pires-4100-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Muscat Ottonel","canonical_id":"vivc:8243","level":"R5","evidence_ids":["grapegen06-muscat-ottonel-8243-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Moldova","canonical_id":"vivc:7896","level":"R5","evidence_ids":["grapegen06-moldova-7896-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Isabella","canonical_id":"vivc:5560","level":"R5","evidence_ids":["grapegen06-isabella-5560-2026-09-07"]}
+  ]
+}
