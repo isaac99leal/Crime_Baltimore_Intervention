@@ -1,0 +1,74 @@
+{
+  "snapshot_version": "2026-09-07.22",
+  "scope": "Nineteenth additive identity-evidence shard. Peer-reviewed South American genotype matches are recorded at R3 only: inspectable canonical candidates, never identity-confirmed promotion.",
+  "evidence": {
+    "torres2022-cereza-2390-2026-09-07": {
+      "authority_type": "peer_reviewed_genotype",
+      "review_status": "reviewed",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/ajgw.12561",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Identification and recovery of local Vitis vinifera L. cultivars collected in ancient vineyards in different locations of Argentina",
+      "canonical_id": "vivc:2390",
+      "source_id": "adelaide_2025",
+      "source_name": "Cereza",
+      "country": null,
+      "relation": "genotype_candidate",
+      "notes": "Torres et al. report an exact genotype match for Cereza to VIVC 2390. Argentina's INV independently documents Cereza as a major criolla cultivar. This is scientific identity evidence, not yet a registry assertion for the Adelaide row, so it remains R3."
+    },
+    "torres2022-criolla-grande-3241-2026-09-07": {
+      "authority_type": "peer_reviewed_genotype",
+      "review_status": "reviewed",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/ajgw.12561",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Identification and recovery of local Vitis vinifera L. cultivars collected in ancient vineyards in different locations of Argentina",
+      "canonical_id": "vivc:3241",
+      "source_id": "adelaide_2025",
+      "source_name": "Criolla Grande",
+      "country": null,
+      "relation": "genotype_candidate",
+      "notes": "Torres et al. match Rosadita Criolla to Criolla Grande Sanjuanina, VIVC 3241; earlier Argentine genotype work also treats Criolla Grande as a distinct local cultivar. The Adelaide umbrella wording remains R3 pending proposition-level registry reconciliation."
+    },
+    "aliquo2017-torrontes-riojano-15162-2026-09-07": {
+      "authority_type": "peer_reviewed_genotype",
+      "review_status": "reviewed",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/ajgw.12282",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Identity and parentage of some South American grapevine cultivars present in Argentina",
+      "canonical_id": "vivc:15162",
+      "source_id": "adelaide_2025",
+      "source_name": "Torrontés Riojano",
+      "country": null,
+      "relation": "genotype_candidate",
+      "notes": "Aliquó et al. identify Torrontés Riojano as VIVC 15162. Argentina's INV and UC Davis FPS independently distinguish Torrontés Riojano from the other Torrontés cultivars. Kept at R3 until registry-grade source assertion is encoded."
+    },
+    "aliquo2017-pedro-gimenez-24977-2026-09-07": {
+      "authority_type": "peer_reviewed_genotype",
+      "review_status": "reviewed",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/ajgw.12282",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Identity and parentage of some South American grapevine cultivars present in Argentina",
+      "canonical_id": "vivc:24977",
+      "source_id": "adelaide_2025",
+      "source_name": "Pedro Giménez",
+      "country": null,
+      "relation": "genotype_candidate",
+      "notes": "Aliquó et al. identify Pedro Giménez as VIVC 24977. Argentina's INV separately documents the cultivar and the SSR evidence distinguishing it from Spanish Pedro Ximénez. Kept at R3 until registry-grade source assertion is encoded."
+    }
+  },
+  "identities": [
+    {"id":"vivc:2390","vivc_id":2390,"prime_name":"CEREZA","record_status":"peer_reviewed_genotype_candidate","color":"rose","species":"Vitis vinifera","parentage":"Muscat of Alexandria × Listán Prieto"},
+    {"id":"vivc:3241","vivc_id":3241,"prime_name":"CRIOLLA GRANDE SANJUANINA","record_status":"peer_reviewed_genotype_candidate","color":"rose","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:15162","vivc_id":15162,"prime_name":"TORRONTES RIOJANO","record_status":"peer_reviewed_genotype_candidate","color":"white","species":"Vitis vinifera","parentage":"Listán Prieto × Muscat of Alexandria"},
+    {"id":"vivc:24977","vivc_id":24977,"prime_name":"PEDRO GIMENEZ","record_status":"peer_reviewed_genotype_candidate","color":"white","species":"Vitis vinifera","parentage":"Muscat of Alexandria × Listán Prieto"}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Cereza","canonical_id":"vivc:2390","level":"R3","evidence_ids":["torres2022-cereza-2390-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Criolla Grande","canonical_id":"vivc:3241","level":"R3","evidence_ids":["torres2022-criolla-grande-3241-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Torrontés Riojano","canonical_id":"vivc:15162","level":"R3","evidence_ids":["aliquo2017-torrontes-riojano-15162-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Pedro Giménez","canonical_id":"vivc:24977","level":"R3","evidence_ids":["aliquo2017-pedro-gimenez-24977-2026-09-07"]}
+  ]
+}
