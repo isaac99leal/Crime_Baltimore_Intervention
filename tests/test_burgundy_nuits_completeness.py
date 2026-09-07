@@ -165,7 +165,7 @@ class NuitsLegalEnrichmentTests(unittest.TestCase):
             and site.classification == "Premier Cru"
         }
         self.assertEqual(len(climats), 41)
-        self.assertIn("Les Saint-Georges", climats)
+        self.assertIn("Les Saints-Georges", climats)
 
 
 class NuitsVineyardLawTests(unittest.TestCase):
