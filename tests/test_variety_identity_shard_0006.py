@@ -40,23 +40,29 @@ class VarietyIdentityShard0006Tests(unittest.TestCase):
             )
 
     def test_registry_prime_names_do_not_create_adelaide_aliases(self):
-        alias_pairs = {
-            "Xarello": "Xarel·lo",
+        self.assertTrue(
+            self.registry.resolve("Xarello", source_id="adelaide_2025").identity_confirmed
+        )
+        punctuated = self.registry.resolve("Xarel·lo", source_id="adelaide_2025")
+        self.assertEqual(punctuated.status, "CANDIDATE")
+        self.assertEqual(punctuated.level, "R2")
+        self.assertIsNone(punctuated.canonical_id)
+
+        for source_name, authority_or_synonym_name in {
             "Savatiano": "Savvatiano",
             "Zweigelt": "Rotburger",
             "Castelão": "Periquita",
-        }
-        for source_name, authority_or_synonym_name in alias_pairs.items():
+        }.items():
             self.assertTrue(
                 self.registry.resolve(source_name, source_id="adelaide_2025").identity_confirmed
             )
-            self.assertEqual(
-                self.registry.resolve(
-                    authority_or_synonym_name,
-                    source_id="adelaide_2025",
-                ).status,
-                "UNKNOWN",
+            decision = self.registry.resolve(
+                authority_or_synonym_name,
+                source_id="adelaide_2025",
             )
+            self.assertEqual(decision.status, "UNKNOWN")
+            self.assertFalse(decision.identity_confirmed)
+            self.assertIsNone(decision.canonical_id)
 
     def test_diacritic_fold_is_candidate_not_reviewed_identity(self):
         exact = self.registry.resolve("Carmenère", source_id="adelaide_2025")
