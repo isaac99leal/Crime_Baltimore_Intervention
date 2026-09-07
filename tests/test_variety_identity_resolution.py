@@ -108,6 +108,20 @@ class EvidenceResolverTests(unittest.TestCase):
         self.assertEqual(folded.level, "R2")
         self.assertIsNone(folded.canonical_id)
 
+    def test_explicit_data_path_remains_single_document(self):
+        r = self.load(self.document())
+        self.assertEqual(r.snapshot_versions, ("test",))
+        self.assertEqual(r.snapshot_version, "test")
+        self.assertEqual(len(r.identities), 1)
+        self.assertEqual(len(r.links), 1)
+        self.assertEqual(r.resolve("Cabernet Franc", source_id="adelaide_2025").status, "UNKNOWN")
+
+    def test_default_registry_loads_sorted_additive_shards(self):
+        r = VarietyIdentityRegistry()
+        self.assertGreaterEqual(len(r.snapshot_versions), 2)
+        self.assertIn("2026-09-07.5", r.snapshot_versions)
+        self.assertEqual(r.snapshot_version, r.snapshot_versions[-1])
+
     def test_review_cannot_be_borrowed_from_another_assertion(self):
         d = self.document()
         d["evidence"]["e:1"]["source_name"] = "Another name"
@@ -151,6 +165,10 @@ class EvidenceResolverTests(unittest.TestCase):
             "Pinot Gris": "vivc:9275",
             "Sangiovese": "vivc:10680",
             "Sauvignon Blanc": "vivc:10790",
+            "Cabernet Franc": "vivc:1927",
+            "Chenin Blanc": "vivc:2527",
+            "Barbera": "vivc:974",
+            "Viognier": "vivc:13106",
         }
         for source_name, canonical_id in expected.items():
             decision = r.resolve(source_name, source_id="adelaide_2025")
@@ -165,6 +183,7 @@ class EvidenceResolverTests(unittest.TestCase):
             "Cabernet Sauvignon", "Syrah", "Rondo", "Moschofilero",
             "Merlot", "Chardonnay", "Tempranillo", "Airén",
             "Pinot Noir", "Pinot Gris", "Sangiovese", "Sauvignon Blanc",
+            "Cabernet Franc", "Chenin Blanc", "Barbera", "Viognier",
         ):
             self.assertFalse(r.resolve(source_name, source_id="another-census").identity_confirmed)
 
