@@ -1,0 +1,205 @@
+{
+  "snapshot_version": "2026-09-07.11",
+  "scope": "Second Astra area-priority batch: three exact reviewed identities, one reviewed synonym chain, one unconfirmed orthographic candidate. Historical cross-registry source; no live VIVC passport retrieval claimed.",
+  "evidence": {
+    "astra-batch2-12628-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:12628",
+      "source_id": "adelaide_2025",
+      "source_name": "Trebbiano Toscano",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "The Italian registered-name entry Biancame / Trebbiano toscano B. maps to 12628. Only the literal Adelaide Trebbiano Toscano row is reviewed; no generic Trebbiano or Biancame link is created.",
+      "supporting_sources": [
+        {
+          "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+          "document_version": "2011-03-18",
+          "page_one_based": 9
+        }
+      ]
+    },
+    "astra-batch2-304-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:304",
+      "source_id": "adelaide_2025",
+      "source_name": "Alicante Henri Bouschet",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "The French registered-name entry Alicante Henri Bouschet N maps to 304. The shorter Alicante Bouschet source assertion remains unreviewed.",
+      "supporting_sources": [
+        {
+          "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+          "document_version": "2011-03-18",
+          "page_one_based": 5
+        }
+      ]
+    },
+    "astra-batch2-9741-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:9741",
+      "source_id": "adelaide_2025",
+      "source_name": "Prosecco",
+      "country": null,
+      "relation": "exact_identity",
+      "notes": "Croatian and Slovenian registered Prosecco map to 9741. Adjacent Prosecco lungo maps to 17344 and is not included. Prime name retained as reported in the 2011 source, not claimed to be the current registry title.",
+      "supporting_sources": [
+        {
+          "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+          "document_version": "2011-03-18",
+          "page_one_based": 50
+        }
+      ]
+    },
+    "astra-batch2-2098-2026-09-07": {
+      "authority_type": "national_catalogue",
+      "review_status": "reviewed",
+      "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2023-14681",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "Reviewed national synonym and GrapeGen identity chain",
+      "canonical_id": "vivc:2098",
+      "source_id": "adelaide_2025",
+      "source_name": "Mazuelo",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "Reviewed two-document synonym chain: BOE-A-2023-14681 article two, subsection four, Navarra lists Mazuela and Mazuelo together; GrapeGen Mazuela (ESP) maps to 2098. Only the literal Adelaide Mazuelo source row is linked. This assertion does not grant appellation permission.",
+      "supporting_sources": [
+        {
+          "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+          "document_version": "2011-03-18",
+          "page_one_based": 37
+        }
+      ]
+    },
+    "astra-batch2-2889-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "pending_orthographic_review",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved_text",
+      "title": "GrapeGen 06 Annex 2B, version 18 March 2011",
+      "canonical_id": "vivc:2889",
+      "source_id": "adelaide_2025",
+      "source_name": "Côt",
+      "country": null,
+      "relation": "candidate_identity",
+      "notes": "GrapeGen maps Cot N to 2889. The retrieved registry text does not establish the literal circumflex spelling in the Adelaide source. Retain a candidate pending explicit orthographic evidence; do not promote from accent folding.",
+      "supporting_sources": [
+        {
+          "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+          "document_version": "2011-03-18",
+          "page_one_based": 18
+        }
+      ]
+    }
+  },
+  "identities": [
+    {
+      "id": "vivc:12628",
+      "vivc_id": 12628,
+      "prime_name": "TREBBIANO TOSCANO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:304",
+      "vivc_id": 304,
+      "prime_name": "ALICANTE HENRI BOUSCHET",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:9741",
+      "vivc_id": 9741,
+      "prime_name": "PROSECCO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:2098",
+      "vivc_id": 2098,
+      "prime_name": "CARIGNAN NOIR",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:2889",
+      "vivc_id": 2889,
+      "prime_name": "COT",
+      "record_status": "candidate_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    }
+  ],
+  "links": [
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Trebbiano Toscano",
+      "canonical_id": "vivc:12628",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch2-12628-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Alicante Henri Bouschet",
+      "canonical_id": "vivc:304",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch2-304-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Prosecco",
+      "canonical_id": "vivc:9741",
+      "level": "R5",
+      "evidence_ids": [
+        "astra-batch2-9741-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Mazuelo",
+      "canonical_id": "vivc:2098",
+      "level": "R4",
+      "evidence_ids": [
+        "astra-batch2-2098-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Côt",
+      "canonical_id": "vivc:2889",
+      "level": "R2",
+      "evidence_ids": [
+        "astra-batch2-2889-2026-09-07"
+      ]
+    }
+  ]
+}
