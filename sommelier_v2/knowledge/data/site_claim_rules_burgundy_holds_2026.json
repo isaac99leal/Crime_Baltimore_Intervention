@@ -26,7 +26,7 @@
   },
   "holds": [
     {
-      "id": "sitehold:fr:marsannay:pc-2026-pending-homologation",
+      "id": "sitehold:fr:marsannay:pc-2026-red-white-pending-homologation",
       "country": "France",
       "parent_appellation": "Marsannay",
       "site_type": "climat",
@@ -46,14 +46,28 @@
         "Les Favières",
         "Au Champ Salomon",
         "Aux Genelières",
-        "Le Clos",
         "Champs Perdrix"
       ],
+      "allowed_wine_variants": ["red standard", "white standard"],
       "source_ids": [
         "inao_marsannay_pc_cnaov_2026_06",
         "legifrance_marsannay_2026_vci_list"
       ],
-      "notes": "Fourteen proposed Marsannay Premier Cru climats were committee-approved in 2026, but no effective homologated Premier Cru specification is loaded. Current physical-name variants Clos du Roy/Le Clos du Roy and Le Boivin/Les Boivin are both held. Do not generate a protected site claim from these names until the effective legal text is verified and this hold is retired."
+      "notes": "Thirteen proposed Marsannay Premier Cru climats have red and white scope in the 2026 reconciliation seed, but no effective homologated Premier Cru specification is loaded. Current physical-name variants Clos du Roy/Le Clos du Roy and Le Boivin/Les Boivin are both held. Do not generate a protected red or white site claim from these names until the effective legal text is verified and this hold is retired."
+    },
+    {
+      "id": "sitehold:fr:marsannay:le-clos-white-pending-homologation",
+      "country": "France",
+      "parent_appellation": "Marsannay",
+      "site_type": "climat",
+      "status": "site_claim_pending_homologation",
+      "physical_site_names": ["Le Clos"],
+      "allowed_wine_variants": ["white standard"],
+      "source_ids": [
+        "inao_marsannay_pc_cnaov_2026_06",
+        "legifrance_marsannay_2026_vci_list"
+      ],
+      "notes": "Le Clos has white-only scope in the 2026 Premier Cru reconciliation seed. It remains non-generatable as a protected white site claim until an effective homologated specification is verified. Red and rosé claims are not reclassified as pending by this hold."
     },
     {
       "id": "sitehold:fr:monthelie:les-crays-disputed",
