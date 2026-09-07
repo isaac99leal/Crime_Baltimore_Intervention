@@ -1,0 +1,91 @@
+{
+  "snapshot_version": "2026-09-07.1",
+  "scope": "Candidate discovery only. Full VIVC passport retrieval returned HTTP 403. No botanical links are confirmed.",
+  "evidence": {
+    "vivc-search-1929-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "candidate_only",
+      "url": "https://www.vivc.de/index.php?id=1929&r=passport%2Fview",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "search_title_available_passport_http_403",
+      "title": "CABERNET SAUVIGNON",
+      "notes": "Title and record URL observed in search. Passport content and source-name identity relation not verified."
+    },
+    "vivc-search-14308-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "candidate_only",
+      "url": "https://www.vivc.de/index.php?id=14308&r=passport%2Fview",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "search_title_available_passport_http_403",
+      "title": "RONDO",
+      "notes": "Title and record URL observed in search. Passport content and source-name identity relation not verified."
+    },
+    "vivc-search-8068-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "candidate_only",
+      "url": "https://www.vivc.de/index.php?id=8068&r=passport%2Fview",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "search_title_available_passport_http_403",
+      "title": "MOSCHOFILERO",
+      "notes": "Title and record URL observed in search. Passport content and source-name identity relation not verified."
+    }
+  },
+  "identities": [
+    {
+      "id": "vivc:1929",
+      "vivc_id": 1929,
+      "prime_name": "CABERNET SAUVIGNON",
+      "record_status": "candidate_from_search_title",
+      "color": null,
+      "species": null,
+      "parentage": null
+    },
+    {
+      "id": "vivc:14308",
+      "vivc_id": 14308,
+      "prime_name": "RONDO",
+      "record_status": "candidate_from_search_title",
+      "color": null,
+      "species": null,
+      "parentage": null
+    },
+    {
+      "id": "vivc:8068",
+      "vivc_id": 8068,
+      "prime_name": "MOSCHOFILERO",
+      "record_status": "candidate_from_search_title",
+      "color": null,
+      "species": null,
+      "parentage": null
+    }
+  ],
+  "links": [
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Cabernet Sauvignon",
+      "canonical_id": "vivc:1929",
+      "level": "R2",
+      "evidence_ids": [
+        "vivc-search-1929-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Rondo",
+      "canonical_id": "vivc:14308",
+      "level": "R2",
+      "evidence_ids": [
+        "vivc-search-14308-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Moschofilero",
+      "canonical_id": "vivc:8068",
+      "level": "R2",
+      "evidence_ids": [
+        "vivc-search-8068-2026-09-07"
+      ]
+    }
+  ]
+}

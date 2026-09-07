@@ -12,6 +12,9 @@ from __future__ import annotations
 import csv
 import json
 from dataclasses import dataclass, field, replace
+from collections import defaultdict
+from hashlib import sha256
+import unicodedata
 from pathlib import Path
 from typing import Iterable
 
@@ -30,6 +33,8 @@ class VarietyAreaObservation:
     area_2016_ha: float | None = None
     area_2023_ha: float | None = None
     source_id: str = "adelaide_2025"
+    source_row: int | None = None
+    country_as_reported: str | None = None
 
     @property
     def latest_positive_area_ha(self) -> float | None:
@@ -195,6 +200,7 @@ class WorldWineKnowledgeCatalog:
         self.base = WineKnowledgeCatalog()
         self.world_area: list[VarietyAreaObservation] = []
         self.country_area: list[VarietyAreaObservation] = []
+        self.unresolved_country_area: list[VarietyAreaObservation] = []
         self.piwi_records: list[PiwiRecord] = []
         self.commercial_observations: list[CommercialObservation] = []
         self.eambrosia_gis: list[GeographicIndication] = []
@@ -212,25 +218,27 @@ class WorldWineKnowledgeCatalog:
         self._merge_grape_universe()
 
     def _load_area(self) -> None:
-        for row in _read_csv(DATA_DIR / "adelaide_world_varieties_2000_2023.csv"):
+        for source_row, row in enumerate(_read_csv(DATA_DIR / "adelaide_world_varieties_2000_2023.csv"), 2):
             name = (row.get("prime") or "").strip()
             if not name:
                 continue
             self.world_area.append(VarietyAreaObservation(
-                prime_name=name,
+                prime_name=name, source_row=source_row,
                 area_2000_ha=_float(row.get("area_2000_ha")),
                 area_2010_ha=_float(row.get("area_2010_ha")),
                 area_2016_ha=_float(row.get("area_2016_ha")),
                 area_2023_ha=_float(row.get("area_2023_ha")),
             ))
-        for row in _read_csv(DATA_DIR / "adelaide_country_varieties_2000_2023.csv"):
+        for source_row, row in enumerate(_read_csv(DATA_DIR / "adelaide_country_varieties_2000_2023.csv"), 2):
             name = (row.get("prime") or "").strip()
             country = (row.get("country") or "").strip()
-            if not name or not country or country.casefold().startswith("missing"):
+            if not name:
                 continue
-            self.country_area.append(VarietyAreaObservation(
-                prime_name=name,
-                country=country,
+            unresolved = not country or country.casefold().startswith("missing")
+            target = self.unresolved_country_area if unresolved else self.country_area
+            target.append(VarietyAreaObservation(
+                prime_name=name, source_row=source_row, country_as_reported=country,
+                country=None if unresolved else country,
                 area_2000_ha=_float(row.get("area_2000_ha")),
                 area_2010_ha=_float(row.get("area_2010_ha")),
                 area_2016_ha=_float(row.get("area_2016_ha")),
@@ -291,28 +299,59 @@ class WorldWineKnowledgeCatalog:
         self.eambrosia_gis = sorted(rows, key=lambda g: (g.country, g.name.casefold()))
 
     def _merge_grape_universe(self) -> None:
+        # Source spellings are observation keys, not proof of botanical identity.
+        # Preserve the established base catalog; never merge new names by folding
+        # accents/punctuation, or let a later source overwrite an earlier alias.
         grapes = list(self.base.grapes)
-        by_alias: dict[str, GrapeKnowledge] = {}
+        exact: dict[str, list[GrapeKnowledge]] = defaultdict(list)
+        used_ids = {g.id for g in grapes}
+        created_by_source: dict[tuple[str, str], GrapeKnowledge] = {}
+        source_names: dict[str, set[str]] = defaultdict(set)
+        for name in [*(r.prime_name for r in self.world_area),
+                     *(r.name for r in self.piwi_records),
+                     *(r.variety for r in self.commercial_observations)]:
+            source_names[_slug(name)].add(unicodedata.normalize("NFC", name).strip().casefold())
+        slug_owners = {key: min(names) for key, names in source_names.items()}
+
+        def register(grape: GrapeKnowledge, names: Iterable[str]) -> None:
+            for name in names:
+                key = unicodedata.normalize("NFC", name).strip().casefold()
+                if all(g.id != grape.id for g in exact[key]):
+                    exact[key].append(grape)
+
+        def lookup(name: str) -> GrapeKnowledge | None:
+            rows = exact.get(unicodedata.normalize("NFC", name).strip().casefold(), [])
+            return rows[0] if len(rows) == 1 else None
+
+        def create(name: str, prefix: str, source_id: str) -> GrapeKnowledge:
+            candidate_id = prefix + _slug(name)
+            exact_key = unicodedata.normalize("NFC", name).strip().casefold()
+            if (prefix, exact_key) in created_by_source:
+                return created_by_source[(prefix, exact_key)]
+            if candidate_id in used_ids or exact_key != slug_owners[_slug(name)]:
+                candidate_id += ":" + sha256(exact_key.encode("utf-8")).hexdigest()[:12]
+            if candidate_id in used_ids:
+                raise ValueError(f"Duplicate observation identity: {name}")
+            used_ids.add(candidate_id)
+            grape = GrapeKnowledge(
+                id=candidate_id, name=name, coverage=CoverageLevel.IDENTITY,
+                confidence=Confidence.MEDIUM, source_ids=[source_id],
+                tags={"unresolved_botanical_identity"},
+            )
+            grapes.append(grape)
+            register(grape, [name])
+            created_by_source[(prefix, exact_key)] = grape
+            return grape
+
         for grape in grapes:
-            for name in [grape.name, *grape.aliases]:
-                by_alias[normalize_name(name)] = grape
+            register(grape, [grape.name, *grape.aliases])
 
         for obs in self.world_area:
-            key = normalize_name(obs.prime_name)
-            grape = by_alias.get(key)
+            grape = lookup(obs.prime_name)
             if grape is None:
-                grape = GrapeKnowledge(
-                    id="grape:adelaide:" + _slug(obs.prime_name),
-                    name=obs.prime_name,
-                    coverage=CoverageLevel.IDENTITY,
-                    confidence=Confidence.HIGH,
-                    source_ids=["adelaide_2025"],
-                    tags={"census_prime_name"},
-                )
-                grapes.append(grape)
-                by_alias[key] = grape
-            if "adelaide_2025" not in grape.source_ids:
-                grape.source_ids.append("adelaide_2025")
+                grape = create(obs.prime_name, "grape:adelaide:", obs.source_id)
+            if obs.source_id not in grape.source_ids:
+                grape.source_ids.append(obs.source_id)
             grape.tags.add("census_prime_name")
             if obs.area_2023_ha is not None and obs.area_2023_ha > 0:
                 grape.tags.add("commercial_cultivation_2023")
@@ -323,47 +362,61 @@ class WorldWineKnowledgeCatalog:
             elif obs.latest_positive_area_ha is not None:
                 grape.tags.add("historical_cultivation")
 
-        def attach_identity(name: str, aliases: Iterable[str], tag: str, source_id: str) -> GrapeKnowledge:
-            candidate_names = [name, *aliases]
-            grape = next((by_alias.get(normalize_name(n)) for n in candidate_names if by_alias.get(normalize_name(n))), None)
+        def attach_observation(name: str, aliases: Iterable[str], tag: str, source_id: str) -> None:
+            grape = lookup(name)
             if grape is None:
-                grape = GrapeKnowledge(
-                    id="grape:observed:" + _slug(name), name=name,
-                    aliases=list(aliases), coverage=CoverageLevel.IDENTITY,
-                    confidence=Confidence.HIGH, source_ids=[source_id], tags={tag},
-                )
-                grapes.append(grape)
+                grape = create(name, "grape:observed:", source_id)
             grape.tags.add(tag)
             if source_id not in grape.source_ids:
                 grape.source_ids.append(source_id)
-            for alias in candidate_names:
-                by_alias[normalize_name(alias)] = grape
-                if normalize_name(alias) != normalize_name(grape.name) and alias not in grape.aliases:
-                    grape.aliases.append(alias)
-            return grape
+            # Aliases from PIWI/market records are search candidates only. They
+            # cannot merge identities or replace aliases from another source.
+            for alias in aliases:
+                register(grape, [alias])
 
         for row in self.piwi_records:
-            attach_identity(row.name, row.aliases, "piwi", row.source_id)
+            attach_observation(row.name, row.aliases, "piwi", row.source_id)
         for row in self.commercial_observations:
-            attach_identity(row.variety, (), "commercial_market_observation", "commercial_observations")
+            attach_observation(row.variety, (), "commercial_market_observation", "commercial_observations")
 
-        self.grapes = sorted(grapes, key=lambda g: g.name.casefold())
-        self.grape_alias_index = by_alias
+        folded: dict[str, dict[str, GrapeKnowledge]] = defaultdict(dict)
+        for spelling, rows in exact.items():
+            for grape in rows:
+                folded[normalize_name(spelling)][grape.id] = grape
+        self.grapes = sorted(grapes, key=lambda g: (g.name.casefold(), g.id))
+        self._grape_exact_index = exact
+        self.grape_name_candidates = {key: tuple(rows.values()) for key, rows in folded.items()}
+        # Compatibility index contains only unambiguous search keys.
+        self.grape_alias_index = {key: rows[0] for key, rows in self.grape_name_candidates.items() if len(rows) == 1}
 
     def grape(self, name_or_alias: str) -> GrapeKnowledge | None:
+        key = unicodedata.normalize("NFC", name_or_alias).strip().casefold()
+        rows = self._grape_exact_index.get(key, [])
+        if rows:
+            return rows[0] if len(rows) == 1 else None
         return self.grape_alias_index.get(normalize_name(name_or_alias))
 
+    def resolve_variety_identity(self, source_name: str, *, source_id: str = "adelaide_2025",
+                                 country: str | None = None):
+        """Resolve botanical evidence independently of profile/search matching."""
+        from .variety_identity import VarietyIdentityRegistry
+        if not hasattr(self, "_variety_identity_registry"):
+            self._variety_identity_registry = VarietyIdentityRegistry()
+        return self._variety_identity_registry.resolve(source_name, source_id=source_id, country=country)
+
     def area_for(self, name_or_alias: str, country: str | None = None) -> list[VarietyAreaObservation]:
+        # Direct source spelling is useful even when botanical identity is unknown.
+        # Do not let normalized search silently pool colliding census observations.
+        def exact_key(name: str) -> str:
+            return unicodedata.normalize("NFC", name).strip().casefold()
+        accepted = {exact_key(name_or_alias)}
         grape = self.grape(name_or_alias)
-        if grape is None:
-            return []
-        accepted = {normalize_name(grape.name), *(normalize_name(a) for a in grape.aliases)}
+        if grape is not None:
+            accepted.update(exact_key(n) for n in [grape.name, *grape.aliases]
+                            if self.grape(n) is grape)
         rows = self.country_area if country else self.world_area
-        return [
-            row for row in rows
-            if normalize_name(row.prime_name) in accepted
-            and (country is None or normalize_name(row.country or "") == normalize_name(country))
-        ]
+        return [row for row in rows if exact_key(row.prime_name) in accepted
+                and (country is None or normalize_name(row.country or "") == normalize_name(country))]
 
     def sites(self, *, region: str | None = None, site_type: str | None = None) -> list[NamedSite]:
         rows = self.named_sites
@@ -382,6 +435,8 @@ class WorldWineKnowledgeCatalog:
             "adelaide_world_prime_names": len(self.world_area),
             "adelaide_country_variety_observations": len(self.country_area),
             "adelaide_countries": len(countries),
+            "adelaide_unresolved_country_observations": len(self.unresolved_country_area),
+            "grape_ambiguous_search_keys": sum(len(rows) > 1 for rows in self.grape_name_candidates.values()),
             "adelaide_positive_area_2023": len(world_positive),
             "adelaide_tiny_le_1ha_2023": sum(1 for r in world_positive if (r.area_2023_ha or 0) <= 1),
             "adelaide_micro_le_5ha_2023": sum(1 for r in world_positive if (r.area_2023_ha or 0) <= 5),
