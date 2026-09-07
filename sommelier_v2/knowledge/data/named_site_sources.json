@@ -61,6 +61,18 @@
       "source_url": "https://www.inao.gouv.fr/en/node/36434",
       "legal_claim_authority": true,
       "notes": "Current INAO material documents the 51 Alsace Grand Cru appellations followed by named lieux-dits. Detailed wine eligibility remains in the legal specification layer."
+    },
+    {
+      "id": "blagny_cahier_2026",
+      "country": "France",
+      "region": "Bourgogne",
+      "authority": "Ministère de l'Agriculture, de l'Agro-alimentaire et de la Souveraineté alimentaire",
+      "unit_types": ["climat"],
+      "coverage_status": "official_appellation_named_sites",
+      "reported_named_units": 7,
+      "source_url": "https://info.agriculture.gouv.fr/boagri/document_administratif-8014d4a0-f691-4399-b6d4-ca4ad830e24e/telechargement",
+      "legal_claim_authority": true,
+      "notes": "Current Blagny cahier homologated 8 June 2026 explicitly lists seven Premier Cru climats. Site identity remains separate from claim evaluation in the legal-rule layer."
     }
   ]
 }
