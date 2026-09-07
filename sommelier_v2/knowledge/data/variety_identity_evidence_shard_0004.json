@@ -1,0 +1,35 @@
+{
+  "snapshot_version": "2026-09-07.7",
+  "scope": "Fourth additive exact-name botanical identity shard, prioritized by Adelaide planted area. Cross-registry prime-name differences do not authorize arbitrary synonym expansion.",
+  "evidence": {
+    "grapegen06-macabeo-13127-2026-09-07": {
+      "authority_type":"botanical_registry","review_status":"reviewed","url":"https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf","retrieved_on":"2026-09-07","retrieval_status":"retrieved","title":"European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B","canonical_id":"vivc:13127","source_id":"adelaide_2025","source_name":"Macabeo","country":null,"relation":"exact_identity","notes":"GrapeGen explicitly maps Spanish Macabeo to VIURA, VIVC 13127. This exact source-row crosswalk does not create a general Macabeo/Viura alias outside the reviewed source assertion."
+    },
+    "grapegen06-cinsaut-2672-2026-09-07": {
+      "authority_type":"botanical_registry","review_status":"reviewed","url":"https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf","retrieved_on":"2026-09-07","retrieval_status":"retrieved","title":"European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B","canonical_id":"vivc:2672","source_id":"adelaide_2025","source_name":"Cinsaut","country":null,"relation":"exact_identity","notes":"GrapeGen maps registered Cinsaut to CINSAUT, VIVC 2672; Cinsault droit is explicitly a different identity and is not merged."
+    },
+    "grapegen06-saperavi-10708-2026-09-07": {
+      "authority_type":"botanical_registry","review_status":"reviewed","url":"https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf","retrieved_on":"2026-09-07","retrieval_status":"retrieved","title":"European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B","canonical_id":"vivc:10708","source_id":"adelaide_2025","source_name":"Saperavi","country":null,"relation":"exact_identity","notes":"GrapeGen maps Georgian and other registered Saperavi names to SAPERAVI, VIVC 10708. Saperavi Budeshuriseburi and Saperavi Severnyi remain separate identities."
+    },
+    "grapegen06-gruener-veltliner-12930-2026-09-07": {
+      "authority_type":"botanical_registry","review_status":"reviewed","url":"https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf","retrieved_on":"2026-09-07","retrieval_status":"retrieved","title":"European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B","canonical_id":"vivc:12930","source_id":"adelaide_2025","source_name":"Grüner Veltliner","country":null,"relation":"exact_identity","notes":"GrapeGen maps Austrian Grüner Veltliner to VELTLINER GRUEN, VIVC 12930. Accent and punctuation remain source-scoped."
+    },
+    "grapegen06-vermentino-12989-2026-09-07": {
+      "authority_type":"botanical_registry","review_status":"reviewed","url":"https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf","retrieved_on":"2026-09-07","retrieval_status":"retrieved","title":"European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B","canonical_id":"vivc:12989","source_id":"adelaide_2025","source_name":"Vermentino","country":null,"relation":"exact_identity","notes":"GrapeGen maps registered Vermentino names to VERMENTINO, VIVC 12989. Vermentino Nero remains a distinct VIVC identity."
+    }
+  },
+  "identities": [
+    {"id":"vivc:13127","vivc_id":13127,"prime_name":"VIURA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:2672","vivc_id":2672,"prime_name":"CINSAUT","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:10708","vivc_id":10708,"prime_name":"SAPERAVI","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:12930","vivc_id":12930,"prime_name":"VELTLINER GRUEN","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:12989","vivc_id":12989,"prime_name":"VERMENTINO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Macabeo","canonical_id":"vivc:13127","level":"R5","evidence_ids":["grapegen06-macabeo-13127-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Cinsaut","canonical_id":"vivc:2672","level":"R5","evidence_ids":["grapegen06-cinsaut-2672-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Saperavi","canonical_id":"vivc:10708","level":"R5","evidence_ids":["grapegen06-saperavi-10708-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Grüner Veltliner","canonical_id":"vivc:12930","level":"R5","evidence_ids":["grapegen06-gruener-veltliner-12930-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Vermentino","canonical_id":"vivc:12989","level":"R5","evidence_ids":["grapegen06-vermentino-12989-2026-09-07"]}
+  ]
+}
