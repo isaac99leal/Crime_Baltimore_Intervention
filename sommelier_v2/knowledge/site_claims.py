@@ -7,6 +7,12 @@ A physical site and the name legally claimed on the label are normally identical
 but some specifications explicitly allow a principal or cover name for wine from
 other sites in a defined group. Those substitutions are permitted only through an
 explicit ``cover_name_groups`` rule and never through generic alias inference.
+
+A sourced legal hold is a separate negative evidence layer for claims that are
+pending homologation or are disputed under the current operative legal text. A
+matching hold is evaluated before positive rules, so a later broad rule cannot
+silently promote a known unresolved claim. Removing a hold therefore requires an
+explicit source-backed data change.
 """
 from __future__ import annotations
 
@@ -45,6 +51,21 @@ class SiteClaimRule:
 
 
 @dataclass(frozen=True)
+class SiteClaimHold:
+    """Explicit sourced block on a site claim that is not yet legally promotable."""
+
+    id: str
+    country: str
+    parent_appellation: str
+    site_type: str
+    status: str
+    physical_site_names: tuple[str, ...]
+    source_ids: tuple[str, ...]
+    allowed_wine_variants: tuple[str, ...] = ()
+    notes: str = ""
+
+
+@dataclass(frozen=True)
 class SiteClaimDecision:
     eligible: bool
     status: str
@@ -74,6 +95,7 @@ class SiteClaimRegistry:
 
         self.sources: dict[str, dict] = {}
         raw_rules: list[dict] = []
+        raw_holds: list[dict] = []
         for doc in documents:
             for source_id, source in dict(doc.get("sources", {})).items():
                 source_row = dict(source)
@@ -84,6 +106,9 @@ class SiteClaimRegistry:
             for row in doc.get("rules", []):
                 if isinstance(row, dict):
                     raw_rules.append(row)
+            for row in doc.get("holds", []):
+                if isinstance(row, dict):
+                    raw_holds.append(row)
 
         self.rules: list[SiteClaimRule] = []
         seen: set[str] = set()
@@ -158,16 +183,67 @@ class SiteClaimRegistry:
                 )
             )
 
+        self.holds: list[SiteClaimHold] = []
+        seen_holds: set[str] = set()
+        for row in raw_holds:
+            hold_id = str(row.get("id") or "").strip()
+            if not hold_id:
+                raise ValueError("Site-claim hold is missing an id")
+            if hold_id in seen_holds or hold_id in seen:
+                raise ValueError(f"Duplicate site-claim rule/hold id: {hold_id}")
+            seen_holds.add(hold_id)
+
+            source_ids = tuple(str(v) for v in row.get("source_ids", []))
+            missing = [source_id for source_id in source_ids if source_id not in self.sources]
+            if missing:
+                raise ValueError(f"{hold_id} references unknown claim sources: {missing}")
+            if not source_ids:
+                raise ValueError(f"{hold_id} must cite at least one source")
+
+            physical_site_names = tuple(
+                str(v).strip() for v in row.get("physical_site_names", []) if str(v).strip()
+            )
+            if not physical_site_names:
+                raise ValueError(
+                    f"{hold_id} must name at least one physical site; parent-wide holds are not allowed"
+                )
+
+            status = str(row.get("status") or "").strip()
+            if not status:
+                raise ValueError(f"{hold_id} is missing a hold status")
+
+            self.holds.append(
+                SiteClaimHold(
+                    id=hold_id,
+                    country=str(row.get("country") or ""),
+                    parent_appellation=str(row.get("parent_appellation") or ""),
+                    site_type=str(row.get("site_type") or ""),
+                    status=status,
+                    physical_site_names=physical_site_names,
+                    source_ids=source_ids,
+                    allowed_wine_variants=tuple(str(v) for v in row.get("allowed_wine_variants", [])),
+                    notes=str(row.get("notes") or ""),
+                )
+            )
+
     @staticmethod
     def _same(left: str | None, right: str | None) -> bool:
         return normalize_name(left or "") == normalize_name(right or "")
 
     @staticmethod
-    def _variant_matches(rule: SiteClaimRule, wine_variant: str | None) -> bool:
-        if not rule.allowed_wine_variants:
+    def _allowed_variant_matches(
+        allowed_wine_variants: tuple[str, ...], wine_variant: str | None
+    ) -> bool:
+        if not allowed_wine_variants:
             return True
         requested = normalize_name(wine_variant or "")
-        return any(requested == normalize_name(allowed) for allowed in rule.allowed_wine_variants)
+        return any(
+            requested == normalize_name(allowed) for allowed in allowed_wine_variants
+        )
+
+    @classmethod
+    def _variant_matches(cls, rule: SiteClaimRule, wine_variant: str | None) -> bool:
+        return cls._allowed_variant_matches(rule.allowed_wine_variants, wine_variant)
 
     @staticmethod
     def _site_name_matches(rule: SiteClaimRule, site_name: str) -> bool:
@@ -206,6 +282,42 @@ class SiteClaimRegistry:
             if url:
                 evidence.append(f"source_url:{url}")
         return tuple(evidence)
+
+    def _hold_source_evidence(self, hold: SiteClaimHold) -> tuple[str, ...]:
+        evidence: list[str] = []
+        for source_id in hold.source_ids:
+            source = self.sources.get(source_id, {})
+            url = str(source.get("url") or "").strip()
+            evidence.append(f"site_claim_hold:{hold.id}:{source_id}")
+            if url:
+                evidence.append(f"source_url:{url}")
+        return tuple(evidence)
+
+    def _matching_hold(
+        self,
+        *,
+        site: NamedSite,
+        parent: str | None,
+        wine_variant: str | None,
+    ) -> SiteClaimHold | None:
+        site_name = normalize_name(site.name)
+        for hold in self.holds:
+            if not self._same(hold.country, site.country):
+                continue
+            if not self._same(hold.parent_appellation, parent):
+                continue
+            if not self._same(hold.site_type, site.site_type):
+                continue
+            if site_name not in {
+                normalize_name(name) for name in hold.physical_site_names
+            }:
+                continue
+            if not self._allowed_variant_matches(
+                hold.allowed_wine_variants, wine_variant
+            ):
+                continue
+            return hold
+        return None
 
     def evaluate(
         self,
@@ -253,6 +365,25 @@ class SiteClaimRegistry:
             )
 
         parent = appellation or site.parent
+        hold = self._matching_hold(
+            site=site,
+            parent=parent,
+            wine_variant=wine_variant,
+        )
+        if hold is not None:
+            return SiteClaimDecision(
+                False,
+                hold.status,
+                site.id,
+                rule_id=hold.id,
+                issues=(
+                    hold.notes
+                    or "A sourced legal hold blocks this site claim until the unresolved legal state is cleared."
+                ,),
+                evidence=self._hold_source_evidence(hold),
+                claim_name=requested_claim,
+            )
+
         candidates = [
             rule
             for rule in self.rules
@@ -330,6 +461,10 @@ class SiteClaimRegistry:
             (normalize_name(rule.country), normalize_name(rule.parent_appellation))
             for rule in self.rules
         }
+        hold_parents = {
+            (normalize_name(hold.country), normalize_name(hold.parent_appellation))
+            for hold in self.holds
+        }
         return {
             "verified_site_claim_rules": len(self.rules),
             "verified_site_claim_parent_appellations": len(parents),
@@ -337,4 +472,6 @@ class SiteClaimRegistry:
             "verified_site_cover_name_groups": sum(
                 len(rule.cover_name_groups) for rule in self.rules
             ),
+            "site_claim_holds": len(self.holds),
+            "site_claim_hold_parent_appellations": len(hold_parents),
         }
