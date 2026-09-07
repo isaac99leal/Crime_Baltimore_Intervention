@@ -1,0 +1,16 @@
+{
+  "handoff_id":"WKV2-ASTRA-2026-09-06-R1",
+  "role":"research_reconciliation_seed_not_canonical",
+  "scope":"Burgundy Premier Cru claims",
+  "part":4,
+  "parts_total":6,
+  "parents":{
+    "Saint-Aubin":["Bas de Vermarain à l'Est","Derrière Chez Edouard","Derrière la Tour","Echaille","En Créot","En la Ranché","En Montceau","En Remilly","En Vollon à l'Est","Es Champs","La Chatenière","Le Bas de Gamay à l'Est","Le Charmois","Le Puits","Les Castets","Les Champlots","Les Combes","Les Combes au Sud","Les Cortons","Les Frionnes","Les Murgers des dents de chien","Les Perrières","Les Travers de Marinot","Marinot","Pitangeret","Sous Roche Dumay","Sur Gamay","Sur le sentier du Clou","Vignes Moingeon","Village"],
+    "Santenay":["Beauregard","Beaurepaire","Clos Faubard","Clos Rousseau","Clos de Tavannes","Clos des Mouches","Grand Clos Rousseau","La Comme","La Maladière","Les Gravières","Les Gravières-Clos de Tavannes","Passetemps"],
+    "Maranges":["Clos de la Boutière","Clos de la Fussière","La Fussière","Le Clos des Loyères","Le Clos des Rois","Le Croix Moines","Les Clos Roussots"],
+    "Rully":["Agneux","Champs Cloux","Chapitre","Clos du Chaigne","Clos St Jacques","Cloux","Grésigny","La Bressande","La Fosse","La Pucelle","La Renarde","Le Meix Cadot","Le Meix Caillet","Les Pierres","Margotés","Marissou","Molesme","Montpalais","Pillot","Préaux","Rabourcé","Raclot","Vauvry"],
+    "Mercurey":["Clos de Paradis","Clos des Barraults","Clos des grands Voyens","Clos des Montaigus","Clos des Myglands","Clos Marcilly","Clos Tonnerre","Clos Voyens","Grand Clos Fortoul","Griffères","La Bondue","La Cailloute","La Chassière","La Levrière","La Mission","Le Clos du Roy","Le Clos l'Evêque","Les Byots","Les Champs Martin","Les Combins","Les Crêts","Les Croichots","Les Fourneaux","Les Montaigus","Les Naugues","Les Puillets","Les Ruelles","Les Saumonts","Les Vasées","Les Velley","Les Vignes Blanches","Sazenay"],
+    "Givry":["A Vigne Rouge","Champ Nalot","Clos Charlé","Clos de la Baraude","Clos du Cellier aux Moines","Clos du Cras long","Clos du Vernoy","Clos Jus","Clos Marceaux","Clos Marole","Clos Salomon","Clos-Saint-Paul","Clos-Saint-Pierre","Crauzot","Crémillons","En Choué","En Veau","La Brûlée","La Grande Berge","La Matrosse","La Petite Berge","La Plante","Le Champ Lalot","Le Médenchot","Le Paradis","Le Petit Prétan","Le Pied du Clou","Le Vernoy","Le Vigron","Les Bois Chevaux","Les Bois Gautiers","Les Combes","Les Galaffres","Les Grandes Vignes","Les Grands Prétans","Petit Marole","Pied de Chaume","Servoisine"],
+    "Montagny":["Champ Toizeau","Chazelle","Cornevent","Creux de Beaux Champs","L'Epaule","La Condemine du Vieux Château","La Grande Pièce","La Moullière","Le Clos Chaudron","Le Cloux","Le Clouzot","Le Vieux Château","Les Bassets","Les Beaux Champs","Les Bonneveaux","Les Bordes","Les Bouchots","Les Burnins","Les Chaniots","Les Chaumelottes","Les Coères","Les Combes","Les Coudrettes","Les Craboulettes","Les Garchères","Les Gouresses","Les Jardins","Les Las","Les Macles","Les Maroques","Les Paquiers","Les Perrières","Les Pidances","Les Platières","Les Resses","Les Treuffères","Les Vignes Derrière","Les Vignes des Prés","Les Vignes longues","Mont Laurent","Montcuchot","Montorge","Saint-Ytages","Sainte-Morille","Sous les Feilles","Vigne du soleil","Vignes Couland","Vignes Saint-Pierre","Vignes sur le Cloux"]
+  }
+}
