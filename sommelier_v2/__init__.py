@@ -48,6 +48,11 @@ from .knowledge.blend_chemistry import (
 from .knowledge.bottle_lifecycle import age_inventory_lot
 from .knowledge.bottling_lot import BottledLotManifest, BottlingLotConstraintError, bottle_winery_lot
 from .knowledge.finished_wine import FinishedWineAssembler, FinishedWineConstraintError, ValidatedWineRecord
+from .knowledge.winery_blend_chemistry import (
+    WineryBlendChemistryConstraintError,
+    WineryBlendChemistryResult,
+    blend_winery_lots_with_chemistry,
+)
 from .knowledge.winery_provenance import ProvenanceSlice, WineryLot, WineryProvenanceError, WineryProvenanceLedger
 from .simulation import RestaurantSimulation
 from .unified_game import UnifiedGameState
@@ -93,11 +98,14 @@ __all__ = [
     "WineRecord",
     "WineReleaseConstraintError",
     "WineStyle",
+    "WineryBlendChemistryConstraintError",
+    "WineryBlendChemistryResult",
     "WineryLot",
     "WineryProvenanceError",
     "WineryProvenanceLedger",
     "age_inventory_lot",
     "blend_chemistry",
+    "blend_winery_lots_with_chemistry",
     "bottle_winery_lot",
     "dispatch_bottled_manifest_to_inventory",
     "dispatch_winery_lot_to_inventory",
