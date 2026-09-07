@@ -1,0 +1,62 @@
+{
+  "handoff_id":"WKV2-ASTRA-2026-09-06-R1",
+  "role":"research_reconciliation_seed_not_canonical",
+  "pending_marsannay_pc":[
+    ["FR-BURG-PC-PENDING-marsannay-le-clos-du-roy","Marsannay","Le Clos du Roy","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-les-longeroies","Marsannay","Les Longeroies","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-en-la-montagne","Marsannay","En la Montagne","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-en-grands-vaux","Marsannay","En Grands Vaux","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-la-charme-aux-pretres","Marsannay","La Charme aux Prêtres","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-les-boivin","Marsannay","Les Boivin","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-les-grasses-tetes","Marsannay","Les Grasses Têtes","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-le-clos-de-jeu","Marsannay","Le Clos de Jeu","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-saint-jacques","Marsannay","Saint-Jacques","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-les-favieres","Marsannay","Les Favières","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-au-champ-salomon","Marsannay","Au Champ Salomon","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-aux-genelieres","Marsannay","Aux Genelières","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-le-clos","Marsannay","Le Clos","white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"],
+    ["FR-BURG-PC-PENDING-marsannay-champs-perdrix","Marsannay","Champs Perdrix","red; white","committee_approved_pending_homologation",false,"Do not generate or label as Premier Cru until a homologated specification is legally effective.","https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026","https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10","2026-09-06"]
+  ],
+  "disputed_or_historical":[
+    ["Monthélie","Les Hauts Brins","not active legal PC name in current canonical set","Appears in older BIVB/Légifrance historical material; excluded from active legal claim list.","https://www.inao.gouv.fr/produit/monthelie-premier-cru-les-clous-rouge-9447","2026-09-06"],
+    ["Monthélie","Les Crays","conflicting secondary/current trade display","Current BIVB/ODG web displays list it among PC climats, but INAO product text says 15 PC sites and the operative cahier surfaced in the audit does not list Les Crays. Kept non-generatable pending a newer homologated legal text.","https://www.inao.gouv.fr/produit/monthelie-premier-cru-les-clous-rouge-9447","2026-09-06"]
+  ],
+  "normalized_name_collisions":[
+    ["les perrieres",6,"Nuits-Saint-Georges: Les Perrières | Beaune: Les Perrières | Puligny-Montrachet: Les Perrières | Saint-Aubin: Les Perrières | Montagny: Les Perrières | Pouilly-Fuissé: Les Perrières","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["le village",4,"Morey-Saint-Denis: Le Village | Pommard: Le Village | Volnay: Le Village | Monthélie: Le Village","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["clos du chapitre",3,"Fixin: Clos du Chapitre | Gevrey-Chambertin: Clos du Chapitre | Aloxe-Corton: Clos du Chapitre","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les combes",3,"Saint-Aubin: Les Combes | Givry: Les Combes | Montagny: Les Combes","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les cras",3,"Chambolle-Musigny: Les Cras | Vougeot: Les Cras | Meursault: Les Cras","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["aux combottes",2,"Gevrey-Chambertin: Aux Combottes | Chambolle-Musigny: Aux Combottes","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["aux cras",2,"Nuits-Saint-Georges: Aux Cras | Beaune: Aux Cras","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["clos de la perriere",2,"Fixin: Clos de la Perrière | Vougeot: Clos de la Perrière","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["en remilly",2,"Chassagne-Montrachet: En Remilly | Saint-Aubin: En Remilly","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["hameau de blagny",2,"Blagny: Hameau de Blagny | Puligny-Montrachet: Hameau de Blagny","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["la chapelle",2,"Auxey-Duresses: La Chapelle | Chassagne-Montrachet: La Chapelle","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["la jeunellotte",2,"Meursault: La Jeunellotte | Blagny: La Jeunellotte","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["la marechaude",2,"Aloxe-Corton: La Maréchaude | Pouilly-Fuissé: La Maréchaude","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["la piece sous le bois",2,"Meursault: La Pièce sous le Bois | Blagny: La Pièce sous le Bois","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["la romanee",2,"Gevrey-Chambertin: La Romanée | Chassagne-Montrachet: La Romanée","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les boucherottes",2,"Beaune: Les Boucherottes | Pommard: Les Boucherottes","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les caillerets",2,"Volnay: Les Caillerets | Meursault: Les Caillerets","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les chaumes",2,"Vosne-Romanée: Les Chaumes | Chassagne-Montrachet: Les Chaumes","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les duresses",2,"Monthélie: Les Duresses | Auxey-Duresses: Les Duresses","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les fourneaux",2,"Chablis: Les Fourneaux | Mercurey: Les Fourneaux","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les gruenchers",2,"Morey-Saint-Denis: Les Gruenchers | Chambolle-Musigny: Les Gruenchers","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les marconnets",2,"Savigny-lès-Beaune: Les Marconnets | Beaune: Les Marconnets","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["les vignes blanches",2,"Mercurey: Les Vignes Blanches | Pouilly-Fuissé: Les Vignes Blanches","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["sous blagny",2,"Meursault: Sous Blagny | Blagny: Sous Blagny","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["sous le dos d ane",2,"Meursault: Sous le Dos d'Ane | Blagny: Sous le Dos d'Ane","Do not merge automatically. Same normalized name may refer to distinct physical climats."],
+    ["sous le puits",2,"Blagny: Sous le Puits | Puligny-Montrachet: Sous le Puits","Do not merge automatically. Same normalized name may refer to distinct physical climats."]
+  ],
+  "required_regression_semantics":{
+    "chablis_gc_legal_climat_names":["Blanchot","Bougros","Grenouilles","Les Clos","Preuses","Valmur","Vaudésir"],
+    "chablis_exact_legal_name":"Preuses",
+    "chablis_search_alias_not_exact_legal_suffix":"Les Preuses",
+    "corton":"red climat suffix privilege must not propagate to white Corton",
+    "corton_charlemagne":"component climat names are not loaded legal suffixes",
+    "charlemagne":"legal identity and commercial dormancy separate",
+    "marsannay_2026":"pending/non-generatable until effective homologation",
+    "monthelie_les_crays":"disputed/non-generatable pending authoritative resolution"
+  }
+}
