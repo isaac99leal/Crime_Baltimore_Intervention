@@ -20,6 +20,17 @@ class BulkVarietyRegistryTests(unittest.TestCase):
 
     def test_bulk_layer_never_infers_gi_entitlement(self):
         self.assertTrue(all(not row.legal_gi_entitlement_inferred for row in self.records))
+        self.assertTrue(
+            all(not row.legal_gi_entitlement_inferred for row in self.registry.all_global_records())
+        )
+
+    def test_vivc_only_canonical_identities_are_operational(self):
+        vivc_only = self.registry.vivc_only_records()
+        self.assertTrue(vivc_only)
+        self.assertTrue(all(row.source_id == "vivc_registry" for row in vivc_only))
+        self.assertTrue(all(row.identity_confirmed for row in vivc_only))
+        self.assertTrue(all(row.simulation_enabled for row in vivc_only))
+        self.assertTrue(all(row.world_area_2023_ha == 0.0 for row in vivc_only))
 
     def test_uncertain_identity_does_not_block_simulation(self):
         for name in ("Petit Verdot", "Catarratto Bianco", "Beba", "Pamid"):
@@ -87,7 +98,9 @@ class BulkVarietyRegistryTests(unittest.TestCase):
     def test_stats_report_full_operational_coverage(self):
         stats = self.registry.stats()
         self.assertEqual(stats["operational_adelaide_names"], len(self.records))
-        self.assertEqual(stats["simulation_enabled"], len(self.records))
+        self.assertGreaterEqual(stats["vivc_identity_records_loaded"], 100)
+        self.assertGreater(stats["global_operational_records"], len(self.records))
+        self.assertEqual(stats["simulation_enabled"], stats["global_operational_records"])
         self.assertGreater(stats["ttb_supported_names"], 100)
         self.assertGreater(stats["new_world_observed_names"], 100)
         self.assertGreater(stats["world_area_2023_ha"], 4_000_000)
