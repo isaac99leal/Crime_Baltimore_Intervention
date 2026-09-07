@@ -42,10 +42,14 @@ class VarietyIdentityShard0010Tests(unittest.TestCase):
         self.assertEqual(alexandria.canonical_id, "vivc:8241")
         self.assertNotEqual(alexandria.canonical_id, "vivc:8193")
 
-        for source_name in ("Muscat of Hamburg", "Muscat Blanc à Petits Grains (R)"):
-            decision = self.registry.resolve(source_name, source_id="adelaide_2025")
-            self.assertFalse(decision.identity_confirmed)
-            self.assertIsNone(decision.canonical_id)
+        hamburg = self.registry.resolve("Muscat of Hamburg", source_id="adelaide_2025")
+        self.assertTrue(hamburg.identity_confirmed)
+        self.assertEqual(hamburg.canonical_id, "vivc:8226")
+        self.assertNotEqual(hamburg.canonical_id, "vivc:8193")
+
+        decision = self.registry.resolve("Muscat Blanc à Petits Grains (R)", source_id="adelaide_2025")
+        self.assertFalse(decision.identity_confirmed)
+        self.assertIsNone(decision.canonical_id)
 
     def test_feteasca_rows_remain_distinct(self):
         alba = self.registry.resolve("Fetească Albă", source_id="adelaide_2025")
