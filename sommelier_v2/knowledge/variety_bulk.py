@@ -424,13 +424,66 @@ class BulkVarietyRegistry:
         names = sorted({_exact(row.prime_name): row.prime_name for row in self.catalog.world_area}.values(), key=str.casefold)
         return [self.record(name) for name in names]
 
+    def vivc_only_records(self) -> list[VarietyOperationalRecord]:
+        adelaide_keys = {_exact(row.prime_name) for row in self.catalog.world_area}
+        records: list[VarietyOperationalRecord] = []
+        for canonical_id, identity in sorted(self.identities.identities.items()):
+            prime = str(identity.get("prime_name") or "").strip()
+            if not prime or _exact(prime) in adelaide_keys:
+                continue
+            traits = self._traits(prime, (), "R5", canonical_id)
+            style_family, fermentation_archetype = self._style_family(prime, canonical_id, traits)
+            ttb = self.ttb.get(normalize_name(prime))
+            records.append(
+                VarietyOperationalRecord(
+                    source_name=prime,
+                    source_id="vivc_registry",
+                    style_family=style_family,
+                    fermentation_archetype=fermentation_archetype,
+                    identity_status="CANONICAL_IDENTITY",
+                    identity_level="R5",
+                    canonical_id=canonical_id,
+                    candidate_ids=(),
+                    identity_confirmed=True,
+                    observed_countries=(),
+                    new_world_observed_countries=(),
+                    world_area_2023_ha=0.0,
+                    ttb_status=ttb.status if ttb else None,
+                    ttb_designation=ttb.name if ttb else None,
+                    us_commercial_plausibility=(
+                        "documented_label_name_and_commercial_evidence" if ttb else "unverified"
+                    ),
+                    spatial_state_us=(
+                        "COMMERCIALLY_PLAUSIBLE" if ttb else "EXPERIMENTALLY_PLAUSIBLE"
+                    ),
+                    simulation_enabled=True,
+                    legal_gi_entitlement_inferred=False,
+                    traits=traits,
+                    evidence_tags=tuple(sorted({
+                        "identity:R5",
+                        "source:vivc_registry",
+                        f"trait_source:{traits.source}",
+                        *({f"ttb:{ttb.status}"} if ttb else set()),
+                    })),
+                )
+            )
+        return records
+
+    def all_global_records(self) -> list[VarietyOperationalRecord]:
+        records = [*self.all_records(), *self.vivc_only_records()]
+        return sorted(records, key=lambda row: (row.source_name.casefold(), row.source_id))
+
     def stats(self) -> dict[str, int | float]:
         records = self.all_records()
+        global_records = self.all_global_records()
         total_area = sum(row.world_area_2023_ha for row in records)
         strong_area = sum(row.world_area_2023_ha for row in records if row.identity_confirmed)
         return {
             "operational_adelaide_names": len(records),
-            "simulation_enabled": sum(row.simulation_enabled for row in records),
+            "vivc_identity_records_loaded": len(self.identities.identities),
+            "vivc_only_operational_records": len(self.vivc_only_records()),
+            "global_operational_records": len(global_records),
+            "simulation_enabled": sum(row.simulation_enabled for row in global_records),
             "strong_identity_records": sum(row.identity_confirmed for row in records),
             "r3_candidates": sum(row.identity_level == "R3" for row in records),
             "r0_conflicts": sum(row.identity_level == "R0" for row in records),
