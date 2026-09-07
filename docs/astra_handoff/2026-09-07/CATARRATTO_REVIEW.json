@@ -1,0 +1,24 @@
+{
+  "source_id": "adelaide_2025",
+  "source_name": "Catarratto Bianco",
+  "status": "open_scope_review",
+  "candidate_ids": [
+    "vivc:2341"
+  ],
+  "generator_policy": "block_identity_promotion",
+  "findings": [
+    {
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "page_one_based": 15,
+      "retrieval_status": "retrieved_text",
+      "finding": "Historical catalogue combines the Italian comune/lucido entry under 2341; the census has the shorter Catarratto Bianco name."
+    },
+    {
+      "url": "https://ojs.openagrar.de/index.php/VITIS/article/view/4185",
+      "retrieval_status": "search_index_only; direct retrieval failed",
+      "finding": "Crespan et al. study identified for review of the named forms; full text not verified in this pass."
+    }
+  ],
+  "next_action": "Check current authority records and the primary genetic study before assigning the generic census name to a particular registry record. Preserve phenotype and regulatory distinctions.",
+  "retrieved_on": "2026-09-07"
+}
