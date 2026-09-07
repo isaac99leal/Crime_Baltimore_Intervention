@@ -73,6 +73,30 @@
       "source_url": "https://info.agriculture.gouv.fr/boagri/document_administratif-8014d4a0-f691-4399-b6d4-ca4ad830e24e/telechargement",
       "legal_claim_authority": true,
       "notes": "Current Blagny cahier homologated 8 June 2026 explicitly lists seven Premier Cru climats. Site identity remains separate from claim evaluation in the legal-rule layer."
+    },
+    {
+      "id": "pouilly_loche_masa_2024",
+      "country": "France",
+      "region": "Bourgogne",
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "unit_types": ["climat"],
+      "coverage_status": "official_appellation_named_sites",
+      "reported_named_units": 1,
+      "source_url": "https://info.agriculture.gouv.fr/boagri/document_administratif-e3cbcf4c-2303-4444-a37e-ec66b3910e6b/telechargement",
+      "legal_claim_authority": true,
+      "notes": "Current Pouilly-Loché cahier homologated 18 November 2024 names Les Mûres as Premier Cru."
+    },
+    {
+      "id": "pouilly_vinzelles_masa_2024",
+      "country": "France",
+      "region": "Bourgogne",
+      "authority": "Ministère de l'Agriculture et de la Souveraineté alimentaire",
+      "unit_types": ["climat"],
+      "coverage_status": "official_appellation_named_sites",
+      "reported_named_units": 3,
+      "source_url": "https://info.agriculture.gouv.fr/boagri/document_administratif-5a8ac97a-e1f0-44bd-87fd-3e0602b468d2/telechargement",
+      "legal_claim_authority": true,
+      "notes": "Current Pouilly-Vinzelles cahier homologated 18 November 2024 names Les Longeays, Les Pétaux and Les Quarts as Premier Cru climats."
     }
   ]
 }
