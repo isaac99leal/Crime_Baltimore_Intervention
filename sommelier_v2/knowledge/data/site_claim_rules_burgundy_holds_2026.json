@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "notes": "Negative legal-claim holds for Burgundy edge cases that must remain non-generatable until stronger authority resolves them. Holds are not positive appellation or site-claim rules and must take precedence over later broad positive rules until removed by a source-backed update.",
+  "sources": {
+    "inao_marsannay_pc_cnaov_2026_06": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "CNAOV decisions of 17-18 June 2026",
+      "url": "https://www.inao.gouv.fr/en/cnaov-return-june-17-18-2026",
+      "checked": "2026-09-07",
+      "scope": "INAO states that the national committee validated a Marsannay Premier Cru dossier; this committee decision is not treated as an effective homologated production specification."
+    },
+    "legifrance_marsannay_2026_vci_list": {
+      "authority": "Légifrance / Journal officiel de la République française",
+      "title": "Arrêté du 27 juillet 2026 - VCI appellation list for the 2026 harvest",
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000054594871/2026-08-10",
+      "checked": "2026-09-07",
+      "scope": "Contemporary official appellation list names Marsannay without a Marsannay Premier Cru entry; used only as corroboration that no effective Premier Cru specification has been promoted into the runtime."
+    },
+    "inao_monthelie_current_2026": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Monthélie premier cru Sur la Velle blanc product record",
+      "url": "https://inao.gouv.fr/produit/monthelie-premier-cru-sur-la-velle-blanc-9455",
+      "checked": "2026-09-07",
+      "scope": "Current INAO product system states that Monthélie contains 15 Premier Cru climats under the operative legal framework. Les Crays is not promoted into the canonical 15-climat legal set pending a newer homologated text."
+    }
+  },
+  "holds": [
+    {
+      "id": "sitehold:fr:marsannay:pc-2026-pending-homologation",
+      "country": "France",
+      "parent_appellation": "Marsannay",
+      "site_type": "climat",
+      "status": "site_claim_pending_homologation",
+      "physical_site_names": [
+        "Clos du Roy",
+        "Le Clos du Roy",
+        "Les Longeroies",
+        "En la Montagne",
+        "En Grands Vaux",
+        "La Charme aux Prêtres",
+        "Le Boivin",
+        "Les Boivin",
+        "Les Grasses Têtes",
+        "Le Clos de Jeu",
+        "Saint-Jacques",
+        "Les Favières",
+        "Au Champ Salomon",
+        "Aux Genelières",
+        "Le Clos",
+        "Champs Perdrix"
+      ],
+      "source_ids": [
+        "inao_marsannay_pc_cnaov_2026_06",
+        "legifrance_marsannay_2026_vci_list"
+      ],
+      "notes": "Fourteen proposed Marsannay Premier Cru climats were committee-approved in 2026, but no effective homologated Premier Cru specification is loaded. Current physical-name variants Clos du Roy/Le Clos du Roy and Le Boivin/Les Boivin are both held. Do not generate a protected site claim from these names until the effective legal text is verified and this hold is retired."
+    },
+    {
+      "id": "sitehold:fr:monthelie:les-crays-disputed",
+      "country": "France",
+      "parent_appellation": "Monthélie",
+      "site_type": "climat",
+      "status": "site_claim_disputed_legal_name",
+      "physical_site_names": ["Les Crays"],
+      "source_ids": ["inao_monthelie_current_2026"],
+      "notes": "Secondary and trade material conflicts with the operative 15-climat legal set. Keep Les Crays non-generatable as a Monthélie Premier Cru claim until a newer homologated legal text resolves the conflict."
+    }
+  ]
+}
