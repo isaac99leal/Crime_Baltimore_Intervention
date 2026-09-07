@@ -38,6 +38,13 @@ from .generation import (
     WineProductionConstraintError,
     WineReleaseConstraintError,
 )
+from .knowledge.blend_chemistry import (
+    BlendChemistryComponent,
+    BlendChemistryConstraintError,
+    BlendChemistryResult,
+    BlendPostMixMeasurements,
+    blend_chemistry,
+)
 from .knowledge.bottle_lifecycle import age_inventory_lot
 from .knowledge.bottling_lot import BottledLotManifest, BottlingLotConstraintError, bottle_winery_lot
 from .knowledge.finished_wine import FinishedWineAssembler, FinishedWineConstraintError, ValidatedWineRecord
@@ -51,6 +58,10 @@ __all__ = [
     "AuthoritativeCatalogItem",
     "AuthoritativeCatalogReport",
     "BeverageProgram",
+    "BlendChemistryComponent",
+    "BlendChemistryConstraintError",
+    "BlendChemistryResult",
+    "BlendPostMixMeasurements",
     "BottledLotManifest",
     "BottlingLotConstraintError",
     "CareerState",
@@ -86,6 +97,7 @@ __all__ = [
     "WineryProvenanceError",
     "WineryProvenanceLedger",
     "age_inventory_lot",
+    "blend_chemistry",
     "bottle_winery_lot",
     "dispatch_bottled_manifest_to_inventory",
     "dispatch_winery_lot_to_inventory",

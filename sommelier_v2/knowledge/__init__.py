@@ -1,6 +1,7 @@
 """Provenance-aware wine knowledge layer for Sommelier Simulator v2."""
 
 from .aging import modified_archetype, state_at_age
+from .blend_chemistry import BlendChemistryComponent, BlendChemistryConstraintError, BlendChemistryResult, BlendPostMixMeasurements, blend_chemistry
 from .bottle_lifecycle import BottleAgingPlan, BottleAgingResult, BottleLifecycleConstraintError, age_cellar_wine, age_inventory_lot
 from .bottling_lot import BottledLotManifest, BottlingLotConstraintError, bottle_winery_lot
 from .catalog import SOURCES, WineKnowledgeCatalog, normalize_name
@@ -48,7 +49,8 @@ VineyardEngine = LegalVineyardEngine
 
 __all__ = [
     "SOURCES", "AlcoholicFermentationParams", "AuthorityVintageRating", "BaseVineyardEngine",
-    "BatonnageEvent", "BlendComponent", "BottleAgingPlan", "BottleAgingResult", "BottledLotManifest",
+    "BatonnageEvent", "BlendChemistryComponent", "BlendChemistryConstraintError", "BlendChemistryResult",
+    "BlendComponent", "BlendPostMixMeasurements", "BottleAgingPlan", "BottleAgingResult", "BottledLotManifest",
     "BottleLifecycleConstraintError", "BottlingLotConstraintError", "CapManagementEvent", "CellarHandoffInputs",
     "CellarPipelineConstraintError", "CellarPipelinePlan", "CellarPipelineResult",
     "ChemistryEvidenceRecord", "ChemistryEvidenceSource", "ChemistryEvidenceStats", "CommercialObservation",
@@ -84,7 +86,7 @@ __all__ = [
     "WinemakingDecision", "WinemakingDecisionError", "WinemakingDecisionRegistry", "WinemakingDecisionStats",
     "WineryLot", "WineryProvenanceError", "WineryProvenanceLedger", "WorldWineKnowledgeCatalog",
     "age_cellar_wine", "age_inventory_lot", "apply_winemaking_decisions", "assess_packaging",
-    "assess_process_chemistry", "assess_smoke_markers", "bottle_winery_lot",
+    "assess_process_chemistry", "assess_smoke_markers", "blend_chemistry", "bottle_winery_lot",
     "initial_microbiological_risk", "initial_state", "load_historical_vintages",
     "load_legacy_vintage_knowledge", "load_process_chemistry_evidence", "load_site_research",
     "load_trade_research", "load_winemaking_decisions", "lot_from_harvest_must", "modified_archetype",
