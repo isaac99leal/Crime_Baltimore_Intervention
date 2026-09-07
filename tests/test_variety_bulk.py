@@ -1,0 +1,80 @@
+from __future__ import annotations
+
+import unittest
+
+from sommelier_v2.knowledge.variety_bulk import BulkVarietyRegistry
+
+
+class BulkVarietyRegistryTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.registry = BulkVarietyRegistry()
+        cls.records = cls.registry.all_records()
+        cls.by_name = {row.source_name: row for row in cls.records}
+
+    def test_every_literal_adelaide_name_has_operational_record(self):
+        source_names = {row.prime_name.casefold() for row in self.registry.catalog.world_area}
+        operational = {row.source_name.casefold() for row in self.records}
+        self.assertEqual(operational, source_names)
+        self.assertTrue(all(row.simulation_enabled for row in self.records))
+
+    def test_bulk_layer_never_infers_gi_entitlement(self):
+        self.assertTrue(all(not row.legal_gi_entitlement_inferred for row in self.records))
+
+    def test_uncertain_identity_does_not_block_simulation(self):
+        for name in ("Petit Verdot", "Catarratto Bianco", "Beba", "Pamid"):
+            row = self.by_name[name]
+            self.assertEqual(row.identity_level, "R0")
+            self.assertFalse(row.identity_confirmed)
+            self.assertTrue(row.simulation_enabled)
+
+    def test_r3_candidates_are_operational_without_false_confirmation(self):
+        for name in ("Cereza", "Criolla Grande", "Torrontés Riojano", "Pedro Giménez"):
+            row = self.by_name[name]
+            self.assertEqual(row.identity_level, "R3")
+            self.assertFalse(row.identity_confirmed)
+            self.assertTrue(row.candidate_ids)
+            self.assertTrue(row.simulation_enabled)
+
+    def test_ttb_data_marks_obscure_us_commercial_plausibility(self):
+        for name in ("Assyrtiko", "Baga", "Caladoc", "Loureiro", "Marselan", "Vranac", "Verdejo"):
+            row = self.by_name[name]
+            self.assertIsNotNone(row.ttb_status, name)
+            self.assertEqual(row.spatial_state_us, "COMMERCIALLY_PLAUSIBLE")
+
+    def test_observed_country_geography_is_preserved(self):
+        malbec = self.by_name["Côt"]
+        self.assertIn("Argentina", malbec.observed_countries)
+        self.assertIn("Argentina", malbec.new_world_observed_countries)
+
+        shiraz = self.by_name["Syrah"]
+        self.assertIn("Australia", shiraz.new_world_observed_countries)
+
+    def test_trait_priors_exist_for_sparse_and_deep_records(self):
+        for name in ("Cabernet Sauvignon", "Cereza", "Beba", "Shesh i Zi"):
+            row = self.by_name[name]
+            self.assertIsNotNone(row.traits.acidity.typical)
+            self.assertIsNotNone(row.traits.tannin.typical)
+            self.assertIsNotNone(row.traits.body.typical)
+            self.assertIsNotNone(row.traits.alcohol_pct.typical)
+            self.assertIsNotNone(row.traits.fermentation_temp_c.typical)
+            self.assertGreaterEqual(row.traits.malolactic_probability, 0.0)
+            self.assertLessEqual(row.traits.malolactic_probability, 1.0)
+
+    def test_unknown_color_gets_broad_prior_not_fake_specificity(self):
+        row = self.by_name["Shesh i Zi"]
+        self.assertIn(row.traits.confidence, {"low", "medium"})
+        self.assertEqual(row.traits.source, "generic_commercial_simulation_prior")
+
+    def test_stats_report_full_operational_coverage(self):
+        stats = self.registry.stats()
+        self.assertEqual(stats["operational_adelaide_names"], len(self.records))
+        self.assertEqual(stats["simulation_enabled"], len(self.records))
+        self.assertGreater(stats["ttb_supported_names"], 100)
+        self.assertGreater(stats["new_world_observed_names"], 100)
+        self.assertGreater(stats["world_area_2023_ha"], 4_000_000)
+        self.assertGreater(stats["strong_identity_area_2023_pct"], 70.0)
+
+
+if __name__ == "__main__":
+    unittest.main()
