@@ -147,6 +147,10 @@ class EvidenceResolverTests(unittest.TestCase):
             "Chardonnay": "vivc:2455",
             "Tempranillo": "vivc:12350",
             "Airén": "vivc:157",
+            "Pinot Noir": "vivc:9279",
+            "Pinot Gris": "vivc:9275",
+            "Sangiovese": "vivc:10680",
+            "Sauvignon Blanc": "vivc:10790",
         }
         for source_name, canonical_id in expected.items():
             decision = r.resolve(source_name, source_id="adelaide_2025")
@@ -160,6 +164,7 @@ class EvidenceResolverTests(unittest.TestCase):
         for source_name in (
             "Cabernet Sauvignon", "Syrah", "Rondo", "Moschofilero",
             "Merlot", "Chardonnay", "Tempranillo", "Airén",
+            "Pinot Noir", "Pinot Gris", "Sangiovese", "Sauvignon Blanc",
         ):
             self.assertFalse(r.resolve(source_name, source_id="another-census").identity_confirmed)
 
@@ -172,11 +177,15 @@ class EvidenceResolverTests(unittest.TestCase):
         self.assertEqual(folded.level, "R2")
         self.assertIsNone(folded.canonical_id)
 
+    def test_synonym_is_not_inferred_from_another_registry_name(self):
+        r = VarietyIdentityRegistry()
+        self.assertEqual(r.resolve("Garnacha Tinta", source_id="adelaide_2025").status, "UNKNOWN")
+        self.assertEqual(r.resolve("Grenache", source_id="adelaide_2025").status, "UNKNOWN")
+
     def test_unseen_and_unreviewed_names_stay_unknown(self):
         r = VarietyIdentityRegistry()
         self.assertEqual(r.resolve("Unseen", source_id="adelaide_2025").status, "UNKNOWN")
-        self.assertEqual(r.resolve("Pinot Noir", source_id="adelaide_2025").status, "UNKNOWN")
-        self.assertEqual(r.resolve("Sauvignon Blanc", source_id="adelaide_2025").status, "UNKNOWN")
+        self.assertEqual(r.resolve("Pinot Blanc", source_id="adelaide_2025").status, "UNKNOWN")
 
 
 if __name__ == "__main__":
