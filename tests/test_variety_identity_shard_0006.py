@@ -50,13 +50,14 @@ class VarietyIdentityShard0006Tests(unittest.TestCase):
             self.assertTrue(
                 self.registry.resolve(source_name, source_id="adelaide_2025").identity_confirmed
             )
-            self.assertEqual(
-                self.registry.resolve(
-                    authority_or_synonym_name,
-                    source_id="adelaide_2025",
-                ).status,
-                "UNKNOWN",
-            )
+            decision = self.registry.resolve(authority_or_synonym_name, source_id="adelaide_2025")
+            # Punctuation folding can suggest Xarello, but cannot confirm an alias.
+            self.assertEqual(decision.status, "CANDIDATE" if source_name == "Xarello" else "UNKNOWN")
+            self.assertFalse(decision.identity_confirmed)
+            self.assertIsNone(decision.canonical_id)
+            if source_name == "Xarello":
+                self.assertEqual(decision.level, "R2")
+                self.assertEqual(decision.candidate_ids, ("vivc:13270",))
 
     def test_diacritic_fold_is_candidate_not_reviewed_identity(self):
         exact = self.registry.resolve("Carmenère", source_id="adelaide_2025")

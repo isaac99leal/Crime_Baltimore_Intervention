@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "notes": "Current parent-scoped Premier Cru climat identities for Pouilly-Loché and Pouilly-Vinzelles. These are separate legal/site identities from same-named or nearby physical places under other origins. Site identity alone does not authorize a wine claim.",
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Pouilly-Loché",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["pouilly_loche_masa_2024"],
+      "notes": "Exact Premier Cru climat list in the Pouilly-Loché cahier homologated 18 November 2024.",
+      "names": ["Les Mûres"]
+    },
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Pouilly-Vinzelles",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["pouilly_vinzelles_masa_2024"],
+      "notes": "Exact Premier Cru climat list in the Pouilly-Vinzelles cahier homologated 18 November 2024.",
+      "names": ["Les Longeays", "Les Pétaux", "Les Quarts"]
+    }
+  ],
+  "records": []
+}

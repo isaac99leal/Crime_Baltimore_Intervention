@@ -35,7 +35,7 @@ def site_mapping(catalog, claims, parent, name, classification=None):
             if (normalize_name(rule.parent_appellation) == normalize_name(parent)
                     and rule.country == site.country and rule.site_type == site.site_type
                     and rule.required_site_legal_status == site.legal_status
-                    and (not rule.required_site_source_ids or set(rule.required_site_source_ids) & set(site.source_ids))
+                    and (not rule.required_site_source_ids or set(rule.required_site_source_ids).issubset(site.source_ids))
                     and (not rule.allowed_site_names or site.name in rule.allowed_site_names)
                     and site.name not in rule.excluded_site_names):
                 bindings.append({"site_id": site.id, "rule_id": rule.id,
@@ -121,7 +121,7 @@ def build_reports(batch_size=250):
     inputs = sorted(HANDOFF.glob("*.json")) + [DATA / n for n in (
         "adelaide_world_varieties_2000_2023.csv", "adelaide_country_varieties_2000_2023.csv",
         "variety_identity_evidence.json")]
-    for pattern in ("named_sites_*.json", "site_claim_rules_*.json", "legal_gi_specs_*.json"):
+    for pattern in ("named_sites_*.json", "site_claim_rules_*.json", "legal_gi_specs_*.json", "variety_identity_evidence_shard_*.json"):
         inputs.extend(sorted(DATA.glob(pattern)))
     hashes = {str(p.relative_to(ROOT)): sha256(p.read_bytes()).hexdigest() for p in inputs}
     burgundy["input_sha256"] = hashes

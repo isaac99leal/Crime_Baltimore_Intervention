@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "notes": "Current parent-scoped Blagny Premier Cru climat identities. These are separate legal/site identities from same-named sites under Meursault or Puligny-Montrachet. Site identity alone does not authorize a wine claim.",
+  "groups": [
+    {
+      "country": "France",
+      "region": "Bourgogne",
+      "parent": "Blagny",
+      "site_type": "climat",
+      "classification": "Premier Cru",
+      "legal_status": "official_appellation_climat",
+      "source_ids": ["blagny_cahier_2026"],
+      "notes": "Exact climat list in the Blagny cahier homologated 8 June 2026.",
+      "names": [
+        "Hameau de Blagny",
+        "La Garenne ou sur la Garenne",
+        "La Jeunellotte",
+        "La Pièce sous le Bois",
+        "Sous Blagny",
+        "Sous le Dos d’Ane",
+        "Sous le Puits"
+      ]
+    }
+  ],
+  "records": []
+}
