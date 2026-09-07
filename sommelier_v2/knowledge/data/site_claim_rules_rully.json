@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive Rully Premier Cru climat label-claim rule. Generic Rully lieux-dits remain fail-closed. Current INAO records identify 23 Premier Cru climats and show red and white protected product records.",
+  "sources": {
+    "rully_inao_current": {
+      "authority": "Institut national de l'origine et de la qualité (INAO)",
+      "title": "Rully Premier Cru current product records",
+      "url": "https://www.inao.gouv.fr/produit/rully-premier-cru-champs-cloux-blanc-9145",
+      "checked": "2026-09-07",
+      "scope": "Current INAO record confirms Rully red/white AOP status and 23 Premier Cru climats; INAO exposes current product records for the named climats in both colors."
+    },
+    "rully_legifrance_2011": {
+      "authority": "Légifrance / Journal officiel de la République française",
+      "title": "Décret n° 2011-1704 du 30 novembre 2011 relatif à l'appellation d'origine contrôlée Rully",
+      "url": "https://www.legifrance.gouv.fr/loda/id/LEGITEXT000024895684",
+      "checked": "2026-09-07",
+      "scope": "Current homologating decree for the Rully cahier des charges."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:rully:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Rully",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["bivb_rully"],
+      "allowed_wine_variants": ["white premier cru", "red premier cru"],
+      "source_ids": ["rully_inao_current", "rully_legifrance_2011"],
+      "claim_kind": "premier_cru_climat_name",
+      "notes": "The 23 BIVB-listed Rully Premier Cru climat identities are claimable for the strict white and red Premier Cru paths. Other Rully lieux-dits are not promoted by this rule."
+    }
+  ]
+}
