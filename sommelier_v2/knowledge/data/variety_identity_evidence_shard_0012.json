@@ -1,0 +1,70 @@
+{
+  "snapshot_version": "2026-09-07.15",
+  "scope": "Twelfth additive botanical identity shard. High-area Adelaide names promoted conservatively to R4 where authoritative registry evidence confirms the identity but the source proposition includes color-code or compound-name formatting.",
+  "evidence": {
+    "grapegen06-trebbiano-toscano-12628-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:12628",
+      "source_id": "adelaide_2025",
+      "source_name": "Trebbiano Toscano",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen places Biancame / Trebbiano toscano B. under TREBBIANO TOSCANO, VIVC 12628. Current Plantgrape independently states that Ugni blanc is officially called Trebbiano toscano in the EU. Because the registry proposition includes a compound name and color code, the Adelaide literal is R4 rather than R5."
+    },
+    "grapegen06-alicante-henri-bouschet-304-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e09-4ac9-e053-1705fe0a1c61/ANNEX_2A_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2A",
+      "canonical_id": "vivc:304",
+      "source_id": "adelaide_2025",
+      "source_name": "Alicante Henri Bouschet",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen maps French Alicante Henri Bouschet N to ALICANTE HENRI BOUSCHET, VIVC 304. Current Plantgrape lists Alicante Henri Bouschet as the French catalogue name. The omitted color code in Adelaide keeps this at R4 rather than R5."
+    }
+  },
+  "identities": [
+    {
+      "id": "vivc:12628",
+      "vivc_id": 12628,
+      "prime_name": "TREBBIANO TOSCANO",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:304",
+      "vivc_id": 304,
+      "prime_name": "ALICANTE HENRI BOUSCHET",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    }
+  ],
+  "links": [
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Trebbiano Toscano",
+      "canonical_id": "vivc:12628",
+      "level": "R4",
+      "evidence_ids": ["grapegen06-trebbiano-toscano-12628-2026-09-07"]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Alicante Henri Bouschet",
+      "canonical_id": "vivc:304",
+      "level": "R4",
+      "evidence_ids": ["grapegen06-alicante-henri-bouschet-304-2026-09-07"]
+    }
+  ]
+}
