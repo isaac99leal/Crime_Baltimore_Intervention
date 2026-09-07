@@ -1,0 +1,16 @@
+{
+  "handoff_id": "WKV2-ASTRA-2026-09-06-R1",
+  "role": "research_reconciliation_seed_not_canonical",
+  "scope": "Burgundy Premier Cru claims",
+  "part": 1,
+  "parts_total": 6,
+  "parents": {
+    "Chablis": ["Beauroy","Berdiot","Beugnons","Butteaux","Chapelot","Chatains","Chaume de Talvat","Côte de Bréchain","Côte de Cuisy","Côte de Fontenay","Côte de Jouan","Côte de Léchet","Côte de Savant","Côte de Vaubarousse","Côte des Prés-Girots","Forêts","Fourchaume","L'Homme Mort","Les Beauregards","Les Épinottes","Les Fourneaux","Les Lys","Mélinots","Mont de Milieu","Montée de Tonnerre","Montmains","Morein","Pied d'Aloup","Roncières","Sécher","Troesmes","Vaillons","Vau de Vey","Vau Ligneau","Vaucoupin","Vaugiraut","Vaulorent","Vaupulent","Vaux Ragons","Vosgros"],
+    "Fixin": ["Arvelets","Clos de la Perrière","Clos du Chapitre","Clos Napoléon","Hervelets","Les Meix Bas"],
+    "Gevrey-Chambertin": ["Au Closeau","Aux Combottes","Bel Air","Champeaux","Champonnet","Cherbaudes","Clos des Varoilles","Clos du Chapitre","Clos Prieur","Clos Saint-Jacques","Combe au Moine","Craipillot","En Ergot","Estournelles-Saint-Jacques","Fonteny","Issarts","La Bossière","La Perrière","La Romanée","Lavaut Saint-Jacques","Les Cazetiers","Les Corbeaux","Les Goulots","Petite Chapelle","Petits Cazetiers","Poissenot"],
+    "Morey-Saint-Denis": ["Aux Charmes","Aux Cheseaux","Clos Baulet","Clos des Ormes","Clos Sorbè","Côte Rotie","La Bussière","La Riotte","Le Village","Les Blanchards","Les Chaffots","Les Charrières","Les Chenevery","Les Faconnières","Les Genavrières","Les Gruenchers","Les Millandes","Les Ruchots","Les Sorbès","Monts Luisants"],
+    "Chambolle-Musigny": ["Aux Beaux Bruns","Aux Combottes","Aux Echanges","Derrière la Grange","La Combe d'Orveau","Les Amoureuses","Les Baudes","Les Borniques","Les Carrières","Les Chabiots","Les Charmes","Les Chatelots","Les Combottes","Les Cras","Les Feusselottes","Les Fuées","Les Groseilles","Les Gruenchers","Les Hauts Doix","Les Lavrottes","Les Noirots","Les Plantes","Les Sentiers","Les Véroilles"],
+    "Vougeot": ["Le Clos Blanc","Clos de la Perrière","Les Cras","Les Petits Vougeots"],
+    "Vosne-Romanée": ["Au-dessus des Malconsorts","Aux Brulées","Aux Malconsorts","Aux Raignots","Clos des Réas","Cros Parantoux","En Orveaux","La Croix Rameau","Les Beaux Monts","Les Chaumes","Les Gaudichots","Les Petits Monts","Les Rouges","Les Suchots"]
+  }
+}
