@@ -85,6 +85,15 @@ class OperationalTraitPriors:
 
 
 @dataclass(frozen=True)
+class GrowthPlausibilityDecision:
+    target_country: str
+    state: str
+    confidence: str
+    evidence: tuple[str, ...]
+    legal_entitlement_inferred: bool = False
+
+
+@dataclass(frozen=True)
 class VarietyOperationalRecord:
     source_name: str
     source_id: str
@@ -279,6 +288,69 @@ class BulkVarietyRegistry:
         if color in {"rose", "rosé", "gris", "pink"}:
             return "rose_or_gray_skin", "rose_flexible"
         return "broad_unknown_style", "flexible_unknown"
+
+    @staticmethod
+    def _climate_class(country: str) -> str:
+        if country in COOL_COUNTRIES:
+            return "cool"
+        if country in WARM_COUNTRIES:
+            return "warm"
+        return "moderate_or_mixed"
+
+    def assess_country_plausibility(
+        self,
+        source_name: str,
+        target_country: str,
+    ) -> GrowthPlausibilityDecision:
+        record = self.record(source_name)
+        if target_country in record.observed_countries:
+            return GrowthPlausibilityDecision(
+                target_country=target_country,
+                state="OBSERVED",
+                confidence="high",
+                evidence=(f"adelaide_country_observation:{target_country}",),
+            )
+
+        if target_country == "United States" and record.ttb_status is not None:
+            return GrowthPlausibilityDecision(
+                target_country=target_country,
+                state="COMMERCIALLY_PLAUSIBLE",
+                confidence="high",
+                evidence=(f"ttb:{record.ttb_status}:{record.ttb_designation}",),
+            )
+
+        observed_classes = {
+            self._climate_class(country) for country in record.observed_countries
+        }
+        target_class = self._climate_class(target_country)
+        if observed_classes and target_class in observed_classes:
+            return GrowthPlausibilityDecision(
+                target_country=target_country,
+                state="AGRONOMICALLY_PLAUSIBLE",
+                confidence="medium",
+                evidence=(
+                    f"climate_analogue:{target_class}",
+                    "based_on_observed_country_distribution",
+                ),
+            )
+
+        if record.new_world_observed_countries and target_country in NEW_WORLD_COUNTRIES:
+            return GrowthPlausibilityDecision(
+                target_country=target_country,
+                state="EXPERIMENTALLY_PLAUSIBLE",
+                confidence="low_medium",
+                evidence=(
+                    "new_world_cultivation_exists",
+                    f"target_climate_class:{target_class}",
+                ),
+            )
+
+        return GrowthPlausibilityDecision(
+            target_country=target_country,
+            state="EXPERIMENTALLY_PLAUSIBLE",
+            confidence="low",
+            evidence=("no_hard_biological_or_legal_impossibility_encoded",),
+        )
 
     def record(self, source_name: str) -> VarietyOperationalRecord:
         decision = self.identities.resolve(source_name, source_id="adelaide_2025")
