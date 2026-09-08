@@ -1,0 +1,70 @@
+{
+  "snapshot_version": "2026-09-07.14",
+  "scope": "Eleventh additive botanical identity shard. Uses R4 only where the literal Adelaide source name is a reviewed synonym or historical nomenclature of a canonical authority identity.",
+  "evidence": {
+    "grapegen06-mazuelo-2098-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:2098",
+      "source_id": "adelaide_2025",
+      "source_name": "Mazuelo",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen lists Spanish Mazuela with Mazuelo as a registered synonym under CARIGNAN NOIR, VIVC 2098. The Adelaide spelling Mazuelo is therefore linked as R4 rather than treated as an exact VIVC prime-name assertion."
+    },
+    "vitisgrinzane-prosecco-glera-9741-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://vitisgrinzane.ipsp.cnr.it/do/77d04aec-4440-4e5b-a5dd-1985a2bc4553",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Vitis Grinzane - Glera B.",
+      "canonical_id": "vivc:9741",
+      "source_id": "adelaide_2025",
+      "source_name": "Prosecco",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "Current Vitis Grinzane identifies Glera as VIVC 9741, trueness-to-type confirmed, and records a Prosecco accession. The Adelaide historical source name Prosecco is therefore a reviewed R4 identity link, not a new prime identity."
+    }
+  },
+  "identities": [
+    {
+      "id": "vivc:2098",
+      "vivc_id": 2098,
+      "prime_name": "CARIGNAN NOIR",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    },
+    {
+      "id": "vivc:9741",
+      "vivc_id": 9741,
+      "prime_name": "GLERA",
+      "record_status": "reviewed_current_identity_with_historical_source_name",
+      "color": "white",
+      "species": "Vitis vinifera",
+      "parentage": null
+    }
+  ],
+  "links": [
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Mazuelo",
+      "canonical_id": "vivc:2098",
+      "level": "R4",
+      "evidence_ids": ["grapegen06-mazuelo-2098-2026-09-07"]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Prosecco",
+      "canonical_id": "vivc:9741",
+      "level": "R4",
+      "evidence_ids": ["vitisgrinzane-prosecco-glera-9741-2026-09-07"]
+    }
+  ]
+}

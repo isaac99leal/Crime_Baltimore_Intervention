@@ -1,0 +1,42 @@
+{
+  "snapshot_version": "2026-09-07.17",
+  "scope": "Fourteenth additive botanical identity shard. Additional high-area R4 links where authoritative registry spellings differ from Adelaide only by registered spelling or color-code conventions.",
+  "evidence": {
+    "grapegen06-dimyat-5716-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:5716",
+      "source_id": "adelaide_2025",
+      "source_name": "Dimyat",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen prime identity DIMYAT is VIVC 5716 and Bulgarian Dimjat is registered beneath it. Adelaide's English transliteration Dimyat is therefore treated as R4, not an exact source assertion."
+    },
+    "grapegen06-malvasia-bianca-candia-7258-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:7258",
+      "source_id": "adelaide_2025",
+      "source_name": "Malvasia Bianca di Candia",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen maps Italian Malvasia bianca di Candia B. to MALVASIA CANDIDA, VIVC 7258. The Adelaide row omits the color code and is linked conservatively at R4."
+    }
+  },
+  "identities": [
+    {"id":"vivc:5716","vivc_id":5716,"prime_name":"DIMYAT","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:7258","vivc_id":7258,"prime_name":"MALVASIA CANDIDA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Dimyat","canonical_id":"vivc:5716","level":"R4","evidence_ids":["grapegen06-dimyat-5716-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Malvasia Bianca di Candia","canonical_id":"vivc:7258","level":"R4","evidence_ids":["grapegen06-malvasia-bianca-candia-7258-2026-09-07"]}
+  ]
+}

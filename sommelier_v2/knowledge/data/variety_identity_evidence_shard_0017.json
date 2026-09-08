@@ -1,0 +1,40 @@
+{
+  "snapshot_version": "2026-09-07.20",
+  "scope": "Seventeenth additive botanical identity shard. Conservative R4 binding for the Adelaide Durif row using current GrapeGen registered-name evidence.",
+  "evidence": {
+    "grapegen06-durif-3738-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e07-4ac9-e053-1705fe0a1c61/ANNEX_1A_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1A",
+      "canonical_id": "vivc:3738",
+      "source_id": "adelaide_2025",
+      "source_name": "Durif",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen identifies DURIF, VIVC 3738, and the French registered proposition Durif N. UC Davis FPS independently lists Durif as the variety name and Petite Sirah/Petite Syrah as synonyms. Adelaide omits the registered color code, so the source proposition is conservatively R4."
+    }
+  },
+  "identities": [
+    {
+      "id": "vivc:3738",
+      "vivc_id": 3738,
+      "prime_name": "DURIF",
+      "record_status": "reviewed_cross_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": "Syrah × Peloursin"
+    }
+  ],
+  "links": [
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Durif",
+      "canonical_id": "vivc:3738",
+      "level": "R4",
+      "evidence_ids": ["grapegen06-durif-3738-2026-09-07"]
+    }
+  ]
+}

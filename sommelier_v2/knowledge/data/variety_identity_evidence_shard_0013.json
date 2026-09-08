@@ -1,0 +1,106 @@
+{
+  "snapshot_version": "2026-09-07.16",
+  "scope": "Thirteenth additive botanical identity shard. Commercial Adelaide names linked at R4 where authority catalogues publish the name as a synonym, component registered name, or current canonical prime identity without an exact Adelaide assertion row.",
+  "evidence": {
+    "grapegen06-muscat-of-alexandria-8241-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:8241",
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat of Alexandria",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen prime identity MUSCAT OF ALEXANDRIA is VIVC 8241 and maps multiple national registered names to it. Adelaide uses the prime English name, but no exact country-free source assertion is borrowed, so the link is R4."
+    },
+    "grapegen06-douce-noire-2826-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:2826",
+      "source_id": "adelaide_2025",
+      "source_name": "Douce Noire",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "French Corbeau N is listed with Douce noire N as a registered synonym under CORBEAU NOIR, VIVC 2826."
+    },
+    "grapegen06-trebbiano-romagnolo-12625-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:12625",
+      "source_id": "adelaide_2025",
+      "source_name": "Trebbiano Romagnolo",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen maps Italian Trebbiano romagnolo B. to TREBBIANO ROMAGNOLO, VIVC 12625. Adelaide omits the color code, so the link remains R4."
+    },
+    "grapegen06-palomino-fino-8888-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:8888",
+      "source_id": "adelaide_2025",
+      "source_name": "Palomino Fino",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen prime PALOMINO FINO is VIVC 8888 and the Spanish registered proposition is Listán Blanco de Canarias / Palomino Fino. The component-name relation is strong but not an exact whole-field assertion, hence R4."
+    },
+    "grapegen06-garganega-4419-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:4419",
+      "source_id": "adelaide_2025",
+      "source_name": "Garganega",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen maps the Italian compound registered name Garganega / Grecanico dorato B. to GARGANEGA, VIVC 4419. Adelaide's component name is conservatively R4."
+    },
+    "grapegen06-listan-prieto-7873-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e08-4ac9-e053-1705fe0a1c61/ANNEX_1B_V3-4.pdf",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - European Grapevine Catalogue, Annex 1B",
+      "canonical_id": "vivc:7873",
+      "source_id": "adelaide_2025",
+      "source_name": "Listán Prieto",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "GrapeGen maps Spanish Listán Prieto to MISSION, VIVC 7873. The prime-name difference is kept explicit and does not create an Adelaide Mission source alias."
+    }
+  },
+  "identities": [
+    {"id":"vivc:8241","vivc_id":8241,"prime_name":"MUSCAT OF ALEXANDRIA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:2826","vivc_id":2826,"prime_name":"CORBEAU NOIR","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:12625","vivc_id":12625,"prime_name":"TREBBIANO ROMAGNOLO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:8888","vivc_id":8888,"prime_name":"PALOMINO FINO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:4419","vivc_id":4419,"prime_name":"GARGANEGA","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:7873","vivc_id":7873,"prime_name":"MISSION","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Muscat of Alexandria","canonical_id":"vivc:8241","level":"R4","evidence_ids":["grapegen06-muscat-of-alexandria-8241-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Douce Noire","canonical_id":"vivc:2826","level":"R4","evidence_ids":["grapegen06-douce-noire-2826-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Trebbiano Romagnolo","canonical_id":"vivc:12625","level":"R4","evidence_ids":["grapegen06-trebbiano-romagnolo-12625-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Palomino Fino","canonical_id":"vivc:8888","level":"R4","evidence_ids":["grapegen06-palomino-fino-8888-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Garganega","canonical_id":"vivc:4419","level":"R4","evidence_ids":["grapegen06-garganega-4419-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Listán Prieto","canonical_id":"vivc:7873","level":"R4","evidence_ids":["grapegen06-listan-prieto-7873-2026-09-07"]}
+  ]
+}

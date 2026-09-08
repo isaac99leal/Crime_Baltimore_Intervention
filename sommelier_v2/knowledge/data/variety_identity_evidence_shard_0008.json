@@ -1,0 +1,76 @@
+{
+  "snapshot_version": "2026-09-07.11",
+  "scope": "Eighth additive exact-name botanical identity shard, prioritized by unresolved 2023 planted-area impact and direct GrapeGen registered-name/VIVC mappings.",
+  "evidence": {
+    "grapegen06-verdejo-12949-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:12949", "source_id": "adelaide_2025", "source_name": "Verdejo",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Verdejo to VERDEJO BLANCO, VIVC 12949. The canonical prime-name difference does not widen the Adelaide source namespace."
+    },
+    "grapegen06-pinot-meunier-9278-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:9278", "source_id": "adelaide_2025", "source_name": "Pinot Meunier",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Pinot Meunier to PINOT MEUNIER, VIVC 9278. Meunier and Schwarzriesling are not introduced as Adelaide aliases by this assertion."
+    },
+    "grapegen06-muller-thurgau-8141-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:8141", "source_id": "adelaide_2025", "source_name": "Müller-Thurgau",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Müller-Thurgau to MUELLER THURGAU, VIVC 8141. Accent or punctuation-normalized variants remain candidates unless separately reviewed."
+    },
+    "grapegen06-semillon-11480-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:11480", "source_id": "adelaide_2025", "source_name": "Sémillon",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Sémillon to SEMILLON, VIVC 11480. Accentless Semillon is not promoted to an R5 Adelaide assertion by this link."
+    },
+    "grapegen06-negroamaro-8456-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:8456", "source_id": "adelaide_2025", "source_name": "Negroamaro",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Negroamaro to NEGRO AMARO, VIVC 8456. Negroamaro Precoce remains a separate identity."
+    },
+    "grapegen06-pedro-ximenez-9080-2026-09-07": {
+      "authority_type": "botanical_registry", "review_status": "reviewed",
+      "url": "https://openpub.fmach.it/retrieve/e1dbfeaa-5e0a-4ac9-e053-1705fe0a1c61/ANNEX_2B_V3-4.pdf",
+      "retrieved_on": "2026-09-07", "retrieval_status": "retrieved",
+      "title": "European Project GrapeGen 06 - Grapevine Genetic Resources, Annex 2B",
+      "canonical_id": "vivc:9080", "source_id": "adelaide_2025", "source_name": "Pedro Ximénez",
+      "country": null, "relation": "exact_identity",
+      "notes": "GrapeGen maps registered Pedro Ximénez to PEDRO XIMENES, VIVC 9080. Pedro Giménez remains a separate Adelaide source row and is not collapsed into this identity."
+    }
+  },
+  "identities": [
+    {"id":"vivc:12949","vivc_id":12949,"prime_name":"VERDEJO BLANCO","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:9278","vivc_id":9278,"prime_name":"PINOT MEUNIER","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:8141","vivc_id":8141,"prime_name":"MUELLER THURGAU","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:11480","vivc_id":11480,"prime_name":"SEMILLON","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:8456","vivc_id":8456,"prime_name":"NEGRO AMARO","record_status":"reviewed_cross_registry_identity","color":"black","species":"Vitis vinifera","parentage":null},
+    {"id":"vivc:9080","vivc_id":9080,"prime_name":"PEDRO XIMENES","record_status":"reviewed_cross_registry_identity","color":"white","species":"Vitis vinifera","parentage":null}
+  ],
+  "links": [
+    {"source_id":"adelaide_2025","source_name":"Verdejo","canonical_id":"vivc:12949","level":"R5","evidence_ids":["grapegen06-verdejo-12949-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Pinot Meunier","canonical_id":"vivc:9278","level":"R5","evidence_ids":["grapegen06-pinot-meunier-9278-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Müller-Thurgau","canonical_id":"vivc:8141","level":"R5","evidence_ids":["grapegen06-muller-thurgau-8141-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Sémillon","canonical_id":"vivc:11480","level":"R5","evidence_ids":["grapegen06-semillon-11480-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Negroamaro","canonical_id":"vivc:8456","level":"R5","evidence_ids":["grapegen06-negroamaro-8456-2026-09-07"]},
+    {"source_id":"adelaide_2025","source_name":"Pedro Ximénez","canonical_id":"vivc:9080","level":"R5","evidence_ids":["grapegen06-pedro-ximenez-9080-2026-09-07"]}
+  ]
+}

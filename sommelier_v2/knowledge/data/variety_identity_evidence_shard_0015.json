@@ -1,0 +1,106 @@
+{
+  "snapshot_version": "2026-09-07.18",
+  "scope": "Fifteenth additive botanical identity shard. One exact current botanical-registry identity and two high-impact R4 synonym/nomenclature propositions.",
+  "evidence": {
+    "vitisgrinzane-muscat-hamburg-8226-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://vitisgrinzane.ipsp.cnr.it/do/b280220f-47fc-4faf-b650-6e8f12cffa14",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Vitis Grinzane - Muscat Hamburg; Moscato d'Amburgo N.",
+      "canonical_id": "vivc:8226",
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat of Hamburg",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "Vitis Grinzane reports VIVC 8226, trueness-to-type confirmation, and an accession explicitly named Muscat Hamburg. Adelaide's literal row is Muscat of Hamburg, so the proposition is treated conservatively as a reviewed R4 naming equivalence rather than an exact R5 assertion."
+    },
+    "vitisgrinzane-cot-malbech-2889-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://vitisgrinzane.ipsp.cnr.it/do/b14cb349-6466-4dfc-9a91-2a475ed20c48",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "Vitis Grinzane - Cot; Malbech N.",
+      "canonical_id": "vivc:2889",
+      "source_id": "adelaide_2025",
+      "source_name": "Côt",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "Vitis Grinzane reports Cot/Malbech as VIVC 2889 with trueness-to-type and SSR confirmation. Plantgrape independently treats Cot as the French registered variety and Malbec as an official synonym. Adelaide's accented Côt spelling is therefore R4 rather than an exact R5 source assertion."
+    },
+    "ucd-fps-tribidrag-9703-2026-09-07": {
+      "authority_type": "botanical_registry",
+      "review_status": "reviewed",
+      "url": "https://fps.ucdavis.edu/FGRfamilies.cfm?varietyid=1634",
+      "retrieved_on": "2026-09-07",
+      "retrieval_status": "retrieved",
+      "title": "UC Davis Foundation Plant Services - Zinfandel",
+      "canonical_id": "vivc:9703",
+      "source_id": "adelaide_2025",
+      "source_name": "Tribidrag",
+      "country": null,
+      "relation": "confirmed_synonym",
+      "notes": "UC Davis FPS states that Zinfandel, Primitivo, Crljenak kaštelanski and Tribidrag share the same DNA profile. Current Vitis Grinzane identifies Primitivo as VIVC 9703, and Croatian national-collection research reports Tribidrag as VIVC 9703. Adelaide Tribidrag is therefore a reviewed R4 synonym identity, not a new canonical species."
+    }
+  },
+  "identities": [
+    {
+      "id": "vivc:8226",
+      "vivc_id": 8226,
+      "prime_name": "MUSCAT HAMBURG",
+      "record_status": "reviewed_botanical_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": "Schiava Grossa × Muscat of Alexandria"
+    },
+    {
+      "id": "vivc:2889",
+      "vivc_id": 2889,
+      "prime_name": "COT",
+      "record_status": "reviewed_botanical_registry_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": "Magdeleine noire des Charentes × Prunelard"
+    },
+    {
+      "id": "vivc:9703",
+      "vivc_id": 9703,
+      "prime_name": "PRIMITIVO",
+      "record_status": "reviewed_cross_registry_synonym_identity",
+      "color": "black",
+      "species": "Vitis vinifera",
+      "parentage": null
+    }
+  ],
+  "links": [
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Muscat of Hamburg",
+      "canonical_id": "vivc:8226",
+      "level": "R4",
+      "evidence_ids": [
+        "vitisgrinzane-muscat-hamburg-8226-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Côt",
+      "canonical_id": "vivc:2889",
+      "level": "R4",
+      "evidence_ids": [
+        "vitisgrinzane-cot-malbech-2889-2026-09-07"
+      ]
+    },
+    {
+      "source_id": "adelaide_2025",
+      "source_name": "Tribidrag",
+      "canonical_id": "vivc:9703",
+      "level": "R4",
+      "evidence_ids": [
+        "ucd-fps-tribidrag-9703-2026-09-07"
+      ]
+    }
+  ]
+}
