@@ -11,6 +11,7 @@ without requiring a bespoke legal review for every grape.
 """
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -114,6 +115,9 @@ class VarietyOperationalRecord:
     legal_gi_entitlement_inferred: bool
     traits: OperationalTraitPriors
     evidence_tags: tuple[str, ...] = ()
+    classification_countries: tuple[str, ...] = ()
+    piwi_countries: tuple[str, ...] = ()
+    piwi_documented: bool = False
 
 
 class BulkVarietyRegistry:
@@ -128,6 +132,10 @@ class BulkVarietyRegistry:
         self.identities = identities or VarietyIdentityRegistry()
         self.ttb = self._load_ttb()
         self._base_exact = self._build_base_index()
+        self._national_classifications = self._load_named_country_index(
+            "national_variety_classifications_2026.json", "variety"
+        )
+        self._piwi = self._load_named_country_index("piwi_registry.json", "name")
 
     def _build_base_index(self) -> dict[str, GrapeKnowledge]:
         index: dict[str, GrapeKnowledge] = {}
@@ -142,6 +150,25 @@ class BulkVarietyRegistry:
         for key in collisions:
             index.pop(key, None)
         return index
+
+    @staticmethod
+    def _load_named_country_index(filename: str, name_field: str) -> dict[str, tuple[str, ...]]:
+        path = DATA_DIR / filename
+        if not path.exists():
+            return {}
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        index: dict[str, set[str]] = {}
+        for row in doc.get("records", []):
+            name = str(row.get(name_field) or "").strip()
+            country = str(row.get("country") or "").strip()
+            if not name:
+                continue
+            names = [name, *(str(v) for v in row.get("aliases", []) if v)]
+            for candidate in names:
+                index.setdefault(normalize_name(candidate), set())
+                if country:
+                    index[normalize_name(candidate)].add(country)
+        return {key: tuple(sorted(values)) for key, values in index.items()}
 
     @staticmethod
     def _load_ttb() -> dict[str, TTBDesignation]:
@@ -359,7 +386,10 @@ class BulkVarietyRegistry:
         decision = self.identities.resolve(source_name, source_id="adelaide_2025")
         countries = self._countries_for(source_name)
         new_world = tuple(sorted(set(countries) & NEW_WORLD_COUNTRIES))
-        ttb = self.ttb.get(normalize_name(source_name))
+        normalized = normalize_name(source_name)
+        ttb = self.ttb.get(normalized)
+        classification_countries = self._national_classifications.get(normalized, ())
+        piwi_countries = self._piwi.get(normalized, ())
 
         if ttb is not None:
             us_plausibility = "ttb_label_designation_supported"
@@ -393,6 +423,10 @@ class BulkVarietyRegistry:
         }
         if ttb:
             tags.add(f"ttb:{ttb.status}")
+        if classification_countries:
+            tags.add("national_variety_classification")
+        if piwi_countries:
+            tags.add("piwi_documented")
         if new_world:
             tags.add("observed_new_world")
         if decision.status == "CONFLICT":
@@ -419,6 +453,9 @@ class BulkVarietyRegistry:
             legal_gi_entitlement_inferred=False,
             traits=traits,
             evidence_tags=tuple(sorted(tags)),
+            classification_countries=classification_countries,
+            piwi_countries=piwi_countries,
+            piwi_documented=bool(piwi_countries),
         )
 
     def all_records(self) -> list[VarietyOperationalRecord]:
@@ -436,7 +473,10 @@ class BulkVarietyRegistry:
                 continue
             traits = self._traits(prime, (), "R5", canonical_id)
             style_family, fermentation_archetype = self._style_family(prime, canonical_id, traits)
-            ttb = self.ttb.get(normalize_name(prime))
+            normalized = normalize_name(prime)
+            ttb = self.ttb.get(normalized)
+            classification_countries = self._national_classifications.get(normalized, ())
+            piwi_countries = self._piwi.get(normalized, ())
             records.append(
                 VarietyOperationalRecord(
                     source_name=prime,
@@ -467,7 +507,12 @@ class BulkVarietyRegistry:
                         "source:vivc_registry",
                         f"trait_source:{traits.source}",
                         *({f"ttb:{ttb.status}"} if ttb else set()),
+                        *({"national_variety_classification"} if classification_countries else set()),
+                        *({"piwi_documented"} if piwi_countries else set()),
                     })),
+                    classification_countries=classification_countries,
+                    piwi_countries=piwi_countries,
+                    piwi_documented=bool(piwi_countries),
                 )
             )
         return records
@@ -491,6 +536,8 @@ class BulkVarietyRegistry:
             "r3_candidates": sum(row.identity_level == "R3" for row in records),
             "r0_conflicts": sum(row.identity_level == "R0" for row in records),
             "ttb_supported_names": sum(row.ttb_status is not None for row in records),
+            "nationally_classified_names": sum(bool(row.classification_countries) for row in global_records),
+            "piwi_documented_names": sum(row.piwi_documented for row in global_records),
             "legacy_specific_trait_profiles": sum(row.traits.source == "legacy_explicit_profile" for row in records),
             "identity_geography_trait_priors": sum(row.traits.source == "identity_and_geography_simulation_prior" for row in records),
             "generic_trait_priors": sum(row.traits.source == "generic_commercial_simulation_prior" for row in records),
