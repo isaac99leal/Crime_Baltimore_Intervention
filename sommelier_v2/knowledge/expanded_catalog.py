@@ -404,7 +404,7 @@ class WorldWineKnowledgeCatalog:
         return self._bulk_variety_registry.record(source_name)
 
     def assess_variety_country_plausibility(self, source_name: str, target_country: str):
-        """Assess observed/commercial/agronomic planting plausibility without legal inference."""
+        """Assess cultivation evidence without inferring label, GI, or site legality."""
         from .variety_bulk import BulkVarietyRegistry
         if not hasattr(self, "_bulk_variety_registry"):
             self._bulk_variety_registry = BulkVarietyRegistry(catalog=self)

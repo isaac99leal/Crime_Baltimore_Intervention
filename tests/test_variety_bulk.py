@@ -51,7 +51,7 @@ class BulkVarietyRegistryTests(unittest.TestCase):
         for name in ("Assyrtiko", "Baga", "Caladoc", "Loureiro", "Marselan", "Vranac", "Verdejo"):
             row = self.by_name[name]
             self.assertIsNotNone(row.ttb_status, name)
-            self.assertEqual(row.spatial_state_us, "COMMERCIALLY_PLAUSIBLE")
+            self.assertEqual(row.spatial_state_us, "LABEL_DESIGNATION_SUPPORTED")
 
     def test_growth_plausibility_distinguishes_observed_ttb_and_analogue(self):
         observed = self.registry.assess_country_plausibility("Côt", "Argentina")
@@ -59,13 +59,13 @@ class BulkVarietyRegistryTests(unittest.TestCase):
         self.assertFalse(observed.legal_entitlement_inferred)
 
         us = self.registry.assess_country_plausibility("Assyrtiko", "United States")
-        self.assertEqual(us.state, "COMMERCIALLY_PLAUSIBLE")
+        self.assertEqual(us.state, "LABEL_DESIGNATION_SUPPORTED")
         self.assertFalse(us.legal_entitlement_inferred)
 
         analogue = self.registry.assess_country_plausibility("Shesh i Zi", "New Zealand")
         self.assertIn(
             analogue.state,
-            {"AGRONOMICALLY_PLAUSIBLE", "EXPERIMENTALLY_PLAUSIBLE"},
+            {"AGRONOMICALLY_PLAUSIBLE", "UNASSESSED"},
         )
         self.assertFalse(analogue.legal_entitlement_inferred)
 
@@ -101,7 +101,7 @@ class BulkVarietyRegistryTests(unittest.TestCase):
         self.assertTrue(record.simulation_enabled)
         self.assertEqual(record.source_name, "Assyrtiko")
         decision = world.assess_variety_country_plausibility("Assyrtiko", "United States")
-        self.assertEqual(decision.state, "COMMERCIALLY_PLAUSIBLE")
+        self.assertEqual(decision.state, "LABEL_DESIGNATION_SUPPORTED")
         self.assertFalse(decision.legal_entitlement_inferred)
 
     def test_stats_report_full_operational_coverage(self):

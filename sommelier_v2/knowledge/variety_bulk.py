@@ -11,9 +11,8 @@ without requiring a bespoke legal review for every grape.
 """
 from __future__ import annotations
 
-import json
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from statistics import mean
 
@@ -318,9 +317,9 @@ class BulkVarietyRegistry:
         if target_country == "United States" and record.ttb_status is not None:
             return GrowthPlausibilityDecision(
                 target_country=target_country,
-                state="COMMERCIALLY_PLAUSIBLE",
+                state="LABEL_DESIGNATION_SUPPORTED",
                 confidence="high",
-                evidence=(f"ttb:{record.ttb_status}:{record.ttb_designation}",),
+                evidence=(f"ttb_label_designation:{record.ttb_status}:{record.ttb_designation}",),
             )
 
         observed_classes = {
@@ -341,19 +340,19 @@ class BulkVarietyRegistry:
         if record.new_world_observed_countries and target_country in NEW_WORLD_COUNTRIES:
             return GrowthPlausibilityDecision(
                 target_country=target_country,
-                state="EXPERIMENTALLY_PLAUSIBLE",
-                confidence="low_medium",
+                state="UNASSESSED",
+                confidence="low",
                 evidence=(
-                    "new_world_cultivation_exists",
-                    f"target_climate_class:{target_class}",
+                    "cultivated_in_other_new_world_country",
+                    "country_group_membership_is_not_agronomic_evidence",
                 ),
             )
 
         return GrowthPlausibilityDecision(
             target_country=target_country,
-            state="EXPERIMENTALLY_PLAUSIBLE",
+            state="UNASSESSED",
             confidence="low",
-            evidence=("no_hard_biological_or_legal_impossibility_encoded",),
+            evidence=("insufficient_site_or_climate_evidence",),
         )
 
     def record(self, source_name: str) -> VarietyOperationalRecord:
@@ -363,17 +362,17 @@ class BulkVarietyRegistry:
         ttb = self.ttb.get(normalize_name(source_name))
 
         if ttb is not None:
-            us_plausibility = "documented_label_name_and_commercial_evidence"
-            spatial_state_us = "COMMERCIALLY_PLAUSIBLE"
+            us_plausibility = "ttb_label_designation_supported"
+            spatial_state_us = "LABEL_DESIGNATION_SUPPORTED"
         elif "United States" in countries:
             us_plausibility = "observed_cultivation"
             spatial_state_us = "OBSERVED"
         elif new_world:
-            us_plausibility = "new_world_analogue"
-            spatial_state_us = "AGRONOMICALLY_PLAUSIBLE"
+            us_plausibility = "cultivated_in_other_new_world_country"
+            spatial_state_us = "UNASSESSED"
         else:
             us_plausibility = "unverified"
-            spatial_state_us = "AGRONOMICALLY_PLAUSIBLE"
+            spatial_state_us = "UNASSESSED"
 
         traits = self._traits(
             source_name,
@@ -455,10 +454,10 @@ class BulkVarietyRegistry:
                     ttb_status=ttb.status if ttb else None,
                     ttb_designation=ttb.name if ttb else None,
                     us_commercial_plausibility=(
-                        "documented_label_name_and_commercial_evidence" if ttb else "unverified"
+                        "ttb_label_designation_supported" if ttb else "unverified"
                     ),
                     spatial_state_us=(
-                        "COMMERCIALLY_PLAUSIBLE" if ttb else "EXPERIMENTALLY_PLAUSIBLE"
+                        "LABEL_DESIGNATION_SUPPORTED" if ttb else "UNASSESSED"
                     ),
                     simulation_enabled=True,
                     legal_gi_entitlement_inferred=False,
