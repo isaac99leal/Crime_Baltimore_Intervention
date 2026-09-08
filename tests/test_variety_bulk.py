@@ -77,6 +77,21 @@ class BulkVarietyRegistryTests(unittest.TestCase):
         shiraz = self.by_name["Syrah"]
         self.assertIn("Australia", shiraz.new_world_observed_countries)
 
+    def test_existing_national_and_piwi_evidence_is_bulk_integrated(self):
+        solaris = self.by_name.get("Solaris")
+        if solaris is not None:
+            self.assertTrue(solaris.piwi_documented)
+            self.assertIn("Austria", solaris.piwi_countries)
+
+        calardis = self.by_name.get("Calardis Blanc") or self.by_name.get("Calardis blanc")
+        if calardis is not None:
+            self.assertIn("France", calardis.classification_countries)
+            self.assertTrue(calardis.piwi_documented)
+
+        stats = self.registry.stats()
+        self.assertGreater(stats["piwi_documented_names"], 20)
+        self.assertGreater(stats["nationally_classified_names"], 5)
+
     def test_trait_priors_exist_for_sparse_and_deep_records(self):
         for name in ("Cabernet Sauvignon", "Cereza", "Beba", "Shesh i Zi"):
             row = self.by_name[name]
