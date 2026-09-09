@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "notes": "Positive current Blagny Premier Cru climat claim rule. The legal claim is parent-scoped to Blagny; same-named sites under Meursault or Puligny-Montrachet do not satisfy this rule.",
+  "sources": {
+    "blagny_cahier_2026": {
+      "authority": "Ministère de l'Agriculture, de l'Agro-alimentaire et de la Souveraineté alimentaire",
+      "title": "Cahier des charges de l'AOC Blagny homologué par l'arrêté du 8 juin 2026",
+      "url": "https://info.agriculture.gouv.fr/boagri/document_administratif-8014d4a0-f691-4399-b6d4-ca4ad830e24e/telechargement",
+      "checked": "2026-09-07",
+      "scope": "Current specification explicitly permits Premier Cru followed by one of seven listed climat names and reserves Blagny to still red wine."
+    }
+  },
+  "rules": [
+    {
+      "id": "siteclaim:fr:blagny:premier-cru-climat",
+      "country": "France",
+      "parent_appellation": "Blagny",
+      "site_type": "climat",
+      "required_site_legal_status": "official_appellation_climat",
+      "required_site_source_ids": ["blagny_cahier_2026"],
+      "allowed_wine_variants": ["premier cru"],
+      "source_ids": ["blagny_cahier_2026"],
+      "claim_kind": "premier_cru_climat_name",
+      "allowed_site_names": [
+        "Hameau de Blagny",
+        "La Garenne ou sur la Garenne",
+        "La Jeunellotte",
+        "La Pièce sous le Bois",
+        "Sous Blagny",
+        "Sous le Dos d’Ane",
+        "Sous le Puits"
+      ],
+      "notes": "Exact seven-climat list from the current 2026 Blagny specification. Standard Blagny does not receive a generic site-name promotion from this rule."
+    }
+  ]
+}
