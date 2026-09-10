@@ -118,7 +118,12 @@ class Restaurant:
         # Check if we already have this wine
         for existing in self.cellar:
             if existing.wine.id == slot.wine.id:
-                existing.quantity += slot.quantity
+                total_quantity = existing.quantity + slot.quantity
+                if total_quantity:
+                    existing.purchase_price = (
+                        existing.quantity * existing.purchase_price + slot.quantity * slot.purchase_price
+                    ) / total_quantity
+                existing.quantity = total_quantity
                 return True
         self.cellar.append(slot)
         return True
