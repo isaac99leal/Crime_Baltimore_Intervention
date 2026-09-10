@@ -69,3 +69,15 @@ python -m sommelier_v2.demo
 ```
 
 The demo buys a wine lot, prices it for bottle and BTG, makes a food-aware guest recommendation, opens a bottle for a glass sale, and records the remaining open volume.
+
+## Vineyard water and harvest choices
+
+`DailyWeather.irrigation_mm` now represents root-zone water applied that day. It increases soil water without being counted as rain, leaf wetness, or harvest rainfall. Block irrigation is added to this explicit daily application; callers should use one input path unless the applications are additional. Overhead irrigation and canopy wetting are not modeled by this field.
+
+Daily vintage states now expose irrigation, drainage above field capacity, and actual modeled evapotranspiration limited by available water. These let callers inspect water conservation. The existing evapotranspiration proxy remains a game prior, not a calibrated FAO reference-ET implementation.
+
+Set `VineyardBlock.harvest_day_of_year` or pass `harvest_day_of_year` to `simulate_vintage` to choose the pick date. Simulation stops on that date, so later storms cannot change already-picked fruit. Later picking can change acid retention and disease exposure. Existing automatic harvest remains the default. The resulting vineyard chemistry continues through the existing harvest-to-must conversion; no laboratory measurement is invented.
+
+Explicit picks require a date in the supplied weather. Duplicate dates, negative water, inverted temperatures and non-finite temperature/water inputs are rejected. A daily irrigation input cannot bypass a block's irrigation restriction. An explicit pick date does not guarantee ripe, harvestable or legally eligible fruit.
+
+Water-balance reference: FAO Irrigation and Drainage Paper 56, Chapter 8 (https://www.fao.org/4/x0490e/x0490e0e.htm). Used for the distinction between water inputs, root-zone storage and drainage; the simulation coefficients are not calibrated to this reference.
