@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import unittest
+import csv
+import tempfile
+from pathlib import Path
 
 from scripts.variety_identity_audit import build_metrics
 
@@ -43,6 +46,30 @@ class VarietyIdentityAuditTests(unittest.TestCase):
             self.metrics["resolved_2023_ha"],
             self.metrics["total_2023_ha"],
         )
+
+
+class IdentityAuditTests(unittest.TestCase):
+    def test_aggregate_queue_exclusion_preserves_census_area(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'census.csv'
+            with path.open('w', newline='') as handle:
+                writer = csv.writer(handle)
+                writer.writerow(['prime', 'area_2000_ha', 'area_2010_ha', 'area_2016_ha', 'area_2023_ha'])
+                writer.writerows([
+                    ['Other', 0, 0, 0, 30000],
+                    ['Other red', 0, 0, 0, 20000],
+                    ['Other white', 0, 0, 0, 10000],
+                    ['Other Test Grape', 0, 0, 0, 15000],
+                    ['Unreviewed Test Grape', 0, 0, 0, 2000],
+                ])
+            metrics = build_metrics(path)
+        self.assertEqual(metrics['total_2023_ha'], 77000)
+        self.assertEqual(metrics['aggregate_category_rows'], 3)
+        self.assertEqual(metrics['aggregate_category_2023_ha'], 60000)
+        self.assertEqual(metrics['named_rows_2023_ha'], 17000)
+        self.assertEqual(metrics['named_unresolved_gt_1000_ha_count'], 2)
+        self.assertEqual([r['name'] for r in metrics['named_unresolved_gt_10000_ha']], ['Other Test Grape'])
+        self.assertEqual(len(metrics['unresolved_gt_10000_ha']), 3)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,10 @@
 from __future__ import annotations
 
 import unittest
+import json
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
 
 from sommelier_v2.knowledge.variety_bulk import BulkVarietyRegistry
 
@@ -90,7 +94,34 @@ class BulkVarietyRegistryTests(unittest.TestCase):
 
         stats = self.registry.stats()
         self.assertGreater(stats["piwi_documented_names"], 20)
-        self.assertGreater(stats["nationally_classified_names"], 5)
+        self.assertGreaterEqual(stats["nationally_classified_names"], 2)
+        self.assertIn("France", self.registry.record("Calardis Blanc").classification_countries)
+        self.assertIn("France", self.registry.record("Pougnet").classification_countries)
+
+    def test_country_evidence_preserves_accents_and_explicit_aliases(self):
+        doc = {"records": [
+            {"name": "Côt", "country": "France", "aliases": ["Malbec"]},
+            {"name": "Cot", "country": "Argentina"},
+            {"name": "A-B", "country": "Germany"},
+            {"name": "AB", "country": "Austria"},
+        ]}
+        with tempfile.TemporaryDirectory() as directory:
+            Path(directory, "evidence.json").write_text(json.dumps(doc))
+            with patch("sommelier_v2.knowledge.variety_bulk.DATA_DIR", Path(directory)):
+                index = self.registry._load_named_country_index("evidence.json", "name")
+        self.assertEqual(index["côt"], ("France",))
+        self.assertEqual(index["cot"], ("Argentina",))
+        self.assertEqual(index["malbec"], ("France",))
+        self.assertEqual(index["a-b"], ("Germany",))
+        self.assertEqual(index["ab"], ("Austria",))
+
+    def test_operational_country_evidence_does_not_use_search_normalization(self):
+        with patch.object(self.registry, "_national_classifications", {"côt": ("France",)}), \
+             patch.object(self.registry, "_piwi", {"côt": ("France",)}):
+            self.assertEqual(self.registry.record("Côt").classification_countries, ("France",))
+            self.assertTrue(self.registry.record("Côt").piwi_documented)
+            self.assertEqual(self.registry.record("Cot").classification_countries, ())
+            self.assertFalse(self.registry.record("Cot").piwi_documented)
 
     def test_trait_priors_exist_for_sparse_and_deep_records(self):
         for name in ("Cabernet Sauvignon", "Cereza", "Beba", "Shesh i Zi"):

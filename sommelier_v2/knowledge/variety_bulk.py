@@ -157,6 +157,7 @@ class BulkVarietyRegistry:
         if not path.exists():
             return {}
         doc = json.loads(path.read_text(encoding="utf-8"))
+        # Evidence applies to literal names and declared aliases, not search-normalized matches.
         index: dict[str, set[str]] = {}
         for row in doc.get("records", []):
             name = str(row.get(name_field) or "").strip()
@@ -165,9 +166,9 @@ class BulkVarietyRegistry:
                 continue
             names = [name, *(str(v) for v in row.get("aliases", []) if v)]
             for candidate in names:
-                index.setdefault(normalize_name(candidate), set())
+                index.setdefault(_exact(candidate), set())
                 if country:
-                    index[normalize_name(candidate)].add(country)
+                    index[_exact(candidate)].add(country)
         return {key: tuple(sorted(values)) for key, values in index.items()}
 
     @staticmethod
@@ -388,8 +389,8 @@ class BulkVarietyRegistry:
         new_world = tuple(sorted(set(countries) & NEW_WORLD_COUNTRIES))
         normalized = normalize_name(source_name)
         ttb = self.ttb.get(normalized)
-        classification_countries = self._national_classifications.get(normalized, ())
-        piwi_countries = self._piwi.get(normalized, ())
+        classification_countries = self._national_classifications.get(_exact(source_name), ())
+        piwi_countries = self._piwi.get(_exact(source_name), ())
 
         if ttb is not None:
             us_plausibility = "ttb_label_designation_supported"
@@ -475,8 +476,8 @@ class BulkVarietyRegistry:
             style_family, fermentation_archetype = self._style_family(prime, canonical_id, traits)
             normalized = normalize_name(prime)
             ttb = self.ttb.get(normalized)
-            classification_countries = self._national_classifications.get(normalized, ())
-            piwi_countries = self._piwi.get(normalized, ())
+            classification_countries = self._national_classifications.get(_exact(prime), ())
+            piwi_countries = self._piwi.get(_exact(prime), ())
             records.append(
                 VarietyOperationalRecord(
                     source_name=prime,
