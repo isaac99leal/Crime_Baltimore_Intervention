@@ -10,6 +10,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from sommelier_v2.knowledge.variety_identity import VarietyIdentityRegistry  # noqa: E402
+AGGREGATE_NAMES = frozenset({"other", "other red", "other white"})
+
 DEFAULT_CSV = ROOT / "sommelier_v2" / "knowledge" / "data" / "adelaide_world_varieties_2000_2023.csv"
 
 
@@ -59,9 +61,22 @@ def build_metrics(csv_path: Path = DEFAULT_CSV) -> dict[str, object]:
                 }
             )
 
+    aggregate_rows = [row for row in rows if str(row["name"]).strip().casefold() in AGGREGATE_NAMES]
+    aggregate_area = sum(float(row["area_2023_ha"]) for row in aggregate_rows)
+    named_area = total_2023 - aggregate_area
+    named_unresolved = [row for row in unresolved if str(row["name"]).strip().casefold() not in AGGREGATE_NAMES]
+    named_unresolved.sort(key=lambda row: float(row["area_2023_ha"]), reverse=True)
+
     unresolved.sort(key=lambda row: float(row["area_2023_ha"]), reverse=True)
 
     return {
+        "aggregate_category_policy": "Only Adelaide other, other red and other white are excluded from named-row metrics. Full census totals remain unchanged; named rows are not distinct botanical identities.",
+        "aggregate_category_rows": len(aggregate_rows),
+        "aggregate_category_2023_ha": aggregate_area,
+        "named_rows_2023_ha": named_area,
+        "named_unresolved_gt_10000_ha": [row for row in named_unresolved if float(row["area_2023_ha"]) > 10000.0],
+        "named_unresolved_gt_1000_ha_count": sum(float(row["area_2023_ha"]) > 1000.0 for row in named_unresolved),
+        "top_named_unresolved": named_unresolved[:30],
         "source_id": "adelaide_2025",
         "source_rows": len(rows),
         "resolution_counts": counts,

@@ -94,6 +94,20 @@ class GrowthPlausibilityDecision:
 
 
 @dataclass(frozen=True)
+class VarietyCountryEvidence:
+    """A recorded source assertion, not a current legal eligibility decision."""
+
+    registry_file: str
+    source_name: str
+    matched_name: str
+    country: str | None
+    status: str | None
+    effective_from: str | None
+    source_ids: tuple[str, ...]
+    source_urls: tuple[str, ...]
+
+
+@dataclass(frozen=True)
 class VarietyOperationalRecord:
     source_name: str
     source_id: str
@@ -118,6 +132,8 @@ class VarietyOperationalRecord:
     classification_countries: tuple[str, ...] = ()
     piwi_countries: tuple[str, ...] = ()
     piwi_documented: bool = False
+    classification_evidence: tuple[VarietyCountryEvidence, ...] = ()
+    piwi_evidence: tuple[VarietyCountryEvidence, ...] = ()
 
 
 class BulkVarietyRegistry:
@@ -136,6 +152,10 @@ class BulkVarietyRegistry:
             "national_variety_classifications_2026.json", "variety"
         )
         self._piwi = self._load_named_country_index("piwi_registry.json", "name")
+        self._classification_evidence = self._load_named_evidence_index(
+            "national_variety_classifications_2026.json", "variety"
+        )
+        self._piwi_evidence = self._load_named_evidence_index("piwi_registry.json", "name")
 
     def _build_base_index(self) -> dict[str, GrapeKnowledge]:
         index: dict[str, GrapeKnowledge] = {}
@@ -152,23 +172,52 @@ class BulkVarietyRegistry:
         return index
 
     @staticmethod
-    def _load_named_country_index(filename: str, name_field: str) -> dict[str, tuple[str, ...]]:
+    def _load_named_evidence_index(
+        filename: str, name_field: str,
+    ) -> dict[str, tuple[VarietyCountryEvidence, ...]]:
         path = DATA_DIR / filename
         if not path.exists():
             return {}
         doc = json.loads(path.read_text(encoding="utf-8"))
-        index: dict[str, set[str]] = {}
+        sources = doc.get("sources", {})
+        index: dict[str, list[VarietyCountryEvidence]] = {}
         for row in doc.get("records", []):
             name = str(row.get(name_field) or "").strip()
-            country = str(row.get("country") or "").strip()
             if not name:
                 continue
-            names = [name, *(str(v) for v in row.get("aliases", []) if v)]
+            source_ids = tuple(dict.fromkeys([
+                *row.get("source_ids", []),
+                *([row["source_id"]] if row.get("source_id") else []),
+            ]))
+            urls = []
+            for source_id in source_ids:
+                source = sources.get(source_id)
+                url = source.get("url") if isinstance(source, dict) else source
+                if url and url not in urls:
+                    urls.append(url)
+            names = [name, *(str(v).strip() for v in row.get("aliases", []) if v)]
+            seen = set()
             for candidate in names:
-                index.setdefault(normalize_name(candidate), set())
-                if country:
-                    index[normalize_name(candidate)].add(country)
-        return {key: tuple(sorted(values)) for key, values in index.items()}
+                key = _exact(candidate)
+                if not key or key in seen:
+                    continue
+                seen.add(key)
+                evidence = VarietyCountryEvidence(
+                    registry_file=filename, source_name=name, matched_name=candidate,
+                    country=row.get("country") or None, status=row.get("status") or None,
+                    effective_from=row.get("effective_from") or None,
+                    source_ids=source_ids, source_urls=tuple(urls),
+                )
+                index.setdefault(key, []).append(evidence)
+        return {key: tuple(values) for key, values in index.items()}
+
+    @staticmethod
+    def _load_named_country_index(filename: str, name_field: str) -> dict[str, tuple[str, ...]]:
+        # Country summaries derive from the same literal-name evidence as the details.
+        return {
+            key: tuple(sorted({row.country for row in rows if row.country}))
+            for key, rows in BulkVarietyRegistry._load_named_evidence_index(filename, name_field).items()
+        }
 
     @staticmethod
     def _load_ttb() -> dict[str, TTBDesignation]:
@@ -388,8 +437,8 @@ class BulkVarietyRegistry:
         new_world = tuple(sorted(set(countries) & NEW_WORLD_COUNTRIES))
         normalized = normalize_name(source_name)
         ttb = self.ttb.get(normalized)
-        classification_countries = self._national_classifications.get(normalized, ())
-        piwi_countries = self._piwi.get(normalized, ())
+        classification_countries = self._national_classifications.get(_exact(source_name), ())
+        piwi_countries = self._piwi.get(_exact(source_name), ())
 
         if ttb is not None:
             us_plausibility = "ttb_label_designation_supported"
@@ -456,6 +505,8 @@ class BulkVarietyRegistry:
             classification_countries=classification_countries,
             piwi_countries=piwi_countries,
             piwi_documented=bool(piwi_countries),
+            classification_evidence=self._classification_evidence.get(_exact(source_name), ()),
+            piwi_evidence=self._piwi_evidence.get(_exact(source_name), ()),
         )
 
     def all_records(self) -> list[VarietyOperationalRecord]:
@@ -475,8 +526,8 @@ class BulkVarietyRegistry:
             style_family, fermentation_archetype = self._style_family(prime, canonical_id, traits)
             normalized = normalize_name(prime)
             ttb = self.ttb.get(normalized)
-            classification_countries = self._national_classifications.get(normalized, ())
-            piwi_countries = self._piwi.get(normalized, ())
+            classification_countries = self._national_classifications.get(_exact(prime), ())
+            piwi_countries = self._piwi.get(_exact(prime), ())
             records.append(
                 VarietyOperationalRecord(
                     source_name=prime,
@@ -513,6 +564,8 @@ class BulkVarietyRegistry:
                     classification_countries=classification_countries,
                     piwi_countries=piwi_countries,
                     piwi_documented=bool(piwi_countries),
+                    classification_evidence=self._classification_evidence.get(_exact(prime), ()),
+                    piwi_evidence=self._piwi_evidence.get(_exact(prime), ()),
                 )
             )
         return records
