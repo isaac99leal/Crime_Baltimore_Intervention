@@ -50,6 +50,7 @@ class VineyardBlock:
 
     irrigation_mm_per_week: float = 0.0
     irrigation_allowed: bool = True
+    harvest_day_of_year: int | None = None
     canopy_management_index: float = 0.6
     disease_control_index: float = 0.6
     organic: bool = False
@@ -279,7 +280,8 @@ class VineyardEngine:
                     weather,
                     tmin_c=weather.tmin_c + temp_offset,
                     tmax_c=weather.tmax_c + temp_offset,
-                    rain_mm=max(0.0, weather.rain_mm * block.rainfall_multiplier + irrigation_daily),
+                    rain_mm=max(0.0, weather.rain_mm * block.rainfall_multiplier),
+                    irrigation_mm=weather.irrigation_mm + irrigation_daily,
                     humidity_pct=humidity,
                     solar_mj_m2=max(0.0, weather.solar_mj_m2 * block.solar_multiplier),
                     wind_m_s=max(0.0, weather.wind_m_s * block.wind_multiplier),
@@ -288,9 +290,12 @@ class VineyardEngine:
         return adjusted
 
     def simulate(self, block: VineyardBlock, weather_days: list[DailyWeather], *, vintage_year: int) -> VineyardOutcome:
+        if not block.irrigation_allowed and any(day.irrigation_mm > 0 for day in weather_days):
+            raise ValueError("Weather-series irrigation is not allowed for this block")
         site, origin = self.validate_block(block, vintage_year=vintage_year)
         params = self._params_for(block)
-        vintage = simulate_vintage(self._microclimate(block, weather_days), params)
+        vintage = simulate_vintage(self._microclimate(block, weather_days), params,
+                                   harvest_day_of_year=block.harvest_day_of_year)
 
         age = max(0, vintage_year - block.planting_year)
         maturity = clamp(age / 8.0)

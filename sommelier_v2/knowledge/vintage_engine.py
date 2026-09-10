@@ -7,7 +7,7 @@ fed observed or explicitly generated weather records with provenance.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from math import exp
+from math import exp, isfinite
 
 
 def clamp(value: float, low: float = 0.0, high: float = 1.0) -> float:
@@ -24,6 +24,7 @@ class DailyWeather:
     solar_mj_m2: float = 18.0
     wind_m_s: float = 2.0
     hail: bool = False
+    irrigation_mm: float = 0.0  # Root-zone water; does not wet fruit or canopy.
 
     @property
     def mean_temp_c(self) -> float:
@@ -70,6 +71,9 @@ class VintageDayState:
     yield_index: float
     frost_damage: float
     hail_damage: float
+    irrigation_mm: float = 0.0
+    drainage_mm: float = 0.0
+    evapotranspiration_mm: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -118,10 +122,21 @@ def _stage_day(cumulative: float, threshold: float, weather: DailyWeather, curre
 def simulate_vintage(
     weather_days: list[DailyWeather],
     params: VintageModelParams = VintageModelParams(),
+    *, harvest_day_of_year: int | None = None,
 ) -> VintageOutcome:
     if not weather_days:
         raise ValueError("weather_days must not be empty")
     days = sorted(weather_days, key=lambda d: d.day_of_year)
+
+    if len({day.day_of_year for day in days}) != len(days):
+        raise ValueError("Daily weather contains duplicate dates")
+    for day in days:
+        if not all(isfinite(v) for v in (day.tmin_c, day.tmax_c, day.rain_mm, day.irrigation_mm)):
+            raise ValueError("Weather temperature and water inputs must be finite")
+        if day.tmin_c > day.tmax_c or min(day.rain_mm, day.irrigation_mm) < 0:
+            raise ValueError("Invalid daily temperature or water input")
+    if harvest_day_of_year is not None and harvest_day_of_year not in {d.day_of_year for d in days}:
+        raise ValueError("Selected harvest date must be present in the weather series")
 
     gdd = 0.0
     soil = clamp(params.initial_soil_water_mm, 0.0, params.field_capacity_mm)
@@ -149,9 +164,11 @@ def simulate_vintage(
         if active:
             growing_rain += max(0.0, weather.rain_mm)
 
-        soil = min(params.field_capacity_mm, soil + max(0.0, weather.rain_mm))
-        et = _evapotranspiration_proxy(weather)
-        soil = max(0.0, soil - et)
+        water_input = soil + weather.rain_mm + weather.irrigation_mm
+        drainage = max(0.0, water_input - params.field_capacity_mm)
+        soil = min(params.field_capacity_mm, water_input)
+        et = min(soil, _evapotranspiration_proxy(weather))
+        soil -= et
         water_stress = clamp(
             (params.drought_stress_threshold_mm - soil) / max(1.0, params.drought_stress_threshold_mm)
         )
@@ -224,7 +241,9 @@ def simulate_vintage(
         forced_by_rot = veraison_day is not None and botrytis > 0.72 and sugar_ripeness > 0.72
         reached_target = gdd >= params.target_harvest_gdd and sugar_ripeness >= 0.88
         overripe_limit = gdd >= params.max_harvest_gdd
-        if harvest_day is None and (reached_target or forced_by_rot or overripe_limit):
+        chosen_pick = weather.day_of_year == harvest_day_of_year
+        automatic_pick = harvest_day_of_year is None and (reached_target or forced_by_rot or overripe_limit)
+        if harvest_day is None and (chosen_pick or automatic_pick):
             harvest_day = weather.day_of_year
             harvest_index = i
 
@@ -243,6 +262,8 @@ def simulate_vintage(
             yield_index=clamp(yield_index, 0.0, 1.4),
             frost_damage=frost_damage,
             hail_damage=hail_damage,
+            irrigation_mm=weather.irrigation_mm, drainage_mm=drainage,
+            evapotranspiration_mm=et,
         ))
         if harvest_day is not None:
             break
