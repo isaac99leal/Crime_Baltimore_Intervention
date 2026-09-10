@@ -123,6 +123,45 @@ class BulkVarietyRegistryTests(unittest.TestCase):
             self.assertEqual(self.registry.record("Cot").classification_countries, ())
             self.assertFalse(self.registry.record("Cot").piwi_documented)
 
+    def test_classification_evidence_preserves_source_status_and_date(self):
+        record = self.registry.record("Calardis Blanc")
+        evidence = record.classification_evidence[0]
+        self.assertEqual(evidence.source_name, "Calardis blanc")
+        self.assertEqual(evidence.status, "classified_wine_grape_metropolitan")
+        self.assertEqual(evidence.effective_from, "2026-07-26")
+        self.assertIn("fr_legifrance_2026_07_23", evidence.source_ids)
+        self.assertTrue(any("legifrance.gouv.fr" in url for url in evidence.source_urls))
+        self.assertFalse(record.legal_gi_entitlement_inferred)
+
+    def test_alias_evidence_retains_the_declared_name(self):
+        evidence = self.registry.record("Flower Muscatel").piwi_evidence[0]
+        self.assertEqual(evidence.source_name, "Blütenmuskateller")
+        self.assertEqual(evidence.matched_name, "Flower Muscatel")
+        self.assertEqual(evidence.source_ids, ("piwi_de_2022",))
+        self.assertTrue(evidence.source_urls)
+        self.assertIsNone(evidence.effective_from)
+        self.assertEqual(self.registry.record("Blutenmuskateller").piwi_evidence, ())
+
+    def test_unknown_source_keeps_identifier_without_inventing_url(self):
+        doc = {"records": [{"name": "Example", "source_id": "missing_source"}]}
+        with tempfile.TemporaryDirectory() as directory:
+            Path(directory, "evidence.json").write_text(json.dumps(doc))
+            with patch("sommelier_v2.knowledge.variety_bulk.DATA_DIR", Path(directory)):
+                evidence = self.registry._load_named_evidence_index("evidence.json", "name")["example"][0]
+        self.assertEqual(evidence.source_ids, ("missing_source",))
+        self.assertEqual(evidence.source_urls, ())
+        self.assertIsNone(evidence.status)
+        self.assertIsNone(evidence.country)
+
+    def test_country_summaries_agree_with_evidence_on_both_record_paths(self):
+        for record in self.registry.all_global_records():
+            self.assertEqual(record.classification_countries, tuple(sorted({
+                row.country for row in record.classification_evidence if row.country
+            })))
+            self.assertEqual(record.piwi_countries, tuple(sorted({
+                row.country for row in record.piwi_evidence if row.country
+            })))
+
     def test_trait_priors_exist_for_sparse_and_deep_records(self):
         for name in ("Cabernet Sauvignon", "Cereza", "Beba", "Shesh i Zi"):
             row = self.by_name[name]
