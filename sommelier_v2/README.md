@@ -35,6 +35,14 @@ New World geographical indications must not be forced into the same model as Eur
 
 The external knowledge workflow is serialized per branch. It refreshes the public wine registries, indexes the official legal documents, derives deny-safe constraints, commits generated snapshots, and prevents concurrent refresh runs from racing each other.
 
+## Playable market buying
+
+The Pygame Wine Market now has a weekly supplier book. Reopening or refreshing the screen keeps the same offers; a new game week changes the selection. Existing supplier stock is not replenished by refresh.
+
+Purchase buttons show totals including freight. Game balance rules give 3% off orders of 6–11 bottles and 5% off orders of 12 or more. Freight is $12 per order below 12 bottles and free from 12 bottles. These are simulation rules. Purchases check cash, cellar space, and stock before making changes. The cellar records the cost including freight and uses a weighted average for repeat purchases.
+
+This feature is connected to the existing Pygame market screen. Supplier-specific terms, invoices, futures, and closeouts remain future work.
+
 ## Gameplay systems to build next
 
 1. **Market and buying** — supplier books, vintages, samples, futures, closeouts, minimums, freight, payment terms, and dynamic availability.

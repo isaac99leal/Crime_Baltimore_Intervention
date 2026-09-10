@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 from typing import TYPE_CHECKING
-import random
 
 import pygame
 from somm_simulator.engine.scene_manager import Scene
@@ -16,7 +15,8 @@ from somm_simulator.config import (
     WINE_COLOR_ROSE, WINE_COLOR_SPARKLING,
     FONT_SIZE_HEADING, FONT_SIZE_BODY, FONT_SIZE_SMALL, FONT_SIZE_TINY,
 )
-from somm_simulator.models.wine import Wine, CellarSlot
+from somm_simulator.models.wine import Wine
+from somm_simulator.models.market import purchase_wine, quote_purchase, weekly_offerings
 from somm_simulator.models.player import Player
 from somm_simulator.models.restaurant import Restaurant
 
@@ -42,7 +42,7 @@ class WineMarketScene(Scene):
         self.filtered_wines: list[Wine] = []
         self.selected_wine: Wine | None = None
 
-        # Market offers a random subset each visit
+        # Market offers remain fixed for the restaurant week.
         self.market_wines: list[Wine] = []
 
         self.wine_list = ScrollList(30, 100, 500, 530, item_height=40)
@@ -56,7 +56,7 @@ class WineMarketScene(Scene):
                                  callback=lambda: self._buy(12))
         self.back_btn = Button(SCREEN_WIDTH - 120, 20, 100, 36, "Back",
                                callback=self._go_back, font_size=FONT_SIZE_SMALL)
-        self.refresh_btn = Button(560, 625, 160, 36, "New Offerings",
+        self.refresh_btn = Button(560, 625, 160, 36, "Refresh List",
                                   callback=self._refresh_market, font_size=FONT_SIZE_SMALL)
 
         self.message = ""
@@ -69,9 +69,9 @@ class WineMarketScene(Scene):
         self._refresh_market()
 
     def _refresh_market(self):
-        """Generate a fresh subset of available wines."""
-        n = min(120, len(self.all_wines))
-        self.market_wines = random.sample(self.all_wines, n) if self.all_wines else []
+        """Reload this week's supplier book without rerolling offers."""
+        week = self.restaurant.game_week if self.restaurant else 1
+        self.market_wines = weekly_offerings(self.all_wines, week)
         self._apply_filter(0)
         self.selected_wine = None
 
@@ -120,9 +120,16 @@ class WineMarketScene(Scene):
         if self.message_timer > 0:
             self.message_timer -= dt
         can_buy = self.selected_wine is not None and self.restaurant is not None
-        self.buy_1_btn.enabled = can_buy
-        self.buy_6_btn.enabled = can_buy
-        self.buy_12_btn.enabled = can_buy
+        for qty, button in ((1, self.buy_1_btn), (6, self.buy_6_btn), (12, self.buy_12_btn)):
+            button.enabled = bool(can_buy)
+            if can_buy:
+                quote = quote_purchase(self.selected_wine.wholesale_cost, qty)
+                button.text = f"Buy {qty}: ${quote.total:.2f}"
+                button.enabled = (
+                    qty <= self.selected_wine.quantity_available
+                    and qty <= self.restaurant.cellar_space_remaining
+                    and quote.total <= self.restaurant.budget
+                )
 
     def draw(self, surface: pygame.Surface):
         draw_text(surface, "Wine Market", 30, 20,
@@ -194,6 +201,13 @@ class WineMarketScene(Scene):
         self.buy_6_btn.draw(surface)
         self.buy_12_btn.draw(surface)
         self.refresh_btn.draw(surface)
+        draw_text(surface, "6+ bottles: 3% off | 12+: 5% off", 740, 572,
+                  color=COLOR_TEXT_DIM, size=FONT_SIZE_TINY)
+        draw_text(surface, "Freight: $12; free with 12+ bottles", 740, 593,
+                  color=COLOR_TEXT_DIM, size=FONT_SIZE_TINY)
+        if self.restaurant:
+            draw_text(surface, f"Week {self.restaurant.game_week} offers | totals include freight", 740, 633,
+                      color=COLOR_TEXT_DIM, size=FONT_SIZE_TINY)
 
         # Message
         if self.message and self.message_timer > 0:
@@ -205,33 +219,13 @@ class WineMarketScene(Scene):
         if not self.selected_wine or not self.restaurant:
             return
         w = self.selected_wine
-        total_cost = w.wholesale_cost * qty
-        if total_cost > self.restaurant.budget:
-            self.message = f"Not enough budget! Need ${total_cost:.0f}"
+        try:
+            quote = purchase_wine(self.restaurant, w, qty)
+        except ValueError as exc:
+            self.message = str(exc)
             self.message_timer = 3.0
             return
-        if qty > self.restaurant.cellar_space_remaining:
-            self.message = f"Not enough cellar space! Need {qty} slots"
-            self.message_timer = 3.0
-            return
-        if qty > w.quantity_available:
-            self.message = f"Only {w.quantity_available} bottles available"
-            self.message_timer = 3.0
-            return
-
-        # Purchase
-        slot = CellarSlot(
-            wine=w,
-            quantity=qty,
-            purchase_price=w.wholesale_cost,
-            date_acquired=self.restaurant.game_day,
-        )
-        self.restaurant.add_to_cellar(slot)
-        self.restaurant.budget -= total_cost
-        self.restaurant.current_period.purchases += total_cost
-        w.quantity_available -= qty
-
-        self.message = f"Purchased {qty}x {w.full_name} for ${total_cost:.0f}"
+        self.message = f"Purchased {qty} bottles for ${quote.total:.2f} (freight ${quote.freight:.2f})"
         self.message_timer = 4.0
 
     def _go_back(self):
